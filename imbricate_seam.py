@@ -202,15 +202,23 @@ def search(trials, seed=193):
             pools = []
             complete = True
             for i, s in enumerate(menu):
-                pool = tile_pool(
-                    menu,
-                    apply(M, s),
-                    maxlen,
-                    pool_size=8,
-                    attempts=24,
-                    rng=rng,
-                    first=0 if i == 0 else None,
-                )
+                # Every tile starts with letter 0 and must not end with 0:
+                # tile boundaries are then always (z != 0, 0), so no letter is
+                # ever adjacent to itself at any level (adjacent identical
+                # tiles would force collinear anchors 0, D, 2D).
+                pool = [
+                    t
+                    for t in tile_pool(
+                        menu,
+                        apply(M, s),
+                        maxlen,
+                        pool_size=10,
+                        attempts=30,
+                        rng=rng,
+                        first=0,
+                    )
+                    if t[-1] != 0
+                ]
                 if not pool:
                     complete = False
                     break

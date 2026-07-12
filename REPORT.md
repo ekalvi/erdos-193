@@ -94,6 +94,47 @@ Everything else is evidence. Novelty of the exact maxima needs a literature chec
 - `logs/*.log` — shard logs with throughput.
 - `bnb193.py` output — exhaustive maxima; 26- and 124-vector sets still running.
 
+## Addendum (2026-07-12): randomized probes, imbrication, amplification
+
+**Ceiling was menu-specific, not universal.** Randomized-restart DFS and beam
+probes (beam193.py): good-4 menu 226 / 166; main-shard winner 212 / 150; but the
+radius-3 winner menu {(-1,3,-2),(-1,-1,3),(0,3,-1),(3,-3,-3)} reached **342**.
+The 26-vector radius-1 set reached **9,862** in a 2M-node budget. Walk length
+scales strongly with menu quality; nobody has optimized a menu yet.
+
+**2D calibration:** with ±e1,±e2 the exact maximum is **3** (exhaustive);
+random skewed 4-step menus reach 27 (exhaustive) and >=30 (budgeted). Same
+~10x trivial-to-skewed ratio as 3D. (In 2D every menu is provably finite —
+Gerver–Ramsey.)
+
+**Imbricated (self-similar) constructions** (imbricate193.py, imbricate_seam.py):
+walks self-similar under an expanding integer matrix M evade the PF no-go when
+M has equal-modulus spectrum with irrational rotation
+(M = diag(2, companion(l^2+l+4)), cos t = -1/4). With ~276 random menus the
+irrational-rotation matrix hit **30**, beating 5.15M abelian candidates (27).
+Structural theorem found en route: **adjacent identical tiles are always fatal**
+(anchors 0, D, 2D collinear), so valid imbricated words are necessarily
+square-free at the letter level; boundary square-freeness is equivalent to
+seam checks already performed. Context-free tiles (one tile per letter) are
+statistically doomed: measured seam compatibility ~7-10% per ordered pair with
+~15+ occurring pairs needing to hold simultaneously.
+
+**Anchor-guided amplification** (amplify193.py) replaces context-free tiles:
+scale a verified walk by M (anchors inherit triple-freeness by linearity),
+then stitch anchor-to-anchor with all placed points AND all future anchors as
+obstacles (a stitch may never pre-poison a later target). First findings:
+(a) the periodic matrix (M^3=2I, volume x2/level) densifies every level and
+must eventually jam — ruled out; (b) for the modulus-2 irrational matrix,
+random menus force stitches of length 9-16 across anchor gaps of 4-9 — the
+menu's steps misalign with M's images, and stitching jams in congestion.
+
+**Menu/matrix co-design** (design_menu.py): the fix is menus closed under
+short M-decomposition — every M.s a sum of 2-3 menu steps — so walks grow
+2-3x per level inside volume growth 8x and density FALLS per level (the
+precondition any clearance-based finite certificate needs). The companion
+form's -4 entry makes closure impossible at radius 3; the balanced conjugate
+M_BAL = diag(2, [[0,-2],[2,-1]]) (same spectrum) is being searched now.
+
 ## Next steps suggested by the data
 1. Finish the deep DFS bounds (running); try iterated-greedy/beam search to push the
    4-step lower bound well past 206 and look for self-similar structure in the

@@ -1,0 +1,36 @@
+trial=3 periodic(M^3=2I): menu reachable, amplifying [(1, 2, 2), (2, 1, -2), (1, 2, 0), (-2, 2, 1), (1, -2, 2), (-2, 0, -1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=3 periodic(M^3=2I): NEW BEST length=12 (0 levels) menu=[(1, 2, 2), (2, 1, -2), (1, 2, 0), (-2, 2, 1), (1, -2, 2), (-2, 0, -1)]
+trial=4 periodic(M^3=2I): menu reachable, amplifying [(1, 2, 0), (2, -1, 0), (2, -2, -1), (-1, 0, -1), (-1, -2, -2), (-1, -2, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=6 periodic(M^3=2I): menu reachable, amplifying [(1, 1, -1), (1, -1, -2), (-2, -1, 0), (2, -1, 1), (2, -2, -2), (-2, 2, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=6 irrational-rot: menu reachable, amplifying [(1, 1, -1), (1, -1, -2), (-2, -1, 0), (2, -1, 1), (2, -2, -2), (-2, 2, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=6 irrational-rot: NEW BEST length=12 (0 levels) menu=[(1, 1, -1), (1, -1, -2), (-2, -1, 0), (2, -1, 1), (2, -2, -2), (-2, 2, 1)]
+trial=7 periodic(M^3=2I): menu reachable, amplifying [(-2, 1, 0), (1, 1, 2), (1, 2, -1), (-2, 1, -2), (0, -2, 1), (0, -1, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=8 periodic(M^3=2I): menu reachable, amplifying [(-2, 1, -2), (1, -2, 0), (-2, 2, 1), (-2, -2, -2), (0, 1, 0), (-1, -1, 0), (-2, 2, -1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=8 irrational-rot: menu reachable, amplifying [(-2, 1, -2), (1, -2, 0), (-2, 2, 1), (-2, -2, -2), (0, 1, 0), (-1, -1, 0), (-2, 2, -1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=9 irrational-rot: menu reachable, amplifying [(-1, 2, 2), (1, -2, 1), (1, -1, -1), (-1, -1, -1), (0, 0, -1), (1, 2, -2)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=10 periodic(M^3=2I): menu reachable, amplifying [(-1, 1, -2), (2, 2, 2), (2, -1, -2), (1, 2, 0), (-2, 1, 1), (-1, 0, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=11 periodic(M^3=2I): menu reachable, amplifying [(1, -2, 0), (1, 2, 0), (0, 0, 1), (-1, -1, 1), (-2, -2, -2), (-1, 2, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+trial=11 irrational-rot: menu reachable, amplifying [(1, -2, 0), (1, 2, 0), (0, 0, 1), (-1, -1, 1), (-2, -2, -2), (-1, 2, 1)]
+level 0: length 12
+level 1: FAILED to amplify
+FINAL {'periodic(M^3=2I)': 12, 'irrational-rot': 12}
