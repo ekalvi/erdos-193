@@ -1,1 +1,16 @@
 menu 124 steps; connectors total 57068; collar |O|=691; exact |Delta|=4881; Q=2
+sampled 400 unresolved pairs (from 4049 random triples)
+
+j0=1: pairs=364
+  separation available:    364/364
+  progress (sep or down):  364/364
+  mean separated fraction: 0.9221
+  worst separated fraction:0.9217
+  worst-case counts: {'separated': 21959161, 'down': 0, 'same': 1645303, 'up': 219697}
+
+j0=2: pairs=36
+  separation available:    36/36
+  progress (sep or down):  36/36
+  mean separated fraction: 0.9221
+  worst separated fraction:0.9217
+  worst-case counts: {'separated': 21959232, 'down': 1645695, 'same': 191575, 'up': 27659}
