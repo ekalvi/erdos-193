@@ -1,0 +1,18 @@
+  good-4 (deepDFS 224): beam run 1/5 best so far 136
+  good-4 (deepDFS 224): beam run 2/5 best so far 166
+  good-4 (deepDFS 224): beam run 3/5 best so far 166
+  good-4 (deepDFS 224): beam run 4/5 best so far 166
+  good-4 (deepDFS 224): beam run 5/5 best so far 166
+RESULT good-4 (deepDFS 224)         |S|=4  beam best=166  randomized-DFS best=226
+  main-a4r2 winner: beam run 1/5 best so far 131
+  main-a4r2 winner: beam run 2/5 best so far 134
+  main-a4r2 winner: beam run 3/5 best so far 150
+  main-a4r2 winner: beam run 4/5 best so far 150
+  main-a4r2 winner: beam run 5/5 best so far 150
+RESULT main-a4r2 winner             |S|=4  beam best=150  randomized-DFS best=212
+  wide-a4r3 winner: beam run 1/5 best so far 167
+  wide-a4r3 winner: beam run 2/5 best so far 238
+  wide-a4r3 winner: beam run 3/5 best so far 276
+  wide-a4r3 winner: beam run 4/5 best so far 276
+  wide-a4r3 winner: beam run 5/5 best so far 276
+RESULT wide-a4r3 winner             |S|=4  beam best=276  randomized-DFS best=342

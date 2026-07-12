@@ -1,0 +1,251 @@
+trial=       0 best safe prefix=3
+trial=    2000 best safe prefix=14
+trial=    3000 best safe prefix=14
+trial=    5000 best safe prefix=15
+trial=    6000 best safe prefix=15
+trial=    7000 best safe prefix=15
+trial=    9000 best safe prefix=15
+trial=   11000 best safe prefix=15
+trial=   13000 best safe prefix=15
+trial=   14000 best safe prefix=15
+trial=   15000 best safe prefix=15
+trial=   18000 best safe prefix=15
+trial=   25000 best safe prefix=15
+trial=   28000 best safe prefix=15
+trial=   29000 best safe prefix=15
+trial=   31000 best safe prefix=15
+trial=   33000 best safe prefix=15
+trial=   35000 best safe prefix=15
+trial=   36000 best safe prefix=15
+trial=   39000 best safe prefix=15
+trial=   40000 best safe prefix=16
+trial=   42000 best safe prefix=16
+trial=   44000 best safe prefix=18
+trial=   45000 best safe prefix=18
+trial=   48000 best safe prefix=18
+trial=   49000 best safe prefix=18
+trial=   50000 best safe prefix=18
+trial=   51000 best safe prefix=18
+trial=   53000 best safe prefix=18
+trial=   56000 best safe prefix=18
+trial=   59000 best safe prefix=18
+trial=   62000 best safe prefix=18
+trial=   63000 best safe prefix=18
+trial=   66000 best safe prefix=18
+trial=   67000 best safe prefix=18
+trial=   68000 best safe prefix=18
+trial=   72000 best safe prefix=18
+trial=   73000 best safe prefix=18
+trial=   74000 best safe prefix=18
+trial=   76000 best safe prefix=18
+trial=   78000 best safe prefix=18
+trial=   80000 best safe prefix=18
+trial=   81000 best safe prefix=18
+trial=   82000 best safe prefix=18
+trial=   84000 best safe prefix=18
+trial=   87000 best safe prefix=18
+trial=   90000 best safe prefix=18
+trial=   92000 best safe prefix=18
+trial=   94000 best safe prefix=18
+trial=   95000 best safe prefix=18
+trial=   99000 best safe prefix=18
+
+Safe prefix: 18
+Substitution:
+  0 -> 0302
+  1 -> 221
+  2 -> 3212
+  3 -> 01
+Step vectors:
+  0 -> (-1, -2, 2)
+  1 -> (-2, 0, 1)
+  2 -> (-1, 1, 2)
+  3 -> (0, 2, -1)
+First collision: Collision(i=17, j=18, k=19, point_i=(-15, -2, 20), point_j=(-16, -1, 22), point_k=(-17, 0, 24))
+Return-word profiles:
+  marker='0', returns=8, rank=3, max |det|=294
+  marker='03', returns=8, rank=3, max |det|=970
+  marker='030', returns=8, rank=3, max |det|=970
+  marker='0302', returns=8, rank=3, max |det|=970
+  marker='03020', returns=7, rank=3, max |det|=3950
+  marker='030201', returns=7, rank=3, max |det|=3950
+
+Safe prefix: 18
+Substitution:
+  0 -> 0102
+  1 -> 0103
+  2 -> 132
+  3 -> 23
+Step vectors:
+  0 -> (1, -2, 0)
+  1 -> (-2, -2, -2)
+  2 -> (-1, 1, 1)
+  3 -> (-2, 0, 2)
+First collision: Collision(i=2, j=14, k=19, point_i=(-1, -4, -2), point_j=(-8, -18, -2), point_k=(-10, -22, -2))
+Return-word profiles:
+  marker='0', returns=9, rank=3, max |det|=176
+  marker='01', returns=8, rank=3, max |det|=192
+  marker='010', returns=8, rank=3, max |det|=192
+  marker='0102', returns=8, rank=3, max |det|=672
+  marker='01020', returns=7, rank=3, max |det|=1056
+  marker='010201', returns=7, rank=3, max |det|=1056
+
+Safe prefix: 17
+Substitution:
+  0 -> 0120
+  1 -> 230
+  2 -> 31
+  3 -> 02
+Step vectors:
+  0 -> (1, -2, 0)
+  1 -> (0, -1, -2)
+  2 -> (2, 2, 1)
+  3 -> (1, 2, 0)
+First collision: Collision(i=3, j=13, k=18, point_i=(3, -1, -1), point_j=(13, -3, -3), point_k=(18, -4, -4))
+Return-word profiles:
+  marker='0', returns=7, rank=3, max |det|=76
+  marker='01', returns=7, rank=3, max |det|=274
+  marker='012', returns=7, rank=3, max |det|=274
+  marker='0120', returns=7, rank=3, max |det|=274
+  marker='01202', returns=7, rank=3, max |det|=327
+  marker='012023', returns=7, rank=3, max |det|=327
+
+Safe prefix: 17
+Substitution:
+  0 -> 0132
+  1 -> 02
+  2 -> 31
+  3 -> 12
+Step vectors:
+  0 -> (-1, 0, -1)
+  1 -> (1, -2, 2)
+  2 -> (-1, 0, -2)
+  3 -> (2, 1, -1)
+First collision: Collision(i=10, j=14, k=18, point_i=(2, -4, -4), point_j=(3, -5, -6), point_k=(4, -6, -8))
+Return-word profiles:
+  marker='0', returns=8, rank=3, max |det|=56
+  marker='01', returns=8, rank=3, max |det|=56
+  marker='013', returns=8, rank=3, max |det|=56
+  marker='0132', returns=8, rank=3, max |det|=56
+  marker='01320', returns=8, rank=3, max |det|=56
+  marker='013202', returns=8, rank=3, max |det|=56
+
+Safe prefix: 16
+Substitution:
+  0 -> 021
+  1 -> 3132
+  2 -> 020
+  3 -> 3000
+Step vectors:
+  0 -> (-1, 2, -2)
+  1 -> (-1, -2, 2)
+  2 -> (-1, 1, 2)
+  3 -> (0, -2, 1)
+First collision: Collision(i=15, j=16, k=17, point_i=(-13, 5, 8), point_j=(-14, 7, 6), point_k=(-15, 9, 4))
+Return-word profiles:
+  marker='0', returns=7, rank=3, max |det|=34
+  marker='02', returns=7, rank=3, max |det|=250
+  marker='021', returns=7, rank=3, max |det|=522
+  marker='0210', returns=8, rank=3, max |det|=568
+  marker='02102', returns=8, rank=3, max |det|=568
+  marker='021020', returns=6, rank=3, max |det|=961
+
+Safe prefix: 16
+Substitution:
+  0 -> 03
+  1 -> 01
+  2 -> 1012
+  3 -> 023
+Step vectors:
+  0 -> (1, -1, -2)
+  1 -> (2, -1, 1)
+  2 -> (0, -2, -2)
+  3 -> (1, 0, -2)
+First collision: Collision(i=13, j=15, k=17, point_i=(12, -13, -20), point_j=(14, -14, -24), point_k=(16, -15, -28))
+Return-word profiles:
+  marker='0', returns=6, rank=3, max |det|=47
+  marker='03', returns=6, rank=3, max |det|=126
+  marker='030', returns=7, rank=3, max |det|=317
+  marker='0302', returns=6, rank=3, max |det|=584
+  marker='03023', returns=6, rank=3, max |det|=584
+  marker='030230', returns=6, rank=3, max |det|=584
+
+Safe prefix: 16
+Substitution:
+  0 -> 02
+  1 -> 13
+  2 -> 30
+  3 -> 21
+Step vectors:
+  0 -> (0, -2, -1)
+  1 -> (-1, -2, 0)
+  2 -> (1, -2, 2)
+  3 -> (0, 0, 1)
+First collision: Collision(i=11, j=14, k=17, point_i=(1, -18, 4), point_j=(2, -22, 6), point_k=(3, -26, 8))
+Return-word profiles:
+  marker='0', returns=7, rank=3, max |det|=20
+  marker='02', returns=8, rank=3, max |det|=32
+  marker='023', returns=8, rank=3, max |det|=72
+  marker='0230', returns=8, rank=3, max |det|=72
+  marker='02302', returns=8, rank=3, max |det|=288
+  marker='023021', returns=8, rank=3, max |det|=288
+
+Safe prefix: 15
+Substitution:
+  0 -> 01
+  1 -> 03
+  2 -> 1131
+  3 -> 023
+Step vectors:
+  0 -> (0, 1, -2)
+  1 -> (-2, 2, 2)
+  2 -> (0, -2, 2)
+  3 -> (1, -2, -1)
+First collision: Collision(i=14, j=15, k=16, point_i=(-3, 5, -9), point_j=(-5, 7, -7), point_k=(-7, 9, -5))
+Return-word profiles:
+  marker='0', returns=4, rank=3, max |det|=32
+  marker='01', returns=4, rank=3, max |det|=132
+  marker='010', returns=5, rank=3, max |det|=168
+  marker='0103', returns=4, rank=3, max |det|=144
+  marker='01030', returns=4, rank=3, max |det|=144
+  marker='010301', returns=5, rank=3, max |det|=352
+
+Safe prefix: 15
+Substitution:
+  0 -> 01
+  1 -> 02
+  2 -> 0302
+  3 -> 31
+Step vectors:
+  0 -> (-1, -1, -1)
+  1 -> (-1, -1, 1)
+  2 -> (-2, 1, 2)
+  3 -> (1, 2, -1)
+First collision: Collision(i=8, j=12, k=16, point_i=(-7, -3, -1), point_j=(-12, -5, 0), point_k=(-17, -7, 1))
+Return-word profiles:
+  marker='0', returns=5, rank=3, max |det|=18
+  marker='01', returns=5, rank=3, max |det|=24
+  marker='010', returns=5, rank=3, max |det|=40
+  marker='0102', returns=5, rank=3, max |det|=72
+  marker='01020', returns=5, rank=3, max |det|=72
+  marker='010201', returns=5, rank=3, max |det|=72
+
+Safe prefix: 15
+Substitution:
+  0 -> 0131
+  1 -> 2313
+  2 -> 21
+  3 -> 021
+Step vectors:
+  0 -> (1, 1, -1)
+  1 -> (2, 2, 1)
+  2 -> (-2, -2, 1)
+  3 -> (0, 1, 0)
+First collision: Collision(i=10, j=13, k=16, point_i=(4, 7, 3), point_j=(4, 8, 5), point_k=(4, 9, 7))
+Return-word profiles:
+  marker='0', returns=10, rank=3, max |det|=68
+  marker='01', returns=9, rank=3, max |det|=200
+  marker='013', returns=9, rank=3, max |det|=200
+  marker='0131', returns=9, rank=3, max |det|=200
+  marker='01312', returns=9, rank=3, max |det|=200
+  marker='013123', returns=7, rank=3, max |det|=496
