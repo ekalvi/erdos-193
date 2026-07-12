@@ -1,0 +1,5 @@
+base: length 20 (matrix modulus 3, route wiggle)
+level 1: length 102 VERIFIED triple-free, density 0.00313
+level 2: length 541 VERIFIED triple-free, density 0.00056
+level 3: length 2921 VERIFIED triple-free, density 0.00012
+final length: 2921
