@@ -1,0 +1,9 @@
+base: length 20 (matrix modulus 2)
+level 1: length 43 VERIFIED triple-free, density 0.00582
+level 2: length 98 VERIFIED triple-free, density 0.00181
+level 3: length 229 VERIFIED triple-free, density 0.00047
+level 4: length 525 VERIFIED triple-free, density 0.00013
+level 5: length 1226 VERIFIED triple-free, density 0.00003
+level 6: length 2824 VERIFIED triple-free, density 0.00001
+level 7: length 6540 VERIFIED triple-free, density 0.00000
+final length: 6540

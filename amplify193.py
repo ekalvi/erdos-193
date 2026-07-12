@@ -119,7 +119,19 @@ def amplify_level(word, steps, M, rng, seg_maxlen=16, seg_tries=6, restarts=8):
                             seg_word.pop()
                     return False
 
-                if dfs(seg_maxlen):
+                # iterative deepening: shortest stitch first (less congestion,
+                # smaller growth factor per level)
+                gap0 = max(abs(target[i] - points[-1][i]) for i in range(3))
+                min_depth = max(1, -(-gap0 // max_step))
+                found = False
+                for depth_limit in range(min_depth, seg_maxlen + 1):
+                    nodes[0] = 0
+                    if dfs(depth_limit):
+                        found = True
+                        break
+                    seg_points.clear()
+                    seg_word.clear()
+                if found:
                     points.extend(seg_points)
                     point_set.update(seg_points)
                     new_word.extend(seg_word)
