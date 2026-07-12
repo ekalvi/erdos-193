@@ -20,6 +20,7 @@ import sys
 from random import Random
 
 from erdos193 import first_disqualifier
+from search193 import cross
 from imbricate193 import (
     M_IRRATIONAL,
     M_PERIODIC,
@@ -62,14 +63,26 @@ def legal_against(points_list, point_set, p):
     return True
 
 
-def amplify_level(word, steps, M, rng, seg_maxlen=16, seg_tries=6, restarts=8):
+def amplify_level(
+    word,
+    steps,
+    M,
+    rng,
+    seg_maxlen=16,
+    seg_tries=6,
+    restarts=8,
+    route="short",
+    wiggle_slack=2,
+):
     """
     One amplification level. Returns the new word (over the same menu) whose
     walk visits the M-scaled anchors of `word`'s walk, or None.
 
-    Greedy with segment-level randomized retries and level restarts: segments
-    are DFS'd one at a time against the global point set; a stuck segment
-    triggers re-randomization, and a stuck level triggers a full restart.
+    route="short": shortest stitches (iterative deepening) — efficient but
+    hugs anchor chords, producing a flat clearance spectrum.
+    route="wiggle": stitches take wiggle_slack extra steps and steer
+    perpendicular to the anchor chord in their first half, transversally
+    displacing the walk off straight lines at every scale.
     """
     anchors = [apply(M, p) for p in walk_points(word, steps)]
     max_step = max(max(abs(c) for c in s) for s in steps)
@@ -86,11 +99,18 @@ def amplify_level(word, steps, M, rng, seg_maxlen=16, seg_tries=6, restarts=8):
             # Future anchors are known: treat them as obstacles NOW so a
             # stitch can never form a line that pre-poisons a later target.
             future = anchors[seg_index + 2 :]
+            seg_start = points[-1]
+            chord = (
+                target[0] - seg_start[0],
+                target[1] - seg_start[1],
+                target[2] - seg_start[2],
+            )
             for _ in range(seg_tries):
                 # randomized DFS for one segment against the global state
                 order = list(range(len(steps)))
                 seg_points, seg_word = [], []
                 nodes = [0]
+                depth_cap = [0]
 
                 def dfs(depth):
                     nodes[0] += 1
@@ -102,7 +122,16 @@ def amplify_level(word, steps, M, rng, seg_maxlen=16, seg_tries=6, restarts=8):
                         return True
                     if depth == 0 or gap > depth * max_step:
                         return False
-                    rng.shuffle(order)
+                    if route == "wiggle" and 2 * len(seg_points) < depth_cap[0]:
+                        # first half: steer perpendicular to the anchor chord
+                        def score(si):
+                            s = steps[si]
+                            c = cross(chord, s)
+                            return c[0] * c[0] + c[1] * c[1] + c[2] * c[2] + rng.random()
+
+                        order.sort(key=score, reverse=True)
+                    else:
+                        rng.shuffle(order)
                     for si in list(order):
                         s = steps[si]
                         p = (last[0] + s[0], last[1] + s[1], last[2] + s[2])
@@ -123,9 +152,12 @@ def amplify_level(word, steps, M, rng, seg_maxlen=16, seg_tries=6, restarts=8):
                 # smaller growth factor per level)
                 gap0 = max(abs(target[i] - points[-1][i]) for i in range(3))
                 min_depth = max(1, -(-gap0 // max_step))
+                if route == "wiggle":
+                    min_depth += wiggle_slack
                 found = False
                 for depth_limit in range(min_depth, seg_maxlen + 1):
                     nodes[0] = 0
+                    depth_cap[0] = depth_limit
                     if dfs(depth_limit):
                         found = True
                         break

@@ -38,20 +38,22 @@ if __name__ == "__main__":
     base_len = int(sys.argv[2]) if len(sys.argv) > 2 else 20
     cap = int(sys.argv[3]) if len(sys.argv) > 3 else 6000
     modulus = int(sys.argv[4]) if len(sys.argv) > 4 else 2
+    route = sys.argv[5] if len(sys.argv) > 5 else "short"
     M = M_BAL if modulus == 2 else M_BAL3
-    seg_maxlen = 8 if modulus == 2 else 12
+    seg_maxlen = (8 if modulus == 2 else 12) + (4 if route == "wiggle" else 0)
 
     rng = Random(seed)
     menu = candidate_step_vectors(2)  # all 124 radius-2 vectors
     base = find_base(menu, rng, length=base_len, tries=200)
-    print(f"base: length {len(base)} (matrix modulus {modulus})", flush=True)
+    print(f"base: length {len(base)} (matrix modulus {modulus}, route {route})", flush=True)
 
     word = base
     level = 0
     while len(word) <= cap:
         level += 1
         new = amplify_level(
-            word, menu, M, rng, seg_maxlen=seg_maxlen, seg_tries=8, restarts=6
+            word, menu, M, rng, seg_maxlen=seg_maxlen, seg_tries=8, restarts=6,
+            route=route,
         )
         if new is None:
             print(f"level {level}: FAILED", flush=True)
