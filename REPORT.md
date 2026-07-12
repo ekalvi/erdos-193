@@ -160,6 +160,20 @@ M_BAL = diag(2, [[0,-2],[2,-1]]) (same spectrum) is being searched now.
   certify (routing is not finite-state); the goal is to INFER a finite-state
   routing rule from successful levels and verify residue-graph closure.
 
+## Stage-4 build log (2026-07-12 evening)
+
+- Step 1 COMPLETE: length-<=4 connector word layer. 7,114,584 fully legal words
+  (endpoint, menu, no repeated points, no internal collinear triples); word-level
+  closure retains 124/124 steps in one round; word-weighted collar = 2,102 interior
+  offsets, 21.3M multiplicity (collar_multiplicity4.json; full domains in local
+  connector_domains4.pkl, 78MB, not committed).
+- Census reweighted by word multiplicity (agent caveat 1): mean separated fraction
+  0.9211, worst 0.9073 over 120 realized unresolved pairs (3k weighted samples each)
+  — statistically unchanged from the uniform-Delta census (0.9221/0.9217).
+- Next: Step 2 (reachable abstract state GFP), Step 3 (H-window event hypergraph,
+  hierarchical template compression — the make-or-break), Step 4 (exact p_H via
+  transfer matrices), Step 5 (LLL criterion ladder), Step 6 (joint GFP).
+
 ## Next steps suggested by the data
 1. Finish the deep DFS bounds (running); try iterated-greedy/beam search to push the
    4-step lower bound well past 206 and look for self-similar structure in the
