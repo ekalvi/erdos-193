@@ -17,3 +17,5 @@ RESULT main-a4r2 winner             |S|=4  beam best=150  randomized-DFS best=21
   wide-a4r3 winner: beam run 5/5 best so far 276
 RESULT wide-a4r3 winner             |S|=4  beam best=276  randomized-DFS best=342
   alpha5 winner (5 steps): beam run 1/5 best so far 3000
+  alpha5 winner (5 steps): beam run 2/5 best so far 3000
+  alpha5 winner (5 steps): beam run 3/5 best so far 3000
