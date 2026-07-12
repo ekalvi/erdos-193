@@ -1,0 +1,21 @@
+step 0/124 (-2, -2, -2): 2570 words {3: 2, 4: 2568}
+step 8/124 (-2, -1, 1): 15920 words {3: 52, 4: 15868}
+step 16/124 (-2, 1, -1): 15920 words {3: 52, 4: 15868}
+step 24/124 (-2, 2, 2): 2570 words {3: 2, 4: 2568}
+step 32/124 (-1, -1, 0): 179244 words {2: 18, 3: 1564, 4: 177662}
+step 40/124 (-1, 1, -2): 9046 words {3: 26, 4: 9020}
+step 48/124 (-1, 2, 1): 49402 words {3: 288, 4: 49114}
+step 56/124 (0, -1, -1): 260212 words {2: 30, 3: 2692, 4: 257490}
+step 64/124 (0, 1, -2): 14931 words {3: 51, 4: 14880}
+step 72/124 (0, 2, 1): 81092 words {3: 554, 4: 80538}
+step 80/124 (1, -1, -1): 163466 words {2: 12, 3: 1424, 4: 162030}
+step 88/124 (1, 0, 2): 31718 words {3: 138, 4: 31580}
+step 96/124 (1, 2, 0): 35751 words {3: 151, 4: 35600}
+step 104/124 (2, -1, -2): 6736 words {3: 14, 4: 6722}
+step 112/124 (2, 0, 1): 38022 words {3: 172, 4: 37850}
+step 120/124 (2, 2, -1): 1732 words {4: 1732}
+
+total legal words (unrestricted): 7114584
+word-level closure: 124/124 steps survive (1 pruning rounds)
+word-weighted collar: 2102 distinct interior offsets, total multiplicity 21286132
+wrote connector_domains4.pkl, collar_multiplicity4.json
