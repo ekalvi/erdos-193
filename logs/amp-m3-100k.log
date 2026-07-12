@@ -1,0 +1,6 @@
+base: length 20 (matrix modulus 3, route short)
+level 1: length 62 VERIFIED triple-free, density 0.00224
+level 2: length 214 VERIFIED triple-free, density 0.00030
+level 3: length 715 VERIFIED triple-free, density 0.00004
+level 4: length 2457 VERIFIED triple-free, density 0.00000
+level 5: length 8292 VERIFIED triple-free, density 0.00000

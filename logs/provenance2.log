@@ -1,0 +1,8 @@
+base: 20
+level 1: length 62
+level 2: length 214
+level 3: length 715
+level 4: length 2457
+level 5: length 8292
+replay MATCHES amplified-193-8292.txt
+wrote provenance-8292.json

@@ -135,6 +135,31 @@ precondition any clearance-based finite certificate needs). The companion
 form's -4 entry makes closure impossible at radius 3; the balanced conjugate
 M_BAL = diag(2, [[0,-2],[2,-1]]) (same spectrum) is being searched now.
 
+## Corrections after expert review (2026-07-12, round 3)
+
+- The collinearity invariant is the CROSS PRODUCT Omega = (y-x) x (z-x), not a
+  scalar triple determinant (det(x,y,z)=0 is coplanarity-with-origin, not
+  collinearity). Our code (analyze_valuation.py, all legality checkers) already
+  used Omega; earlier prose was wrong and is corrected here.
+- Under x -> Mx the cross transforms by wedge^2 M = det(M) M^{-T}, NOT by
+  det(M). For M = diag(3, [[0,-3],[3,-1]]), SNF(M) = diag(1,3,9), so valuation
+  gains along the Smith filtration are 1, 2, 3 per level — not uniformly 3.
+  This is consistent with (and helps explain) the observed flat v3 profile.
+- The D>1 metric-collapse claim is overstated: a directional-packing argument
+  proves min-height collapse only for mass dimension D>2 (height O(R^{1-D/2}));
+  at our D ~ 1.3-1.5 the collapse is empirical + extreme-value-heuristic, and a
+  deterministic threshold below D=2 needs incidence/regularity hypotheses.
+- Bounded-tube status: rational tube direction is fully solved (quotient-fibre
+  pigeonhole gives infinitely many points on one lattice line); rank-2
+  directions confine infinitely many vertices to a rational plane; totally
+  irrational + finite-step remains open and is close to the main problem. The
+  tractable target: linearly recurrent bounded-tube walks.
+- Certificate programme (corrected): state = (first-divergence level r and
+  type tau, v3(Omega) - a_tau r, normalized residue 3^{-v3}Omega mod 3^q,
+  residues of difference vectors). Global-router walks do not automatically
+  certify (routing is not finite-state); the goal is to INFER a finite-state
+  routing rule from successful levels and verify residue-graph closure.
+
 ## Next steps suggested by the data
 1. Finish the deep DFS bounds (running); try iterated-greedy/beam search to push the
    4-step lower bound well past 206 and look for self-similar structure in the

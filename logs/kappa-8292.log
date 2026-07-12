@@ -1,0 +1,15 @@
+amplified-193-8292.txt: 8293 points — exact kappa_3 via projective refinement
+  anchor 0/8293, running max kappa=11
+  anchor 1000/8293, running max kappa=11
+  anchor 2000/8293, running max kappa=12
+  anchor 3000/8293, running max kappa=12
+  anchor 4000/8293, running max kappa=12
+  anchor 5000/8293, running max kappa=12
+  anchor 6000/8293, running max kappa=12
+  anchor 7000/8293, running max kappa=12
+  anchor 8000/8293, running max kappa=12
+
+EXACT global max kappa_3 = 12
+pigeonhole lower bound forces kappa_3 >= 3
+chord-pair collisions per q: {1: 28065348547, 2: 4134824802, 3: 504158326, 4: 64710380, 5: 7529841, 6: 902757, 7: 103246, 8: 12198, 9: 1382, 10: 174, 11: 35, 12: 1}
+extremal (anchor, [chord endpoints]): [(1543, [0, 2278])]
