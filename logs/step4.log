@@ -1,0 +1,62 @@
+  0/78728 A=0.3501 elapsed 0.0m eta 444m
+  2000/78728 A=0.3612 elapsed 5.4m eta 208m
+  4000/78728 A=0.3580 elapsed 9.9m eta 185m
+  6000/78728 A=0.3580 elapsed 12.3m eta 150m
+  8000/78728 A=0.3611 elapsed 14.8m eta 131m
+  10000/78728 A=0.3579 elapsed 17.2m eta 119m
+  12000/78728 A=0.3580 elapsed 19.7m eta 110m
+  14000/78728 A=0.3614 elapsed 22.2m eta 102m
+  16000/78728 A=0.3579 elapsed 24.6m eta 96m
+  18000/78728 A=0.3579 elapsed 27.1m eta 91m
+  20000/78728 A=0.3587 elapsed 29.5m eta 87m
+  22000/78728 A=0.3611 elapsed 31.7m eta 82m
+  24000/78728 A=0.3587 elapsed 33.9m eta 77m
+  26000/78728 A=0.3587 elapsed 35.9m eta 73m
+  28000/78728 A=0.3611 elapsed 38.1m eta 69m
+  30000/78728 A=0.3588 elapsed 40.2m eta 65m
+  32000/78728 A=0.3588 elapsed 42.3m eta 62m
+  34000/78728 A=0.3611 elapsed 44.5m eta 59m
+  36000/78728 A=0.3587 elapsed 46.6m eta 55m
+  38000/78728 A=0.3588 elapsed 48.8m eta 52m
+  40000/78728 A=0.3587 elapsed 50.9m eta 49m
+  42000/78728 A=0.3611 elapsed 52.7m eta 46m
+  44000/78728 A=0.3587 elapsed 54.2m eta 43m
+  46000/78728 A=0.3587 elapsed 55.7m eta 40m
+  48000/78728 A=0.3611 elapsed 57.3m eta 37m
+  50000/78728 A=0.3587 elapsed 58.8m eta 34m
+  52000/78728 A=0.3587 elapsed 60.3m eta 31m
+  54000/78728 A=0.3611 elapsed 61.8m eta 28m
+  56000/78728 A=0.3587 elapsed 63.4m eta 26m
+  58000/78728 A=0.3587 elapsed 64.9m eta 23m
+  60000/78728 A=0.3587 elapsed 66.4m eta 21m
+  62000/78728 A=0.3292 elapsed 68.0m eta 18m
+  64000/78728 A=0.3587 elapsed 69.5m eta 16m
+  66000/78728 A=0.3587 elapsed 71.0m eta 14m
+  68000/78728 A=0.3292 elapsed 72.6m eta 11m
+  70000/78728 A=0.3587 elapsed 74.1m eta 9m
+  72000/78728 A=0.3587 elapsed 75.6m eta 7m
+  74000/78728 A=0.3292 elapsed 77.5m eta 5m
+  76000/78728 A=0.3587 elapsed 81.2m eta 3m
+  78000/78728 A=0.3587 elapsed 86.6m eta 1m
+
+=== STEP 4 CERTIFIED BOUNDS ===
+max A(sigma) = 0.366021  (mean 0.356511, p99 0.361411)
+esc_max = 2.624e-01
+q_bar (certified worst single-level non-separation) = 0.658784
+  H=1: p_H<=6.588e-01  e*p_H*(d+1)=6.984e+08
+  H=2: p_H<=4.340e-01  e*p_H*(d+1)=6.901e+08
+  H=3: p_H<=2.859e-01  e*p_H*(d+1)=6.062e+08
+  H=4: p_H<=1.884e-01  e*p_H*(d+1)=4.992e+08
+  H=5: p_H<=1.241e-01  e*p_H*(d+1)=3.946e+08
+  H=6: p_H<=8.174e-02  e*p_H*(d+1)=3.033e+08
+  H=7: p_H<=5.385e-02  e*p_H*(d+1)=2.284e+08
+  H=8: p_H<=3.548e-02  e*p_H*(d+1)=1.692e+08
+  H=9: p_H<=2.337e-02  e*p_H*(d+1)=1.239e+08
+  H=10: p_H<=1.540e-02  e*p_H*(d+1)=8.977e+07
+  H=11: p_H<=1.014e-02  e*p_H*(d+1)=6.452e+07
+  H=12: p_H<=6.682e-03  e*p_H*(d+1)=4.605e+07
+  H=13: p_H<=4.402e-03  e*p_H*(d+1)=3.267e+07
+  H=14: p_H<=2.900e-03  e*p_H*(d+1)=2.306e+07
+  H=58: p_H<=3.070e-11  e*p_H*(d+1)=9.600e-01
+SYMMETRIC LLL CLOSES at H = 58
+wrote step4_A.npy, step4_escmax.npy

@@ -1,0 +1,4 @@
+P(d) built, sum=1.000000
+escbar: max 9.1154e-02, mean 5.4406e-03
+CORRECTED q_bar = 0.133972 + 2*9.1154e-02 = 0.316280
+SYMMETRIC LLL CLOSES at H = 21 (lhs=3.700e-01, p_H<=3.173e-11)
