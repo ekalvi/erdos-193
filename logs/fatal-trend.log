@@ -1,0 +1,6 @@
+level 4: reconstructed 2477 points (expected 2458)
+level 3: reconstructed 727 points (expected 716)
+level 2: reconstructed 217 points (expected 215)
+level 3 (727 pts): mean fatal word-mass = 0.3147
+level 4 (2477 pts): mean fatal word-mass = 0.3388
+level 5 (8293 pts): mean fatal word-mass = 0.3149
