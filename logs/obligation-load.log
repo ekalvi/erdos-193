@@ -1,0 +1,4 @@
+sampled 6000000 triples; segments touched: 2458
+distinct (abstract state, role) obligations per segment: median 687, p90 827, max 1021
+raw instances per segment (sampled): median 687, max 1021
+total distinct (state, role) obligations across all segments: 1637034
