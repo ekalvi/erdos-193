@@ -3,7 +3,8 @@
   --background:0 0% 100%; --foreground:222.2 84% 4.9%;
   --muted-fg:215.4 16.3% 46.9%; --border:214.3 31.8% 91.4%;
   --card:0 0% 100%; --accent:210 40% 96.1%; --link:217 91% 45%; --radius:0.5rem;
-  --ok:142 71% 35%; --dead:0 72% 45%; --sci:217 91% 50%; --build:215 16% 55%; --live:38 92% 45%;
+  --tl-ok:142 71% 35%; --tl-dead:0 72% 45%; --tl-sci:217 91% 50%; --tl-build:215 16% 55%; --tl-live:38 92% 45%;
+  --ok:#1e7d32;
   /* chart aliases (used by the SVG figures) */
   --surface-1:hsl(var(--background)); --surface-2:hsl(var(--accent));
   --text-primary:hsl(var(--foreground)); --text-secondary:hsl(var(--muted-fg));
@@ -16,7 +17,8 @@
     --background:222.2 84% 4.9%; --foreground:210 40% 98%;
     --muted-fg:215 20.2% 65.1%; --border:217.2 32.6% 17.5%;
     --card:222.2 84% 6.5%; --accent:217.2 32.6% 17.5%; --link:213 94% 68%;
-    --ok:142 60% 55%; --dead:0 75% 65%; --sci:213 94% 68%; --build:215 16% 60%; --live:38 92% 60%;
+    --tl-ok:142 60% 55%; --tl-dead:0 75% 65%; --tl-sci:213 94% 68%; --tl-build:215 16% 60%; --tl-live:38 92% 60%;
+    --ok:#5dbb63;
     --text-muted:hsl(215 16% 50%);
     --walk:hsl(217 20% 40%); --ghost:hsl(218 22% 26%);
     --anchor:#3987e5; --stitch:#199e70; --danger:#e66767; --okc:#5dbb63;
@@ -66,10 +68,10 @@ figcaption,.fig p{color:hsl(var(--muted-fg));font-size:13.5px;padding-top:8px;ma
 figure svg,.fig svg{display:block;width:100%;height:auto}
 .figrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:640px){.figrow{grid-template-columns:1fr}}
-svg text{font:13px "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--text-primary)}
-svg .mut{fill:var(--text-secondary);font-size:12px}
-svg .sm{font-size:11px}
-svg .axis{fill:var(--text-secondary);font-size:12px;font-weight:600}
+figure svg text,.fig svg text{font:13px "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--text-primary)}
+figure svg .mut,.fig svg .mut{fill:var(--text-secondary);font-size:12px}
+figure svg .sm,.fig svg .sm{font-size:11px}
+figure svg .axis,.fig svg .axis{fill:var(--text-secondary);font-size:12px;font-weight:600}
 .eq{overflow-x:auto;padding:4px 0}
 
 /* page headings on article pages */
@@ -90,7 +92,7 @@ h2.step{font-size:17px;font-weight:600;margin:32px 0 6px;text-transform:none;let
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--c)/.5)}50%{box-shadow:0 0 0 6px hsl(var(--c)/0)}}
 .tl b{font-weight:600}
 .tl p{margin:3px 0 0;font-size:13.5px;color:hsl(var(--muted-fg))}
-.tag{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:hsl(var(--c));margin-right:6px}
+.tag{font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:hsl(var(--c));margin-right:6px}
 
 /* footer */
 footer.sitefoot{margin-top:48px;padding-top:18px;border-top:1px solid hsl(var(--border));
@@ -103,5 +105,5 @@ footer.sitefoot .right{display:inline-flex;gap:16px}
 
 /* live pulse on the Progress nav item */
 nav.site .dot{display:inline-block;width:7px;height:7px;border-radius:50%;
-  background:hsl(var(--live));margin-left:5px;vertical-align:2px;animation:navpulse 1.6s ease-in-out infinite}
-@keyframes navpulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--live)/.55)}50%{box-shadow:0 0 0 5px hsl(var(--live)/0)}}
+  background:hsl(var(--tl-live));margin-left:5px;vertical-align:2px;animation:navpulse 1.6s ease-in-out infinite}
+@keyframes navpulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--tl-live)/.55)}50%{box-shadow:0 0 0 5px hsl(var(--tl-live)/0)}}

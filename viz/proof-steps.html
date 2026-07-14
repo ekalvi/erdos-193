@@ -177,8 +177,8 @@ triple.</figcaption>
   </g>
   <text x="40" y="125" fill="var(--anchor)">coarse digits: locked before birth (inherited from enlargement)</text>
   <text x="390" y="148" fill="var(--stitch)">fine digits: the only thing a stitch offset can write</text>
-  <text x="40" y="185" fill="var(--danger)">to kill, ALL digits must match a line through two old footprints —
-  impossible unless the coarse digits already matched: only existing deep near-misses are reachable.</text>
+  <text x="40" y="178" fill="var(--danger)">to kill, ALL digits must match a line through two old footprints —</text>
+  <text x="40" y="198" fill="var(--danger)">impossible unless the coarse digits already matched.</text>
 </svg>
 <figcaption>A new point = enlarged parent + small patch offset. The offset edits only the
 finest digits, so a birth can only complete an alignment that was already a deep near-miss —
@@ -228,8 +228,10 @@ function el(t, attrs, txt) {
 }
 for (let v = -2; v <= 9; v += 2) {
   el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--grid)'});
-  el('text', {x:x0-10, y:Y(v)+4, 'text-anchor':'end', class:'sm mut'}, '10' + (v<0?'⁻':'') );
-  el('text', {x:x0-10+18, y:Y(v)-2, class:'sm mut'}, Math.abs(v));
+  const t = el('text', {x:x0-12, y:Y(v)+4, 'text-anchor':'end', class:'sm mut'}, '10');
+  const ts = document.createElementNS(NS,'tspan');
+  ts.setAttribute('dy','-6'); ts.setAttribute('font-size','8'); ts.textContent = v;
+  t.appendChild(ts);
 }
 el('line', {x1:x0, y1:Y(0), x2:x1, y2:Y(0), stroke:'var(--danger)', 'stroke-width':1.5, 'stroke-dasharray':'6 5'});
 el('text', {x:x1-4, y:Y(0)-8, 'text-anchor':'end', fill:'var(--danger)', class:'sm'}, 'threshold: proof closes below this line');

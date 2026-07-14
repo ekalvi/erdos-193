@@ -75,7 +75,7 @@ const EVENTS = [
   ['live','🔄','Then: dependency theorem, criterion ladder, compactness lift','The remaining rungs between "a model that closes" and "a proof."'],
  ]],
 ];
-const C = {ok:'--ok', dead:'--dead', sci:'--sci', build:'--build', live:'--live'};
+const C = {ok:'--tl-ok', dead:'--tl-dead', sci:'--tl-sci', build:'--tl-build', live:'--tl-live'};
 const root = document.getElementById('timeline');
 for (const [day, items] of EVENTS) {
   const h = document.createElement('div'); h.className = 'day'; h.textContent = day;
