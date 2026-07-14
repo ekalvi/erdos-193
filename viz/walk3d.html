@@ -40,7 +40,7 @@
   <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
   generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
   inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. All 6 levels of the record construction — the finale is the certified 28,271-step walk (28,272 points).</p>
+  scroll to zoom. All 6 levels of the record construction, staged in the real solar system at true scale (1 grid unit = 6,000 km): the walk starts at Earth, and by the finale it spans ≈0.8 AU — most of the way to the Sun. Earth, Moon, Sun and all planets are to scale in size and distance.</p>
 
   <div id="stage3d">
     <div class="hud">
@@ -90,7 +90,7 @@ const stage = document.getElementById('stage3d');
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
 
 const scene = new THREE.Scene();
-scene.background = new THREE.Color(dark ? 0x0b1420 : 0xffffff);
+scene.background = new THREE.Color(0x04060d);  // space
 const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100000);
 const renderer = new THREE.WebGLRenderer({antialias: true});
 renderer.setPixelRatio(devicePixelRatio);
@@ -105,8 +105,8 @@ function resize(){
 addEventListener('resize', resize);
 
 const BLUE = new THREE.Color(0x3987e5), GREEN = new THREE.Color(0x1baf7a);
-const walkColor = new THREE.Color(dark ? 0x445066 : 0xb9c0cc);
-const skelColor = new THREE.Color(dark ? 0x6b7890 : 0x8a94a8);
+const walkColor = new THREE.Color(0x5a6a85);
+const skelColor = new THREE.Color(0x8a97ad);
 const dotCanvas = document.createElement('canvas');
 dotCanvas.width = dotCanvas.height = 64;
 { const c = dotCanvas.getContext('2d');
@@ -193,6 +193,13 @@ function anchorSetFor(k){
   return s;
 }
 
+function spanText(points){
+  const {r} = bounds(points);
+  const km = r*2*6000;
+  if (km < 1e6) return Math.round(km/1000)*1000 + ' km';
+  if (km < 5e7) return (km/1e6).toFixed(1) + ' million km';
+  return (km/149.6e6).toFixed(2) + ' AU';
+}
 function show(k){
   level = k; clearAll();
   const pts = LV[k].points, aset = anchorSetFor(k);
@@ -200,7 +207,7 @@ function show(k){
   layers.line = mkLine(pts, walkColor, false);
   scene.add(layers.pts, layers.line);
   fit(pts);
-  document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points`;
+  document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points — spans ${spanText(pts)}`;
   document.getElementById('play').disabled = false;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===k));
 }
@@ -281,7 +288,7 @@ async function playRound(){
   layers.pts = mkPoints(npts, i => (!naset || naset.has(i)) ? BLUE : GREEN);
   layers.line = mkLine(npts, walkColor, false);
   scene.add(layers.pts, layers.line);
-  document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points`;
+  document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points — spans ${spanText(npts)}`;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===level));
   await fitSmooth(npts, 1000);
   status.textContent = '';
@@ -319,15 +326,69 @@ document.addEventListener('fullscreenchange', () => setTimeout(resize, 60));
 
 document.getElementById('spin').onclick = () => spin = !spin;
 
-{ // fixed-scale reference: fine + coarse floor grids (cells 10 and 500 units)
-  const gc = dark ? 0x2a3648 : 0xd7dce4;
-  const g1 = new THREE.GridHelper(1600, 160, gc, gc);
-  const g2 = new THREE.GridHelper(40000, 80, gc, gc);
-  for (const g of (g1.material ? [g1, g2] : [])) {}
-  g1.position.y = -45; g2.position.y = -45;
-  g1.material.transparent = g2.material.transparent = true;
-  g1.material.opacity = 0.35; g2.material.opacity = 0.25;
-  scene.add(g1, g2);
+{ // ——— the solar system, to scale: 1 grid unit = 6,000 km ———
+  const KM = 1/6000;
+  const SUN = new THREE.Vector3(-149.6e6*KM, 0, 0);   // 1 AU
+  function body(radiusKm, color, pos, emissive=false){
+    const m = new THREE.Mesh(
+      new THREE.SphereGeometry(radiusKm*KM, 48, 24),
+      new THREE.MeshBasicMaterial({color}));
+    m.position.copy(pos); scene.add(m); return m;
+  }
+  function label(text, pos, w){
+    const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128;
+    const c = cv.getContext('2d');
+    c.font = '600 64px Outfit, sans-serif'; c.fillStyle = 'rgba(190,205,230,0.85)';
+    c.textAlign = 'center'; c.fillText(text, 256, 84);
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({
+      map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false}));
+    sp.position.copy(pos); sp.scale.set(w, w/4, 1); scene.add(sp);
+  }
+  function orbit(rKm){
+    const pts = [];
+    for (let i = 0; i <= 256; i++){
+      const a = i/256 * Math.PI * 2;
+      pts.push(new THREE.Vector3(SUN.x + rKm*KM*Math.cos(a), 0, SUN.z + rKm*KM*Math.sin(a)));
+    }
+    const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+      new THREE.LineBasicMaterial({color: 0x2c3a52, transparent:true, opacity:0.5}));
+    scene.add(l);
+  }
+  // Earth at the walk's origin (surface touches the first footprint), Moon to scale
+  body(6371, 0x4d9de0, new THREE.Vector3(0, -1.3, 0));
+  label('Earth', new THREE.Vector3(0, 4.5, 0), 16);
+  body(1737, 0x9aa3ad, new THREE.Vector3(52, 8, -34));  // 384,400 km away
+  label('Moon', new THREE.Vector3(52, 12, -34), 12);
+  // the Sun, 1 AU away, radius to scale
+  const sun = body(696340, 0xffd27a, SUN);
+  label('Sun', new THREE.Vector3(SUN.x, 700, SUN.z), 2600);
+  // planets: true radii, true orbital distances (phases chosen for the view)
+  const P = [
+    ['Mercury', 2440, 57.9e6, 0.35, 0xb8a68f, 60],
+    ['Venus', 6052, 108.2e6, -0.26, 0xe8c78a, 90],
+    ['Mars', 3390, 227.9e6, 0.09, 0xd97b57, 120],
+    ['Jupiter', 69911, 778.5e6, -0.5, 0xd9b28a, 500],
+    ['Saturn', 58232, 1433.5e6, 0.8, 0xe3cf9e, 700],
+    ['Uranus', 25362, 2872.5e6, 2.2, 0x9fd4dd, 900],
+    ['Neptune', 24622, 4495.1e6, 3.6, 0x6f8fd9, 1100],
+  ];
+  for (const [name, rKm, orbKm, phase, color, lw] of P){
+    orbit(orbKm);
+    const pos = new THREE.Vector3(SUN.x + orbKm*KM*Math.cos(phase), 0, SUN.z + orbKm*KM*Math.sin(phase));
+    body(rKm, color, pos);
+    label(name, pos.clone().add(new THREE.Vector3(0, lw/6, 0)), lw);
+  }
+  orbit(149.6e6);  // Earth's own orbit ring, passing through the origin
+  // starfield
+  const N = 2200, sp = new Float32Array(N*3);
+  for (let i = 0; i < N; i++){
+    const v = new THREE.Vector3().randomDirection().multiplyScalar(2.6e5 + Math.random()*1e5);
+    sp.set([v.x, v.y, v.z], i*3);
+  }
+  const sg = new THREE.BufferGeometry();
+  sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color: 0x8892a8,
+    size: 1.6*devicePixelRatio, sizeAttenuation: false, transparent:true, opacity:0.8})));
 }
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
 resize(); show(0);
