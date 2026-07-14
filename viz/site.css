@@ -89,7 +89,7 @@ h2.step{font-size:17px;font-weight:600;margin:32px 0 6px;text-transform:none;let
 .tl{position:relative;margin:0;padding:0 0 0 26px;list-style:none;border-left:2px solid hsl(var(--border))}
 .tl li{position:relative;margin:0 0 14px;padding:10px 14px;border:1px solid hsl(var(--border));
   border-radius:var(--radius);background:hsl(var(--card))}
-.tl li::before{content:"";position:absolute;left:-33px;top:16px;width:12px;height:12px;
+.tl li::before{content:"";position:absolute;left:-31px;top:16px;width:12px;height:12px;
   border-radius:50%;background:hsl(var(--c));border:2px solid hsl(var(--background))}
 .tl li.live::before{animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--c)/.5)}50%{box-shadow:0 0 0 6px hsl(var(--c)/0)}}
