@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>3D — erdos-193</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=6">
+<style>
+  #stage3d{position:relative;border:1px solid hsl(var(--border));border-radius:var(--radius);
+    overflow:hidden;background:hsl(var(--card));height:640px}
+  #stage3d canvas{display:block}
+  .hud{position:absolute;left:12px;top:12px;display:flex;gap:8px;flex-wrap:wrap;z-index:2}
+  .hud button{font:inherit;font-size:14px;padding:6px 14px;border-radius:8px;
+    border:1px solid hsl(var(--border));background:hsl(var(--background));
+    color:hsl(var(--foreground));cursor:pointer}
+  .hud button.primary{background:hsl(var(--link));border-color:hsl(var(--link));color:#fff}
+  .hud button:disabled{opacity:.45;cursor:default}
+  .hud .lvl{font-weight:600;padding:6px 10px}
+  #status{position:absolute;right:12px;top:12px;font-size:13px;color:hsl(var(--muted-fg));z-index:2}
+  .legendrow{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:hsl(var(--muted-fg))}
+  .legendrow .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+</style>
+</head>
+<body>
+<div class="wrap wide">
+  <header class="site">
+    <div class="brand"><a href="/">erdos-193<span>.q5m.io</span></a></div>
+    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">The proof</a><a href="amplification.html">Demo</a><a href="walk3d.html" class="cur">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+  </header>
+
+  <h1>The construction, in 3D</h1>
+  <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
+  generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
+  inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
+  scroll to zoom. Levels 0–4 of the real 28,271-step construction (level 4 = 2,458 points).</p>
+
+  <div id="stage3d">
+    <div class="hud">
+      <button id="play" class="primary">▶ play round</button>
+      <button id="reset">↺ level 0</button>
+      <span class="lvl" id="lvl">level 0</span>
+      <button id="spin">🌀 orbit</button>
+    </div>
+    <div id="status"></div>
+  </div>
+  <div class="legendrow">
+    <span><span class="sw" style="background:#3987e5"></span>anchors — enlarged images of the previous level (inherited safe)</span>
+    <span><span class="sw" style="background:#1baf7a"></span>stitches — newborn points, exactly checked</span>
+  </div>
+
+  <footer class="sitefoot">
+    <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
+    <span class="right">
+      <a href="https://www.q5m.ai"><em>q5m</em></a>
+      <a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a>
+    </span>
+  </footer>
+</div>
+
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+"three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const DATA = await (await fetch('walk3d-data.json')).json();
+const LV = DATA.levels;
+const stage = document.getElementById('stage3d');
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(dark ? 0x0b1420 : 0xffffff);
+const camera = new THREE.PerspectiveCamera(50, 1, 0.1, 100000);
+const renderer = new THREE.WebGLRenderer({antialias: true});
+renderer.setPixelRatio(devicePixelRatio);
+stage.appendChild(renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+
+function resize(){
+  const w = stage.clientWidth, h = stage.clientHeight;
+  renderer.setSize(w, h); camera.aspect = w/h; camera.updateProjectionMatrix();
+}
+addEventListener('resize', resize);
+
+const BLUE = new THREE.Color(0x3987e5), GREEN = new THREE.Color(0x1baf7a);
+const walkColor = new THREE.Color(dark ? 0x445066 : 0xb9c0cc);
+
+let level = 0, animating = false, spin = true;
+let ptsMesh = null, lineMesh = null;
+
+function center(points){
+  const c = [0,0,0];
+  for (const p of points){ c[0]+=p[0]; c[1]+=p[1]; c[2]+=p[2]; }
+  return c.map(v => v/points.length);
+}
+
+function fit(points){
+  const c = center(points);
+  let r = 1;
+  for (const p of points)
+    r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
+  controls.target.set(c[0], c[1], c[2]);
+  const d = r * 2.1;
+  camera.position.set(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7);
+  camera.near = r/100; camera.far = r*40; camera.updateProjectionMatrix();
+}
+
+function draw(points, anchorSet, sizes){
+  if (ptsMesh){ scene.remove(ptsMesh); ptsMesh.geometry.dispose(); }
+  if (lineMesh){ scene.remove(lineMesh); lineMesh.geometry.dispose(); }
+  const n = points.length;
+  const pos = new Float32Array(n*3), col = new Float32Array(n*3);
+  for (let i=0;i<n;i++){
+    pos.set(points[i], i*3);
+    const c = (!anchorSet || anchorSet.has(i)) ? BLUE : GREEN;
+    col.set([c.r,c.g,c.b], i*3);
+  }
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  g.setAttribute('color', new THREE.BufferAttribute(col,3));
+  const size = sizes ?? Math.max(1.2, 40/Math.sqrt(n));
+  ptsMesh = new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size, sizeAttenuation:true}));
+  scene.add(ptsMesh);
+  const lg = new THREE.BufferGeometry();
+  lg.setAttribute('position', new THREE.BufferAttribute(pos.slice(),3));
+  lineMesh = new THREE.Line(lg, new THREE.LineBasicMaterial({color: walkColor, transparent:true, opacity:0.55}));
+  scene.add(lineMesh);
+  return g;
+}
+
+function anchorSetFor(k){
+  if (k === 0) return null;
+  const parents = LV[k].parents;
+  const s = new Set([0]);
+  for (let j=1;j<parents.length;j++) if (parents[j] > parents[j-1]) s.add(j);
+  return s;
+}
+
+function show(k){
+  level = k;
+  document.getElementById('lvl').textContent = `level ${k} — ${LV[k].points.length} points`;
+  draw(LV[k].points, anchorSetFor(k));
+  fit(LV[k].points);
+  document.getElementById('play').disabled = (k >= LV.length-1);
+}
+
+async function playRound(){
+  if (animating || level >= LV.length-1) return;
+  animating = true;
+  const play = document.getElementById('play'); play.disabled = true;
+  const status = document.getElementById('status');
+  const A = LV[level].points, B = LV[level+1];
+  const M = DATA.M;
+  // phase 1: fly old points to enlarged positions
+  status.textContent = 'enlarging ×3 + twisting…';
+  const from = A, to = A.map(p => [
+    M[0][0]*p[0]+M[0][1]*p[1]+M[0][2]*p[2],
+    M[1][0]*p[0]+M[1][1]*p[1]+M[1][2]*p[2],
+    M[2][0]*p[0]+M[2][1]*p[1]+M[2][2]*p[2]]);
+  const g = draw(from, null);
+  fit(to.concat(from));
+  await tween(1400, t => {
+    const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
+    const pos = g.attributes.position.array, lpos = lineMesh.geometry.attributes.position.array;
+    for (let i=0;i<from.length;i++){
+      for (let d=0; d<3; d++){
+        const v = from[i][d] + (to[i][d]-from[i][d])*e;
+        pos[i*3+d] = v; lpos[i*3+d] = v;
+      }
+    }
+    g.attributes.position.needsUpdate = true;
+    lineMesh.geometry.attributes.position.needsUpdate = true;
+  });
+  // phase 2: birth the stitches in walk order
+  status.textContent = 'stitching…';
+  const anchors = anchorSetFor(level+1);
+  const pts = B.points;
+  const gg = draw(pts.slice(0, 1), new Set([0]));
+  fit(pts);
+  const total = pts.length;
+  let shown = 1;
+  await tween(2600, t => {
+    const want = Math.max(1, Math.floor(t*total));
+    if (want > shown){
+      shown = want;
+      const sub = pts.slice(0, shown);
+      const aset = new Set([...anchors].filter(i => i < shown));
+      draw(sub, aset);
+    }
+  });
+  draw(pts, anchors);
+  status.textContent = '';
+  level += 1;
+  document.getElementById('lvl').textContent = `level ${level} — ${pts.length} points`;
+  play.disabled = (level >= LV.length-1);
+  animating = false;
+}
+
+function tween(ms, fn){
+  return new Promise(res => {
+    const t0 = performance.now();
+    (function step(){
+      const t = Math.min(1, (performance.now()-t0)/ms);
+      fn(t);
+      if (t < 1) requestAnimationFrame(step); else res();
+    })();
+  });
+}
+
+document.getElementById('play').onclick = playRound;
+document.getElementById('reset').onclick = () => show(0);
+document.getElementById('spin').onclick = () => spin = !spin;
+
+resize(); show(0);
+controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
+(function loop(){
+  requestAnimationFrame(loop);
+  controls.autoRotate = spin;
+  controls.update();
+  renderer.render(scene, camera);
+})();
+</script>
+</body>
+</html>
