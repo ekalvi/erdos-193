@@ -19,7 +19,19 @@ Hence any triple non-collinear at its creation-complete level remains
 non-collinear at all later levels. Verified exactly on millions of real triples;
 the algebra is three lines. (Hostile-panel confirmed, 2026-07-13.)
 
-**L3 (Per-level existence) [MEASURED → to prove].**
+**L3 [REFUTED AS STATED — 2026-07-14 overnight attack; repaired as L3'].**
+Two machine-verified counterexamples: (i) the certified walk itself contains three
+segments with ZERO legal 2-4-step words (it survived via length-5 stitches); (ii) a
+fully legal crowd-hugging run (seed 777) hard-jams at level 2 (own-line fatal mass
+0.9796; zero stitches to depth 16). Also: the ledger constants conflated position-mass
+with word-union mass — honest per-segment BAD word-mass: mean 0.556, p99 0.913, max 1.0.
+**L3' (repaired):** quantify over states reachable by the INVARIANT-ENFORCING
+construction only: length-5 connector layer on fragile steps (|D₂₋₄| < ~2000),
+fragile-first (ascending |D*|) stitch order, per-(donor,receiver) damage caps
+c_{i,j} = min(3·ē(shell), c_max) with receiver budget β ≈ 0.25. Claim: pointwise
+word-union ledger ≤ 1−δ (δ ≥ 0.15) at every stitch of THIS construction.
+Original (dead) statement follows for the record:
+**L3-original (Per-level existence) [FALSE].**
 Claim: given any walk the construction can reach, every segment admits a stitch
 word that (a) avoids all lines through two existing points, (b) tolerates the
 placements of earlier segments in the level, (c) inflicts at most 3× average
@@ -30,7 +42,14 @@ precise probability-space statement and a pointwise (not in-expectation)
 simultaneity argument.
 Known risk: the constants are instance-measurements; promotion needs L4.
 
-**L4 (Scale-invariance of the ledger) [MEASURED → to prove].**
+**L4 [EXACT INVARIANCE FALSE; CONVERGENCE REAL — repaired as L4'].**
+The local configuration law converges under renormalization (successive differences
+shrink ×0.074 at d=27, ×0.222 at d=81; KS(L5,L6) below critical; refill factor
+self-correcting: corr(parent density, refill) = −0.32…−0.42 — mean reversion).
+**L4' (repaired):** ledger constants of the REPAIRED construction converge, with the
+level-7 pre-registered predictions (N₈₁(L7) = 112.6 ± 0.7, KS below critical) as the
+falsifiable gate.
+**L4-original [SUPERSEDED].**
 Claim: the L3 budget stays below 1 at every level.
 Evidence: fatal mass flat (0.31–0.34) across levels 3–6; shell decomposition
 (2026-07-14) shows the mass is LOCAL — 79% from contributors within distance 27,
@@ -46,6 +65,12 @@ incidence thinning, related to the measured κ-statistics).
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
 completed levels.
+
+## The gate (2026-07-14)
+One computation decides: implement the repaired construction and run seed-193 through
+levels 5–7 (~96k steps), recording the exact word-union ledger at every stitch. If the
+pointwise max stays ≤ 1−δ and the L4' predictions hold, L3'+L4' stand on the strongest
+possible empirical footing and go to write-up; if not, the failure point is explicit.
 
 ## Honest gaps, ranked
 1. L4(i): state and prove the neighborhood-invariance lemma from the recursion.
