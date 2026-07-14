@@ -1,0 +1,5 @@
+shard 3/4 done: 614 records, 224s
+shard 2/4 done: 614 records, 227s
+shard 1/4 done: 614 records, 230s
+shard 0/4 done: 615 records, 230s
+L5 MERGED SUMMARY: {"level": 5, "steps": 8213, "points": 8214, "escalations": 0, "jams": 0, "stats": {"N3": 3.984, "N3_se": 0.013, "N3_n": 2452, "N9": 11.062, "N9_se": 0.026, "N9_n": 2412, "N27": 34.38, "N27_se": 0.092, "N27_n": 2311, "N81": 118.386, "N81_se": 0.602, "N81_n": 1959}, "construct_s": 86, "recorded": 2457, "min_frac": 0.035, "mean_frac": 0.46480667480667565, "p01_frac": 0.1, "below_delta": 120, "min_surv_abs": 317}

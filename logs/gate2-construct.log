@@ -1,0 +1,44 @@
+L5 construct: 1000/2457 segs, 20s, esc 0 jam 0
+L5 construct: 2000/2457 segs, 36s, esc 0 jam 0
+L5: verifying 8214 points ...
+L5: VERIFIED triple-free (85s)
+L5 construct done: 8213 steps, stats {'N3': 3.984, 'N3_se': 0.013, 'N3_n': 2452, 'N9': 11.062, 'N9_se': 0.026, 'N9_n': 2412, 'N27': 34.38, 'N27_se': 0.092, 'N27_n': 2311, 'N81': 118.386, 'N81_se': 0.602, 'N81_n': 1959}
+L6 construct: 1000/8213 segs, 28s, esc 0 jam 0
+L6 construct: 2000/8213 segs, 75s, esc 0 jam 0
+L6 construct: 3000/8213 segs, 125s, esc 0 jam 0
+L6 construct: 4000/8213 segs, 162s, esc 0 jam 0
+L6 construct: 5000/8213 segs, 225s, esc 0 jam 0
+L6 construct: 6000/8213 segs, 286s, esc 0 jam 0
+L6 construct: 7000/8213 segs, 347s, esc 0 jam 0
+L6 construct: 8000/8213 segs, 415s, esc 0 jam 0
+L6: verifying 27697 points ...
+L6: VERIFIED triple-free (956s)
+L6 construct done: 27696 steps, stats {'N3': 3.934, 'N3_se': 0.006, 'N3_n': 8207, 'N9': 10.979, 'N9_se': 0.013, 'N9_n': 8182, 'N27': 33.947, 'N27_se': 0.048, 'N27_n': 8049, 'N81': 111.882, 'N81_se': 0.178, 'N81_n': 7745}
+L7 construct: 1000/27696 segs, 69s, esc 0 jam 0
+L7 construct: 2000/27696 segs, 142s, esc 0 jam 0
+L7 construct: 3000/27696 segs, 225s, esc 0 jam 0
+L7 construct: 4000/27696 segs, 329s, esc 0 jam 0
+L7 construct: 5000/27696 segs, 450s, esc 0 jam 0
+L7 construct: 6000/27696 segs, 587s, esc 0 jam 0
+L7 construct: 7000/27696 segs, 769s, esc 0 jam 0
+L7 construct: 8000/27696 segs, 971s, esc 0 jam 0
+L7 construct: 9000/27696 segs, 1112s, esc 0 jam 0
+L7 construct: 10000/27696 segs, 1230s, esc 0 jam 0
+L7 construct: 11000/27696 segs, 1358s, esc 0 jam 0
+L7 construct: 12000/27696 segs, 1491s, esc 0 jam 0
+L7 construct: 13000/27696 segs, 1652s, esc 0 jam 0
+L7 construct: 14000/27696 segs, 1861s, esc 0 jam 0
+L7 construct: 15000/27696 segs, 2114s, esc 0 jam 0
+L7 construct: 16000/27696 segs, 2356s, esc 0 jam 0
+L7 construct: 17000/27696 segs, 2603s, esc 0 jam 0
+L7 construct: 18000/27696 segs, 2817s, esc 0 jam 0
+L7 construct: 19000/27696 segs, 3078s, esc 0 jam 0
+L7 construct: 20000/27696 segs, 3279s, esc 0 jam 0
+L7 construct: 21000/27696 segs, 3498s, esc 0 jam 0
+L7 construct: 22000/27696 segs, 3779s, esc 0 jam 0
+L7 construct: 23000/27696 segs, 4004s, esc 0 jam 0
+L7 construct: 24000/27696 segs, 4264s, esc 0 jam 0
+L7 construct: 25000/27696 segs, 4641s, esc 0 jam 0
+L7 construct: 26000/27696 segs, 5277s, esc 0 jam 0
+L7 construct: 27000/27696 segs, 5814s, esc 0 jam 0
+L7: verifying 92732 points ...

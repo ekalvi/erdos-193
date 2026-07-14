@@ -42,7 +42,7 @@
   <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
   generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
   inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. All 6 levels of the record construction, staged in the real solar system at true scale — <b>1 grid unit = 1 Earth radius</b> (6,371 km), so each hop is 1–3½ Earth radii. The Moon sits 60 units out; the Sun is 109 units wide, 23,481 away. The finale spans ≈½ AU.</p>
+  scroll to zoom. All 7 levels of the record construction (100,359 verified points), staged in the real solar system at true scale — <b>1 grid unit = 1 Earth radius</b> (6,371 km), so each hop is 1–3½ Earth radii. The Moon sits 60 units out; the Sun is 109 units wide, 23,481 away. The finale spans ≈1.4 AU — out past Mars’ orbit.</p>
 
   <div id="stage3d">
     <div class="hud">
@@ -87,7 +87,7 @@ window.addEventListener('unhandledrejection', e => {
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-const DATA = await (await fetch('walk3d-data.json?v=2')).json();
+const DATA = await (await fetch('walk3d-data.json?v=3')).json();
 const LV = DATA.levels;
 const stage = document.getElementById('stage3d');
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
@@ -118,6 +118,10 @@ const dotTex = new THREE.CanvasTexture(dotCanvas);
 const DOT = 1.0;  // world units — points shrink as the structure grows   // constant SCREEN size at every level
 
 let level = 0, animating = false, spin = true;
+{ // ?level=N deep link (also used by automated render checks)
+  const q = parseInt(new URLSearchParams(location.search).get('level'));
+  if (!isNaN(q)) level = Math.max(0, Math.min(DATA.levels.length - 1, q));
+}
 const layers = { pts:null, line:null, skelPts:null, skelLine:null };
 
 function clearLayer(k){
@@ -431,7 +435,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
   stars(320, 1.9, 0.65, 0xb9c4da);    // a few brighter accents
 }
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
-resize(); show(0);
+resize(); show(level);
 (function loop(){
   requestAnimationFrame(loop);
   controls.autoRotate = spin;

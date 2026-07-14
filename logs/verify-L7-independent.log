@@ -1,0 +1,4 @@
+VERIFIED: 100358 steps, 100359 vertices, no repeated vertex, no 3 collinear
+max |coordinate|: 30646
+sha256(steps):    a17cb8528e112fad184713b416ac7bbf01dfee59b45d03e8c5bd94cb8fff69c3
+sha256(vertices): 12d3bf7ce0abea9364f95e9c2d232e6eff266fbd01436ea497291fef5c78d0b8

@@ -51,3 +51,10 @@ L7 construct: 28000/28709 segs, 2343s, esc 153 jam 0
 L7: verifying 100359 points ...
 L7: VERIFIED triple-free (5662s)
 L7 construct done: 100358 steps, stats {'N3': 4.024, 'N3_se': 0.004, 'N3_n': 28701, 'N9': 11.489, 'N9_se': 0.009, 'N9_n': 28684, 'N27': 35.929, 'N27_se': 0.029, 'N27_n': 28594, 'N81': 118.578, 'N81_se': 0.101, 'N81_n': 28180}
+shard 2/4: pos 5000, 1250 recs, 5599s
+shard 0/4: pos 5000, 1250 recs, 5605s
+shard 3/4: pos 5000, 1250 recs, 5710s
+shard 1/4: pos 5000, 1250 recs, 5933s
+Traceback (most recent call last):
+  File "/Users/erik/homelab/math193/gate_l7.py", line 235, in <module>
+AssertionError
