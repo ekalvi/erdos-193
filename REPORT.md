@@ -174,6 +174,16 @@ M_BAL = diag(2, [[0,-2],[2,-1]]) (same spectrum) is being searched now.
   hierarchical template compression — the make-or-break), Step 4 (exact p_H via
   transfer matrices), Step 5 (LLL criterion ladder), Step 6 (joint GFP).
 
+## Decoupling insight (2026-07-13 late)
+
+Creation-time semantics (panel-confirmed) decouples levels: a completed level is
+deterministically safe forever, so the certificate reduces to a PER-LEVEL existence
+statement — "given any triple-free walk, a safe stitching of the next level exists" —
+plus induction. With measured per-stitch bad mass ~0.4 < 1, this is potentially a greedy
+counting argument; the multi-level LLL may be unnecessary. Remaining to verify:
+worst-case conditional cross mass (running), triple-newborn events, and fatal-mass
+invariance across all levels (the self-similarity argument).
+
 ## Next steps suggested by the data
 1. Finish the deep DFS bounds (running); try iterated-greedy/beam search to push the
    4-step lower bound well past 206 and look for self-similar structure in the

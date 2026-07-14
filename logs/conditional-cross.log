@@ -1,0 +1,3 @@
+worst-case conditional cross mass per (A,B) pair (40 sampled):
+  median 0.00e+00, p90 8.55e-03, max 5.51e-02
+  greedy budget: own 0.317 + sum over ~600 active partners x median ~= 0.317 (must stay < 1)
