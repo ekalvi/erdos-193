@@ -88,6 +88,12 @@ function resize(){
 addEventListener('resize', resize);
 
 const BLUE = new THREE.Color(0x3987e5), GREEN = new THREE.Color(0x1baf7a);
+// round sprite texture for points
+const dotCanvas = document.createElement('canvas');
+dotCanvas.width = dotCanvas.height = 64;
+{ const c = dotCanvas.getContext('2d');
+  c.beginPath(); c.arc(32,32,28,0,7); c.fillStyle='#fff'; c.fill(); }
+const dotTex = new THREE.CanvasTexture(dotCanvas);
 const walkColor = new THREE.Color(dark ? 0x445066 : 0xb9c0cc);
 
 let level = 0, animating = false, spin = true;
@@ -123,8 +129,9 @@ function draw(points, anchorSet, sizes){
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(pos,3));
   g.setAttribute('color', new THREE.BufferAttribute(col,3));
-  const size = sizes ?? Math.max(1.2, 40/Math.sqrt(n));
-  ptsMesh = new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size, sizeAttenuation:true}));
+  const size = sizes ?? Math.max(0.9, 22/Math.sqrt(n));
+  ptsMesh = new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size,
+    sizeAttenuation:true, map:dotTex, alphaTest:0.5, transparent:true}));
   scene.add(ptsMesh);
   const lg = new THREE.BufferGeometry();
   lg.setAttribute('position', new THREE.BufferAttribute(pos.slice(),3));
