@@ -88,56 +88,67 @@ function resize(){
 addEventListener('resize', resize);
 
 const BLUE = new THREE.Color(0x3987e5), GREEN = new THREE.Color(0x1baf7a);
-// round sprite texture for points
+const walkColor = new THREE.Color(dark ? 0x445066 : 0xb9c0cc);
+const skelColor = new THREE.Color(dark ? 0x6b7890 : 0x8a94a8);
 const dotCanvas = document.createElement('canvas');
 dotCanvas.width = dotCanvas.height = 64;
 { const c = dotCanvas.getContext('2d');
   c.beginPath(); c.arc(32,32,28,0,7); c.fillStyle='#fff'; c.fill(); }
 const dotTex = new THREE.CanvasTexture(dotCanvas);
-const walkColor = new THREE.Color(dark ? 0x445066 : 0xb9c0cc);
+const DOT = 7 * devicePixelRatio;   // constant SCREEN size at every level
 
 let level = 0, animating = false, spin = true;
-let ptsMesh = null, lineMesh = null;
+const layers = { pts:null, line:null, skelPts:null, skelLine:null };
 
-function center(points){
-  const c = [0,0,0];
-  for (const p of points){ c[0]+=p[0]; c[1]+=p[1]; c[2]+=p[2]; }
-  return c.map(v => v/points.length);
+function clearLayer(k){
+  if (layers[k]){ scene.remove(layers[k]); layers[k].geometry.dispose(); layers[k] = null; }
 }
+function clearAll(){ for (const k in layers) clearLayer(k); }
 
-function fit(points){
-  const c = center(points);
-  let r = 1;
-  for (const p of points)
-    r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
-  controls.target.set(c[0], c[1], c[2]);
-  const d = r * 2.1;
-  camera.position.set(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7);
-  camera.near = r/100; camera.far = r*40; camera.updateProjectionMatrix();
-}
-
-function draw(points, anchorSet, sizes){
-  if (ptsMesh){ scene.remove(ptsMesh); ptsMesh.geometry.dispose(); }
-  if (lineMesh){ scene.remove(lineMesh); lineMesh.geometry.dispose(); }
+function mkPoints(points, colorFor){
   const n = points.length;
   const pos = new Float32Array(n*3), col = new Float32Array(n*3);
   for (let i=0;i<n;i++){
     pos.set(points[i], i*3);
-    const c = (!anchorSet || anchorSet.has(i)) ? BLUE : GREEN;
+    const c = colorFor(i);
     col.set([c.r,c.g,c.b], i*3);
   }
   const g = new THREE.BufferGeometry();
   g.setAttribute('position', new THREE.BufferAttribute(pos,3));
   g.setAttribute('color', new THREE.BufferAttribute(col,3));
-  const size = sizes ?? Math.max(0.9, 22/Math.sqrt(n));
-  ptsMesh = new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size,
-    sizeAttenuation:true, map:dotTex, alphaTest:0.5, transparent:true}));
-  scene.add(ptsMesh);
-  const lg = new THREE.BufferGeometry();
-  lg.setAttribute('position', new THREE.BufferAttribute(pos.slice(),3));
-  lineMesh = new THREE.Line(lg, new THREE.LineBasicMaterial({color: walkColor, transparent:true, opacity:0.55}));
-  scene.add(lineMesh);
-  return g;
+  return new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size:DOT,
+    sizeAttenuation:false, map:dotTex, alphaTest:0.5, transparent:true}));
+}
+function mkLine(points, color, dashed, scaleHint){
+  const pos = new Float32Array(points.length*3);
+  for (let i=0;i<points.length;i++) pos.set(points[i], i*3);
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  const mat = dashed
+    ? new THREE.LineDashedMaterial({color, transparent:true, opacity:0.7,
+        dashSize: scaleHint*0.02, gapSize: scaleHint*0.015})
+    : new THREE.LineBasicMaterial({color, transparent:true, opacity:0.55});
+  const l = new THREE.Line(g, mat);
+  if (dashed) l.computeLineDistances();
+  return l;
+}
+
+function bounds(points){
+  const c = [0,0,0];
+  for (const p of points){ c[0]+=p[0]; c[1]+=p[1]; c[2]+=p[2]; }
+  c[0]/=points.length; c[1]/=points.length; c[2]/=points.length;
+  let r = 1;
+  for (const p of points)
+    r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
+  return {c, r};
+}
+function fit(points){
+  const {c, r} = bounds(points);
+  controls.target.set(c[0], c[1], c[2]);
+  const d = r * 2.1;
+  camera.position.set(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7);
+  camera.near = Math.max(0.01, r/100); camera.far = r*40;
+  camera.updateProjectionMatrix();
 }
 
 function anchorSetFor(k){
@@ -149,63 +160,14 @@ function anchorSetFor(k){
 }
 
 function show(k){
-  level = k;
-  document.getElementById('lvl').textContent = `level ${k} — ${LV[k].points.length} points`;
-  draw(LV[k].points, anchorSetFor(k));
-  fit(LV[k].points);
-  document.getElementById('play').disabled = (k >= LV.length-1);
-}
-
-async function playRound(){
-  if (animating || level >= LV.length-1) return;
-  animating = true;
-  const play = document.getElementById('play'); play.disabled = true;
-  const status = document.getElementById('status');
-  const A = LV[level].points, B = LV[level+1];
-  const M = DATA.M;
-  // phase 1: fly old points to enlarged positions
-  status.textContent = 'enlarging ×3 + twisting…';
-  const from = A, to = A.map(p => [
-    M[0][0]*p[0]+M[0][1]*p[1]+M[0][2]*p[2],
-    M[1][0]*p[0]+M[1][1]*p[1]+M[1][2]*p[2],
-    M[2][0]*p[0]+M[2][1]*p[1]+M[2][2]*p[2]]);
-  const g = draw(from, null);
-  fit(to.concat(from));
-  await tween(1400, t => {
-    const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
-    const pos = g.attributes.position.array, lpos = lineMesh.geometry.attributes.position.array;
-    for (let i=0;i<from.length;i++){
-      for (let d=0; d<3; d++){
-        const v = from[i][d] + (to[i][d]-from[i][d])*e;
-        pos[i*3+d] = v; lpos[i*3+d] = v;
-      }
-    }
-    g.attributes.position.needsUpdate = true;
-    lineMesh.geometry.attributes.position.needsUpdate = true;
-  });
-  // phase 2: birth the stitches in walk order
-  status.textContent = 'stitching…';
-  const anchors = anchorSetFor(level+1);
-  const pts = B.points;
-  const gg = draw(pts.slice(0, 1), new Set([0]));
+  level = k; clearAll();
+  const pts = LV[k].points, aset = anchorSetFor(k);
+  layers.pts = mkPoints(pts, i => (!aset || aset.has(i)) ? BLUE : GREEN);
+  layers.line = mkLine(pts, walkColor, false);
+  scene.add(layers.pts, layers.line);
   fit(pts);
-  const total = pts.length;
-  let shown = 1;
-  await tween(2600, t => {
-    const want = Math.max(1, Math.floor(t*total));
-    if (want > shown){
-      shown = want;
-      const sub = pts.slice(0, shown);
-      const aset = new Set([...anchors].filter(i => i < shown));
-      draw(sub, aset);
-    }
-  });
-  draw(pts, anchors);
-  status.textContent = '';
-  level += 1;
-  document.getElementById('lvl').textContent = `level ${level} — ${pts.length} points`;
-  play.disabled = (level >= LV.length-1);
-  animating = false;
+  document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points`;
+  document.getElementById('play').disabled = (k >= LV.length-1);
 }
 
 function tween(ms, fn){
@@ -219,12 +181,76 @@ function tween(ms, fn){
   });
 }
 
+async function playRound(){
+  if (animating || level >= LV.length-1) return;
+  animating = true;
+  document.getElementById('play').disabled = true;
+  const status = document.getElementById('status');
+  const M = DATA.M;
+  const A = LV[level].points;
+  const target = A.map(p => [
+    M[0][0]*p[0]+M[0][1]*p[1]+M[0][2]*p[2],
+    M[1][0]*p[0]+M[1][1]*p[1]+M[1][2]*p[2],
+    M[2][0]*p[0]+M[2][1]*p[1]+M[2][2]*p[2]]);
+
+  // phase 1: morph the whole level (points + line) to enlarged positions
+  status.textContent = 'enlarging ×3 + twisting…';
+  clearAll();
+  layers.pts = mkPoints(A, () => BLUE);
+  layers.line = mkLine(A, skelColor, false);
+  scene.add(layers.pts, layers.line);
+  fit(target.concat(A));
+  const pg = layers.pts.geometry.attributes.position;
+  const lg = layers.line.geometry.attributes.position;
+  await tween(1600, t => {
+    const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
+    for (let i=0;i<A.length;i++)
+      for (let d=0; d<3; d++){
+        const v = A[i][d] + (target[i][d]-A[i][d])*e;
+        pg.array[i*3+d] = v; lg.array[i*3+d] = v;
+      }
+    pg.needsUpdate = true; lg.needsUpdate = true;
+  });
+
+  // phase 2: solid line becomes the dashed SKELETON (kept visible throughout)
+  const {r} = bounds(target);
+  clearLayer('line');
+  layers.skelLine = mkLine(target, skelColor, true, r);
+  layers.skelPts = layers.pts; layers.pts = null;   // blue anchors persist
+  scene.add(layers.skelLine);
+
+  // phase 3: stitches drawn in along the skeleton, walk order
+  status.textContent = 'stitching along the skeleton…';
+  const B = LV[level+1], pts = B.points, aset = anchorSetFor(level+1);
+  const total = pts.length;
+  let shown = 2;
+  await tween(3000, t => {
+    const want = Math.max(2, Math.ceil(t*total));
+    if (want > shown){
+      shown = want;
+      clearLayer('pts'); clearLayer('line');
+      const sub = pts.slice(0, shown);
+      layers.pts = mkPoints(sub, i => aset.has(i) ? BLUE : GREEN);
+      layers.line = mkLine(sub, walkColor, false);
+      scene.add(layers.pts, layers.line);
+    }
+  });
+
+  // settle: fade skeleton out, standard view of the new level
+  await tween(500, t => { layers.skelLine.material.opacity = 0.7*(1-t);
+                          if (layers.skelPts) layers.skelPts.material.opacity = 1-t; });
+  level += 1;
+  show(level);
+  status.textContent = '';
+  animating = false;
+}
+
 document.getElementById('play').onclick = playRound;
 document.getElementById('reset').onclick = () => show(0);
 document.getElementById('spin').onclick = () => spin = !spin;
 
-resize(); show(0);
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
+resize(); show(0);
 (function loop(){
   requestAnimationFrame(loop);
   controls.autoRotate = spin;
