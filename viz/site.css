@@ -26,13 +26,13 @@
 }
 *{box-sizing:border-box}
 body{margin:0;font-family:"Outfit",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  background:hsl(var(--background));color:hsl(var(--foreground));line-height:1.6;font-size:15.5px}
+  background:hsl(var(--background));color:hsl(var(--foreground));line-height:1.65;font-size:17px}
 .wrap{max-width:720px;margin:0 auto;padding:40px 24px 64px}
 .wrap.wide{max-width:920px}
 a{color:hsl(var(--link));text-decoration:none}
 a:hover{text-decoration:underline}
 h1{font-size:clamp(24px,4.5vw,30px);font-weight:700;letter-spacing:-.02em;line-height:1.2;margin:0 0 12px}
-.lede,.sub{color:hsl(var(--muted-fg));font-size:16.5px;margin:0 0 24px;max-width:64ch}
+.lede,.sub{color:hsl(var(--muted-fg));font-size:17px;margin:0 0 24px;max-width:64ch}
 code{background:hsl(var(--accent));padding:1px 6px;border-radius:5px;font-size:.92em}
 
 /* header / nav */
@@ -40,7 +40,7 @@ header.site{display:flex;align-items:baseline;gap:10px;margin-bottom:34px;flex-w
 .brand{font-weight:700;font-size:15px;letter-spacing:-.01em}
 .brand a{color:inherit;text-decoration:none}
 .brand span{color:hsl(var(--muted-fg));font-weight:400}
-nav.site{display:flex;gap:16px;align-items:baseline;margin-left:auto;font-size:14px;font-weight:500;flex-wrap:wrap}
+nav.site{display:flex;gap:16px;align-items:baseline;margin-left:auto;font-size:15px;font-weight:500;flex-wrap:wrap}
 nav.site a{color:hsl(var(--muted-fg));text-decoration:none}
 nav.site a:hover,nav.site a.cur{color:hsl(var(--foreground))}
 
@@ -54,16 +54,16 @@ h2.sec, .sec{font-size:13px;font-weight:600;text-transform:uppercase;letter-spac
 .card b{font-weight:600;color:hsl(var(--link))}
 .card b::after{content:" \2192";opacity:.6}
 .card.ext b::after{content:" \2197"}
-.card p{margin:4px 0 0;font-size:14px;color:hsl(var(--muted-fg))}
+.card p{margin:4px 0 0;font-size:15px;color:hsl(var(--muted-fg))}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin:0 0 12px}
 .stat{border:1px solid hsl(var(--border));border-radius:var(--radius);padding:14px 16px;background:hsl(var(--card))}
 .stat b{display:block;font-size:22px;font-weight:700;letter-spacing:-.01em}
-.stat span{font-size:13px;color:hsl(var(--muted-fg))}
+.stat span{font-size:14px;color:hsl(var(--muted-fg))}
 
 /* figures */
 figure,.fig{margin:12px 0 0;background:hsl(var(--card));border:1px solid hsl(var(--border));
   border-radius:var(--radius);padding:14px}
-figcaption,.fig p{color:hsl(var(--muted-fg));font-size:13.5px;padding-top:8px;margin:0;max-width:80ch}
+figcaption,.fig p{color:hsl(var(--muted-fg));font-size:15px;padding-top:8px;margin:0;max-width:80ch}
 .fig p{padding-top:0;margin-top:8px}
 figure svg,.fig svg{display:block;width:100%;height:auto}
 .figrow{display:grid;grid-template-columns:1fr 1fr;gap:12px;align-items:stretch}
@@ -71,7 +71,7 @@ figure svg,.fig svg{display:block;width:100%;height:auto}
 .figrow .fig svg{height:400px;flex:none}
 .figrow .fig p{margin-top:auto;padding-top:10px}
 @media(max-width:640px){.figrow{grid-template-columns:1fr}}
-figure svg text,.fig svg text{font:13px "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--text-primary)}
+figure svg text,.fig svg text{font:14px "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--text-primary)}
 figure svg .mut,.fig svg .mut{fill:var(--text-secondary);font-size:12px}
 figure svg .sm,.fig svg .sm{font-size:11px}
 figure svg .axis,.fig svg .axis{fill:var(--text-secondary);font-size:12px;font-weight:600}
@@ -81,7 +81,7 @@ figure svg .axis,.fig svg .axis{fill:var(--text-secondary);font-size:12px;font-w
 h2.step{font-size:17px;font-weight:600;margin:32px 0 6px;text-transform:none;letter-spacing:0;color:hsl(var(--foreground))}
 
 /* timeline (progress) */
-.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13px;color:hsl(var(--muted-fg));
+.legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:14px;color:hsl(var(--muted-fg));
   border:1px solid hsl(var(--border));border-radius:var(--radius);padding:10px 14px;margin-bottom:26px}
 .legend b{font-weight:600;color:hsl(var(--foreground))}
 .day{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
@@ -94,7 +94,7 @@ h2.step{font-size:17px;font-weight:600;margin:32px 0 6px;text-transform:none;let
 .tl li.live::before{animation:pulse 1.6s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--c)/.5)}50%{box-shadow:0 0 0 6px hsl(var(--c)/0)}}
 .tl b{font-weight:600}
-.tl p{margin:3px 0 0;font-size:13.5px;color:hsl(var(--muted-fg))}
+.tl p{margin:3px 0 0;font-size:15px;color:hsl(var(--muted-fg))}
 .tag{font-size:15px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:hsl(var(--c));margin-right:6px}
 
 /* footer */

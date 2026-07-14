@@ -6,7 +6,7 @@
 <title>The proof, in six diagrams — Problem #193</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=3">
+<link rel="stylesheet" href="site.css?v=4">
 <style>
 
   h2{font-size:17px;font-weight:600;margin:32px 0 6px}
@@ -164,6 +164,18 @@ direction-agreement can't be skipped. Each rung costs a ≤18% event while an 82
 pushes back. Reaching the bottom needs an infinite losing streak: probability zero per
 triple.</figcaption>
 </figure>
+<p class="sub" style="margin-top:10px">How to read this: a &ldquo;grade&rdquo; counts how many
+leading base-3 digits two chord directions share &mdash; grade 0 means they differ immediately
+(harmless), and exact collinearity would mean agreeing in <em>every</em> digit. Three facts make
+the ladder work. <b>No rung can be skipped:</b> one enlargement round can deepen agreement by at
+most two digits, and a birth can only write the last few digits (figure 5) &mdash; so any triple
+headed for collinearity must pass through every grade on the way down. <b>Each rung is a toll:</b>
+we computed, over every one of the 78,728 possible arithmetic situations (not a sample), that at
+worst 18% of stitch choices let a pair hold or deepen its grade &mdash; the other 82% kick it back
+up. <b>The bottom is infinitely far:</b> reaching &ldquo;all digits&rdquo; requires winning the 18%
+event forever &mdash; a probability-zero streak per triple. The percentages on the right are the
+measured population at each grade in the record walk; they thin by &times;8.5 per rung, exactly
+matching the toll.</p>
 
 <h2>5 · Why births can't cheat: the digit lock</h2>
 <figure>
@@ -175,8 +187,10 @@ triple.</figcaption>
     <rect x="390" y="50" width="150" height="46" rx="8" fill="var(--surface-1)" stroke="var(--stitch)" stroke-width="2"/>
     <text x="415" y="80">? · ?</text>
   </g>
-  <text x="40" y="125" fill="var(--anchor)">coarse digits: locked before birth (inherited from enlargement)</text>
-  <text x="390" y="148" fill="var(--stitch)">fine digits: the only thing a stitch offset can write</text>
+  <text x="40" y="125" style="fill:var(--anchor)">coarse digits: locked before birth</text>
+  <text x="40" y="143" style="fill:var(--anchor)" class="sm">(inherited from enlargement — untouchable)</text>
+  <text x="390" y="125" style="fill:var(--stitch)">fine digits: writable</text>
+  <text x="390" y="143" style="fill:var(--stitch)" class="sm">(the only thing a stitch offset can change)</text>
   <text x="40" y="178" style="fill:var(--danger)">to kill, ALL digits must match a line through two old footprints —</text>
   <text x="40" y="198" style="fill:var(--danger)">impossible unless the coarse digits already matched.</text>
 </svg>
@@ -185,6 +199,15 @@ finest digits, so a birth can only complete an alignment that was already a deep
 the corridor's lower rungs. Grade-0 pairs (90.2% of everything) are physically out of range.
 Rare "born-deep" cases (0.097%) are counted separately.</figcaption>
 </figure>
+<p class="sub" style="margin-top:10px">Why this locks births out: a new point is always
+&ldquo;3 &times; parent + small offset,&rdquo; and multiplying by 3 in base 3 is a digit
+<em>shift</em> &mdash; it fixes the coarse digits before the stitch is even chosen. The offset
+(at most a few grid units) can only write the final digits. So for a newborn to land exactly on
+a line through two old footprints, the coarse digits of that alignment must already agree &mdash;
+which is precisely being deep in figure 4&rsquo;s corridor. Grade-0 configurations (90.2% of
+everything) are unreachable by any birth this round, no matter how unlucky. The rare exceptions
+&mdash; births that land already deep, 0.097% measured &mdash; are counted as their own event
+family rather than swept under the rug.</p>
 
 <h2>6 · The finale: exponential toll beats linear entanglement</h2>
 <figure>
@@ -196,6 +219,19 @@ threshold at <b>H = 14</b>: watching each newborn danger for 14 generations suff
 ALL dangers — infinitely many, across the infinite walk — to be dodged simultaneously.
 (Current status: constants certified; the semantic repair of the chain is in final build.)</figcaption>
 </figure>
+<p class="sub" style="margin-top:10px">This last step turns &ldquo;each danger is individually
+dodgeable&rdquo; into &ldquo;all of them can be dodged <em>at once</em>&rdquo; &mdash; the leap
+from probability to existence. The Lov&aacute;sz Local Lemma says: if every bad event is unlikely
+<em>relative to the number of other events it shares decisions with</em>, then some assignment of
+all decisions avoids every bad event simultaneously. Here the failure probability falls
+exponentially with the watching window H (&times;0.181 per round &mdash; the certified worst
+case), while entanglement grows only linearly in H against a fixed catalog of 6.5&times;10&sup7;
+templates. An exponential always overtakes a line: with our constants that happens at H = 14,
+where the criterion is satisfied with margin (0.33 &le; 1). What closure buys, once the remaining
+theorems land: at every level of the construction a legal stitching <em>exists</em>; a final
+compactness argument (K&ouml;nig&rsquo;s lemma) then chains the levels into one infinite walk.
+Honest status: the constants are certified by exhaustive computation; the semantic containment
+linking them to the exact birth event is the piece currently being rebuilt after hostile review.</p>
 
 <p class="sub" style="margin-top:26px">Companion page: the interactive
 <a href="amplification.html" style="color:var(--anchor)">amplification explainer</a> shows
