@@ -6,55 +6,17 @@
 <title>The proof, in six diagrams — Problem #193</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 <style>
-  .viz-root {
-    --surface-1:hsl(0 0% 100%); --surface-2:hsl(210 40% 96.1%);
-    --text-primary:hsl(222.2 84% 4.9%); --text-secondary:hsl(215.4 16.3% 46.9%); --text-muted:hsl(215.4 16.3% 60%);
-    --grid:hsl(214.3 31.8% 91.4%); --walk:hsl(215 16% 72%); --ghost:hsl(214 25% 84%);
-    --border:214.3 31.8% 91.4%; --muted-fg:215.4 16.3% 46.9%; --foreground:222.2 84% 4.9%;
-    --anchor:#2a78d6; --stitch:#1baf7a; --danger:#b3261e; --ok:#1e7d32;
-  }
-  @media (prefers-color-scheme: dark) {
-    .viz-root {
-      --surface-1:hsl(222.2 84% 4.9%); --surface-2:hsl(222.2 47% 9.5%);
-    --text-primary:hsl(210 40% 98%); --text-secondary:hsl(215 20.2% 65.1%); --text-muted:hsl(215 16% 50%);
-    --grid:hsl(217.2 32.6% 17.5%); --walk:hsl(217 20% 40%); --ghost:hsl(218 22% 26%);
-    --border:217.2 32.6% 17.5%; --muted-fg:215 20.2% 65.1%; --foreground:210 40% 98%;
-      --anchor:#3987e5; --stitch:#199e70; --danger:#e66767; --ok:#5dbb63;
-    }
-  }
-  body{margin:0}
-  .viz-root{font:15px/1.5 "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;
-    background:var(--surface-1);color:var(--text-primary);padding:24px;box-sizing:border-box}
-  .wrap{max-width:920px;margin:0 auto}
-  h1{font-size:22px;margin:0 0 4px}
-  h2{font-size:17px;margin:34px 0 6px}
-  .sub{color:var(--text-secondary);margin:0 0 8px;max-width:76ch}
-  figure{margin:12px 0 0;background:var(--surface-2);border-radius:12px;padding:14px}
-  figcaption{color:var(--text-secondary);font-size:13.5px;padding-top:8px;max-width:80ch}
-  svg{display:block;width:100%;height:auto}
-  text{font:13px "Outfit",-apple-system,"Segoe UI",Roboto,sans-serif;fill:var(--text-primary)}
-  .mut{fill:var(--text-secondary);font-size:12px}
-  .sm{font-size:11px}
-  code{background:var(--surface-2);padding:1px 5px;border-radius:5px}
 
-  .sitefoot{margin-top:48px;padding-top:18px;border-top:1px solid hsl(var(--border,214.3 31.8% 91.4%));
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:hsl(var(--muted-fg,215.4 16.3% 46.9%))}
-  .sitefoot a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
-  .sitefoot a:hover{color:hsl(var(--foreground,222.2 84% 4.9%))}
-  .sitefoot em{font-style:normal}
-  .sitefoot .right{display:inline-flex;gap:16px}
-  nav.site{display:flex;gap:18px;align-items:baseline;margin-left:auto;font-size:14px;font-weight:500}
-  nav.site a{color:hsl(var(--muted-fg,215.4 16.3% 46.9%));text-decoration:none}
-  nav.site a:hover,nav.site a.cur{color:hsl(var(--foreground,222.2 84% 4.9%))}
-  header.site{display:flex;align-items:baseline;gap:10px;margin-bottom:36px}
-.brand{font-weight:700;font-size:15px}.brand span{color:var(--text-secondary);font-weight:400}
+  h2{font-size:17px;font-weight:600;margin:32px 0 6px}
+  .viz-root{padding:0}
+
 </style>
 </head>
 <body>
-<div class="viz-root"><div class="wrap">
-<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">The proof</a><a href="amplification.html">Demo</a><a href="progress.html">Progress</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<div class="viz-root"><div class="wrap wide">
+<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">The proof</a><a href="amplification.html">Demo</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 <h1>The proof, in six diagrams</h1>
 <p class="sub">Each figure matches one step of the argument that an infinite no-three-in-line
 walk exists. All numbers shown are real, exhaustively computed values from the project

@@ -6,64 +6,17 @@
 <title>Progress — erdos-193</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 <style>
-  :root{
-    --background:0 0% 100%; --foreground:222.2 84% 4.9%;
-    --muted-fg:215.4 16.3% 46.9%; --border:214.3 31.8% 91.4%;
-    --card:0 0% 100%; --accent:210 40% 96.1%; --link:217 91% 45%; --radius:0.5rem;
-    --ok:142 71% 35%; --dead:0 72% 45%; --sci:217 91% 50%; --build:215 16% 55%; --live:38 92% 45%;
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --background:222.2 84% 4.9%; --foreground:210 40% 98%;
-      --muted-fg:215 20.2% 65.1%; --border:217.2 32.6% 17.5%;
-      --card:222.2 84% 6.5%; --accent:217.2 32.6% 17.5%; --link:213 94% 68%;
-      --ok:142 60% 55%; --dead:0 75% 65%; --sci:213 94% 68%; --build:215 16% 60%; --live:38 92% 60%;
-    }
-  }
-  *{box-sizing:border-box}
-  body{margin:0;font-family:"Outfit",ui-sans-serif,system-ui,sans-serif;
-    background:hsl(var(--background));color:hsl(var(--foreground));line-height:1.55}
-  .wrap{max-width:760px;margin:0 auto;padding:40px 24px 64px}
-  header.site{display:flex;align-items:baseline;gap:10px;margin-bottom:28px}
-  .brand{font-weight:700;font-size:15px}
-  .brand a{color:inherit;text-decoration:none}
-  .brand span{color:hsl(var(--muted-fg));font-weight:400}
-  nav.site{display:flex;gap:18px;align-items:baseline;margin-left:auto;font-size:14px;font-weight:500}
-  nav.site a{color:hsl(var(--muted-fg));text-decoration:none}
-  nav.site a:hover,nav.site a.cur{color:hsl(var(--foreground))}
-  h1{font-size:26px;font-weight:700;letter-spacing:-.02em;margin:0 0 6px}
-  .sub{color:hsl(var(--muted-fg));margin:0 0 20px}
-  .legend{display:flex;flex-wrap:wrap;gap:10px 18px;font-size:13px;color:hsl(var(--muted-fg));
-    border:1px solid hsl(var(--border));border-radius:var(--radius);padding:10px 14px;margin-bottom:30px}
-  .legend b{font-weight:600;color:hsl(var(--foreground))}
-  .day{font-size:13px;font-weight:600;text-transform:uppercase;letter-spacing:.08em;
-    color:hsl(var(--muted-fg));margin:30px 0 10px}
-  .tl{position:relative;margin:0;padding:0 0 0 26px;list-style:none;border-left:2px solid hsl(var(--border))}
-  .tl li{position:relative;margin:0 0 14px;padding:10px 14px;border:1px solid hsl(var(--border));
-    border-radius:var(--radius);background:hsl(var(--card))}
-  .tl li::before{content:"";position:absolute;left:-33px;top:16px;width:12px;height:12px;
-    border-radius:50%;background:hsl(var(--c));border:2px solid hsl(var(--background))}
-  .tl li.live::before{animation:pulse 1.6s ease-in-out infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--c)/.5)}50%{box-shadow:0 0 0 6px hsl(var(--c)/0)}}
-  .tl b{font-weight:600}
-  .tl p{margin:3px 0 0;font-size:13.5px;color:hsl(var(--muted-fg))}
-  .tag{font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;
-    color:hsl(var(--c));margin-right:6px}
-  footer.sitefoot{margin-top:48px;padding-top:18px;border-top:1px solid hsl(var(--border));
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
-    font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:hsl(var(--muted-fg))}
-  footer.sitefoot a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
-  footer.sitefoot a:hover{color:hsl(var(--foreground))}
-  footer.sitefoot em{font-style:normal}
-  footer.sitefoot .right{display:inline-flex;gap:16px}
+
+
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.io</span></a></div>
-    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">The proof</a><a href="amplification.html">Demo</a><a href="progress.html" class="cur">Progress</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">The proof</a><a href="amplification.html">Demo</a><a href="progress.html" class="cur">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
   </header>
 
   <h1>Research log</h1>
