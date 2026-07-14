@@ -9,3 +9,16 @@ L6 construct: 8000/8252 segs, 573s, esc 15 jam 0
 L6: verifying 28710 points ...
 L6: VERIFIED triple-free (932s)
 L6 construct done: 28709 steps, stats {'N3': 3.995, 'N3_se': 0.008, 'N3_n': 8248, 'N9': 11.358, 'N9_se': 0.015, 'N9_n': 8224, 'N27': 35.192, 'N27_se': 0.05, 'N27_n': 8096, 'N81': 115.832, 'N81_se': 0.183, 'N81_n': 7783}
+shard 0/4: pos 5000, 1250 recs, 1566s
+shard 1/4: pos 5000, 1250 recs, 1572s
+shard 2/4: pos 5000, 1250 recs, 1595s
+shard 3/4: pos 5000, 1250 recs, 1609s
+shard 1/4 done: 2063 records, 2757s
+shard 0/4 done: 2063 records, 2767s
+shard 2/4 done: 2063 records, 2778s
+shard 3/4 done: 2063 records, 2782s
+L6 MERGED SUMMARY: {"level": 6, "steps": 28709, "points": 28710, "escalations": 15, "jams": 0, "stats": {"N3": 3.995, "N3_se": 0.008, "N3_n": 8248, "N9": 11.358, "N9_se": 0.015, "N9_n": 8224, "N27": 35.192, "N27_se": 0.05, "N27_n": 8096, "N81": 115.832, "N81_se": 0.183, "N81_n": 7783}, "construct_s": 936, "recorded": 8252, "min_frac": 0.02, "mean_frac": 0.45748303441589866, "p01_frac": 0.085, "below_delta": 454, "min_surv_abs": 184}
+KS(L5,L6) on N81: 0.0611 vs critical 0.0343 (ABOVE — drift)
+GATE LEVEL COMPLETE
+L7 construct: 1000/28709 segs, 28s, esc 0 jam 0
+L7 construct: 2000/28709 segs, 57s, esc 0 jam 0
