@@ -3,3 +3,4 @@ __pycache__/
 .checkpoint-*
 connector_domains4.pkl
 g_sigma.bin
+dstar5_fragile.pkl
