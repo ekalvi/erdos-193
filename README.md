@@ -1,59 +1,92 @@
-# erdos-193 — collinear-triple-free walks in Z³
+# erdos-193 — no-three-in-line walks in ℤ³
 
-Computational programme around Problem #193: **does there exist an infinite walk
-in Z³, with steps from a finite set, no three of whose vertices are collinear?**
-(Gerver–Ramsey showed collinear counts can be bounded in Z³, and proved the
-analogous 2D statement is false; full avoidance of 3 collinear points is open.)
+**Can an infinite walk on the integer grid, with steps from a fixed finite menu, avoid
+ever placing three of its points on a common straight line?**
+That is [Erdős Problem #193](https://www.erdosproblems.com/193) (Gerver–Ramsey, open
+since 1979). This repository is a computational attack on it: a construction that builds
+record walks, and a certificate programme working toward a proof that they can run forever.
 
-All arithmetic is exact-integer (cross products; no floats in any decision).
-See **[REPORT.md](REPORT.md)** for the consolidated findings and next steps.
+🌐 **Visual introduction:** [erdos-193.q5m.io](https://erdos-193.q5m.io) — the proof
+strategy in six diagrams, and an interactive demo with real coordinates.
 
-## Headline results (2026-07-11)
+## Headline results
 
-- **Exhaustively proven maxima** (finite theorems, modulo code correctness):
-  the longest triple-free walk with steps ±e₁,±e₂,±e₃ is **exactly 20**;
-  with {e₁,e₂,e₃,(1,1,1)} exactly 14; tetrahedral steps exactly 7.
-  In 2D with ±e₁,±e₂ the maximum is exactly **3**.
-- **Random primitive substitutions cap out early**: best safe prefixes 27 / 24 /
-  39 / 46 (4-letter r2 / 4-letter r3 / 5-letter / 6-letter) over ~12.8M
-  candidates — while a *freely chosen* walk on the same 4 steps reaches **226**.
-  The obstruction is combinatorial repetitiveness, not geometry.
-- **Pattern B is universal and forced**: for any primitive substitution,
-  Perron–Frobenius alignment makes all long return-word displacements
-  asymptotically parallel (normalized determinants δ_m → 0 at rate governed by
-  |λ₂|/λ₁; verified numerically). Hence no primitive substitution fixed point
-  can maintain a uniformly full-rank return structure — that search class is
-  closed off.
-- **Imbricated (self-similar under an expanding integer matrix M) walks**:
-  the displacement dynamics is M itself, so equal-modulus spectra with an
-  irrational rotation evade the Perron collapse. With
-  M = diag(2, companion(λ²+λ+4)) (complex pair of modulus 2, cos θ = −1/4),
-  ~276 random menus already beat all 5.15M abelian 4-letter candidates
-  (30 vs 27). Structural fact discovered en route: **no letter can ever repeat
-  adjacently** in a valid imbricated word (anchors 0, D, 2D are collinear), so
-  the construction is forced into square-free words.
-
-## Files
-
-| File | Purpose |
+| Result | Status |
 |---|---|
-| `search193.py` | Original exact search: substitution fixed points, first collinear triple, return words, ranks |
-| `erdos193.py` | Staged/sharded/checkpointed searcher + scientific controls + verification |
-| `bnb193.py` | Exhaustive / budgeted DFS for the longest triple-free walk on a fixed step menu |
-| `beam193.py` | Randomized probes (beam + randomized-restart DFS) to test ceiling-vs-artifact |
-| `imbricate193.py` | Imbricated construction: tile fabrication (abelian solver + triple-free ordering), expansion matrices |
-| `imbricate_seam.py` | Seam-aware tile assignment: pools, clearance ranking, occurring-pair closure |
-| `results/*.json` | Shard checkpoints: top-100 candidates with substitutions, steps, disqualifiers, return profiles, SHA-256 word hashes |
-| `REPORT.md` | Consolidated findings, proofs-vs-evidence accounting, next steps |
+| **28,271-step walk, no 3 collinear** (124-move menu) | verified + SHA-256 certified, `amplified-193-28271.txt` |
+| Exact maxima for small menus: **20** (±e₁,±e₂,±e₃), 14, 7; **3** in 2D | proven by exhaustive search |
+| Universal availability: every one of 78,728 arithmetic states can steer in all 13 mod-3 directions | proven by exhaustion (1.22B transitions) |
+| Fatal birth-mass **flat ≈ 32% across levels** → construction scales | measured, levels 3–6 |
+| Symmetric Local-Lemma criterion closes at **H = 14** (corrected live-law constants) | certified constants; semantic repair of the chain in progress |
+| Five earlier proof strategies refuted with quantitative tombstones | documented in `REPORT.md` |
 
-## Reproduce
+## Verify our record walk yourself (30 seconds)
+
+No trust required — the verifier is standalone (~80 lines, stdlib only):
 
 ```bash
-python3 erdos193.py --controls            # scientific controls (must pass)
-python3 erdos193.py --seed 193000000 --trials 100000 --output results/demo.json
-python3 bnb193.py 2000000                 # exhaustive maxima for small menus
-python3 beam193.py 5 20                   # randomized ceiling probes
-python3 imbricate_seam.py 100             # seam-aware imbricated search
+python3 verify_walk.py amplified-193-28271.txt
+# VERIFIED: 28271 steps, 28272 vertices, no repeated vertex, no 3 collinear
+# sha256(steps): dec7e762386f1eac2eff6bccc3307a354ab79662f5770e55d88c074a57600f56
 ```
 
-Python 3.9+, stdlib only.
+Works on any `amplified-*.txt` walk file in the repo.
+
+## Reproduce things
+
+Everything is deterministic (fixed seeds). [PyPy](https://pypy.org) is ~10–50× faster
+than CPython here and strongly recommended for anything marked *(slow)*.
+
+```bash
+# sanity: the scientific controls must pass
+python3 erdos193.py --controls
+
+# rebuild the record walk from scratch (deterministic; hours under PyPy) (slow)
+pypy3 amplify_rich.py 193 20 25000 3
+
+# search random substitutions (the historical baseline the construction beat)
+python3 erdos193.py --seed 1 --trials 100000 --output /tmp/demo.json
+
+# exhaustive small-menu maxima (proves the "exactly 20" result)
+pypy3 bnb193.py 2000000
+
+# Stage-4 certificate computations (slow)
+pypy3 step1_connectors4.py        # 7.1M legal connector words + closure
+pypy3 np_hc_sidepass.py           # 1.22B transitions: availability + climb law
+pypy3 np_hc_gpass.py              # successor-class tables (1.2 GB, local)
+python3 step4_certify.py          # certified q̄ and LLL closure scan (needs numpy)
+```
+
+## What's in the repo
+
+| File | What it is |
+|---|---|
+| `verify_walk.py` | **Start here** — standalone third-party verifier for any walk file |
+| `amplified-*.txt` | Verified walk files (28,271 / 8,292 / …), plain step-index lists |
+| `amplify_rich.py`, `amplify193.py` | The construction: enlarge by M, stitch anchor gaps, verify exactly |
+| `search193.py`, `erdos193.py` | Exact-arithmetic core + the substitution-search baseline with controls |
+| `bnb193.py`, `beam193.py`, `max2d_flat.py` | Exhaustive & randomized searches (exact maxima, 2D bounds) |
+| `step1_connectors4.py`, `np_hc*.py`, `step4_certify*.py` | The certificate programme (Stage 4): word layer, state space, certified constants |
+| `analyze_*.py`, `measure_dependency.py`, `provenance193.py` | Measurements: κ₃ spectra, divergence stratification, dependency structure |
+| `design/` | Machine-generated design & hostile-review documents for the certificate |
+| `results/`, `collar_multiplicity4.json`, `wsw_sameword.pkl` | Data artifacts (large binaries are local-only, rebuildable) |
+| `viz/` | The website ([erdos-193.q5m.io](https://erdos-193.q5m.io)) |
+| `REPORT.md` | **The full research log** — every result, refutation and correction, in order |
+
+## State of the proof programme (honest version)
+
+The construction works and scales (flat fatal-mass is the load-bearing measurement).
+The certificate has certified constants and a closing criterion, **but is not a proof**:
+the remaining gaps are the semantic containment theorem (in progress), the
+coverage/completeness proof for birth events, the dependency bound as a theorem, and the
+finite-to-infinite compactness lift. Details and status in `REPORT.md`. Independent
+scrutiny is welcome — that's what the certificates are for.
+
+## Background
+
+- [Erdős Problem #193](https://www.erdosproblems.com/193) — problem statement and history
+- Gerver & Ramsey, *On certain sequences of lattice points* (1979)
+- Everything here is exact integer arithmetic — no floating point in any decision path.
+
+---
+Made in Canada 🇨🇦 by [ekalvi](https://github.com/ekalvi) · part of the [q5m](https://www.q5m.ai) family

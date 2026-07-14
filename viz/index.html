@@ -48,13 +48,30 @@
   footer{margin-top:48px;padding-top:20px;border-top:1px solid hsl(var(--border));
     font-size:13.5px;color:hsl(var(--muted-fg))}
   footer a{color:hsl(var(--muted-fg));text-decoration:underline;text-decoration-color:hsl(var(--border))}
+
+  .sitefoot{margin-top:48px;padding-top:18px;border-top:1px solid hsl(var(--border,214.3 31.8% 91.4%));
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;
+    font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;color:hsl(var(--muted-fg,215.4 16.3% 46.9%))}
+  .sitefoot a{color:inherit;text-decoration:none;display:inline-flex;align-items:center;gap:5px}
+  .sitefoot a:hover{color:hsl(var(--foreground,222.2 84% 4.9%))}
+  .sitefoot em{font-style:normal}
+  .sitefoot .right{display:inline-flex;gap:16px}
+  nav.site{display:flex;gap:18px;align-items:baseline;margin-left:auto;font-size:14px;font-weight:500}
+  nav.site a{color:hsl(var(--muted-fg,215.4 16.3% 46.9%));text-decoration:none}
+  nav.site a:hover,nav.site a.cur{color:hsl(var(--foreground,222.2 84% 4.9%))}
+  header.site{display:flex;align-items:baseline;gap:10px;margin-bottom:36px}
+
+  .figrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  @media(max-width:640px){.figrow{grid-template-columns:1fr}}
+  .fig{border:1px solid hsl(var(--border));border-radius:var(--radius);background:hsl(var(--card));padding:14px}
+  .fig svg{width:100%;height:auto;display:block}
+  .fig p{margin:8px 0 0;font-size:13px;color:hsl(var(--muted-fg))}
+  .brand a span{color:hsl(var(--muted-fg));font-weight:400}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <div class="brand">erdos-193<span>.q5m.io</span></div>
-  </header>
+  <header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/" class="cur">Home</a><a href="proof-steps.html">The proof</a><a href="amplification.html">Demo</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
   <h1>Can a walk on the 3D grid avoid every three-in-a-line, forever?</h1>
   <p class="lede">
@@ -69,6 +86,219 @@
     <div class="stat"><b>28,271</b><span>steps, verified — record walk, no 3 collinear</span></div>
     <div class="stat"><b>1.2&thinsp;B</b><span>exact transitions checked, zero exceptions</span></div>
     <div class="stat"><b>124</b><span>moves in the fixed menu, coords in ±2</span></div>
+  </div>
+
+  
+  <h2>The geometry</h2>
+  <div class="figrow">
+    <div class="fig"><svg viewBox="0 0 379 428" role="img" aria-label="isometric view of the 124-move menu">
+<line x1="189.3" y1="214.0" x2="296.9" y2="276.1" stroke="hsl(var(--muted-fg))" stroke-width="1.2"/>
+<text x="302.9" y="272.1" class="axis">x</text>
+<line x1="189.3" y1="214.0" x2="81.8" y2="276.1" stroke="hsl(var(--muted-fg))" stroke-width="1.2"/>
+<text x="87.8" y="272.1" class="axis">y</text>
+<line x1="189.3" y1="214.0" x2="189.3" y2="89.8" stroke="hsl(var(--muted-fg))" stroke-width="1.2"/>
+<text x="189.3" y="85.8" class="axis">z</text>
+<circle cx="189.3" cy="30.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="76.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="53.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="53.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="76.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="76.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="76.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="122.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="99.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="30.0" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="168.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="145.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="145.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="189.3" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="348.7" cy="122.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="30.0" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="214.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="191.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="168.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="69.8" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="191.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="189.3" cy="168.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="168.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="229.2" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="348.7" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="145.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="30.0" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="237.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="214.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="69.8" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="237.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="191.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="214.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="229.2" cy="191.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="189.3" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="348.7" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="168.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="30.0" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="260.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="69.8" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="260.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="237.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="260.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="229.2" cy="237.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="189.3" cy="214.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="348.7" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="191.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="30.0" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="283.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="109.7" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="283.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="189.3" cy="260.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="348.7" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="237.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="214.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="69.8" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="306.0" r="4.2" fill="hsl(var(--link))" opacity="0.95"/>
+<circle cx="149.5" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="308.9" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="283.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="260.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="109.7" cy="352.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="352.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="269.0" cy="352.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="329.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="306.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="149.5" cy="375.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="229.2" cy="375.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="352.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="398.0" r="3.2" fill="hsl(var(--link))" opacity="0.55"/>
+<circle cx="189.3" cy="214.0" r="5" fill="hsl(var(--foreground))"/>
+</svg>
+      <p><b>The menu.</b> All 124 moves — every nonzero integer vector with coordinates
+      in ±2, shown isometrically. Large dots: the 26 inner (±1) moves; small: the radius-2 shell.
+      Every step of every walk is one of these.</p>
+    </div>
+    <div class="fig"><svg viewBox="0 0 383 388" role="img" aria-label="real 62-step walk: skeleton and stitches">
+<polyline points="366.7,241.0 296.6,263.5 343.3,299.5 296.6,362.5 343.3,326.5 320.0,295.0 249.8,218.5 226.4,187.0 179.7,106.0 179.7,169.0 156.3,191.5 203.1,128.5 203.1,92.5 179.7,88.0 109.5,65.5 179.7,16.0 249.8,65.5 179.7,97.0 132.9,43.0 39.4,79.0 16.0,155.5" fill="none" stroke="hsl(var(--muted-fg))" stroke-width="1.3" stroke-dasharray="6 5" opacity="0.7"/>
+<polyline points="366.7,241.0 358.9,272.5 327.8,281.5 296.6,263.5 312.2,281.5 343.3,299.5 320.0,304.0 304.4,331.0 296.6,362.5 312.2,371.5 343.3,353.5 343.3,326.5 335.6,313.0 312.2,299.5 320.0,295.0 320.0,295.0 296.6,281.5 296.6,254.5 281.0,236.5 249.8,218.5 226.4,223.0 226.4,223.0 226.4,187.0 218.6,155.5 187.5,137.5 179.7,106.0 179.7,106.0 179.7,133.0 179.7,169.0 164.1,187.0 164.1,187.0 156.3,191.5 156.3,191.5 164.1,178.0 171.9,146.5 203.1,128.5 203.1,110.5 203.1,110.5 203.1,92.5 187.5,92.5 179.7,88.0 179.7,88.0 171.9,83.5 140.7,83.5 109.5,65.5 132.9,43.0 148.5,25.0 179.7,16.0 195.3,34.0 218.6,56.5 249.8,65.5 234.2,65.5 210.9,79.0 179.7,97.0 148.5,106.0 148.5,70.0 132.9,43.0 101.7,52.0 70.6,70.0 39.4,79.0 39.4,97.0 23.8,124.0 16.0,155.5" fill="none" stroke="hsl(var(--border))" stroke-width="1.6"/>
+<circle cx="366.7" cy="241.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="358.9" cy="272.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="327.8" cy="281.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="296.6" cy="263.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="312.2" cy="281.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="343.3" cy="299.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="320.0" cy="304.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="304.4" cy="331.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="296.6" cy="362.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="312.2" cy="371.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="343.3" cy="353.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="343.3" cy="326.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="335.6" cy="313.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="312.2" cy="299.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="320.0" cy="295.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="320.0" cy="295.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="296.6" cy="281.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="296.6" cy="254.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="281.0" cy="236.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="249.8" cy="218.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="226.4" cy="223.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="226.4" cy="223.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="226.4" cy="187.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="218.6" cy="155.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="187.5" cy="137.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="106.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="179.7" cy="106.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="133.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="169.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="164.1" cy="187.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="164.1" cy="187.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="156.3" cy="191.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="156.3" cy="191.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="164.1" cy="178.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="171.9" cy="146.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="203.1" cy="128.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="203.1" cy="110.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="203.1" cy="110.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="203.1" cy="92.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="187.5" cy="92.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="88.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="88.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="171.9" cy="83.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="140.7" cy="83.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="109.5" cy="65.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="132.9" cy="43.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="148.5" cy="25.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="16.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="195.3" cy="34.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="218.6" cy="56.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="249.8" cy="65.5" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="234.2" cy="65.5" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="210.9" cy="79.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="179.7" cy="97.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="148.5" cy="106.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="148.5" cy="70.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="132.9" cy="43.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="101.7" cy="52.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="70.6" cy="70.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="39.4" cy="79.0" r="4.4" fill="hsl(var(--link))"/>
+<circle cx="39.4" cy="97.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="23.8" cy="124.0" r="3" fill="hsl(142 71% 40%)"/>
+<circle cx="16.0" cy="155.5" r="4.4" fill="hsl(var(--link))"/>
+</svg>
+      <p><b>One real generation.</b> The record run's actual level-1 walk (62 steps):
+      21 enlarged anchors (blue) joined by the dashed skeleton, reconnected through
+      42 newborn stitch points (green). Repeat this 5 more times → 28,271 steps.</p>
+    </div>
   </div>
 
   <h2>Explore</h2>
@@ -95,11 +325,14 @@
     </a>
   </div>
 
-  <footer>
-    A project by <a href="https://github.com/ekalvi">ekalvi</a> · built with exact integer
-    arithmetic on a homelab Mac · construction idea traceable to a Reddit post about
-    loading a dishwasher · part of the <a href="https://q5m.ai">q5m.ai</a> family
-  </footer>
+  <p style="font-size:13px;color:hsl(var(--muted-fg));margin-top:40px">Built with exact integer arithmetic on a homelab Mac. Construction idea traceable to a Reddit post about loading a dishwasher.</p>
+<footer class="sitefoot">
+  <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
+  <span class="right">
+    <a href="https://www.q5m.ai"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg><em>q5m</em></a>
+    <a href="https://github.com/ekalvi/erdos-193"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><em>GitHub</em></a>
+  </span>
+</footer>
 </div>
 </body>
 </html>
