@@ -184,6 +184,16 @@ counting argument; the multi-level LLL may be unnecessary. Remaining to verify:
 worst-case conditional cross mass (running), triple-newborn events, and fatal-mass
 invariance across all levels (the self-similarity argument).
 
+## The complete per-stitch ledger (2026-07-14)
+
+All event families measured on the certified walk:
+own-line fatal mass 0.317 + realized cross damage ~0.10 + Markov future-tax 0.333
+(inflict <= 3x average on later segments; words violating it have mass <= 1/3)
++ triple-newborn <= 0.028 (worst of 6 segments; median ~1e-3) = ~0.78 < 1.
+=> At every stitch decision a safe word EXISTS by counting alone (~22% headroom).
+Per-level routing existence + inheritance induction is the full proof skeleton;
+remaining mathematics: scale-invariance of the constants, and hostile review.
+
 ## Next steps suggested by the data
 1. Finish the deep DFS bounds (running); try iterated-greedy/beam search to push the
    4-step lower bound well past 206 and look for self-similar structure in the
