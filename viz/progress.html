@@ -90,7 +90,7 @@ for (const [day, items] of EVENTS) {
     let chips = '';
     if (files && files.length) {
       chips = '<span class="files">' + files.map(f =>
-        `<a href="https://github.com/ekalvi/erdos-193/blob/main/${f}">${f.split('/').pop()}</a>`
+        `<a href="https://github.com/ekalvi/erdos-193/${f.includes('.') ? 'blob' : 'tree'}/main/${f}">${f.split('/').pop()}</a>`
       ).join('') + '</span>';
     }
     li.innerHTML = `<span class="tag">${emoji}</span><b>${title}</b><p>${body}</p>${chips}`;
