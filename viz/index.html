@@ -302,6 +302,48 @@
     </div>
   </div>
 
+
+  <h2>Origin story</h2>
+  <div class="fig">
+    <svg viewBox="0 0 900 210" role="img" aria-label="nested bowls inspiring nested walks">
+      <!-- bowls in a dishwasher rack: same shape, offset, tilted -->
+      <g stroke="hsl(var(--muted-fg))" fill="none" stroke-width="2.4" stroke-linecap="round">
+        <path d="M 60 150 A 52 52 0 0 0 156 150" transform="rotate(-14 108 130)"/>
+        <path d="M 100 150 A 52 52 0 0 0 196 150" transform="rotate(-14 148 130)"/>
+        <path d="M 140 150 A 52 52 0 0 0 236 150" transform="rotate(-14 188 130)"/>
+      </g>
+      <text x="80" y="196" class="mut">bowls: same shape, offset, tilted —</text>
+      <text x="80" y="212" class="mut" font-size="12">overlapping without touching</text>
+      <text x="330" y="115" class="mut" font-size="26">&#8594;</text>
+      <!-- the same idea as mathematics: one walk shape, enlarged and twisted, nested -->
+      <g fill="none" stroke-linejoin="round">
+        <polyline points="500,120 515,105 512,88 530,80 545,92" stroke="hsl(var(--link))" stroke-width="2.6" opacity="1"/>
+        <polyline points="500,120 515,105 512,88 530,80 545,92" stroke="hsl(var(--link))" stroke-width="2.2" opacity=".55"
+          transform="translate(500 120) rotate(-14) scale(2.05) translate(-500 -120)"/>
+        <polyline points="500,120 515,105 512,88 530,80 545,92" stroke="hsl(var(--link))" stroke-width="1.8" opacity=".28"
+          transform="translate(500 120) rotate(-28) scale(4.2) translate(-500 -120)"/>
+      </g>
+      <text x="560" y="196" class="mut">the walk: same shape, enlarged &#215;, twisted &#8212;</text>
+      <text x="560" y="212" class="mut" font-size="12">nested at every scale, never aligned (schematic)</text>
+    </svg>
+    <p><b>This project got unstuck because of a dishwasher.</b> Every early attempt built
+    self-copying patterns that stacked like plates &mdash; each scale aligned with the last, and
+    alignment is exactly what this problem punishes (we eventually <em>proved</em> all such
+    stacked constructions must fail). Then <b>Amanie</b> shared a Reddit post about loading
+    bowls in a dishwasher, and Erik noticed the bowls do something plates don&rsquo;t: they nest
+    <em>at a tilt</em> &mdash; same shape, offset and rotated, overlapping without ever touching.
+    Translated into mathematics, that became the whole construction: enlarge the walk by a
+    matrix that also <em>twists</em> it by an angle that never repeats, so no two scales can ever
+    line up. That one idea &mdash; imbrication &mdash; is the backbone of the record walks and of the
+    entire proof strategy on this site.</p>
+    <p style="margin-top:8px">The project is built and run by
+    <a href="https://github.com/ekalvi">Erik Kalviainen</a> (<code>ekalvi</code>), a software
+    engineer in Canada, on a always-on Mac in his homelab &mdash; with the heavy mathematics
+    driven by AI agents under his direction, every result verified by exact integer
+    arithmetic, and idea credit where it&rsquo;s due: to Amanie, and to whoever loaded that
+    dishwasher.</p>
+  </div>
+
   <h2>Explore</h2>
   <div class="cards">
     <a class="card" href="proof-steps.html">
@@ -330,7 +372,7 @@
     </a>
   </div>
 
-  <p style="font-size:13px;color:hsl(var(--muted-fg));margin-top:40px">Built with exact integer arithmetic on a homelab Mac. Construction idea traceable to a Reddit post about loading a dishwasher.</p>
+  <p style="font-size:13px;color:hsl(var(--muted-fg));margin-top:40px">Every number on this site is exhaustively computed and independently verifiable.</p>
 <footer class="sitefoot">
   <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
   <span class="right">
