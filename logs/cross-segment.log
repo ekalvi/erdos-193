@@ -1,0 +1,11 @@
+  pair 0: events~0, joint fatal mass~0.00e+00
+  pair 10: events~7, joint fatal mass~7.73e-08
+  pair 20: events~0, joint fatal mass~0.00e+00
+  pair 30: events~7, joint fatal mass~9.80e-07
+  pair 40: events~0, joint fatal mass~0.00e+00
+  pair 50: events~23478, joint fatal mass~8.47e-03
+
+cross-segment events per segment PAIR (60 sampled):
+  events: median 0, max 23478
+  joint fatal mass: median 0.00e+00, max 8.47e-03
+  aggregate per segment (x 2458 partners): ~0.000 median
