@@ -21,6 +21,12 @@
   #status{position:absolute;right:12px;top:12px;font-size:13px;color:hsl(var(--muted-fg));z-index:2}
   .legendrow{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:hsl(var(--muted-fg))}
   .legendrow .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  #lvls button{font:inherit;font-size:13px;width:30px;padding:6px 0;border-radius:8px;
+    border:1px solid hsl(var(--border));background:hsl(var(--background));
+    color:hsl(var(--muted-fg));cursor:pointer}
+  #lvls button.cur{background:hsl(var(--link));border-color:hsl(var(--link));color:#fff}
+  #stage3d:fullscreen{height:100vh;border:none;border-radius:0}
+  #stage3d:fullscreen canvas{height:100vh}
 </style>
 </head>
 <body>
@@ -39,9 +45,11 @@
   <div id="stage3d">
     <div class="hud">
       <button id="play" class="primary">▶ play</button>
-      <button id="reset">↺ level 0</button>
+      <button id="step">⏭ step</button>
+      <span id="lvls"></span>
       <span class="lvl" id="lvl">level 0</span>
       <button id="spin">🌀 orbit</button>
+      <button id="fs" title="fullscreen">⛶</button>
     </div>
     <div id="status"></div>
   </div>
@@ -185,6 +193,7 @@ function show(k){
   fit(pts);
   document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points`;
   document.getElementById('play').disabled = false;
+  document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===k));
 }
 
 function tween(ms, fn){
@@ -264,6 +273,7 @@ async function playRound(){
   layers.line = mkLine(npts, walkColor, false);
   scene.add(layers.pts, layers.line);
   document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points`;
+  document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===level));
   await fitSmooth(npts, 1000);
   status.textContent = '';
   animating = false;
@@ -272,7 +282,9 @@ async function playRound(){
 let playing = false;
 async function playAll(){
   const btn = document.getElementById('play');
-  if (playing){ playing = false; btn.textContent = '▶ play'; return; }
+  if (playing){ playing = false; btn.textContent = '▶ play';
+    if (animating) document.getElementById('status').textContent = 'pausing after this round…';
+    return; }
   playing = true; btn.textContent = '⏸ pause'; btn.disabled = false;
   while (playing && level < LV.length-1){
     await playRound();
@@ -281,6 +293,20 @@ async function playAll(){
   playing = false; btn.textContent = '▶ play';
 }
 document.getElementById('play').onclick = playAll;
+document.getElementById('step').onclick = () => { if (!animating && !playing) playRound(); };
+document.getElementById('fs').onclick = () => {
+  if (document.fullscreenElement) document.exitFullscreen();
+  else stage.requestFullscreen();
+};
+document.addEventListener('fullscreenchange', () => setTimeout(resize, 60));
+{ const holder = document.getElementById('lvls');
+  for (let k = 0; k < LV.length; k++){
+    const b = document.createElement('button');
+    b.textContent = k;
+    b.onclick = () => { if (!animating && !playing) show(k); };
+    holder.appendChild(b);
+  }
+}
 document.getElementById('reset').onclick = () => show(0);
 document.getElementById('spin').onclick = () => spin = !spin;
 
