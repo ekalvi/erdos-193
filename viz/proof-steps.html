@@ -102,7 +102,7 @@ gaps get 2–4 legal hops. Walk length ×3.4 per round. Verified runs: 20 → 62
   <g fill="var(--anchor)"><circle cx="80" cy="170" r="6"/><circle cx="290" cy="170" r="6"/>
   <circle cx="185" cy="120" r="6"/></g>
   <line x1="185" y1="127" x2="185" y2="166" stroke="var(--ok)" stroke-width="2"/>
-  <text x="195" y="152" fill="var(--ok)">h = miss margin</text>
+  <text x="195" y="152" style="fill:var(--ok)">h = miss margin</text>
   <text x="60" y="205" class="mut">a trio that missed at birth</text>
 
   <text x="380" y="120" class="mut" font-size="22">→ enlarge ×3 →</text>
@@ -111,7 +111,7 @@ gaps get 2–4 legal hops. Walk length ×3.4 per round. Verified runs: 20 → 62
   <g fill="var(--anchor)"><circle cx="560" cy="200" r="6"/><circle cx="850" cy="200" r="6"/>
   <circle cx="705" cy="50" r="6"/></g>
   <line x1="705" y1="57" x2="705" y2="196" stroke="var(--ok)" stroke-width="2"/>
-  <text x="715" y="130" fill="var(--ok)">3h — margin GROWS</text>
+  <text x="715" y="130" style="fill:var(--ok)">3h — margin GROWS</text>
   <text x="540" y="225" class="mut">the same trio, one generation later — safer, automatically, forever</text>
 </svg>
 <figcaption>Enlargement is a reversible linear map: lines stay lines AND non-lines stay
@@ -141,7 +141,7 @@ deterministic and safe.</figcaption>
     <text x="700" y="235" class="mut">0.18%, thinning ×8.5 per digit</text>
 
     <rect x="40" y="268" width="230" height="26" rx="8" fill="var(--danger)"/>
-    <text x="55" y="286" fill="#fff">EXACT = all digits = collinear</text>
+    <text x="55" y="286" style="fill:#fff">EXACT = all digits = collinear</text>
     <text x="700" y="286" class="mut">never observed (280B pairs)</text>
   </g>
   <g stroke-width="2">
@@ -150,8 +150,8 @@ deterministic and safe.</figcaption>
     <path d="M 300 170 v 40" stroke="var(--danger)" marker-end="url(#ad)"/>
     <path d="M 340 250 v -40" stroke="var(--ok)" marker-end="url(#ao)"/>
   </g>
-  <text x="365" y="150" fill="var(--danger)" class="sm">advance: ≤ 18% per round (worst case, proven over ALL states)</text>
-  <text x="365" y="230" fill="var(--ok)" class="sm">rescue: ≥ 82% per round — the stitches re-scramble digits</text>
+  <text x="365" y="150" style="fill:var(--danger)" class="sm">advance: ≤ 18% per round (worst case, proven over ALL states)</text>
+  <text x="365" y="230" style="fill:var(--ok)" class="sm">rescue: ≥ 82% per round — the stitches re-scramble digits</text>
   <defs>
     <marker id="ad" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto">
       <path d="M1,1 L4,7 L7,1" fill="none" stroke="var(--danger)" stroke-width="1.5"/></marker>
@@ -177,8 +177,8 @@ triple.</figcaption>
   </g>
   <text x="40" y="125" fill="var(--anchor)">coarse digits: locked before birth (inherited from enlargement)</text>
   <text x="390" y="148" fill="var(--stitch)">fine digits: the only thing a stitch offset can write</text>
-  <text x="40" y="178" fill="var(--danger)">to kill, ALL digits must match a line through two old footprints —</text>
-  <text x="40" y="198" fill="var(--danger)">impossible unless the coarse digits already matched.</text>
+  <text x="40" y="178" style="fill:var(--danger)">to kill, ALL digits must match a line through two old footprints —</text>
+  <text x="40" y="198" style="fill:var(--danger)">impossible unless the coarse digits already matched.</text>
 </svg>
 <figcaption>A new point = enlarged parent + small patch offset. The offset edits only the
 finest digits, so a birth can only complete an alignment that was already a deep near-miss —
