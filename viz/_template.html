@@ -9,13 +9,13 @@
 <style>
   .viz-root {
     --surface-1:hsl(0 0% 100%);
-    --surface-2: #f2f1ef;
-    --text-primary: #0b0b0b;
-    --text-secondary: #52514e;
+    --surface-2:hsl(210 40% 96.1%);
+    --text-primary:hsl(222.2 84% 4.9%);
+    --text-secondary:hsl(215.4 16.3% 46.9%);
     --text-muted: #8a8880;
-    --grid: #e7e5e1;
-    --walk: #b9b6ae;
-    --ghost: #cfccc5;
+    --grid:hsl(214.3 31.8% 91.4%); --border:214.3 31.8% 91.4%; --muted-fg:215.4 16.3% 46.9%; --foreground:222.2 84% 4.9%;
+    --walk:hsl(215 16% 72%);
+    --ghost:hsl(214 25% 84%);
     --anchor: #2a78d6;   /* series-1: inherited anchors */
     --stitch: #1baf7a;   /* series-2: new stitch points */
     --danger: #b3261e;
@@ -23,14 +23,14 @@
   }
   @media (prefers-color-scheme: dark) {
     .viz-root {
-      --surface-1: #1a1a19;
-      --surface-2: #242422;
-      --text-primary: #ffffff;
-      --text-secondary: #c3c2b7;
+      --surface-1:hsl(222.2 84% 4.9%);
+      --surface-2:hsl(222.2 47% 9.5%);
+      --text-primary:hsl(210 40% 98%);
+      --text-secondary:hsl(215 20.2% 65.1%);
       --text-muted: #8a887e;
-      --grid: #2e2d2b;
-      --walk: #55534d;
-      --ghost: #3d3c38;
+      --grid:hsl(217.2 32.6% 17.5%); --border:217.2 32.6% 17.5%; --muted-fg:215 20.2% 65.1%; --foreground:210 40% 98%;
+      --walk:hsl(217 20% 40%);
+      --ghost:hsl(218 22% 26%);
       --anchor: #3987e5;
       --stitch: #199e70;
       --danger: #e66767;
@@ -157,8 +157,8 @@
     Every coordinate here is real output of the search code (seed 11), and every level was
     re-verified exactly — this page also re-runs the full integer check in your browser when
     it loads (see badge in the top-right of the diagram). The same construction in 3D, with
-    124 menu vectors and a modulus-3 rotation matrix, chained 5 levels to a verified
-    8,292-step walk. Code &amp; data: <code>github.com/ekalvi/erdos-193</code>.
+    124 menu vectors and a modulus-3 rotation matrix, chained 6 levels to a verified
+    28,271-step walk. Code &amp; data: <code>github.com/ekalvi/erdos-193</code>.
   </p>
 <footer class="sitefoot">
   <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
@@ -182,7 +182,7 @@ let picked = [];
 
 const stories = [
   "Level 0: a tiny hand-grown walk. Small, but it already obeys the rule — no three of its points are collinear. This is the seed.",
-  "Level 1: the seed was enlarged by M (blue anchors — their no-three-in-line property is inherited automatically, because linear maps send lines to lines), and the oversized gaps between anchors were stitched with a few legal hops each (green). Only the green points needed checking. In 2D the story honestly ends near here — the plane is provably too cramped for this to continue forever (Gerver–Ramsey), and our level-2 attempts jam. In 3D, the identical machine ran 12 levels without a single failure.",
+  "Level 1: the seed was enlarged by M (blue anchors — their no-three-in-line property is inherited automatically, because linear maps send lines to lines), and the oversized gaps between anchors were stitched with a few legal hops each (green). Only the green points needed checking. In 2D the story honestly ends near here — the plane is provably too cramped for this to continue forever (Gerver–Ramsey), and our level-2 attempts jam. In 3D, the identical machine has run 13 levels without a single failure.",
   "Level 2: same move applied to level 1 — the whole level-1 shape reappears, rotated and enlarged: the imbricated pattern. Growth is exponential: each level multiplies the walk length while the checking burden stays proportional.",
   "Level 3: three rounds in. The walk is dozens of times the seed's length and still perfectly triple-free. In 3D this loop ran 12 rounds without ever failing — the open question is whether it can be proven to run forever."
 ];
