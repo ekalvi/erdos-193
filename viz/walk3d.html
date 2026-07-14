@@ -67,11 +67,20 @@
   </footer>
 </div>
 
+<script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
 <script type="importmap">
 {"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
 "three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
 </script>
 <script type="module">
+window.addEventListener('error', e => {
+  const st = document.getElementById('status');
+  if (st) st.textContent = '⚠ ' + (e.message || 'failed to load');
+});
+window.addEventListener('unhandledrejection', e => {
+  const st = document.getElementById('status');
+  if (st) st.textContent = '⚠ ' + (e.reason && e.reason.message || 'failed to load');
+});
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
