@@ -34,11 +34,11 @@
   <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
   generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
   inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. Levels 0–4 of the real 28,271-step construction (level 4 = 2,458 points).</p>
+  scroll to zoom. Levels 0–5 of the real construction (level 5 = 8,293 points).</p>
 
   <div id="stage3d">
     <div class="hud">
-      <button id="play" class="primary">▶ play round</button>
+      <button id="play" class="primary">▶ play</button>
       <button id="reset">↺ level 0</button>
       <span class="lvl" id="lvl">level 0</span>
       <button id="spin">🌀 orbit</button>
@@ -167,7 +167,7 @@ function show(k){
   scene.add(layers.pts, layers.line);
   fit(pts);
   document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points`;
-  document.getElementById('play').disabled = (k >= LV.length-1);
+  document.getElementById('play').disabled = false;
 }
 
 function tween(ms, fn){
@@ -184,7 +184,6 @@ function tween(ms, fn){
 async function playRound(){
   if (animating || level >= LV.length-1) return;
   animating = true;
-  document.getElementById('play').disabled = true;
   const status = document.getElementById('status');
   const M = DATA.M;
   const A = LV[level].points;
@@ -245,7 +244,18 @@ async function playRound(){
   animating = false;
 }
 
-document.getElementById('play').onclick = playRound;
+let playing = false;
+async function playAll(){
+  const btn = document.getElementById('play');
+  if (playing){ playing = false; btn.textContent = '▶ play'; return; }
+  playing = true; btn.textContent = '⏸ pause'; btn.disabled = false;
+  while (playing && level < LV.length-1){
+    await playRound();
+    if (level < LV.length-1) await new Promise(r => setTimeout(r, 1400));
+  }
+  playing = false; btn.textContent = '▶ play';
+}
+document.getElementById('play').onclick = playAll;
 document.getElementById('reset').onclick = () => show(0);
 document.getElementById('spin').onclick = () => spin = !spin;
 
