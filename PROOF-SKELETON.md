@@ -30,6 +30,30 @@ construction only: length-5 connector layer on fragile steps (|D₂₋₄| < ~20
 fragile-first (ascending |D*|) stitch order, per-(donor,receiver) damage caps
 c_{i,j} = min(3·ē(shell), c_max) with receiver budget β ≈ 0.25. Claim: pointwise
 word-union ledger ≤ 1−δ (δ ≥ 0.15) at every stitch of THIS construction.
+
+**L3' [REFUTED AS STATED — 2026-07-14 afternoon panel; restated as L3''].**
+Three-attacker panel + independent replication (design/attack-repaired-invariant.json):
+(i) CONFIRMED hard jam: a legal, triple-free, 18-step crafted base (density 0.132,
+saturated in "band" steps) jams LEVEL 1 of the exact repaired constructor at the
+non-fragile band step (2,1,-1): 0/15,920 surviving words, exhaustively certified to
+length 4; length-5 escapes exist. Structural hole: 38 band steps with |D₂₋₄| ∈
+[2570, 16000] got no length-5 layer, and the gate's own L5 minima all sit on this
+band. (ii) The gate's L5 ledger itself has fragile segments at frac 0.085 < δ.
+(iii) Static hitting-set: 26 adversarial obstacle points (4 hub points → 82.5%)
+kill the ENTIRE 47,467-word space of the worst fragile step — the layer is thin
+armor against concentration; but the deterministic benign orbit never concentrates
+(all d24=46 segments kept ≥ 37.5% / ≥ 17,800 words at L5), and the 4 hub points are
+unreachable-by-construction as far as tested (verifier: OVERSTATED on reachability).
+**L3'' (restated — orbit-scoped, as the existential theorem permits):** quantify
+over the SEED-193 CONSTRUCTION ORBIT only. Hypotheses carried by the induction:
+(a) word spaces = D₂₋₄ ∪ D₅ for ALL steps with |D₂₋₄| < 16,000 (band + fragile;
+dstar5_band.pkl in build); (b) an anti-concentration invariant: at each stitch, the
+placed set meets the segment's chord-tube hub structure in ≤ k points, k small
+enough that survivor mass ≥ δ_abs (absolute floor, not uniform fraction — L5/L6
+measured floors: 243 / TBD words). The invariant is to be MEASURED as the
+"clearance profile" on the gate's L5–L7 states, then proved propagated by the
+L4' converged local law. Adversarial bases outside the orbit are irrelevant to
+the theorem: we need ONE infinite chain, and the orbit is ours to choose.
 Original (dead) statement follows for the record:
 **L3-original (Per-level existence) [FALSE].**
 Claim: given any walk the construction can reach, every segment admits a stitch

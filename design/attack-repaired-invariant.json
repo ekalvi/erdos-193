@@ -1,0 +1,168 @@
+{
+  "summary": "Adversarially attack the repaired (fragile-first + length-5) construction: find a reachable jamming state or certify the attack fails",
+  "agentCount": 5,
+  "logs": [],
+  "result": {
+    "attacks": [
+      {
+        "attack": "Adversarial base-walk (seed) search against the REPAIRED constructor, mimicking gate_l7.construct exactly (fragile-first ascending-|D24| stitch order, shortest-first scan of the length-sorted full word space incl. dstar5 length-5 layer for the 18 fragile steps, fast_legal legality). 43 base walks tried in two waves at levels 1-3: wave 1 (26 seeds) = find_base randoms (len 6-16, incl. 777/193) + compact fragile-hugging crafted bases; wave 2 (17 seeds) = bases targeted at the structural hole found in wave 1: the 38 NON-fragile menu steps with |D_2-4| in [2570,16000] get no length-5 layer and stitch mid/late, so compact band-saturated bases grind them down. Winner: crafted_band(Random(72),18) — 18 band steps, 19 points in a 4x6x6 box (density 0.132/unit^3), fully legal and triple-free (first_disqualifier-verified), reachable by find_base itself under adversarial rng shuffles (same legality predicate, one legal step per position).",
+        "jam_found": true,
+        "near_jam": true,
+        "min_availability": 0,
+        "evidence": "Scripts: /Users/erik/homelab/math193/design/attack1_seed.py (wave 1), design/attack1_wave2.py (wave 2), design/attack1_certify.py (certification). Results: design/attack1-results.json, design/attack1-wave2-results.json, design/attack1-certify.json; logs/attack1-{seed,wave2,certify}.log. Repro: base = crafted_band(Random(72),18) = [64,77,22,107,8,64,107,46,28,115,1,83,16,95,77,19,98,40]; deterministic replay of the exact repaired rules jams LEVEL 1 at segment i=9 (order position 17/18), step 115=(2,1,-1), d24=dstar=15920, anchors A=(-3,0,-3)->B=(3,3,1), 56 points placed: 0/15920 surviving words, verified by BOTH fast_legal AND the reference gate_run.word_legal/amplify193.legal_against exhaustive scans, with every earlier constructor choice cross-checked against the reference. Exhaustive ID-DFS (2636 nodes) certifies NO legal stitch of ANY length <= 4 exists; shortest escape is length 5 (found by gate's dfs_fallback under both its rng conventions, e.g. [110,120,123,63,59]). Near-jam: crafted_band(Random(71),18) bottoms at exactly 2/15920 survivors (reference-verified, L1 seg 15, same step (2,1,-1)); band43 6 words, band72 pre-jam 4 words. Budgets respected: single process, ~2.7M word-legality checks total across waves (explicit node counters), attack loops 45s+74s+certify ~80s; total CPU ~8 min incl. three 62-72s domain loads.",
+        "quantified_result": "43 seeds, levels 1-3. Random find_base seeds (incl. 777): min survivor fraction 0.035-0.14, min availability 317-891 words — the repaired system is robust to random seeds. Compact fragile-hugging bases: min frac 0.01-0.075, min avail 131-378 words. Band-targeted bases: 5 of 9 driven to frac 0.000 with exact availabilities 10, 6, 4, 2 words, and one HARD JAM: 0/15920 words in the full L3' word space at a level-1 stitch of the exact repaired constructor (survivor fraction 0.0000, word-union ledger = 1.0 >> 1-delta = 0.85). No stitch word of any length <= 4 exists at the jam state (exhaustive, 2636 nodes); the constructor survives only via its out-of-lemma dfs_fallback emitting a length-5 word for a NON-fragile step — the identical escape that refuted L3-original on the certified walk. For calibration, the gate's own honest L5 run already dips to frac 0.045 / 243 words with 109 segments below delta.",
+        "implication_for_L3prime": "L3' as stated ('pointwise word-union ledger <= 1-delta, delta >= 0.15, at every stitch of the repaired construction') is FALSE for the construction as implemented in gate_run/gate_l7: a reachable state (legal triple-free base, one level of the exact fragile-first+shortest-first rules) has ledger 1.0 — zero surviving words. The repair protected the wrong set: the length-5 layer covers only the 18 fragile steps (|D24|<2000), but the 38-step band |D24| in [2570,16000] has small spaces, no length-5 escape, and stitches mid/late in fragile-first order, so compact band-rich neighborhoods starve it (the gate's own L5 minima all live on this band, not on fragile steps). Also note gate_run/gate_l7 implement only R1+R4 of the repair; the per-(donor,receiver) caps/beta invariant (R3) is not in the code, so 'the invariant-enforcing construction' currently enforces no density bound that would exclude these bases. Fixes L3' needs: (a) raise FRAGILE_CUT to >= 16000 (extend the length-5 layer to the band; at the jam state length-5 words DO exist — both dfs_fallback runs found them instantly), and/or (b) add an explicit base/density hypothesis to the reachable-state quantifier (the jamming base has density 0.132 vs ~0.0022 for random bases — same crowding mechanism as probe777, now expressed purely through base choice), and re-run the gate. Until then the L5-L7 gate result certifies only the seed-193 orbit, not the lemma.",
+        "verify": {
+          "replicated": true,
+          "verdict": "CONFIRMED",
+          "corrected_numbers": "Hard jam replicated exactly and independently via the REFERENCE legality path (gate_run.word_legal -> amplify193.legal_against; attacker used fast_legal): base crafted_band(Random(72),18) = [64,77,22,107,8,64,107,46,28,115,1,83,16,95,77,19,98,40], triple-free and stepwise-legal (within find_base's support under adversarial shuffles); deterministic replay of the exact repaired constructor (ascending (d24,i) order, shortest-first full ordered scan) jams at LEVEL 1, seg i=9, step 115=(2,1,-1), d24=dstar=15920, A=(-3,0,-3), B=(3,3,1), 56 points placed, 0/15920 survivors (exhaustive). No stitch of length <=4 exists (independent ID-DFS, depth 2/3/4 exhausted at 1/25/293 nodes); length-5 escape exists (dfs_fallback finds [110,120,123,63,59], identical to claim). Step 115 domain verified length<=4 only (non-fragile, no length-5 layer), so the 0-count covers the constructor's complete word space. Near-jam band71 = exactly 2/15920 survivors at seg 15, step 115 — replicated. Wave files confirm 43 seeds, availability ladder 10/6/4/2 + 1 jam on band seeds; gate L5 calibration (min_frac 0.045, 243 words, 109 below delta) confirmed. Corrections: (1) jam is at order position 16/18, not 17/18 (bookkeeping slip; all substantive numbers match); (2) random find_base range should be min_frac 0.01-0.14 / min_avail 159-891, not 0.035-0.14 / 317-891 — their own fb6-len12 hit 0.01/159.2, so \"robust to random seeds\" is mildly overstated (no random seed jammed, though).",
+          "notes": "Replication script: /Users/erik/homelab/math193/design/replicate_attack1.py (single process, ~215k word-legality checks, ~2 min wall incl. 55s domain load; well under budget). Reachability assessment: the constructor is fully deterministic given base+level (fixed length-sorted domain order, fixed (d24,i) stitch order, first-legal choice), so the only freedom exploited is base-walk choice, which the ground rules explicitly grant and which lies inside find_base's support (find_base takes the first legal step of an rng-shuffled menu — any stepwise-legal walk is reachable under adversarial rng). Verified gate_run.py/gate_l7.py contain no R3 per-(donor,receiver) cap/beta enforcement, so the refutation is correctly scoped to \"L3' for the construction as implemented\"; whether a genuinely R3-enforcing constructor would exclude this base is untested (the attacker flags this too). One nuance: in a real gate_run.run_level the dfs_fallback rng would be pre-advanced by the ledger sample draw, so the exact escape word may differ from Random(\"gate-L1-s9\") fresh — existence of a length-5 escape is nonetheless certain (ID-DFS found one at 2636 nodes in their run; dfs_fallback instant in mine). Structural diagnosis verified: 18 fragile steps get a length-5 layer; the 38-step band d24 in [2570,15920] does not; the jam and the near-jams all sit on band step (2,1,-1), and the gate's own L5 minima live on the band — the proposed fixes (raise FRAGILE_CUT and/or add a base-density hypothesis to the reachable-state quantifier) follow directly."
+        }
+      },
+      {
+        "attack": "Damage concentration via the constructor's real tie-break freedom: gate_run.py picks the FIRST legal word in the length-sorted domain, but order within an equal-length class is arbitrary pickle order — so at every fragile segment stitched before a chosen target (fragile-first order makes the earlier fragile segments the only possible conspirators), the adversary enumerated the FULL minimal-legal-length class (every word the constructor could legally have picked first) and committed the one killing the most of the target's word space D* (exact 2-4 layer + 400-word d5 tracker, incremental direction-set legality). Levels 2 and 3 built by the repaired constructor itself from the certified seed-193 20-step base (viz/walk3d-data.json level 0); targets = last-fragile-in-order (d24=1732, max conspirators: 22 at L2, 73 at L3), last 46-corner, and the benign-weakest fragile segment; target availability then measured exactly (full 2-4 layer, exact d5 for 46-class, 4000-sample d5 otherwise), against a benign replay of the identical state measured identically.",
+        "jam_found": false,
+        "near_jam": false,
+        "min_availability": 26508,
+        "evidence": "Script: /Users/erik/homelab/math193/design/attack2_damage_concentration.py (deterministic: base = viz/walk3d-data.json level 0, seed-193 certified walk; sample seeds 'att2-*' strings; benign constructor = gate_run semantics). Run: pypy3 design/attack2_damage_concentration.py 480 > logs/attack2-damage.log; full per-conspirator trace in /Users/erik/homelab/math193/logs/attack2-damage.log, machine-readable results in /Users/erik/homelab/math193/design/attack2-results.json. Benign builds verified triple-free by first_disqualifier at L1/L2/L3 (62/213/744 steps). Candidate budget 4000 words/segment (never hit; classes were 1-1690 words), total CPU ~6 min single-core.",
+        "quantified_result": "No jam and no near-jam: minimum absolute availability in any adversarially reached state was 26,508 legal words (L2 46-corner target, exact count over its 47,467-word D*; its length-2-4 layer was cut 35 -> 19 of 46 but the length-5 layer is unkillable at this scale). But the adversary erases most of the L3' margin using tie-breaks alone: L2 last-fragile (d24=1732, 22 conspirators) benign 231,645/501,044 (0.4623) -> adversarial 157,476 (0.3143); L2 benign-weakest (d24=600) 0.3798 -> 0.2603; L2 46-corner 0.7027 -> 0.5585 (exact). At L3 (73 conspirators) the effect compounds: last-fragile benign 289,916/501,044 (0.5786) -> adversarial 86,460 (0.1726) — a 3.35x availability reduction landing 0.023 above the pre-registered delta=0.15 gate line; its 2-4 layer fell 1,064 -> 204 of 6,928 sampled-basis (5.2x). The 46-corner at L3 was untouchable (0.9585 both ways) because no conspirator is chain-adjacent — confirming damage is delivered almost entirely by nearby/adjacent earlier fragile segments (single adjacent conspirator seg 51 killed 806/1732 of target 52's 2-4 layer at L2). Independently: the BENIGN L3 ledger already contains a fragile segment at frac 0.1201 (est. 17,085 words), below delta=0.15. Benign gate-ledger-L5.json comparison: fragile min frac 0.085, min surv_abs 17,800 — same regime.",
+        "implication_for_L3prime": "L3' survives as an existence statement but its pre-registered margin does not survive its own quantifier. The system cannot be jammed at levels 2-3 through shortest-first tie-breaks alone — the length-5 layer (47k-500k words) keeps worst-case availability above 26k words, so R1 genuinely un-jams the construction and the seed-777-style attack fails against the repaired system (quantified failure). However: (1) the delta >= 0.15 pointwise claim is stated over all reachable states, and adversarial tie-breaks are reachable states — a greedy same-level conspiracy drives the worst segment from 0.58 to 0.173 at L3 with only 73 conspirators, i.e. the entire benign margin is tie-break-fragile and the trend with conspirator count (22 -> 73 gave 1.47x -> 3.35x) predicts sub-delta states at L5+ where fragile cohorts number in the hundreds; (2) even the benign L3 run has a 0.120 < delta segment, so criterion (a) fails at low levels as stated. Repairs: either make the within-class domain order part of the construction (fixing the tie-break kills this freedom and the attack), restate delta over absolute word counts (where the margin is ~4 orders of magnitude), or prove the damage-locality bound (all observed kill mass came from chain-adjacent conspirators — a per-neighbor cap in the c_{i,j} spirit would bound the adversary to the ~2 adjacent donors, matching the 46-corner immunity observed at L3).",
+        "verdict": "NO_THREAT_CLAIMED"
+      },
+      {
+        "attack": "ATTACK 3 — length-5 layer exhaustion (static hitting-set analysis of dstar5_fragile.pkl + connector_domains4.pkl for the worst fragile step (2,2,-2), chord (0,0,0)->(6,6,8), kill semantics identical to gate_run.word_legal: interior repeat, E2 pair-lines, and interior-collinear-with(obstacle, own anchor))",
+        "jam_found": false,
+        "near_jam": true,
+        "min_availability": 0,
+        "evidence": "Scripts (deterministic, single core, ~55s total): /Users/erik/homelab/math193/design/attack3_exhaust5.py (run 'pypy3 attack3_exhaust5.py B' and '... A'; pair-sampling seed 193, candidate box Chebyshev<=20 around chord center, budget 10.2M point-word incidences, 80-round cap, progress printed) and /Users/erik/homelab/math193/design/attack3_verify.py (independent re-check with the project's own gate_run.word_legal + erdos193.first_disqualifier: places only A0,A1 + the 26 points, result 0/47,467 legal words, config triple-free). The 26-point Model-B hitting set: (2,2,4),(4,4,4),(2,4,4),(4,2,4),(-6,-6,-3),(8,8,9),(-2,0,-2),(0,-1,-1),(7,6,9),(6,7,9),(-1,-2,-1),(-6,-3,-3),(-1,0,-2),(0,-1,-2),(10,13,14),(-2,0,-1),(11,13,14),(13,10,14),(9,12,11),(12,9,11),(7,6,10),(-10,-14,-12),(14,10,8),(0,-2,-1),(5,9,8),(-2,-5,-2).",
+        "quantified_result": "The 47,467-word safety net (46 D2-4 + 47,421 D5) is massively correlated: its 189,822 interior slots use only 252 distinct lattice points (~753 words/point; top hub (4,4,6) carried by 16.8% of words) and only 189 distinct anchor directions; 17.8% of random word pairs share an interior point and 30.2% share an anchor direction. Hitting set with stitch-time semantics (own anchors placed): ONE point kills 33.5% (15,897 words), 4 points kill 82.5%, 10 points kill 96.0%, 24 points leave 6 words, and 26 points kill ALL 47,467 — and that 26-point configuration is itself triple-free with the anchors (a legally coexisting point set), verified end-to-end with the project's own legality code (0 survivors). Without anchor assistance 43 points suffice (best point 20.8%). Lower bound: minimum hitting set >= 3 (=ceil(47467/15897)); optimum in [3,26]. All killer points sit in a Chebyshev-<=17 tube around the chord — fewer points than the natural local population (N27 ~ 34.6 points within distance 27 at L5). Verdict: 26 (with 4 points doing 82.5% of the work) is the thin-armor regime, not hundreds. REPAIR 1's claim that the D5 layer 'shrinks per-point kill granularity from 1/46 to ~1/47k' is refuted: true worst per-point granularity is 0.335, only ~15x better than the 46-word space's worst single-point kill, not ~1000x.",
+        "implication_for_L3prime": "The length-5 layer provides volume, not geometric diversity: 47k words are ~1000x multiplicity over 252 interior points in a radius-~10 tube, so no counting/mass argument over D* alone can prove L3' — 4 mutually-legal points already erase 82.5% of the space, so an averaging ledger with per-point granularity assumptions is unsound at fragile steps. What actually protects the gate run (observed L5 ledger: d24=46 segments kept >=37.5%, >=17,800 words) is the fragile-first invariant — at fragile stitch time the environment is anchors + earlier fragile stitches only, and NATURAL placement never concentrates on the 4 near-chord hub points. Therefore L3' must be restated with, and its proof must supply, a clearance/anti-concentration lemma: at fragile-stitch time, the placed set contains at most k points in the chord tube hitting the 252-point hub structure, with k small enough that survivor mass stays >= delta (the greedy kill curve here gives the exact required bound: e.g. forbidding the top-4 hub pattern keeps >=17.5% alive). Reachability of the 26-point (or even 4-point) kill pattern by adversarial tie-breaks among earlier fragile stitches (up to 4 interiors each, 710 fragile segments at L5, anchor spacing ~6-10 so neighboring stitch excursions reach the hub tube) is the decisive follow-up: a construction-run attack steering ~7 neighboring fragile segments' free word choices onto the hub points. Statically, min availability is 0 against 26 triple-free points, so the layer is thin armor and L3' as currently margined (delta>=0.15) is not provable by mass alone.",
+        "verify": {
+          "corrected_numbers": "All static numbers replicate exactly (pypy3, seed 193, ~3 min total CPU): words 46+47421=47467; 252 distinct interior points over 189822 slots; top hub 16.76% ((4,4,6) TIED with (2,2,2), claim named only one); 189 anchor directions; pair-sharing 0.1778 (point) / 0.3017 (direction); greedy Model B = the identical 26-point set, kill curve 1pt=33.49% (15897), 4pt=82.55%, 10pt=95.95%, 24pt leaves 6, 26pt leaves 0; LB>=3; picks within Chebyshev<=17 of chord center; config triple-free (first_disqualifier=None on 28 pts); Model A = 43 points, best 20.79%; independent end-to-end check with gate_run.word_legal: 0/47467 legal, and single-obstacle (2,2,4) kills exactly 15897 under real semantics (kill model exact, not approximate). CORRECTION to headline: min availability over REACHABLE states is NOT 0 — the actual L5 gate run kept all 289 d24=46 segments at frac>=0.375 (>=17800 words); 0 is only the static minimum over arbitrary triple-free obstacle sets.",
+          "notes": "Verdict OVERSTATED on the near_jam/min_availability=0 framing, though every quantitative claim replicated. The decisive gap: gate_run.py's repaired constructor is fully deterministic — stitch order sorted(key=(d24_size,i)), word choice = FIRST legal word in a fixed length-sorted domain (stable sort, fixed pickle order), rng seeded per-segment — so the 'adversarial tie-breaks among earlier fragile stitches' the claim relies on for reachability do not exist in the implemented constructor; the only real freedom is the base walk/level. The 4 hub points doing 82.5% of the kill are not in the anchor lattice M_BAL3·Z^3, so they could only be earlier-stitch interiors the adversary cannot steer, and the attacker explicitly defers reachability as 'the decisive follow-up'. So jam_found=false is honest and the static hitting-set analysis is solid and useful (it genuinely refutes the ~1/47k per-point granularity reading of REPAIR 1 and motivates an anti-concentration clause in L3'), but min_availability=0 attributes to the repaired system a state never shown reachable, making near_jam=true loose. Side finding for the ledger owners: L5 ledger min frac among fragile segments overall is 0.085 < delta=0.15 (at a non-d24=46 fragile step) — gate criterion (a) appears already violated at L5, independent of this attack. Scripts rerun: /Users/erik/homelab/math193/design/attack3_exhaust5.py (B: 51s, A: 45s), /Users/erik/homelab/math193/design/attack3_verify.py (34s), all single-core within budget.",
+          "replicated": true,
+          "verdict": "OVERSTATED"
+        }
+      }
+    ]
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Attack"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Verify"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "attack:adversarial-base",
+      "phaseIndex": 1,
+      "phaseTitle": "Attack",
+      "agentId": "a94901c404e350fe2",
+      "model": "claude-fable-5",
+      "state": "done",
+      "startedAt": 1784037954983,
+      "queuedAt": 1784037954704,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Adversarial base-walk (seed) search against the REPAIRED co…",
+      "promptPreview": "You are attacking a mathematical construction in /Users/erik/homelab/math193 (work there).\nContext: PROOF-SKELETON.md (read first), design/overnight-lemma-attack.json (synthesis section),\ngate-ledger-L5.json (per-stitch survivor fractions of the repaired construction at level 5).\nMachinery: gate_run.py + gate_l7.py implement the REPAIRED construction: segments stitched in\nascending |D_2-4(step)| o…",
+      "lastProgressAt": 1784038976804,
+      "tokens": 107102,
+      "toolCalls": 48,
+      "durationMs": 1021819,
+      "resultPreview": "{\"attack\":\"Adversarial base-walk (seed) search against the REPAIRED constructor, mimicking gate_l7.construct exactly (fragile-first ascending-|D24| stitch order, shortest-first scan of the length-sorted full word space incl. dstar5 length-5 layer for the 18 fragile steps, fast_legal legality). 43 base walks tried in two waves at levels 1-3: wave 1 (26 seeds) = find_base randoms (len 6-16, incl. 77…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "attack:damage-concentration",
+      "phaseIndex": 1,
+      "phaseTitle": "Attack",
+      "agentId": "aac2aed6c752b4459",
+      "model": "claude-fable-5",
+      "state": "done",
+      "startedAt": 1784037954992,
+      "queuedAt": 1784037954705,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Damage concentration via the constructor's real tie-break f…",
+      "promptPreview": "You are attacking a mathematical construction in /Users/erik/homelab/math193 (work there).\nContext: PROOF-SKELETON.md (read first), design/overnight-lemma-attack.json (synthesis section),\ngate-ledger-L5.json (per-stitch survivor fractions of the repaired construction at level 5).\nMachinery: gate_run.py + gate_l7.py implement the REPAIRED construction: segments stitched in\nascending |D_2-4(step)| o…",
+      "lastProgressAt": 1784038717842,
+      "tokens": 86002,
+      "toolCalls": 38,
+      "durationMs": 762850,
+      "resultPreview": "{\"attack\":\"Damage concentration via the constructor's real tie-break freedom: gate_run.py picks the FIRST legal word in the length-sorted domain, but order within an equal-length class is arbitrary pickle order — so at every fragile segment stitched before a chosen target (fragile-first order makes the earlier fragile segments the only possible conspirators), the adversary enumerated the FULL mini…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "attack:d5-exhaustion",
+      "phaseIndex": 1,
+      "phaseTitle": "Attack",
+      "agentId": "afb5feedc17e3a10c",
+      "model": "claude-fable-5",
+      "state": "done",
+      "startedAt": 1784037954993,
+      "queuedAt": 1784037954707,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "ATTACK 3 — length-5 layer exhaustion (static hitting-set an…",
+      "promptPreview": "You are attacking a mathematical construction in /Users/erik/homelab/math193 (work there).\nContext: PROOF-SKELETON.md (read first), design/overnight-lemma-attack.json (synthesis section),\ngate-ledger-L5.json (per-stitch survivor fractions of the repaired construction at level 5).\nMachinery: gate_run.py + gate_l7.py implement the REPAIRED construction: segments stitched in\nascending |D_2-4(step)| o…",
+      "lastProgressAt": 1784038525793,
+      "tokens": 66217,
+      "toolCalls": 18,
+      "durationMs": 570800,
+      "resultPreview": "{\"attack\":\"ATTACK 3 — length-5 layer exhaustion (static hitting-set analysis of dstar5_fragile.pkl + connector_domains4.pkl for the worst fragile step (2,2,-2), chord (0,0,0)->(6,6,8), kill semantics identical to gate_run.word_legal: interior repeat, E2 pair-lines, and interior-collinear-with(obstacle, own anchor))\",\"jam_found\":false,\"near_jam\":true,\"min_availability\":0,\"evidence\":\"Scripts (determ…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "verify:d5-exhaustion",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "agentId": "a072b45ef37b9e55f",
+      "model": "claude-fable-5",
+      "state": "done",
+      "startedAt": 1784038525852,
+      "queuedAt": 1784038525798,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "All static numbers replicate exactly (pypy3, seed 193, ~3 m…",
+      "promptPreview": "You are attacking a mathematical construction in /Users/erik/homelab/math193 (work there).\nContext: PROOF-SKELETON.md (read first), design/overnight-lemma-attack.json (synthesis section),\ngate-ledger-L5.json (per-stitch survivor fractions of the repaired construction at level 5).\nMachinery: gate_run.py + gate_l7.py implement the REPAIRED construction: segments stitched in\nascending |D_2-4(step)| o…",
+      "lastProgressAt": 1784038952531,
+      "tokens": 44788,
+      "toolCalls": 13,
+      "durationMs": 426679,
+      "resultPreview": "{\"corrected_numbers\":\"All static numbers replicate exactly (pypy3, seed 193, ~3 min total CPU): words 46+47421=47467; 252 distinct interior points over 189822 slots; top hub 16.76% ((4,4,6) TIED with (2,2,2), claim named only one); 189 anchor directions; pair-sharing 0.1778 (point) / 0.3017 (direction); greedy Model B = the identical 26-point set, kill curve 1pt=33.49% (15897), 4pt=82.55%, 10pt=95…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "verify:adversarial-base",
+      "phaseIndex": 2,
+      "phaseTitle": "Verify",
+      "agentId": "abd6f91fd795e7b50",
+      "model": "claude-fable-5",
+      "state": "done",
+      "startedAt": 1784038976811,
+      "queuedAt": 1784038976809,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "CONFIRMED",
+      "promptPreview": "You are attacking a mathematical construction in /Users/erik/homelab/math193 (work there).\nContext: PROOF-SKELETON.md (read first), design/overnight-lemma-attack.json (synthesis section),\ngate-ledger-L5.json (per-stitch survivor fractions of the repaired construction at level 5).\nMachinery: gate_run.py + gate_l7.py implement the REPAIRED construction: segments stitched in\nascending |D_2-4(step)| o…",
+      "lastProgressAt": 1784039312254,
+      "tokens": 62077,
+      "toolCalls": 18,
+      "durationMs": 335442,
+      "resultPreview": "{\"replicated\":true,\"verdict\":\"CONFIRMED\",\"corrected_numbers\":\"Hard jam replicated exactly and independently via the REFERENCE legality path (gate_run.word_legal -> amplify193.legal_against; attacker used fast_legal): base crafted_band(Random(72),18) = [64,77,22,107,8,64,107,46,28,115,1,83,16,95,77,19,98,40], triple-free and stepwise-legal (within find_base's support under adversarial shuffles); de…"
+    }
+  ],
+  "totalTokens": 366186,
+  "totalToolCalls": 135
+}
