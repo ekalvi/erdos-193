@@ -110,3 +110,10 @@ footer.sitefoot .right{display:inline-flex;gap:16px}
 nav.site .dot{display:inline-block;width:7px;height:7px;border-radius:50%;
   background:hsl(var(--tl-live));margin-left:5px;vertical-align:2px;animation:navpulse 1.6s ease-in-out infinite}
 @keyframes navpulse{0%,100%{box-shadow:0 0 0 0 hsl(var(--tl-live)/.55)}50%{box-shadow:0 0 0 5px hsl(var(--tl-live)/0)}}
+
+/* file chips on timeline events */
+.tl .files{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tl .files a{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;
+  color:hsl(var(--link));background:hsl(var(--accent));border:1px solid hsl(var(--border));
+  border-radius:6px;padding:1px 8px;text-decoration:none}
+.tl .files a:hover{border-color:hsl(var(--link))}

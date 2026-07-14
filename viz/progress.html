@@ -6,7 +6,7 @@
 <title>Progress — erdos-193</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=5">
+<link rel="stylesheet" href="site.css?v=6">
 <style>
 
 
@@ -45,30 +45,30 @@
 <script>
 const EVENTS = [
  ['July 11', [
-  ['build','🏁','Programme begins','Exact-arithmetic search over substitution walks; controls verified against the O(n³) oracle and known theory (Tribonacci collides at step 7, as predicted).'],
-  ['dead','💀','Random substitutions cap out','12.8M primitive substitutions tested: best safe walks 18–46 steps. Two-thirds die on the Abelian-square mechanism. The class is a dead end.'],
-  ['ok','✅','First exact theorems','Exhaustive search proves the max triple-free walk with steps ±e₁,±e₂,±e₃ is exactly 20 (and exactly 3 in 2D with unit steps).'],
-  ['sci','🔬','Geometry is not the obstruction','A freely-routed walk on the same 4 steps reaches 206+ — substitution repetitiveness was the killer, not space.'],
-  ['dead','💀','Perron–Frobenius no-go','Every primitive substitution provably drives its return-block directions parallel (δ→0). Pattern-C certificates are impossible in this entire class.'],
+  ['build','🏁','Programme begins','Exact-arithmetic search over substitution walks; controls verified against the O(n³) oracle and known theory (Tribonacci collides at step 7, as predicted).',['search193.py','erdos193.py']],
+  ['dead','💀','Random substitutions cap out','12.8M primitive substitutions tested: best safe walks 18–46 steps. Two-thirds die on the Abelian-square mechanism. The class is a dead end.',['erdos193.py','results']],
+  ['ok','✅','First exact theorems','Exhaustive search proves the max triple-free walk with steps ±e₁,±e₂,±e₃ is exactly 20 (and exactly 3 in 2D with unit steps).',['bnb193.py','max2d_flat.py']],
+  ['sci','🔬','Geometry is not the obstruction','A freely-routed walk on the same 4 steps reaches 206+ — substitution repetitiveness was the killer, not space.',['bnb193.py','beam193.py']],
+  ['dead','💀','Perron–Frobenius no-go','Every primitive substitution provably drives its return-block directions parallel (δ→0). Pattern-C certificates are impossible in this entire class.',['REPORT.md']],
  ]],
  ['July 12', [
-  ['ok','✅','THE BREAKTHROUGH: amplification','Enlarge-by-M + stitch machine chains levels without jamming: 20 → 6,540 (mod-2 matrix) and 20 → 8,292 (mod-3), every level exactly verified, density falling each round.'],
-  ['dead','💀','Metric certificate refuted','Clearance spectra are flat (shortest stitches) or decaying (wiggle routing). Margins never grow with scale — no distance-based induction can exist.'],
-  ['sci','🔬','The walk is arithmetically pseudo-random','Exact max κ₃ = 12 over all 2.8×10¹¹ chord pairs — precisely the random-model prediction. Nothing accumulates across scales.'],
-  ['dead','💀','Passive structure hunt refuted','No hidden pattern exists to find; any certificate must be imposed by routing, not discovered in the walks.'],
-  ['build','🏗️','Stage 4 designed by adversarial panels','3-design judge panel selects the NP-HC state abstraction; transition algebra verified by hostile agents (one real bug caught and guarded).'],
-  ['ok','✅','Step 1 complete','All 7,114,584 legal connector words enumerated; word-level closure holds for the full 124-move menu.'],
+  ['ok','✅','THE BREAKTHROUGH: amplification','Enlarge-by-M + stitch machine chains levels without jamming: 20 → 6,540 (mod-2 matrix) and 20 → 8,292 (mod-3), every level exactly verified, density falling each round.',['amplify193.py','amplify_rich.py']],
+  ['dead','💀','Metric certificate refuted','Clearance spectra are flat (shortest stitches) or decaying (wiggle routing). Margins never grow with scale — no distance-based induction can exist.',['analyze_clearance.py']],
+  ['sci','🔬','The walk is arithmetically pseudo-random','Exact max κ₃ = 12 over all 2.8×10¹¹ chord pairs — precisely the random-model prediction. Nothing accumulates across scales.',['analyze_kappa.py','analyze_valuation.py']],
+  ['dead','💀','Passive structure hunt refuted','No hidden pattern exists to find; any certificate must be imposed by routing, not discovered in the walks.',['analyze_divergence.py']],
+  ['build','🏗️','Stage 4 designed by adversarial panels','3-design judge panel selects the NP-HC state abstraction; transition algebra verified by hostile agents (one real bug caught and guarded).',['design/step2-design-panel.json','router_synthesis.py']],
+  ['ok','✅','Step 1 complete','All 7,114,584 legal connector words enumerated; word-level closure holds for the full 124-move menu.',['step1_connectors4.py']],
  ]],
  ['July 13', [
-  ['ok','✅','Step 2: universal availability','All 78,728 arithmetic states × 15,545 perturbations (1.22B exact transitions): every state can steer into every direction class. Zero exceptions.'],
-  ['sci','🔬','Step 3: bounded obligation load','No template collapse, but per-stitch load is bounded by the fixed 6.5×10⁷ catalog — the Local-Lemma race (exponential vs linear) is winnable in principle.'],
-  ['ok','✅','Step 4: criterion closes','Certified worst-case constants (uniform A = 0.2818); the symmetric Local Lemma inequality closes at H = 14 under the corrected live law.'],
-  ['sci','🔬','Hostile panel: right idea, wrong bookkeeping','Confirmed: triples safe at birth are safe forever (invertibility) — danger exists only at creation. Caught: live-phase separation is not sticky; the window bound needs its semantic repair (in build).'],
-  ['dead','💀','Strict per-pair router refuted','One stitch serves ~10⁷ constraints; no router can give each its preferred outcome. Only staged/potential-function certificate forms remain.'],
-  ['ok','✅','Fatal birth-mass is FLAT — the construction scales','~32% of birth positions are mined at every level (3→6, no growth). Router availability stays ≥68% forever. The alarming reading is dead.'],
-  ['ok','✅','Record walk: 28,271 steps, certified','Level 6 saved; independently verified, SHA-256 dec7e762… Anyone can re-check it in 30 seconds.'],
-  ['build','🏗️','Site launched','erdos-193.q5m.io: six-diagram proof walkthrough, interactive demo, this log.'],
-  ['ok','✅','The dependency graph is sparse — and the certificate simplifies','Cross-segment measurement (all partners, 8 segments): total adversarial bad mass ≈ 0.4 per stitch decision — below 1, so a safe word always exists by counting alone. Only ~400–900 of 2,457 partners interact at all, with mass concentrated in a handful — the asymmetric-LLL profile, replacing the 6.5×10⁷-template pessimism.'],
+  ['ok','✅','Step 2: universal availability','All 78,728 arithmetic states × 15,545 perturbations (1.22B exact transitions): every state can steer into every direction class. Zero exceptions.',['np_hc.py','np_hc_sidepass.py']],
+  ['sci','🔬','Step 3: bounded obligation load','No template collapse, but per-stitch load is bounded by the fixed 6.5×10⁷ catalog — the Local-Lemma race (exponential vs linear) is winnable in principle.',['measure_dependency.py','wsw_sameword.pkl']],
+  ['ok','✅','Step 4: criterion closes','Certified worst-case constants (uniform A = 0.2818); the symmetric Local Lemma inequality closes at H = 14 under the corrected live law.',['np_hc_gpass.py','step4_certify.py']],
+  ['sci','🔬','Hostile panel: right idea, wrong bookkeeping','Confirmed: triples safe at birth are safe forever (invertibility) — danger exists only at creation. Caught: live-phase separation is not sticky; the window bound needs its semantic repair (in build).',['design/inheritance-panel.json','provenance193.py']],
+  ['dead','💀','Strict per-pair router refuted','One stitch serves ~10⁷ constraints; no router can give each its preferred outcome. Only staged/potential-function certificate forms remain.',['measure_dependency.py']],
+  ['ok','✅','Fatal birth-mass is FLAT — the construction scales','~32% of birth positions are mined at every level (3→6, no growth). Router availability stays ≥68% forever. The alarming reading is dead.',['REPORT.md']],
+  ['ok','✅','Record walk: 28,271 steps, certified','Level 6 saved; independently verified, SHA-256 dec7e762… Anyone can re-check it in 30 seconds.',['amplified-193-28271.txt','verify_walk.py']],
+  ['build','🏗️','Site launched','erdos-193.q5m.io: six-diagram proof walkthrough, interactive demo, this log.',['viz']],
+  ['ok','✅','The dependency graph is sparse — and the certificate simplifies','Cross-segment measurement (all partners, 8 segments): total adversarial bad mass ≈ 0.4 per stitch decision — below 1, so a safe word always exists by counting alone. Only ~400–900 of 2,457 partners interact at all, with mass concentrated in a handful — the asymmetric-LLL profile, replacing the 6.5×10⁷-template pessimism.',['REPORT.md']],
 
  ]],
  ['Now', [
@@ -83,11 +83,17 @@ for (const [day, items] of EVENTS) {
   const h = document.createElement('div'); h.className = 'day'; h.textContent = day;
   root.appendChild(h);
   const ul = document.createElement('ul'); ul.className = 'tl';
-  for (const [kind, emoji, title, body] of items) {
+  for (const [kind, emoji, title, body, files] of items) {
     const li = document.createElement('li');
     li.style.setProperty('--c', `var(${C[kind]})`);
     if (kind === 'live') li.classList.add('live');
-    li.innerHTML = `<span class="tag">${emoji}</span><b>${title}</b><p>${body}</p>`;
+    let chips = '';
+    if (files && files.length) {
+      chips = '<span class="files">' + files.map(f =>
+        `<a href="https://github.com/ekalvi/erdos-193/blob/main/${f}">${f.split('/').pop()}</a>`
+      ).join('') + '</span>';
+    }
+    li.innerHTML = `<span class="tag">${emoji}</span><b>${title}</b><p>${body}</p>${chips}`;
     ul.appendChild(li);
   }
   root.appendChild(ul);
