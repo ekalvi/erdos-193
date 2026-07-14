@@ -54,6 +54,19 @@ measured floors: 243 / TBD words). The invariant is to be MEASURED as the
 "clearance profile" on the gate's L5–L7 states, then proved propagated by the
 L4' converged local law. Adversarial bases outside the orbit are irrelevant to
 the theorem: we need ONE infinite chain, and the orbit is ours to choose.
+
+**L3''-b evidence (2026-07-14, clearance-L6.json, all 8,252 stitches):**
+corr(stitch-time tube crowding c10, survivor fraction) = −0.682 — availability
+is largely a FUNCTION of local crowding; the orbit's crowding has a hard ceiling
+(max 19 points in the Chebyshev-10 tube, mean 6.9, vs the 26 adversarially-placed
+hub points needed to zero a space); even the most crowded band [10,19] keeps
+min 184 words. Proposed decomposition of L3'': (A) crowding ≤ k₀ propagates
+under renormalization (M dilutes a radius-10 tube ×3, refill adds bounded
+points — an integer-count recursion); (B) per step type, the maximum word-mass
+killed by any CONSTRUCTIBLE ≤ k₀-point tube configuration is < 1 − δ (finite
+computation via the hub/hitting-set structure per step). Both machine-checkable
+in principle; (B)'s configuration space needs the constructibility restriction
+to be tractable — unconstrained k-point configs already kill 82.5% at k = 4.
 Original (dead) statement follows for the record:
 **L3-original (Per-level existence) [FALSE].**
 Claim: given any walk the construction can reach, every segment admits a stitch

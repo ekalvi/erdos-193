@@ -1,0 +1,5 @@
+n=8252  corr(c10, frac) = -0.682
+c10: max 19, mean 6.9
+c10 in [0,9]: n=6561, min frac 0.040, min abs 243
+c10 in [10,19]: n=1691, min frac 0.020, min abs 184
+floor segment: {'i': 6375, 'c5': 4, 'c10': 11, 'frac': 0.035, 'surv_abs': 184, 'd24': 5257}
