@@ -203,13 +203,20 @@ function spanText(points){
   if (km < 5e7) return (km/1e6).toFixed(1) + ' million km';
   return (km/149.6e6).toFixed(2) + ' AU';
 }
+const SUN_P = [-24933, 0, 0], MOON_P = [52, 8, -34];
+function frameFor(points, k){
+  const arr = points.slice();
+  if (k <= 1) arr.push(MOON_P);
+  if (k >= 3) arr.push(SUN_P);
+  return arr;
+}
 function show(k){
   level = k; clearAll();
   const pts = LV[k].points, aset = anchorSetFor(k);
   layers.pts = mkPoints(pts, i => (!aset || aset.has(i)) ? BLUE : GREEN);
   layers.line = mkLine(pts, walkColor, false);
   scene.add(layers.pts, layers.line);
-  fit(pts);
+  fit(frameFor(pts, k));
   document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points — spans ${spanText(pts)}`;
   document.getElementById('play').disabled = false;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===k));
@@ -243,7 +250,7 @@ async function playRound(){
   layers.pts = mkPoints(A, () => BLUE);
   layers.line = mkLine(A, skelColor, false);
   scene.add(layers.pts, layers.line);
-  const camMove = fitSmooth(target.concat(A), 1700);
+  const camMove = fitSmooth(frameFor(target.concat(A), level+1), 1700);
   const pg = layers.pts.geometry.attributes.position;
   const lg = layers.line.geometry.attributes.position;
   await tween(1700, t => {
@@ -293,7 +300,7 @@ async function playRound(){
   scene.add(layers.pts, layers.line);
   document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points — spans ${spanText(npts)}`;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===level));
-  await fitSmooth(npts, 1000);
+  await fitSmooth(frameFor(npts, level), 1000);
   status.textContent = '';
   animating = false;
 }
@@ -338,6 +345,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
       new THREE.MeshBasicMaterial({color}));
     m.position.copy(pos); scene.add(m); return m;
   }
+  window.__labels = window.__labels || [];
   function label(text, pos, w){
     const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128;
     const c = cv.getContext('2d');
@@ -346,6 +354,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
     const sp = new THREE.Sprite(new THREE.SpriteMaterial({
       map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false}));
     sp.position.copy(pos); sp.scale.set(w, w/4, 1); scene.add(sp);
+    window.__labels.push(sp);
   }
   function orbit(rKm){
     const pts = [];
@@ -390,8 +399,8 @@ document.getElementById('spin').onclick = () => spin = !spin;
   }
   const sg = new THREE.BufferGeometry();
   sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
-  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color: 0x8892a8,
-    size: 1.6*devicePixelRatio, sizeAttenuation: false, transparent:true, opacity:0.8})));
+  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color: 0xcdd6e8,
+    size: 2.2*devicePixelRatio, sizeAttenuation: false, transparent:true, opacity:1})));
 }
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
 resize(); show(0);
@@ -399,6 +408,11 @@ resize(); show(0);
   requestAnimationFrame(loop);
   controls.autoRotate = spin;
   controls.update();
+  if (window.__labels) for (const sp of window.__labels){
+    const d = camera.position.distanceTo(sp.position);
+    const w = d * 0.045;                       // constant apparent size
+    sp.scale.set(w, w/4, 1);
+  }
   renderer.render(scene, camera);
 })();
 </script>
