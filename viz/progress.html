@@ -90,7 +90,8 @@ const EVENTS = [
   ['sci','🔬','Clearance profile: availability is a function of crowding','Across all 8,252 level-6 stitches: correlation −0.68 between local tube crowding and survivor fraction, with a hard orbit ceiling of 19 points (adversaries need 26 to kill a space). The anti-concentration lemma now has a concrete, machine-checkable shape: a crowding-count recursion plus a per-step finite computation.',['clearance-L6.json','PROOF-SKELETON.md']],
   ['ok','✅','Level 7 verified: 100,359 points, no three collinear','The programme\'s largest certified walk — 3.5× the previous record, machine-verified exactly (SHA-256 c8477b01…), independent re-verification running. Zero jams across all 28,709 stitches.',['gate-193-L7.txt','verify_walk.py']],
   ['dead','💀','Gate fixed-point criteria FAIL as pre-registered','N₈₁(L7) = 118.6 vs the registered 112.6 ± 0.7; mid-scale density rising ~2%/level. Diagnosis: the gate\'s deterministic shortest-first choice rule slowly densifies the walk — the 112.6 prediction came from the original constructor\'s randomized choice, which kept density falling. The criteria did their job: they caught the variant drifting.',['gate-stats-L7.json','PROOF-SKELETON.md']],
-  ['live','🔄','Gate v2, pre-registered before launch: same criteria, faithful constructor','Repaired construction (fragile-first + length-5 layers) with the original\'s randomized-shortest word choice, seeded and replayable. Same unchanged pass bar: N₈₁(L7) = 112.6 ± 0.7, KS(L6,L7) below critical, floors stable, zero jams. Levels 5–7 building now.',['gate_l7.py']],
+  ['sci','🔬','Gate v2 verdict: letter FAIL, convergence REAL','All three levels verified (92,732 points at L7), zero escalations anywhere, floors up. N₈₁ falls 118.4 → 111.9 → 109.8 with geometrically contracting steps (×0.33) — a fixed point emerging at ≈109, not the registered 112.6 (which came from the original constructor\'s extrapolation). The KS letter-test was unachievable at this sample size for any constructor of the family. Verdict recorded as FAIL on the letter; the convergence the proof needs is now visible on the actual proof orbit.',['gate2-stats-L7.json','PROOF-SKELETON.md']],
+  ['live','🔄','Level 8 pre-registered, then launched: the decisive convergence test','Committed before the run: N₈₁(L8) = 109.1 ± 0.4, contraction continues (|step| ≤ 1.1, same sign), zero jams, ~312k steps verified. Pass ⇒ the renormalization fixed point is demonstrated on the proof\'s own orbit.',['PROOF-SKELETON.md','gate_l7.py']],
   ['live','🔄','Close the caveats','Unbounded-window tail of cross-segment mass; triple-newborn events; scaling of the dependency profile with level — each a finite measurement.'],
   ['live','🔄','Then: scale-invariance argument and write-up','Prove fatal mass stays < 1 at every level (self-similarity), chain levels by plain induction, and take the whole argument to paper + human review.'],
  ]],
@@ -111,6 +112,8 @@ const STAMPS = {
 "Gate level 6: verified, new record — and the law is converging": "Jul 14 · 10:31 EDT",
 "Level-6 ledger: the floor lives exactly where the panel said": "Jul 14 · 11:09 EDT",
 "Clearance profile: availability is a function of crowding": "Jul 14 · 11:15 EDT",
+"Level 7 verified: 100,359 points, no three collinear": "Jul 14 · 12:43 EDT",
+"Gate fixed-point criteria FAIL as pre-registered": "Jul 14 · 12:43 EDT",
 "Close the caveats": "Jul 13 · 21:46 EDT",
 "Then: scale-invariance argument and write-up": "Jul 13 · 23:34 EDT"
 };

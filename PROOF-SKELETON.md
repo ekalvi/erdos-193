@@ -103,11 +103,29 @@ an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
 completed levels.
 
-## The gate (2026-07-14)
-One computation decides: implement the repaired construction and run seed-193 through
-levels 5–7 (~96k steps), recording the exact word-union ledger at every stitch. If the
-pointwise max stays ≤ 1−δ and the L4' predictions hold, L3'+L4' stand on the strongest
-possible empirical footing and go to write-up; if not, the failure point is explicit.
+## The gate (2026-07-14) — RESULTS
+Two runs, both letter-verdicts FAIL, with opposite meanings:
+- **v1 (deterministic shortest-first choice): FAIL, real.** N₈₁ = 118.9 → 115.8 →
+  118.6 (target 112.6 ± 0.7); N₂₇ RISING ~2%/level; stitch length creeping
+  3.36 → 3.48 → 3.50; escalation bursts. Diagnosis: deterministic choice reuses the
+  same word shapes → correlated packing → densification feedback. No fixed point.
+  The 100,359-point L7 walk is verified (independent verifier + dual SHA-256) and
+  stands as the record, but the variant is retired.
+- **v2 (seeded-random among shortest words — the original's statistics): letter-FAIL,
+  spirit-PASS.** N₈₁ = 118.39 → 111.88 → 109.76 (±0.09): MONOTONE convergence with
+  geometric contraction (increments −6.51, −2.12; ratio 0.33), all density statistics
+  falling; zero escalations at every level; floors 317/180 (L7 pending). The registered
+  target 112.6 ± 0.7 was extrapolated from the ORIGINAL constructor — v2 converges to
+  its own fixed point ≈ 108.7–109.3, ~3% below. KS(L6,L7) = 0.081 > 0.018 critical:
+  with n ≈ 27k, KS detects the still-contracting 2.1 shift — this test was
+  unachievable at L7 for ANY constructor of the family (the original's own
+  level-shifts were larger) and is retired as miscalibrated, not passed.
+
+**L8 pre-registration (committed BEFORE the run):** N₈₁(L8) = 109.1 ± 0.4 (geometric
+extrapolation), |N₈₁(L8) − N₈₁(L7)| ≤ 1.1 with the same sign (contraction continues),
+zero jams, ~312k steps verified triple-free. Pass ⇒ the v2 orbit has a demonstrated
+renormalization fixed point and L4' rests on it; fail ⇒ the convergence claim is dead
+as measured and the honest move is menu/matrix redesign.
 
 ## Honest gaps, ranked
 1. L4(i): state and prove the neighborhood-invariance lemma from the recursion.

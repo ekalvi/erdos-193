@@ -42,3 +42,6 @@ L7 construct: 25000/27696 segs, 4641s, esc 0 jam 0
 L7 construct: 26000/27696 segs, 5277s, esc 0 jam 0
 L7 construct: 27000/27696 segs, 5814s, esc 0 jam 0
 L7: verifying 92732 points ...
+L7: VERIFIED triple-free (16587s)
+L7 construct done: 92731 steps, stats {'N3': 3.947, 'N3_se': 0.003, 'N3_n': 27686, 'N9': 10.923, 'N9_se': 0.006, 'N9_n': 27661, 'N27': 33.646, 'N27_se': 0.025, 'N27_n': 27559, 'N81': 109.763, 'N81_se': 0.094, 'N81_n': 27184}
+V2-CONSTRUCTS-DONE

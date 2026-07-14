@@ -134,10 +134,14 @@ def construct(level, doms, d24_size):
         new_word.extend(words[i])
         anchors_idx.append(len(chain) - 1)
     assert set(chain) == store.pset
-    print(f"L{level}: verifying {len(chain)} points ...", flush=True)
-    bad = first_disqualifier(chain)
-    assert bad is None, f"L{level} VERIFY FAILED: {bad}"
-    print(f"L{level}: VERIFIED triple-free ({time.time()-t0:.0f}s)", flush=True)
+    if os.environ.get("GATE_SKIP_VERIFY") == "1":
+        print(f"L{level}: VERIFY DEFERRED ({len(chain)} points) — run the parallel "
+              f"verifier before trusting this level", flush=True)
+    else:
+        print(f"L{level}: verifying {len(chain)} points ...", flush=True)
+        bad = first_disqualifier(chain)
+        assert bad is None, f"L{level} VERIFY FAILED: {bad}"
+        print(f"L{level}: VERIFIED triple-free ({time.time()-t0:.0f}s)", flush=True)
 
     stats, n81 = n_of_d(chain, anchors_idx)
     with open(state_pkl(level), "wb") as f:
