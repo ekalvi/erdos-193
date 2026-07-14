@@ -393,16 +393,21 @@ document.getElementById('spin').onclick = () => spin = !spin;
     label(name, pos.clone().add(new THREE.Vector3(0, lw/6, 0)), lw);
   }
   orbit(149.6e6);  // Earth's own orbit ring, passing through the origin
-  // starfield
-  const N = 2200, sp = new Float32Array(N*3);
-  for (let i = 0; i < N; i++){
-    const v = new THREE.Vector3().randomDirection().multiplyScalar(2.6e5 + Math.random()*1e5);
-    sp.set([v.x, v.y, v.z], i*3);
+  // starfield: two layers — ambient depth, deliberately quieter than the walk
+  function stars(count, size, opacity, color){
+    const sp = new Float32Array(count*3);
+    for (let i = 0; i < count; i++){
+      const v = new THREE.Vector3().randomDirection().multiplyScalar(2.6e5 + Math.random()*1e5);
+      sp.set([v.x, v.y, v.z], i*3);
+    }
+    const sg = new THREE.BufferGeometry();
+    sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+    scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color,
+      size: size*devicePixelRatio, sizeAttenuation: false, transparent: true, opacity,
+      depthWrite: false})));
   }
-  const sg = new THREE.BufferGeometry();
-  sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
-  scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color: 0xcdd6e8,
-    size: 2.2*devicePixelRatio, sizeAttenuation: false, transparent:true, opacity:1})));
+  stars(1900, 1.15, 0.4, 0x8f9cb8);   // faint dust
+  stars(320, 1.9, 0.65, 0xb9c4da);    // a few brighter accents
 }
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
 resize(); show(0);
