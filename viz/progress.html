@@ -8,8 +8,11 @@
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css?v=6">
 <style>
-
-
+.tl b .ts{
+  display:inline-block;margin-left:.6em;font:500 .72rem/1 ui-monospace,SFMono-Regular,Menlo,monospace;
+  color:hsl(var(--muted-foreground)/.5);letter-spacing:.02em;white-space:nowrap;
+  vertical-align:.08em;
+}
 </style>
 </head>
 <body>
@@ -85,6 +88,22 @@ const EVENTS = [
   ['live','🔄','Then: scale-invariance argument and write-up','Prove fatal mass stays < 1 at every level (self-similarity), chain levels by plain induction, and take the whole argument to paper + human review.'],
  ]],
 ];
+// STAMPS-BEGIN
+const STAMPS = {
+"Interactive 3D construction viewer": "Jul 13 · 22:00 EDT",
+"The dependency graph is sparse — and the certificate simplifies": "Jul 13 · 21:46 EDT",
+"Levels decouple — the proof may need no Local Lemma at all": "Jul 13 · 23:34 EDT",
+"The ledger closes: safe stitches always exist": "Jul 14 · 00:22 EDT",
+"L3 as stated refuted — by our own walk": "Jul 14 · 03:36 EDT",
+"The repairs are specified and validated": "Jul 14 · 03:36 EDT",
+"Length-5 word layer built for all 18 fragile steps": "Jul 14 · 08:03 EDT",
+"The seed-777 jam is certified absolute": "Jul 14 · 08:03 EDT",
+"THE GATE is running: repaired construction, levels 5–7": "Jul 14 · 08:03 EDT",
+"Gate level 5: zero jams, but the lemma needs restating": "Jul 14 · 09:27 EDT",
+"Close the caveats": "Jul 13 · 21:46 EDT",
+"Then: scale-invariance argument and write-up": "Jul 13 · 23:34 EDT"
+};
+// STAMPS-END
 const C = {ok:'--tl-ok', dead:'--tl-dead', sci:'--tl-sci', build:'--tl-build', live:'--tl-live'};
 const root = document.getElementById('timeline');
 for (const [day, items] of EVENTS) {
@@ -101,7 +120,8 @@ for (const [day, items] of EVENTS) {
         `<a href="https://github.com/ekalvi/erdos-193/${f.includes('.') ? 'blob' : 'tree'}/main/${f}">${f.split('/').pop()}</a>`
       ).join('') + '</span>';
     }
-    li.innerHTML = `<span class="tag">${emoji}</span><b>${title}</b><p>${body}</p>${chips}`;
+    const ts = kind !== 'live' && STAMPS[title] ? `<span class="ts">${STAMPS[title]}</span>` : '';
+    li.innerHTML = `<span class="tag">${emoji}</span><b>${title}${ts}</b><p>${body}</p>${chips}`;
     ul.appendChild(li);
   }
   root.appendChild(ul);

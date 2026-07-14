@@ -1,0 +1,13 @@
+L5 construct: 1000/2457 segs, 4s, esc 0 jam 0
+L5 construct: 2000/2457 segs, 11s, esc 9 jam 0
+L5: verifying 8253 points ...
+L5: VERIFIED triple-free (34s)
+L5 construct done: 8252 steps, stats {'N3': 4.011, 'N3_se': 0.013, 'N3_n': 2452, 'N9': 11.157, 'N9_se': 0.026, 'N9_n': 2412, 'N27': 34.528, 'N27_se': 0.091, 'N27_n': 2311, 'N81': 118.858, 'N81_se': 0.608, 'N81_n': 1959}
+shard 0/4 done: 615 records, 259s
+shard 3/4 done: 614 records, 262s
+shard 2/4 done: 614 records, 264s
+shard 1/4 done: 614 records, 274s
+L5 MERGED SUMMARY: {"level": 5, "steps": 8252, "points": 8253, "escalations": 9, "jams": 0, "stats": {"N3": 4.011, "N3_se": 0.013, "N3_n": 2452, "N9": 11.157, "N9_se": 0.026, "N9_n": 2412, "N27": 34.528, "N27_se": 0.091, "N27_n": 2311, "N81": 118.858, "N81_se": 0.608, "N81_n": 1959}, "construct_s": 34, "recorded": 2457, "min_frac": 0.045, "mean_frac": 0.46496133496133474, "p01_frac": 0.095, "below_delta": 109, "min_surv_abs": 243}
+GATE LEVEL COMPLETE
+FAST WALK IDENTICAL
+FAST LEDGER IDENTICAL

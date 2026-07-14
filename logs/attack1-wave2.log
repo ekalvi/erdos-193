@@ -1,0 +1,89 @@
+domains loaded 44s
+band steps: 38
+seed band41-len12: base [74, 23, 83, 95, 8, 104, 14, 89, 115, 14, 100, 24] (band 12/12)
+  band41-len12 L1: 12 segs, min_frac 0.035, min_avail 557.2, worst {'i': 4, 'step': 8, 'd24': 15920, 'frac': 0.035, 'n10': 10, 'first_idx': 20}, nodes 0.0M, 0s
+  band41-len12 L2: 37 segs, min_frac 0.05, min_avail 588.0, worst {'i': 33, 'step': 115, 'd24': 15920, 'frac': 0.05, 'n10': 10, 'first_idx': 7}, nodes 0.0M, 1s
+  band41-len12 L3: 127 segs, min_frac 0.01, min_avail 90.0, worst {'i': 112, 'step': 112, 'd24': 38022, 'frac': 0.01, 'n10': 10, 'first_idx': 20}, nodes 0.1M, 2s
+seed band42-len12: base [49, 100, 16, 77, 64, 34, 95, 107, 5, 49, 104, 8] (band 12/12)
+  band42-len12 L1: 12 segs, min_frac 0.005, min_avail 79.6, worst {'i': 11, 'step': 8, 'd24': 15920, 'frac': 0.005, 'n10': 10, 'first_idx': 5803}, nodes 0.1M, 2s
+  band42-len12 L2: 39 segs, min_frac 0.0, min_avail 10, worst {'i': 22, 'step': 98, 'd24': 15920, 'frac': 0.0, 'n10': 10, 'first_idx': 2}, nodes 0.1M, 3s
+  band42-len12 L3: 133 segs, min_frac 0.005, min_avail 67.4, worst {'i': 104, 'step': 55, 'd24': 62316, 'frac': 0.005, 'n10': 10, 'first_idx': 239}, nodes 0.1M, 5s
+seed band43-len12: base [16, 77, 115, 59, 40, 34, 121, 25, 49, 100, 59, 95] (band 12/12)
+  band43-len12 L1: 12 segs, min_frac 0.0, min_avail 6, worst {'i': 8, 'step': 49, 'd24': 15920, 'frac': 0.0, 'n10': 6, 'first_idx': 200}, nodes 0.1M, 5s
+  band43-len12 L2: 40 segs, min_frac 0.0, min_avail 10, worst {'i': 12, 'step': 50, 'd24': 25440, 'frac': 0.0, 'n10': 10, 'first_idx': 28}, nodes 0.2M, 5s
+  band43-len12 L3: 135 segs, min_frac 0.005, min_avail 67.4, worst {'i': 42, 'step': 65, 'd24': 137772, 'frac': 0.005, 'n10': 10, 'first_idx': 2}, nodes 0.2M, 8s
+seed band44-len12: base [14, 115, 25, 118, 16, 77, 95, 25, 121, 34, 16, 101] (band 12/12)
+  band44-len12 L1: 12 segs, min_frac 0.01, min_avail 159.2, worst {'i': 10, 'step': 16, 'd24': 15920, 'frac': 0.01, 'n10': 10, 'first_idx': 392}, nodes 0.2M, 8s
+  band44-len12 L2: 40 segs, min_frac 0.01, min_avail 257.0, worst {'i': 14, 'step': 18, 'd24': 31718, 'frac': 0.01, 'n10': 10, 'first_idx': 1}, nodes 0.2M, 8s
+  band44-len12 L3: 137 segs, min_frac 0.015, min_avail 238.8, worst {'i': 2, 'step': 16, 'd24': 15920, 'frac': 0.015, 'n10': 10, 'first_idx': 0}, nodes 0.3M, 10s
+seed band45-len12: base [8, 121, 25, 121, 59, 40, 59, 77, 40, 23, 64, 89] (band 12/12)
+  band45-len12 L1: 12 segs, min_frac 0.005, min_avail 79.6, worst {'i': 2, 'step': 25, 'd24': 15920, 'frac': 0.005, 'n10': 10, 'first_idx': 46}, nodes 0.3M, 10s
+  band45-len12 L2: 38 segs, min_frac 0.06, min_avail 404.2, worst {'i': 0, 'step': 5, 'd24': 6736, 'frac': 0.06, 'n10': 10, 'first_idx': 212}, nodes 0.3M, 11s
+  band45-len12 L3: 122 segs, min_frac 0.03, min_avail 192.8, worst {'i': 61, 'step': 16, 'd24': 15920, 'frac': 0.03, 'n10': 10, 'first_idx': 82}, nodes 0.3M, 13s
+seed alt51-len12: base [20, 107, 4, 121, 20, 77, 103, 10, 122, 5, 103, 64] (band 7/12)
+  alt51-len12 L1: 12 segs, min_frac 0.03, min_avail 271.4, worst {'i': 8, 'step': 122, 'd24': 9046, 'frac': 0.03, 'n10': 10, 'first_idx': 3}, nodes 0.3M, 13s
+  alt51-len12 L2: 43 segs, min_frac 0.015, min_avail 168.4, worst {'i': 1, 'step': 44, 'd24': 38022, 'frac': 0.015, 'n10': 4, 'first_idx': 116}, nodes 0.4M, 13s
+  alt51-len12 L3: 143 segs, min_frac 0.01, min_avail 159.2, worst {'i': 114, 'step': 8, 'd24': 15920, 'frac': 0.01, 'n10': 1, 'first_idx': 39}, nodes 0.4M, 15s
+seed alt52-len12: base [20, 77, 103, 22, 119, 34, 4, 104, 20, 83, 103, 95] (band 6/12)
+  alt52-len12 L1: 12 segs, min_frac 0.04, min_avail 361.8, worst {'i': 9, 'step': 83, 'd24': 9046, 'frac': 0.04, 'n10': 10, 'first_idx': 206}, nodes 0.4M, 16s
+  alt52-len12 L2: 45 segs, min_frac 0.06, min_avail 995.1, worst {'i': 37, 'step': 50, 'd24': 25440, 'frac': 0.06, 'n10': 10, 'first_idx': 2}, nodes 0.4M, 16s
+  alt52-len12 L3: 149 segs, min_frac 0.065, min_avail 350.9, worst {'i': 67, 'step': 22, 'd24': 5398, 'frac': 0.065, 'n10': 10, 'first_idx': 691}, nodes 0.5M, 19s
+seed alt53-len12: base [20, 83, 103, 10, 119, 8, 103, 22, 119, 34, 20, 107] (band 6/12)
+  alt53-len12 L1: 12 segs, min_frac 0.085, min_avail 458.8, worst {'i': 7, 'step': 22, 'd24': 5398, 'frac': 0.085, 'n10': 10, 'first_idx': 0}, nodes 0.5M, 19s
+  alt53-len12 L2: 42 segs, min_frac 0.045, min_avail 407.1, worst {'i': 18, 'step': 1, 'd24': 9046, 'frac': 0.045, 'n10': 10, 'first_idx': 26}, nodes 0.5M, 19s
+  alt53-len12 L3: 136 segs, min_frac 0.015, min_avail 192.8, worst {'i': 104, 'step': 11, 'd24': 38022, 'frac': 0.015, 'n10': 10, 'first_idx': 136}, nodes 0.5M, 21s
+seed alt54-len12: base [4, 95, 119, 8, 103, 46, 119, 59, 4, 89, 119, 28] (band 6/12)
+  alt54-len12 L1: 12 segs, min_frac 0.02, min_avail 298.6, worst {'i': 7, 'step': 59, 'd24': 14931, 'frac': 0.02, 'n10': 10, 'first_idx': 20}, nodes 0.5M, 22s
+  alt54-len12 L2: 45 segs, min_frac 0.025, min_avail 271.4, worst {'i': 24, 'step': 98, 'd24': 15920, 'frac': 0.025, 'n10': 10, 'first_idx': 15}, nodes 0.5M, 22s
+  alt54-len12 L3: 150 segs, min_frac 0.03, min_avail 154.2, worst {'i': 86, 'step': 51, 'd24': 81092, 'frac': 0.03, 'n10': 10, 'first_idx': 7}, nodes 0.6M, 24s
+seed alt55-len12: base [103, 40, 20, 59, 103, 40, 20, 77, 20, 118, 103, 40] (band 6/12)
+  alt55-len12 L1: 12 segs, min_frac 0.01, min_avail 149.3, worst {'i': 3, 'step': 59, 'd24': 14931, 'frac': 0.01, 'n10': 10, 'first_idx': 1570}, nodes 0.6M, 24s
+  alt55-len12 L2: 44 segs, min_frac 0.07, min_avail 471.5, worst {'i': 24, 'step': 19, 'd24': 6736, 'frac': 0.07, 'n10': 10, 'first_idx': 2454}, nodes 0.6M, 25s
+  alt55-len12 L3: 146 segs, min_frac 0.025, min_avail 315.4, worst {'i': 133, 'step': 64, 'd24': 14931, 'frac': 0.025, 'n10': 10, 'first_idx': 11}, nodes 0.7M, 27s
+seed hug61-len20: base [103, 4, 20, 114, 119, 103, 4, 120, 20, 119, 103, 15, 103, 119, 20, 45, 4, 20, 119, 9] (band 0/20)
+  hug61-len20 L1: 20 segs, min_frac 0.005, min_avail 2265.1, worst {'i': 11, 'step': 15, 'd24': 1505, 'frac': 0.005, 'n10': 10, 'first_idx': 33}, nodes 0.7M, 27s
+  hug61-len20 L2: 80 segs, min_frac 0.075, min_avail 630.8, worst {'i': 44, 'step': 13, 'd24': 38022, 'frac': 0.075, 'n10': 10, 'first_idx': 16}, nodes 0.7M, 28s
+  hug61-len20 L3: 252 segs, min_frac 0.03, min_avail 377.9, worst {'i': 45, 'step': 107, 'd24': 15920, 'frac': 0.03, 'n10': 10, 'first_idx': 200}, nodes 0.8M, 37s
+seed hug62-len20: base [20, 119, 103, 9, 4, 103, 119, 45, 20, 119, 103, 9, 4, 20, 119, 3, 119, 20, 4, 108] (band 0/20)
+  hug62-len20 L1: 20 segs, min_frac 0.0, min_avail 10, worst {'i': 15, 'step': 3, 'd24': 1732, 'frac': 0.0, 'n10': 10, 'first_idx': 283}, nodes 0.8M, 37s
+  hug62-len20 L2: 80 segs, min_frac 0.04, min_avail 404.2, worst {'i': 34, 'step': 73, 'd24': 25440, 'frac': 0.04, 'n10': 10, 'first_idx': 1}, nodes 0.8M, 38s
+  hug62-len20 L3: 259 segs, min_frac 0.04, min_avail 205.6, worst {'i': 130, 'step': 108, 'd24': 1505, 'frac': 0.04, 'n10': 10, 'first_idx': 2}, nodes 0.9M, 47s
+seed hug63-len20: base [119, 103, 4, 15, 20, 119, 103, 3, 119, 103, 4, 15, 119, 103, 4, 120, 103, 119, 20, 21] (band 0/20)
+  hug63-len20 L1: 20 segs, min_frac 0.005, min_avail 2505.2, worst {'i': 7, 'step': 3, 'd24': 1732, 'frac': 0.005, 'n10': 10, 'first_idx': 52}, nodes 0.9M, 47s
+  hug63-len20 L2: 79 segs, min_frac 0.05, min_avail 262.9, worst {'i': 37, 'step': 109, 'd24': 5257, 'frac': 0.05, 'n10': 10, 'first_idx': 75}, nodes 0.9M, 48s
+  hug63-len20 L3: 256 segs, min_frac 0.02, min_avail 108.0, worst {'i': 43, 'step': 2, 'd24': 5398, 'frac': 0.02, 'n10': 10, 'first_idx': 337}, nodes 1.0M, 56s
+seed band71-len18: base [2, 115, 98, 5, 83, 46, 100, 14, 89, 118, 28, 16, 100, 14, 46, 115, 14, 113] (band 18/18)
+  band71-len18 L1: 18 segs, min_frac 0.0, min_avail 2, worst {'i': 8, 'step': 89, 'd24': 9046, 'frac': 0.0, 'n10': 10, 'first_idx': 795}, nodes 1.0M, 56s
+  band71-len18 L2: 60 segs, min_frac 0.0, min_avail 3, worst {'i': 0, 'step': 5, 'd24': 6736, 'frac': 0.0, 'n10': 3, 'first_idx': 5760}, nodes 1.1M, 57s
+  band71-len18 L3: 201 segs, min_frac 0.0, min_avail 10, worst {'i': 56, 'step': 5, 'd24': 6736, 'frac': 0.0, 'n10': 10, 'first_idx': 3708}, nodes 1.1M, 61s
+seed band72-len18: base [64, 77, 22, 107, 8, 64, 107, 46, 28, 115, 1, 83, 16, 95, 77, 19, 98, 40] (band 18/18)
+  band72-len18 L1: 16 segs, min_frac 0.0, min_avail 4, worst {'i': 3, 'step': 107, 'd24': 15920, 'frac': 0.0, 'n10': 4, 'first_idx': 4624}, nodes 1.2M, 61s
+  band72-len18 L1: *** HARD JAM *** {'level': 1, 'i': 9, 'step': 115, 'd24': 15920, 'dstar': 15920, 'scanned': 15920, 'survivors': 0, 'hard_jam': True}
+seed alt81-len18: base [119, 8, 4, 121, 119, 28, 4, 109, 103, 16, 119, 19, 103, 40, 4, 115, 119, 5] (band 9/18)
+  alt81-len18 L1: 18 segs, min_frac 0.045, min_avail 407.1, worst {'i': 13, 'step': 40, 'd24': 9046, 'frac': 0.045, 'n10': 10, 'first_idx': 14}, nodes 1.2M, 61s
+  alt81-len18 L2: 64 segs, min_frac 0.03, min_avail 361.8, worst {'i': 49, 'step': 72, 'd24': 81092, 'frac': 0.03, 'n10': 10, 'first_idx': 67}, nodes 1.2M, 62s
+  alt81-len18 L3: 211 segs, min_frac 0.01, min_avail 231.3, worst {'i': 130, 'step': 76, 'd24': 35751, 'frac': 0.01, 'n10': 10, 'first_idx': 1}, nodes 1.3M, 67s
+seed alt82-len18: base [119, 28, 4, 64, 119, 34, 4, 95, 103, 64, 119, 14, 4, 115, 4, 40, 103, 115] (band 9/18)
+  alt82-len18 L1: 18 segs, min_frac 0.015, min_avail 224.0, worst {'i': 3, 'step': 64, 'd24': 14931, 'frac': 0.015, 'n10': 10, 'first_idx': 35}, nodes 1.3M, 67s
+  alt82-len18 L2: 65 segs, min_frac 0.02, min_avail 538.9, worst {'i': 21, 'step': 51, 'd24': 81092, 'frac': 0.02, 'n10': 10, 'first_idx': 7}, nodes 1.3M, 68s
+  alt82-len18 L3: 204 segs, min_frac 0.02, min_avail 108.0, worst {'i': 95, 'step': 102, 'd24': 1732, 'frac': 0.02, 'n10': 10, 'first_idx': 0}, nodes 1.4M, 74s
+
+==== WAVE2 RANKED (worst first) ====
+band42-len12: min_frac 0.000 min_avail 10 jam False band 12/12
+band43-len12: min_frac 0.000 min_avail 6 jam False band 12/12
+hug62-len20: min_frac 0.000 min_avail 10 jam False band 0/20
+band71-len18: min_frac 0.000 min_avail 2 jam False band 18/18
+band72-len18: min_frac 0.000 min_avail 4 jam True band 18/18
+band45-len12: min_frac 0.005 min_avail 80 jam False band 12/12
+hug61-len20: min_frac 0.005 min_avail 378 jam False band 0/20
+hug63-len20: min_frac 0.005 min_avail 108 jam False band 0/20
+band41-len12: min_frac 0.010 min_avail 90 jam False band 12/12
+band44-len12: min_frac 0.010 min_avail 159 jam False band 12/12
+alt51-len12: min_frac 0.010 min_avail 159 jam False band 7/12
+alt55-len12: min_frac 0.010 min_avail 149 jam False band 6/12
+alt81-len18: min_frac 0.010 min_avail 231 jam False band 9/18
+alt53-len12: min_frac 0.015 min_avail 193 jam False band 6/12
+alt82-len18: min_frac 0.015 min_avail 108 jam False band 9/18
+alt54-len12: min_frac 0.020 min_avail 154 jam False band 6/12
+alt52-len12: min_frac 0.040 min_avail 351 jam False band 6/12
+TOTAL nodes 1.4M, loop 74s

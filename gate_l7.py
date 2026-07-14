@@ -35,8 +35,9 @@ from amplify_rich import M_BAL3
 from gate_run import (
     DELTA, FRAGILE_CUT, L7_RECORD_STRIDE, MENU, SAMPLE_N,
     dfs_fallback, ks_stat, load_domains, load_level4_word, n_of_d,
-    word_interiors, word_legal,
+    word_interiors,
 )
+from fast_legal import Store, word_legal_fast
 
 
 def get_parent(level):
@@ -64,9 +65,7 @@ def construct(level, doms, d24_size):
     t0 = time.time()
     parent_word, parent_pts = get_parent(level)
     anchors = [apply(M_BAL3, p) for p in parent_pts]
-    points = list(anchors)
-    point_set = set(anchors)
-    assert len(point_set) == len(anchors)
+    store = Store(anchors)
     order = sorted(range(len(parent_word)), key=lambda i: (d24_size[parent_word[i]], i))
     words = {}
     n_esc = n_jam = 0
@@ -78,18 +77,18 @@ def construct(level, doms, d24_size):
         memo = {}
         chosen = None
         for w in dom[:2000]:
-            if word_legal(A, w, points, point_set, memo):
+            if word_legal_fast(A, w, store, memo, MENU):
                 chosen = w
                 break
         if chosen is None:
             n_esc += 1
             for w in dom[2000:]:
-                if word_legal(A, w, points, point_set, memo):
+                if word_legal_fast(A, w, store, memo, MENU):
                     chosen = w
                     break
         if chosen is None:
             n_jam += 1
-            seg_word = dfs_fallback(A, B, points, point_set,
+            seg_word = dfs_fallback(A, B, store.pts, store.pset,
                                     Random(f"gate-L{level}-dfs-{i}"))
             if seg_word is None:
                 print(f"L{level} seg {i}: HARD JAM — GATE FAILS", flush=True)
@@ -101,8 +100,7 @@ def construct(level, doms, d24_size):
         end = ints[-1] if ints else A
         s = MENU[chosen[-1]]
         assert (end[0] + s[0], end[1] + s[1], end[2] + s[2]) == B
-        points.extend(ints)
-        point_set.update(ints)
+        store.add_many(ints)
         words[i] = tuple(chosen)
         if done % 1000 == 999:
             print(f"L{level} construct: {done+1}/{len(order)} segs, "
@@ -116,7 +114,7 @@ def construct(level, doms, d24_size):
         chain.append(anchors[i + 1])
         new_word.extend(words[i])
         anchors_idx.append(len(chain) - 1)
-    assert set(chain) == point_set
+    assert set(chain) == store.pset
     print(f"L{level}: verifying {len(chain)} points ...", flush=True)
     bad = first_disqualifier(chain)
     assert bad is None, f"L{level} VERIFY FAILED: {bad}"
@@ -155,8 +153,7 @@ def shard(level, k, n, doms, d24_size):
     t0 = time.time()
     st = pickle.load(open(state_pkl(level), "rb"))
     recs = {pos for pos, _ in recorded_positions(level, st, d24_size)}
-    points = list(st["anchors"])
-    point_set = set(points)
+    store = Store(st["anchors"])
     out = []
     for pos, i in enumerate(st["order"]):
         si = st["parent_word"][i]
@@ -167,7 +164,7 @@ def shard(level, k, n, doms, d24_size):
             memo = {}
             A = st["anchors"][i]
             surv = sum(1 for w in sample
-                       if word_legal(A, w, points, point_set, memo))
+                       if word_legal_fast(A, w, store, memo, MENU))
             frac = surv / len(sample)
             out.append({"i": i, "pos": pos, "step": si, "d24": d24_size[si],
                         "dstar": len(dom), "n": len(sample), "surv": surv,
@@ -175,8 +172,7 @@ def shard(level, k, n, doms, d24_size):
                         "surv_abs": round(frac * len(dom)),
                         "fragile": d24_size[si] < FRAGILE_CUT})
         ints = word_interiors(st["anchors"][i], st["words"][i])
-        points.extend(ints)
-        point_set.update(ints)
+        store.add_many(ints)
         if pos % 5000 == 4999:
             print(f"shard {k}/{n}: pos {pos+1}, {len(out)} recs, "
                   f"{time.time()-t0:.0f}s", flush=True)

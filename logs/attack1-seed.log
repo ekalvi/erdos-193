@@ -1,0 +1,134 @@
+domains loaded 38s
+seed fb777-len12: base [123, 74, 104, 10, 114, 102, 45, 108, 53, 63, 119, 59]
+  fb777-len12 L1: 12 segs, min_frac 0.305, min_avail 2505.8, worst {'i': 9, 'step': 63, 'd24': 50427, 'frac': 0.305, 'n10': 10, 'first_idx': 1}, nodes 0.0M, 0s
+  fb777-len12 L2: 40 segs, min_frac 0.115, min_avail 943.0, worst {'i': 13, 'step': 122, 'd24': 9046, 'frac': 0.115, 'n10': 10, 'first_idx': 26}, nodes 0.0M, 1s
+  fb777-len12 L3: 135 segs, min_frac 0.035, min_avail 316.6, worst {'i': 68, 'step': 1, 'd24': 9046, 'frac': 0.035, 'n10': 10, 'first_idx': 338}, nodes 0.1M, 3s
+seed fb193-len12: base [30, 82, 50, 68, 94, 21, 13, 22, 104, 3, 73, 14]
+  fb193-len12 L1: 12 segs, min_frac 0.24, min_avail 3049.9, worst {'i': 1, 'step': 82, 'd24': 84994, 'frac': 0.24, 'n10': 10, 'first_idx': 0}, nodes 0.1M, 3s
+  fb193-len12 L2: 38 segs, min_frac 0.17, min_avail 1079.4, worst {'i': 27, 'step': 122, 'd24': 9046, 'frac': 0.17, 'n10': 10, 'first_idx': 13}, nodes 0.1M, 4s
+  fb193-len12 L3: 130 segs, min_frac 0.07, min_avail 377.9, worst {'i': 97, 'step': 22, 'd24': 5398, 'frac': 0.07, 'n10': 10, 'first_idx': 2524}, nodes 0.1M, 6s
+seed fb1-len12: base [123, 82, 11, 56, 80, 38, 18, 69, 38, 20, 98, 58]
+  fb1-len12 L1: 12 segs, min_frac 0.305, min_avail 1889.0, worst {'i': 8, 'step': 38, 'd24': 192838, 'frac': 0.305, 'n10': 10, 'first_idx': 1}, nodes 0.1M, 6s
+  fb1-len12 L2: 32 segs, min_frac 0.14, min_avail 943.0, worst {'i': 25, 'step': 19, 'd24': 6736, 'frac': 0.14, 'n10': 10, 'first_idx': 2289}, nodes 0.1M, 6s
+  fb1-len12 L3: 104 segs, min_frac 0.175, min_avail 668.2, worst {'i': 6, 'step': 109, 'd24': 5257, 'frac': 0.175, 'n10': 10, 'first_idx': 57}, nodes 0.1M, 8s
+seed fb2-len12: base [119, 69, 10, 74, 112, 103, 56, 52, 76, 108, 34, 37]
+  fb2-len12 L1: 12 segs, min_frac 0.425, min_avail 3338.2, worst {'i': 6, 'step': 56, 'd24': 260212, 'frac': 0.425, 'n10': 10, 'first_idx': 3}, nodes 0.1M, 8s
+  fb2-len12 L2: 37 segs, min_frac 0.265, min_avail 1393.1, worst {'i': 19, 'step': 109, 'd24': 5257, 'frac': 0.265, 'n10': 10, 'first_idx': 32}, nodes 0.2M, 8s
+  fb2-len12 L3: 121 segs, min_frac 0.07, min_avail 488.3, worst {'i': 100, 'step': 110, 'd24': 38022, 'frac': 0.07, 'n10': 10, 'first_idx': 8}, nodes 0.2M, 10s
+seed fb3-len12: base [78, 0, 118, 115, 84, 113, 15, 72, 20, 14, 51, 100]
+  fb3-len12 L1: 12 segs, min_frac 0.455, min_avail 2210.2, worst {'i': 2, 'step': 118, 'd24': 6736, 'frac': 0.455, 'n10': 10, 'first_idx': 0}, nodes 0.2M, 10s
+  fb3-len12 L2: 38 segs, min_frac 0.185, min_avail 972.5, worst {'i': 35, 'step': 109, 'd24': 5257, 'frac': 0.185, 'n10': 10, 'first_idx': 58}, nodes 0.2M, 10s
+  fb3-len12 L3: 132 segs, min_frac 0.125, min_avail 655.4, worst {'i': 70, 'step': 14, 'd24': 5257, 'frac': 0.125, 'n10': 10, 'first_idx': 1751}, nodes 0.2M, 13s
+seed fb4-len12: base [100, 115, 83, 3, 77, 12, 60, 41, 45, 64, 69, 5]
+  fb4-len12 L1: 12 segs, min_frac 0.415, min_avail 5826.6, worst {'i': 7, 'step': 41, 'd24': 84994, 'frac': 0.415, 'n10': 10, 'first_idx': 0}, nodes 0.2M, 13s
+  fb4-len12 L2: 39 segs, min_frac 0.25, min_avail 1760.5, worst {'i': 27, 'step': 49, 'd24': 15920, 'frac': 0.25, 'n10': 10, 'first_idx': 31}, nodes 0.3M, 13s
+  fb4-len12 L3: 124 segs, min_frac 0.12, min_avail 808.3, worst {'i': 9, 'step': 118, 'd24': 6736, 'frac': 0.12, 'n10': 10, 'first_idx': 15}, nodes 0.3M, 15s
+seed fb5-len12: base [15, 28, 114, 11, 119, 99, 84, 75, 28, 40, 10, 102]
+  fb5-len12 L1: 12 segs, min_frac 0.565, min_avail 2043.2, worst {'i': 3, 'step': 11, 'd24': 38022, 'frac': 0.565, 'n10': 10, 'first_idx': 0}, nodes 0.3M, 15s
+  fb5-len12 L2: 40 segs, min_frac 0.12, min_avail 693.9, worst {'i': 1, 'step': 23, 'd24': 9046, 'frac': 0.12, 'n10': 10, 'first_idx': 38}, nodes 0.3M, 15s
+  fb5-len12 L3: 132 segs, min_frac 0.075, min_avail 485.8, worst {'i': 33, 'step': 23, 'd24': 9046, 'frac': 0.075, 'n10': 10, 'first_idx': 2032}, nodes 0.3M, 18s
+seed fb6-len12: base [45, 72, 100, 45, 92, 37, 109, 68, 97, 32, 66, 69]
+  fb6-len12 L1: 12 segs, min_frac 0.13, min_avail 3758.8, worst {'i': 5, 'step': 37, 'd24': 281312, 'frac': 0.13, 'n10': 10, 'first_idx': 0}, nodes 0.3M, 18s
+  fb6-len12 L2: 35 segs, min_frac 0.23, min_avail 1464.9, worst {'i': 12, 'step': 49, 'd24': 15920, 'frac': 0.23, 'n10': 10, 'first_idx': 22}, nodes 0.3M, 18s
+  fb6-len12 L3: 115 segs, min_frac 0.01, min_avail 159.2, worst {'i': 70, 'step': 16, 'd24': 15920, 'frac': 0.01, 'n10': 10, 'first_idx': 52}, nodes 0.4M, 19s
+seed fb7-len12: base [35, 26, 20, 39, 36, 121, 105, 78, 9, 83, 64, 116]
+  fb7-len12 L1: 12 segs, min_frac 0.08, min_avail 3732.8, worst {'i': 1, 'step': 26, 'd24': 49402, 'frac': 0.08, 'n10': 10, 'first_idx': 12}, nodes 0.4M, 19s
+  fb7-len12 L2: 37 segs, min_frac 0.135, min_avail 1169.4, worst {'i': 32, 'step': 72, 'd24': 81092, 'frac': 0.135, 'n10': 10, 'first_idx': 51}, nodes 0.4M, 19s
+  fb7-len12 L3: 117 segs, min_frac 0.055, min_avail 350.9, worst {'i': 84, 'step': 11, 'd24': 38022, 'frac': 0.055, 'n10': 10, 'first_idx': 25}, nodes 0.4M, 20s
+seed fb8-len12: base [78, 94, 28, 68, 118, 47, 17, 48, 39, 22, 12, 6]
+  fb8-len12 L1: 12 segs, min_frac 0.365, min_avail 4966.2, worst {'i': 7, 'step': 48, 'd24': 49402, 'frac': 0.365, 'n10': 10, 'first_idx': 0}, nodes 0.4M, 20s
+  fb8-len12 L2: 39 segs, min_frac 0.135, min_avail 771.0, worst {'i': 5, 'step': 93, 'd24': 38022, 'frac': 0.135, 'n10': 10, 'first_idx': 22}, nodes 0.4M, 20s
+  fb8-len12 L3: 129 segs, min_frac 0.075, min_avail 404.8, worst {'i': 18, 'step': 101, 'd24': 5398, 'frac': 0.075, 'n10': 10, 'first_idx': 79}, nodes 0.5M, 22s
+seed fb101-len6: base [80, 9, 68, 107, 90, 32]
+  fb101-len6 L1: 6 segs, min_frac 0.63, min_avail 13293.2, worst {'i': 5, 'step': 32, 'd24': 179244, 'frac': 0.63, 'n10': 10, 'first_idx': 1}, nodes 0.5M, 22s
+  fb101-len6 L2: 15 segs, min_frac 0.185, min_avail 1580.5, worst {'i': 3, 'step': 1, 'd24': 9046, 'frac': 0.185, 'n10': 10, 'first_idx': 7}, nodes 0.5M, 22s
+  fb101-len6 L3: 48 segs, min_frac 0.105, min_avail 728.7, worst {'i': 11, 'step': 15, 'd24': 1505, 'frac': 0.105, 'n10': 10, 'first_idx': 1}, nodes 0.5M, 22s
+seed fb102-len6: base [75, 67, 40, 25, 121, 18]
+  fb102-len6 L1: 6 segs, min_frac 0.405, min_avail 5290.0, worst {'i': 3, 'step': 25, 'd24': 15920, 'frac': 0.405, 'n10': 10, 'first_idx': 11}, nodes 0.5M, 22s
+  fb102-len6 L2: 17 segs, min_frac 0.305, min_avail 1670.5, worst {'i': 14, 'step': 1, 'd24': 9046, 'frac': 0.305, 'n10': 10, 'first_idx': 0}, nodes 0.5M, 22s
+  fb102-len6 L3: 58 segs, min_frac 0.105, min_avail 629.6, worst {'i': 9, 'step': 122, 'd24': 9046, 'frac': 0.105, 'n10': 10, 'first_idx': 6}, nodes 0.5M, 22s
+seed fb103-len6: base [99, 108, 2, 107, 110, 121]
+  fb103-len6 L1: 6 segs, min_frac 0.525, min_avail 2313.0, worst {'i': 4, 'step': 110, 'd24': 38022, 'frac': 0.525, 'n10': 10, 'first_idx': 1}, nodes 0.5M, 22s
+  fb103-len6 L2: 18 segs, min_frac 0.285, min_avail 1901.8, worst {'i': 4, 'step': 100, 'd24': 9046, 'frac': 0.285, 'n10': 10, 'first_idx': 7}, nodes 0.5M, 22s
+  fb103-len6 L3: 59 segs, min_frac 0.06, min_avail 539.8, worst {'i': 15, 'step': 110, 'd24': 38022, 'frac': 0.06, 'n10': 10, 'first_idx': 12}, nodes 0.5M, 23s
+seed fb104-len6: base [84, 54, 93, 59, 48, 47]
+  fb104-len6 L1: 6 segs, min_frac 0.575, min_avail 13960.5, worst {'i': 4, 'step': 48, 'd24': 49402, 'frac': 0.575, 'n10': 10, 'first_idx': 0}, nodes 0.5M, 23s
+  fb104-len6 L2: 19 segs, min_frac 0.275, min_avail 2107.4, worst {'i': 2, 'step': 122, 'd24': 9046, 'frac': 0.275, 'n10': 10, 'first_idx': 11}, nodes 0.5M, 23s
+  fb104-len6 L3: 63 segs, min_frac 0.12, min_avail 890.7, worst {'i': 7, 'step': 107, 'd24': 15920, 'frac': 0.12, 'n10': 10, 'first_idx': 1}, nodes 0.6M, 23s
+seed hug11-len10: base [119, 103, 4, 21, 20, 4, 103, 114, 20, 4]
+  hug11-len10 L1: 10 segs, min_frac 0.15, min_avail 14002.8, worst {'i': 3, 'step': 21, 'd24': 1732, 'frac': 0.15, 'n10': 10, 'first_idx': 88}, nodes 0.6M, 23s
+  hug11-len10 L2: 39 segs, min_frac 0.16, min_avail 998.8, worst {'i': 29, 'step': 122, 'd24': 9046, 'frac': 0.16, 'n10': 10, 'first_idx': 40}, nodes 0.6M, 23s
+  hug11-len10 L3: 127 segs, min_frac 0.045, min_avail 236.6, worst {'i': 12, 'step': 113, 'd24': 5257, 'frac': 0.045, 'n10': 10, 'first_idx': 112}, nodes 0.6M, 24s
+seed hug12-len10: base [4, 20, 119, 102, 4, 20, 119, 108, 103, 119]
+  hug12-len10 L1: 10 segs, min_frac 0.15, min_avail 10917.4, worst {'i': 3, 'step': 102, 'd24': 1732, 'frac': 0.15, 'n10': 10, 'first_idx': 2}, nodes 0.6M, 24s
+  hug12-len10 L2: 39 segs, min_frac 0.1, min_avail 525.7, worst {'i': 1, 'step': 10, 'd24': 5257, 'frac': 0.1, 'n10': 10, 'first_idx': 9}, nodes 0.6M, 24s
+  hug12-len10 L3: 127 segs, min_frac 0.065, min_avail 350.9, worst {'i': 97, 'step': 121, 'd24': 5398, 'frac': 0.065, 'n10': 10, 'first_idx': 396}, nodes 0.6M, 26s
+seed hug13-len10: base [4, 20, 119, 108, 4, 20, 119, 102, 103, 119]
+  hug13-len10 L1: 10 segs, min_frac 0.165, min_avail 12816.1, worst {'i': 7, 'step': 102, 'd24': 1732, 'frac': 0.165, 'n10': 10, 'first_idx': 3}, nodes 0.6M, 26s
+  hug13-len10 L2: 39 segs, min_frac 0.105, min_avail 321.2, worst {'i': 13, 'step': 100, 'd24': 9046, 'frac': 0.105, 'n10': 10, 'first_idx': 7}, nodes 0.7M, 26s
+  hug13-len10 L3: 129 segs, min_frac 0.025, min_avail 131.4, worst {'i': 87, 'step': 113, 'd24': 5257, 'frac': 0.025, 'n10': 10, 'first_idx': 352}, nodes 0.7M, 27s
+seed hug14-len10: base [4, 103, 119, 21, 119, 20, 4, 108, 103, 119]
+  hug14-len10 L1: 10 segs, min_frac 0.18, min_avail 22309.5, worst {'i': 3, 'step': 21, 'd24': 1732, 'frac': 0.18, 'n10': 10, 'first_idx': 7}, nodes 0.7M, 27s
+  hug14-len10 L2: 39 segs, min_frac 0.135, min_avail 1077.8, worst {'i': 16, 'step': 68, 'd24': 62316, 'frac': 0.135, 'n10': 10, 'first_idx': 16}, nodes 0.7M, 27s
+  hug14-len10 L3: 129 segs, min_frac 0.075, min_avail 295.6, worst {'i': 125, 'step': 102, 'd24': 1732, 'frac': 0.075, 'n10': 10, 'first_idx': 0}, nodes 0.7M, 28s
+seed hug15-len10: base [119, 20, 4, 78, 103, 4, 20, 114, 119, 103]
+  hug15-len10 L1: 10 segs, min_frac 0.16, min_avail 13528.1, worst {'i': 7, 'step': 114, 'd24': 1505, 'frac': 0.16, 'n10': 10, 'first_idx': 7}, nodes 0.7M, 28s
+  hug15-len10 L2: 40 segs, min_frac 0.09, min_avail 920.0, worst {'i': 16, 'step': 50, 'd24': 25440, 'frac': 0.09, 'n10': 10, 'first_idx': 5}, nodes 0.8M, 28s
+  hug15-len10 L3: 132 segs, min_frac 0.035, min_avail 184.0, worst {'i': 116, 'step': 113, 'd24': 5257, 'frac': 0.035, 'n10': 10, 'first_idx': 19}, nodes 0.8M, 30s
+seed hug16-len10: base [20, 4, 103, 114, 20, 4, 103, 120, 119, 103]
+  hug16-len10 L1: 10 segs, min_frac 0.11, min_avail 11392.1, worst {'i': 7, 'step': 120, 'd24': 1732, 'frac': 0.11, 'n10': 10, 'first_idx': 9}, nodes 0.8M, 30s
+  hug16-len10 L2: 39 segs, min_frac 0.085, min_avail 693.9, worst {'i': 13, 'step': 122, 'd24': 9046, 'frac': 0.085, 'n10': 10, 'first_idx': 56}, nodes 0.8M, 30s
+  hug16-len10 L3: 128 segs, min_frac 0.045, min_avail 205.6, worst {'i': 115, 'step': 102, 'd24': 1732, 'frac': 0.045, 'n10': 10, 'first_idx': 2}, nodes 0.8M, 31s
+seed hugF21-len10: base [103, 119, 20, 9, 4, 103, 119, 21, 4, 20]
+  hugF21-len10 L1: 10 segs, min_frac 0.155, min_avail 13290.8, worst {'i': 3, 'step': 9, 'd24': 1505, 'frac': 0.155, 'n10': 10, 'first_idx': 485}, nodes 0.8M, 31s
+  hugF21-len10 L2: 40 segs, min_frac 0.12, min_avail 808.3, worst {'i': 27, 'step': 118, 'd24': 6736, 'frac': 0.12, 'n10': 10, 'first_idx': 1}, nodes 0.9M, 31s
+  hugF21-len10 L3: 133 segs, min_frac 0.05, min_avail 321.2, worst {'i': 83, 'step': 50, 'd24': 25440, 'frac': 0.05, 'n10': 10, 'first_idx': 11}, nodes 0.9M, 33s
+seed hugF22-len10: base [4, 20, 119, 108, 103, 4, 20, 94, 119, 20]
+  hugF22-len10 L1: 10 segs, min_frac 0.1, min_avail 17562.8, worst {'i': 3, 'step': 108, 'd24': 1505, 'frac': 0.1, 'n10': 10, 'first_idx': 2}, nodes 0.9M, 33s
+  hugF22-len10 L2: 40 segs, min_frac 0.045, min_avail 950.9, worst {'i': 32, 'step': 68, 'd24': 62316, 'frac': 0.045, 'n10': 10, 'first_idx': 54}, nodes 0.9M, 33s
+  hugF22-len10 L3: 133 segs, min_frac 0.035, min_avail 184.0, worst {'i': 40, 'step': 113, 'd24': 5257, 'frac': 0.035, 'n10': 10, 'first_idx': 17}, nodes 0.9M, 34s
+seed hugF23-len10: base [103, 4, 20, 114, 20, 119, 103, 3, 103, 119]
+  hugF23-len10 L1: 10 segs, min_frac 0.145, min_avail 18512.1, worst {'i': 3, 'step': 114, 'd24': 1505, 'frac': 0.145, 'n10': 10, 'first_idx': 5}, nodes 0.9M, 34s
+  hugF23-len10 L2: 40 segs, min_frac 0.12, min_avail 630.8, worst {'i': 26, 'step': 109, 'd24': 5257, 'frac': 0.12, 'n10': 10, 'first_idx': 32}, nodes 0.9M, 34s
+  hugF23-len10 L3: 135 segs, min_frac 0.035, min_avail 262.9, worst {'i': 57, 'step': 1, 'd24': 9046, 'frac': 0.035, 'n10': 10, 'first_idx': 18}, nodes 1.0M, 35s
+seed hugF24-len10: base [20, 119, 103, 3, 103, 119, 20, 108, 4, 103]
+  hugF24-len10 L1: 10 segs, min_frac 0.13, min_avail 12816.1, worst {'i': 7, 'step': 108, 'd24': 1505, 'frac': 0.13, 'n10': 10, 'first_idx': 79}, nodes 1.0M, 35s
+  hugF24-len10 L2: 40 segs, min_frac 0.11, min_avail 578.3, worst {'i': 10, 'step': 109, 'd24': 5257, 'frac': 0.11, 'n10': 10, 'first_idx': 32}, nodes 1.0M, 36s
+  hugF24-len10 L3: 129 segs, min_frac 0.035, min_avail 184.0, worst {'i': 24, 'step': 113, 'd24': 5257, 'frac': 0.035, 'n10': 10, 'first_idx': 19}, nodes 1.0M, 37s
+seed hug31-len16: base [4, 103, 119, 45, 20, 119, 103, 9, 4, 20, 119, 3, 119, 20, 4, 108]
+  hug31-len16 L1: 16 segs, min_frac 0.025, min_avail 4034.7, worst {'i': 11, 'step': 3, 'd24': 1732, 'frac': 0.025, 'n10': 10, 'first_idx': 298}, nodes 1.0M, 37s
+  hug31-len16 L2: 64 segs, min_frac 0.055, min_avail 505.2, worst {'i': 18, 'step': 73, 'd24': 25440, 'frac': 0.055, 'n10': 10, 'first_idx': 16}, nodes 1.1M, 37s
+  hug31-len16 L3: 208 segs, min_frac 0.045, min_avail 242.9, worst {'i': 78, 'step': 101, 'd24': 5398, 'frac': 0.045, 'n10': 10, 'first_idx': 76}, nodes 1.1M, 40s
+seed hug32-len16: base [103, 119, 20, 9, 103, 119, 20, 3, 4, 20, 119, 108, 4, 20, 119, 21]
+  hug32-len16 L1: 16 segs, min_frac 0.01, min_avail 3085.4, worst {'i': 7, 'step': 3, 'd24': 1732, 'frac': 0.01, 'n10': 10, 'first_idx': 595}, nodes 1.1M, 40s
+  hug32-len16 L2: 63 segs, min_frac 0.04, min_avail 604.6, worst {'i': 15, 'step': 35, 'd24': 31718, 'frac': 0.04, 'n10': 10, 'first_idx': 0}, nodes 1.1M, 40s
+  hug32-len16 L3: 205 segs, min_frac 0.02, min_avail 134.7, worst {'i': 97, 'step': 19, 'd24': 6736, 'frac': 0.02, 'n10': 10, 'first_idx': 3}, nodes 1.2M, 45s
+
+==== RANKED (worst first) ====
+fb6-len12: min_frac 0.010 min_avail 159 jam False base_fragile 3/12 
+hug32-len16: min_frac 0.010 min_avail 135 jam False base_fragile 16/16 
+hug13-len10: min_frac 0.025 min_avail 131 jam False base_fragile 10/10 
+hug31-len16: min_frac 0.025 min_avail 243 jam False base_fragile 16/16 
+fb777-len12: min_frac 0.035 min_avail 317 jam False base_fragile 5/12 
+hug15-len10: min_frac 0.035 min_avail 184 jam False base_fragile 10/10 
+hugF22-len10: min_frac 0.035 min_avail 184 jam False base_fragile 10/10 
+hugF23-len10: min_frac 0.035 min_avail 263 jam False base_fragile 10/10 
+hugF24-len10: min_frac 0.035 min_avail 184 jam False base_fragile 10/10 
+hug11-len10: min_frac 0.045 min_avail 237 jam False base_fragile 10/10 
+hug16-len10: min_frac 0.045 min_avail 206 jam False base_fragile 10/10 
+hugF21-len10: min_frac 0.050 min_avail 321 jam False base_fragile 10/10 
+fb7-len12: min_frac 0.055 min_avail 351 jam False base_fragile 3/12 
+fb103-len6: min_frac 0.060 min_avail 540 jam False base_fragile 1/6 
+hug12-len10: min_frac 0.065 min_avail 351 jam False base_fragile 10/10 
+fb193-len12: min_frac 0.070 min_avail 378 jam False base_fragile 3/12 
+fb2-len12: min_frac 0.070 min_avail 488 jam False base_fragile 4/12 
+fb5-len12: min_frac 0.075 min_avail 486 jam False base_fragile 4/12 
+fb8-len12: min_frac 0.075 min_avail 405 jam False base_fragile 2/12 
+hug14-len10: min_frac 0.075 min_avail 296 jam False base_fragile 10/10 
+fb101-len6: min_frac 0.105 min_avail 729 jam False base_fragile 1/6 
+fb102-len6: min_frac 0.105 min_avail 630 jam False base_fragile 0/6 
+fb4-len12: min_frac 0.120 min_avail 808 jam False base_fragile 3/12 
+fb104-len6: min_frac 0.120 min_avail 891 jam False base_fragile 1/6 
+fb3-len12: min_frac 0.125 min_avail 655 jam False base_fragile 3/12 
+fb1-len12: min_frac 0.140 min_avail 668 jam False base_fragile 2/12 
+TOTAL nodes 1.2M, attack loop 45s

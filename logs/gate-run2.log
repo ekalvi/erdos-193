@@ -12,3 +12,8 @@ L5: 2250/2457 segs, 776s, minfrac 0.045 meanfrac 0.482 below-d 89, esc 9 jam 0
 L5: verifying 8253 points ...
 L5 SUMMARY: {"level": 5, "steps": 8252, "points": 8253, "recorded": 2457, "min_frac": 0.045, "mean_frac": 0.46496133496133474, "p01_frac": 0.095, "below_delta": 109, "escalations": 9, "jams": 0, "stats": {"N3": 4.011, "N3_se": 0.013, "N3_n": 2452, "N9": 11.157, "N9_se": 0.026, "N9_n": 2412, "N27": 34.528, "N27_se": 0.091, "N27_n": 2311, "N81": 118.858, "N81_se": 0.608, "N81_n": 1959}, "elapsed_s": 917}
 L6: 250/8252 segs, 200s, minfrac 0.315 meanfrac 0.710 below-d 0, esc 0 jam 0
+L6: 500/8252 segs, 596s, minfrac 0.315 meanfrac 0.719 below-d 0, esc 0 jam 0
+L6: 750/8252 segs, 1141s, minfrac 0.315 meanfrac 0.717 below-d 0, esc 0 jam 0
+L6: 1000/8252 segs, 1411s, minfrac 0.305 meanfrac 0.715 below-d 0, esc 0 jam 0
+L6: 1250/8252 segs, 1710s, minfrac 0.305 meanfrac 0.714 below-d 0, esc 0 jam 0
+L6: 1500/8252 segs, 2064s, minfrac 0.065 meanfrac 0.698 below-d 1, esc 0 jam 0

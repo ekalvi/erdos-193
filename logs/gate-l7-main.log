@@ -1,0 +1,11 @@
+L6 construct: 1000/8252 segs, 19s, esc 0 jam 0
+L6 construct: 2000/8252 segs, 45s, esc 0 jam 0
+L6 construct: 3000/8252 segs, 78s, esc 0 jam 0
+L6 construct: 4000/8252 segs, 119s, esc 0 jam 0
+L6 construct: 5000/8252 segs, 183s, esc 1 jam 0
+L6 construct: 6000/8252 segs, 329s, esc 8 jam 0
+L6 construct: 7000/8252 segs, 474s, esc 14 jam 0
+L6 construct: 8000/8252 segs, 573s, esc 15 jam 0
+L6: verifying 28710 points ...
+L6: VERIFIED triple-free (932s)
+L6 construct done: 28709 steps, stats {'N3': 3.995, 'N3_se': 0.008, 'N3_n': 8248, 'N9': 11.358, 'N9_se': 0.015, 'N9_n': 8224, 'N27': 35.192, 'N27_se': 0.05, 'N27_n': 8096, 'N81': 115.832, 'N81_se': 0.183, 'N81_n': 7783}
