@@ -69,3 +69,17 @@ data["levels"] = levels
 json.dump(data, open(OUT, "w"))
 print(f"wrote {OUT} with {len(levels)} levels "
       f"({sum(len(l['points']) for l in levels)} total points)")
+
+# bump the fetch cache-buster so Cloudflare serves the new data
+import re
+
+html_path = Path(__file__).parent / "walk3d.html"
+html = html_path.read_text()
+new_html, n = re.subn(
+    r"walk3d-data\.json\?v=(\d+)",
+    lambda m: f"walk3d-data.json?v={int(m.group(1)) + 1}",
+    html,
+)
+assert n == 1, "cache-buster fetch line not found in walk3d.html"
+html_path.write_text(new_html)
+print(f"bumped data cache-buster in walk3d.html")

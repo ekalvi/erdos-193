@@ -87,7 +87,7 @@ window.addEventListener('unhandledrejection', e => {
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
-const DATA = await (await fetch('walk3d-data.json')).json();
+const DATA = await (await fetch('walk3d-data.json?v=2')).json();
 const LV = DATA.levels;
 const stage = document.getElementById('stage3d');
 const dark = matchMedia('(prefers-color-scheme: dark)').matches;
