@@ -35,3 +35,19 @@ L7 construct: 12000/28709 segs, 649s, esc 0 jam 0
 L7 construct: 13000/28709 segs, 724s, esc 0 jam 0
 L7 construct: 14000/28709 segs, 799s, esc 0 jam 0
 L7 construct: 15000/28709 segs, 879s, esc 0 jam 0
+L7 construct: 16000/28709 segs, 959s, esc 0 jam 0
+L7 construct: 17000/28709 segs, 1067s, esc 1 jam 0
+L7 construct: 18000/28709 segs, 1195s, esc 6 jam 0
+L7 construct: 19000/28709 segs, 1326s, esc 18 jam 0
+L7 construct: 20000/28709 segs, 1431s, esc 39 jam 0
+L7 construct: 21000/28709 segs, 1554s, esc 75 jam 0
+L7 construct: 22000/28709 segs, 1681s, esc 135 jam 0
+L7 construct: 23000/28709 segs, 1787s, esc 137 jam 0
+L7 construct: 24000/28709 segs, 1892s, esc 138 jam 0
+L7 construct: 25000/28709 segs, 2010s, esc 150 jam 0
+L7 construct: 26000/28709 segs, 2121s, esc 153 jam 0
+L7 construct: 27000/28709 segs, 2232s, esc 153 jam 0
+L7 construct: 28000/28709 segs, 2343s, esc 153 jam 0
+L7: verifying 100359 points ...
+L7: VERIFIED triple-free (5662s)
+L7 construct done: 100358 steps, stats {'N3': 4.024, 'N3_se': 0.004, 'N3_n': 28701, 'N9': 11.489, 'N9_se': 0.009, 'N9_n': 28684, 'N27': 35.929, 'N27_se': 0.029, 'N27_n': 28594, 'N81': 118.578, 'N81_se': 0.101, 'N81_n': 28180}

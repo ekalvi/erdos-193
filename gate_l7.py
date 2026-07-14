@@ -22,6 +22,7 @@ Usage:
 from __future__ import annotations
 
 import json
+import os
 import pickle
 import subprocess
 import sys
@@ -39,12 +40,15 @@ from gate_run import (
 )
 from fast_legal import Store, word_legal_fast
 
+PREFIX = os.environ.get("GATE_PREFIX", "gate")
+CHOICE = os.environ.get("GATE_CHOICE", "first")  # first | shuffle
+
 
 def get_parent(level):
     w4, p4 = load_level4_word()
     if level == 5:
         return w4, p4
-    word = literal_eval(open(f"gate-193-L{level-1}.txt").read())
+    word = literal_eval(open(f"{PREFIX}-193-L{level-1}.txt").read())
     start = p4[0]
     for _ in range(level - 1 - 4):
         start = apply(M_BAL3, start)
@@ -58,7 +62,7 @@ def get_parent(level):
 
 
 def state_pkl(level):
-    return f"gate-l7-construction-L{level}.pkl"
+    return f"{PREFIX}-l7-construction-L{level}.pkl"
 
 
 def construct(level, doms, d24_size):
@@ -76,13 +80,28 @@ def construct(level, doms, d24_size):
         dom = doms[si]
         memo = {}
         chosen = None
-        for w in dom[:2000]:
+        if CHOICE == "shuffle":
+            # v2: seeded-random candidates within each ascending length class —
+            # the original constructor's randomized-shortest statistics
+            crng = Random(f"{PREFIX}-choice-L{level}-s{i}")
+            scan = []
+            lo = 0
+            while lo < len(dom):
+                hi = lo
+                while hi < len(dom) and len(dom[hi]) == len(dom[lo]):
+                    hi += 1
+                cls = dom[lo:hi]
+                scan.extend(crng.sample(cls, min(400, len(cls))))
+                lo = hi
+        else:
+            scan = dom[:2000]
+        for w in scan:
             if word_legal_fast(A, w, store, memo, MENU):
                 chosen = w
                 break
         if chosen is None:
             n_esc += 1
-            for w in dom[2000:]:
+            for w in dom:
                 if word_legal_fast(A, w, store, memo, MENU):
                     chosen = w
                     break
@@ -92,7 +111,7 @@ def construct(level, doms, d24_size):
                                     Random(f"gate-L{level}-dfs-{i}"))
             if seg_word is None:
                 print(f"L{level} seg {i}: HARD JAM — GATE FAILS", flush=True)
-                with open(f"gate-l7-jam-L{level}.json", "w") as f:
+                with open(f"{PREFIX}-l7-jam-L{level}.json", "w") as f:
                     json.dump({"i": i, "done": done}, f)
                 return False
             chosen = tuple(seg_word)
@@ -124,9 +143,9 @@ def construct(level, doms, d24_size):
     with open(state_pkl(level), "wb") as f:
         pickle.dump({"parent_word": parent_word, "order": order,
                      "words": words, "anchors": anchors}, f)
-    with open(f"gate-193-L{level}.txt", "w") as f:
+    with open(f"{PREFIX}-193-L{level}.txt", "w") as f:
         f.write(repr(new_word))
-    with open(f"gate-stats-L{level}.json", "w") as f:
+    with open(f"{PREFIX}-stats-L{level}.json", "w") as f:
         json.dump({"summary": {"level": level, "steps": len(new_word),
                                "points": len(chain), "escalations": n_esc,
                                "jams": n_jam, "stats": stats,
@@ -176,7 +195,7 @@ def shard(level, k, n, doms, d24_size):
         if pos % 5000 == 4999:
             print(f"shard {k}/{n}: pos {pos+1}, {len(out)} recs, "
                   f"{time.time()-t0:.0f}s", flush=True)
-    with open(f"gate-ledger-L{level}-shard{k}.json", "w") as f:
+    with open(f"{PREFIX}-ledger-L{level}-shard{k}.json", "w") as f:
         json.dump(out, f)
     print(f"shard {k}/{n} done: {len(out)} records, {time.time()-t0:.0f}s",
           flush=True)
@@ -185,12 +204,12 @@ def shard(level, k, n, doms, d24_size):
 def merge(level, n):
     ledger = []
     for k in range(n):
-        ledger.extend(json.load(open(f"gate-ledger-L{level}-shard{k}.json")))
+        ledger.extend(json.load(open(f"{PREFIX}-ledger-L{level}-shard{k}.json")))
     ledger.sort(key=lambda r: r["pos"])
-    with open(f"gate-ledger-L{level}.json", "w") as f:
+    with open(f"{PREFIX}-ledger-L{level}.json", "w") as f:
         json.dump(ledger, f)
     fr = [r["frac"] for r in ledger]
-    stats_file = f"gate-stats-L{level}.json"
+    stats_file = f"{PREFIX}-stats-L{level}.json"
     js = json.load(open(stats_file))
     js["summary"].update({
         "recorded": len(ledger), "min_frac": min(fr),
@@ -202,7 +221,7 @@ def merge(level, n):
     with open(stats_file, "w") as f:
         json.dump(js, f)
     print(f"L{level} MERGED SUMMARY: {json.dumps(js['summary'])}", flush=True)
-    prev = f"gate-stats-L{level-1}.json"
+    prev = f"{PREFIX}-stats-L{level-1}.json"
     try:
         a = json.load(open(prev))["n81_interior"]
         b = js["n81_interior"]
