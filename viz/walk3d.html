@@ -358,6 +358,22 @@ document.getElementById('spin').onclick = () => spin = !spin;
     sp.position.copy(pos); sp.scale.set(w, w/4, 1); scene.add(sp);
     window.__labels.push(sp);
   }
+  const markTexCache = {};
+  function marker(pos, color, sc){
+    const key = color;
+    if (!markTexCache[key]){
+      const cv = document.createElement('canvas'); cv.width = cv.height = 64;
+      const c = cv.getContext('2d');
+      const g = c.createRadialGradient(32,32,2,32,32,30);
+      g.addColorStop(0, '#ffffff'); g.addColorStop(0.25, '#' + color.toString(16).padStart(6,'0'));
+      g.addColorStop(1, 'rgba(0,0,0,0)');
+      c.fillStyle = g; c.fillRect(0,0,64,64);
+      markTexCache[key] = new THREE.CanvasTexture(cv);
+    }
+    const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: markTexCache[key],
+      transparent: true, depthWrite: false, sizeAttenuation: false}));
+    sp.position.copy(pos); sp.scale.set(sc, sc, 1); scene.add(sp);
+  }
   function orbit(rKm){
     const pts = [];
     for (let i = 0; i <= 256; i++){
@@ -365,16 +381,19 @@ document.getElementById('spin').onclick = () => spin = !spin;
       pts.push(new THREE.Vector3(SUN.x + rKm*KM*Math.cos(a), 0, SUN.z + rKm*KM*Math.sin(a)));
     }
     const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({color: 0x2c3a52, transparent:true, opacity:0.5}));
+      new THREE.LineBasicMaterial({color: 0x4a5f85, transparent:true, opacity:0.85}));
     scene.add(l);
   }
   // Earth at the walk's origin (surface touches the first footprint), Moon to scale
   body(6371, 0x4d9de0, new THREE.Vector3(0, -1.2, 0));  // radius exactly 1 unit
+  marker(new THREE.Vector3(0, -1.2, 0), 0x4d9de0, 0.018);
   label('Earth', new THREE.Vector3(0, 6.5, 0), 9);
   body(1737, 0x9aa3ad, new THREE.Vector3(48, 8, -35));  // 60 Earth radii away
+  marker(new THREE.Vector3(48, 8, -35), 0x9aa3ad, 0.014);
   label('Moon', new THREE.Vector3(48, 14, -35), 8);
   // the Sun, 1 AU away, radius to scale
   const sun = body(696340, 0xffd27a, SUN);
+  marker(SUN, 0xffc75e, 0.045);
   label('Sun', new THREE.Vector3(SUN.x, 700, SUN.z), 2600);
   // planets: true radii, true orbital distances (phases chosen for the view)
   const P = [
@@ -390,6 +409,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
     orbit(orbKm);
     const pos = new THREE.Vector3(SUN.x + orbKm*KM*Math.cos(phase), 0, SUN.z + orbKm*KM*Math.sin(phase));
     body(rKm, color, pos);
+    marker(pos, color, 0.02);
     label(name, pos.clone().add(new THREE.Vector3(0, lw/6, 0)), lw);
   }
   orbit(149.6e6);  // Earth's own orbit ring, passing through the origin
@@ -417,7 +437,7 @@ resize(); show(0);
   controls.update();
   if (window.__labels) for (const sp of window.__labels){
     const d = camera.position.distanceTo(sp.position);
-    const w = d * 0.062;                       // constant apparent size
+    const w = d * 0.105;                       // constant apparent size
     sp.scale.set(w, w/4, 1);
   }
   renderer.render(scene, camera);
