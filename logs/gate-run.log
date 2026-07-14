@@ -1,3 +1,24 @@
 domains loaded: 124 steps, fragile 18
 level 4 seed: 2457 steps VERIFIED
 L5: 250/2457 segs, 54s, minfrac 0.375 meanfrac 0.715, esc 0 jam 0
+L5: 500/2457 segs, 138s, minfrac 0.110 meanfrac 0.664, esc 0 jam 0
+L5: 750/2457 segs, 232s, minfrac 0.100 meanfrac 0.577, esc 0 jam 0
+L5: 1000/2457 segs, 300s, minfrac 0.100 meanfrac 0.583, esc 0 jam 0
+L5: 1250/2457 segs, 384s, minfrac 0.090 meanfrac 0.564, esc 0 jam 0
+L5: 1500/2457 segs, 481s, minfrac 0.060 meanfrac 0.531, esc 0 jam 0
+L5: 1750/2457 segs, 596s, minfrac 0.050 meanfrac 0.499, esc 0 jam 0
+L5: 2000/2457 segs, 733s, minfrac 0.025 meanfrac 0.472, esc 0 jam 0
+L5: 2250/2457 segs, 885s, minfrac 0.025 meanfrac 0.445, esc 0 jam 0
+L5: verifying 10077 points ...
+L5 SUMMARY: {"level": 5, "steps": 10076, "points": 10077, "recorded": 2457, "min_frac": 0.025, "mean_frac": 0.4251241351241347, "p01_frac": 0.06, "below_delta": 240, "escalations": 0, "jams": 0, "stats": {"N3": 4.723, "N3_se": 0.018, "N3_n": 2452, "N9": 13.505, "N9_se": 0.035, "N9_n": 2412, "N27": 42.208, "N27_se": 0.116, "N27_n": 2311, "N81": 145.118, "N81_se": 0.731, "N81_n": 1959}, "elapsed_s": 1051}
+Traceback (most recent call last):
+  File "/Users/erik/homelab/math193/gate_run.py", line 355, in <module>
+    n81_by_level[level] = json.load(open(f"gate-stats-L{level}.json"))[
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/lib/pypy3.11/json/__init__.py", line 299, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/lib/pypy3.11/json/__init__.py", line 352, in loads
+    return (_pypyjson.loads(s, JSONDecodeError)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Unterminated array starting at: line 1 column 426 (char 425)

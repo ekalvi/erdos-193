@@ -225,27 +225,28 @@ def run_level(level, parent_word, parent_pts, doms, d24_size):
         rng = Random(f"gate-L{level}-s{i}")
         memo = {}
 
+        rec = None
         if record:
             sample = dom if len(dom) <= SAMPLE_N else rng.sample(dom, SAMPLE_N)
-            surv = [w for w in sample if word_legal(A, w, points, point_set, memo)]
-            frac = len(surv) / len(sample)
+            surv = sum(1 for w in sample if word_legal(A, w, points, point_set, memo))
+            frac = surv / len(sample)
             rec = {
                 "i": i, "step": si, "d24": d24_size[si], "dstar": len(dom),
-                "n": len(sample), "surv": len(surv), "frac": round(frac, 4),
-                "fragile": fragile,
+                "n": len(sample), "surv": surv, "frac": round(frac, 4),
+                "surv_abs": round(frac * len(dom)), "fragile": fragile,
             }
-            chosen = min(surv, key=len) if surv else None
-        else:
-            chosen, rec, frac = None, None, None
-            scan = dom if len(dom) <= SAMPLE_N else rng.sample(dom, len(dom))
-            for w in scan:
-                if word_legal(A, w, points, point_set, memo):
-                    chosen = w
-                    break
 
+        # CHOICE: shortest-first scan of the length-sorted domain, so the
+        # constructor keeps the original growth rate (lambda ~ 3.4) instead of
+        # the sample-typical word length. Capped; escalates to the full space.
+        chosen = None
+        for w in dom[:2000]:
+            if word_legal(A, w, points, point_set, memo):
+                chosen = w
+                break
         if chosen is None:
             n_esc += 1
-            for w in dom:  # full-space shortest-first scan
+            for w in dom[2000:]:
                 if word_legal(A, w, points, point_set, memo):
                     chosen = w
                     break
@@ -259,12 +260,12 @@ def run_level(level, parent_word, parent_pts, doms, d24_size):
             if seg_word is None:
                 print(f"L{level} seg {i}: HARD JAM — GATE FAILS HERE", flush=True)
                 ledger.append(rec or {"i": i, "hard_jam": True})
-                json.dump(ledger, open(f"gate-ledger-L{level}.json", "w"))
-                return None, None
+                with open(f"gate-ledger-L{level}.json", "w") as f:
+                    json.dump(ledger, f)
+                return None, None, None
             chosen = tuple(seg_word)
 
         ints = word_interiors(A, chosen)
-        assert word_interiors(A, chosen) and True  # keep pypy honest
         end = ints[-1] if ints else A
         s = MENU[chosen[-1]]
         assert (end[0] + s[0], end[1] + s[1], end[2] + s[2]) == B
@@ -280,12 +281,14 @@ def run_level(level, parent_word, parent_pts, doms, d24_size):
             fr = [r["frac"] for r in ledger]
             print(
                 f"L{level}: {done+1}/{len(order)} segs, {el:.0f}s, "
-                f"minfrac {min(fr):.3f} meanfrac {sum(fr)/len(fr):.3f}, "
+                f"minfrac {min(fr):.3f} meanfrac {sum(fr)/len(fr):.3f} "
+                f"below-d {sum(1 for x in fr if x < DELTA)}, "
                 f"esc {n_esc} jam {n_jam}",
                 flush=True,
             )
         if done % 2000 == 1999:
-            json.dump(ledger, open(f"gate-ledger-L{level}.json", "w"))
+            with open(f"gate-ledger-L{level}.json", "w") as f:
+                json.dump(ledger, f)
 
     # reassemble chain, verify globally
     chain = [anchors[0]]
@@ -312,15 +315,14 @@ def run_level(level, parent_word, parent_pts, doms, d24_size):
         "escalations": n_esc, "jams": n_jam, "stats": stats,
         "elapsed_s": round(time.time() - t0),
     }
-    json.dump(ledger, open(f"gate-ledger-L{level}.json", "w"))
-    json.dump(
-        {"summary": summary, "n81_interior": n81},
-        open(f"gate-stats-L{level}.json", "w"),
-    )
+    with open(f"gate-ledger-L{level}.json", "w") as f:
+        json.dump(ledger, f)
+    with open(f"gate-stats-L{level}.json", "w") as f:
+        json.dump({"summary": summary, "n81_interior": n81}, f)
     with open(f"gate-193-L{level}.txt", "w") as f:
         f.write(repr(new_word))
     print(f"L{level} SUMMARY: {json.dumps(summary)}", flush=True)
-    return new_word, chain
+    return new_word, chain, n81
 
 
 def ks_stat(a, b):
@@ -348,13 +350,11 @@ if __name__ == "__main__":
     print(f"level 4 seed: {len(word)} steps VERIFIED", flush=True)
     n81_by_level = {}
     for level in (5, 6, 7):
-        word, pts = run_level(level, word, pts, doms, d24_size)
+        word, pts, n81 = run_level(level, word, pts, doms, d24_size)
         if word is None:
             print("GATE: FAILED", flush=True)
             break
-        n81_by_level[level] = json.load(open(f"gate-stats-L{level}.json"))[
-            "n81_interior"
-        ]
+        n81_by_level[level] = n81
     if 6 in n81_by_level and 7 in n81_by_level:
         ks, crit = ks_stat(n81_by_level[6], n81_by_level[7])
         print(f"KS(L6,L7) on N81: {ks:.4f} vs critical {crit:.4f} "
