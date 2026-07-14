@@ -95,7 +95,7 @@ dotCanvas.width = dotCanvas.height = 64;
 { const c = dotCanvas.getContext('2d');
   c.beginPath(); c.arc(32,32,28,0,7); c.fillStyle='#fff'; c.fill(); }
 const dotTex = new THREE.CanvasTexture(dotCanvas);
-const DOT = 7 * devicePixelRatio;   // constant SCREEN size at every level
+const DOT = 3.5 * devicePixelRatio;   // constant SCREEN size at every level
 
 let level = 0, animating = false, spin = true;
 const layers = { pts:null, line:null, skelPts:null, skelLine:null };
@@ -142,13 +142,30 @@ function bounds(points){
     r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
   return {c, r};
 }
-function fit(points){
+function pose(points){
   const {c, r} = bounds(points);
-  controls.target.set(c[0], c[1], c[2]);
   const d = r * 2.1;
-  camera.position.set(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7);
-  camera.near = Math.max(0.01, r/100); camera.far = r*40;
+  return {t: new THREE.Vector3(c[0],c[1],c[2]),
+          p: new THREE.Vector3(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7), r};
+}
+function fit(points){
+  const q = pose(points);
+  controls.target.copy(q.t); camera.position.copy(q.p);
+  camera.near = Math.max(0.01, q.r/100); camera.far = q.r*40;
   camera.updateProjectionMatrix();
+}
+function fitSmooth(points, ms=900){
+  const q = pose(points);
+  const t0 = controls.target.clone(), p0 = camera.position.clone();
+  camera.far = Math.max(camera.far, q.r*40); camera.updateProjectionMatrix();
+  return tween(ms, t => {
+    const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
+    controls.target.lerpVectors(t0, q.t, e);
+    camera.position.lerpVectors(p0, q.p, e);
+  }).then(() => {
+    camera.near = Math.max(0.01, q.r/100); camera.far = q.r*40;
+    camera.updateProjectionMatrix();
+  });
 }
 
 function anchorSetFor(k){
@@ -198,10 +215,10 @@ async function playRound(){
   layers.pts = mkPoints(A, () => BLUE);
   layers.line = mkLine(A, skelColor, false);
   scene.add(layers.pts, layers.line);
-  fit(target.concat(A));
+  const camMove = fitSmooth(target.concat(A), 1700);
   const pg = layers.pts.geometry.attributes.position;
   const lg = layers.line.geometry.attributes.position;
-  await tween(1600, t => {
+  await tween(1700, t => {
     const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
     for (let i=0;i<A.length;i++)
       for (let d=0; d<3; d++){
@@ -210,6 +227,7 @@ async function playRound(){
       }
     pg.needsUpdate = true; lg.needsUpdate = true;
   });
+  await camMove;
 
   // phase 2: solid line becomes the dashed SKELETON (kept visible throughout)
   const {r} = bounds(target);
@@ -239,7 +257,13 @@ async function playRound(){
   await tween(500, t => { layers.skelLine.material.opacity = 0.7*(1-t);
                           if (layers.skelPts) layers.skelPts.material.opacity = 1-t; });
   level += 1;
-  show(level);
+  clearAll();
+  const npts = LV[level].points, naset = anchorSetFor(level);
+  layers.pts = mkPoints(npts, i => (!naset || naset.has(i)) ? BLUE : GREEN);
+  layers.line = mkLine(npts, walkColor, false);
+  scene.add(layers.pts, layers.line);
+  document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points`;
+  await fitSmooth(npts, 1000);
   status.textContent = '';
   animating = false;
 }
