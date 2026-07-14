@@ -34,7 +34,7 @@
   <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
   generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
   inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. Levels 0–5 of the real construction (level 5 = 8,293 points).</p>
+  scroll to zoom. All 6 levels of the record construction — the finale is the certified 28,271-step walk (28,272 points).</p>
 
   <div id="stage3d">
     <div class="hud">
@@ -95,7 +95,7 @@ dotCanvas.width = dotCanvas.height = 64;
 { const c = dotCanvas.getContext('2d');
   c.beginPath(); c.arc(32,32,28,0,7); c.fillStyle='#fff'; c.fill(); }
 const dotTex = new THREE.CanvasTexture(dotCanvas);
-const DOT = 3.5 * devicePixelRatio;   // constant SCREEN size at every level
+const DOT = 1.0;  // world units — points shrink as the structure grows   // constant SCREEN size at every level
 
 let level = 0, animating = false, spin = true;
 const layers = { pts:null, line:null, skelPts:null, skelLine:null };
@@ -117,7 +117,7 @@ function mkPoints(points, colorFor){
   g.setAttribute('position', new THREE.BufferAttribute(pos,3));
   g.setAttribute('color', new THREE.BufferAttribute(col,3));
   return new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size:DOT,
-    sizeAttenuation:false, map:dotTex, alphaTest:0.5, transparent:true}));
+    sizeAttenuation:true, map:dotTex, alphaTest:0.5, transparent:true}));
 }
 function mkLine(points, color, dashed, scaleHint){
   const pos = new Float32Array(points.length*3);
@@ -240,18 +240,19 @@ async function playRound(){
   status.textContent = 'stitching along the skeleton…';
   const B = LV[level+1], pts = B.points, aset = anchorSetFor(level+1);
   const total = pts.length;
-  let shown = 2;
-  await tween(3000, t => {
+  layers.pts = mkPoints(pts, i => aset.has(i) ? BLUE : GREEN);
+  layers.line = mkLine(pts, walkColor, false);
+  layers.pts.geometry.setDrawRange(0, 2);
+  layers.line.geometry.setDrawRange(0, 2);
+  scene.add(layers.pts, layers.line);
+  const stitchMs = 2400 + total/8;
+  await tween(stitchMs, t => {
     const want = Math.max(2, Math.ceil(t*total));
-    if (want > shown){
-      shown = want;
-      clearLayer('pts'); clearLayer('line');
-      const sub = pts.slice(0, shown);
-      layers.pts = mkPoints(sub, i => aset.has(i) ? BLUE : GREEN);
-      layers.line = mkLine(sub, walkColor, false);
-      scene.add(layers.pts, layers.line);
-    }
+    layers.pts.geometry.setDrawRange(0, want);
+    layers.line.geometry.setDrawRange(0, want);
   });
+  layers.pts.geometry.setDrawRange(0, Infinity);
+  layers.line.geometry.setDrawRange(0, Infinity);
 
   // settle: fade skeleton out, standard view of the new level
   await tween(500, t => { layers.skelLine.material.opacity = 0.7*(1-t);
@@ -283,6 +284,16 @@ document.getElementById('play').onclick = playAll;
 document.getElementById('reset').onclick = () => show(0);
 document.getElementById('spin').onclick = () => spin = !spin;
 
+{ // fixed-scale reference: fine + coarse floor grids (cells 10 and 500 units)
+  const gc = dark ? 0x2a3648 : 0xd7dce4;
+  const g1 = new THREE.GridHelper(1600, 160, gc, gc);
+  const g2 = new THREE.GridHelper(40000, 80, gc, gc);
+  for (const g of (g1.material ? [g1, g2] : [])) {}
+  g1.position.y = -45; g2.position.y = -45;
+  g1.material.transparent = g2.material.transparent = true;
+  g1.material.opacity = 0.35; g2.material.opacity = 0.25;
+  scene.add(g1, g2);
+}
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
 resize(); show(0);
 (function loop(){
