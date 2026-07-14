@@ -348,7 +348,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
     m.position.copy(pos); scene.add(m); return m;
   }
   window.__labels = window.__labels || [];
-  function label(text, pos, w){
+  function label(text, pos, w, hideBeyond){
     const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128;
     const c = cv.getContext('2d');
     c.font = '600 64px Outfit, sans-serif'; c.fillStyle = 'rgba(190,205,230,0.85)';
@@ -356,6 +356,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
     const sp = new THREE.Sprite(new THREE.SpriteMaterial({
       map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false}));
     sp.position.copy(pos); sp.scale.set(w, w/4, 1); scene.add(sp);
+    sp.userData.hideBeyond = hideBeyond || Infinity;
     window.__labels.push(sp);
   }
   const markTexCache = {};
@@ -387,10 +388,10 @@ document.getElementById('spin').onclick = () => spin = !spin;
   // Earth at the walk's origin (surface touches the first footprint), Moon to scale
   body(6371, 0x4d9de0, new THREE.Vector3(0, -1.2, 0));  // radius exactly 1 unit
   marker(new THREE.Vector3(0, -1.2, 0), 0x4d9de0, 0.018);
-  label('Earth', new THREE.Vector3(0, 6.5, 0), 9);
+  label('Earth', new THREE.Vector3(0, 6.5, 0), 9, 16000);
   body(1737, 0x9aa3ad, new THREE.Vector3(48, 8, -35));  // 60 Earth radii away
   marker(new THREE.Vector3(48, 8, -35), 0x9aa3ad, 0.014);
-  label('Moon', new THREE.Vector3(48, 14, -35), 8);
+  label('Moon', new THREE.Vector3(48, 14, -35), 8, 2200);
   // the Sun, 1 AU away, radius to scale
   const sun = body(696340, 0xffd27a, SUN);
   marker(SUN, 0xffc75e, 0.045);
@@ -410,7 +411,7 @@ document.getElementById('spin').onclick = () => spin = !spin;
     const pos = new THREE.Vector3(SUN.x + orbKm*KM*Math.cos(phase), 0, SUN.z + orbKm*KM*Math.sin(phase));
     body(rKm, color, pos);
     marker(pos, color, 0.02);
-    label(name, pos.clone().add(new THREE.Vector3(0, lw/6, 0)), lw);
+    label(name, pos.clone().add(new THREE.Vector3(0, lw/3.2, 0)), lw);
   }
   orbit(149.6e6);  // Earth's own orbit ring, passing through the origin
   // starfield: two layers — ambient depth, deliberately quieter than the walk
@@ -437,7 +438,8 @@ resize(); show(0);
   controls.update();
   if (window.__labels) for (const sp of window.__labels){
     const d = camera.position.distanceTo(sp.position);
-    const w = d * 0.15;                       // constant apparent size
+    sp.visible = d < sp.userData.hideBeyond;
+    const w = d * 0.15;
     sp.scale.set(w, w/4, 1);
   }
   renderer.render(scene, camera);
