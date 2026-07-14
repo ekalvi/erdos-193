@@ -162,11 +162,19 @@ function bounds(points){
     r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
   return {c, r};
 }
+const SUN_V = new THREE.Vector3(-23481, 0, 0);
 function pose(points){
   const {c, r} = bounds(points);
-  const d = r * 2.1;
-  return {t: new THREE.Vector3(c[0],c[1],c[2]),
-          p: new THREE.Vector3(c[0]+d*0.7, c[1]+d*0.5, c[2]+d*0.7), r};
+  const d = r * 2.3;
+  const ct = new THREE.Vector3(c[0], c[1], c[2]);
+  const away = ct.clone().sub(SUN_V).normalize();   // from Sun through walk
+  const up = new THREE.Vector3(0, 1, 0);
+  const side = new THREE.Vector3().crossVectors(away, up).normalize();
+  const p = ct.clone()
+    .add(away.multiplyScalar(d * 0.9))              // stand behind walk, Sun beyond
+    .add(up.clone().multiplyScalar(d * 0.35))
+    .add(side.multiplyScalar(d * 0.25));
+  return {t: ct, p, r};
 }
 function fit(points){
   const q = pose(points);
@@ -203,25 +211,14 @@ function spanText(points){
   if (km < 5e7) return (km/1e6).toFixed(1) + ' million km';
   return (km/149.6e6).toFixed(2) + ' AU';
 }
-const SUN_P = [-23481, 0, 0], MOON_P = [48, 8, -35];
-function frameFor(points, k){
-  const arr = points.slice();
-  if (k <= 1) arr.push(MOON_P);
-  // pull the frame progressively toward the Sun: 0% early, all the way at 6
-  const pull = [0, 0, 0.06, 0.16, 0.35, 0.65, 1.0][Math.min(k, 6)];
-  if (pull > 0){
-    const {c} = bounds(points);
-    arr.push([c[0] + (SUN_P[0]-c[0])*pull, c[1]*(1-pull), c[2]*(1-pull)]);
-  }
-  return arr;
-}
+
 function show(k){
   level = k; clearAll();
   const pts = LV[k].points, aset = anchorSetFor(k);
   layers.pts = mkPoints(pts, i => (!aset || aset.has(i)) ? BLUE : GREEN);
   layers.line = mkLine(pts, walkColor, false);
   scene.add(layers.pts, layers.line);
-  fit(frameFor(pts, k));
+  fit(pts);
   document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points — spans ${spanText(pts)}`;
   document.getElementById('play').disabled = false;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===k));
@@ -255,7 +252,7 @@ async function playRound(){
   layers.pts = mkPoints(A, () => BLUE);
   layers.line = mkLine(A, skelColor, false);
   scene.add(layers.pts, layers.line);
-  const camMove = fitSmooth(frameFor(target.concat(A), level+1), 1700);
+  const camMove = fitSmooth(target.concat(A), 1700);
   const pg = layers.pts.geometry.attributes.position;
   const lg = layers.line.geometry.attributes.position;
   await tween(1700, t => {
@@ -305,7 +302,7 @@ async function playRound(){
   scene.add(layers.pts, layers.line);
   document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points — spans ${spanText(npts)}`;
   document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===level));
-  await fitSmooth(frameFor(npts, level), 1000);
+  await fitSmooth(npts, 1000);
   status.textContent = '';
   animating = false;
 }
