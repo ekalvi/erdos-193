@@ -17,7 +17,9 @@
     color:hsl(var(--foreground));cursor:pointer}
   .hud button.primary{background:hsl(var(--link));border-color:hsl(var(--link));color:#fff}
   .hud button:disabled{opacity:.45;cursor:default}
-  .hud .lvl{font-weight:600;padding:6px 10px}
+  .hud .lvl{position:absolute;left:12px;bottom:-999px}
+  #lvl{position:absolute;left:14px;bottom:12px;font-weight:600;font-size:14px;
+    color:hsl(215 20% 75%);z-index:2;background:rgba(4,6,13,0.55);padding:4px 10px;border-radius:8px}
   #status{position:absolute;right:12px;top:12px;font-size:13px;color:hsl(var(--muted-fg));z-index:2}
   .legendrow{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;font-size:14px;color:hsl(var(--muted-fg))}
   .legendrow .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
@@ -40,17 +42,18 @@
   <p class="sub">The record run's actual coordinates. Press <b>play round</b> to watch one
   generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
   inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. All 6 levels of the record construction, staged in the real solar system at true scale (1 grid unit = 6,000 km): the walk starts at Earth, and by the finale it spans ≈0.8 AU — most of the way to the Sun. Earth, Moon, Sun and all planets are to scale in size and distance.</p>
+  scroll to zoom. All 6 levels of the record construction, staged in the real solar system at true scale (1 grid unit = 6,000 km): the walk starts at Earth, and by the finale it spans ≈½ AU — halfway to the Sun. Earth, Moon, Sun and all planets are to scale in size and distance.</p>
 
   <div id="stage3d">
     <div class="hud">
       <button id="play" class="primary">▶ play</button>
       <button id="step">⏭ step</button>
       <span id="lvls"></span>
-      <span class="lvl" id="lvl">level 0</span>
+      
       <button id="spin">🌀 orbit</button>
       <button id="fs" title="fullscreen">⛶</button>
     </div>
+    <span id="lvl">level 0</span>
     <div id="status"></div>
   </div>
   <div class="legendrow">
@@ -356,9 +359,9 @@ document.getElementById('spin').onclick = () => spin = !spin;
   }
   // Earth at the walk's origin (surface touches the first footprint), Moon to scale
   body(6371, 0x4d9de0, new THREE.Vector3(0, -1.3, 0));
-  label('Earth', new THREE.Vector3(0, 4.5, 0), 16);
+  label('Earth', new THREE.Vector3(0, 6.5, 0), 9);
   body(1737, 0x9aa3ad, new THREE.Vector3(52, 8, -34));  // 384,400 km away
-  label('Moon', new THREE.Vector3(52, 12, -34), 12);
+  label('Moon', new THREE.Vector3(52, 14, -34), 8);
   // the Sun, 1 AU away, radius to scale
   const sun = body(696340, 0xffd27a, SUN);
   label('Sun', new THREE.Vector3(SUN.x, 700, SUN.z), 2600);
