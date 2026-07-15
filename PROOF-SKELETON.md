@@ -130,6 +130,20 @@ zero jams, ~312k steps verified triple-free. Pass ⇒ the v2 orbit has a demonst
 renormalization fixed point and L4' rests on it; fail ⇒ the convergence claim is dead
 as measured and the honest move is menu/matrix redesign.
 
+**L8 RESULT (2026-07-15) — CONVERGENCE CRITERION PASSED, out-of-sample.**
+N₈₁ trajectory 118.386 → 111.882 → 109.763 → **109.395 ± 0.048**; increments
+−6.504, −2.119, **−0.368** (contraction ratios 0.326, **0.174** — accelerating);
+extrapolated fixed point ≈ 109.3. Against the pre-registered gate:
+(1) N₈₁(L8) = 109.395 ∈ [108.7, 109.5] ✓; (2) |ΔL7→L8| = 0.368 ≤ 1.1, same sign ✓;
+(3) contraction continues (0.368 < 2.119) ✓. Zero jams across all 92,731 stitches ✓.
+311,737 steps; sha256(L8 word file) c8cc3728…. This is the demonstrated
+renormalization fixed point L4' rests on, on the proof's own orbit, predicted before
+the run. REMAINING for L4': (a) triple-free verification of the 311,738 points
+(7-worker parallel verifier RUNNING — the walk is not yet certified until it returns);
+(b) L8 availability floor (ledger, queued) as the 4th floor point; (c) the two hard
+lemmas (crowding-count recursion + per-step finite computation) are still the gap
+between this strong evidence and a theorem.
+
 ## Honest gaps, ranked
 1. L4(i): state and prove the neighborhood-invariance lemma from the recursion.
 2. L3: pointwise simultaneity of constraints (a)–(d) — the averaging argument

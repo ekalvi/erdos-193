@@ -92,7 +92,7 @@ const EVENTS = [
   ['dead','💀','Gate fixed-point criteria FAIL as pre-registered','N₈₁(L7) = 118.6 vs the registered 112.6 ± 0.7; mid-scale density rising ~2%/level. Diagnosis: the gate\'s deterministic shortest-first choice rule slowly densifies the walk — the 112.6 prediction came from the original constructor\'s randomized choice, which kept density falling. The criteria did their job: they caught the variant drifting.',['gate-stats-L7.json','PROOF-SKELETON.md']],
   ['sci','🔬','Gate v2 verdict: letter FAIL, convergence REAL','All three levels verified (92,732 points at L7), zero escalations anywhere, floors up. N₈₁ falls 118.4 → 111.9 → 109.8 with geometrically contracting steps (×0.33) — a fixed point emerging at ≈109, not the registered 112.6 (which came from the original constructor\'s extrapolation). The KS letter-test was unachievable at this sample size for any constructor of the family. Verdict recorded as FAIL on the letter; the convergence the proof needs is now visible on the actual proof orbit.',['gate2-stats-L7.json','PROOF-SKELETON.md']],
   ['ok','✅','The availability floor does NOT erode — L3″ holds at three scales','Complete v2 ledger, 12,154 recorded stitches, zero escalations, zero jams. Floors: 317 → 180 → 271 words (the level-7 floor went UP); mean availability rising (0.47 → 0.46 → 0.53); below-δ share falling (4.9% → 4.2% → 3.1%). Word supply is bounded away from zero with improving margins on the proof orbit.',['gate2-ledger-L7.json','PROOF-SKELETON.md']],
-  ['live','🔄','Level 8 pre-registered, then launched: the decisive convergence test','Committed before the run: N₈₁(L8) = 109.1 ± 0.4, contraction continues (|step| ≤ 1.1, same sign), zero jams, ~312k steps verified. Pass ⇒ the renormalization fixed point is demonstrated on the proof\'s own orbit.',['PROOF-SKELETON.md','gate_l7.py']],
+  ['ok','✅','Level 8 PASSES the pre-registered convergence test','The prediction, committed before the run: N₈₁(L8) = 109.1 ± 0.4. The result: 109.395 ± 0.048 — inside the band. The density trajectory 118.4 → 111.9 → 109.8 → 109.4 has increments −6.5, −2.1, −0.37, contracting ×0.17 — a renormalization fixed point at ≈109.3, demonstrated out-of-sample on the proof\'s own orbit. Zero jams across 92,731 stitches. The 311,738-point walk is now in independent triple-free verification.',['PROOF-SKELETON.md','gate2-stats-L8.json']],
   ['live','🔄','Close the caveats','Unbounded-window tail of cross-segment mass; triple-newborn events; scaling of the dependency profile with level — each a finite measurement.'],
   ['live','🔄','Then: scale-invariance argument and write-up','Prove fatal mass stays < 1 at every level (self-similarity), chain levels by plain induction, and take the whole argument to paper + human review.'],
  ]],
@@ -116,7 +116,7 @@ const STAMPS = {
 "Level 7 verified: 100,359 points, no three collinear": "Jul 14 · 12:43 EDT",
 "Gate fixed-point criteria FAIL as pre-registered": "Jul 14 · 12:43 EDT",
 "Gate v2 verdict: letter FAIL, convergence REAL": "Jul 14 · 17:43 EDT",
-"Level 8 pre-registered, then launched: the decisive convergence test": "Jul 14 · 17:43 EDT",
+"The availability floor does NOT erode — L3″ holds at three scales": "Jul 15 · 01:28 EDT",
 "Close the caveats": "Jul 13 · 21:46 EDT",
 "Then: scale-invariance argument and write-up": "Jul 13 · 23:34 EDT"
 };
