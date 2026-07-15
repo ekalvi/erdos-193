@@ -32,10 +32,35 @@
     they can run forever.
   </p>
 
+  <div class="fig" style="border-color:hsl(var(--link)/.35);background:hsl(var(--link)/.04)">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+      <span style="width:8px;height:8px;border-radius:50%;background:hsl(142 71% 40%);box-shadow:0 0 0 4px hsl(142 71% 40%/.18);display:inline-block"></span>
+      <b>Where it stands — 15 July 2026</b>
+    </div>
+    <p>The construction reliably builds record walks; the open question is whether it
+    provably runs <em>forever</em>. That needs the walk to look statistically identical at
+    every scale &mdash; self-similar &mdash; so a single argument can cover every level at once.</p>
+    <p style="margin-top:8px"><b>The newest evidence, tested out-of-sample:</b> we
+    predicted the walk&rsquo;s density at level&nbsp;8 &mdash; a <b>311,738-point</b> walk &mdash;
+    <em>before</em> building it, and it landed inside the predicted window
+    ($N_{81}=109.4$ vs. the pre-registered $109.1\pm0.4$). The density trajectory across
+    four levels, <b>118.4 &rarr; 111.9 &rarr; 109.8 &rarr; 109.4</b>, is converging to a fixed
+    point with geometrically shrinking steps &mdash; exactly the scale-invariance the proof
+    requires &mdash; with zero dead-ends across 92,731 stitches.</p>
+    <p style="margin-top:8px"><b>This is strong evidence, not yet a theorem.</b> Two lemmas
+    remain: that local crowding stays bounded as the walk grows, and that no bounded crowd
+    can ever exhaust a stitch&rsquo;s options. Both are now precisely stated and, in
+    principle, machine-checkable. Honest odds today: a full proof <b>~15&ndash;25%</b>; a
+    rigorous <em>conditional</em> result (the answer is &ldquo;yes,&rdquo; modulo those two
+    lemmas) <b>~70%</b>. The <a href="progress.html" style="color:hsl(var(--link))">research
+    log</a> tracks every step, including the honest dead ends.</p>
+  </div>
+
   <div class="stats">
     <div class="stat"><b>100,358</b><span>steps in the record walk — built by 7 rounds of the
-      construction, exactly verified (no 3 of its 28,272 points collinear), and SHA-256
-      certified so anyone can re-check it in 30 seconds</span></div>
+      construction, exactly verified (no 3 of its 100,359 points collinear), and SHA-256
+      certified so anyone can re-check it in 30 seconds (a 311,738-point level-8 walk is in
+      final verification now)</span></div>
     <div class="stat"><b>1.2&thinsp;B</b><span>exact integer transitions computed to map every
       arithmetic situation a walk can reach — proving each one keeps an escape route in all
       13 direction classes, with zero exceptions</span></div>
@@ -50,7 +75,7 @@
     <p><b>The rule, exactly.</b> Three grid points line up precisely when this cross product
     of integer vectors is the zero vector — so every check in the project is exact integer
     arithmetic, never a floating-point approximation. The record walk passes this test for
-    all 3.8 trillion of its triples.</p>
+    all 168 trillion of its triples.</p>
   </div>
   <div class="fig">
     <div class="eq">$$e\cdot \bar q^{\,H}\cdot\bigl(3(H{+}1)\,L+1\bigr)\;\le\;1$$
