@@ -1,0 +1,17 @@
+{
+ "route": "3 - DIRECT BOX-COVERING INDUCTION (self-affine covering-number)",
+ "target": "c_k(q,r) <= C*r^d on r in [1,10], uniform in k, d=log(lambda)/log3, availability-grade (<=12 at r=4.44)",
+ "verdict": "STUCK on availability-grade; salvageable: exponent d rigorous, no-blow-up reduces to arc-incidence lemma",
+ "d": 1.10362,
+ "d_derivation": "lambda=N_{k+1}/N_k level-stable 3.372/3.348/3.362 (L6/L7/L8); extent-ratio EXACTLY 3 = det(M)^{1/3} (M elliptic, det 27, all eigenvalue moduli 3), measured 3.0005/3.0002/3.0000; d=log(lambda)/log3=1.104",
+ "induction_step_measured": {
+   "M_maps_r_cover_to_3r_cover_monotone": "M.W_k SUBSET W_{k+1} as side-{3,6,9} cells: VERIFIED True at L6,L7,L8 (covering monotonicity holds exactly)",
+   "kappa_M_box_distortion": {"r1": 1, "r2": 2, "r3": 3, "note": "GROWS with r (not O(1)) because ||M||_inf=4 > 3=det^{1/3}: isotropic cube-cover leaks the anisotropy factor => induction does NOT carry the lambda multiplier with a uniform constant"},
+   "per_3x_scale_box_ratio_N_b_over_N_3b": {"b1":1.12,"b3":2.16,"b9":2.99,"b27":3.27,"b81":3.34,"b243":3.32,"note":"reaches lambda=3.36 only at b>=27; the availability window r in [1,10] is PRE-ASYMPTOTIC (ratio 1.12->3.0), so C*r^{1.10} does not govern it"}
+ },
+ "conversion_covering_to_count": {"all_points_distinct_unit_cells": true, "pts_per_Cheb1_ball": 3, "min_|Mv|_inf": 3, "verdict": "O(1) points-per-box conversion is CLEAN"},
+ "direct_fit": {"Cvalid_full_range_[1,10]": 3.257, "binding": "L8 at r=2", "Crd_at_4.44": 16.88, "C2_gives": 10.36, "C2_is_valid_upper_bound": false},
+ "availability": {"measured_c(4.44)=c(4)_by_level": {"L5":10,"L6":10,"L7":11,"L8":12}, "threshold": 12, "margin": 0, "trend": "creeping 10->10->11->12", "model_independent_fact": "measured load-bearing c(4.44)=12 already EQUALS threshold with zero margin; NO functional bound (power-law or affine) can be both valid and <12 at r=4.44"},
+ "residual_lemma": "SAME anti-stacking / arc-incidence lemma as all prior routes: a Cheb-r ball meets O(r) connector-arcs, not the cubic packing count. Route 3 derives the exponent and confirms covering monotonicity + O(1) conversion, but does NOT discharge the constant; and even granting the lemma in power-law form the constant overshoots, so availability needs the TIGHT distribution-invariance (c(4) stays <=12), a strictly stronger statement.",
+ "script": "design/lemma/dim/route3_covering.py -> design/lemma/dim/route3-covering-results.json"
+}

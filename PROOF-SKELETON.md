@@ -236,6 +236,20 @@ availability-grade (2·4.44^{1.1}=10.4 ≤ 12). ⇒ the tool that closes this is
 DIMENSION (affinity dimension / singular-value function / bounded-distortion stitching), not the
 linear routes. That is the next (and best-targeted) attack.
 
+**L4' — fractal-dimension round: new machinery, lemma still STUCK (2026-07-15, design/lemma/dim/).**
+NOT a dunk (adversary refused to manufacture a close). NEW RIGOROUS (keepers): (1) BOUNDED DISTORTION
+— invariant PD form Q with MᵀQM=9Q (eig[2,2.5,3.5]), so M is quasi-self-SIMILAR ratio 3, distortion
+κ=1.323 at all scales (σ_i(M^j)/3^j ∈ [0.846,1.182]); (2) THE ANISOTROPIC CONTRACTION (the prize): the
+isotropic pull-back gave coeff 20/9>1 (all prior inductions DIVERGED); the anisotropic singular-value
+pull-back gives φ = σ₁(M⁻¹)·σ₂(M⁻¹)^{d-1} = 0.353 < 1 — the induction finally CONTRACTS. STILL STUCK:
+the single-level anti-stacking (per-shell charge κ_j) is MEASURED (κ_{j≥2}=1.0 exact, κ_0,κ_1~2.1, max
+3) not proven; the exponent d=1.10 rests on measured λ≈3.35 (first-principles only 1<d≤log5/log3=1.465);
+no rigorous power-law (C,d) is both a valid upper bound AND availability-grade (≤12 at r=4.44). p 0.15
+via the regularity route. NEW PATH (task A): the residue may be a FINITE CHECK — with the exact 3-term
+telescoping + deep-tail ≤1 + fixed menu + 3-separated anchors + proven contraction φ<1, bound the
+per-shell charge κ_j by enumeration over local anchor+menu configs (an automaton, possibly the NP-HC
+78,728 states) and compute the transfer-operator fixed point rigorously; check ≤12 at r=4.44.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
