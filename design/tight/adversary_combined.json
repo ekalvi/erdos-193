@@ -1,0 +1,325 @@
+{
+ "Nmax": 150,
+ "levels": {
+  "5": {
+   "ballistic": {
+    "N": 8214,
+    "diam_c_min": 0.6923,
+    "diam_c_min_at_n": 130,
+    "diam_ratio_tail": {
+     "1": 1.0,
+     "2": 1.0,
+     "3": 1.0,
+     "4": 1.0,
+     "5": 1.0,
+     "10": 0.9,
+     "20": 0.85,
+     "30": 0.8333,
+     "40": 0.825,
+     "50": 0.8,
+     "60": 0.8,
+     "70": 0.7571,
+     "80": 0.75,
+     "90": 0.7333,
+     "100": 0.75,
+     "110": 0.7545,
+     "120": 0.75,
+     "130": 0.6923,
+     "140": 0.7714,
+     "150": 0.7267
+    },
+    "worst_arc_start_i": 6446,
+    "endpoint_min_ratio": 0.1053,
+    "endpoint_min_at_n": 19
+   },
+   "returns": {
+    "1": {
+     "max_c": 3,
+     "max_c_qi": 3549,
+     "max_A": 2,
+     "max_A_at_qi": 1925,
+     "max_A_ball_c": 2,
+     "max_sojourn_arc": 3,
+     "c_over_rho": 3.0
+    },
+    "2": {
+     "max_c": 5,
+     "max_c_qi": 1925,
+     "max_A": 3,
+     "max_A_at_qi": 2824,
+     "max_A_ball_c": 5,
+     "max_sojourn_arc": 5,
+     "c_over_rho": 2.5
+    },
+    "4": {
+     "max_c": 10,
+     "max_c_qi": 4241,
+     "max_A": 3,
+     "max_A_at_qi": 429,
+     "max_A_ball_c": 7,
+     "max_sojourn_arc": 10,
+     "c_over_rho": 2.5
+    },
+    "5": {
+     "max_c": 12,
+     "max_c_qi": 6513,
+     "max_A": 3,
+     "max_A_at_qi": 2612,
+     "max_A_ball_c": 9,
+     "max_sojourn_arc": 12,
+     "c_over_rho": 2.4
+    },
+    "10": {
+     "max_c": 25,
+     "max_c_qi": 6496,
+     "max_A": 4,
+     "max_A_at_qi": 247,
+     "max_A_ball_c": 16,
+     "max_sojourn_arc": 24,
+     "c_over_rho": 2.5
+    }
+   },
+   "C_combined": 3.0
+  },
+  "6": {
+   "ballistic": {
+    "N": 27697,
+    "diam_c_min": 0.6786,
+    "diam_c_min_at_n": 28,
+    "diam_ratio_tail": {
+     "1": 1.0,
+     "2": 1.0,
+     "3": 1.0,
+     "4": 0.75,
+     "5": 0.8,
+     "10": 0.9,
+     "20": 0.85,
+     "30": 0.7333,
+     "40": 0.75,
+     "50": 0.84,
+     "60": 0.7833,
+     "70": 0.7571,
+     "80": 0.7375,
+     "90": 0.7556,
+     "100": 0.77,
+     "110": 0.7636,
+     "120": 0.7417,
+     "130": 0.7462,
+     "140": 0.75,
+     "150": 0.74
+    },
+    "worst_arc_start_i": 22373,
+    "endpoint_min_ratio": 0.0877,
+    "endpoint_min_at_n": 57
+   },
+   "returns": {
+    "1": {
+     "max_c": 3,
+     "max_c_qi": 5109,
+     "max_A": 2,
+     "max_A_at_qi": 2820,
+     "max_A_ball_c": 2,
+     "max_sojourn_arc": 3,
+     "c_over_rho": 3.0
+    },
+    "2": {
+     "max_c": 5,
+     "max_c_qi": 748,
+     "max_A": 3,
+     "max_A_at_qi": 11688,
+     "max_A_ball_c": 5,
+     "max_sojourn_arc": 5,
+     "c_over_rho": 2.5
+    },
+    "4": {
+     "max_c": 10,
+     "max_c_qi": 11687,
+     "max_A": 3,
+     "max_A_at_qi": 3129,
+     "max_A_ball_c": 7,
+     "max_sojourn_arc": 10,
+     "c_over_rho": 2.5
+    },
+    "5": {
+     "max_c": 12,
+     "max_c_qi": 14279,
+     "max_A": 4,
+     "max_A_at_qi": 9468,
+     "max_A_ball_c": 9,
+     "max_sojourn_arc": 11,
+     "c_over_rho": 2.4
+    },
+    "10": {
+     "max_c": 26,
+     "max_c_qi": 19021,
+     "max_A": 5,
+     "max_A_at_qi": 21867,
+     "max_A_ball_c": 19,
+     "max_sojourn_arc": 25,
+     "c_over_rho": 2.6
+    }
+   },
+   "C_combined": 3.0
+  },
+  "7": {
+   "ballistic": {
+    "N": 92732,
+    "diam_c_min": 0.6124,
+    "diam_c_min_at_n": 129,
+    "diam_ratio_tail": {
+     "1": 1.0,
+     "2": 1.0,
+     "3": 1.0,
+     "4": 1.0,
+     "5": 0.8,
+     "10": 0.8,
+     "20": 0.75,
+     "30": 0.7667,
+     "40": 0.75,
+     "50": 0.74,
+     "60": 0.7833,
+     "70": 0.7286,
+     "80": 0.675,
+     "90": 0.6667,
+     "100": 0.68,
+     "110": 0.6636,
+     "120": 0.6583,
+     "130": 0.6154,
+     "140": 0.6643,
+     "150": 0.7133
+    },
+    "worst_arc_start_i": 75134,
+    "endpoint_min_ratio": 0.0573,
+    "endpoint_min_at_n": 192
+   },
+   "returns": {
+    "1": {
+     "max_c": 3,
+     "max_c_qi": 9498,
+     "max_A": 2,
+     "max_A_at_qi": 576,
+     "max_A_ball_c": 2,
+     "max_sojourn_arc": 3,
+     "c_over_rho": 3.0
+    },
+    "2": {
+     "max_c": 6,
+     "max_c_qi": 9496,
+     "max_A": 3,
+     "max_A_at_qi": 9497,
+     "max_A_ball_c": 5,
+     "max_sojourn_arc": 5,
+     "c_over_rho": 3.0
+    },
+    "4": {
+     "max_c": 11,
+     "max_c_qi": 9504,
+     "max_A": 3,
+     "max_A_at_qi": 9503,
+     "max_A_ball_c": 9,
+     "max_sojourn_arc": 10,
+     "c_over_rho": 2.75
+    },
+    "5": {
+     "max_c": 14,
+     "max_c_qi": 39180,
+     "max_A": 4,
+     "max_A_at_qi": 794,
+     "max_A_ball_c": 9,
+     "max_sojourn_arc": 14,
+     "c_over_rho": 2.8
+    },
+    "10": {
+     "max_c": 27,
+     "max_c_qi": 39175,
+     "max_A": 4,
+     "max_A_at_qi": 3288,
+     "max_A_ball_c": 16,
+     "max_sojourn_arc": 24,
+     "c_over_rho": 2.7
+    }
+   },
+   "C_combined": 3.0
+  },
+  "8": {
+   "ballistic": {
+    "N": 311738,
+    "diam_c_min": 0.5,
+    "diam_c_min_at_n": 2,
+    "diam_ratio_tail": {
+     "1": 1.0,
+     "2": 0.5,
+     "3": 1.0,
+     "4": 0.75,
+     "5": 0.8,
+     "10": 0.8,
+     "20": 0.8,
+     "30": 0.7,
+     "40": 0.675,
+     "50": 0.74,
+     "60": 0.75,
+     "70": 0.7143,
+     "80": 0.725,
+     "90": 0.7111,
+     "100": 0.69,
+     "110": 0.6455,
+     "120": 0.675,
+     "130": 0.6692,
+     "140": 0.6857,
+     "150": 0.7
+    },
+    "worst_arc_start_i": 76081,
+    "endpoint_min_ratio": 0.0769,
+    "endpoint_min_at_n": 26
+   },
+   "returns": {
+    "1": {
+     "max_c": 3,
+     "max_c_qi": 3833,
+     "max_A": 2,
+     "max_A_at_qi": 1957,
+     "max_A_ball_c": 2,
+     "max_sojourn_arc": 3,
+     "c_over_rho": 3.0
+    },
+    "2": {
+     "max_c": 7,
+     "max_c_qi": 156191,
+     "max_A": 3,
+     "max_A_at_qi": 88668,
+     "max_A_ball_c": 5,
+     "max_sojourn_arc": 5,
+     "c_over_rho": 3.5
+    },
+    "4": {
+     "max_c": 12,
+     "max_c_qi": 31874,
+     "max_A": 4,
+     "max_A_at_qi": 145580,
+     "max_A_ball_c": 8,
+     "max_sojourn_arc": 11,
+     "c_over_rho": 3.0
+    },
+    "5": {
+     "max_c": 14,
+     "max_c_qi": 31875,
+     "max_A": 4,
+     "max_A_at_qi": 170188,
+     "max_A_ball_c": 8,
+     "max_sojourn_arc": 14,
+     "c_over_rho": 2.8
+    },
+    "10": {
+     "max_c": 31,
+     "max_c_qi": 131744,
+     "max_A": 5,
+     "max_A_at_qi": 270637,
+     "max_A_ball_c": 17,
+     "max_sojourn_arc": 29,
+     "c_over_rho": 3.1
+    }
+   },
+   "C_combined": 3.5
+  }
+ }
+}

@@ -1,0 +1,37 @@
+{
+ "L6": {
+  "E": 3.0,
+  "E_mid": 1.75,
+  "C_meas": 3.0,
+  "C_iso": 5.4,
+  "C_aniso": 5.031,
+  "Sprime_meas": 1.545,
+  "tight_est": 2.705,
+  "anchor_overcount": 1.167,
+  "termwise_violations": 0
+ },
+ "L7": {
+  "E": 3.0,
+  "E_mid": 2.25,
+  "C_meas": 3.333,
+  "C_iso": 5.4,
+  "C_aniso": 5.031,
+  "Sprime_meas": 1.556,
+  "tight_est": 3.5,
+  "anchor_overcount": 1.429,
+  "termwise_violations": 0
+ },
+ "L8": {
+  "E": 3.0,
+  "E_mid": 2.25,
+  "C_meas": 3.5,
+  "C_iso": 5.4,
+  "C_aniso": 5.031,
+  "Sprime_meas": 1.5,
+  "tight_est": 3.375,
+  "anchor_overcount": 1.25,
+  "termwise_violations": 2
+ },
+ "S_aniso_exact": 1.67693,
+ "S_iso": 1.8
+}

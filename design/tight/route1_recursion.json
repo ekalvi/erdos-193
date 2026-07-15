@@ -1,0 +1,62 @@
+{
+ "recursion_anchors_eq_M_parent_L6": true,
+ "recursion_anchors_eq_M_parent_L7": true,
+ "recursion_anchors_eq_M_parent_L8": true,
+ "L6_stitch_wordlen": {
+  "min": 2,
+  "max": 4,
+  "mean": 3.372,
+  "hist": {
+   "2": 149,
+   "3": 4858,
+   "4": 3206
+  }
+ },
+ "L6_Mdilation_inf": {
+  "min": 2.25,
+  "mean": 3.0769,
+  "max": 4.0
+ },
+ "L7_stitch_wordlen": {
+  "min": 2,
+  "max": 4,
+  "mean": 3.348,
+  "hist": {
+   "2": 473,
+   "3": 17107,
+   "4": 10116
+  }
+ },
+ "L7_Mdilation_inf": {
+  "min": 2.25,
+  "mean": 3.073,
+  "max": 4.0
+ },
+ "L8_stitch_wordlen": {
+  "min": 2,
+  "max": 4,
+  "mean": 3.362,
+  "hist": {
+   "2": 1385,
+   "3": 56417,
+   "4": 34929
+  }
+ },
+ "L8_Mdilation_inf": {
+  "min": 2.25,
+  "mean": 3.0766,
+  "max": 4.0
+ },
+ "growth_L5_to_L6": {
+  "pts_ratio": 3.3719,
+  "extent_ratio": 3.0005
+ },
+ "growth_L6_to_L7": {
+  "pts_ratio": 3.3481,
+  "extent_ratio": 3.0002
+ },
+ "growth_L7_to_L8": {
+  "pts_ratio": 3.3617,
+  "extent_ratio": 3.0
+ }
+}

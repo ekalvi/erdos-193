@@ -1,0 +1,9 @@
+level  N       max  mean   | per-capita fraction with c(4) >= k
+                           |    >=8      >=10     >=11     >=12
+L5    8214    9    4.132  |  0.00231  0.000000  0.000000  0.000000
+L6    27697   9    4.105  |  0.00047  0.000000  0.000000  0.000000
+L7    92732   10   4.104  |  0.00069  0.000043  0.000000  0.000000
+L8    311738  11   4.104  |  0.00068  0.000019  0.000006  0.000000
+
+If tail fractions are LEVEL-STABLE -> extreme-value (benign, true sup fixed ~12-13).
+If tail fractions GROW per level -> distribution shift (availability constant at real risk).

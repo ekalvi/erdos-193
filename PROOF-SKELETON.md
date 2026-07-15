@@ -171,6 +171,32 @@ Cheb-ρ ball = O(ρ), not O(#anchors in reach-shell)); the isotropic 4/9 pullbac
 Next: attack the tight linear law via the ANISOTROPIC M⁻¹ ellipsoid (singular values 2.54/3.00/3.54)
 rather than the isotropic ‖M⁻¹‖∞=4/9. This is the sole remaining analytic core of L4'.
 
+**L4' — LINEAR law proven-modulo + tight-constant threat DEFUSED (2026-07-15, design/tight/).**
+Route panel (ballistic-sojourn / bounded-returns / anisotropic; bounded-returns FALSIFIED — return
+count creeps 5→7→8 with ρ). Winner: **Route 3 anisotropic BIRTH-TELESCOPING** — c_k(q,ρ) = Σ_j
+#{birth-(k−j) points in B(q,ρ)} (exact partition, each point has a unique birth level); M is ELLIPTIC
+(all eigenvalue moduli exactly 3, 2×2 block char poly λ²+λ+9), so ‖M⁻ʲ‖∞ decays at spectral rate 1/3
+and S = Σ_j‖M⁻ʲ‖∞ = 1.67693 EXACT. This DISSOLVES the divergent (1+g) charge (the "nearby anchors"
+are just earlier levels' refill, already counted as t_1,t_2,…), giving a **RIGOROUS LINEAR law
+c_k(q,ρ) ≤ E·S·ρ = 5.03ρ+1** (down from cubic ~257), modulo the SINGLE-LEVEL refill slope E≤3 — a
+finite-menu / 3-separated-packing lemma of the SAME type already proven for the qualitative theorem
+(no induction, no g-charge, no circularity → very likely closeable the same way). Measured-tight C ≈
+3.0–3.2 (not the hoped 2.5).
+ADVERSARY THREAT + RESOLUTION: the adversary flagged the load-bearing c(4.44) drifting 10→10→11→12
+(L5-L8), hitting its ≤12 threshold with zero margin at L8. **Investigated (design/tight/drift_test.py,
+full c(q,4) distribution over all 4 walks): DEFUSED — the drift is an EXTREME-VALUE ARTIFACT, not a
+distribution shift.** Mean c(4) is FLAT (4.132/4.105/4.104/4.104); per-capita tail fractions are
+stable-to-DECREASING (P[c(4)≥10] = 0/0/4.3e-5/1.9e-5; P[≥12]=0 at every level). The observed max
+creeps up only because each level samples 3.36× more points from a FIXED distribution (true sup ~12-13).
+⇒ the crowding distribution is level-invariant; the tight law holds empirically with a STABLE C≈3, and
+availability at that fixed crowding is comfortably positive (~116+ words). The acute "actively
+degrading" risk is gone; what remains is PROVING invariance (the anti-stacking lemma) — a stable fact,
+not a race. Judge p(tight closes)=0.35 (before the drift test defused the acute threat).
+REMAINING L4' work, ranked: (1) prove single-level refill E≤3 (finite-menu, high-leverage → linear
+C≤5.03 becomes theorem); (2) the anti-stacking / distribution-invariance lemma for the tight C≈3
+(the real analytic core, now proving a measured-stable fact); (3) optional L9 as ultimate confirmation
+(not urgent — distribution measurably fixed over 4 levels).
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes

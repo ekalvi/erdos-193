@@ -1,0 +1,14 @@
+{
+ "route": "1 - BALLISTIC SOJOURN",
+ "core_reformulation": "endpoint displacement |W(i+n)-W(i)|_inf is the WRONG ballistic quantity (recurrence kills it); the SEGMENT DIAMETER S(n)=min_i cheb-diam(W[i..i+n]) is the right one, and S(n)>=c*n <=> sojourn L(rho)<=(2/c)rho.",
+ "diameter_ballistic_constant_c_min_over_n5_120": {"L6": 0.679, "L7": 0.643, "L8": 0.640, "level_uniform_floor": 0.64, "decays_to_zero": false},
+ "endpoint_ballistic_FAILS": {"L6_min_ratio_n<=200": 0.088, "reason": "route3 W-window: Cheb<=20 pairs at path-gap 885, nonadjacent Cheb-1 pairs => ratio -> 0"},
+ "sojourn_law_L_of_rho": {"L6": {"4":9,"5":11,"10":29,"12":33}, "L7": {"4":11,"5":13,"10":25,"12":32}, "L8": {"4":11,"5":13,"10":29,"12":37}, "slope_L_over_rho": "~2.5-3.1, level-stable"},
+ "recursion_identity_anchors_eq_M_parent": {"L6": true, "L7": true, "L8": true},
+ "M_dilation_inf_on_actual_diffs": {"min": 2.25, "mean": 3.08, "worst_case_bound_sigmin_over_sqrt3": 1.467},
+ "stitch_wordlen_Wmax": {"min": 2, "max": 4, "mean": 3.35},
+ "per_level_growth": {"points_x": 3.35, "extent_x": 3.000, "detM": 27, "detM_cbrt": 3.0},
+ "inductive_multiplier": {"isotropic_sojourn": "Wmax*||Minv||inf = 4*(4/9)=1.78 > 1 (DIVERGES)", "amortized_pts_per_displacement": "lambda/detM^(1/3) = 3.35/3.00 = 1.117 > 1 (mild)", "measured": "<=1 (sojourn flat)"},
+ "status": "CLOSES-MODULO-LEMMA",
+ "key_lemma": "level-uniform diameter-ballistic constant c>=0.64 (equiv. linear sojourn L(rho)<=3.1*rho); recursion reduces it to anti-stacking: per-level multiplier lambda*||Minv||_eff <= 1, which needs the arc-anisotropy (curve-like + triple-free spread the extra lambda/detM^(1/3)=1.117 factor of points TRANSVERSELY, not stacked along the arc). Isotropic bound (4/9) gives 1.78 and cannot certify it."
+}

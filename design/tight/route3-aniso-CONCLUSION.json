@@ -1,0 +1,44 @@
+{
+  "route": "3 - ANISOTROPIC COUNT-RECURSION (birth-level telescoping in the spectral/elliptic metric)",
+  "target": "tight linear law c_k(q,rho) <= C*rho + 1, level-uniform, small C (load-bearing c_k(4.44)<=12)",
+  "status": "CLOSES-MODULO-LEMMA",
+  "headline": "The isotropic recursion diverged because it bounded THIS-level refill by g=4 charges per nearby anchor: coefficient (4/9)(1+g)=20/9>1. The EXACT birth-level telescoping dissolves the (1+g): refill at level k is exactly b_k (one level's stitch), and the 'nearby anchors' ARE previous levels' refill, already partitioned. No charge multiplication => coefficient is E*S with a SINGLE slope E and a CONVERGENT geometric sum S. Anisotropy enters as the SPECTRAL contraction 1/3 (all eigenvalues of M have modulus 3), giving S=Sum||M^-j||inf=1.677 < isotropic 9/5.",
+  "exact_algebra": {
+    "M": "((3,0,0),(0,0,-3),(0,3,-1)), det 27",
+    "eigenvalues": "3 (x-block) and roots of lam^2+lam+9 (disc -35) both of modulus sqrt(9)=3 => ALL eigenvalues modulus exactly 3 (elliptic 2x2 block = 3 x irrational rotation arccos(-1/6))",
+    "Minv": "[[1/3,0,0],[0,-1/9,1/3],[0,-1/3,0]], ||Minv||inf = 4/9 (isotropic single-step)",
+    "iterated_pullback_norms_||M^-j||inf": [1.0, 0.44444, 0.14815, 0.05624, 0.01875, 0.00632],
+    "spectral_sum_S": "sum_j ||M^-j||inf = 1.67693 (EXACT; decays at rate 1/3, NOT (4/9)^j)",
+    "isotropic_sum": "9/5 = 1.80000",
+    "kappa_bounded": "sup_j ||(3 M^-1)^j||inf = 1.549 < inf  => elliptic, no polynomial growth (rigorous no-blow-up of the pull-back norms)"
+  },
+  "telescoping_identity_EXACT": {
+    "statement": "c_k(q,rho) = sum_{j>=0} #{Stitch_{k-j} intersect M^-j B(q,rho)} = sum_j t_j(q,rho), t_j := #{birth-(k-j) walk points in B(q,rho)}",
+    "why_exact": "Walk_k = M.Walk_{k-1} DISJOINT-UNION Stitch_k (proven); M rescales, preserving birth level. Every walk point has a unique birth level => the birth-decomposition is a PARTITION. Verified anchors_k == M(walk_{k-1}) elementwise at L6,L7,L8.",
+    "measured_termwise_bound": "t_j(rho) <= E*rho*||M^-j||inf with E=3 holds at L6,L7 exactly; L8 has 2 off-by-one lattice-granularity cases (t_2=1 vs 0.44; t_2=2 vs 1.78) => the honest bound is t_j <= E*rho*||M^-j||inf + 1, with only ~log_3(rho) nonempty pull-back levels."
+  },
+  "closing_coefficient": {
+    "formula": "C* = E * S,  E = single-level refill slope (b_k(r) <= E*r, ONE level's stitch on 3-separated anchors)",
+    "vs_isotropic": "isotropic gave (4/9)(1+g)=20/9>1 (DIVERGES) or, via Model-B menu-constant, C*=(9/5)E=5.40. Anisotropic: C*=S*E=1.677*E, no g, convergent.",
+    "rigorous_qualitative_E3": "C_aniso = 3 * 1.677 = 5.03  (< isotropic 5.40)",
+    "thin_region_refinement": "the pulled-back regions M^-j(cube) are THIN sheared parallelepipeds; 1-D walk-arcs pierce them less than an inf-ball of equal inf-radius. Measured birth-decay S'_meas = max c/t0 = 1.50-1.56 < S=1.677. With load-bearing refill slope E_mid[rho in 4,5]~2: C_tight ~ E_mid*S'_meas = 2.70/3.50/3.38 (L6/L7/L8).",
+    "constant_delivered": "C = E*S. Rigorous (E=3): 5.03. Tight/measured (E~2, S'~1.5): ~2.7-3.0 == measured tight constant."
+  },
+  "anisotropic_overcount_TEST": {
+    "what": "isotropic anchor bound = #{parent in inf-ball B(M^-1 q,(4/9)rho)} vs TRUE anchor count a_k(q,rho)=#{anchors in B(q,rho)} (=exact parallelepiped pull-back)",
+    "overcount_ratio_max": {"L6": 1.17, "L7": 1.43, "L8": 1.25},
+    "reading": "the isotropic 4/9 inf-enclosure over-counts the true anisotropic pull-back count by up to ~43% at large rho, level-stable; direct evidence the parallelepiped is genuinely thinner than its enclosing inf-ball."
+  },
+  "measured_per_level": {
+    "c_over_rho_max": {"L6": 3.00, "L7": 3.33, "L8": 3.50},
+    "single_level_refill_slope_E_max": {"L6": 3.0, "L7": 3.0, "L8": 3.0},
+    "birth_decay_Sprime_meas": {"L6": 1.55, "L7": 1.56, "L8": 1.50},
+    "load_bearing_c(4.44)=c(4)": {"L6": 10, "L7": 11, "L8": 12, "target": 12, "met": true}
+  },
+  "key_lemma": "SINGLE-LEVEL refill slope: b_k(r) <= E*r for every level k (E~2-3), where b_k counts ONE level's stitch interiors (short connector-word arcs) placed on the 3-separated anchor set A_k. NO induction hypothesis, NO cross-level g-charge, NO circular anchor count. For the TIGHT constant, additionally the thin-parallelepiped decay S'_meas<S (1-D arcs pierce M^-j(cube) less than its enclosing inf-ball).",
+  "gap": "The telescoping + spectral S is a rigorous reduction that beats isotropic (5.03<5.40) and DISSOLVES the g-charge divergence, but does not by itself reach the sharp C~2.5: (i) it uses the worst-case E=3 (rho=1 slope); the load-bearing E~2 is measured not proven; (ii) the thin-region saving S'_meas~1.5<S=1.677 is measured not proven (it is the same 1-D arc-incidence / anti-stacking fact that no route has promoted to a theorem). Reduces the ENTIRE tight law to the single-level refill slope + thin-region decay, both level-stable across L6/L7/L8.",
+  "scripts": [
+    "design/tight/aniso_measure.py  (birth-tagged walks L5-L8, c_k/a_k/b_k, birth-decomp t_j, isotropic-vs-anisotropic anchor overcount; PYTHONPATH=. pypy3 aniso_measure.py 6 7 8)",
+    "design/tight/aniso_summary.py  (exact S via fractions, per-level E/S'/C_iso/C_aniso/C_meas, termwise-bound check; python3 aniso_summary.py)"
+  ]
+}

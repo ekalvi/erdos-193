@@ -1,0 +1,140 @@
+{
+  "summary": "Prove the tight linear crowding law (the availability-grade constant) via ballistic-sojourn, bounded-returns, and anisotropic count-recursion routes",
+  "agentCount": 4,
+  "logs": [
+    "[route:bounded-returns] failed: API Error: Connection closed mid-response. The response above may be incomplete."
+  ],
+  "result": {
+    "routes": [
+      {
+        "route": "ROUTE 1 — BALLISTIC SOJOURN. Prove sojourn L(ρ) ≤ (2/c)·ρ via a level-uniform ballistic lower bound on the walk-path, where the CORRECT ballistic quantity is the segment DIAMETER, not endpoint displacement.",
+        "proof": "Setup. The chain W is a path (steps Cheb≤2). A \"sojourn\" is a maximal contiguous arc lying in a Cheb-ρ ball (radius ρ). Since a contiguous segment fits in some radius-ρ ball iff its Cheb bounding box has side ≤2ρ, the sojourn law is exactly L(ρ)=max{n : S(n)≤2ρ}, where S(n)=min_i diam_cheb(W[i..i+n]) is the minimal diameter of any length-n contiguous segment (computed exactly via a running per-coordinate bounding box, O(1)/extension). Therefore S(n) ≥ c·n (ballistic diameter growth) IMMEDIATELY gives L(ρ) ≤ (2/c)·ρ.\n\nWRONG quantity, corrected. The naively-suggested endpoint bound |W(i+n)−W(i)|∞ ≥ c·n is FALSE: the walk is recurrent (route3 W-window: pairs at Cheb ≤20 with path-gap 885, and nonadjacent Cheb-1 pairs), so min_i|W(i+n)−W(i)|∞/n → 0. Two returns to the same ball are two DIFFERENT arcs — the path leaves the ball in between, so the SEGMENT DIAMETER between them is large even though the endpoints are close. Diameter (not endpoint displacement) is what the sojourn actually needs, and it does not see recurrence.\n\nInductive skeleton (recursion identity is EXACT and verified: anchors_{k+1} = M·chain_k, all levels; Walk_{k+1}=M·Walk_k ⊔ Stitch_k). A level-(k+1) segment of n steps contains m ≥ n/W_max−O(1) consecutive anchors A_j=M·p_j; its diameter ≥ diam of that anchor set = max|M(p_a−p_b)|∞ ≥ κ·(diam of the level-k preimage m-segment) ≥ κ·S_k(m). Equivalently in sojourn form: an arc in a ρ-ball has its anchor-preimage arc inside M^{-1}(ρ-ball), giving L_{k+1}(ρ) ≤ W_max·L_k(‖M^{-1}‖·ρ)+O(1). This is the standard self-similar dilation argument; the base case S(n)≥c·n holds at every measured level.\n\nWhere it stands. Empirically S(n)/n is flat at 0.64–0.68 out to n=120, level-uniform across L6/L7/L8, giving sojourn L(ρ) ≤ ~3.1ρ. But the WORST-CASE inductive multiplier does not close by itself: the isotropic contraction ‖M^{-1}‖∞=4/9 with W_max=4 gives L_{k+1}≤(16/9)L_k → 1.78>1 (expansive, the same wall as route3's naive sojourn renormalization). Using the true amortized numbers (mean stitch length λ=3.35 vs displacement dilation det(M)^{1/3}=σ_geomean=3.000) the multiplier is 3.35/3.00=1.117 — still marginally >1. The measured flatness says the true multiplier is ≤1; certifying that is the anti-stacking content.",
+        "key_lemma": "Level-uniform diameter-ballistic constant c ≥ 0.64: S(n)=min_i diam_cheb(W[i..i+n]) ≥ c·n for all n, uniformly in k. Equivalently, the linear sojourn L(ρ) ≤ (2/c)ρ ≈ 3.1ρ. The recursion reduces this to an ANTI-STACKING statement: the per-level multiplier (mean stitch length λ=3.35) × (M^{-1} contraction along the arc) must be ≤ 1. The extra λ/det(M)^{1/3}=3.35/3.00=1.117 factor of points added per level must spread TRANSVERSELY (using triple-freeness + the route3 curve-like structure) rather than stacking along the arc direction; the isotropic ‖M^{-1}‖∞=4/9 bound gives multiplier 4·4/9=1.78 and cannot certify it.",
+        "constant": "Diameter-ballistic constant c ≥ 0.64 (level-uniform floor over n∈[5,120]: L6=0.679, L7=0.643, L8=0.640). Sojourn slope 2/c ≈ 3.1; measured L(ρ)/ρ ≈ 2.5–3.1, level-stable. As the sojourn factor of the linear count law c_k(q,ρ)≤C·ρ+1: this route delivers the L-factor (~3.1ρ); the full C needs it multiplied by the return count A≤5 (loose product ~15) — Route 1 discharges the sojourn only, not A.",
+        "computational_evidence": "Chains from gate2-l7-construction-L{5,6,7,8}.pkl (N = 8214 / 27697 / 92732 / 311738), pypy3, exact integer arithmetic. (1) DIAMETER-ballistic S(n)/n: flat 0.64–0.90 for n=5..120, min 0.679/0.643/0.640 (L6/L7/L8), does NOT decay to 0 — a level-uniform positive constant. (2) ENDPOINT-ballistic min_i|W(i+n)−W(i)|∞/n = 0.088 at n=57 (L6) and → 0 for large gaps (recurrence) — confirms endpoint version FAILS, must use diameter. (3) Sojourn law L(ρ)=max{n:S(n)≤2ρ}: L(4)=9/11/11, L(5)=11/13/13, L(10)=29/25/29, L(12)=33/32/37 — linear, level-stable. (4) Recursion identity anchors_{k+1}=M·chain_k verified TRUE at L6/L7/L8 (exact). (5) M-dilation in ∞-norm on actual segment-difference vectors: min 2.25, mean 3.08 (vs pessimistic worst-case σ_min/√3=1.467). (6) Stitch word length W_max=4 (min 2, mean 3.35). (7) Per-level growth: points ×3.35–3.37, extent ×3.0000 exact (det M=27=3³). Mild downward drift in c (0.68→0.64 over L6→L8) is the one caveat — plausibly finite-size, but longer levels are needed to fully separate \"converges to c>0\" from \"slowly →0\", tied to the λ/σ_gm=1.117>1 gap.",
+        "script": "/Users/erik/homelab/math193/design/tight/route1_ballistic.py (S(n) diameter-ballistic, endpoint contrast, sojourn law); /Users/erik/homelab/math193/design/tight/route1_recursion.py (recursion identity, M-dilation, stitch inflation, growth ratios); outputs: /Users/erik/homelab/math193/design/tight/route1_ballistic.json, /Users/erik/homelab/math193/design/tight/route1_recursion.json, /Users/erik/homelab/math193/design/tight/route1_VERDICT.json",
+        "status": "CLOSES-MODULO-LEMMA",
+        "gap": "The inductive dilation argument does not close in worst case. The correct ballistic quantity (segment DIAMETER S(n)) is measured level-uniform (c≥0.64, flat to n=120 across L6/L7/L8) and gives linear sojourn L(ρ)≤3.1ρ, and the recursion identity Walk_{k+1}=M·Walk_k⊔Stitch is exact — but the per-level multiplier certified by isotropic tools is (4/9)·W_max = (4/9)·4 = 1.78 > 1 (divergent, identical to route3's naive sojourn wall). Even the sharp amortized ratio λ/det(M)^{1/3} = 3.35/3.000 = 1.117 is marginally >1: each level adds 11.7% more points per unit displacement, and the proof must show these are absorbed TRANSVERSELY (anti-stacking) rather than lengthening the arc. Closing the lemma requires proving the arc-anisotropy — that dense arcs are curve-like enough that the effective M^{-1} contraction along them is the geometric-mean det^{-1/3}=1/3 (with transverse spreading), not the operator-norm 4/9. This is the same anisotropic renormalization kernel underlying the whole tight-linear target; Route 1 recasts it as a clean ballistic-diameter statement and supplies the exact recursion identity and dilation constants, but does not independently discharge it. Secondary caveat: the mild c-drift 0.68→0.64 over three levels needs L9/L10 to confirm convergence to a positive limit."
+      },
+      {
+        "route": "ROUTE 3 — anisotropic count-recursion, realized as an EXACT birth-level telescoping in the spectral (elliptic) metric of M.",
+        "proof": "The isotropic count-recursion diverges for a specific reason: it bounds this-level refill by g=4 stitch-interiors charged to each nearby anchor, giving coefficient (4/9)(1+g)=20/9>1. Route 3 removes that (1+g) exactly.\n\nSTEP 1 — spectral anisotropy (exact algebra). M=((3,0,0),(0,0,-3),(0,3,-1)) has ALL eigenvalues of modulus exactly 3: the x-block gives 3, and the 2×2 block ((0,-3),(3,-1)) has char poly λ²+λ+9 (disc −35), roots of modulus √9=3 — it is 3× an irrational-rotation (elliptic) matrix (arccos(-1/6)). Consequently M⁻ʲ contracts at the SPECTRAL rate 1/3, not the isotropic single-step ‖M⁻¹‖∞=4/9: with M⁻¹=[[1/3,0,0],[0,-1/9,1/3],[0,-1/3,0]], the exact iterated norms are ‖M⁻ʲ‖∞ = 1, 0.4444, 0.1481, 0.0562, 0.0187,… and S:=Σ_j‖M⁻ʲ‖∞ = 1.67693 (exact) < isotropic Σ(4/9)ʲ = 9/5 = 1.8. Boundedness of the pull-back is rigorous: sup_j‖(3M⁻¹)ʲ‖∞ = 1.549 < ∞ (elliptic, no growth).\n\nSTEP 2 — exact telescoping identity. From the PROVEN disjoint union Walk_k = M·Walk_{k-1} ⊔ Stitch_k, and the fact that M merely rescales (preserving a point's birth level), the walk partitions by birth level. Unfolding the anchor recursion gives, EXACTLY,\n   c_k(q,ρ) = Σ_{j≥0} #{Stitch_{k-j} ∩ M⁻ʲB(q,ρ)} = Σ_j t_j(q,ρ),  t_j := #{birth-(k-j) points in B(q,ρ)}.\nVerified: anchors_k == M(walk_{k-1}) elementwise at L6/L7/L8, and the birth-decomposition reproduces c_k exactly.\n\nSTEP 3 — closing coefficient with NO charge blow-up. Each term is one level's refill in a pulled-back region of ∞-radius ρ‖M⁻ʲ‖∞. Bounding by the single-level refill slope b(r)≤E·r:\n   c_k(q,ρ) ≤ Σ_j E·ρ·‖M⁻ʲ‖∞ = E·S·ρ  ⟹  C* = E·S = 1.677·E.\nCrucially there is a SINGLE slope E and a CONVERGENT sum S: the isotropic \"(1+g) charge\" is gone because the refill at level k is exactly b_k, while the \"nearby anchors\" it was charging are simply previous levels' refill, already counted as t_1,t_2,…. With the worst-case E=3 (ρ=1 slope) this gives C_aniso = 5.03 < isotropic 5.40 — qualitative boundedness with a cleaner constant.\n\nSTEP 4 — thin-region refinement toward the tight constant. The pulled-back regions M⁻ʲ(cube) are THIN sheared parallelepipeds; the walk's 1-D arcs pierce them less than an ∞-ball of equal ∞-radius. Measured across L6/L7/L8 this shows up two ways: (a) the isotropic ∞-enclosure over-counts the true (parallelepiped) anchor count by 1.17/1.43/1.25×; (b) the empirical birth-decay sum S'_meas = max c/t₀ = 1.55/1.56/1.50 < S = 1.677. Combined with the load-bearing refill slope E_mid≈2 (ρ∈[4,5]), C_tight ≈ E_mid·S'_meas = 2.70/3.50/3.38 — the measured tight regime. Load-bearing c_k(4.44)=c_k(4)=10/11/12 ≤ 12 directly at all three levels.",
+        "key_lemma": "SINGLE-LEVEL refill slope: b_k(r) ≤ E·r for every level k, where b_k counts ONE level's stitch interiors (short connector-word arcs) on the 3-separated anchor set A_k. This carries NO induction hypothesis, NO cross-level g-charge, and NO circular anchor count — the telescoping has already partitioned crowding across levels, so refill is genuinely single-level. Measured E: worst-case 3 (ρ=1), load-bearing ≈2 (ρ≈4-5), level-stable L6/L7/L8. For the SHARP constant, one additional measured (not yet proven) input: the thin-parallelepiped decay S'_meas ≈ 1.50 < S = 1.677 — i.e. 1-D arcs pierce M⁻ʲ(cube) less than its enclosing ∞-ball (the same anti-stacking / arc-incidence fact no route has promoted to a theorem).",
+        "constant": "C = E·S, with S = Σ_j‖M⁻ʲ‖∞ = 1.67693 EXACT (spectral rate 1/3), replacing the isotropic 9/5 = 1.8. Rigorous qualitative value (E=3): C_aniso = 5.03 (beats isotropic Model-B 5.40). Tight/measured (load-bearing E≈2, thin-region S'≈1.5): C ≈ 2.7–3.0, matching the measured tight constant (max c/ρ = 3.00/3.33/3.50 at L6/L7/L8).",
+        "computational_evidence": "Built birth-tagged walks L5→L8 from gate2-l7-construction-L{5,6,7,8}.pkl (8214/27697/92732/311738 pts), verified anchors_k == M(walk_{k-1}) elementwise (exact partition). Exact algebra (fractions): all eigenvalues modulus 3; ‖M⁻ʲ‖∞ = 1,0.444,0.148,0.056,…; S=1.67693 vs isotropic 1.8; κ=sup‖(3M⁻¹)ʲ‖∞=1.549 over j<400. Per (level,ρ=1..10): birth-decomposition t_j of the densest ball is dominated by the most-recent birth (e.g. L7 ρ=10: c=27 = t₀20+t₁5+t₂2; L8 ρ=10: c=31 = 23+6+2), decay ratio ~0.26-0.33 (≈1/3, faster than 4/9). Isotropic-vs-anisotropic anchor overcount 1.17/1.43/1.25×. Single-level refill slope E: max 3.0 (ρ=1), E_mid[4,5] = 1.75/2.25/2.25. S'_meas = max c/t₀ = 1.55/1.56/1.50. Termwise t_j ≤ 3ρ‖M⁻ʲ‖∞ holds at L6,L7 exactly; L8 has 2 off-by-one lattice-granularity cases → honest bound adds +1 per (finitely many) nonempty pull-back level. Load-bearing c(4.44)=c(4)=10/11/12 ≤ 12 met at all three levels.",
+        "script": "/Users/erik/homelab/math193/design/tight/aniso_measure.py (birth-tagged walks, c_k/a_k/b_k, birth-decomp t_j, iso-vs-aniso anchor overcount; PYTHONPATH=/Users/erik/homelab/math193 pypy3 aniso_measure.py 6 7 8) ; /Users/erik/homelab/math193/design/tight/aniso_summary.py (exact S via fractions, per-level E/S'/C_iso/C_aniso/C_meas, termwise-bound check; python3 aniso_summary.py). Conclusion: /Users/erik/homelab/math193/design/tight/route3-aniso-CONCLUSION.json ; data: /Users/erik/homelab/math193/design/tight/aniso_measure.json, aniso_summary.json.",
+        "status": "CLOSES-MODULO-LEMMA",
+        "gap": "The birth-level telescoping + exact spectral sum S=1.677 is a rigorous reduction that (1) strictly beats the isotropic constant (5.03 vs 5.40) and (2) DISSOLVES the divergent (1+g) charge that killed the isotropic linear recursion — reducing the entire tight linear law to the SINGLE-LEVEL refill slope b_k(r)≤E·r (a one-level, no-induction, no-circular-anchor object). But it does NOT by itself deliver the sharp C≈2.5: (i) rigorously it uses the worst-case E=3 (ρ=1), giving C_aniso=5.03 (boundedness, not tight); the load-bearing slope E≈2 is measured not proven; (ii) the thin-parallelepiped saving S'_meas≈1.50<S=1.677 — the 1-D arc-incidence/anti-stacking fact — is measured level-stable but not a theorem, and it is the same residual obstruction all prior routes hit. Also a minor honest correction: the termwise bound needs a +1 additive per nonempty pull-back level (finitely many, ~log₃ρ), from lattice granularity at the shrunken radii."
+      }
+    ],
+    "verdict": {
+      "synthesis": "Combined proof of the tight linear law c_k(q,ρ)≤Cρ+1, and adversarial verdict, on real walks L5-L8 (N=8214/27697/92732/311738), pypy exact integer arithmetic.\n\nSTRONGEST COMBINED PROOF. Route 3 (anisotropic birth-telescoping) is strictly the strongest; the Route 1+2 pair (ballistic sojourn × bounded returns) is the WEAKEST because both of its factors fail under attack. The rigorous skeleton that survives: (i) exact disjoint union Walk_k=M·Walk_{k-1}⊔Stitch_k, verified elementwise anchors_k==M(walk_{k-1}) at L6/L7/L8; (ii) every point has a unique birth level, giving the EXACT partition c_k(q,ρ)=Σ_j t_j(q,ρ), t_j=#{birth-(k-j) pts in B}; (iii) M is elliptic — all eigenvalues modulus exactly 3 (2×2 block char poly λ²+λ+9), so ‖M⁻ʲ‖∞ decays at spectral rate 1/3 and S=Σ_j‖M⁻ʲ‖∞=1.67693 EXACT (<isotropic 9/5), with sup_j‖(3M⁻¹)ʲ‖∞=1.549<∞ (rigorous no-blow-up); (iv) single-level refill slope E: b_k(ρ)≤E·ρ measured Emax=3.0 at ρ=1, LEVEL-STABLE across L6/L7/L8 (no drift). This yields a RIGOROUS LINEAR law C≤E·S=3×1.677=5.03, modulo promoting the single-level E≤3 to a theorem — a clean finite-menu / 3-separated-packing statement of the same type already proven for the qualitative (cubic) theorem, carrying NO induction, NO cross-level g-charge, NO circularity. This is a genuine advance: linear (C≈5) replacing the prior loose cubic (~257).\n\nWHY ROUTE 1+2 FAILS AS A PAIR. (b) Returns are NOT bounded: max_A creeps 5→7→8 as ρ→30 (L7 A=7@ρ=20, L8 A=8@ρ=30); the A≤5 claim is falsified past ρ~15. (d) Even were A bounded, the densest ball is a single deep sojourn arc (L7 ρ=40: c=129, A=1, sojourn=129), so A and L anti-correlate and max_A·max_L is QUADRATIC (399 vs actual c=115 at ρ=40). The naive product decomposition does not deliver a linear bound.\n\nHONEST CONSTANTS. Rigorous linear: C≤5.03 (=E·S). Measured-tight: max c/ρ gives C≈3.0-3.2 with the +1 form (worst: L8 c(2)=7→C=3; L7 c(40)=129→C=3.2), NOT the hoped 2.5. Load-bearing c(4.44)=c(4): 10/10/11/12 over L5/L6/L7/L8 — met at L8 exactly at the ≤12 boundary with ZERO margin and a monotone +1/level drift, and the observed max is only a LOWER bound on the true level-k sup. This is the sharpest adversarial threat: the availability-grade inequality is at genuine risk.",
+      "ballistic_uniform": false,
+      "returns_bounded": false,
+      "anisotropic_closes": true,
+      "tight_law_status": "CLOSES-MODULO-LEMMA",
+      "best_C": "Rigorous linear C ≤ E·S = 3 × 1.67693 = 5.03, modulo proving the single-level refill bound E≤3 (a clean finite-menu / 3-separated-packing lemma, no induction/no g-charge/no circularity; E measured level-STABLE at 3.0 across L6/L7/L8). Honest measured-tight C ≈ 3.0-3.2 (worst c/ρ+1: L8 c(2)=7→C=3, L7 c(40)=129→C=3.2), NOT the targeted 2.5. Load-bearing c(4.44)=c(4)=12 at L8 sits EXACTLY at the ≤12 boundary (drift 10→10→11→12, still rising; observed = lower bound on true sup).",
+      "remaining_gap": "Two obstructions. (1) TIGHT small-C (≈2.5): requires the anti-stacking / arc-anisotropy lemma — that dense arcs are curve-like so the effective M⁻¹ contraction along them is the geometric-mean det⁻¹ᐟ³=1/3 (transverse spreading) rather than the operator-norm 4/9, equivalently mid-range refill E≈2 and thin-parallelepiped decay S'≈1.5. Both are measured level-stable but UNPROVEN; this is the same residual obstruction every route hits and it is closer to STUCK than to a clean lemma. (2) LOAD-BEARING c(4.44)≤12: the observed max is 12 at L8, monotone-increasing with level and only a lower bound on the true level-k supremum — the inequality has zero margin and is drifting the wrong way. Secondary: diameter-ballistic constant c drifts 0.69→0.61 (worst L7@n=130), bounded ~0.6 in-range but not certified uniform; needs L9/L10 to separate 'converges to c>0' from 'slowly →0'.",
+      "p_closes": 0.35,
+      "next": "Run L9 (and if feasible L10) birth-tagged: this single compute is decisive on three fronts — (i) does load-bearing c(4) breach 13 (kills the availability constant) or hold at 12 (finite-size saturation); (ii) does the diameter-ballistic floor stay >0.6 or keep drifting; (iii) does single-level refill Emax stay pinned at 3.0. In parallel, PROVE the single-level refill lemma E≤3 as a finite-menu/3-separated packing bound (highest-leverage: promotes the rigorous linear C≤5.03 from measured to theorem). Only then attempt the anti-stacking lemma (E≈2, thin-region S'≈1.5) for the tight constant — treat it as the true bottleneck, not a formality."
+    }
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Routes"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Judge+Stress"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "route:ballistic-sojourn",
+      "phaseIndex": 1,
+      "phaseTitle": "Routes",
+      "agentId": "a27c0f83829ef6a5d",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784147674030,
+      "queuedAt": 1784147673882,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "ROUTE 1 — BALLISTIC SOJOURN. Prove sojourn L(ρ) ≤ (2/c)·ρ v…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code testing\nevery sub-claim on real data. pypy3 at /Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3.\nKeep compute LIGHT (an L8 ledger uses ~4 cores) — prefer L5/L6/L7, budgets. Write under design/lemma/tight/.\n\nSTATE (design/lemma/, all PROVEN): QUALITATIVE crowding-boundedness is a THEOREM — th…",
+      "lastProgressAt": 1784148189406,
+      "tokens": 67697,
+      "toolCalls": 15,
+      "durationMs": 515374,
+      "resultPreview": "{\"route\":\"ROUTE 1 — BALLISTIC SOJOURN. Prove sojourn L(ρ) ≤ (2/c)·ρ via a level-uniform ballistic lower bound on the walk-path, where the CORRECT ballistic quantity is the segment DIAMETER, not endpoint displacement.\",\"proof\":\"Setup. The chain W is a path (steps Cheb≤2). A \\\"sojourn\\\" is a maximal contiguous arc lying in a Cheb-ρ ball (radius ρ). Since a contiguous segment fits in some radius-ρ ba…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "route:bounded-returns",
+      "phaseIndex": 1,
+      "phaseTitle": "Routes",
+      "agentId": "ab9827f1d752bd0d2",
+      "model": "claude-opus-4-8",
+      "state": "error",
+      "startedAt": 1784147674040,
+      "queuedAt": 1784147673885,
+      "attempt": 1,
+      "lastToolName": "Bash",
+      "lastToolSummary": "PYPY=/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_6…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code testing\nevery sub-claim on real data. pypy3 at /Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3.\nKeep compute LIGHT (an L8 ledger uses ~4 cores) — prefer L5/L6/L7, budgets. Write under design/lemma/tight/.\n\nSTATE (design/lemma/, all PROVEN): QUALITATIVE crowding-boundedness is a THEOREM — th…",
+      "lastProgressAt": 1784147783028,
+      "error": "API Error: Connection closed mid-response. The response above may be incomplete.",
+      "tokens": 40501,
+      "toolCalls": 9,
+      "durationMs": 108988
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "route:anisotropic",
+      "phaseIndex": 1,
+      "phaseTitle": "Routes",
+      "agentId": "acbb27b8595ae6eb9",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784147674042,
+      "queuedAt": 1784147673887,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "ROUTE 3 — anisotropic count-recursion, realized as an EXACT…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code testing\nevery sub-claim on real data. pypy3 at /Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3.\nKeep compute LIGHT (an L8 ledger uses ~4 cores) — prefer L5/L6/L7, budgets. Write under design/lemma/tight/.\n\nSTATE (design/lemma/, all PROVEN): QUALITATIVE crowding-boundedness is a THEOREM — th…",
+      "lastProgressAt": 1784148781680,
+      "tokens": 112403,
+      "toolCalls": 29,
+      "durationMs": 1107638,
+      "resultPreview": "{\"route\":\"ROUTE 3 — anisotropic count-recursion, realized as an EXACT birth-level telescoping in the spectral (elliptic) metric of M.\",\"proof\":\"The isotropic count-recursion diverges for a specific reason: it bounds this-level refill by g=4 stitch-interiors charged to each nearby anchor, giving coefficient (4/9)(1+g)=20/9>1. Route 3 removes that (1+g) exactly.\\n\\nSTEP 1 — spectral anisotropy (exac…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "judge-adversary",
+      "phaseIndex": 2,
+      "phaseTitle": "Judge+Stress",
+      "agentId": "ab43883c364dcd893",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784148781788,
+      "queuedAt": 1784148781686,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Combined proof of the tight linear law c_k(q,ρ)≤Cρ+1, and a…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code testing\nevery sub-claim on real data. pypy3 at /Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3.\nKeep compute LIGHT (an L8 ledger uses ~4 cores) — prefer L5/L6/L7, budgets. Write under design/lemma/tight/.\n\nSTATE (design/lemma/, all PROVEN): QUALITATIVE crowding-boundedness is a THEOREM — th…",
+      "lastProgressAt": 1784149320844,
+      "tokens": 54745,
+      "toolCalls": 14,
+      "durationMs": 539056,
+      "resultPreview": "{\"synthesis\":\"Combined proof of the tight linear law c_k(q,ρ)≤Cρ+1, and adversarial verdict, on real walks L5-L8 (N=8214/27697/92732/311738), pypy exact integer arithmetic.\\n\\nSTRONGEST COMBINED PROOF. Route 3 (anisotropic birth-telescoping) is strictly the strongest; the Route 1+2 pair (ballistic sojourn × bounded returns) is the WEAKEST because both of its factors fail under attack. The rigorous…"
+    }
+  ],
+  "totalTokens": 275346,
+  "totalToolCalls": 67
+}
