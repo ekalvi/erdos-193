@@ -56,11 +56,11 @@ L4' converged local law. Adversarial bases outside the orbit are irrelevant to
 the theorem: we need ONE infinite chain, and the orbit is ours to choose.
 
 **L3''-b evidence (2026-07-14, clearance-L6.json, all 8,252 stitches):**
-corr(stitch-time tube crowding c10, survivor fraction) = −0.682 — availability
-is largely a FUNCTION of local crowding; the orbit's crowding has a hard ceiling
-(max 19 points in the Chebyshev-10 tube, mean 6.9, vs the 26 adversarially-placed
-hub points needed to zero a space); even the most crowded band [10,19] keeps
-min 184 words. Proposed decomposition of L3'': (A) crowding ≤ k₀ propagates
+corr(stitch-time tube crowding c10, survivor fraction) = −0.68/−0.71 — availability
+is largely a FUNCTION of local crowding; the orbit's crowding ceiling is
+SCALE-INVARIANT across three levels (max 20/19/22, mean 6.9/6.9/6.8 at L5/L6/L7 v2,
+vs the 26 adversarially-placed hub points needed to zero a space); even the most
+crowded band keeps hundreds of words. Proposed decomposition of L3'': (A) crowding ≤ k₀ propagates
 under renormalization (M dilutes a radius-10 tube ×3, refill adds bounded
 points — an integer-count recursion); (B) per step type, the maximum word-mass
 killed by any CONSTRUCTIBLE ≤ k₀-point tube configuration is < 1 − δ (finite
