@@ -1,0 +1,27 @@
+shard 2/4: pos 5000, 1250 recs, 8453s
+shard 0/4: pos 5000, 1250 recs, 8507s
+shard 1/4: pos 5000, 1250 recs, 8737s
+shard 3/4: pos 5000, 1250 recs, 8744s
+shard 2/4: pos 10000, 2154 recs, 16653s
+shard 0/4: pos 10000, 2153 recs, 16690s
+shard 1/4: pos 10000, 2153 recs, 17461s
+shard 3/4: pos 10000, 2154 recs, 17571s
+shard 2/4: pos 15000, 2404 recs, 19205s
+shard 0/4: pos 15000, 2403 recs, 19270s
+shard 1/4: pos 15000, 2403 recs, 20056s
+shard 3/4: pos 15000, 2404 recs, 20141s
+shard 2/4: pos 20000, 2654 recs, 21540s
+shard 0/4: pos 20000, 2653 recs, 21553s
+shard 1/4: pos 20000, 2653 recs, 22111s
+shard 3/4: pos 20000, 2654 recs, 22120s
+shard 0/4: pos 25000, 2903 recs, 25357s
+shard 2/4: pos 25000, 2904 recs, 25408s
+shard 1/4: pos 25000, 2903 recs, 26183s
+shard 3/4: pos 25000, 2904 recs, 26199s
+shard 0/4 done: 3038 records, 27330s
+shard 2/4 done: 3039 records, 27364s
+shard 3/4 done: 3039 records, 27805s
+shard 1/4 done: 3038 records, 27814s
+L7 MERGED SUMMARY: {"level": 7, "steps": 92731, "points": 92732, "escalations": 0, "jams": 0, "stats": {"N3": 3.947, "N3_se": 0.003, "N3_n": 27686, "N9": 10.923, "N9_se": 0.006, "N9_n": 27661, "N27": 33.646, "N27_se": 0.025, "N27_n": 27559, "N81": 109.763, "N81_se": 0.094, "N81_n": 27184}, "construct_s": 16629, "recorded": 12154, "min_frac": 0.02, "mean_frac": 0.5281956557511975, "p01_frac": 0.105, "below_delta": 380, "min_surv_abs": 271}
+KS(L6,L7) on N81: 0.0813 vs critical 0.0175 (ABOVE — drift)
+V2-L7-LEDGER-DONE

@@ -114,7 +114,10 @@ Two runs, both letter-verdicts FAIL, with opposite meanings:
 - **v2 (seeded-random among shortest words — the original's statistics): letter-FAIL,
   spirit-PASS.** N₈₁ = 118.39 → 111.88 → 109.76 (±0.09): MONOTONE convergence with
   geometric contraction (increments −6.51, −2.12; ratio 0.33), all density statistics
-  falling; zero escalations at every level; floors 317/180 (L7 pending). The registered
+  falling; zero escalations at every level; floors 317/180/271 — NO EROSION (L7 floor
+ROSE), mean availability RISING (0.465/0.458/0.528), below-δ share FALLING
+(4.9%/4.2%/3.1%): the absolute-floor form of L3'' holds with margin on the
+orbit at three scales. The registered
   target 112.6 ± 0.7 was extrapolated from the ORIGINAL constructor — v2 converges to
   its own fixed point ≈ 108.7–109.3, ~3% below. KS(L6,L7) = 0.081 > 0.018 critical:
   with n ≈ 27k, KS detects the still-contracting 2.1 shift — this test was
