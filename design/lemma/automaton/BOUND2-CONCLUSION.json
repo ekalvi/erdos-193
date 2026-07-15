@@ -1,0 +1,52 @@
+{
+  "task": "BOUND-2: low-shell charge tau_0, tau_1 via a local-config automaton (finite check); confront circularity",
+  "single_level_b_L(r)_level_uniform": {
+    "definition": "b_L(r) = sup_q #{level-L stitch interiors in Cheb-r(q)} = shell-0 count t_0",
+    "b(4.44)": {"L6": 8, "L7": 9, "L8": 9},
+    "b(1.975=4*4.44/9)": {"L6": 4, "L7": 5, "L8": 5},
+    "b(0.658=4*4.44/27)": {"L6": 3, "L7": 2, "L8": 3},
+    "verdict": "level-uniform (stable across 3 levels) -> tau_0=b(r), tau_1=b(4r/9), tau_2=b(4r/27)"
+  },
+  "per_shell_telescoped_sum_c(4.44)": {
+    "L6": 16, "L7": 17, "L8": 18,
+    "formula": "tau_0(4.44)+tau_1(4.44)+tau_2(4.44)+deep_tail(1)",
+    "KEY_FINDING": "per-shell decomposition tops out at ~18 > 12; shell maxima do NOT co-occur, so BOUND-2 (shell-by-shell) STRUCTURALLY cannot reach the availability threshold 12 -- that gap (18 vs true 12) is the anti-stacking loss"
+  },
+  "true_full_walk_c(4.44)": {
+    "L6": 10, "L7": 12, "L8": 12,
+    "note": "the actual target quantity = 12 (<=12 with ZERO margin); achieved by an ARC-LIKE config"
+  },
+  "automaton_config_anatomy_at_achieving_centre": {
+    "r=4.44": {
+      "nanch_in_window_r+4": {"L6": 5, "L7": 5, "L8": 7},
+      "arcs_returns+1": {"L6": 1, "L7": 1, "L8": 2},
+      "max_arc_len": {"L6": 5, "L7": 5, "L8": 4},
+      "cubic_packing_P(r+4)": 216,
+      "verdict": "anchors in window = 5-7 (arc-like, 1-2 arcs), NOT the 216 cubic packing bound"
+    },
+    "r=10": {
+      "nanch_in_window": {"L6": 11, "L7": 10, "L8": 13},
+      "arcs": {"L6": 1, "L7": 1, "L8": 1},
+      "cubic_packing_P(14)": 1000,
+      "per_arc_linear_bound_floor(2*14/3)+1": 10,
+      "verdict": "nanch=13 at L8 EXCEEDS the naive linear per-arc bound 10 -> the reachable count is SUB-CUBIC but SUPER-LINEAR (fractal d~1.1); a single monotone arc can pack more than floor(D/3)+1 because it curves"
+    }
+  },
+  "finiteness_NON_circular": {
+    "claim": "the local-config alphabet is FINITE and level-independent",
+    "proof": "anchors A=M.p are Cheb-3-separated (min|M.v|_inf=3, exact) and M injective, so #anchors in Cheb-(r+4) <= P(r+4)=(floor(2(r+4)/3)+1)^3 -- a pure packing number, NO crowding hypothesis. Each interior is within Cheb-4 of its nearer anchor (finite-menu: reach<=4, interiors/word<=4, proven over 79M words). So the config (anchors + steps + connector words in the window) is drawn from a finite, level-uniform set.",
+    "rigorous_cubic_tau": {
+      "tau_0(r)": "<= 8*P(r+4) = 8*(floor(2(r+4)/3)+1)^3   [at r=4.44 -> 1728, loose]",
+      "tau_j(r)": "<= charge(<=3) * P(||M^-j||*r + 4); at r=4.44: tau_0<=648, tau_1<=192, tau_2<=192",
+      "tau_{>=3}(r)": "<= 1  (deep-tail collapse: min|M^3 v|_inf = 24 > 2r for r<=10, exact finite enumeration)",
+      "status": "PROVEN, non-circular, FINITE -- but only reproduces the CUBIC no-blow-up bound (~1000), already known"
+    }
+  },
+  "circularity_verdict": {
+    "finiteness": "RESOLVED non-circularly (3-separation packing). The reachable-config SET is genuinely finite & level-independent.",
+    "tightness": "CIRCULAR. The measured tight count (nanch 5-7, arcs<=2, sub-cubic ~D^1.1) is NOT forced by 3-separation (which only gives cubic). Proving the arc-like/sub-cubic count requires bounding RETURNS (#arcs) and anchor-density-along-the-reachable-path -- a property of the parent's LOCAL geometry = the SAME crowding quantity one level down. That is the circular dependency.",
+    "benign_via_contraction": "The circularity is WELL-FOUNDED, not a true cycle: the config's parent-window is Cheb((r+4)*4/9), a radius that SHRINKS by 4/9<1 each level. So b_k(r) depends on parent crowding at a strictly smaller radius. The recursion reduces to the anisotropic contraction fixed point (phi=sigma_1(M^-1)sigma_2(M^-1)^{d-1}=0.353<1) already established -- the automaton INSTANTIATES that contraction, it does not give an independent finite escape from it.",
+    "reachable_config_count": "grows ~linearly with walk length in raw coordinates (distinct anchor-arrangements: 3.3k/7.3k/15.7k at L6/L7/L8, r=4.44) -- does NOT saturate to a fixed finite automaton. But the BOUND-relevant invariants (max nanch<=7, max arcs<=2 at r=4.44) ARE level-stable."
+  },
+  "bottom_line": "The local-config automaton (a) rigorously & non-circularly reproduces the CUBIC boundedness (finite check via 3-separation packing), and (b) confirms the true availability-grade count c(4.44)=12<=12 is achieved by an arc-like config (<=7 anchors, <=2 arcs), level-stable. BUT the availability-grade tight bound is NOT a pure finite check: it needs the sub-cubic arc-density / bounded-returns lemma, which is circular and closes only via the proven 4/9 contraction. Moreover the per-shell (BOUND-2) decomposition structurally tops out at ~18 due to anti-stacking, so <=12 requires the DIRECT joint-config automaton, not the shell sum."
+}

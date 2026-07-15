@@ -250,6 +250,25 @@ telescoping + deep-tail ≤1 + fixed menu + 3-separated anchors + proven contrac
 per-shell charge κ_j by enumeration over local anchor+menu configs (an automaton, possibly the NP-HC
 78,728 states) and compute the transfer-operator fixed point rigorously; check ≤12 at r=4.44.
 
+**L4' — transfer-operator/finite-check round: deep shells PROVEN, core still STUCK (2026-07-15, design/lemma/transfer/, design/lemma/bound1-deepshell-VERDICT.json).**
+NEW RIGOROUS (keeper): the DEEP SHELLS close as a non-circular finite check — birth-shell-j points ⊂
+MʲZ³, so t_j(q,r) ≤ P_j(r) := max_q #{MʲZ³ ∩ Cheb-r}, a level-independent lattice count never
+referencing c_k. Exact separations min|Mʲv|∞ = 3/8/24 (j=1/2/3). ⇒ τ_{j≥3}=1 for all r≤10 (PROVEN, no
+induction); τ_2 = P_2(r)=[1,1,1,2,4,8,8,10,15,18]. STILL STUCK: the shallow shells τ_0,τ_1 (single-level
+refill) are non-circular only at the CUBIC packing bound (τ_0 ≤ 8·(⌊2(r+4)/3⌋+1)³ = 1728 at r=4.44 —
+the no-blow-up bound restated); the tight values (b(4.44)=9, measured level-stable L6/L7/L8) are not
+proven uniform in k. DECISIVE: the shell-by-shell sum is STRUCTURALLY capped at ~16–18 > 12 (shell
+maxima don't co-occur; anti-stacking saving ~4–6), so per-shell bounds CANNOT reach the availability
+floor 12 — only a DIRECT joint-config automaton (proving max-anchors≤7, arcs≤2 level-stable) can, and
+that is the same anti-stacking residue. p_closes 0.2. **STATUS: after THREE distinct deep rounds
+(bounded-range/finite-reduction, self-affine dimension, transfer-operator) the core anti-stacking /
+curve-like lemma survives — it is the genuine research core (~25–30%).** Proven around it: base,
+inheritance, induction, exact recursion, qualitative no-blow-up, bounded distortion, anisotropic
+contraction (φ<1), deep-tail collapse, deep-shell finite check. RECOMMENDATION: assemble the Tier-1
+CONDITIONAL theorem (one hypothesis: the anti-stacking lemma) — task 11. A later assault on the lemma:
+the joint-config automaton + a monotonicity/invariant argument for level-stability of (max-anchors,
+arc-count), or formalization-driven insight — NOT another same-shape panel.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
