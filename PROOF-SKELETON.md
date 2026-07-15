@@ -126,9 +126,30 @@ ceiling to bound is the FULL-walk crowding ~27, not the stitch-time 22; (ii) wit
 naive fixed point is 36, so the easy-3/4 gives uniform boundedness ≤ 36 once the count-contraction
 kernel holds, but NOT the tight ~27 without anti-stacking. Net: the whole L4' lemma is reduced to
 one incidence inequality (+ a refill companion for tightness), with all else proven-exact.
-Next agentic round: (a) attack the incidence inequality with a route panel (κ₃ / irrational
-rotation / clearance); (b) re-run the per-step availability computation (L3'') at the PROVEN
-k₀=36, not the measured 22 — if availability stays positive there, the tight constant is moot.
+**L4' — route panel RESULT (2026-07-15, design/lemma/route*/, adversarially stress-tested).**
+Four routes attacked the incidence inequality; κ₃ (vacuous below Cheb-length ~515) and
+equidistribution (the walk is BALLISTIC not diffusive — persistent directions) both died as
+mechanisms but pointed at the winner. **Route 4/2 — the exact contraction count-recursion — is a
+rigorous REDUCTION (verified, not circular; the stress agent re-derived every step):**
+   c_{k+1}(q,ρ) ≤ c_k(M⁻¹q, (4/9)ρ) + B_local(ρ).
+Proven-exact ingredients: recursion identity M⁻¹·anchors == parent-chain (over ℚ, both
+transitions); ‖M⁻¹‖∞ = 4/9 exact; Cheb = ‖·‖∞ so dilated-old points inject into the (4/9)ρ
+pull-back ball. Because the pull-back radius SHRINKS by 4/9 each level, refill does NOT accumulate
+(no k·B blow-up) — the induction closes to c_k(q,ρ) ≤ 6ρ + 1 UNIFORMLY in k, **reducing the whole
+crowding-boundedness lemma to ONE structural sub-lemma**: the uniform linear refill bound
+B_local(ρ) ≤ (5/9)C·ρ for all k. That sub-lemma is now verified at THREE transitions (L6,L7,L8;
+closing constant C*=6.0 stable, no counterexample) — structural (level-homogeneous construction:
+fixed connector-word menu, bounded word length), plausibly reducible to a FINITE check over the
+menu. Judge p(top route closes) = 0.62.
+TWO honest gaps remain, both sharper than before:
+1. **Uniform refill sub-lemma** — measured-stable at 3 levels (minor drift B_local(1): 3→3→4),
+   not yet a theorem. Closes the QUALITATIVE lemma (crowding bounded ⇒ no blow-up, ever).
+2. **The tight constant** — Route 4 proves C=6 (⇒ c_k(4.44) ≤ 27.6), but availability needs the
+   tight C≈2.5 (c_k(4.44) ≤ 12); by the (B) result availability is marginal (~11 words) at the
+   loose bound. Needs a SEPARATE anti-stacking argument (dilated-old ⟂ refill), delivered by no
+   route yet. This is the piece that converts "crowding bounded" into "availability floor > 0".
+Net: the qualitative "no blow-up" is one structural sub-lemma from proven; the availability-
+grade tight constant is a second, distinct target.
 
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties

@@ -1,0 +1,39 @@
+{
+  "route": "3 - CLEARANCE / SEPARATION",
+  "target": "c_k(q,rho) <= C*rho + 1, level-uniform, rho in [1,10]",
+  "verdict": "CLOSES-MODULO-SUBLEMMA",
+  "findings": {
+    "S0_separation_floor": {
+      "min_inter_point_cheb_separation": 1,
+      "min_by_pathgap_L5": {"1":1,"2":1,"3":1,"4":2,"5":2,"6":2},
+      "min_by_pathgap_L6": {"1":1,"2":1,"3":1,"4":2,"5":2,"6":2},
+      "min_by_pathgap_L7": {"1":1,"2":1,"3":1,"4":1,"5":1,"6":1},
+      "nonadjacent_cheb1_pairs": {"L5":8,"L6":23,"L7":88},
+      "conclusion": "Separation floor is the trivial 1 (distinct lattice pts); non-consecutive walk points DO sit at Cheb 1. No usable metric gap => pure packing route is DEAD: it gives only (2rho+1)^3 (cubic, useless)."
+    },
+    "the_working_reduction": {
+      "identity": "c(q,rho) = sum over maximal contiguous PATH-ARCs meeting B(q,rho) of arc length <= A(rho)*L(rho)",
+      "A_return_count": "max # arcs; measured <=5 for all rho<=10, level-stable (L5/L6/L7)",
+      "L_sojourn": "max single-arc length; measured <= ~2.5*rho (slope a<=3), level-stable",
+      "C_crude_factored": "A0*a = 5*3 = 15",
+      "C_honest_percenter_product": 6.4,
+      "C_tight_direct": 3.0,
+      "load_bearing_c_q_4.44": "direct max_c(q,4)=10/10/11, c(q,5)=12/12/14 (<=12 at rho<=4.44 OK direct); FACTORED bound 5*L(4.44)~55 does NOT reach tight 12"
+    },
+    "densest_ball_nn_structure": {
+      "L6_rho10_densest": "c=26 = TWO path-arcs of lengths 14 and 12 (two short near-linear passes, not a packed blob)",
+      "L6_rho6_densest": "c=15 = ONE arc of length 15 (a single curve segment)",
+      "picture": "dense balls are a SMALL number (<=5) of short curve-like path passes => curve/1-D, exactly the target property, but as a MEASURED orbit invariant"
+    },
+    "recurrence_window_bound_DEAD": {
+      "W(2rho)_L5_rho8-10": [869, 875, 885],
+      "W(2rho)_L7": [197, 205, 213],
+      "conclusion": "The single-quantity bound c<=W(2rho)+1 is BOTH loose (~50-900) AND non-level-uniform (blows up). Two DIFFERENT path-arcs passing the same ball are path-far, so the min..max index window massively overcounts. Rejected."
+    },
+    "why_the_sublemma_is_not_free": {
+      "triple_free_alone": "does NOT bound single-arc sojourn linearly (free triple-free walks reach >=224; box-confined can be super-linear)",
+      "naive_sojourn_renormalization": "L_{k+1}(rho) <= wordlen_max * L_k(rho*||Minv||inf) = 5 * L_k(4rho/9); multiplier 5*(4/9)=2.222 > 1 => EXPANSIVE, does not close in worst case (with typical wordlen 3.4 it is 1.51, still >1)",
+      "net": "Level-uniformity of (A<=5, L<=arho) is strongly empirical & stable across 3 levels but its PROOF is the SAME hard renormalization kernel as the rest of L4'; Route 3 recasts the incidence bound, does not independently discharge it."
+    }
+  }
+}
