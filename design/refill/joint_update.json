@@ -1,0 +1,113 @@
+{
+  "matrix_M": [
+    [
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -3
+    ],
+    [
+      0,
+      3,
+      -1
+    ]
+  ],
+  "alpha_Minv_inf": "4/9",
+  "singular_values_M": [
+    2.5414,
+    3.0,
+    3.5414
+  ],
+  "model_B_menu_source": {
+    "update_matrix_UB": [
+      [
+        "4/9",
+        "1"
+      ],
+      [
+        "0",
+        "0"
+      ]
+    ],
+    "eigenvalues": [
+      0.444444,
+      0.0
+    ],
+    "spectral_radius": 0.444444,
+    "source_term_Emax": 3,
+    "fixed_point_Cstar": "27/5 = 5.4",
+    "closes": true,
+    "refill_sublemma": "b_k(rho) <= Emax*rho, Emax=3, level-independent (THE finite check)"
+  },
+  "model_A_pessimistic_effective_a": {
+    "1.25": {
+      "a": 1.25,
+      "UA": [
+        [
+          "4/9",
+          "1"
+        ],
+        [
+          "20/81",
+          "5/9"
+        ]
+      ],
+      "spectral_radius": 1.0,
+      "det": 0.0,
+      "closes": false
+    },
+    "3.5": {
+      "a": 3.5,
+      "UA": [
+        [
+          "4/9",
+          "1"
+        ],
+        [
+          "56/81",
+          "14/9"
+        ]
+      ],
+      "spectral_radius": 2.0,
+      "det": 0.0,
+      "closes": false
+    }
+  },
+  "measured_joint_envelope": {
+    "C_k": {
+      "L6": 2.5,
+      "L7": 3.0,
+      "L8": 3.0
+    },
+    "E_k": {
+      "L6": 3.0,
+      "L7": 3.0,
+      "L8": 3.0
+    },
+    "C_k_note": "rises 2.5->3->3 then flat, all <= C*=5.4",
+    "E_k_note": "flat 3.0 at every level => menu-source model (B), NOT proportional (A)"
+  },
+  "trajectory_closure_check_modelB": [
+    {
+      "step": "L6->L7",
+      "Ck": 2.5,
+      "Ek": 3.0,
+      "rhs_alphaCk_plus_Ek": 4.1111,
+      "Ckp_measured": 3.0,
+      "holds": true
+    },
+    {
+      "step": "L7->L8",
+      "Ck": 3.0,
+      "Ek": 3.0,
+      "rhs_alphaCk_plus_Ek": 4.3333,
+      "Ckp_measured": 3.0,
+      "holds": true
+    }
+  ],
+  "verdict": "Joint system CLOSES under model B (spectral radius 4/9<1, C*=27/5=5.4) iff the refill slope E_max is level-independent. Measured flat at 3.0 across L6/L7/L8, off-lattice-robust, holds to rho=20. Model A (the PROVABLE per-anchor bound) has spectral radius (4/9)(1+a)>1 for a>=5/4 and does NOT close; the gap between A and B IS the refill sub-lemma."
+}

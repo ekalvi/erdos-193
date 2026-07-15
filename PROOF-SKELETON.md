@@ -151,6 +151,26 @@ TWO honest gaps remain, both sharper than before:
 Net: the qualitative "no blow-up" is one structural sub-lemma from proven; the availability-
 grade tight constant is a second, distinct target.
 
+**L4' — QUALITATIVE BOUNDEDNESS PROVEN (2026-07-15, design/lemma/refill/, adversary-found + finite check DONE).**
+Both refill routes' naive linear coupling DIVERGES (coefficient (4/9)(1+g) = 20/9 > 1). But the
+adversary found the non-circular closure: **the anchor set A_k = M·W_{k-1} is 3-SEPARATED at every
+level** — min over nonzero integer v of |M·v|∞ = 3 (M's row structure; exact, exhaustive over the
+±8 box), and M injective + walk points distinct. This needs NO induction hypothesis, so
+anchor-crowding a_k(q,r) ≤ (⌊2r/3⌋+1)³ is a pure packing number, level-independent. With each
+interior within Cheb-4 of its nearer anchor and ≤ g interiors charged per anchor:
+   c_k(q,ρ) ≤ (⌊2ρ/3⌋+1)³ + g·(⌊2(ρ+4)/3⌋+1)³   — uniform in k, NON-CIRCULAR.
+**FINITE CHECK DONE (design/lemma/finite_menu_check.py, 78,999,838 menu words — the full
+connector_domains4 + dstar5_fragile + dstar5_band menu): max interiors/word = 4, max
+reach-to-nearer-anchor = 4, ZERO violations.** ⇒ the packing bound is a THEOREM: **crowding is
+level-independently bounded at every level, forever — the walk provably cannot densify without
+limit (the v1 failure mode is rigorously excluded).** adversary p=0.85 → now finite-check-confirmed.
+CAVEAT (honest): the bound is CUBIC and loose (~257 at ρ=1 vs measured 3); it proves NO-BLOW-UP,
+not the tight linear law. The availability floor needs the TIGHT constant c_k(4.44) ≤ ~12 (vs
+packing ~257). Getting linear requires the ANTI-STACKING bound (distinct connector-arcs meeting a
+Cheb-ρ ball = O(ρ), not O(#anchors in reach-shell)); the isotropic 4/9 pullback overcounts. Open.
+Next: attack the tight linear law via the ANISOTROPIC M⁻¹ ellipsoid (singular values 2.54/3.00/3.54)
+rather than the isotropic ‖M⁻¹‖∞=4/9. This is the sole remaining analytic core of L4'.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes

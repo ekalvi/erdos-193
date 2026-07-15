@@ -1,0 +1,6 @@
+loading connector_domains4.pkl ...
+D2-4 (connector_domains4): 7114584 words | max interiors/word=3 | max reach-to-nearer=4 | violations(>4)=0
+dstar5_fragile.pkl: 5422562 words | max interiors/word=4 | max reach-to-nearer=4 | violations(>4)=0
+dstar5_band.pkl: 66466692 words | max interiors/word=4 | max reach-to-nearer=4 | violations(>4)=0
+
+VERDICT: FINITE CHECK PASSES — reach<=4, interiors<=4 over the ENTIRE menu; 3-separation packing bound is a THEOREM (qualitative no-blow-up PROVEN)
