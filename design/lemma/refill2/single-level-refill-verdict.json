@@ -1,0 +1,213 @@
+{
+  "summary": "Prove the single-level refill bound b_k(ρ)≤E·ρ (task 8): determine if it is a standalone finite check or inherits the anti-stacking, and certify what closes",
+  "agentCount": 3,
+  "logs": [],
+  "result": {
+    "routes": [
+      {
+        "route": "ROUTE A — standalone finite-menu / packing bound for the single-level refill count b_k(rho) = sup_q #{level-k stitch interiors within Cheb-rho of q}.",
+        "finding": "The standalone packing bound is GENUINELY CUBIC and does NOT give a useful linear refill lemma. Charging each in-ball interior to its nearer anchor and packing the 3-separated anchors (min_{v!=0}|M.v|_inf = 3, exact) in Cheb-(rho+4) gives b_k(rho) <= g*(floor(2(rho+4)/3)+1)^3. The smallest E making g*(floor(2(rho+4)/3)+1)^3 <= E*rho hold for ALL rho in [1,10] is E = 315.79 (with the measured g=3) or E = 421.05 (with the structural cap g=4) — and it is attained at the TOP of the range (rho=9.5, the cubic blowup), NOT at rho=1. Concretely N/rho climbs 192->250 for g=3 across the window; the sup is the cubic top, not the small-rho corner. This E is ~130-170x the actual measured b_k (which is ~2-3*rho): at rho=10 the g=4 packing bound is 4000 while measured b_k is ~20. So the finite-range 'linear' constant is a vacuous artifact of dividing a cubic by rho on a bounded window — it is dominated by the cubic top end, does not extend past rho=10, and is useless for a tight availability constant. HOWEVER packing is NOT worthless: because ||M^-1||_inf = 4/9 < 1, the crowding fixed point c*(rho) = sum_j P((4/9)^j rho) of a cubic P stays cubic (geometric amplification 1/(1-(4/9)^3) = 1.096), so the packing bound rigorously proves QUALITATIVE no-blow-up with a CUBIC, LEVEL-INDEPENDENT crowding law c_k(rho) <= ~1.1*P(rho) for all k, NON-circular (packing needs no induction hypothesis). What it cannot deliver is the LINEAR law b_k(rho) <= E*rho / c_k <= C*rho+1: for any fixed E, E*rho fails to dominate the cubic packing bound as rho grows, so the linear refill lemma does NOT follow from packing. Making it linear requires the anti-stacking / arc-incidence fact (only ~rho connector-arcs, i.e. a curve, meet a Cheb-rho ball, not the full ~(2(rho+4)/3)^3 cube of nearby anchors).",
+        "E_standalone": "E = 315.79 (g=3 measured) or 421.05 (g=4 structural cap) — smallest constant with g*(floor(2(rho+4)/3)+1)^3 <= E*rho on rho in [1,10], attained at rho=9.5 (the cubic top end, NOT rho=1). NOT useful: it is ~130-170x the true b_k(~2.5*rho), a cubic blowup, and does not extend beyond the window. It certifies only qualitative boundedness (a cubic level-independent crowding law), never the tight/linear constant E≈3.",
+        "closes_standalone": false,
+        "measured_b_k": {
+          "method": "exact sup over ALL integer centres q (verified optimal for integer rho); confirmed foreground L6/L7/L8 and matches prior verified refill-sublemma.json",
+          "exact_sup_rho1": {
+            "L6": 3,
+            "L7": 3,
+            "L8": 4
+          },
+          "exact_sup_rho2": {
+            "L6": 6,
+            "L7": 5,
+            "L8": 6
+          },
+          "binding_case": "rho=1, L8: b_k=4 => ratio 4.0 (this is the sup b_k/rho; walk-centred sampling undercounts it as 3)",
+          "walk_centred_profile_rho_1to10": {
+            "L6": [
+              3,
+              5,
+              6,
+              7,
+              8,
+              10,
+              12,
+              15,
+              16,
+              19
+            ],
+            "L7": [
+              3,
+              5,
+              8,
+              9,
+              9,
+              12,
+              14,
+              15,
+              16,
+              17
+            ],
+            "L8": [
+              3,
+              6,
+              7,
+              9,
+              11,
+              13,
+              15,
+              18,
+              19,
+              20
+            ]
+          },
+          "measured_slope_bk_over_rho": "~2.0-3.0, level-stable (sup 4.0 at rho=1,L8; decays to ~2.0-2.3 by rho=10)",
+          "packing_bound_g4_rho_1to10": [
+            256,
+            500,
+            500,
+            864,
+            1372,
+            1372,
+            2048,
+            2916,
+            2916,
+            4000
+          ],
+          "packing_bound_g3_rho_1to10": [
+            192,
+            375,
+            375,
+            648,
+            1029,
+            1029,
+            1536,
+            2187,
+            2187,
+            3000
+          ],
+          "packing_over_measured_ratio_at_rho10": "g4: 4000/~20 ~= 200x ; g3: 3000/~20 ~= 150x"
+        },
+        "anchor_count_linear_or_cubic": "CUBIC. The 3-separation of anchors (min_{v!=0}|M.v|_inf = 3, exact, injective M det=27) gives only the packing count a_k(q,rho+4) <= (floor(2(rho+4)/3)+1)^3 — a genuine cube. Linearity is NOT a consequence of separation/packing; it requires anti-stacking (the anchors whose interiors actually land in B(q,rho) lie along a curve-like path, ~rho of them, not the full cube). Standalone packing => cubic; only the anti-stacking / arc-incidence bound => linear.",
+        "script": "/Users/erik/homelab/math193/design/lemma/refill2/routeA_packing_E.py (computes smallest E = sup N/rho on [1,10] for g=3,4; exact Fractions); /Users/erik/homelab/math193/design/lemma/refill2/routeA_cubic_crowding.py (shows the 4/9-contraction sum of the cubic packing bound stays cubic & level-independent, amplification 1.096 -> qualitative no-blow-up); /Users/erik/homelab/math193/design/lemma/refill2/exact_sup_L678.py (exact sup-over-q b_k at rho=1,2 for L6/L7/L8, confirms b(1)=3,3,4 / b(2)=6,5,6); /Users/erik/homelab/math193/design/lemma/refill2/bk_walkcentred_profile.py (walk-centred b_k profile rho=1..10). Reads gate2-l7-construction-L{6,7,8}.pkl, run with PYTHONPATH=/Users/erik/homelab/math193 and the pypy3 at /Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3. Corroborates prior /Users/erik/homelab/math193/design/lemma/refill-sublemma.json and design/lemma/refill/surviving_check.py.",
+        "verdict": "REDUCES-TO-ANTISTACKING"
+      },
+      {
+        "route": "THE CRUX ROUTE examined: charge each in-ball level-k stitch interior to its nearer anchor, giving b_k(ρ) ≤ g·a_k(q,ρ+4) = g·c_{k-1}(M⁻¹q,(4/9)(ρ+4)), where a_k = anchor-crowding = parent crowding (A_k=M·W_{k-1}, ‖M⁻¹‖∞=4/9). Tested three closures: (i) standalone via 3-separated anchor packing; (ii) telescoped joint induction with birth-telescoping S=Σ‖M⁻ʲ‖∞; (iii) reduction to anti-stacking.",
+        "finding": "The charge bound does NOT close the linear refill lemma by itself. (1) STANDALONE is only CUBIC: 3-separation (min|Mv|∞=3, arg v=(-1,-1,-1), re-verified over ±8 box) gives a_k(q,r) ≤ (⌊2r/3⌋+1)³, hence b_k(ρ) ≤ g·(⌊2(ρ+4)/3⌋+1)³ — level-independent, non-circular, proven modulo finite-menu caps, but cubic. This proves QUALITATIVE no-blow-up only, never b_k≤Eρ. (2) LINEARITY requires the parent crowding c_{k-1} to already be linear (joint induction). But even GRANTING the birth-telescoped linear crowding c_{k-1}(·,r) ≤ E·S·r+1 (S=1.67693), the charge re-inflates: b_k(ρ) ≤ g·[E·S·(4/9)(ρ+4)+1], slope = g·S·(4/9)·E, so self-consistency b_k≤Eρ needs g·S·(4/9) ≤ 1. Measured: g·S·(4/9) = 2.236 at g=3, 2.981 at g=4, BOTH > 1 (threshold g<1.342). The birth-telescoping DID remove the additive (1+g) self-count (naive isotropic coeff (4/9)(1+g)=1.78 at g=3) but the charge's MULTIPLICATIVE g survives and 4/9·S·g>1 for every g≥2. So the telescoped joint induction via the charge DIVERGES. (3) Reality is linear only because of ANTI-STACKING: the measured anchor count a_k(q,ρ+4) is LINEAR (~ρ), and true b_k~2-3ρ, because a near-shell anchor donates ~1 (not g) of its interiors into the ball (arc-incidence/curve-like). That curve-like fact is unproven (= task 10). Conclusion: the crux INHERITS the anti-stacking; it is neither a standalone linear bound nor closeable by the (telescoped) joint induction.",
+        "E_standalone": "Pure packing yields a CUBIC bound, so there is NO usable level-independent linear slope E from packing. The packing footprint b_k(ρ) ≤ g·(⌊2(ρ+4)/3⌋+1)³ has implied 'slope' g·(⌊2(ρ+4)/3⌋+1)³/ρ that GROWS on ρ∈[1,10]: at g=3 it is 3·4³/1=192 (ρ=1) up to 3·10³/10=300 (ρ=10) — cubic, unbounded per unit ρ. It is useful ONLY for the qualitative no-blow-up lemma (crowding finite, non-circular, all k), and useless for the tight linear availability constant. The measured truth a_k(q,ρ) is far smaller and linear (see measured field), which is precisely the (unproven) anti-stacking gap between the cubic packing ceiling and the linear reality.",
+        "closes_standalone": false,
+        "measured_b_k": {
+          "exact_sup_over_integer_centres_q": {
+            "L6": {
+              "rho=1": 3,
+              "rho=2": 6,
+              "rho=3": 6,
+              "rho=4": 8
+            },
+            "L7": {
+              "rho=1": 3,
+              "rho=2": 5
+            },
+            "L8": {
+              "rho=1": 4,
+              "rho=2": 6
+            }
+          },
+          "argmax_decomposition_rho1_L8": "sup=4 realized by 2 stitches donating 2 interiors each ({2:2}), NOT g=4 times the several anchors in Cheb-5 — direct evidence of anti-stacking",
+          "sup_ratio_b_over_rho": "4.0 at rho=1,L8 (drift b(1): 3->3->4 across L6/L7/L8 is the true sup-over-q, not a sampling artifact); decays to ~2.0-2.5 for rho>=3",
+          "note": "corrected literal target C=6 (i.e. b<=3.33*rho) is FALSE at rho=1,L8 since b=4>3.33; a level-independent linear E still exists empirically but requires E>=4 (sup ratio), not 3"
+        },
+        "anchor_count_linear_or_cubic": "LINEAR in practice — decisively NOT cubic. Measured anchor-crowding a_k(q,ρ) (max anchors in Cheb-ρ ball) at L5/L6/L7/L8: ρ=1→1, ρ=2→1, ρ=3→3, ρ=4→3, ρ=6→5-6, ρ=8→5-6, ρ=10→7-9. Compare the CUBIC packing ceiling (⌊2ρ/3⌋+1)³ = 1,8,27,27,125,216,343 — the measured count is ~ρ, one to two orders of magnitude below the cube. So a_k(q,ρ+4) is curve-like/linear (~ρ+4), i.e. the anchors near a ball lie essentially along ~ρ path-arcs, not filling the 3-separated cube. This linearity is empirically level-stable but is itself the anti-stacking statement — it is NOT delivered by the packing argument (which only proves the cubic ceiling).",
+        "script": "/Users/erik/homelab/math193/design/lemma/refill2/telescope_coeff.py (NEW — exact S=Σ‖M⁻ʲ‖∞=1.67693 and the decisive telescoped charge coefficient g·S·(4/9): 0.745 g=1, 2.236 g=3, 2.981 g=4; threshold g<1.342; run: python3 design/lemma/refill2/telescope_coeff.py). /Users/erik/homelab/math193/design/lemma/refill/surviving_check.py (3-separation min|Mv|∞=3, structural caps reach<=4/interiors<=3/g=3 identical L5-L8, packing-vs-measured anchor crowding showing LINEAR measured vs CUBIC bound; run under PYTHONPATH=math193 with pypy3). /Users/erik/homelab/math193/design/lemma/refill/exact_center.py (exact sup b_k over integer centres; L6 full, L7/L8 small-rho via /tmp lean variant). /Users/erik/homelab/math193/design/refill/joint_update.py (2x2 update: Model B menu-source closes rho(U)=4/9 but ASSUMES the lemma; Model A provable charge rho(U)=(4/9)(1+a)>1 diverges).",
+        "verdict": "REDUCES-TO-ANTISTACKING"
+      }
+    ],
+    "adjudge": {
+      "decision": "REDUCES-TO-ANTISTACKING",
+      "proven_E": "No usable linear E is a theorem. The ONLY rigorously proven, non-circular, level-independent bound is CUBIC: b_k(ρ) ≤ g·(⌊2(ρ+4)/3⌋+1)³ with g=4 (structural cap; g=3 measured), from 3-separated anchor packing (min_{v≠0}|Mv|∞=3 exact, ‖M⁻¹‖∞=4/9). Forcing a linear fit on ρ∈[1,10] yields only E≈421 (g=4) / 316 (g=3), attained at the cubic top end ρ=9.5, ~150–200× the true b_k(≈2.5ρ) and non-extensible past the window — a vacuous artifact, NOT a proof of b_k≤E·ρ. A genuine linear E (empirically E≈4, since sup b_k/ρ = 4 at ρ=1,L8) exists in the data but is NOT proven.",
+      "theorem_statement": "THEOREM NOW (proven, all k, non-circular): the crowding count is finite and level-independently bounded by a CUBIC packing law c_k(q,ρ) ≤ 1.096·P(ρ), P(ρ)=g·(⌊2(ρ+4)/3⌋+1)³ (amplification 1/(1−(4/9)³)=1.096 from the ‖M⁻¹‖∞=4/9 contraction). This certifies QUALITATIVE no-blow-up only. NOT a theorem (still modulo the anti-stacking/task-10 lemma): the LINEAR law c_k(q,ρ) ≤ E·S·ρ+1 (S=1.67693) and its source refill bound b_k(ρ) ≤ E·ρ.",
+      "closing_coefficient": "g·S·(4/9) with S=Σ_j‖M⁻ʲ‖∞=1.67693: = 2.2359 (g=3 measured), 2.9812 (g=4 structural) — BOTH > 1, so the telescoped joint induction via the charge DIVERGES. Closing threshold is g<1.3417; the coefficient is <1 only for the unphysical g=1 (0.7453). No valid closing coefficient <1 exists at the true g≥2, so route B does NOT close.",
+      "merges_task8_task10": true,
+      "linear_law_is_theorem": false,
+      "p_linear_theorem": 0.03,
+      "next": "Merge tasks 8 and 10 — they are the SAME obstruction. Prove the anti-stacking / arc-incidence lemma: the anchors whose interiors actually land in B(q,ρ) lie along a curve-like path (~ρ of them, and each near-shell anchor donates ~1 interior, not g), so a_k(q,ρ+4) is LINEAR (~ρ+4) rather than the cubic packing ceiling. Concretely, prove that consecutive connector-arcs meeting a Cheb-ρ ball number O(ρ) — this is the metric/curve fact that packing (combinatorial 3-separation) cannot see. Once proven it delivers b_k(ρ)≤E·ρ with E≈4 and promotes c_k≤E·S·ρ+1 to a theorem. Suggested measurement to guide the proof: at L6/L7/L8 tabulate, per Cheb-ρ ball, the number of DISTINCT connector-arcs incident vs total near anchors, confirming the O(ρ) arc count and per-arc donation ≤ small constant."
+    }
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Prove"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Adjudicate"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "route:standalone-packing",
+      "phaseIndex": 1,
+      "phaseTitle": "Prove",
+      "agentId": "a202125b751741bb6",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784150064126,
+      "queuedAt": 1784150064046,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "ROUTE A — standalone finite-menu / packing bound for the si…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code (pypy3 at\n/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3). Keep LIGHT (an L8 ledger uses ~4\ncores) — prefer L6/L7, budgets. Write under design/lemma/refill2/.\n\nGOAL (task 8): prove the SINGLE-LEVEL REFILL bound b_k(ρ) := sup_{q∈R³} #{interiors of LEVEL-k\nstitches within Chebyshev ρ of q} ≤…",
+      "lastProgressAt": 1784150877160,
+      "tokens": 61013,
+      "toolCalls": 26,
+      "durationMs": 813033,
+      "resultPreview": "{\"route\":\"ROUTE A — standalone finite-menu / packing bound for the single-level refill count b_k(rho) = sup_q #{level-k stitch interiors within Cheb-rho of q}.\",\"finding\":\"The standalone packing bound is GENUINELY CUBIC and does NOT give a useful linear refill lemma. Charging each in-ball interior to its nearer anchor and packing the 3-separated anchors (min_{v!=0}|M.v|_inf = 3, exact) in Cheb-(rh…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "route:joint-curvelike",
+      "phaseIndex": 1,
+      "phaseTitle": "Prove",
+      "agentId": "a7d7e08b23100f78d",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784150064130,
+      "queuedAt": 1784150064047,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "THE CRUX ROUTE examined: charge each in-ball level-k stitch…",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code (pypy3 at\n/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3). Keep LIGHT (an L8 ledger uses ~4\ncores) — prefer L6/L7, budgets. Write under design/lemma/refill2/.\n\nGOAL (task 8): prove the SINGLE-LEVEL REFILL bound b_k(ρ) := sup_{q∈R³} #{interiors of LEVEL-k\nstitches within Chebyshev ρ of q} ≤…",
+      "lastProgressAt": 1784150829761,
+      "tokens": 71318,
+      "toolCalls": 19,
+      "durationMs": 765629,
+      "resultPreview": "{\"route\":\"THE CRUX ROUTE examined: charge each in-ball level-k stitch interior to its nearer anchor, giving b_k(ρ) ≤ g·a_k(q,ρ+4) = g·c_{k-1}(M⁻¹q,(4/9)(ρ+4)), where a_k = anchor-crowding = parent crowding (A_k=M·W_{k-1}, ‖M⁻¹‖∞=4/9). Tested three closures: (i) standalone via 3-separated anchor packing; (ii) telescoped joint induction with birth-telescoping S=Σ‖M⁻ʲ‖∞; (iii) reduction to anti-stack…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "adjudicate",
+      "phaseIndex": 2,
+      "phaseTitle": "Adjudicate",
+      "agentId": "a237a404359ce1767",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784150877291,
+      "queuedAt": 1784150877167,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "REDUCES-TO-ANTISTACKING",
+      "promptPreview": "COMPUTER-ASSISTED PROOF in /Users/erik/homelab/math193. Fully agentic: derive AND run code (pypy3 at\n/Users/erik/homelab/tools/pypy3.11-v7.3.20-macos_x86_64/bin/pypy3). Keep LIGHT (an L8 ledger uses ~4\ncores) — prefer L6/L7, budgets. Write under design/lemma/refill2/.\n\nGOAL (task 8): prove the SINGLE-LEVEL REFILL bound b_k(ρ) := sup_{q∈R³} #{interiors of LEVEL-k\nstitches within Chebyshev ρ of q} ≤…",
+      "lastProgressAt": 1784150934766,
+      "tokens": 26760,
+      "toolCalls": 4,
+      "durationMs": 57474,
+      "resultPreview": "{\"decision\":\"REDUCES-TO-ANTISTACKING\",\"proven_E\":\"No usable linear E is a theorem. The ONLY rigorously proven, non-circular, level-independent bound is CUBIC: b_k(ρ) ≤ g·(⌊2(ρ+4)/3⌋+1)³ with g=4 (structural cap; g=3 measured), from 3-separated anchor packing (min_{v≠0}|Mv|∞=3 exact, ‖M⁻¹‖∞=4/9). Forcing a linear fit on ρ∈[1,10] yields only E≈421 (g=4) / 316 (g=3), attained at the cubic top end ρ=9…"
+    }
+  ],
+  "totalTokens": 159091,
+  "totalToolCalls": 49
+}

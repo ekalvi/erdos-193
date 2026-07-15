@@ -197,6 +197,28 @@ C≤5.03 becomes theorem); (2) the anti-stacking / distribution-invariance lemma
 (the real analytic core, now proving a measured-stable fact); (3) optional L9 as ultimate confirmation
 (not urgent — distribution measurably fixed over 4 levels).
 
+**L4' — THE REMAINING WORK COLLAPSES TO ONE LEMMA (2026-07-15, design/lemma/refill2/).**
+The single-level-refill round (task 8) proved that (1) above is NOT a separate finite check: packing
+gives only a CUBIC bound (b_k(ρ) ≤ g·(⌊2(ρ+4)/3⌋+1)³, useless linear-fit E≈421), and the telescoped
+joint induction DIVERGES (multiplicative charge coefficient g·S·(4/9) = 2.24 (g=3) / 2.98 (g=4) > 1;
+threshold g<1.34). ⇒ **tasks 8 and 10 MERGE — the single-level refill bound, the linear crowding law,
+the tight constant, and the availability floor ALL reduce to ONE lemma:**
+
+  **THE ARC-INCIDENCE (CURVE-LIKE) LEMMA:** the level-k walk meets any Chebyshev-ρ ball in O(ρ) points
+  (equivalently: the anchors whose stitch-interiors land in B(q,ρ) lie along a curve — ~ρ of them,
+  each donating ~1 interior, NOT the cubic packing count of nearby anchors; direct evidence: the
+  ρ=1,L8 sup=4 is 2 stitches donating 2 each, not g×#anchors-in-Cheb-5).
+
+This is the metric/curve fact that combinatorial 3-separation cannot see. PROVEN so far: qualitative
+no-blow-up = the CUBIC packing law c_k(q,ρ) ≤ 1.096·g·(⌊2(ρ+4)/3⌋+1)³ (all k, non-circular). The
+arc-incidence lemma upgrades cubic → linear → tight → availability. Caveats it must overcome (from
+the tight-linear round): sojourn is ~linear (diameter-ballistic c≥0.64) but return count CREEPS
+(5→7→8 as ρ→30), so the naive returns×sojourn product fails — the lemma must bound TOTAL arc-length
+in a ball directly, not factor it. **This single lemma is now the entire remaining analytic content
+of the unconditional proof** (L1,L2,L5 done; qualitative boundedness done; L3'' availability follows
+from it via the measured availability=f(crowding) law). p ≈ 0.03 that the linear law closes WITHOUT
+it — so it is the whole game.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
