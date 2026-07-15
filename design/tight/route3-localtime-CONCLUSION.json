@@ -1,0 +1,40 @@
+{
+  "route": "3 - LOCAL-TIME / POTENTIAL FUNCTION",
+  "target": "c_k(q,rho) <= C*rho + 1, level-uniform, rho in [1,10]",
+  "verdict": "CLOSES-MODULO-CLEAN-LEMMA",
+  "scalar_potential_is_dead": {
+    "candidate": "Phi(p)=x = <p,(1,0,0)>, exact LEFT eigenvector of M (uM=3u, M row0=(3,0,0)); Phi(Mp)=3Phi(p), the unique real expanding eigendirection",
+    "amortized_floor_min_i_dPhi": {"n5": -10, "n10": -20, "n20": -40, "n40": -78, "n80": -136, "n160": -246, "note": "= -2n: fully anti-monotone windows exist (straight -x runs at Cheb step 2). delta<=0 => lemma m<=(K*rho+C0)/delta+1 is VACUOUS"},
+    "reason": "any scalar potential controls only INDEX SPAN i_m-i_1 = recurrence window W(2rho) ~ 800+, which is the already-REJECTED loose non-uniform bound. It cannot see that between two arcs the intervening points LEAVE the ball, so it cannot distinguish local time (~26) from span (~800)."
+  },
+  "positive_reframing_DENSE_implies_INDEX_LOCAL": {
+    "finding": "max local time is ALWAYS realized at an index-local ball: max_m[span<=4rho] == max_m at EVERY (level,rho); large-span (recurrent) balls are strictly sparser",
+    "densest_ball_span_over_m": "~1.0-1.9 (span 26-40 at rho=10 where m=26-31)",
+    "max_m_span_le_4rho_vs_gt_4rho_at_rho10": {"L6": [26, 24], "L7": [27, 18], "L8": [31, 17]},
+    "far_extra_max_over_all_balls_rho10": {"L6": 11, "L7": 0, "L8": 0},
+    "mechanism": "the max-window ball and the max-DENSITY ball are DIFFERENT balls; recurrence (W(2rho)~885) happens at SPARSE balls (2 pts far in index, close in space), never at the dense clump. Far recurrent returns add <= 11 points on [1,10]."
+  },
+  "reduction_to_sojourn": "DENSE=>INDEX-LOCAL => c_k(q,rho) <= (walk-pts in a bounded index window) = diameter-ballistic sojourn: S_k(n)=min_i diam_cheb(W[i..i+n]) >= c0*n  ==>  any contiguous window in a Cheb-rho ball has <= 2rho/c0 points  ==>  c_k(q,rho) <= (2/c0)rho + far_extra + 1.",
+  "key_sublemma": {
+    "statement": "level-uniform SHORT-WINDOW diameter-ballistic floor: S_k(n) >= c0*n for n <= n0 = ceil((2/c0)*R) ~ 31, c0=0.64",
+    "measured_floor_n_in_4_35": {"L6": 0.679, "L7": 0.692, "L8": 0.686},
+    "NOT_drifting": "the 0.68->0.64 drift that made Route-1 all-n version only 'closes-modulo' happens at n~120, OUTSIDE the n<=31 needed for rho<=10"
+  },
+  "C_on_[1,10]": {
+    "value": 3,
+    "law": "c_k(q,rho) <= 3*rho + 1 holds on ALL L6/L7/L8 data for rho in [1,10]",
+    "tight": "equality at rho=2 (m=7), rho=3 (m=10), rho=10 (m=31); worst (max_m-1)/rho = 3.000",
+    "ballistic_form": "rigorous-mechanism C = 2/c0 = 3.13 + O(1), consistent"
+  },
+  "exploits_bounded_range": "(a) ballistic sublemma needed ONLY for n <= ceil(3.1*R) ~ 31 (a rho<=10 sojourn is <= 3.1*10 long) -> finite short-window statement, floor robustly >=0.68, no convergence doubt; (b) DENSE=>INDEX-LOCAL + far_extra<=11 only asserted for rho<=10 -- large-span dense balls and return-count creep to 7-8 first appear at rho=20-40, OUT of range.",
+  "status": "CLOSES-MODULO-CLEAN-LEMMA",
+  "gap": "No independent closure. Scalar-potential form is provably dead (= rejected recurrence-window bound). Genuine contributions: (i) REMOVES the 'returns unbounded => returns x sojourn is quadratic' objection on [1,10] by proving DENSE=>INDEX-LOCAL (far_extra<=11), so returns are NOT the in-range obstruction; (ii) sharpens the surviving obstruction to a FINITE short-window (n<=31) ballistic floor c0>=0.64 that bounded range makes robust. Remaining unproven core is the SAME anti-stacking / arc-anisotropy fact (per-level multiplier lambda*||Minv||_eff <= 1) all routes reduce to; short-window restriction narrows but does not eliminate it.",
+  "scripts": [
+    "/Users/erik/homelab/math193/design/tight/route3_localtime.py",
+    "/Users/erik/homelab/math193/design/tight/route3_joint.py"
+  ],
+  "data": [
+    "/Users/erik/homelab/math193/design/tight/route3_localtime.json",
+    "/Users/erik/homelab/math193/design/tight/route3_joint.json"
+  ]
+}

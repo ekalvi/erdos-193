@@ -1,0 +1,49 @@
+{
+  "route": "1 - BOUNDED RETURNS ON THE RANGE rho in [1,10]",
+  "target": "c_k(q,rho) <= C*rho + 1, level-uniform, via c <= A(rho)*L(rho); A=return count, L=sojourn",
+  "verdict": "CLOSES-MODULO-CLEAN-LEMMA (same single-level refill/anti-stacking lemma as the aniso route)",
+
+  "measured_return_count_A_max_over_all_walk_centered_balls": {
+    "rho":      [1,2,3,4,5,6,7,8,9,10],
+    "L5":       [2,3,3,3,3,3,3,4,3,4],
+    "L6":       [2,3,3,3,4,"-","-",5,"-",5],
+    "L7":       [2,3,3,3,4,"-","-",4,"-",4],
+    "L8":       [2,3,3,4,4,4,4,5,4,5],
+    "A0_level_uniform_max": 5,
+    "level_stable": "YES - A0 does NOT grow L5->L8 (flat <=5). This is the FLATTEST measured quantity (unlike max_c and sojourn L, which creep upward with level under extreme-value pressure)."
+  },
+
+  "measured_sojourn_L_max_arc_length_L8": {
+    "rho":[1,2,3,4,5,6,7,8,9,10],
+    "L":  [3,5,8,11,14,16,18,20,23,29],
+    "slope_L_over_rho_worst": 3.0,
+    "rigorous_source": "L(rho) <= 2*rho / c_diam = 2*rho/0.64 = 3.125*rho, from the PROVEN level-uniform diameter-ballistic bound S(n)=min_i cheb-diam(W[i..i+n]) >= 0.64*n (an arc staying within Cheb rho of q has diam <= 2rho => length <= 2rho/0.64)."
+  },
+
+  "constants_on_the_range": {
+    "crude_factored_A0_times_Lslope": {"value": 15.6, "= ": "5 * 3.125"},
+    "anti_correlated_percenter_product_max(A*L)/rho_at_rho10": {"value": 6.5, "note": "A and L strongly anti-correlate: when A=5 the arcs are short (arclens e.g. [13,1,1,1,1] or [9,5,4,2,1]); the per-center product max_q A(q)L(q) is ~2.2x below A0*Lmax."},
+    "aniso_telescoping_rigorous_same_lemma": {"value": 5.03, "= ": "E*S = 3 * 1.677", "note": "the birth-level telescoping (route3-aniso) delivers the cleanest rigorous constant, modulo the identical single-level refill lemma"},
+    "direct_measured_max_c_over_rho": {"value": 3.5, "note": "worst at rho=2 (lattice granularity); ~3.0-3.1 elsewhere; = the tight target C~2.5-3.5"}
+  },
+
+  "how_the_bounded_range_is_used": {
+    "finite_telescoping_depth": "On rho<=10 the count/return recursion c_{k+1}(q,rho) <= c_k(M^-1 q,(4/9)rho)+refill contracts the radius x(4/9)<1 each level. After exactly J=4 levels the pulled-back inf-radius (4/9)^4*10 = 0.39 < 1/2 (also exact ||M^-4||inf*10 = 0.19 < 1/2), so the pulled-back ball holds <=1 lattice point => trivial base case A_base<=1. Thus A(rho) telescopes through only 4 M-levels, never rho>10: A(rho) <= A_base + sum_{j=0}^{3} tau_j, tau_j = fresh arcs created by level-(k-j) stitches.",
+    "returns_creep_is_outside_the_range": "The prior returns-vs-sojourn stall (return count creeping 5->7->8) occurs at rho=20-30, OUTSIDE [1,10]; on rho<=10 the exact max return count is measured <=5 at every level L5..L8.",
+    "anchor_separation_rigorous": "min_{v in Z^3, v!=0} |M v|_inf = 3 (verified exhaustively over |v|<=6, attained at v=(-1,-1,-1)). So the full anchor set M.Z^3 is Cheb->=3-separated, not merely consecutive anchors."
+  },
+
+  "the_key_sublemma_left": "SINGLE-LEVEL REFILL / ANTI-STACKING SLOPE: one level's fresh stitch interiors (short connector-word arcs, <=4 interiors/edge, decorating the >=3-separated anchor walk) have <= E*r points in ANY inf-ball of radius r, with a level-uniform constant E (measured E<=3, stable L6/L7/L8). Equivalently the per-level fresh-arc count tau_j <= tau0. This is the SAME irreducible 1-D arc-incidence fact the aniso and route3 routes reduce to; Route 1 reaches it from the returns side and CONFIRMS its level-stability (A0=5 flat through L8).",
+
+  "correction_to_the_route_premise": {
+    "claim_examined": "the task's proposed mechanism: 'each excursion is diameter-ballistic (diam>=0.64*len) and must re-enter B(q,rho<=10); bound how many times a ballistic path re-enters a fixed bounded ball'",
+    "finding": "INSUFFICIENT ON ITS OWN. Diameter-ballistic S(n)>=0.64n LOWER-bounds excursion diameter, so long excursions are ALLOWED, not forbidden; it never limits recurrence. A path can ping-pong through a fixed ball unboundedly while every excursion has huge diameter (endpoint-ballistic FAILS, route3: nonadjacent Cheb-1 pairs). Diameter-ballistic bounds the SOJOURN L(rho)<=3.125*rho but CANNOT bound the return count A(rho). The genuine bound on A comes ONLY from M-renormalization (finite-depth telescoping above), which routes A back to the single-level refill lemma. This corrects why prior returns-based attempts stalled: they sought a ballistic re-entry bound that does not exist.",
+    "rigorous_unconditional_return_bound_is_cubic": "The only lemma-free bound on nearby anchors is packing on the >=3-separated set M.Z^3: #anchors in B(q,r) <= ((2r/3)+1)^3, so tau_j and A(rho) are bounded by O(rho^3) unconditionally (useless, ~1000 at rho=4.44). Linear A0<=5 is metric/anti-stacking, not packing/arithmetic."
+  },
+
+  "status": "CLOSES-MODULO-CLEAN-LEMMA",
+  "scripts": [
+    "design/lemma/route1/measure_L8_arcs.py  (exact max A(rho), L(rho), max_c, per-center A*L over ALL walk centers, rho=1..10, L6/L7/L8; PYTHONPATH=. pypy3 measure_L8_arcs.py 8)",
+    "design/lemma/route3_arcs.py  (same at L5/L6/L7 -> route3-arcs-all.json)"
+  ]
+}

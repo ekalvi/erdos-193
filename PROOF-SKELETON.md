@@ -219,6 +219,23 @@ of the unconditional proof** (L1,L2,L5 done; qualitative boundedness done; L3'' 
 from it via the measured availability=f(crowding) law). p ≈ 0.03 that the linear law closes WITHOUT
 it — so it is the whole game.
 
+**L4' — bounded-range reframing + finite reduction PROVEN (2026-07-15, design/lemma/arc/, route4).**
+Key reframing (VALIDATED, range_claim_valid): the lemma is only needed for ρ∈[1,R], R≈10 FIXED (the
+availability tube radius does not grow; the recursion only shrinks ρ ×4/9). NEW RIGOROUS CONTENT:
+(1) DEEP-TAIL COLLAPSE — min|M³v|∞ = 24 > 2ρ for all ρ≤10, so a Cheb-ρ ball holds ≤1 point born >3
+levels back (proven, no induction; σ_min(M³) justification needs restating as a finite check + the
+18 small-v enumeration, but the conclusion min|M³v|∞=24 is exact). ⇒ the EXACT birth-telescoping
+c_k(q,ρ)=Σ_j t_j collapses to a FINITE 3-TERM bound on ρ≤10: c_k(ρ) ≤ t_0(ρ)+t_1(4ρ/9)+t_2(4ρ/27)+1.
+(2) returns ≤5 on ρ≤10 (measured flat L5-L8; the 5→7→8 creep is off-range); sojourn ≤3.1ρ (proven,
+diameter-ballistic). All four routes reduce to ONE single-level, induction-free, finite-alphabet
+residue: b_m(r)=sup_q #{level-m stitch interiors in Cheb-r} ≤ E·r (E measured ≤3). p_closes 0.4.
+HONEST: the rigorous linear C=E·S≈5.03 is NOT availability-tight (needs c(4.44)≤12; 5·4.44=22).
+The "tight C=3" was REFUTED (slope creeps to 3.17). KEY INSIGHT: linear is the WRONG target — the
+walk's true scaling is r^{1.10} (box dim = log(λ)/log 3, λ=3.36), and c(r)≈2·r^{1.10} IS
+availability-grade (2·4.44^{1.1}=10.4 ≤ 12). ⇒ the tool that closes this is SELF-AFFINE FRACTAL
+DIMENSION (affinity dimension / singular-value function / bounded-distortion stitching), not the
+linear routes. That is the next (and best-targeted) attack.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes

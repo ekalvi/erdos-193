@@ -1,0 +1,40 @@
+{
+  "route": "ROUTE 4 — birth-telescoping with bounded-range curve control",
+  "target": "c_k(q,rho) <= C*rho + 1, level-uniform, rho in [1,10]",
+  "verdict": "CLOSES-MODULO-CLEAN-LEMMA (clean lemma = single-level refill linearity)",
+  "exact_facts_proven": {
+    "birth_partition_exact": "Walk_k = interiors(k) DISJOINT-UNION M.interiors(k-1) DISJOINT-UNION M^2.interiors(k-2) DISJOINT-UNION M^3.Walk_{k-3}. Verified exact at L=8: 4 parts of sizes 219006,65035,19483,8214 partition all 311738 pts (0 overlap, union == chain8). L=7 same structure (jmax=2, tail=M^3.chain(4)).",
+    "telescoping_identity": "c_k(q,rho) = sum_{j>=0} t_j(q,rho), t_j = #{M^j.interiors(k-j) in B(q,rho)} = #{interiors(k-j) in M^{-j}B(q,rho)}. Every walk point has a unique birth level; born as a Stitch interior it appears M^{k-m}-dilated. EXACT (not a bound).",
+    "shrinking_radii_exact": {
+      "||M^-j||_inf": ["1", "4/9", "4/27", "41/729", "41/2187", "373/59049"],
+      "rho10_ball_radius = 10*||M^-j||_inf": [10.0, 4.444, 1.481, 0.562, 0.187, 0.063],
+      "S = sum_{j>=0} ||M^-j||_inf": 1.676899953528271
+    },
+    "rigorous_tail_packing_certificate": "min_{0<|v|_inf} |M^3 v|_inf = 24 (attained at v=(0,-1,0); larger v give larger by expansion, all sing.vals(M^3)>16). 24 > 2*rho for all rho<=10, so ANY Cheb-rho ball (side 2rho<=20<24) holds AT MOST ONE point of the deep tail M^3.Walk_{k-3}. Hence tail(q,rho) <= 1 RIGOROUSLY on rho in [1,10] (measured tail sup = 1, all rho). This is a PROVEN packing bound, level-uniform, needing no induction hypothesis."
+  },
+  "the_reduction": {
+    "finite_3_term_bound": "On rho in [1,10]:  c_k(q,rho) <= t_0(rho) + t_1(rho) + t_2(rho) + 1,  where t_j(rho) <= b_{k-j}(||M^-j||_inf * rho) and b_m(r) := sup_q #{level-m stitch interiors within Cheb-r} is the SINGLE-LEVEL refill count. Radii: t_0 at r<=10, t_1 at r<=40/9=4.44, t_2 at r<=40/27=1.48. The infinite recursion becomes a FINITE 3-term sum + a proven +1 tail.",
+    "closing_constant": "If b_m(r) <= E*r + F uniformly in m on r in [0,10] (the residual clean lemma), then c_k(rho) <= E*(1+4/9+4/27)*rho + (3F+1) = 1.5926*E*rho + O(1) on [1,10]; iterating the exact identity to all layers gives the sharper c_k(rho) <= E*S*rho + O(1) with S=1.677.",
+    "why_this_beats_route2_joint_induction": "Route 2 charged refill through the crowding count (b <= g*c) creating feedback with coefficient (4/9)(1+g)=20/9>1 that DIVERGES. Birth-telescoping uses the EXACT birth identity instead of a charge, so there is NO feedback: c_k is a straight geometric sum of SINGLE-LEVEL refills with the proven-exact multiplier S=1.677. The circularity that blocked every prior round is removed; the residue is a pure single-level statement."
+  },
+  "measured_t_j_L8_rho_1_to_10": {
+    "t_0 (refill, r<=10)": [4, 6, 7, 9, 12, 15, 17, 18, 21, 24],
+    "t_1 (r<=4.44)":       [1, 2, 3, 4, 5, 5, 6, 6, 7, 8],
+    "t_2 (r<=1.48)":       [1, 1, 1, 2, 2, 3, 3, 3, 3, 3],
+    "t_3 (r<=0.56)":       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "tail (deep)":         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "true c_8":            [4, 7, 9, 12, 16, 20, 22, 25, 28, 32],
+    "true (c-1)/rho":      [3.0, 3.0, 2.667, 2.75, 3.0, 3.167, 3.0, 3.0, 3.0, 3.1]
+  },
+  "how_many_j_contribute": "EXACTLY THREE (j=0,1,2) exceed 1 on rho in [1,10]; every j>=3 contributes <=1 (measured), and the ENTIRE deep tail j>=3 contributes <=1 RIGOROUSLY (min|M^3 v|_inf=24>20). This confirms the task's core claim precisely.",
+  "residual_clean_lemma": "SINGLE-LEVEL REFILL LINEARITY: exists E,F level-independent with b_m(r) = sup_q #{level-m stitch interiors in Cheb-r} <= E*r + F for r in [1,10], uniform in m. Measured b_m(r) <= 3r+1 on L6/L7/L8 (t_0 slope (b-1)/r <=3, binding at r=1). This is the SAME single-level refill count studied in refill-sublemma.json: standalone packing gives only a CUBIC bound (3-separated anchors pack cubically); the linear law needs the curve-like arc-incidence fact (a Cheb-r ball meets O(r), not O(r^3), connector-arcs of one level). Birth-telescoping does NOT prove this, but ISOLATES it as the sole residue and supplies the exact, non-circular conversion c_k <= E*S with S=1.677.",
+  "constants": {
+    "Minv_inf_norm": "4/9",
+    "S_sum_Minv_j_norms": 1.677,
+    "min_M3v_inf": 24,
+    "tail_packing_threshold_rho": "24/2 = 12 (so tail<=1 for all rho<12, covers [1,10])",
+    "measured_single_level_refill_slope_E": 3,
+    "measured_true_tight_C_on_range": 3.2,
+    "proven_modulo_lemma_C_on_range": "E*S = 3*1.677 = 5.03"
+  }
+}

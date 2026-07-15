@@ -1,0 +1,547 @@
+{
+  "levels": {
+    "6": {
+      "level": 6,
+      "N": 27697,
+      "per_rho": {
+        "1": {
+          "max_m": 3,
+          "densest_center": {
+            "m": 3,
+            "span": 2,
+            "n_clumps": 1,
+            "main_clump": 3,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 0,
+          "max_m_with_span_le_4rho": 3,
+          "max_span_among_top30pct_dense": 3
+        },
+        "2": {
+          "max_m": 5,
+          "densest_center": {
+            "m": 5,
+            "span": 4,
+            "n_clumps": 1,
+            "main_clump": 5,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 4,
+          "max_m_with_span_le_4rho": 5,
+          "max_span_among_top30pct_dense": 9
+        },
+        "3": {
+          "max_m": 7,
+          "densest_center": {
+            "m": 7,
+            "span": 7,
+            "n_clumps": 1,
+            "main_clump": 7,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 0,
+          "max_m_with_span_le_4rho": 7,
+          "max_span_among_top30pct_dense": 9
+        },
+        "4": {
+          "max_m": 10,
+          "densest_center": {
+            "m": 10,
+            "span": 9,
+            "n_clumps": 1,
+            "main_clump": 10,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 6,
+          "max_m_with_span_le_4rho": 10,
+          "max_span_among_top30pct_dense": 13
+        },
+        "5": {
+          "max_m": 12,
+          "densest_center": {
+            "m": 12,
+            "span": 12,
+            "n_clumps": 1,
+            "main_clump": 12,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 3,
+          "at_max_far": {
+            "m": 9,
+            "span": 60,
+            "far": 3,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 9,
+          "max_m_with_span_le_4rho": 12,
+          "max_span_among_top30pct_dense": 60
+        },
+        "6": {
+          "max_m": 15,
+          "densest_center": {
+            "m": 15,
+            "span": 14,
+            "n_clumps": 1,
+            "main_clump": 15,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 4,
+          "at_max_far": {
+            "m": 11,
+            "span": 60,
+            "far": 4,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 11,
+          "max_m_with_span_le_4rho": 15,
+          "max_span_among_top30pct_dense": 60
+        },
+        "7": {
+          "max_m": 17,
+          "densest_center": {
+            "m": 17,
+            "span": 17,
+            "n_clumps": 1,
+            "main_clump": 17,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 5,
+          "at_max_far": {
+            "m": 14,
+            "span": 62,
+            "far": 5,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 14,
+          "max_m_with_span_le_4rho": 17,
+          "max_span_among_top30pct_dense": 65
+        },
+        "8": {
+          "max_m": 21,
+          "densest_center": {
+            "m": 21,
+            "span": 22,
+            "n_clumps": 1,
+            "main_clump": 21,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 9,
+          "at_max_far": {
+            "m": 19,
+            "span": 61,
+            "far": 9,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 19,
+          "max_m_with_span_le_4rho": 21,
+          "max_span_among_top30pct_dense": 65
+        },
+        "9": {
+          "max_m": 23,
+          "densest_center": {
+            "m": 23,
+            "span": 27,
+            "n_clumps": 1,
+            "main_clump": 23,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 11,
+          "at_max_far": {
+            "m": 22,
+            "span": 62,
+            "far": 11,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 22,
+          "max_m_with_span_le_4rho": 23,
+          "max_span_among_top30pct_dense": 67
+        },
+        "10": {
+          "max_m": 26,
+          "densest_center": {
+            "m": 26,
+            "span": 26,
+            "n_clumps": 1,
+            "main_clump": 26,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 11,
+          "at_max_far": {
+            "m": 23,
+            "span": 65,
+            "far": 11,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 24,
+          "max_m_with_span_le_4rho": 26,
+          "max_span_among_top30pct_dense": 70
+        }
+      }
+    },
+    "7": {
+      "level": 7,
+      "N": 92732,
+      "per_rho": {
+        "1": {
+          "max_m": 3,
+          "densest_center": {
+            "m": 3,
+            "span": 3,
+            "n_clumps": 1,
+            "main_clump": 3,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 2,
+            "span": 7,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 3,
+          "max_m_with_span_le_4rho": 3,
+          "max_span_among_top30pct_dense": 8
+        },
+        "2": {
+          "max_m": 6,
+          "densest_center": {
+            "m": 6,
+            "span": 9,
+            "n_clumps": 1,
+            "main_clump": 6,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 6,
+          "max_m_with_span_le_4rho": 5,
+          "max_span_among_top30pct_dense": 11
+        },
+        "3": {
+          "max_m": 10,
+          "densest_center": {
+            "m": 10,
+            "span": 11,
+            "n_clumps": 1,
+            "main_clump": 10,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 0,
+          "max_m_with_span_le_4rho": 10,
+          "max_span_among_top30pct_dense": 11
+        },
+        "4": {
+          "max_m": 11,
+          "densest_center": {
+            "m": 11,
+            "span": 11,
+            "n_clumps": 1,
+            "main_clump": 11,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 0,
+          "max_m_with_span_le_4rho": 11,
+          "max_span_among_top30pct_dense": 14
+        },
+        "5": {
+          "max_m": 14,
+          "densest_center": {
+            "m": 14,
+            "span": 13,
+            "n_clumps": 1,
+            "main_clump": 14,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 6,
+            "span": 27,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 7,
+          "max_m_with_span_le_4rho": 14,
+          "max_span_among_top30pct_dense": 15
+        },
+        "6": {
+          "max_m": 16,
+          "densest_center": {
+            "m": 16,
+            "span": 18,
+            "n_clumps": 1,
+            "main_clump": 16,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 10,
+          "max_m_with_span_le_4rho": 16,
+          "max_span_among_top30pct_dense": 19
+        },
+        "7": {
+          "max_m": 20,
+          "densest_center": {
+            "m": 20,
+            "span": 19,
+            "n_clumps": 1,
+            "main_clump": 20,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 9,
+            "span": 38,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 12,
+          "max_m_with_span_le_4rho": 20,
+          "max_span_among_top30pct_dense": 20
+        },
+        "8": {
+          "max_m": 21,
+          "densest_center": {
+            "m": 21,
+            "span": 20,
+            "n_clumps": 1,
+            "main_clump": 21,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 12,
+          "max_m_with_span_le_4rho": 21,
+          "max_span_among_top30pct_dense": 32
+        },
+        "9": {
+          "max_m": 22,
+          "densest_center": {
+            "m": 22,
+            "span": 28,
+            "n_clumps": 1,
+            "main_clump": 22,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 16,
+          "max_m_with_span_le_4rho": 22,
+          "max_span_among_top30pct_dense": 38
+        },
+        "10": {
+          "max_m": 27,
+          "densest_center": {
+            "m": 27,
+            "span": 29,
+            "n_clumps": 1,
+            "main_clump": 27,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 18,
+          "max_m_with_span_le_4rho": 27,
+          "max_span_among_top30pct_dense": 39
+        }
+      }
+    },
+    "8": {
+      "level": 8,
+      "N": 311738,
+      "per_rho": {
+        "1": {
+          "max_m": 3,
+          "densest_center": {
+            "m": 3,
+            "span": 2,
+            "n_clumps": 1,
+            "main_clump": 3,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 2,
+            "span": 7,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 3,
+          "max_m_with_span_le_4rho": 3,
+          "max_span_among_top30pct_dense": 10
+        },
+        "2": {
+          "max_m": 7,
+          "densest_center": {
+            "m": 7,
+            "span": 12,
+            "n_clumps": 1,
+            "main_clump": 7,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 4,
+            "span": 27,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 7,
+          "max_m_with_span_le_4rho": 6,
+          "max_span_among_top30pct_dense": 12
+        },
+        "3": {
+          "max_m": 9,
+          "densest_center": {
+            "m": 9,
+            "span": 11,
+            "n_clumps": 1,
+            "main_clump": 9,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 3,
+          "at_max_far": {
+            "m": 6,
+            "span": 28,
+            "far": 3,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 8,
+          "max_m_with_span_le_4rho": 9,
+          "max_span_among_top30pct_dense": 13
+        },
+        "4": {
+          "max_m": 12,
+          "densest_center": {
+            "m": 12,
+            "span": 26,
+            "n_clumps": 1,
+            "main_clump": 12,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 5,
+          "at_max_far": {
+            "m": 11,
+            "span": 30,
+            "far": 5,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 12,
+          "max_m_with_span_le_4rho": 12,
+          "max_span_among_top30pct_dense": 31
+        },
+        "5": {
+          "max_m": 14,
+          "densest_center": {
+            "m": 14,
+            "span": 27,
+            "n_clumps": 1,
+            "main_clump": 14,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 5,
+          "at_max_far": {
+            "m": 10,
+            "span": 31,
+            "far": 5,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 14,
+          "max_m_with_span_le_4rho": 14,
+          "max_span_among_top30pct_dense": 31
+        },
+        "6": {
+          "max_m": 18,
+          "densest_center": {
+            "m": 18,
+            "span": 28,
+            "n_clumps": 1,
+            "main_clump": 18,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 1,
+          "at_max_far": {
+            "m": 9,
+            "span": 34,
+            "far": 1,
+            "n_clumps": 2
+          },
+          "max_m_with_span_gt_4rho": 18,
+          "max_m_with_span_le_4rho": 16,
+          "max_span_among_top30pct_dense": 33
+        },
+        "7": {
+          "max_m": 20,
+          "densest_center": {
+            "m": 20,
+            "span": 33,
+            "n_clumps": 1,
+            "main_clump": 20,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 20,
+          "max_m_with_span_le_4rho": 19,
+          "max_span_among_top30pct_dense": 35
+        },
+        "8": {
+          "max_m": 24,
+          "densest_center": {
+            "m": 24,
+            "span": 35,
+            "n_clumps": 1,
+            "main_clump": 24,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 24,
+          "max_m_with_span_le_4rho": 24,
+          "max_span_among_top30pct_dense": 37
+        },
+        "9": {
+          "max_m": 27,
+          "densest_center": {
+            "m": 27,
+            "span": 35,
+            "n_clumps": 1,
+            "main_clump": 27,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 25,
+          "max_m_with_span_le_4rho": 27,
+          "max_span_among_top30pct_dense": 38
+        },
+        "10": {
+          "max_m": 31,
+          "densest_center": {
+            "m": 31,
+            "span": 33,
+            "n_clumps": 1,
+            "main_clump": 31,
+            "far_extra": 0
+          },
+          "MAX_far_extra_over_all": 0,
+          "at_max_far": null,
+          "max_m_with_span_gt_4rho": 17,
+          "max_m_with_span_le_4rho": 31,
+          "max_span_among_top30pct_dense": 40
+        }
+      }
+    }
+  }
+}
