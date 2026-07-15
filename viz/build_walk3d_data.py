@@ -55,7 +55,7 @@ def build_level(parent_pts, word):
 
 levels = data["levels"][:5]
 parent = [tuple(p) for p in levels[4]["points"]]
-for k in (5, 6, 7):
+for k in (5, 6, 7, 8):
     f = ROOT / f"{os.environ.get('WALK_PREFIX', 'gate')}-193-L{k}.txt"
     if not f.exists():
         print(f"level {k}: {f.name} not present yet — stopping here")

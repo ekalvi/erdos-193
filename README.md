@@ -13,8 +13,9 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 
 | Result | Status |
 |---|---|
-| **100,358-step walk, no 3 collinear** (124-move menu) | verified + SHA-256 c8477b01…, `gate-193-L7.txt` (level 7, repaired constructor) |
-| 28,271-step walk (previous record) | verified + SHA-256 certified, `amplified-193-28271.txt` |
+| **311,737-step walk, no 3 collinear** (124-move menu) | verified (parallel) + SHA-256 c8cc3728…, `gate2-193-L8.txt` (level 8, proof-orbit constructor) |
+| 100,358-step walk (v1 record) | verified + SHA-256 c8477b01…, `gate-193-L7.txt` |
+| 28,271-step walk (earlier record) | verified + SHA-256 certified, `amplified-193-28271.txt` |
 | Exact maxima for small menus: **20** (±e₁,±e₂,±e₃), 14, 7; **3** in 2D | proven by exhaustive search |
 | Universal availability: every one of 78,728 arithmetic states can steer in all 13 mod-3 directions | proven by exhaustion (1.22B transitions) |
 | Fatal birth-mass **flat ≈ 32% across levels** → construction scales | measured, levels 3–6 |
@@ -26,10 +27,10 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 No trust required — the verifier is standalone (~80 lines, stdlib only):
 
 ```bash
-python3 verify_walk.py gate-193-L7.txt
-# VERIFIED: 100358 steps, 100359 vertices, no repeated vertex, no 3 collinear
-# (or the previous record: python3 verify_walk.py amplified-193-28271.txt)
-# sha256(steps): dec7e762386f1eac2eff6bccc3307a354ab79662f5770e55d88c074a57600f56
+python3 verify_walk.py gate2-193-L8.txt
+# VERIFIED: 311737 steps, 311738 vertices, no repeated vertex, no 3 collinear
+# sha256(steps): c8cc3728a5dcb90a…
+# (smaller/faster: python3 verify_walk.py amplified-193-28271.txt)
 ```
 
 Works on any `amplified-*.txt` walk file in the repo.
