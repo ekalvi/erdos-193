@@ -98,6 +98,38 @@ plus bounded stitching); (ii) far-field lemma — contributions beyond the colla
 are summably small (measured geometric decay; candidate mechanism: exact lattice
 incidence thinning, related to the measured κ-statistics).
 
+**L4' — recursion-lemma reduction (2026-07-15, agentic computer-assisted, adversarially verified; design/lemma/).**
+The crowding recursion was attacked by a 4-agent derive → close → adversarial-verify workflow.
+THREE of the four pieces are now PROVEN-exact / certified-finite:
+- **Exact recursion identity [PROVEN].** Walk_{k+1} = (M·Walk_k) ⊔ Stitch_k is a genuine
+  disjoint union (verified geometrically: 0 duplicate points, 0 interiors on anchors at L6,L7).
+  Hence for every q, R: c_R(q) = dilated-old(q) + refill(q) EXACTLY — reproduces the measured
+  clearance ledger with 0/8252 (L6) and 0/27696 (L7) mismatches. Adversary: CONFIRMED-exact.
+- **Contraction α<1 [PROVEN-exact].** Singular values of M are σ = 2.5414, 3.0000, 3.5414 (all
+  >1 ⇒ M contracts in EVERY direction); ‖M⁻¹‖∞ = 4/9 exactly; M⁻¹ pulls a Cheb-10 ball back
+  into a Cheb-4.44 region. This is a *metric* radius-contraction, proven.
+- **Refill bound B [certified-finite].** B ≈ 20 (adversarial off-lattice search found no Cheb-10
+  box above 20); proven structural cap 4·A14 = 44 from word length ≤5 + max menu step 2 + anchor
+  spacing (min |M·s|∞ = 3). Adversary: holds, in fact conservative.
+
+**THE REDUCTION.** Everything now hinges on ONE falsifiable, level-uniform inequality — the
+**uniform local-1-D incidence bound**: ∃ level-independent C with c_k(q,ρ) ≤ C·ρ + 1 for all k,
+q, ρ∈[1,10]. Load-bearing case the recursion consumes: c_k(q, 4.44) ≤ (4/9)·k₀, uniform in k.
+This is the single unproven link that turns the PROVEN metric contraction into the needed COUNT
+contraction (dilated-old ≤ (4/9)·k₀). It is EMPIRICALLY ALREADY SATISFIED (max dilated-old = 9 at
+L6, 8 at L7 ≤ 9.78; and the direct incidence profile max_q c_k(q,ρ)/ρ ≈ 2.5 is level-stable
+across L6,L7 — ρ=8 → max 20 both levels, ρ=10 → 25/26; load-bearing max_q c_k(q,4) = 9/10 ≤ 12.
+logs/incidence-measure.log). For the QUANTITATIVE tight constant a companion **refill anti-stacking** cap
+is also needed (dilated-old and refill anti-correlate on the orbit, keeping the pointwise sum at
+~27 while independent maxima are 9+14). Honest corrections from the adversary: (i) the true
+ceiling to bound is the FULL-walk crowding ~27, not the stitch-time 22; (ii) with proven α+B the
+naive fixed point is 36, so the easy-3/4 gives uniform boundedness ≤ 36 once the count-contraction
+kernel holds, but NOT the tight ~27 without anti-stacking. Net: the whole L4' lemma is reduced to
+one incidence inequality (+ a refill companion for tightness), with all else proven-exact.
+Next agentic round: (a) attack the incidence inequality with a route panel (κ₃ / irrational
+rotation / clearance); (b) re-run the per-step availability computation (L3'') at the PROVEN
+k₀=36, not the measured 22 — if availability stays positive there, the tight constant is moot.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes

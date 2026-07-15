@@ -1,0 +1,361 @@
+{
+  "summary": "Agentic computer-assisted attack on the crowding-recursion lemma: derive exact recursion, bound refill, compute contraction, close the induction margin, isolate the hard kernel",
+  "agentCount": 6,
+  "logs": [],
+  "result": {
+    "derive": [
+      {
+        "task": "TASK A — EXACT RECURSION. Derive the exact set-level recursion Walk_{k+1}=M·Walk_k ⊔ Stitch_k and the exact crowding decomposition c10_{k+1}(q)=[dilated-old M·p within Cheb-10]+[new stitch within Cheb-10], then verify it reproduces clearance-L6.json / clearance-L7v2.json c10 EXACTLY.",
+        "result": "EXACT RECURSION (proved as a point-set identity on the seed-193 orbit): Walk_{k+1} = (M·Walk_k) ⊔ Stitch_k, disjoint union. Here M·Walk_k = {M·p : p ∈ Walk_k} = the ANCHORS (dilated-old points; M is injective, det M=27≠0), and Stitch_k = ⊔_i interior(word_i), the len(word_i)-1 lattice points each stitch visits strictly between anchor_i and anchor_{i+1} (the NEW refill points). Disjointness is asserted by the construction (|chain| = |anchors| + |interiors|), and my script re-checks it. Therefore for ANY point q and radius R the crowding splits exactly: c_R^{k+1}(q) = #{anchors within Cheb-R of q} + #{stitch interiors within Cheb-R of q} = DILATED-OLD(q,R) + REFILL(q,R).\n\nCRUCIAL SUBTLETY (found, not assumed): the measured clearance c10 is the STITCH-TIME tube crowding, not the full-final-walk crowding. Segments are placed in fragile-first order `order` with ALL anchors present from t=0 (store=Store(anchors)); when segment i is stitched the placed set is P_i = anchors ∪ {interior(word_j) : pos(j)<pos(i)}. So the exact reproduced decomposition is: c10(i) = #anchors within 10 of the chord midpoint (ALL anchors, always present) + #EARLIER-stitch interiors within 10. Using the full final walk instead gives mean c10≈12 (matches prior taskC's ~11 around walk points) and reproduces NOTHING; the stitch-time split reproduces the data exactly. (Also: clearance-L6.json is the v1 orbit — its frac/surv_abs match gate-ledger-L6.json, NOT gate2 — so it must be reproduced with gate-l7-construction-L6.pkl. The task-named gate2-l7-construction-L6.pkl is the wrong orbit: 7238/8213 mismatches; the v1 pkl gives 0. clearance-L7v2.json is the v2 orbit → gate2-l7-construction-L7.pkl.)\n\nIDENTITY HOLDS EXACTLY at both levels: L6 = 0 / 8252 mismatches on c10 AND 0 / 8252 on c5; L7 = 0 / 27696 mismatches on c10 (L7v2 has no c5 column). The decomposition is a true identity.\n\nSPLIT of c10 into dilated-old vs refill:\n • L6: total mean 6.895 (max 19, min 2). Dilated-old mean 3.696 (max 9, min 2) = 53.6%. Refill mean 3.199 (max 14, min 0) = 46.4%.\n • L7: total mean 6.760 (max 22, min 2). Dilated-old mean 3.726 (max 8, min 2) = 55.1%. Refill mean 3.034 (max 14, min 0) = 44.9%.\nThe dilated-old term is essentially scale-invariant (3.696→3.726) and the refill term bounded (~3.0-3.2) — exactly the shape the crowding-recursion/contraction lemma needs: M spreads the parent tube (||M^{-1}||_inf=4/9≈0.444, so a radius-10 Cheb ball pulls back to radius ~4.44, i.e. dilated-old(R) ≈ parent crowding at a shrunken radius → the α<1 factor) while stitches add a bounded refill B.",
+        "script": "/Users/erik/homelab/math193/design/lemma/recursion_decomp.py",
+        "key_numbers": {
+          "L6_mismatches_c10": 0,
+          "L6_n_checked": 8252,
+          "L6_mismatches_c5": 0,
+          "L6_c10_total_mean": 6.8947,
+          "L6_c10_total_max": 19,
+          "L6_dilated_old_mean": 3.6958,
+          "L6_dilated_old_max": 9,
+          "L6_refill_mean": 3.1989,
+          "L6_refill_max": 14,
+          "L6_frac_dilated_old": 0.536,
+          "L6_frac_refill": 0.464,
+          "L7_mismatches_c10": 0,
+          "L7_n_checked": 27696,
+          "L7_c10_total_mean": 6.7596,
+          "L7_c10_total_max": 22,
+          "L7_dilated_old_mean": 3.7255,
+          "L7_dilated_old_max": 8,
+          "L7_refill_mean": 3.0342,
+          "L7_refill_max": 14,
+          "L7_frac_dilated_old": 0.5511,
+          "L7_frac_refill": 0.4489,
+          "v2L6pkl_wrong_orbit_mismatches": 7238,
+          "fullwalk_wrong_mean_c10": 12.09,
+          "Minv_inf_opnorm": 0.4444
+        },
+        "exact_or_approx": "EXACT identity. The reproduction is a per-segment integer-equality check (Chebyshev counts on exact integer lattice points), not a statistical fit: 0 mismatches over all 8252 L6 segments (c10 and c5) and all 27696 L7 segments (c10). The split into dilated-old + refill is an exact partition of the same counts. The scale-invariance / contraction interpretation of the numbers is empirical (measured at L6,L7), not yet a closed proof.",
+        "risk": "(1) The reproduced statistic is STITCH-TIME crowding (fragile-first order, all anchors + only earlier stitches). If a downstream lemma instead needs FULL-walk crowding (all stitches present), that is a DIFFERENT, larger quantity (mean ~12 not 6.9) — the two must not be conflated. (2) I had to correct the task's pkl reference: clearance-L6.json is the v1 orbit, so I used gate-l7-construction-L6.pkl (0 mismatches); the task-named gate2 L6 pkl is a different orbit (7238 mismatches). (3) The decomposition identity is trivially true given the disjoint union; the load-bearing, still-UNPROVEN part for the L4' lemma is that dilated-old stays ~3.7 and refill stays ~3.1 at ALL levels (only verified at L6/L7 here) — the contraction α≈0.44 and refill bound B are indicated by the geometry (||M^{-1}||_inf=4/9) but not proved to hold uniformly. (4) Grid cell size 21 > 2R is correct for R≤10 only; the counting would silently undercount for R>10."
+      },
+      {
+        "task": "TASK B — REFILL BOUND: measure exactly the max number of NEW stitch points (word interiors) in any Chebyshev-10 box over the v2 orbit (L5,L6,L7), and prove a structural cap from the construction rules (word length <=5, min anchor separation |M.s|, max polylines per box).",
+        "result": "Measured refill bound B (max NEW stitch/interior points inside a Cheb-10 box centred at a walk point) is SCALE-INVARIANT and small: B_meas = 18 / 19 / 20 at L5 / L6 / L7. The true max over ALL box centres is rigorously bracketed P10 <= B_true <= C20, i.e. [18,32] / [19,35] / [20,38] (C20 = max interiors within Cheb 20 of an interior; any radius-10 box's interiors are pairwise within Cheb 20). PROVEN STRUCTURAL CAP: (a) v2 stitch words have length <=4 measured (rule allows <=5), so <=3 interiors/segment measured, <=4 by rule; (b) max MENU step Cheb-norm = 2, so every interior lies within Cheb 2*(len-1)<=8 of its start anchor and within Cheb 2*floor(len/2)<=4 of its NEARER anchor; (c) grouped by nearer anchor, <=4 interiors per anchor, and only anchors inside the concentric Cheb-14 box can contribute -> B <= 4 * A14 where A14 = max anchors in a Cheb-14 box. Measured A14 = 10 / 11 / 11, giving proven cap 4*A14 = 40 / 44 / 44. Anchor spacing floor: consecutive anchors are M*p, M*p' with p'-p a nonzero MENU step s, and exact min |M.s|_inf = 3 (min Euclidean = 3.0, from axis steps); the anchor crowding A14 is itself bounded by parent crowding since anchors = M*(parent points) and ||M^{-1}||_inf = 4/9, so a Cheb-14 anchor box is the M-image of parent points in a Cheb ball of radius 14*4/9 = 6.22 -> A14 <= c_parent(~6) <= k0 (ties B into the recursion). VERDICT: measured B <= proven cap at every level with ~2.2x margin (18<=40, 19<=44, 20<=44); even the rigorous true-box upper bound C20 (32/35/38) stays below the cap (40/44/44). Scripts under design/lemma/, combined output at design/lemma/taskB_results.json.",
+        "script": "/Users/erik/homelab/math193/design/lemma/taskB_measure.py (measurement, run as `pypy3 taskB_measure.py {5,6,7}`); /Users/erik/homelab/math193/design/lemma/taskB_analytic.py (matrix/MENU geometry, exact); combined results at /Users/erik/homelab/math193/design/lemma/taskB_results.json",
+        "key_numbers": {
+          "B_meas_P10_per_level": {
+            "L5": 18,
+            "L6": 19,
+            "L7": 20
+          },
+          "B_true_upper_C20_per_level": {
+            "L5": 32,
+            "L6": 35,
+            "L7": 38
+          },
+          "A14_max_anchors_in_cheb14": {
+            "L5": 10,
+            "L6": 11,
+            "L7": 11
+          },
+          "proven_cap_4xA14": {
+            "L5": 40,
+            "L6": 44,
+            "L7": 44
+          },
+          "max_menu_step_cheb": 2,
+          "max_interiors_per_segment_rule_len5": 4,
+          "max_interiors_per_segment_measured_len4": 3,
+          "min_anchor_sep_cheb_|M.s|inf": 3,
+          "min_anchor_sep_euclidean": 3,
+          "argmin_euclidean_steps": "axis steps (+-1,0,0) etc",
+          "det_M": 27,
+          "M_inv_inf_norm": "4/9 = 0.4444",
+          "parent_preimage_cheb_radius_for_cheb14_anchorbox": 6.22,
+          "nearer_anchor_radius_len5": 4,
+          "far_anchor_radius_len5": 8,
+          "interiors_per_nearer_anchor": 4,
+          "walk_points": {
+            "L5": 8214,
+            "L6": 27697,
+            "L7": 92732
+          },
+          "margin_meas_vs_cap": "~2.2x"
+        },
+        "exact_or_approx": "Mixed, all script-produced. EXACT identities (integer/exact-rational): max MENU step Cheb-norm = 2; min anchor separation |M.s|_inf = 3 and Euclidean = 3.0 over all 124 MENU steps; det M = 27; M^{-1} = [[1/3,0,0],[0,-1/9,1/3],[0,-1/3,0]], ||M^{-1}||_inf = 4/9; per-segment interior cap <=4 (rule len<=5) / <=3 (measured max len=4). EXACT finite-orbit maxima: B_meas P10 (18/19/20), A14 (10/11/11), C20 (32/35/38), all computed by exhaustive grid neighbourhood counting over every walk point of the v2 orbit at L5,L6,L7. B_true over all real box centres is EXACTLY bracketed [P10, C20]. The cap B <= 4*A14 is an exact structural inequality; the numeric cap uses the exactly-measured A14.",
+        "risk": "1) The cap 4*A14 is structural, not an a-priori absolute constant: A14 (anchor crowding) is bounded only via the parent crowding (A14 <= c_parent(~6) through ||M^{-1}||=4/9), which is the induction hypothesis itself — a fully a-priori B would need the crowding lemma's k0. However the rigorous, non-circular bound B_true <= C20 = 32/35/38 < cap already stands alone. 2) Min consecutive-anchor separation = 3 is a weak dilation floor (walk can fold back), so it does NOT by itself limit how many anchors pack a box; the real spreading (alpha<1) comes from the full M-dilation (all eigen-moduli 3), not from consecutive spacing. 3) Measurements are on the specific seed-193 v2 orbit up to L7 only (L8 not measured here); the box centre for B_meas P10 is restricted to walk points (the crowding-relevant set) — off-point centres are covered separately by the C20 bracket. 4) Optimistic reading: if some future level uses length-5 fragile stitches (unused in v2, where max len=4), measured interiors/segment rises from 3 to the rule cap 4, but the proven cap already assumes 4."
+      },
+      {
+        "task": "TASK C — Contraction from M-geometry: singular values of M_BAL3, M^{-1} image of a Chebyshev-10 box, derived alpha, worst-direction risk; compared to the measured dilated-old fraction of c10 on the real L6 orbit.",
+        "result": "M = M_BAL3 = ((3,0,0),(0,0,-3),(0,3,-1)), det 27, all eigenvalue moduli 3 (rotation arccos(-1/6)) but NON-normal so singular values spread. (1) SINGULAR VALUES (Jacobi eig of M^T M, closed form: sigma^2 are 9 and the roots of t^2-19t+81=0 = (19±sqrt37)/2): sigma_max=sqrt((19+sqrt37)/2)=3.5414, sigma_mid=3 (exact, the x-axis/(1,0,0) direction), sigma_min=sqrt((19-sqrt37)/2)=2.5414; product=27, sum of squares=Frobenius^2=28, sigma_max*sigma_min=9 exactly. The spread (3.54 vs 2.54 vs 3) is the non-normality. (2) M^{-1}=((1/3,0,0),(0,-1/9,1/3),(0,-1/3,0)); its image of the Cheb-10 box [-10,10]^3 is a parallelepiped whose bounding-Cheb half-widths per axis (=10*L1 row-sums of M^{-1}) are (3.33, 4.44, 3.33), and whose ellipsoid semi-axes (=10/sigma_i) are (2.82, 3.33, 3.93). ||M^{-1}||_inf=4/9=0.4444. So a level-(k+1) Cheb-10 ball pulls back to a region of linear extent ~3.3-3.9 in level-k coords, i.e. M^{-1} SHRINKS it below 10 in every direction. (3) DERIVED ALPHA (dilated-old = anchor = M*(level-k) contribution as fraction of c10, via the local-1D density model dilated-old(R) ~ c_k(R)*(pullback extent/R)): worst-direction alpha=1/sigma_min=0.3935, best=1/sigma_max=0.2824, geometric-mean=0.3333, isotropic(||M^{-1}||_inf)=0.4444. Best single estimate ~1/3. MEASURED on the real L6 orbit (27,697 pts = 8,214 anchors + 19,483 stitch interiors; 1,200 sampled sources, mean c10=11.05): dilated-old fraction of c10 = 0.296 — sitting just below the geo-mean prediction 0.333 and inside the derived [0.28,0.44] band. Anchor-anchor crowding among anchor sources is even lower at 0.212, direct evidence M dilated the old points apart. WORST-DIRECTION RISK: sigma_min=2.5414<3 does raise the worst-case contraction from 0.333 to 0.3935 along its right-singular direction ~(0,0.763,0.646) in the y-z plane — but 0.3935 is NOT dangerously close to 1 (margin 0.607). Because sigma_min=2.54 is comfortably >1 (in fact >2), M contracts under M^{-1} in EVERY direction, so alpha<1 in every direction and no walk-segment orientation can break contraction. Flag: spread present but benign. Combined with measured refill B, fixed point c* ~ B/(1-alpha) is finite and bounded, matching the observed scale-invariant c10 ceilings.",
+        "script": "/Users/erik/homelab/math193/design/lemma/taskC_geometry.py (singular values + M^{-1} box image + derived alpha; out: taskC_geometry.out.json) and /Users/erik/homelab/math193/design/lemma/taskC_measure.py (measured dilated-old fraction on L6; out: taskC_measure.out.json)",
+        "key_numbers": {
+          "sigma_max": 3.5413812651491097,
+          "sigma_mid": 3,
+          "sigma_min": 2.5413812651491097,
+          "sv_product": 27,
+          "sv_sq_sum_frobenius": 28,
+          "sigma_max_times_min": 9,
+          "Minv_inf_opnorm": 0.4444444444444444,
+          "pullback_cheb_halfwidth_per_axis_R10": [
+            3.333,
+            4.444,
+            3.333
+          ],
+          "pullback_ellipsoid_semiaxes_R10": [
+            2.824,
+            3.333,
+            3.935
+          ],
+          "alpha_worst_1_over_sigma_min": 0.39348680723879,
+          "alpha_best_1_over_sigma_max": 0.28237569612768,
+          "alpha_geo_mean": 0.3333333333333333,
+          "alpha_isotropic": 0.4444444444444444,
+          "measured_dilated_old_frac_of_c10_L6": 0.2956,
+          "measured_anchor_anchor_frac": 0.2124,
+          "L6_mean_c10": 11.05,
+          "worst_dir_margin_to_1": 0.6065,
+          "worst_singular_direction": [
+            0,
+            0.763,
+            0.646
+          ]
+        },
+        "exact_or_approx": "Singular values are EXACT closed forms: sigma_mid=3, sigma_{max,min}=sqrt((19±sqrt37)/2) with sigma_max*sigma_min=9, product 27, sum-of-squares 28 (verified numerically to 1e-12 by Jacobi eigensolver and independently by the quadratic t^2-19t+81=0). M^{-1} and its L1 row-sums/box-image extents are EXACT rationals (||M^{-1}||_inf=4/9). Derived alpha values are exact functions of the singular values. The COMPARISON target — measured dilated-old fraction 0.296 — is an APPROXIMATE empirical estimate (single seed-193 L6 orbit, 1,200 sampled sources, standard sampling noise); it agrees with the exact geo-mean prediction 1/3 to within ~0.04 and lies inside the exact [0.282,0.444] band.",
+        "risk": "(1) The 1D-density model equating dilated-old fraction with the M^{-1} contraction factor assumes the walk is locally 1-dimensional with roughly uniform linear density and no strong orientation bias toward the sigma_min axis; if walk tangents systematically aligned with the worst direction (0,0.763,0.646) the fraction would drift toward 0.393 rather than 0.33 (still <1, so contraction survives, but the constant would be looser). (2) Measurement is one seed/one level (L6 built from L5); I did not re-verify across L5/L7/L8, though the reported scale-invariance of c10 (mean ~6.9 across levels in the ledger) supports stability. (3) The recursion c_{k+1}=alpha*c_k+B identifies dilated-old fraction with alpha only at the fixed point; away from it the identity is approximate. (4) My c10 mean (11.05, all-chain Cheb-10) differs from the clearance-file c10 (~6.9, chord-midpoint definition) — the FRACTION is definition-robust but absolute counts are not directly comparable. The core safety conclusion (sigma_min=2.54>1 so alpha<1 in every direction, comfortable 0.607 margin) is exact and does not depend on the density model."
+      },
+      {
+        "task": "TASK D — alternative invariant (bad-line count): measure b across L5/L6/L7 at recorded stitches, does it plateau like c10; sketch the b_{k+1} vs b_k recursion; decide whether b or c10 is the tighter invariant to run the induction on.",
+        "result": "Because the walk is triple-free, every line carries <=2 placed points, so a bad line = exactly one placed-point pair whose infinite line meets the Cheb-R tube; b(seg)=#such pairs. I replayed the v2 proof orbit (gate2-l7-construction-L{5,6,7}.pkl) in fragile-first stitch order and measured c10, b, and f (= forbidden lattice SITES in the tube: the union of bad-lines ∩ tube integer points — the actual availability killer) at STITCH TIME (my recomputed c10 mean 6.88/6.79/6.70, max 21/20/16 exactly reproduces the published clearance ledger, validating the replay). R=10, fixed physical neighborhood D=40.\\n\\n(1) DISTRIBUTIONS & PLATEAU (D=40, stitch-time, mean/p99/max):\\n  c10: 6.88/13/21 | 6.79/13/20 | 6.70/12/16  → plateaus\\n  b  : 465/1310/2006 | 457/1227/2921 | 446/1202/1703  → mean & p99 plateau (max is a noisy tail)\\n  f  : 412/925/1404 | 411/891/1564 | 402/869/1062  → tightest plateau of all three\\nAll three are scale-invariant across levels. IMPORTANT nuance: within a single level b does NOT converge as the neighborhood D grows (b(D)=108/425/855/1346/2370 for D=20/40/60/80/120) because far pairs whose lines merely clip the CONTINUOUS tube box keep accumulating; f grows far slower (208/403/508/577/662) because a far glancing line usually passes through ZERO integer sites of the tube. So the plateau is a fixed-D (fixed physical scale) statement, which is the correct scale-invariance test — not a D→∞ absolute count.\\n\\n(2) RECURSION SKETCH (measured directly, taskD_decomp.py). M (det 27, |eig|=3) dilates by 3 and, since cof(M) is invertible (L2), maps level-(k-1) lines bijectively to the level-k anchor–anchor lines. Decomposing b in a fixed R=10 tube by whether both endpoints are anchors (= M-images of old lines = INHERITED) vs stitch-involving (= NEW): inherited ≈ 87, new ≈ 358 at BOTH L6 and L7 (inherited fraction 0.195/0.197). So b_{k}(R) = α·b_{k-1}(R) + B with α = inherited/b_{k-1} ≈ 87/445 ≈ 0.195 (<1, because a fixed radius-R tube pulls back through M to a radius-R/3 tube, so dilation thins the inherited lines) and refill B ≈ 358 new stitch lines. Fixed point B/(1-α)=358/0.805 ≈ 445 — matches the measured plateau ~445–457. The contraction closes numerically. Same structure holds for f but its recursion is nonlinear (the union has inclusion–exclusion overlap), so the clean linear transfer belongs to b.\\n\\n(3) WHICH IS TIGHTER. Correlations vs the recorded surviving-word fraction (availability, the real gate quantity), L7: corr(c10,frac)=-0.690, corr(b,frac)=-0.643, corr(f,frac)=-0.735; and corr(c10,f)=0.83 > corr(c10,b)=0.78 stably. Verdict: the raw bad-line count b as literally defined is actually the WORST availability predictor (glancing far lines are noise that forbid no candidate site), so b is NOT tighter than c10. The forbidden-SITE count f is the tightest — best availability correlation, tightest plateau, and it IS the killer (available corridor sites = corridor − f). RECOMMENDATION: run the induction on the bad-line/forbidden-site family, not c10, but split the roles — use b (line count) as the object carrying the CLEAN M-linear contraction (α≈0.20, B≈358, via cof(M) invertibility), and use f (which b upper-bounds) as the EXACT availability certificate (surv_abs>0 ⟺ f < corridor capacity). c10 is only a 0.69–0.83-correlated proxy for both and is the loosest choice for the actual availability guarantee.",
+        "script": "/Users/erik/homelab/math193/design/lemma/taskD_badlines.py (converge + measure; outputs taskD-L{5,6,7}.json), /Users/erik/homelab/math193/design/lemma/taskD_decomp.py (inherited-vs-new recursion split), /Users/erik/homelab/math193/design/lemma/taskD_availability.py (invariant-vs-frac correlation)",
+        "key_numbers": {
+          "c10_mean_L5_L6_L7": [
+            6.88,
+            6.79,
+            6.7
+          ],
+          "c10_max_L5_L6_L7": [
+            21,
+            20,
+            16
+          ],
+          "b_mean_L5_L6_L7": [
+            464.8,
+            457,
+            445.8
+          ],
+          "b_p99_L5_L6_L7": [
+            1310,
+            1227,
+            1202
+          ],
+          "f_mean_L5_L6_L7": [
+            412.1,
+            410.8,
+            402.3
+          ],
+          "f_p99_L5_L6_L7": [
+            925,
+            891,
+            869
+          ],
+          "recursion_inherited_L6_L7": [
+            87,
+            86.4
+          ],
+          "recursion_new_L6_L7": [
+            358,
+            351
+          ],
+          "alpha": 0.195,
+          "B_refill": 358,
+          "fixed_point_pred": 445,
+          "b_D_sweep_20_40_60_80_120": [
+            107.7,
+            424.6,
+            854.8,
+            1346.1,
+            2370.1
+          ],
+          "f_D_sweep_20_40_60_80_120": [
+            207.8,
+            402.9,
+            508.3,
+            576.6,
+            662.1
+          ],
+          "corr_c10_b": 0.783,
+          "corr_c10_f": 0.834,
+          "corr_c10_frac_L7": -0.69,
+          "corr_b_frac_L7": -0.643,
+          "corr_f_frac_L7": -0.735
+        },
+        "exact_or_approx": "Mixed. The per-segment computations are EXACT: line-vs-Chebyshev-box test (common-t-interval across 3 axes) and forbidden-site enumeration (walk integer points of each bad line inside the tube, union) are exact given the neighbor set, and stitch-time c10 exactly reproduces the published ledger (mean 6.88/6.79/6.70, max 21/20/16). The plateau, recursion coefficients (α≈0.195, B≈358, fixed point 445), and correlations are APPROXIMATE/empirical: Monte-Carlo over sampled stitch positions (all positions at L5/L6; 1.5k–3k sampled at L7) with a finite neighbor cutoff D=40.",
+        "risk": "(a) The fixed-D=40 cutoff is load-bearing: both b and f keep creeping up with larger D within a level (far pairs), so the plateau/contraction is a same-physical-scale statement, not an absolute D→∞ count — a rigorous proof must fix the neighborhood scale and argue far pairs are controlled. (b) The clean linear α≈0.20 recursion is for b (M-linear on lines via cof(M)); f — the tighter availability quantity — obeys a nonlinear union recursion, so one gets EITHER the clean recursion (b) OR the tight availability bound (f), not both in one object; the induction likely needs b to control f (b≥f-style domination) plus f→availability. (c) α and B are measured at only L6/L7 (two levels); (d) L7 uses sampled positions and its frac field covers ~12k of 27696 segments; (e) everything is on the single seed-193 v2 orbit and depends on the fragile-first stitch order (stitch-time crowding grows through the run)."
+      }
+    ],
+    "close": {
+      "invariant_chosen": "crowding",
+      "alpha": 0.4444,
+      "B": 20,
+      "k0_measured": 22,
+      "inequality": "alpha*k0 + B: 0.4444*22 + 20 = 29.78 > 22 (DEFICIT -7.78 at the measured ceiling). The map x->0.4444x+20 has finite fixed point x* = 20/(1-4/9) = 36, where 0.4444*36 + 20 = 36 <= 36 (equality). So the induction closes only to the LOOSER k0=36 (proven alpha + measured B), or k0=69/80 with the certified/proven refill cap B=38/44 — never at the observed 22.",
+      "easy_three_quarters_closes": false,
+      "margin": "NEGATIVE at the measured ceiling: 22 - (0.4444*22 + 20) = -7.78. Every constant choice deficits at k0=22 (op-norm alpha 4/9 + B20 -> 29.8; +proven cap B44 -> 53.8; +cert B38 -> 47.8; measured-dilated-frac alpha 0.536 + Bmax14 -> 25.8; geo-mean 1/3 + B20 -> 27.3). What DOES hold: alpha<1 is PROVEN-exact (Task C: sigma_min=2.5414>1 => M contracts in EVERY direction, ||M^-1||_inf=4/9 exact) and B is finite (MEASURED 20, CERTIFIED-finite bracket 38, PROVEN structural cap 44) => a finite fixed point EXISTS => crowding is uniformly bounded (no blow-up). So the QUALITATIVE induction (boundedness) closes from the easy 3/4; the QUANTITATIVE tight constant does NOT — the worst-case-stacking bound overshoots the true ceiling by 1.4x-3.6x (36-80 vs 22). Note bad-lines recurses with a numerically TIGHTER alpha=0.195 (Task D, via PROVEN cof(M) line-bijection L2) but its alpha and B=358 are MEASURED-only and b is the WORST availability predictor (corr -0.643 vs f's -0.735); crowding was chosen because its contraction is PROVEN-exact, it has an exact recursion identity (Task A, 0/8252 + 0/27696 mismatches), a proven refill cap, and it dominates the bad-line/forbidden-site family locally (bounded crowding => bounded pairs => bounded lines/sites).",
+      "hard_kernel_obligation": "UNIFORM LOCAL-1-D INCIDENCE. Prove there is a LEVEL-INDEPENDENT constant C (measured C = k0/R ~ 2.2, since c10/c5 = 2.24 => local dim d = 1.17 ~ 1) such that for EVERY level k, every lattice centre q, and every radius rho in [1,R=10]:  c_k(q, rho) <= C*rho + 1.  The load-bearing special case the recursion consumes is the falsifiable inequality:  c_k(q, (4/9)*R = 4.444) <= (4/9)*k0  (= 9.78 when k0=22),  UNIFORMLY in k. This converts the PROVEN geometric radius-contraction (M^-1 pulls a Cheb-10 ball back into a Cheb-4.44 region, ||M^-1||_inf=4/9 exact) into the COUNT-contraction dilated_old(q,10) = c_k(pullback) <= (4/9)*k0 — the single currently-unproven link. Empirically ALREADY satisfied (Task A: max dilated_old = 9 at L6, 8 at L7, both <= 9.78); the obligation is to prove this uniform-in-k, and to prove the companion joint anti-stacking cap on refill (refill points sit in Cheb-8 tubes of anchors, so the same linear incidence must bound contributing anchors WITHOUT the crude 4-per-anchor blow-up) so that dilated_old(q)+refill(q) <= k0 pointwise rather than as a sum of independent worst cases.",
+      "next_computation": "Measure c_k(q,rho)/rho for rho = 1..10 at L5/L6/L7 (and one budgeted L8 slice) to certify (a) linearity: is the exponent d(rho)=log2(c(2rho)/c(rho)) <= 1+epsilon across all rho, and (b) level-independence: is C = max_q c_k(q,rho)/rho stable in k (extrapolate to k->inf). Directly test the load-bearing inequality max_q c_k(q,4.444) <= (4/9)*22 = 9.78 at each level. Separately, measure the JOINT distribution corr(dilated_old(q), refill(q)) at stitch points to quantify the anti-stacking (expected negative) that lets the pointwise sum stay at 22 while the independent maxima are 9 and 14 — this is what must be turned into the refill half of the incidence proof."
+    },
+    "verify": {
+      "recursion_exact": "CONFIRMED-exact",
+      "refill_bound_holds": true,
+      "alpha_honest": true,
+      "kernel_sufficient": false,
+      "corrected": "RE-RAN ALL SCRIPTS ON REAL DATA. Corrections/confirmations per question:\n\n(a) TASK A — EXACT RECURSION: CONFIRMED, not overstated. recursion_decomp.py reproduces the measured clearance c10 with 0/8252 mismatches at L6 (AND 0/8252 on c5) and 0/27696 at L7. I independently verified the disjoint-union claim GEOMETRICALLY (the script only asserts it by word-length bookkeeping): built the full L6 & L7 chains — all points distinct (0 duplicate points), 0 interiors landing on an anchor, max point-multiplicity 1. So Walk_{k+1}=(M·Walk_k)⊔Stitch_k is a genuine disjoint union and the split c_R=dilated_old+refill is an exact set identity. CAVEAT (already flagged in the finding, correct): the reproduced quantity is STITCH-TIME crowding (all anchors + only earlier stitches, fragile-first order), a definitional reproduction that is trivially exact given the disjoint union; the load-bearing scale-invariance is empirical, not a closed proof. Also confirmed: the task-named gate2 L6 pkl is the wrong orbit (7238/8213 mismatches); gate-l7-construction-L6.pkl (v1) gives 0.\n\n(b) TASK B — REFILL BOUND: HOLDS; if anything the assembly is CONSERVATIVE here. Confirmed B_meas P10 = 18/19/20 (L5/L6/L7) over walk-point centers. The measured 20 is only over walk-point centers, so I ran an ADVERSARIAL off-lattice box search: found the globally densest C20 cluster on L7 (38 interiors within Cheb-20 of a point) and exhaustively swept ALL integer centers ±15 around it — true max Cheb-10 box = 19; repeated around the P10 example center = 20. NO box exceeds 20 anywhere I could find. So the true refill max is ≈20, and the 'certified' C20=38 and 'proven cap' 44 are LOOSE over-bounds (a radius-20 ball ≫ a radius-10 box). Refill does not leak.\n\n(c) TASK C — ALPHA: HONEST and conservative. Confirmed singular values σ=3.5414/3.0/2.5414 (exact roots of t²−19t+81=0), product 27, sumsq 28, σ_max·σ_min=9. σ_min=2.5414>1 ⇒ M contracts in EVERY direction; worst-direction α=1/σ_min=0.3935 < the op-norm α=||M⁻¹||_∞=4/9=0.4444 actually used in the close, with margin 0.607 to 1. So the smallest singular value does create a weaker direction (dilation 2.54<3), but it is BENIGN and the close's α=4/9 already dominates it. The real (correctly-flagged) gap is NOT the singular value: α=4/9 is only a GEOMETRIC radius-contraction (M⁻¹ maps a Cheb-10 ball into a Cheb-4.44 region); its use as a COUNT-contraction dilated_old ≤ (4/9)k0 is unproven and IS the hard kernel.\n\n(d) HARD KERNEL — necessary but NOT sufficient (kernel_sufficient=false). Two problems: (i) The stated inequality c_k(q,4.444) ≤ (4/9)·22 = 9.78 bounds ONLY the dilated_old half; c_{k+1}=dilated_old+refill, and even with dilated_old≤9.78 and refill≤14 the pointwise sum can reach 23.78 > 22. Closing at the ceiling requires the SEPARATE refill anti-stacking / linear-incidence companion, which the obligation names but does not formalize as a falsifiable inequality and does not prove — so the kernel as literally stated does not imply the lemma. (ii) MEASURED-CEILING CORRECTION: k0_measured=22 is the STITCH-TIME crowding, but the lemma's actual invariant is the FULL final-walk crowding of any point — I measured all_point_crowding_c10_max = 26 (L6) and 27 (L7), so the true ceiling the induction must bound is ≥26/27, ~20% higher than 22. With k0=27: 4/9·27+20 = 32 > 27 (still deficits); fixed point still 36. So easy-3/4 + kernel closes the QUALITATIVE lemma (α<1 proven-exact, B finite&small ⇒ finite fixed point ⇒ uniform boundedness) but not the QUANTITATIVE tight constant, and it must be argued at radius/target ≥27, not 22.",
+      "verdict": "Assembly is mostly SOUND but has two overstatements. CONFIRMED: (A) the exact recursion is a true point-set identity (0 mismatches at L6/L7 for c10+c5; disjoint union verified geometrically); (B) the refill bound holds and is actually TIGHTER than claimed — adversarial off-lattice search finds no Cheb-10 box above 20, so true B≈20 (the 38/44 bounds are loose, conservative); (C) α<1 is honest and conservative — σ_min=2.5414>1 gives contraction in every direction, α_worst=0.3935<4/9 with 0.607 margin, and the op-norm 4/9 used dominates the worst singular direction. OVERSTATED: (1) k0=22 is the STITCH-TIME crowding, not the lemma's actual invariant; the full final-walk crowding ceiling is 26/27 (~20% higher), so the induction must be closed at ≥27. (2) The hard-kernel obligation is NECESSARY but NOT SUFFICIENT — it bounds only the dilated-old half, still requires the unproven refill anti-stacking/incidence companion to reach the pointwise sum, and the count-contraction α=4/9 (as opposed to the geometric radius-contraction) is itself contingent on that kernel. NET: the QUALITATIVE boundedness result is well-supported (proven α<1, finite & small B); the QUANTITATIVE tight induction (closing at the observed ceiling) is still OPEN, and the true ceiling to target is 27, not 22."
+    }
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Derive"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Close"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 3,
+      "title": "Verify"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "derive:recursion",
+      "phaseIndex": 1,
+      "phaseTitle": "Derive",
+      "agentId": "a47b711e1adf5b0e8",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784131370695,
+      "queuedAt": 1784131370630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "TASK A — EXACT RECURSION. Derive the exact set-level recurs…",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784131799511,
+      "tokens": 68208,
+      "toolCalls": 27,
+      "durationMs": 428816,
+      "resultPreview": "{\"task\":\"TASK A — EXACT RECURSION. Derive the exact set-level recursion Walk_{k+1}=M·Walk_k ⊔ Stitch_k and the exact crowding decomposition c10_{k+1}(q)=[dilated-old M·p within Cheb-10]+[new stitch within Cheb-10], then verify it reproduces clearance-L6.json / clearance-L7v2.json c10 EXACTLY.\",\"result\":\"EXACT RECURSION (proved as a point-set identity on the seed-193 orbit): Walk_{k+1} = (M·Walk_k)…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "derive:refill",
+      "phaseIndex": 1,
+      "phaseTitle": "Derive",
+      "agentId": "a1ee6192f87b30a45",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784131370697,
+      "queuedAt": 1784131370630,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "TASK B — REFILL BOUND: measure exactly the max number of NE…",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784131809300,
+      "tokens": 55672,
+      "toolCalls": 19,
+      "durationMs": 438603,
+      "resultPreview": "{\"task\":\"TASK B — REFILL BOUND: measure exactly the max number of NEW stitch points (word interiors) in any Chebyshev-10 box over the v2 orbit (L5,L6,L7), and prove a structural cap from the construction rules (word length <=5, min anchor separation |M.s|, max polylines per box).\",\"result\":\"Measured refill bound B (max NEW stitch/interior points inside a Cheb-10 box centred at a walk point) is SCA…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "derive:contraction",
+      "phaseIndex": 1,
+      "phaseTitle": "Derive",
+      "agentId": "a0d47a0e995b20551",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784131370698,
+      "queuedAt": 1784131370631,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "TASK C — Contraction from M-geometry: singular values of M_…",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784131636470,
+      "tokens": 37304,
+      "toolCalls": 19,
+      "durationMs": 265772,
+      "resultPreview": "{\"task\":\"TASK C — Contraction from M-geometry: singular values of M_BAL3, M^{-1} image of a Chebyshev-10 box, derived alpha, worst-direction risk; compared to the measured dilated-old fraction of c10 on the real L6 orbit.\",\"result\":\"M = M_BAL3 = ((3,0,0),(0,0,-3),(0,3,-1)), det 27, all eigenvalue moduli 3 (rotation arccos(-1/6)) but NON-normal so singular values spread. (1) SINGULAR VALUES (Jacobi…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "derive:badlines",
+      "phaseIndex": 1,
+      "phaseTitle": "Derive",
+      "agentId": "a98bef103d0523d50",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784131370702,
+      "queuedAt": 1784131370632,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "TASK D — alternative invariant (bad-line count): measure b …",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784132124272,
+      "tokens": 79443,
+      "toolCalls": 27,
+      "durationMs": 753570,
+      "resultPreview": "{\"task\":\"TASK D — alternative invariant (bad-line count): measure b across L5/L6/L7 at recorded stitches, does it plateau like c10; sketch the b_{k+1} vs b_k recursion; decide whether b or c10 is the tighter invariant to run the induction on.\",\"result\":\"Because the walk is triple-free, every line carries <=2 placed points, so a bad line = exactly one placed-point pair whose infinite line meets the…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "close:induction",
+      "phaseIndex": 2,
+      "phaseTitle": "Close",
+      "agentId": "a94465426ecff642e",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784132124318,
+      "queuedAt": 1784132124275,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "crowding",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784132481525,
+      "tokens": 45289,
+      "toolCalls": 4,
+      "durationMs": 357206,
+      "resultPreview": "{\"invariant_chosen\":\"crowding\",\"alpha\":0.4444,\"B\":20,\"k0_measured\":22,\"inequality\":\"alpha*k0 + B: 0.4444*22 + 20 = 29.78 > 22 (DEFICIT -7.78 at the measured ceiling). The map x->0.4444x+20 has finite fixed point x* = 20/(1-4/9) = 36, where 0.4444*36 + 20 = 36 <= 36 (equality). So the induction closes only to the LOOSER k0=36 (proven alpha + measured B), or k0=69/80 with the certified/proven refill…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "verify:assembly",
+      "phaseIndex": 3,
+      "phaseTitle": "Verify",
+      "agentId": "a1bcb4498ef1b1476",
+      "model": "claude-opus-4-8",
+      "state": "done",
+      "startedAt": 1784132481605,
+      "queuedAt": 1784132481529,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "CONFIRMED-exact",
+      "promptPreview": "You are doing COMPUTER-ASSISTED PROOF work in /Users/erik/homelab/math193 (work there).\nThis is fully agentic: derive, then WRITE AND RUN code that verifies the claim on real data.\nDo not hand-wave — every quantitative claim must be produced by a script you run.\n\nThe construction (see gate_l7.py, amplify193.py): a level-k triple-free walk W_k (a word over\nMENU = search193.candidate_step_vectors(2)…",
+      "lastProgressAt": 1784132863840,
+      "tokens": 65549,
+      "toolCalls": 18,
+      "durationMs": 382235,
+      "resultPreview": "{\"recursion_exact\":\"CONFIRMED-exact\",\"refill_bound_holds\":true,\"alpha_honest\":true,\"kernel_sufficient\":false,\"corrected\":\"RE-RAN ALL SCRIPTS ON REAL DATA. Corrections/confirmations per question:\\n\\n(a) TASK A — EXACT RECURSION: CONFIRMED, not overstated. recursion_decomp.py reproduces the measured clearance c10 with 0/8252 mismatches at L6 (AND 0/8252 on c5) and 0/27696 at L7. I independently veri…"
+    }
+  ],
+  "totalTokens": 351465,
+  "totalToolCalls": 114
+}

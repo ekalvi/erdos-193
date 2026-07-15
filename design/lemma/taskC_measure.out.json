@@ -1,0 +1,17 @@
+{
+  "level": "L6 (built from L5 parent)",
+  "N_points": 27697,
+  "N_anchors": 8214,
+  "N_interiors": 19483,
+  "anchor_fraction_global": 0.2965664151352132,
+  "sample_sources": 1200,
+  "mean_c10": 11.055,
+  "mean_anchor_neighbors": 3.2683333333333335,
+  "mean_interior_neighbors": 7.786666666666667,
+  "DILATED_OLD_FRACTION_of_c10 (measured)": 0.29564299713553444,
+  "among_anchor_sources": {
+    "n_anchor_sources": 359,
+    "mean_c10": 11.013927576601672,
+    "dilated_old_frac_within_anchor_crowd": 0.212443095599393
+  }
+}

@@ -1,0 +1,36 @@
+L5 (8214 pts):  rho:(max,mean)
+   rho= 1: max=  2 mean=  0.04  max/rho=2.00
+   rho= 2: max=  4 mean=  2.02  max/rho=2.00
+   rho= 3: max=  6 mean=  2.27  max/rho=2.00
+   rho= 4: max=  9 mean=  4.13  max/rho=2.25
+   rho= 5: max= 11 mean=  4.63  max/rho=2.20
+   rho= 6: max= 13 mean=  6.38  max/rho=2.17
+   rho= 7: max= 16 mean=  7.07  max/rho=2.29
+   rho= 8: max= 19 mean=  8.72  max/rho=2.38
+   rho= 9: max= 22 mean=  9.56  max/rho=2.44
+   rho=10: max= 24 mean= 11.12  max/rho=2.40
+   >> load-bearing max_q c(q,4)=9, c(q,5)=11  vs (4/9)*27=12.0
+L6 (27697 pts):  rho:(max,mean)
+   rho= 1: max=  2 mean=  0.04  max/rho=2.00
+   rho= 2: max=  4 mean=  2.02  max/rho=2.00
+   rho= 3: max=  6 mean=  2.26  max/rho=2.00
+   rho= 4: max=  9 mean=  4.10  max/rho=2.25
+   rho= 5: max= 11 mean=  4.61  max/rho=2.20
+   rho= 6: max= 14 mean=  6.33  max/rho=2.33
+   rho= 7: max= 16 mean=  7.02  max/rho=2.29
+   rho= 8: max= 20 mean=  8.65  max/rho=2.50
+   rho= 9: max= 22 mean=  9.49  max/rho=2.44
+   rho=10: max= 25 mean= 11.03  max/rho=2.50
+   >> load-bearing max_q c(q,4)=9, c(q,5)=11  vs (4/9)*27=12.0
+L7 (92732 pts):  rho:(max,mean)
+   rho= 1: max=  2 mean=  0.03  max/rho=2.00
+   rho= 2: max=  5 mean=  2.02  max/rho=2.50
+   rho= 3: max=  9 mean=  2.25  max/rho=3.00
+   rho= 4: max= 10 mean=  4.10  max/rho=2.50
+   rho= 5: max= 13 mean=  4.59  max/rho=2.60
+   rho= 6: max= 15 mean=  6.32  max/rho=2.50
+   rho= 7: max= 19 mean=  6.98  max/rho=2.71
+   rho= 8: max= 20 mean=  8.61  max/rho=2.50
+   rho= 9: max= 21 mean=  9.42  max/rho=2.33
+   rho=10: max= 26 mean= 10.97  max/rho=2.60
+   >> load-bearing max_q c(q,4)=10, c(q,5)=13  vs (4/9)*27=12.0

@@ -1,0 +1,102 @@
+{
+  "summary": {
+    "pkl": "gate-l7-construction-L6.pkl",
+    "clearance": "clearance-L6.json",
+    "n_checked": 8252,
+    "anchors": 8253,
+    "stitch_interiors_total": 20457,
+    "mismatches_c10": 0,
+    "identity_c10_exact": true,
+    "c10_total": {
+      "mean": 6.8947,
+      "max": 19,
+      "min": 2
+    },
+    "c10_dilated_old": {
+      "mean": 3.6958,
+      "max": 9,
+      "min": 2
+    },
+    "c10_refill_new": {
+      "mean": 3.1989,
+      "max": 14,
+      "min": 0
+    },
+    "c10_frac_dilated_old": 0.536,
+    "c10_frac_refill": 0.464,
+    "mismatches_c5": 0,
+    "identity_c5_exact": true,
+    "c5_total": {
+      "mean": 3.0591,
+      "max": 9,
+      "min": 2
+    },
+    "c5_dilated_old": {
+      "mean": 2.0251,
+      "max": 4,
+      "min": 2
+    },
+    "c5_refill_new": {
+      "mean": 1.0341,
+      "max": 6,
+      "min": 0
+    }
+  },
+  "rows_head": [
+    {
+      "i": 5,
+      "old10": 4,
+      "new10": 0,
+      "tot10": 4,
+      "meas10": 4,
+      "old5": 2,
+      "new5": 0,
+      "tot5": 2,
+      "meas5": 2
+    },
+    {
+      "i": 15,
+      "old10": 4,
+      "new10": 0,
+      "tot10": 4,
+      "meas10": 4,
+      "old5": 2,
+      "new5": 0,
+      "tot5": 2,
+      "meas5": 2
+    },
+    {
+      "i": 18,
+      "old10": 4,
+      "new10": 0,
+      "tot10": 4,
+      "meas10": 4,
+      "old5": 2,
+      "new5": 0,
+      "tot5": 2,
+      "meas5": 2
+    },
+    {
+      "i": 20,
+      "old10": 3,
+      "new10": 0,
+      "tot10": 3,
+      "meas10": 3,
+      "old5": 2,
+      "new5": 0,
+      "tot5": 2,
+      "meas5": 2
+    },
+    {
+      "i": 21,
+      "old10": 3,
+      "new10": 3,
+      "tot10": 6,
+      "meas10": 6,
+      "old5": 2,
+      "new5": 0,
+      "tot5": 2,
+      "meas5": 2
+    }
+  ]
+}

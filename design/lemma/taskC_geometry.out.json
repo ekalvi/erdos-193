@@ -1,0 +1,80 @@
+{
+  "M": [
+    [
+      3,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      -3
+    ],
+    [
+      0,
+      3,
+      -1
+    ]
+  ],
+  "det": 27,
+  "frobenius_sq": 28,
+  "singular_values": {
+    "sigma_max": 3.54138126514911,
+    "sigma_mid": 3.0,
+    "sigma_min": 2.5413812651491097
+  },
+  "sv_product": 27.000000000000004,
+  "sv_sq_sum": 28.0,
+  "eig_moduli_note": "all eigenvalue moduli = 3 (det 27, rotation arccos(-1/6)); sigmas spread",
+  "right_singular_vectors_of_M(cols by sigma desc)": [
+    [
+      0.0,
+      -0.6463748961301958,
+      0.7630199824727257
+    ],
+    [
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.7630199824727257,
+      0.6463748961301958
+    ]
+  ],
+  "Minv": [
+    [
+      0.3333333333333333,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      -0.1111111111111111,
+      0.3333333333333333
+    ],
+    [
+      0.0,
+      -0.3333333333333333,
+      0.0
+    ]
+  ],
+  "Minv_inf_opnorm": 0.4444444444444444,
+  "pullback_box_R": 10.0,
+  "pullback_cheb_halfwidth_per_axis": [
+    3.333333333333333,
+    4.444444444444445,
+    3.333333333333333
+  ],
+  "pullback_ellipsoid_semiaxes_R_over_sigma": [
+    2.8237569612767883,
+    3.3333333333333335,
+    3.9348680723879
+  ],
+  "alpha_isotropic(||Minv||_inf)": 0.4444444444444444,
+  "alpha_worst_direction(1/sigma_min)": 0.39348680723879004,
+  "alpha_best_direction(1/sigma_max)": 0.2823756961276789,
+  "alpha_geo_mean": 0.33333333333333337,
+  "worst_direction_risk": "sigma_min=2.5414 < 3 => along its right-singular direction M dilates by only 2.5414, so M^{-1} contracts by only 1/2.5414=0.3935 there. A walk segment aligned with this direction contracts the dilated-old term by ~0.393 instead of the nominal 1/3=0.333. Since 0.3935 < 1 the term still contracts, so alpha stays below 1 in EVERY direction (max is 1/sigma_min=0.3935). No direction makes alpha>=1."
+}
