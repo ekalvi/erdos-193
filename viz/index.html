@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>erdos-193 — no three in a line, forever?</title>
 <meta name="description" content="A computational attack on Erdős Problem #193: can a walk on the integer grid avoid every three-in-a-line, forever?">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -331,20 +332,26 @@
     <p><b>This project got unstuck because of a dishwasher.</b> Every early attempt built
     self-copying patterns that stacked like plates &mdash; each scale aligned with the last, and
     alignment is exactly what this problem punishes (we eventually proved all such <em>aligned</em>
-    constructions must fail — the Perron&ndash;Frobenius no-go in the <a href="progress.html" style="color:hsl(var(--link))">research log</a>). Then <b>Amanie</b> shared a Reddit post about loading
+    constructions must fail — the Perron&ndash;Frobenius no-go in the <a href="progress.html" style="color:hsl(var(--link))">research log</a>). Then his collaborator <a href="https://github.com/amanieismail"><b>Amanie&nbsp;Ismail</b></a> shared a Reddit post about loading
     bowls in a dishwasher, and Erik noticed the bowls do something plates don&rsquo;t: they nest
     <em>at a tilt</em> &mdash; the same shape repeated, each one offset and rotated from the last.
     Translated into mathematics, that became the whole construction: enlarge the walk by a
     matrix that also <em>twists</em> it by an angle that never repeats, so no two scales can ever
     line up. That one idea &mdash; imbrication &mdash; is the backbone of the record walks and of the
     entire proof strategy on this site.</p>
-    <p style="margin-top:8px">The project is built and run by
+    <p style="margin-top:8px">The project is built and steered by
     <a href="https://github.com/ekalvi">Erik Kalviainen</a> (<code>ekalvi</code>), a software
-    engineer in Canada, on an always-on Mac in his homelab. The mathematics, code and
-    computations are driven by <b>Claude Fable 5</b> (Anthropic&rsquo;s research-grade AI) working
-    autonomously under Erik&rsquo;s direction, with strategy review from a second AI (GPT&nbsp;5.6)
-    &mdash; and every result is verified by exact integer arithmetic that anyone can re-run.
-    Idea credit where it&rsquo;s due: to Amanie, and to whoever loaded that dishwasher.</p>
+    engineer in Canada, on an always-on Mac in his homelab, with
+    <a href="https://github.com/amanieismail">Amanie Ismail</a> collaborating on ideas and
+    direction. The mathematics, code and computation are driven by <b>Claude</b> — a combination
+    of Anthropic&rsquo;s <b>Fable&nbsp;5</b> and <b>Opus&nbsp;4.8</b> — working autonomously under
+    Erik&rsquo;s direction, with strategy review from a third model, <b>GPT&nbsp;5.6</b>; every
+    result is verified by exact integer arithmetic that anyone can re-run.</p>
+    <p style="margin-top:8px"><b>By the numbers.</b> Roughly <b>6 days</b> of work (11&ndash;16&nbsp;July&nbsp;2026),
+    <b>107 commits</b>, <b>112 analysis programs</b>, and <b>8 construction rounds</b> to the
+    311,738-point record &mdash; across dozens of multi-agent AI runs and, very roughly, on the order
+    of <b>100 core-hours</b> of exact computation (a rough estimate). Idea credit where it&rsquo;s
+    due: to Amanie, and to whoever loaded that dishwasher.</p>
   </div>
 
   <h2>Explore</h2>

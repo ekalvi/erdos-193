@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Progress — erdos-193</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -73,10 +74,9 @@ const EVENTS = [
   ['build','🏗️','Site launched','erdos-193.q5m.io: six-diagram proof walkthrough, interactive demo, this log.',['viz']],
   ['build','🏗️','Interactive 3D construction viewer','Orbitable 3D rendering of the record run\'s real levels 0–4 with animated enlarge-twist-stitch rounds.',['viz/walk3d.html']],
   ['ok','✅','The dependency graph is sparse — and the certificate simplifies','Cross-segment measurement (all partners, 8 segments): total adversarial bad mass ≈ 0.4 per stitch decision — below 1, so a safe word always exists by counting alone. Only ~400–900 of 2,457 partners interact at all, with mass concentrated in a handful — the asymmetric-LLL profile, replacing the 6.5×10⁷-template pessimism.',['REPORT.md']],
-
- ]],
- ['Now', [
   ['sci','🔬','Levels decouple — the proof may need no Local Lemma at all','Creation-time semantics means a completed level is frozen safe forever, so each level only needs its OWN safe stitching to exist. With measured bad mass ≈0.4 < 1 per stitch, that is potentially a greedy counting argument + induction. Worst-case conditional measurements now running to test it.',['REPORT.md']],
+ ]],
+ ['July 14', [
   ['ok','✅','The ledger closes: safe stitches always exist','All four event families measured — own lines 0.317, received cross ~0.10, Markov future-tax 0.333, triple-newborn ≤0.028. Total ≈0.78 < 1: at every stitch decision, a safe and future-considerate word exists by counting alone, with ~22% headroom.',['REPORT.md']],
   ['dead','💀','L3 as stated refuted — by our own walk','Overnight hostile attack: three segments of the certified walk had ZERO legal short stitch words (it survived via length-5 stitches), and a legal crowd-hugging run hard-jams at level 2. The naive ledger conflated two measures; honest per-segment bad mass reaches 1.0.',['PROOF-SKELETON.md','design/overnight-lemma-attack.json']],
   ['sci','🔬','The repairs are specified and validated','Length-5 words un-jam every counterexample (with margin); damage is local in space and time; local geometry provably converges (contraction ×0.07–0.22/level, self-correcting). Repaired lemmas L3′/L4′ quantify over the invariant-enforcing construction.',['PROOF-SKELETON.md']],
@@ -91,6 +91,8 @@ const EVENTS = [
   ['ok','✅','Level 7 verified: 100,359 points, no three collinear','The programme\'s largest certified walk — 3.5× the previous record, machine-verified exactly (SHA-256 c8477b01…), independent re-verification running. Zero jams across all 28,709 stitches.',['gate-193-L7.txt','verify_walk.py']],
   ['dead','💀','Gate fixed-point criteria FAIL as pre-registered','N₈₁(L7) = 118.6 vs the registered 112.6 ± 0.7; mid-scale density rising ~2%/level. Diagnosis: the gate\'s deterministic shortest-first choice rule slowly densifies the walk — the 112.6 prediction came from the original constructor\'s randomized choice, which kept density falling. The criteria did their job: they caught the variant drifting.',['gate-stats-L7.json','PROOF-SKELETON.md']],
   ['sci','🔬','Gate v2 verdict: letter FAIL, convergence REAL','All three levels verified (92,732 points at L7), zero escalations anywhere, floors up. N₈₁ falls 118.4 → 111.9 → 109.8 with geometrically contracting steps (×0.33) — a fixed point emerging at ≈109, not the registered 112.6 (which came from the original constructor\'s extrapolation). The KS letter-test was unachievable at this sample size for any constructor of the family. Verdict recorded as FAIL on the letter; the convergence the proof needs is now visible on the actual proof orbit.',['gate2-stats-L7.json','PROOF-SKELETON.md']],
+ ]],
+ ['July 15', [
   ['ok','✅','The availability floor does NOT erode — L3″ holds at three scales','Complete v2 ledger, 12,154 recorded stitches, zero escalations, zero jams. Floors: 317 → 180 → 271 words (the level-7 floor went UP); mean availability rising (0.47 → 0.46 → 0.53); below-δ share falling (4.9% → 4.2% → 3.1%). Word supply is bounded away from zero with improving margins on the proof orbit.',['gate2-ledger-L7.json','PROOF-SKELETON.md']],
   ['ok','✅','Level 8 PASSES the pre-registered convergence test','The prediction, committed before the run: N₈₁(L8) = 109.1 ± 0.4. The result: 109.395 ± 0.048 — inside the band. The density trajectory 118.4 → 111.9 → 109.8 → 109.4 has increments −6.5, −2.1, −0.37, contracting ×0.17 — a renormalization fixed point at ≈109.3, demonstrated out-of-sample on the proof\'s own orbit. Zero jams across 92,731 stitches. The 311,738-point walk is now in independent triple-free verification.',['PROOF-SKELETON.md','gate2-stats-L8.json']],
   ['ok','✅','The recursion lemma reduces to a single inequality','Agentic computer-assisted attack (derive → close → adversarial verify): the level-to-level crowding recursion is now an EXACT set identity (0 mismatches over 36,000 stitches), the contraction is PROVEN (M\'s singular values 2.54 / 3.00 / 3.54 all exceed 1, so it spreads points out in every direction), and the refill is bounded (≈20, hard cap 44). Everything reduces to one falsifiable, level-uniform inequality — that the walk stays "curve-like" (local dimension ≈1) at every scale — already satisfied in all data with margin.',['PROOF-SKELETON.md','design/lemma']],
@@ -100,7 +102,10 @@ const EVENTS = [
   ['sci','🔬','The whole remaining proof collapses to ONE lemma','We tried to prove the refill bound cheaply; it turned out to be the hard core in disguise. Packing gives only a loose cubic bound and the induction diverges — so the sharp bound, the tight constant, and the availability floor all reduce to a single statement: the walk is curve-like at every scale (it threads any ball in ~radius-many points, not a whole cube). Everything else in the proof is done or a finite check; this one lemma is now the entire game.',['PROOF-SKELETON.md','design/lemma']],
   ['ok','✅','The fishing-line idea pays off: cross-scale no-tangle, proven','Reframing the curve-like lemma as an unspooling thread that can\'t tangle: there is a "spool" coordinate that increases by exactly one per level and never reels back more than half a turn — which, with the deep-tail separation, PROVES the walk can never drift back near far-away parts of itself. The far-scale half of the lemma is now a theorem. (Two other exclusion mechanisms — the no-3-line rule, the twist angle — were tested and refuted with numbers.)',['PROOF-SKELETON.md','design/lemma/exclusion']],
   ['sci','🔬','The remaining lemma is now a textbook condition','The enlarging matrix is an exact 3× rotation in the right metric (an exact integer identity), so the walk is a genuinely self-similar fractal — which means a classical theorem (Mauldin–Williams, 1988) supplies the whole remaining lemma, with every hypothesis proven except one: the Open Set Condition. That condition is measured satisfied and stable across levels; proving it for this adaptive construction is the single frontier. The residue went from a bespoke inequality to a named, 40-year-studied condition.',['CONDITIONAL-THEOREM.md','design/lemma/ahlfors']],
+ ]],
+ ['July 16', [
   ['ok','✅','Deliverable: a conditional theorem you can check','A referee-checkable write-up: Erdős #193 is YES, modulo one geometric regularity lemma (the Open Set Condition). The base walk, inheritance, and induction are proven; availability is a finite check given the lemma; and a full stack of machinery around it — exact recursion, no-blow-up over 79M words, exact self-similarity, deep-tail collapse, cross-scale transience — is proven. One standard condition stands between this and an unconditional proof.',['CONDITIONAL-THEOREM.md']],
+  ['ok','✅','OSC de-risked: multiplicity bounded across 8 seeds, and finite over the whole closure','A decisive fork tested the one open lemma from two sides. Rebuilt the walk from 8 independent random seeds: the covering multiplicity (the OSC quantity) stays in {3,4} for every seed and generation — so boundedness is a property of the construction rules, not lucky path choices. And a non-circular argument proves that multiplicity is FINITE and level-independent over the ENTIRE lattice closure, from the exact 3/8/24 anchor-root separation alone (no legality, no OSC assumed). Bigger-twist matrices give a purer thread but no extra margin. Working estimate for a full unconditional proof: ~55%.',['design/osc/prongA_multiplicity.py','design/osc/closure_multiplicity.py']],
   ['live','🔄','The frontier: prove the Open Set Condition','Show the cylinder covering multiplicity stays bounded on the finite menu-closure graph — converting the measured condition into a one-generation finite check (Schief, 1994). That single step closes the lemma, and with it the unconditional proof.',['CONDITIONAL-THEOREM.md']],
  ]],
 ];
@@ -129,7 +134,11 @@ const STAMPS = {
 "A rigorous induction reduces boundedness to one structural fact": "Jul 15 · 14:01 EDT",
 "PROVEN: the walk can never densify without limit": "Jul 15 · 16:33 EDT",
 "A rigorous LINEAR crowding bound — and a scare investigated to ground": "Jul 15 · 17:05 EDT",
-"The whole remaining proof collapses to ONE lemma": "Jul 15 · 17:30 EDT"
+"The whole remaining proof collapses to ONE lemma": "Jul 15 · 17:30 EDT",
+"The fishing-line idea pays off: cross-scale no-tangle, proven": "Jul 15 · 20:14 EDT",
+"The remaining lemma is now a textbook condition": "Jul 15 · 22:41 EDT",
+"Deliverable: a conditional theorem you can check": "Jul 16 · 06:01 EDT",
+"OSC de-risked: multiplicity bounded across 8 seeds, and finite over the whole closure": "Jul 16 · 10:35 EDT"
 };
 // STAMPS-END
 const C = {ok:'--tl-ok', dead:'--tl-dead', sci:'--tl-sci', build:'--tl-build', live:'--tl-live'};
