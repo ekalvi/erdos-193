@@ -364,3 +364,16 @@ bigger-twist matrices M_m=((m,0,0),(0,0,-m),(0,m,-1)) (eigenvalue moduli m, irra
 arccos(-1/2m)) to push box-dimension d=log λ/log m toward 1.0 (purer thread), seeking a construction
 where the PROVABLE packing bound is already availability-grade — closing unconditionally by construction
 choice rather than by the hard lemma.
+
+**L4' — matrix-sweep redesign experiment (2026-07-16, design/lemma/exclusion/matrix_sweep.*).**
+Swept bigger-twist M_m=((m,0,0),(0,0,-m),(0,m,-1)), m=3..6, seed-193 base, to level 3. RESULT: none
+jam; box-dimension DROPS monotonically toward a pure thread — d = log λ/log m = 1.071/1.059/1.042/1.035
+for m=3/4/5/6 (bigger twist ⇒ purer thread, confirming the fishing-line thesis). BUT does NOT sidestep
+the lemma: the PROVABLE packing bound stays cubic (108 at r=m, all m — anchors are m-separated but the
+danger radius also ~m, scale-invariant ratio); bigger m makes the walk ACTUALLY more thread-like without
+making it PROVABLY so. Cube-vs-thread gap (provable/actual @ r=m) shrinks 108/5=21.6× → 108/11=9.8× but
+never closes by matrix choice. ⇒ redesign gives more margin (lower d) but the anti-stacking lemma is
+still required for a rigorous availability bound. The residue survives its 6th distinct attack; it is
+essentially AHLFORS-REGULARITY of an ADAPTIVE self-affine curve (uniform c(r)≤C·r^d, not just the
+dimension) — the adaptivity (collinearity-avoiding stitch rule) is what blocks the standard IFS
+regularity theorems, and is the next angle.

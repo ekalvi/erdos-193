@@ -1,0 +1,5 @@
+m | jam? | lam(pts/lvl) | extent-ratio | DIM=logλ/logext | crowd@r=m | provable-packing@r=m
+3 | none | 3.24 | 3.00 | 1.071 | 5 | 108
+4 | none | 4.35 | 4.01 | 1.059 | 9 | 108
+5 | none | 5.35 | 5.00 | 1.042 | 10 | 108
+6 | none | 6.39 | 6.00 | 1.035 | 11 | 108
