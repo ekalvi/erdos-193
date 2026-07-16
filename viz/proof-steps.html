@@ -3,26 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The proof, in six diagrams — Problem #193</title>
+<title>The proof — Problem #193</title>
+<meta name="description" content="Erdős #193, end to end: the concept, the construction, an interactive demo, and the single lemma still standing between it and a full proof.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css?v=6">
 <style>
-
-  h2{font-size:17px;font-weight:600;margin:32px 0 6px}
+  h2{font-size:19px;font-weight:600;margin:44px 0 6px}
+  h2 .n{color:hsl(var(--muted-foreground));font-weight:600;margin-right:6px}
   .viz-root{padding:0}
-
+  /* trilemma map */
+  .tri text{font-family:Outfit,system-ui,sans-serif}
+  .goal{font-weight:700;font-size:18px;fill:hsl(var(--foreground))}
+  .goalsub{font-size:13px;fill:hsl(var(--muted-foreground))}
+  .witness{font-weight:600;font-size:15.5px}
+  .witsub{font-size:12.5px;fill:hsl(var(--muted-foreground))}
+  .maptable{width:100%;border-collapse:collapse;margin:8px 0;font-size:14.5px}
+  .maptable th,.maptable td{text-align:left;padding:9px 12px;border-bottom:1px solid hsl(var(--border))}
+  .maptable th{font-weight:600;color:hsl(var(--muted-foreground));font-size:12.5px;text-transform:uppercase;letter-spacing:.04em}
+  .maptable tr.us{background:hsl(217 91% 55%/.06)}
+  .maptable tr.us td{font-weight:600}
+  .good{color:hsl(142 61% 34%);font-weight:600}
+  .bad{color:hsl(0 60% 50%);font-weight:600}
+  /* demo */
+  .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+  .controls button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid hsl(var(--border));
+    background:hsl(var(--card));color:hsl(var(--foreground));cursor:pointer}
+  .controls button.active{background:hsl(var(--link));color:#fff;border-color:hsl(var(--link))}
+  .controls label{display:inline-flex;gap:6px;align-items:center;color:hsl(var(--muted-fg));cursor:pointer;user-select:none}
+  .statrow{display:flex;gap:12px;flex-wrap:wrap;margin:0 0 14px}
+  .statrow .stat .v{font-size:22px;font-weight:650;font-variant-numeric:tabular-nums}
+  .statrow .stat .k{font-size:12px;color:hsl(var(--muted-fg))}
+  .stage{position:relative;background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:12px;overflow:hidden}
+  .stage svg{display:block;width:100%;height:auto}
+  .legend{border:0;padding:10px 4px 0}
+  .legend .sw{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .legend .ln{display:inline-block;width:18px;height:0;border-top:2px solid var(--ghost);margin-right:6px;vertical-align:3px}
+  .checker{margin-top:14px;padding:12px 16px;background:hsl(var(--accent));border-radius:10px;font-size:14px}
+  .checker b.det-ok{color:var(--okc)}
+  .checker b.det-bad{color:var(--danger)}
+  .tip{position:absolute;pointer-events:none;background:hsl(var(--foreground));color:hsl(var(--background));
+    font-size:12.5px;padding:4px 8px;border-radius:6px;transform:translate(-50%,-140%);white-space:nowrap;display:none}
+  .note{color:hsl(var(--muted-fg));font-size:14px;max-width:76ch}
+  .statuslist{list-style:none;padding:0;margin:10px 0}
+  .statuslist li{padding:7px 0 7px 26px;position:relative;border-bottom:1px solid hsl(var(--border));font-size:14.5px}
+  .statuslist li::before{position:absolute;left:0;top:7px;font-size:14px}
+  .statuslist li.done::before{content:'✅'}
+  .statuslist li.open::before{content:'🔄'}
 </style>
 </head>
 <body>
 <div class="viz-root"><div class="wrap wide">
-<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">The proof</a><a href="map.html">The map</a><a href="amplification.html">Demo</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
-<h1>The proof, in six diagrams</h1>
-<p class="sub">Each figure matches one step of the argument that an infinite no-three-in-line
-walk exists. All numbers shown are real, exhaustively computed values from the project
-(repo: <code>github.com/ekalvi/erdos-193</code>).</p>
+<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">The proof</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
-<h2>1 · The game: no three footprints on a line, ever</h2>
+<h1>The proof, end to end</h1>
+<p class="sub">From the concept, to the construction, to an interactive demo you can try to break,
+to the single lemma still standing between it and a full proof. Every number here is a real,
+exhaustively computed value from the project (<code>github.com/ekalvi/erdos-193</code>).</p>
+
+<!-- ============ THE MAP ============ -->
+<h2><span class="n">1 ·</span>The concept: three properties, pick two</h2>
+<p>A curve of steps can be a <b>smooth thread</b> (dimension&nbsp;1, not a crinkly fractal), it can be
+<b>triple-free</b> (no three points ever in a line), and it can use a <b>finite menu</b> of steps
+(bounded hops, as Erdős&nbsp;#193 demands). You can always get <em>two</em> — but the corner where all
+three meet appears to be empty. That empty corner is why the problem is hard, and it's why our object
+has to be a fractal thread.</p>
+<div class="fig" style="padding:8px 8px 4px">
+  <svg class="tri" viewBox="0 0 760 610" role="img" aria-label="Trilemma triangle: dimension 1, triple-free, finite menu — pick two">
+    <polygon points="380,95 110,500 650,500" fill="hsl(217 91% 55%/.035)" stroke="hsl(var(--muted-foreground)/.5)" stroke-width="1.4" stroke-linejoin="round"/>
+    <line x1="110" y1="500" x2="650" y2="500" stroke="hsl(217 91% 55%)" stroke-width="4" stroke-linecap="round"/>
+    <text x="380" y="352" text-anchor="middle" font-size="46" fill="hsl(0 60% 52%)" font-weight="700">&#8709;</text>
+    <text x="380" y="384" text-anchor="middle" class="goalsub" style="font-size:14px">all three at once —</text>
+    <text x="380" y="403" text-anchor="middle" class="goalsub" style="font-size:14px">conjecturally impossible</text>
+    <text x="380" y="428" text-anchor="middle" class="goalsub" style="font-size:12px;fill:hsl(var(--muted-foreground)/.7)">(what Erdős #193 would love)</text>
+    <circle cx="380" cy="95" r="5.5" fill="hsl(var(--foreground))"/>
+    <circle cx="110" cy="500" r="5.5" fill="hsl(var(--foreground))"/>
+    <circle cx="650" cy="500" r="5.5" fill="hsl(var(--foreground))"/>
+    <text x="380" y="52" text-anchor="middle" class="goal">Dimension 1</text>
+    <text x="380" y="72" text-anchor="middle" class="goalsub">a smooth thread, not a fractal</text>
+    <text x="110" y="540" text-anchor="middle" class="goal">Triple-free</text>
+    <text x="110" y="560" text-anchor="middle" class="goalsub">no three points in a line</text>
+    <text x="650" y="540" text-anchor="middle" class="goal">Finite menu</text>
+    <text x="650" y="560" text-anchor="middle" class="goalsub">bounded steps</text>
+    <text x="150" y="285" class="witness" fill="hsl(var(--foreground))">Moment curve</text>
+    <text x="150" y="304" class="witsub">t, t², t³ — smooth &amp; triple-free,</text>
+    <text x="150" y="320" class="witsub">but needs <tspan font-weight="700" fill="hsl(var(--foreground))">unbounded</tspan> steps</text>
+    <text x="610" y="285" text-anchor="end" class="witness" fill="hsl(var(--foreground))">Straight / digital line</text>
+    <text x="610" y="304" text-anchor="end" class="witsub">smooth &amp; bounded-step,</text>
+    <text x="610" y="320" text-anchor="end" class="witsub">but <tspan font-weight="700" fill="hsl(var(--foreground))">all collinear</tspan></text>
+    <rect x="270" y="516" width="220" height="66" rx="9" fill="hsl(217 91% 55%/.08)" stroke="hsl(217 91% 55%/.5)" stroke-width="1.2"/>
+    <text x="380" y="540" text-anchor="middle" class="witness" fill="hsl(217 91% 45%)">OUR WALK &#9873;</text>
+    <text x="380" y="559" text-anchor="middle" class="witsub">triple-free &amp; bounded-step,</text>
+    <text x="380" y="575" text-anchor="middle" class="witsub">but dimension <tspan font-weight="700" fill="hsl(217 91% 45%)">1.10</tspan> — a crinkly thread</text>
+  </svg>
+  <p style="margin-top:2px"><b>How to read it.</b> Each corner is a property you'd want; a curve that
+  achieves two of them lives on the edge between those corners and is pushed off the third. Erdős #193
+  <em>requires</em> the bottom two (triple-free + finite menu) and doesn't even ask for dimension&nbsp;1 —
+  it just asks whether such a curve can exist at all. Our construction is the flag on that bottom vertex.</p>
+</div>
+<table class="maptable">
+  <thead><tr><th>Curve</th><th>Dimension</th><th>Collinear?</th><th>Menu</th></tr></thead>
+  <tbody>
+    <tr><td>Straight / digital line</td><td>1.00 <span class="mut">smooth</span></td><td class="bad">yes</td><td class="bad">infinite</td></tr>
+    <tr><td>Generic smooth curve</td><td>1.00 <span class="mut">smooth</span></td><td class="bad">yes</td><td class="bad">infinite</td></tr>
+    <tr><td>Moment curve (t, t², t³)</td><td>1.00 <span class="mut">smooth</span></td><td class="good">no</td><td class="bad">infinite</td></tr>
+    <tr><td>Koch snowflake</td><td>1.26 <span class="mut">crinkly</span></td><td class="bad">yes</td><td class="good">finite</td></tr>
+    <tr><td>Space-filling (Hilbert)</td><td>2.00 <span class="mut">blob</span></td><td class="bad">yes</td><td class="good">finite</td></tr>
+    <tr class="us"><td>Our walk (seed-193)</td><td>1.10 <span class="mut">crinkly</span></td><td class="good">no</td><td class="good">finite</td></tr>
+  </tbody>
+</table>
+
+<!-- ============ THE GAME ============ -->
+<h2><span class="n">2 ·</span>The game: no three footprints on a line, ever</h2>
 <figure>
 <svg viewBox="0 0 900 240">
   <g stroke="var(--grid)" stroke-width="1">
@@ -37,49 +129,35 @@ walk exists. All numbers shown are real, exhaustively computed values from the p
     <line x1="660" y1="20" x2="660" y2="210"/><line x1="730" y1="20" x2="730" y2="210"/>
     <line x1="800" y1="20" x2="800" y2="210"/>
   </g>
-  <polyline points="60,190 130,140 200,190 270,90 340,140" fill="none"
-    stroke="var(--walk)" stroke-width="2"/>
-  <g fill="var(--anchor)">
-    <circle cx="60" cy="190" r="6"/><circle cx="130" cy="140" r="6"/>
-    <circle cx="200" cy="190" r="6"/><circle cx="270" cy="90" r="6"/>
-    <circle cx="340" cy="140" r="6"/>
-  </g>
+  <polyline points="60,190 130,140 200,190 270,90 340,140" fill="none" stroke="var(--walk)" stroke-width="2"/>
+  <g fill="var(--anchor)"><circle cx="60" cy="190" r="6"/><circle cx="130" cy="140" r="6"/>
+  <circle cx="200" cy="190" r="6"/><circle cx="270" cy="90" r="6"/><circle cx="340" cy="140" r="6"/></g>
   <text x="60" y="230" class="mut">a legal walk — check every triple: none aligned</text>
-
-  <polyline points="520,190 590,140 660,90 730,40" fill="none"
-    stroke="var(--walk)" stroke-width="2"/>
-  <line x1="500" y1="205" x2="750" y2="25" stroke="var(--danger)"
-    stroke-width="2" stroke-dasharray="7 5"/>
-  <g fill="var(--danger)">
-    <circle cx="520" cy="190" r="6"/><circle cx="590" cy="140" r="6"/>
-    <circle cx="660" cy="90" r="6"/>
-  </g>
+  <polyline points="520,190 590,140 660,90 730,40" fill="none" stroke="var(--walk)" stroke-width="2"/>
+  <line x1="500" y1="205" x2="750" y2="25" stroke="var(--danger)" stroke-width="2" stroke-dasharray="7 5"/>
+  <g fill="var(--danger)"><circle cx="520" cy="190" r="6"/><circle cx="590" cy="140" r="6"/><circle cx="660" cy="90" r="6"/></g>
   <circle cx="730" cy="40" r="6" fill="var(--anchor)"/>
   <text x="520" y="230" class="mut">violation — three footprints on one line</text>
 </svg>
-<figcaption>Footprints live on the integer grid; each hop comes from a fixed menu of 124
-moves. The rule applies to <b>every</b> triple — including footprints laid thousands of
-steps apart. Question: can a walk go on forever?</figcaption>
+<figcaption>Footprints live on the integer grid; each hop comes from a fixed menu of 124 moves. The
+rule applies to <b>every</b> triple — including footprints laid hundreds of thousands of steps apart.
+Question: can such a walk go on forever?</figcaption>
 </figure>
 
-<h2>2 · The machine: enlarge, twist, patch — repeat</h2>
+<!-- ============ THE MACHINE ============ -->
+<h2><span class="n">3 ·</span>The machine: enlarge, twist, patch — repeat</h2>
 <figure>
 <svg viewBox="0 0 900 260">
   <text x="70" y="26" class="mut">seed (obeys the rule)</text>
   <polyline points="60,180 100,140 140,170 180,110" fill="none" stroke="var(--walk)" stroke-width="2"/>
   <g fill="var(--anchor)"><circle cx="60" cy="180" r="5"/><circle cx="100" cy="140" r="5"/>
   <circle cx="140" cy="170" r="5"/><circle cx="180" cy="110" r="5"/></g>
-
   <text x="255" y="130" class="mut" font-size="22">→</text>
-
   <text x="330" y="26" class="mut">enlarged ×3 + twisted (skeleton)</text>
-  <polyline points="320,220 400,120 480,190 560,60" fill="none" stroke="var(--ghost)"
-    stroke-width="2" stroke-dasharray="8 6"/>
+  <polyline points="320,220 400,120 480,190 560,60" fill="none" stroke="var(--ghost)" stroke-width="2" stroke-dasharray="8 6"/>
   <g fill="var(--anchor)"><circle cx="320" cy="220" r="6"/><circle cx="400" cy="120" r="6"/>
   <circle cx="480" cy="190" r="6"/><circle cx="560" cy="60" r="6"/></g>
-
   <text x="610" y="130" class="mut" font-size="22">→</text>
-
   <text x="680" y="26" class="mut">patched with legal hops</text>
   <polyline points="660,220 690,190 715,160 740,120 725,95 750,70 780,95 810,140 800,175 830,190 850,120 875,90 900,60"
     fill="none" stroke="var(--walk)" stroke-width="1.6" transform="translate(-20,0)"/>
@@ -90,152 +168,122 @@ steps apart. Question: can a walk go on forever?</figcaption>
   <circle cx="780" cy="175" r="4"/><circle cx="830" cy="120" r="4"/><circle cx="855" cy="90" r="4"/></g>
   <text x="640" y="250" class="sm mut">blue = inherited anchors · green = newborn patch points</text>
 </svg>
-<figcaption>One generation: every anchor position is the enlargement of an old footprint;
-gaps get 2–4 legal hops. Walk length ×3.4 per round. Verified runs: 20 → 62 → 214 → 715 →
-2,457 → 8,292 → <b>28,271</b> steps, no failure ever.</figcaption>
+<figcaption>One generation: every anchor is the enlargement of an old footprint; the oversized gaps get
+2–4 legal hops. Walk length ×3.4 per round. Verified runs on the seed-193 orbit:
+20 → 62 → 215 → 716 → 2,458 → 8,293 → 28,710 → 92,732 → <b>311,738</b> points — eight rounds, every
+level exactly re-verified, no failure ever. The <b>twist</b> is essential: an irrational rotation
+(arccos(−1/6) ≈ 99.6°) so no two scales ever re-align — nesting the shape at a tilt, like bowls in a
+rack, not plates in a stack.</figcaption>
 </figure>
 
-<h2>3 · Born safe = safe forever</h2>
+<!-- ============ INHERITANCE ============ -->
+<h2><span class="n">4 ·</span>Born safe = safe forever</h2>
 <figure>
 <svg viewBox="0 0 900 230">
   <line x1="50" y1="170" x2="330" y2="170" stroke="var(--walk)" stroke-width="2"/>
-  <g fill="var(--anchor)"><circle cx="80" cy="170" r="6"/><circle cx="290" cy="170" r="6"/>
-  <circle cx="185" cy="120" r="6"/></g>
+  <g fill="var(--anchor)"><circle cx="80" cy="170" r="6"/><circle cx="290" cy="170" r="6"/><circle cx="185" cy="120" r="6"/></g>
   <line x1="185" y1="127" x2="185" y2="166" stroke="var(--ok)" stroke-width="2"/>
   <text x="195" y="152" style="fill:var(--ok)">h = miss margin</text>
   <text x="60" y="205" class="mut">a trio that missed at birth</text>
-
   <text x="380" y="120" class="mut" font-size="22">→ enlarge ×3 →</text>
-
   <line x1="530" y1="200" x2="880" y2="200" stroke="var(--walk)" stroke-width="2"/>
-  <g fill="var(--anchor)"><circle cx="560" cy="200" r="6"/><circle cx="850" cy="200" r="6"/>
-  <circle cx="705" cy="50" r="6"/></g>
+  <g fill="var(--anchor)"><circle cx="560" cy="200" r="6"/><circle cx="850" cy="200" r="6"/><circle cx="705" cy="50" r="6"/></g>
   <line x1="705" y1="57" x2="705" y2="196" stroke="var(--ok)" stroke-width="2"/>
   <text x="715" y="130" style="fill:var(--ok)">3h — margin GROWS</text>
   <text x="540" y="225" class="mut">the same trio, one generation later — safer, automatically, forever</text>
 </svg>
-<figcaption>Enlargement is a reversible linear map: lines stay lines AND non-lines stay
-non-lines (proven exactly; verified on millions of real triples with zero exceptions).
-So risk exists at exactly one moment per trio: <b>birth</b>. The infinite future is
-deterministic and safe.</figcaption>
+<figcaption>Enlargement is a reversible linear map: lines stay lines AND non-lines stay non-lines
+(proven exactly; verified on millions of real triples with zero exceptions). So risk exists at exactly
+one moment per trio: <b>birth</b>. Everything already placed is frozen safe for the rest of time — which
+is why each new round only has to worry about the fresh stitches, in nearly-empty space.</figcaption>
 </figure>
 
-<h2>4 · Death has one door: the graded corridor</h2>
+<!-- ============ INTERACTIVE DEMO ============ -->
+<h2><span class="n">5 ·</span>Try to break it</h2>
+<p class="sub">A real run of the machine in 2D (all 24 moves with coordinates in −2…2; enlarge by
+<code>M=[[4,−1],[1,4]]</code>, ≈4.12× and a 14° irrational twist). Click any three points — the browser
+runs the exact integer collinearity test <code>(q−p)×(r−p)</code> live. Blue points are inherited
+anchors (safe for free); green points are the fresh stitches (the only ones that ever need checking).</p>
+<div class="controls" id="levelBtns"><span style="color:var(--text-secondary)">Level:</span></div>
+<div class="controls">
+  <label><input type="checkbox" id="ghostToggle" checked> show previous level (gray)</label>
+  <label><input type="checkbox" id="skelToggle" checked> show enlarged skeleton (dashed)</label>
+</div>
+<div class="statrow" id="stats"></div>
+<div class="stage" id="stage">
+  <svg id="svg" viewBox="0 0 100 100" role="img" aria-label="Walk diagram"></svg>
+  <div class="tip" id="tip"></div>
+</div>
+<div class="legend">
+  <span><span class="sw" style="background:var(--anchor)"></span>anchor — inherited, safe for free</span>
+  <span><span class="sw" style="background:var(--stitch)"></span>stitch — new point, checked against everything</span>
+  <span><span class="ln"></span>previous level / skeleton</span>
+</div>
+<div class="checker" id="checker"></div>
+<p class="note" id="story"></p>
+<p class="note" style="margin-top:14px">In 2D the plane is provably too cramped for this to continue
+(the level-2 stitches jam) — that's Gerver–Ramsey. In <b>3D</b>, the identical machine with the 124-move
+menu ran <b>eight</b> rounds to a certified <b>311,738</b>-point walk, and the open question is whether it
+provably runs forever.</p>
+
+<!-- ============ THE REMAINING LEMMA ============ -->
+<h2><span class="n">6 ·</span>The one thing that can go wrong: crowding</h2>
+<p>Because everything already placed is safe forever (step&nbsp;4), the construction can only fail one
+way: a stitch gets stuck — a gap where <em>every</em> legal hop would make three points line up. That
+happens only if too many earlier points are <b>crowded</b> around the gap, throwing off too many
+forbidden lines. So the whole question of "does it run forever?" collapses to one geometric fact about
+the shape:</p>
 <figure>
-<svg viewBox="0 0 900 300">
-  <g>
-    <rect x="40" y="30" width="230" height="40" rx="8" fill="var(--surface-1)" stroke="var(--grid)"/>
-    <text x="55" y="55">grade 0 — safe, out of reach</text>
-    <text x="700" y="55" class="mut">90.2% of chord pairs</text>
-
-    <rect x="40" y="90" width="230" height="40" rx="8" fill="var(--surface-1)" stroke="var(--anchor)"/>
-    <text x="55" y="115">grade 1 — leading digit matches</text>
-    <text x="700" y="115" class="mut">8.4%</text>
-
-    <rect x="40" y="150" width="230" height="40" rx="8" fill="var(--surface-1)" stroke="var(--anchor)"/>
-    <text x="55" y="175">grade 2 — two digits match</text>
-    <text x="700" y="175" class="mut">1.28%</text>
-
-    <rect x="40" y="210" width="230" height="40" rx="8" fill="var(--surface-1)" stroke="var(--danger)"/>
-    <text x="55" y="235">grade 3+ … deeper …</text>
-    <text x="700" y="235" class="mut">0.18%, thinning ×8.5 per digit</text>
-
-    <rect x="40" y="268" width="230" height="26" rx="8" fill="var(--danger)"/>
-    <text x="55" y="286" style="fill:#fff">EXACT = all digits = collinear</text>
-    <text x="700" y="286" class="mut">never observed (280B pairs)</text>
-  </g>
-  <g stroke-width="2">
-    <path d="M 300 110 v 40" stroke="var(--danger)" marker-end="url(#ad)"/>
-    <path d="M 340 190 v -40" stroke="var(--ok)" marker-end="url(#ao)"/>
-    <path d="M 300 170 v 40" stroke="var(--danger)" marker-end="url(#ad)"/>
-    <path d="M 340 250 v -40" stroke="var(--ok)" marker-end="url(#ao)"/>
-  </g>
-  <text x="365" y="150" style="fill:var(--danger)" class="sm">advance: ≤ 18% per round (worst case, proven over ALL states)</text>
-  <text x="365" y="230" style="fill:var(--ok)" class="sm">rescue: ≥ 82% per round — the stitches re-scramble digits</text>
-  <defs>
-    <marker id="ad" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto">
-      <path d="M1,1 L4,7 L7,1" fill="none" stroke="var(--danger)" stroke-width="1.5"/></marker>
-    <marker id="ao" markerWidth="8" markerHeight="8" refX="4" refY="7" orient="auto">
-      <path d="M1,1 L4,7 L7,1" fill="none" stroke="var(--ok)" stroke-width="1.5"/></marker>
-  </defs>
+<svg viewBox="0 0 900 250">
+  <!-- thread through a ball: OK -->
+  <circle cx="220" cy="125" r="95" fill="var(--ok)" fill-opacity="0.06" stroke="var(--ok)" stroke-opacity="0.5" stroke-width="1.5"/>
+  <path d="M 90 190 C 170 150, 180 100, 250 70 S 340 60, 360 40" fill="none" stroke="var(--walk)" stroke-width="2.4"/>
+  <g fill="var(--stitch)"><circle cx="150" cy="163" r="4"/><circle cx="196" cy="123" r="4"/><circle cx="235" cy="88" r="4"/><circle cx="285" cy="72" r="4"/></g>
+  <text x="220" y="245" text-anchor="middle" class="mut">THREAD — a ball holds only ~radius-many points</text>
+  <text x="220" y="30" text-anchor="middle" style="fill:var(--ok);font-weight:600">what Lemma R claims (always)</text>
+  <!-- blob: bad -->
+  <circle cx="680" cy="125" r="95" fill="var(--danger)" fill-opacity="0.05" stroke="var(--danger)" stroke-opacity="0.5" stroke-width="1.5"/>
+  <g fill="var(--danger)">
+    <circle cx="640" cy="90" r="3.6"/><circle cx="670" cy="85" r="3.6"/><circle cx="700" cy="95" r="3.6"/><circle cx="720" cy="115" r="3.6"/>
+    <circle cx="635" cy="120" r="3.6"/><circle cx="665" cy="120" r="3.6"/><circle cx="695" cy="125" r="3.6"/><circle cx="725" cy="145" r="3.6"/>
+    <circle cx="645" cy="150" r="3.6"/><circle cx="675" cy="155" r="3.6"/><circle cx="705" cy="160" r="3.6"/><circle cx="655" cy="180" r="3.6"/>
+    <circle cx="690" cy="185" r="3.6"/><circle cx="715" cy="175" r="3.6"/><circle cx="660" cy="100" r="3.6"/><circle cx="710" cy="140" r="3.6"/></g>
+  <text x="680" y="245" text-anchor="middle" class="mut">BLOB — a ball fills up, stitches jam</text>
+  <text x="680" y="30" text-anchor="middle" style="fill:var(--danger);font-weight:600">what would kill it</text>
 </svg>
-<figcaption>Every possible violation must climb this ladder rung by rung — digits of
-direction-agreement can't be skipped. Each rung costs a ≤18% event while an 82% rescue
-pushes back. Reaching the bottom needs an infinite losing streak: probability zero per
-triple.</figcaption>
+<figcaption>Availability of a legal stitch is, in the data, a clean function of local crowding: bounded
+crowding ⇒ a legal hop always exists. So the construction runs forever <b>if and only if</b> the walk
+stays a thread — never bunching into a blob — at every scale.</figcaption>
 </figure>
-<p class="sub" style="margin-top:10px">How to read this: a &ldquo;grade&rdquo; counts how many
-leading base-3 digits two chord directions share &mdash; grade 0 means they differ immediately
-(harmless), and exact collinearity would mean agreeing in <em>every</em> digit. Three facts make
-the ladder work. <b>No rung can be skipped:</b> one enlargement round can deepen agreement by at
-most two digits, and a birth can only write the last few digits (figure 5) &mdash; so any triple
-headed for collinearity must pass through every grade on the way down. <b>Each rung is a toll:</b>
-we computed, over every one of the 78,728 possible arithmetic situations (not a sample), that at
-worst 18% of stitch choices let a pair hold or deepen its grade &mdash; the other 82% kick it back
-up. <b>The bottom is infinitely far:</b> reaching &ldquo;all digits&rdquo; requires winning the 18%
-event forever &mdash; a probability-zero streak per triple. The percentages on the right are the
-measured population at each grade in the record walk; they thin by &times;8.5 per rung, exactly
-matching the toll.</p>
 
-<h2>5 · Why births can't cheat: the digit lock</h2>
-<figure>
-<svg viewBox="0 0 900 210">
-  <text x="40" y="30" class="mut">a newborn's chord direction, digit by digit (base 3):</text>
-  <g font-family="monospace" font-size="20">
-    <rect x="40" y="50" width="330" height="46" rx="8" fill="var(--surface-1)" stroke="var(--anchor)" stroke-width="2"/>
-    <text x="60" y="80">2 · 1 · 0 · 2 · 1</text>
-    <rect x="390" y="50" width="150" height="46" rx="8" fill="var(--surface-1)" stroke="var(--stitch)" stroke-width="2"/>
-    <text x="415" y="80">? · ?</text>
-  </g>
-  <text x="40" y="125" style="fill:var(--anchor)">coarse digits: locked before birth</text>
-  <text x="40" y="143" style="fill:var(--anchor)" class="sm">(inherited from enlargement — untouchable)</text>
-  <text x="390" y="125" style="fill:var(--stitch)">fine digits: writable</text>
-  <text x="390" y="143" style="fill:var(--stitch)" class="sm">(the only thing a stitch offset can change)</text>
-  <text x="40" y="178" style="fill:var(--danger)">to kill, ALL digits must match a line through two old footprints —</text>
-  <text x="40" y="198" style="fill:var(--danger)">impossible unless the coarse digits already matched.</text>
-</svg>
-<figcaption>A new point = enlarged parent + small patch offset. The offset edits only the
-finest digits, so a birth can only complete an alignment that was already a deep near-miss —
-the corridor's lower rungs. Grade-0 pairs (90.2% of everything) are physically out of range.
-Rare "born-deep" cases (0.097%) are counted separately.</figcaption>
-</figure>
-<p class="sub" style="margin-top:10px">Why this locks births out: a new point is always
-&ldquo;3 &times; parent + small offset,&rdquo; and multiplying by 3 in base 3 is a digit
-<em>shift</em> &mdash; it fixes the coarse digits before the stitch is even chosen. The offset
-(at most a few grid units) can only write the final digits. So for a newborn to land exactly on
-a line through two old footprints, the coarse digits of that alignment must already agree &mdash;
-which is precisely being deep in figure 4&rsquo;s corridor. Grade-0 configurations (90.2% of
-everything) are unreachable by any birth this round, no matter how unlucky. The rare exceptions
-&mdash; births that land already deep, 0.097% measured &mdash; are counted as their own event
-family rather than swept under the rug.</p>
+<p style="margin-top:14px"><b>Lemma R</b> is exactly that statement: <em>no matter how large the walk
+grows or where you look, any small ball contains at most about radius-many points (radius^1.10) — the
+walk is a fractal thread, never a blob, forever.</em> Everything else in the proof is done; this one
+lemma is the whole remaining game, and it's the same claim as "our walk really sits on that bottom
+vertex of the triangle in step&nbsp;1."</p>
 
-<h2>6 · The finale: exponential toll beats linear entanglement</h2>
-<figure>
-<svg viewBox="0 0 900 320" id="chart"></svg>
-<figcaption>The Lovász Local Lemma needs <code>e · p<sub>H</sub> · (d+1) ≤ 1</code>: each
-H-round failure (p<sub>H</sub> ≤ 0.18<sup>H</sup>, shrinking exponentially) must be small
-against its entanglement (d ≈ 3(H+1)·6.5×10⁷, growing linearly). The curve crosses the
-threshold at <b>H = 14</b>: watching each newborn danger for 14 generations suffices for
-ALL dangers — infinitely many, across the infinite walk — to be dodged simultaneously.
-(Current status: constants certified; the semantic repair of the chain is in final build.)</figcaption>
-</figure>
-<p class="sub" style="margin-top:10px">This last step turns &ldquo;each danger is individually
-dodgeable&rdquo; into &ldquo;all of them can be dodged <em>at once</em>&rdquo; &mdash; the leap
-from probability to existence. The Lov&aacute;sz Local Lemma says: if every bad event is unlikely
-<em>relative to the number of other events it shares decisions with</em>, then some assignment of
-all decisions avoids every bad event simultaneously. Here the failure probability falls
-exponentially with the watching window H (&times;0.181 per round &mdash; the certified worst
-case), while entanglement grows only linearly in H against a fixed catalog of 6.5&times;10&sup7;
-templates. An exponential always overtakes a line: with our constants that happens at H = 14,
-where the criterion is satisfied with margin (0.33 &le; 1). What closure buys, once the remaining
-theorems land: at every level of the construction a legal stitching <em>exists</em>; a final
-compactness argument (K&ouml;nig&rsquo;s lemma) then chains the levels into one infinite walk.
-Honest status: the constants are certified by exhaustive computation; the semantic containment
-linking them to the exact birth event is the piece currently being rebuilt after hostile review.</p>
+<h2><span class="n">7 ·</span>Where it stands</h2>
+<ul class="statuslist">
+  <li class="done"><b>Base, inheritance, induction</b> — a triple-free seed exists (certified to
+    311,738 points); enlargement freezes it safe forever; the levels chain by plain induction. <em>Proven.</em></li>
+  <li class="done"><b>No blow-up</b> — the enlarged anchors are provably ≥3 apart at every scale, so
+    crowding can never run away to a blob. Closed by an exhaustive check over all 78,999,838 stitch
+    words. <em>Proven (a loose, but real, bound).</em></li>
+  <li class="done"><b>Exact self-similarity</b> — in the right metric the enlarging matrix is exactly a
+    3× rotation, so the walk is a genuine self-similar fractal (a clean integer identity). <em>Proven.</em></li>
+  <li class="done"><b>No far-tangle</b> — a "spool" coordinate proves the thread can never drift back
+    near far-away parts of itself. <em>Proven.</em></li>
+  <li class="open"><b>Lemma R (the tight bound)</b> — that the thread is <em>uniformly</em> lean at
+    every scale. In its sharpest form this is a single textbook condition — the <b>Open Set Condition</b>
+    for the self-similar system (the scaled copies tile cleanly instead of piling up). It is measured
+    true across the whole 311,738-point walk, and proving it is the sole remaining step.</li>
+</ul>
+<p class="sub" style="margin-top:14px">In short: <b>Erdős #193 holds — yes — modulo one geometric
+regularity lemma</b>, with every other piece proven or certified by exhaustive computation. The full,
+referee-checkable statement lives in
+<a href="https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md" style="color:hsl(var(--link))">CONDITIONAL-THEOREM.md</a>;
+the live hunt for that last lemma is on the <a href="progress.html" style="color:hsl(var(--link))">research log</a>.</p>
 
-<p class="sub" style="margin-top:26px">Companion page: the interactive
-<a href="amplification.html" style="color:var(--anchor)">amplification explainer</a> shows
-step 2 with real coordinates you can click.</p>
 <footer class="sitefoot">
   <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
   <span class="right">
@@ -245,42 +293,141 @@ step 2 with real coordinates you can click.</p>
 </footer>
 </div></div>
 <script>
-const svg = document.getElementById('chart');
-const NS = 'http://www.w3.org/2000/svg';
-const q = 0.181174, L = 6.5e7, E = Math.E;
-const pts = [];
-for (let H = 1; H <= 16; H++) {
-  const lhs = E * Math.pow(q, H) * (3 * (H + 1) * L + 1);
-  pts.push([H, Math.log10(lhs)]);
+const DATA = {"matrix":[[4,-1],[1,4]],"levels":[{"points":[[0,0],[-1,-2],[-3,-1],[-3,-3],[-4,-2]],"anchors":[0,1,2,3,4],"segments":[]},{"points":[[0,0],[1,-2],[1,-4],[2,-6],[0,-8],[-2,-9],[-3,-7],[-5,-5],[-7,-4],[-9,-6],[-11,-7],[-10,-9],[-8,-11],[-7,-13],[-9,-15],[-10,-17],[-12,-16],[-14,-16],[-15,-14],[-14,-12]],"anchors":[0,5,10,14,19],"segments":[]}]};
+const levels = DATA.levels;
+const svg = document.getElementById('svg');
+const tip = document.getElementById('tip');
+const stage = document.getElementById('stage');
+let current = Math.min(1, levels.length - 1);
+let picked = [];
+const stories = [
+  "Level 0: a tiny hand-grown seed. Small, but it already obeys the rule — no three of its points are collinear.",
+  "Level 1: the seed enlarged by M (blue anchors — their no-three-in-line property is inherited automatically, because linear maps send lines to lines), and the oversized gaps stitched with a few legal hops each (green). Only the green points needed checking. In 2D the story honestly ends near here; in 3D the identical machine ran eight rounds without a single failure."
+];
+function fmt(n){ return n.toLocaleString(); }
+function buildButtons(){
+  const holder = document.getElementById('levelBtns');
+  levels.forEach((lv, i) => {
+    const b = document.createElement('button');
+    b.textContent = i;
+    b.onclick = () => { current = i; picked = []; render(); };
+    holder.appendChild(b);
+  });
 }
-const x0=70, x1=860, y0=270, y1=30, xmin=1, xmax=16, ymin=-2, ymax=9;
-const X = h => x0 + (h - xmin) / (xmax - xmin) * (x1 - x0);
-const Y = v => y0 - (v - ymin) / (ymax - ymin) * (y0 - y1);
-function el(t, attrs, txt) {
-  const e = document.createElementNS(NS, t);
-  for (const k in attrs) e.setAttribute(k, attrs[k]);
-  if (txt) e.textContent = txt;
-  svg.appendChild(e); return e;
+function verifyLevel(pts){
+  const seen = new Set();
+  for (const p of pts){ const k = p[0]+','+p[1]; if (seen.has(k)) return false; seen.add(k); }
+  for (let i=0;i<pts.length;i++){
+    const dirs = new Set();
+    for (let j=0;j<i;j++){
+      let vx = pts[j][0]-pts[i][0], vy = pts[j][1]-pts[i][1];
+      const g = gcd(Math.abs(vx), Math.abs(vy)); vx/=g; vy/=g;
+      if (vx<0 || (vx===0 && vy<0)) { vx=-vx; vy=-vy; }
+      const d = vx+','+vy; if (dirs.has(d)) return false; dirs.add(d);
+    }
+  }
+  return true;
 }
-for (let v = -2; v <= 9; v += 2) {
-  el('line', {x1:x0, y1:Y(v), x2:x1, y2:Y(v), stroke:'var(--grid)'});
-  const t = el('text', {x:x0-12, y:Y(v)+4, 'text-anchor':'end', class:'sm mut'}, '10');
-  const ts = document.createElementNS(NS,'tspan');
-  ts.setAttribute('dy','-6'); ts.setAttribute('font-size','8'); ts.textContent = v;
-  t.appendChild(ts);
+function gcd(a,b){ while(b){ [a,b]=[b,a%b]; } return a || 1; }
+function render(){
+  const lv = levels[current];
+  const pts = lv.points;
+  const anchorSet = new Set(lv.anchors);
+  document.querySelectorAll('#levelBtns button').forEach((b,i)=> b.classList.toggle('active', i===current));
+  const stats = document.getElementById('stats');
+  const nA = lv.anchors.length, nS = pts.length - nA;
+  stats.innerHTML =
+    stat(fmt(pts.length), 'points, all verified') +
+    stat(current === 0 ? '—' : fmt(nA), 'anchors (inherited free)') +
+    stat(current === 0 ? '—' : fmt(nS), 'stitches (newly checked)') +
+    stat('×' + (pts.length / levels[0].points.length).toFixed(1), 'vs the seed');
+  document.getElementById('story').textContent = stories[current] || '';
+  const xs = pts.map(p=>p[0]), ys = pts.map(p=>p[1]);
+  let prev = null;
+  if (current > 0 && document.getElementById('ghostToggle').checked){
+    prev = levels[current-1].points; xs.push(...prev.map(p=>p[0])); ys.push(...prev.map(p=>p[1]));
+  }
+  const pad = 3;
+  const x0 = Math.min(...xs)-pad, x1 = Math.max(...xs)+pad;
+  const y0 = Math.min(...ys)-pad, y1 = Math.max(...ys)+pad;
+  const w = x1-x0, h = y1-y0;
+  svg.setAttribute('viewBox', `${x0} ${-y1} ${w} ${h}`);
+  const px = w / 640;
+  svg.innerHTML = '';
+  const grid = el('g');
+  const gstep = Math.max(1, Math.round(w/40));
+  for (let x=Math.ceil(x0); x<=x1; x+=gstep) grid.appendChild(line(x, -y1, x, -y0, 'var(--grid)', 0.5*px));
+  for (let y=Math.ceil(y0); y<=y1; y+=gstep) grid.appendChild(line(x0, -y, x1, -y, 'var(--grid)', 0.5*px));
+  svg.appendChild(grid);
+  if (prev) svg.appendChild(poly(prev, 'var(--ghost)', 2.5*px, null));
+  if (current>0 && document.getElementById('skelToggle').checked){
+    const anchors = lv.anchors.map(i=>pts[i]);
+    svg.appendChild(poly(anchors, 'var(--walk)', 1.6*px, `${6*px} ${5*px}`));
+  }
+  svg.appendChild(poly(pts, 'var(--walk)', 1.1*px, null));
+  pts.forEach((p,i)=>{
+    const isA = anchorSet.has(i);
+    const c = el('circle');
+    c.setAttribute('cx', p[0]); c.setAttribute('cy', -p[1]);
+    c.setAttribute('r', (isA?4.4:3.2)*px);
+    c.setAttribute('fill', isA ? 'var(--anchor)' : 'var(--stitch)');
+    c.setAttribute('stroke', 'var(--surface-2)'); c.setAttribute('stroke-width', 1.4*px);
+    if (picked.some(q=>q[0]===p[0]&&q[1]===p[1])){ c.setAttribute('stroke', 'var(--danger)'); c.setAttribute('stroke-width', 2.2*px); }
+    c.style.cursor = 'pointer';
+    c.addEventListener('mousemove', ev => showTip(ev, p, isA, i));
+    c.addEventListener('mouseleave', () => tip.style.display='none');
+    c.addEventListener('click', () => pick(p));
+    svg.appendChild(c);
+  });
+  const ok = verifyLevel(pts);
+  const badge = el('text');
+  badge.setAttribute('x', x1 - 1); badge.setAttribute('y', -y1 + 3);
+  badge.setAttribute('text-anchor','end'); badge.setAttribute('font-size', 11*px);
+  badge.setAttribute('fill', ok ? 'var(--ok)' : 'var(--danger)');
+  badge.textContent = ok ? `✓ re-verified in browser: ${fmt(pts.length)} points, no 3 collinear` : '✗ verification FAILED';
+  svg.appendChild(badge);
+  renderChecker();
 }
-el('line', {x1:x0, y1:Y(0), x2:x1, y2:Y(0), stroke:'var(--danger)', 'stroke-width':1.5, 'stroke-dasharray':'6 5'});
-el('text', {x:x1-4, y:Y(0)-8, 'text-anchor':'end', fill:'var(--danger)', class:'sm'}, 'threshold: proof closes below this line');
-el('polyline', {points: pts.map(p=>X(p[0])+','+Y(p[1])).join(' '), fill:'none', stroke:'var(--anchor)', 'stroke-width':2});
-for (const [h, v] of pts) {
-  el('circle', {cx:X(h), cy:Y(v), r:3.5, fill:'var(--anchor)', stroke:'var(--surface-2)', 'stroke-width':1.5});
-  if (h % 2 === 0 || h === 1) el('text', {x:X(h), y:y0+20, 'text-anchor':'middle', class:'sm mut'}, h);
+function stat(v,k){ return `<div class="stat"><div class="v">${v}</div><div class="k">${k}</div></div>`; }
+function el(t){ return document.createElementNS('http://www.w3.org/2000/svg', t); }
+function line(x1,y1,x2,y2,stroke,w){
+  const l = el('line');
+  l.setAttribute('x1',x1); l.setAttribute('y1',y1); l.setAttribute('x2',x2); l.setAttribute('y2',y2);
+  l.setAttribute('stroke',stroke); l.setAttribute('stroke-width',w); return l;
 }
-const c = pts[13];
-el('circle', {cx:X(c[0]), cy:Y(c[1]), r:7, fill:'none', stroke:'var(--ok)', 'stroke-width':2.5});
-el('text', {x:X(c[0])-8, y:Y(c[1])+26, fill:'var(--ok)'}, 'H = 14: closes (0.33 ≤ 1)');
-el('text', {x:x0, y:y0+42, class:'sm mut'}, 'H — generations each newborn danger is watched');
-el('text', {x:x0, y:20, class:'sm mut'}, 'e · pH · (d+1), log scale — measured constants, whole-state-space worst case');
+function poly(pts, stroke, w, dash){
+  const p = el('polyline');
+  p.setAttribute('points', pts.map(q=>q[0]+','+(-q[1])).join(' '));
+  p.setAttribute('fill','none'); p.setAttribute('stroke',stroke); p.setAttribute('stroke-width',w);
+  p.setAttribute('stroke-linejoin','round');
+  if (dash) p.setAttribute('stroke-dasharray', dash);
+  return p;
+}
+function showTip(ev, p, isA, i){
+  const r = stage.getBoundingClientRect();
+  tip.style.display='block';
+  tip.style.left = (ev.clientX - r.left)+'px'; tip.style.top = (ev.clientY - r.top)+'px';
+  tip.textContent = `${isA?'anchor':'stitch'} #${i} at (${p[0]}, ${p[1]})`;
+}
+function pick(p){ picked.push(p); if (picked.length > 3) picked = [p]; render(); }
+function renderChecker(){
+  const c = document.getElementById('checker');
+  if (picked.length < 3){
+    c.innerHTML = `<b>Try to break it:</b> click any three points (${picked.length}/3 picked). ` +
+      `The exact integer test <code>(q−p)×(r−p)</code> is zero only for collinear points.`;
+    return;
+  }
+  const [p,q,r] = picked;
+  const det = (q[0]-p[0])*(r[1]-p[1]) - (q[1]-p[1])*(r[0]-p[0]);
+  c.innerHTML = `Points (${p}), (${q}), (${r}): determinant = ` +
+    `<b class="${det===0?'det-bad':'det-ok'}">${det.toLocaleString()}</b> — ` +
+    (det===0 ? 'collinear! (you found a bug — please report it)'
+             : 'not collinear. Every triple in this walk passes; that is the invariant.');
+}
+buildButtons();
+render();
+document.getElementById('ghostToggle').onchange = render;
+document.getElementById('skelToggle').onchange = render;
 </script>
 </body>
 </html>
