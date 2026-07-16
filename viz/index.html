@@ -27,15 +27,17 @@
   <p class="lede">
     <a href="https://www.erdosproblems.com/193">Erdős Problem #193</a> asks whether an
     infinite walk with steps from a finite set can visit lattice points with no three ever
-    collinear. Open since 1979. This project attacks it with exact computation: a
-    construction that builds record walks, and a certificate programme that tries to prove
-    they can run forever.
+    collinear. Open since 1979. This project attacks it by exact computation &mdash; the
+    mathematics driven by an AI (Claude) working under a human engineer&rsquo;s direction, every
+    result checked by integer arithmetic anyone can re-run. It builds record-breaking walks
+    by repeating one move &mdash; enlarge, twist, stitch &mdash; at ever-larger scales, and runs a
+    proof programme trying to show that construction can be continued forever.
   </p>
 
   <div class="fig" style="border-color:hsl(var(--link)/.35);background:hsl(var(--link)/.04)">
     <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
       <span style="width:8px;height:8px;border-radius:50%;background:hsl(142 71% 40%);box-shadow:0 0 0 4px hsl(142 71% 40%/.18);display:inline-block"></span>
-      <b>Where it stands — 15 July 2026</b>
+      <b>Where it stands — 16 July 2026</b>
     </div>
     <p>The construction reliably builds record walks; the open question is whether it
     provably runs <em>forever</em>. That needs the walk to look statistically identical at
@@ -47,13 +49,17 @@
     four levels, <b>118.4 &rarr; 111.9 &rarr; 109.8 &rarr; 109.4</b>, is converging to a fixed
     point with geometrically shrinking steps &mdash; exactly the scale-invariance the proof
     requires &mdash; with zero dead-ends across 92,731 stitches.</p>
-    <p style="margin-top:8px"><b>This is strong evidence, not yet a theorem.</b> Two lemmas
-    remain: that local crowding stays bounded as the walk grows, and that no bounded crowd
-    can ever exhaust a stitch&rsquo;s options. Both are now precisely stated and, in
-    principle, machine-checkable. Honest odds today: a full proof <b>~15&ndash;25%</b>; a
-    rigorous <em>conditional</em> result (the answer is &ldquo;yes,&rdquo; modulo those two
-    lemmas) <b>~70%</b>. The <a href="progress.html" style="color:hsl(var(--link))">research
-    log</a> tracks every step, including the honest dead ends.</p>
+    <p style="margin-top:8px"><b>Strong evidence &mdash; and now a written conditional
+    theorem.</b> The <a href="theorem.html" style="color:hsl(var(--link))">conditional
+    theorem</a> is done: the answer to&nbsp;#193 is <em>yes, provided one lemma holds</em>,
+    with every other step &mdash; base, inheritance, induction, exact self-similarity &mdash;
+    proven or certified. That one lemma, <b>Lemma&nbsp;R</b>, says local crowding stays
+    bounded at every scale (the walk stays a thread, not a blob); given it, the last gap
+    collapses to a finite, machine-checkable computation. What is still open is proving
+    Lemma&nbsp;R itself &mdash; turning it from measured-true into proven. Honest odds on that
+    full, unconditional proof today: <b>~15&ndash;25%</b>. The
+    <a href="progress.html" style="color:hsl(var(--link))">research log</a> tracks every
+    step, including the honest dead ends.</p>
   </div>
 
   <div class="stats">
@@ -61,8 +67,8 @@
       construction, exactly verified (no 3 of its 311,738 points collinear, checked in parallel),
       and SHA-256 certified (c8cc3728…) so anyone can re-check it independently</span></div>
     <div class="stat"><b>1.2&thinsp;B</b><span>exact integer transitions computed to map every
-      arithmetic situation a walk can reach — proving each one keeps an escape route in all
-      13 direction classes, with zero exceptions</span></div>
+      arithmetic situation a walk can reach — each verified to keep a safe next move along all
+      13 possible line-directions a collision could form, with zero exceptions found</span></div>
     <div class="stat"><b>124</b><span>moves in the fixed menu (every integer vector with
       coordinates in ±2) — fixed forever, as the problem demands; rich enough that stitching
       never runs out of options</span></div>
@@ -77,13 +83,15 @@
     all 5 quadrillion of its triples.</p>
   </div>
   <div class="fig">
-    <div class="eq">$$e\cdot \bar q^{\,H}\cdot\bigl(3(H{+}1)\,L+1\bigr)\;\le\;1$$
-      $$\bar q=0.181,\quad L=6.5\times10^{7}\quad\Rightarrow\quad H=14$$</div>
-    <p><b>The target, quantified.</b> The Lov&aacute;sz Local Lemma condition: each danger&rsquo;s
-    H-round failure probability (measured worst case $\bar q = 0.181$ per round) against the
-    number of constraints entangled with it. The inequality first holds at $H=14$
-    (left side $\approx 0.33$) &mdash; watching each newborn danger for 14 rounds suffices, in the
-    model, for every danger in an infinite walk to be dodged simultaneously.</p>
+    <div class="eq">$$c_k(q,r)\;\le\;C\,r^{\,d},\qquad d=\tfrac{\log\lambda}{\log 3}\approx 1.10\quad(\lambda\approx 3.36)$$</div>
+    <p><b>The one thing left to prove.</b> This is <b>Lemma&nbsp;R</b> &mdash; crowding
+    regularity. It says any ball of radius $r$ holds at most about $r^{d}$ walk points
+    ($d\approx1.10$): the walk threads space like a nearly one-dimensional curve, never
+    bunching into a blob. And a stitch&rsquo;s number of legal moves falls off cleanly with
+    local crowding&nbsp;$c$ &mdash; measured $\log(\text{legal words})\approx 11.9-0.265\,c$ &mdash;
+    so bounded crowding means a stitch can never run out of options, and the construction
+    runs forever. Every other step is proven or a finite check; this single bound is the
+    whole remaining gap.</p>
   </div>
 
   
@@ -322,7 +330,7 @@
 </svg>
       <p><b>One real generation.</b> The record run's actual level-1 walk (62 steps):
       21 enlarged anchors (blue) joined by the dashed skeleton, reconnected through
-      42 newborn stitch points (green). Repeat this 7 more times → 311,737 steps.</p>
+      42 newborn stitch points (green). Eight nested rounds of this build the 311,738-point record walk.</p>
     </div>
   </div>
 
@@ -346,8 +354,8 @@
     </svg>
     <p><b>This project got unstuck because of a dishwasher.</b> Every early attempt built
     self-copying patterns that stacked like plates &mdash; each scale aligned with the last, and
-    alignment is exactly what this problem punishes (we eventually <em>proved</em> all such
-    stacked constructions must fail). Then <b>Amanie</b> shared a Reddit post about loading
+    alignment is exactly what this problem punishes (we eventually proved all such <em>aligned</em>
+    constructions must fail — the Perron&ndash;Frobenius no-go in the <a href="progress.html" style="color:hsl(var(--link))">research log</a>). Then <b>Amanie</b> shared a Reddit post about loading
     bowls in a dishwasher, and Erik noticed the bowls do something plates don&rsquo;t: they nest
     <em>at a tilt</em> &mdash; the same shape repeated, each one offset and rotated from the last.
     Translated into mathematics, that became the whole construction: enlarge the walk by a
@@ -365,6 +373,10 @@
 
   <h2>Explore</h2>
   <div class="cards">
+    <a class="card" href="theorem.html">
+      <b>The theorem, stated</b>
+      <p>The current conditional theorem — rendered live from the repo, referee-checkable, with the one open lemma marked.</p>
+    </a>
     <a class="card" href="proof-steps.html">
       <b>The proof, end to end</b>
       <p>Concept, construction, and the one lemma left — with an interactive demo you can try to break.</p>
