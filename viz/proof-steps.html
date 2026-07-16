@@ -69,37 +69,48 @@ exhaustively computed value from the project (<a href="https://github.com/ekalvi
 three meet appears to be empty. That empty corner is why the problem is hard, and it's why our object
 has to be a fractal thread.</p>
 <div class="fig" style="padding:8px 8px 4px">
-  <svg class="tri" viewBox="0 0 760 610" role="img" aria-label="Trilemma triangle: dimension 1, triple-free, finite menu — pick two">
-    <polygon points="380,95 110,500 650,500" fill="hsl(217 91% 55%/.035)" stroke="hsl(var(--muted-fg)/.5)" stroke-width="1.4" stroke-linejoin="round"/>
-    <line x1="110" y1="500" x2="650" y2="500" stroke="hsl(217 91% 55%)" stroke-width="4" stroke-linecap="round"/>
-    <text x="380" y="352" text-anchor="middle" font-size="46" fill="hsl(0 60% 52%)" font-weight="700">&#8709;</text>
-    <text x="380" y="384" text-anchor="middle" class="goalsub" style="font-size:14px">all three at once —</text>
-    <text x="380" y="403" text-anchor="middle" class="goalsub" style="font-size:14px">conjecturally impossible</text>
-    <text x="380" y="428" text-anchor="middle" class="goalsub" style="font-size:12px;fill:hsl(var(--muted-fg)/.7)">(what Erdős #193 would love)</text>
-    <circle cx="380" cy="95" r="5.5" fill="hsl(var(--foreground))"/>
-    <circle cx="110" cy="500" r="5.5" fill="hsl(var(--foreground))"/>
-    <circle cx="650" cy="500" r="5.5" fill="hsl(var(--foreground))"/>
-    <text x="380" y="52" text-anchor="middle" class="goal">Dimension 1</text>
-    <text x="380" y="72" text-anchor="middle" class="goalsub">a smooth thread, not a fractal</text>
-    <text x="110" y="540" text-anchor="middle" class="goal">Triple-free</text>
-    <text x="110" y="560" text-anchor="middle" class="goalsub">no three points in a line</text>
-    <text x="650" y="540" text-anchor="middle" class="goal">Finite menu</text>
-    <text x="650" y="560" text-anchor="middle" class="goalsub">bounded steps</text>
-    <text x="150" y="285" class="witness" fill="hsl(var(--foreground))">Moment curve</text>
-    <text x="150" y="304" class="witsub">t, t², t³ — smooth &amp; triple-free,</text>
-    <text x="150" y="320" class="witsub">but needs <tspan font-weight="700" fill="hsl(var(--foreground))">unbounded</tspan> steps</text>
-    <text x="610" y="285" text-anchor="end" class="witness" fill="hsl(var(--foreground))">Straight / digital line</text>
-    <text x="610" y="304" text-anchor="end" class="witsub">smooth &amp; bounded-step,</text>
-    <text x="610" y="320" text-anchor="end" class="witsub">but <tspan font-weight="700" fill="hsl(var(--foreground))">all collinear</tspan></text>
-    <rect x="270" y="516" width="220" height="66" rx="9" fill="hsl(217 91% 55%/.08)" stroke="hsl(217 91% 55%/.5)" stroke-width="1.2"/>
-    <text x="380" y="540" text-anchor="middle" class="witness" fill="hsl(217 91% 45%)">OUR WALK &#9873;</text>
-    <text x="380" y="559" text-anchor="middle" class="witsub">triple-free &amp; bounded-step,</text>
-    <text x="380" y="575" text-anchor="middle" class="witsub">but dimension <tspan font-weight="700" fill="hsl(217 91% 45%)">1.10</tspan> — a crinkly thread</text>
+  <svg class="tri" viewBox="0 0 880 560" role="img" aria-label="Trilemma triangle: dimension 1, triple-free, finite menu — pick two; our walk sits on the triple-free + finite-menu edge Erdős #193 asks for">
+    <polygon points="440,74 210,430 670,430" fill="hsl(217 91% 55%/.035)" stroke="hsl(var(--muted-fg)/.5)" stroke-width="1.4" stroke-linejoin="round"/>
+    <!-- the bottom edge, in blue = the pair Erdős #193 requires -->
+    <line x1="210" y1="430" x2="670" y2="430" stroke="hsl(217 91% 55%)" stroke-width="4" stroke-linecap="round"/>
+    <!-- empty centre -->
+    <text x="440" y="298" text-anchor="middle" font-size="42" fill="hsl(0 60% 52%)" font-weight="700">&#8709;</text>
+    <text x="440" y="330" text-anchor="middle" class="goalsub" style="font-size:14px">all three at once —</text>
+    <text x="440" y="348" text-anchor="middle" class="goalsub" style="font-size:14px">conjecturally impossible</text>
+    <text x="440" y="371" text-anchor="middle" class="goalsub" style="font-size:12px;fill:hsl(var(--muted-fg)/.7)">(what Erdős #193 would love)</text>
+    <!-- vertices -->
+    <circle cx="440" cy="74" r="5.5" fill="hsl(var(--foreground))"/>
+    <circle cx="210" cy="430" r="5.5" fill="hsl(var(--foreground))"/>
+    <circle cx="670" cy="430" r="5.5" fill="hsl(var(--foreground))"/>
+    <!-- corner labels, clear of the triangle -->
+    <text x="440" y="40" text-anchor="middle" class="goal">Dimension 1</text>
+    <text x="440" y="59" text-anchor="middle" class="goalsub">a smooth thread, not a fractal</text>
+    <text x="158" y="466" text-anchor="middle" class="goal">Triple-free</text>
+    <text x="158" y="485" text-anchor="middle" class="goalsub">no three points in a line</text>
+    <text x="722" y="466" text-anchor="middle" class="goal">Finite menu</text>
+    <text x="722" y="485" text-anchor="middle" class="goalsub">bounded steps</text>
+    <!-- edge witnesses: a dot on the edge, label out in the margin -->
+    <circle cx="325" cy="252" r="4" fill="hsl(var(--muted-fg))"/>
+    <text x="300" y="239" text-anchor="end" class="witness" fill="hsl(var(--foreground))">Moment curve</text>
+    <text x="300" y="257" text-anchor="end" class="witsub">t, t², t³ — smooth &amp; triple-free,</text>
+    <text x="300" y="273" text-anchor="end" class="witsub">but needs <tspan font-weight="700" fill="hsl(var(--foreground))">unbounded</tspan> steps</text>
+    <circle cx="555" cy="252" r="4" fill="hsl(var(--muted-fg))"/>
+    <text x="580" y="239" text-anchor="start" class="witness" fill="hsl(var(--foreground))">Straight / digital line</text>
+    <text x="580" y="257" text-anchor="start" class="witsub">smooth &amp; bounded steps,</text>
+    <text x="580" y="273" text-anchor="start" class="witsub">but <tspan font-weight="700" fill="hsl(var(--foreground))">all collinear</tspan></text>
+    <!-- what the blue edge means, and our walk on it -->
+    <text x="440" y="451" text-anchor="middle" style="font-size:12.5px;font-weight:600;fill:hsl(217 91% 45%)">Erdős #193 asks for exactly this edge: triple-free + a finite menu</text>
+    <rect x="310" y="468" width="260" height="66" rx="9" fill="hsl(217 91% 55%/.08)" stroke="hsl(217 91% 55%/.5)" stroke-width="1.2"/>
+    <text x="440" y="490" text-anchor="middle" class="witness" fill="hsl(217 91% 45%)">OUR WALK &#9873;</text>
+    <text x="440" y="509" text-anchor="middle" class="witsub">nails both — triple-free &amp; bounded-step,</text>
+    <text x="440" y="525" text-anchor="middle" class="witsub">paying only dimension <tspan font-weight="700" fill="hsl(217 91% 45%)">1.10</tspan> (a crinkly thread)</text>
   </svg>
   <p style="margin-top:2px"><b>How to read it.</b> Each corner is a property you'd want; a curve that
-  achieves two of them lives on the edge between those corners and is pushed off the third. Erdős #193
-  <em>requires</em> the bottom two (triple-free + finite menu) and doesn't even ask for dimension&nbsp;1 —
-  it just asks whether such a curve can exist at all. Our construction is the flag on that bottom vertex.</p>
+  achieves two of them lives on the edge between those two corners and is pushed off the third. The
+  bottom edge is drawn in <span style="color:hsl(217 91% 45%);font-weight:600">blue</span> because it's
+  the pair Erdős&nbsp;#193 actually asks for — triple-free <em>and</em> a finite menu — and it doesn't
+  even require dimension&nbsp;1. Our construction is the flag planted on that blue edge: it nails both
+  required properties, paying only with a slightly fractal dimension (1.10 instead of&nbsp;1).</p>
 </div>
 <p style="margin:16px 0 4px">The same idea as a scorecard — <b>five curves, ranked from furthest from the
 goal to closest</b>. Green is a property met, red one missed; ties are broken by the simpler curve
