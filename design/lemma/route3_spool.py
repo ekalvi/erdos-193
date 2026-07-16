@@ -49,7 +49,10 @@ def Q(p):
 
 
 def u_coord(p):
-    return 0.5 * math.log(Q(p)) / LOG3  # in units where u(Mp)=u(p)+1
+    q = Q(p)
+    if q == 0:
+        return 0.0  # origin only
+    return 0.5 * math.log(q) / LOG3  # in units where u(Mp)=u(p)+1
 
 
 # Q_yz-orthonormal frame for the angle.  Q_yz=[[6,-1],[-1,6]]=L L^T (Cholesky)
@@ -119,10 +122,11 @@ def compute_colevels(top_level):
             else:
                 r = 0
         else:
-            # lowest available chain: proxy by M^{-1}-integer pullback depth
+            # lowest available chain: proxy by M^{-1}-integer pullback depth.
+            # GUARD: origin is an M^{-1} fixed point -> cap depth to avoid inf loop.
             r = 0
             cur = p
-            while True:
+            while cur != (0, 0, 0) and r < 60:
                 nx = Minv(cur)
                 if nx is None:
                     break

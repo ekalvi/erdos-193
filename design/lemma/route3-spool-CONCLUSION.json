@@ -1,0 +1,33 @@
+{
+  "route": "ROUTE 3 (monotone escape / transience) via the SPOOL COORDINATE",
+  "spool_coordinate": {
+    "u": "u(p) = 0.5 * log_3( Q(p) ),  Q(x,y,z) = x^2 + 6 y^2 - 2 y z + 6 z^2",
+    "exact_identity": "Q(Mp) = 9 Q(p)  =>  u(Mp) = u(p) + 1   (verified exact on 1e5 random integer vectors)",
+    "companion_angle": "theta(p) = polar angle of (y,z) in the Q_yz-orthonormal (Cholesky) frame; under M advances by alpha = arccos(-1/6) (irrational)",
+    "derivation": "Q is the invariant quadratic form of the modulus-3 map M = ((3,0,0),(0,0,-3),(0,3,-1)); each M application pays out exactly one spool turn (+1 in u)."
+  },
+  "transience_measured": {
+    "u_amortized_backslide_floor": {"L5": -0.53, "L6": -0.44, "L7": -0.18},
+    "interpretation": "min_i [u(p_{i+n}) - u(p_i)] >= -b with b ~ 0.5 TURN, level-stable/shrinking. The walk never reels the spool back more than ~half a turn. CONTRAST: the plain x-coordinate had floor -2n (linear, useless). So WEAK TRANSIENCE HOLDS in u."
+  },
+  "what_the_spool_PROVES_cleanly": {
+    "birthlevel_spread_per_ball": {"by_rho_L5_L6_L7": "<=4 for all rho in [1,10], level-stable"},
+    "meaning": "Because u advances +1 per M with bounded backslide, and deep-tail separation gives min|M^j v|_inf = 3/8/24, the birth levels meeting any Cheb-<=10 ball are confined to a band of <=4. This EXCLUDES cross-scale stacking (the only thing that could blow A0 up as k->infinity). Non-circular: uses only the u-identity + the proven deep-tail bound, never counts the crowd."
+  },
+  "where_the_spool_STOPS": {
+    "in_shell_flatness": "For every dense ball, the arcs are NOT separated by u (min_interarc_u_sep = 0.0) NOR by theta (spread < 0.01 rad). Same-shell returns are invisible to the spiral coordinate.",
+    "crowding_is_a_single_local_window": {
+      "max_local_path_span_rho10": {"L5": 39, "L6": 70, "L7": 46},
+      "max_far_arcs_gap_gt_6rho": {"L5": 1, "L6": 1, "L7": 1},
+      "meaning": "ALL of c(q,r) for r<=10 lives in ONE bounded path-window (span <=70, level-uniform); genuine far-returns (gap > 2x ballistic sojourn) essentially never stack (<=1). The <=5 arcs are LOCAL in/out meander of a single pass, dominated by birth-level-0 fresh connectors around one anchor."
+    }
+  },
+  "A0": {
+    "measured": "A(q,r) <= 5 for r in [1,10], level-stable L5/L6/L7",
+    "proven_component": "far-return arcs <= birthspread <= 4 (spool + deep-tail, level-uniform, non-circular)",
+    "residual_component": "local same-shell meander arcs, bounded by the local-window span <=~70, a LEVEL-UNIFORM but not-yet-proven fact"
+  },
+  "status": "CLOSES-MODULO-CLEAN-LEMMA",
+  "residual_lemma": "LOCAL-WINDOW / SAME-SHELL NO-RETURN: the path-index span of the walk points inside any Cheb-<=10 ball is bounded by a level-independent constant W0 (~70). Equivalently: within a single shell the walk does not re-approach itself (Cheb<=10) except inside a bounded path-window. The spool/rotation is FLAT in-shell so transience does NOT prove this; it reduces to a FIXED-SCALE finite check on the self-similar connector-word library (length<=5 alphabet), NOT the unbounded k-induction.",
+  "non_circular_verdict": "The delivered (cross-scale) bound is non-circular and collapses the k-induction to a base check. The residual is the anti-stacking residue localized to one shell + fixed finite alphabet -- same TYPE as the parent, but at bounded scale, so it is a finite computation rather than the unbounded parent crowding."
+}

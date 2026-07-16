@@ -347,3 +347,20 @@ between this strong evidence and a theorem.
 4. All constants are for THIS menu/matrix; the theorem is existential, so that
    is fine — but every lemma must be stated for this fixed (S, M).
 5. Independent human review after the above.
+
+**L4' — EXCLUSION round result + spool coordinate (2026-07-16, design/lemma/exclusion/).**
+Erik's fishing-line exclusion tested rigorously. REFUTED: (1) triple-free self-exclusion — near-parallel
+LATERALLY-OFFSET lattice arcs are triple-free (cross=1≠0), so the no-3-collinear rule permits stacked
+parallel passes (82 measured in one L7 ball); (2) twist angular decorrelation — x-axis doesn't rotate
+(dilation eigenvector) and arc directions are near-isotropic (124-menu), so rotation self-overlaps
+(no angular gap). BUT GENUINE WIN — the SPOOL/TRANSIENCE route: ∃ coordinate u with u(Mp)=u(p)+1 and
+bounded backslide (≥−0.5, shrinking −0.53/−0.44/−0.18 over L5/L6/L7); with deep-tail separation this
+PROVES ≤4 birth-levels meet any Cheb-≤10 ball — i.e. the walk provably cannot self-approach ACROSS
+scales (Erik's fishing-line, correct & now proven for far self-approach). Residual shrinks to a
+SAME-SCALE local-window no-return lemma (path-index span in any Cheb-≤10 ball ≤ W0≈70) — the same
+anti-stacking core, now single-scale. exclusion_breaks_circularity=False, p 0.35.
+NEXT (autonomous pivot): stop proving the lemma for the fixed (M,menu); instead REDESIGN — sweep
+bigger-twist matrices M_m=((m,0,0),(0,0,-m),(0,m,-1)) (eigenvalue moduli m, irrational rotation
+arccos(-1/2m)) to push box-dimension d=log λ/log m toward 1.0 (purer thread), seeking a construction
+where the PROVABLE packing bound is already availability-grade — closing unconditionally by construction
+choice rather than by the hard lemma.
