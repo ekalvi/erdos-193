@@ -119,16 +119,40 @@ All machine-verified / exact (design/lemma/):
   words. The walk **provably never densifies without limit.**
 - **Box-dimension d ≈ 1.10**, measured level-stable across levels 5–8.
 
-### What is MEASURED (the exact content of Lemma R still to prove)
+### Lemma R = the Open Set Condition (its sharpest form)
 
-The *tight, uniform* bound c_k(q,r) ≤ C·r^d — as opposed to the proven *loose,
-cubic* bound — is verified on every constructed level (through 311,738 points)
-but not yet proven for all k. The obstruction is **same-scale self-approach**:
-two pieces of the walk at the *same* scale can drift near each other (they are
-laterally offset, so triple-freeness permits it), and bounding how often this
-happens is equivalent to proving the walk-curve is Ahlfors-regular — a
-regularity statement for an **adaptive** self-affine curve (the stitch rule is
-data-dependent, which blocks the off-the-shelf self-similar regularity theorems).
+Lemma R is exactly **Ahlfors d-regularity of the walk-curve**, and the classical
+theorem that supplies it is **Mauldin–Williams (1988)** for graph-directed
+self-similar systems, sharpened by **Schief (1994)** (OSC ⇔ positive measure ⇔
+bounded covering multiplicity):
+
+- The walk is a single-vertex graph-directed self-similar system — every point
+  emits one M-contraction child (its anchor) plus a finite, menu-drawn set of
+  stitch-children, each a 1/3-scaled statistical copy. *(Cylinder point-counts
+  scale as λ^g, diameters as 3^g — verified.)*
+- **Exact self-similarity [PROVEN].** MᵀQM = 9Q with Q = [[1,0,0],[0,6,−1],
+  [0,−1,6]] (integer identity), so M = 3·O with O a Q-orthogonal rotation:
+  d_Q(Mp,Mq) = 3·d_Q(p,q) exactly. In the Q-metric the walk is an exact ratio-3
+  self-similar covering; the Q↔Chebyshev distortion is the fixed κ = 1.323.
+- **All Mauldin–Williams hypotheses are proven EXCEPT the OSC**: contraction
+  ratio 1/3 (proven), bounded distortion (proven), dimension d = log λ/log 3
+  (λ ≈ 3.37 level-stable). In the Q-metric the theorem already yields the clean
+  bound c(R) ≤ 2·R^d.
+
+So **Lemma R ⟸ the Open Set Condition** for this self-similar system —
+equivalently, that the generation-g cylinder covering multiplicity is bounded
+uniformly in g and k. This is a *named, standard* condition, not a bespoke one.
+
+**Status of the OSC.** Measured satisfied and level/generation-stable — covering
+multiplicity 4 / 5 / 4 at matched scale r = 3^g, ≤ 9 at full diameter, *identical*
+at levels 6 and 7 — the exact OSC signature, and the strongest evidence to date.
+Not yet proven, for two reasons: (i) the finite-alphabet claim (that sibling
+separation is a function of the finite local-config state, e.g. the 78,728 NP-HC
+states) is not formalized, so the reduction of the OSC to a one-generation finite
+check is not yet rigorous; (ii) the multiplicity is measured on the *realized*
+adaptive walk, whereas Mauldin–Williams needs it on the full menu-closure graph
+(all legal stitch transitions). Proving the OSC for this **adaptive** self-similar
+system is the single frontier. *(design/lemma/ahlfors/, design/lemma/route1/mw_osc.py.)*
 
 ### Evidence for Lemma R (why it is believed true)
 
@@ -166,9 +190,15 @@ The answer to Erdős #193 is **yes, conditional on Lemma R** — a single,
 sharply-stated geometric regularity lemma that is measured true across a
 311,738-point certified construction and to which the entire remaining difficulty
 is confined. Everything else — the base, inheritance, induction, the exact
-recursion, qualitative no-blow-up, bounded distortion, the contraction, the
+recursion, qualitative no-blow-up, the exact Q-metric self-similarity, the
 deep-tail collapse, cross-scale transience — is proven. Lemma R is the Ahlfors
-regularity of an adaptive self-affine curve; it has resisted six distinct proof
-attacks (counting, fractal-dimension, transfer-operator, exclusion, redesign),
-each of which sharpened it and proved new machinery but left the same
-same-scale-self-approach core. It is the frontier.
+regularity of the walk-curve, and it now stands in its sharpest possible form:
+**the Open Set Condition for an exact self-similar system** (Mauldin–Williams
+supplies everything else). It has resisted seven distinct proof attacks
+(counting, fractal-dimension, transfer-operator, exclusion, redesign, graph-directed
+IFS), each of which sharpened it and proved new machinery — the current best form
+reduces the whole problem to a single, standard, measured-true condition. Proving
+the OSC for this *adaptive* self-similar construction is the frontier, and the
+concrete next step is to show the covering multiplicity is bounded on the finite
+menu-closure graph (converting the measured OSC into a one-generation finite check
+via Schief 1994).

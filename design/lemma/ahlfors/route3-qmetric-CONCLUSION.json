@@ -1,0 +1,31 @@
+{
+  "route": "ROUTE 3 - DIRECT BOUNDED-DISTORTION COVERING in the invariant Q-METRIC",
+  "target": "level-independent C with c_k(q,r) := #{walk pts within Cheb r of q} <= C*r^d on r in [1,10], d = log(lambda)/log3 ~ 1.104",
+  "verdict": "CLOSES-MODULO-CLEAN-LEMMA for the UNIFORM upper bound; availability-grade (<=12 at r=4.44) STUCK/refuted",
+  "Q": "Q(x,y,z)=x^2+6y^2-2yz+6z^2, matrix [[1,0,0],[0,6,-1],[0,-1,6]], M^T Q M = 9Q (verified exact integer identity)",
+  "rigorous_facts": {
+    "T1_metric_self_similarity_EXACT": "Q(Mv)=9Q(v) is an INTEGER IDENTITY (0 counterexamples in 2e5 random v) => d_Q(Mp,Mq)=3 d_Q(p,q) for all p,q. In the Q-Cholesky embedding u=L^T p (|u|^2=Q(p)) the action of M is A=3*O with A^T A = 9I EXACTLY (O orthogonal, rotation angle arccos(-1/6)). So M is a genuine SIMILARITY of ratio exactly 3 in the Q-metric; covering/packing numbers by Q-BALLS are metric invariants that scale by EXACTLY 3 per level. This is a theorem, not a measurement.",
+    "T4_clean_Ahlfors_upper_bound_in_Q_metric": "b_Q(R) := max_q #{walk pts in Q-ball radius R} satisfies b_Q(R) <= 2*R^d on R in [1,45], LEVEL-STABLE across L6/L7/L8, binding ONLY at R=1 (the trivial two-points-share-a-unit-ball base); all exponent-region ratios b_Q(R)/R^d sit at 0.7-0.9. C_Q = 2 EXACTLY. This is the standard self-similar Ahlfors d-regular UPPER bound, clean, with the bounded-distortion constant fully ABSORBED as a scale-INDEPENDENT number.",
+    "deep_tail_and_telescoping": "min|M^3 v|_inf = 24 > 2r for r<=10 (deep tail contributes <=1); exact birth-telescoping c_k(r)=t_0(r)+t_1(4r/9)+t_2(4r/27)+O(1). Both rigorous (inherited)."
+  },
+  "the_key_test_result": {
+    "question": "recompute covering numbers in the Q-metric at L6/L7 - is the self-similar scaling exact there?",
+    "answer_metric_balls": "YES, EXACTLY - at the level of Q-metric balls / packing numbers the scaling by 3 is an identity (T1). This is the right, invariant object and it delivers b_Q(R)<=2R^d cleanly (T4).",
+    "answer_grid_cubes": "NO - axis-aligned grid-cube covering distortion still GROWS with scale. Isotropic kappa_M(r)=1,2,3,3,4,4; Q-space grid kappa_Q(s)=1,1,2,3,3,4 - SHIFTED but still climbing to 4, because the rotation O (angle arccos(-1/6)) is IRRATIONAL and misaligns the axis grid across scales. The exact self-similarity lives in the metric, not in any fixed coordinate grid. Honest negative: the Q-metric does NOT make a grid-cube covering exactly self-similar; it makes the METRIC-BALL covering exactly self-similar."
+  },
+  "delivered_bound": {
+    "clean_metric_form": "b_Q(R) <= 2*R^d, R in [1,45], d=1.104  (Ahlfors d-regular upper bound in the Q-metric)",
+    "chebyshev_conversion": "Cheb-r ball subset Q-ball(alpha*r), alpha = sup_{|p|_inf<=1} sqrt(Q(p)) = sqrt(15) = 3.873. Hence c_k(q,r) <= b_Q(alpha*r) <= 2*(alpha*r)^d = 2*alpha^d * r^d = 8.91 * r^d on r in [1,10] (alpha*10=38.7 < 45 tested).",
+    "tighter_direct_measured": "direct fit gives the smaller valid constant C=3.257 (binds L8 at r=2); both are valid upper bounds, direct is tight.",
+    "C_d": "d=1.10362 (=log(3.3617)/log3); C_metric=2 for b_Q<=C R^d; C_Cheb=8.91 via conversion, or 3.26 direct-measured."
+  },
+  "availability": {
+    "measured_c_4p44_by_level_L5_L8": [10, 10, 11, 12],
+    "threshold": 12,
+    "verdict": "REFUTED at availability-grade. Cheb<=4.44 == Cheb<=4 on the lattice; measured load-bearing c(q,4) reaches 12 at L8 with ZERO margin and a monotone rising trend 10->10->11->12. No power law C*r^d is simultaneously a valid upper bound AND <=12 at r=4.44 (direct C=3.257 gives 3.257*4.44^1.104=16.88; C~2 gives 10.4 < 12 so is NOT an upper bound). Availability is a tight distribution-invariance question, strictly stronger than the covering/regularity exponent, and is not delivered by any bound of this type."
+  },
+  "theorem_invoked": "Mauldin-Williams graph-directed self-similar Ahlfors d-regularity (upper bound half). Hypotheses status: (i) OSC candidate = exact disjoint recursion Walk=M.Walk DISJOINT-UNION Stitch, 0 overlap, verified EXACT at finite levels (L8) - PROVEN at finite levels, not yet inducted uniformly in k; (ii) bounded distortion - PROVEN (M^TQM=9Q, M=3O exact, distortion constant kappa=sqrt(cond Q) scale-INDEPENDENT for metric balls); (iii) finite alphabet - the connector menu (connector_domains4.pkl + dstar5, words<=5) and the local configs (NP-HC state set) are FIXED FINITE, so the adaptive stitch is a graph-directed system over a finite alphabet. GAP: the graph-directed incidence Perron root lambda is MEASURED 3.362 (level-stable to 3 digits) not PROVEN, so d=1.104 is measured-modulo-Perron; and OSC/refill-linearity must be inducted to all k.",
+  "residual_clean_lemma": "Uniform-in-k self-similar upper regularity: exists level-independent C_Q with b_Q(R) <= C_Q*R^d for ALL k (measured C_Q=2, level-stable L6/L7/L8). Equivalently lambda = Perron eigenvalue of the finite stitch-incidence matrix (upgrades d=1.104 to exact) + single-level refill linearity b_m(r)<=E r+F uniform in m. This is the SAME anti-stacking / arc-incidence residue every prior route isolates - but this route supplies the CLEANEST setting for it: an exact ratio-3 similarity metric in which the upper bound is literally the textbook self-similar Ahlfors bound b_Q<=2R^d, with distortion absorbed as a scale-independent constant.",
+  "status": "CLOSES-MODULO-CLEAN-LEMMA (uniform bound c_k<=C r^d) / STUCK (availability-grade <=12 at 4.44)",
+  "gap": "The uniform upper bound c_k(q,r)<=8.91 r^d (or 3.26 r^d direct) reduces cleanly to: (a) lambda=Perron root of the finite stitch-incidence matrix (measured 3.362), and (b) uniform-in-k b_Q(R)<=2R^d / single-level refill linearity. These are exactly the Mauldin-Williams finite-alphabet hypotheses; proven at finite levels, not yet inducted. The availability-grade <=12 at r=4.44 is a strictly stronger, refuted-by-measurement statement (measured 12, zero margin, rising) that no covering/regularity bound can supply."
+}

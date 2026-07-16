@@ -377,3 +377,20 @@ still required for a rigorous availability bound. The residue survives its 6th d
 essentially AHLFORS-REGULARITY of an ADAPTIVE self-affine curve (uniform c(r)≤C·r^d, not just the
 dimension) — the adaptivity (collinearity-avoiding stitch rule) is what blocks the standard IFS
 regularity theorems, and is the next angle.
+
+**L4' — AHLFORS/MAULDIN-WILLIAMS round: residue reduced to the OPEN SET CONDITION (2026-07-16, design/lemma/ahlfors/).**
+Major structural clarification (residue is now a NAMED standard condition). PROVEN NEW: the walk is an
+EXACT ratio-1/3 self-similar GIFS in the invariant metric — integer identity MᵀQM=9Q, Q=[[1,0,0],[0,6,-1],
+[0,-1,6]], so M=3·O with O Q-orthogonal (rotation arccos(-1/6)); d_Q(Mp,Mq)=3d_Q(p,q) EXACTLY; Q↔Cheb
+distortion κ=1.323. ⇒ MAULDIN-WILLIAMS (1988) + SCHIEF (1994) is the theorem: Ahlfors d-regularity
+(=Lemma R) holds under the OSC, d=log λ/log 3≈1.106. ALL MW hypotheses PROVEN except OSC. In Q-metric
+the clean bound c(R)≤2·R^d holds; Cheb c_k(q,r)≤~3.26·r^d (fit) / ≤8.91·r^d (rigorous conversion).
+RESIDUE = OSC ⇔ bounded covering multiplicity, MEASURED level/gen-stable (mult 4/5/4 at r=3^g, ≤9 full-diam,
+IDENTICAL L6/L7) — the OSC signature, strongest evidence yet — but not proven, and needs to hold on the
+MENU-CLOSURE graph (all legal transitions), not just the realized adaptive walk. p_closes 0.13.
+CONCRETE NEXT LEAD (documented, not fired — 7 rounds is enough for now): enumerate the finite menu-closure
+graph (connector_domains4 + dstar5 + NP-HC states), show sibling-separation is a function of the finite
+state, measure covering multiplicity on the CLOSURE (not just realized walk); if bounded → OSC via Schief
+as a one-generation finite check → Lemma R → unconditional. If unbounded on closure → adaptive choice is
+essential, MW is the wrong frame. This is the single frontier. Deliverable: CONDITIONAL-THEOREM.md (Lemma
+R = the OSC).

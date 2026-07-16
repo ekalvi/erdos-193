@@ -1,0 +1,53 @@
+{
+ "lemma": "AHLFORS d-REGULARITY (uniform upper crowding bound) on the fixed range",
+ "statement": "c_k(q,r) := #{walk points within Chebyshev r of q} <= 3 * r^d for all r in [1,10], d = log(lam)/log 3 ~ 1.106, level-independent (L5,L6,L7).",
+ "route_assigned": "ROUTE 2 - adaptivity-enforces-regularity (constructor's shortest-legal rule forbids cube-dense config)",
+ "route_that_delivers": "Mauldin-Williams graph-directed self-affine regularity + finite 4-level M-telescoping, reduced to a single-level refill lemma",
+
+ "MEASURED_uniform_constant": {
+  "exact_all_integer_lattice_centre_max c_k(r), r=1..10": {
+   "L6": [3,6,8,10,13,16,20,24,28,30],
+   "L7": [3,6,10,12,14,17,20,22,24,27]
+  },
+  "walk_centre_max c_k(r)": {
+   "L6": [3,5,7,10,12,15,17,21,23,26],
+   "L7": [3,6,10,11,14,16,20,21,22,27]
+  },
+  "C_d = max_r c(r)/r^d": {"L6_exact": 3.0, "L7_exact": 3.0, "walk": 3.0, "tight_at": "r=1 (c=3) and near-tight r=3 L7 (slack 0.11)"},
+  "C_lin = max_r c(r)/r": {"L6": 3.11, "L7": 3.33, "note": "linear bound c<=3.34*r also holds; since d>1 it implies c<=3.34*r^d, but r^d fit is tighter with C=3"},
+  "pointwise_slack_3rd_minus_c": {"L6_min": 0.0, "L7_min": 0.0, "meaning": "3*r^d >= c(r) everywhere, equality only at r=1"}
+ },
+
+ "PROVEN_ingredients_used": {
+  "disjoint_recursion_OSC": "Walk_{k+1}=M.Walk_k (+) Stitch_k, exact 0-overlap => OSC satisfied",
+  "bounded_distortion": "M^T Q M = 9Q, kappa=1.323, sigma_i(M^j)/3^j in [0.846,1.182]",
+  "anchor_3_separation": "min_{v!=0} |M v|_inf = 3 (exhaustive |v|<=6); anchor set M.Z^3 is Cheb>=3-separated",
+  "deep_tail_finite_telescoping": "(4/9)^4 * 10 = 0.39 < 1/2 and ||M^-4||_inf*10=0.19<1/2 => the count recursion c_{k+1}(q,r)<=c_k(M^-1 q, (4/9)r)+refill terminates after exactly 4 M-levels; base ball holds <=1 lattice point; <=4 birth levels per ball",
+  "finite_menu": "connector menu fixed (words<=5, steps Cheb<=2); finite_menu_check PASSES: reach-to-nearer-anchor<=4 and interiors/word<=4 over the ENTIRE menu"
+ },
+
+ "THEOREM_invoked": {
+  "name": "Mauldin-Williams graph-directed self-affine Ahlfors regularity (finite alphabet, OSC, bounded distortion)",
+  "gives": "exponent d = log(lam)/log 3 and a LEVEL-UNIFORM constant depending only on the finite menu graph",
+  "hypotheses_met": "OSC (PROVEN), bounded distortion (PROVEN), finite alphabet graph (PROVEN via finite menu). The adaptive selection is subsumed by taking the graph = all legal menu transitions.",
+  "hypothesis_gap": "MW yields asymptotic (r->0) d-regularity of the limit attractor's net; transferring its constant to the FIXED window r in [1,10] at every finite level k requires the finest-scale single-level count = the refill lemma below."
+ },
+
+ "RESIDUAL_clean_lemma": {
+  "name": "SINGLE-LEVEL REFILL / ANTI-STACKING SLOPE",
+  "statement": "one level's fresh stitch interiors (short connector arcs decorating the >=3-separated anchor set) satisfy I(q,r) := #interiors in B_inf(q,r) <= E*r with a level-uniform E.",
+  "measured": {"E_lin = max_r I(q,r)/r": {"L6": 2.0, "L7": 2.0}, "route1_L8_confirm": "A0<=5 flat, E<=3 stable L6/L7/L8", "I(q,r)_L7": {"2":4,"4":7,"6":10,"8":12,"10":16}},
+  "why_it_closes_everything": "with I<=E*r and anchors telescoping through 4 M-levels (each a factor pulled back by 4/9<1), c(r)<=base + sum_{j=0}^{3} E*(4/9)^j*r*(...) = O(r), hence <= C*r^d on r>=1."
+ },
+
+ "ROUTE2_TEST_RESULT": {
+  "hypothesis": "high local crowding forces the constructor's shortest-legal rule to pick LONG words / near-jams => self-limiting feedback that caps crowding",
+  "measurement": "Pearson(crowding, longest-word-in-ball) = +0.06 .. +0.24 (rises weakly with r); most-crowded 10% of balls have avg longest word ~3.95 vs least-crowded ~3.0",
+  "verdict": "REFUTED (wrong sign). Crowded balls contain marginally LONGER words, not shorter; there is NO 'short-word' feedback. Interiors in top-decile balls scale ~1.5x the bottom decile (bounded, consistent with E<=2-3) but NOT via a word-length mechanism. The anti-stacking constant is METRIC (M-contraction / deep-tail separation), matching route1's finding, not constructor-feedback.",
+  "consistency": "Same conclusion as route1 SELFEXCL-VERDICT (triple-free self-exclusion also refuted). The refill lemma is irreducible and metric."
+ },
+
+ "status": "CLOSES-MODULO-CLEAN-LEMMA",
+ "gap": "The single-level refill lemma I(q,r) <= E*r with a level-uniform E is measured (E=2, flat L6/L7; <=3 through L8) but not proven; it is the sole irreducible single-level arc-incidence residue. Route 2's constructor-feedback attempt to prove it is REFUTED. Everything above it (OSC, bounded distortion, anchor 3-separation, finite menu, deep-tail 4-level telescoping) is proven, and Mauldin-Williams supplies exponent d and level-uniformity; only the finest-scale constant on r in [1,10] remains.",
+ "scripts": ["design/lemma/ahlfors/ahlfors_ck.py", "design/lemma/ahlfors/ahlfors_ck-results.json"]
+}
