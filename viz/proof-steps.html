@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>The proof — Problem #193</title>
+<title>Background — Problem #193</title>
 <meta name="description" content="Erdős #193, end to end: the concept, the construction, an interactive demo, and the single lemma still standing between it and a full proof.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -51,16 +51,23 @@
   .statuslist li::before{position:absolute;left:0;top:7px;font-size:14px}
   .statuslist li.done::before{content:'✅'}
   .statuslist li.open::before{content:'🔄'}
+  .eq{margin:6px 0 10px;font-size:1.05em;overflow-x:auto}
 </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}]})"></script>
 </head>
 <body>
 <div class="viz-root"><div class="wrap wide">
-<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">The proof</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">Background</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
-<h1>The proof, end to end</h1>
-<p class="sub">From the concept, to the construction, to an interactive demo you can try to break,
-to the single lemma still standing between it and a full proof. Every number here is a real,
-exhaustively computed value from the project (<a href="https://github.com/ekalvi/erdos-193">github.com/ekalvi/erdos-193</a>).</p>
+<h1>Background: the key ideas</h1>
+<p class="sub">A primer on the concepts behind the construction and the conditional theorem — the
+game itself, what&rsquo;s known in two dimensions versus three, and the machinery that makes it
+work: exact integer arithmetic, the enlarge-and-twist matrix, self-similarity, and the one thing
+that can still go wrong. Every number here is a real, exhaustively computed value from the project
+(<a href="https://github.com/ekalvi/erdos-193">github.com/ekalvi/erdos-193</a>).</p>
 
 <!-- ============ THE MAP ============ -->
 <h2><span class="n">1 ·</span>The concept: three properties, pick two</h2>
@@ -169,7 +176,27 @@ Question: can such a walk go on forever?</figcaption>
 </figure>
 
 <!-- ============ THE MACHINE ============ -->
-<h2><span class="n">3 ·</span>The machine: enlarge, twist, patch — repeat</h2>
+<h2><span class="n">3 ·</span>Two dimensions versus three: what is known</h2>
+<p>Erdős&nbsp;#193 — the Gerver&ndash;Ramsey problem — fixes a finite menu $S$ of allowed steps and
+asks whether an infinite walk, each step drawn from&nbsp;$S$, can avoid ever putting three of its
+points on a line. In the <b>plane</b> the answer is settled and negative:
+Gerver&nbsp;&amp;&nbsp;Ramsey (1979) proved that for every finite $S\subset\mathbb{Z}^2$ and every
+$K$ there is a finite length $N(S,K)$ beyond which $K+1$ collinear points are forced. Taking $K=2$,
+no infinite planar walk can avoid three collinear points — the plane is simply too cramped. (In our
+own exhaustive check, the longest triple-free walk on the four unit steps $\pm e_1,\pm e_2$ has just
+<b>3</b> points.)</p>
+<p>Three dimensions behave completely differently, which is why it is the setting this construction
+attacks. Gerver&nbsp;&amp;&nbsp;Ramsey built an explicit infinite walk in $\mathbb{Z}^3$ that
+contains <b>no $5^{11}+1 = 48{,}828{,}126$ collinear points</b> — so, unlike the plane, a finite (if
+astronomically large) number of collinear points <em>can</em> be avoided forever. They conjectured
+their walk in fact never has more than three collinear points; in 2023 Lidbetter disproved that
+exact claim — the walk does contain <em>six</em> collinear points — but sharpened the bound to
+<b>189</b>, so an infinite avoider is now known for every $k\ge 189$. What remains <b>open</b> is the
+pure &ldquo;no three in a line&rdquo; question: whether any finite menu admits an infinite
+$\mathbb{Z}^3$ walk with no three collinear points at all (even <em>no four</em> is unknown). That
+open 3D question is exactly the target of our $124$-step construction.</p>
+
+<h2><span class="n">4 ·</span>The machine: enlarge, twist, patch — repeat</h2>
 <figure>
 <svg viewBox="0 0 900 260">
   <text x="70" y="26" class="mut">seed (obeys the rule)</text>
@@ -201,7 +228,61 @@ rack, not plates in a stack.</figcaption>
 </figure>
 
 <!-- ============ INHERITANCE ============ -->
-<h2><span class="n">4 ·</span>Born safe = safe forever</h2>
+<h2><span class="n">5 ·</span>Exact arithmetic on the integer lattice</h2>
+<p>Every footprint of the walk has whole-number coordinates, and every decision is made in exact
+integer arithmetic — no floating point ever touches a collinearity test, so there is no rounding to
+trust and nothing to drift over hundreds of thousands of points. Whether three points $p,q,r$ lie on
+a line is settled by a single integer quantity, the cross product $\Omega(p,q,r)=(q-p)\times(r-p)$:
+the three are collinear <em>exactly</em> when $\Omega$ is the zero vector. Because $\Omega$ is a
+triple of integers, &ldquo;$=0$&rdquo; is an exact yes-or-no, never a &ldquo;close enough to
+zero.&rdquo;</p>
+<div class="fig">
+  <div class="eq">$$\Omega(p,q,r)=(q-p)\times(r-p),\qquad p,q,r\ \text{collinear}\iff \Omega=0.$$</div>
+  <p>The enlarging matrix $M$ has only integer entries, so $Mp$ is again a lattice point — the
+  construction never leaves&nbsp;$\mathbb{Z}^3$. And enlargement meets the collinearity test through
+  one clean identity, $\Omega(Mp,Mq,Mr)=\operatorname{cof}(M)\cdot\Omega(p,q,r)$, where
+  $\operatorname{cof}(M)$ is the integer cofactor matrix. Since $\operatorname{cof}(M)$ is invertible,
+  $\Omega$ vanishes after enlargement precisely when it vanished before: non-collinear triples stay
+  non-collinear and collinear ones stay collinear. Triple-freeness is inherited <b>exactly</b>, with
+  no error that could accumulate across scales.</p>
+</div>
+
+<h2><span class="n">6 ·</span>One matrix that enlarges <em>and</em> twists</h2>
+<p>The engine of the construction is a single $3\times3$ integer matrix. Its determinant is $27$ and
+all three eigenvalues have modulus exactly $3$, so $M$ acts as a clean $\times 3$ enlargement — it
+blows the walk up by the same factor in every direction, with no direction stretched more than
+another. (In the right metric it is <em>literally</em> three times a rotation; see the next
+section.)</p>
+<div class="fig">
+  <div class="eq">$$M=\begin{pmatrix}3&0&0\\0&0&-3\\0&3&-1\end{pmatrix},\qquad \det M = 27,\qquad |\lambda_1|=|\lambda_2|=|\lambda_3|=3.$$</div>
+  <p>But $M$ does more than enlarge: it also <b>twists</b>. The rotation angle is
+  $\arccos(-\tfrac16)\approx 99.6^\circ$, and because $-\tfrac16$ is not the cosine of any rational
+  fraction of a full turn, that twist <em>never repeats</em>. Each enlargement sets the shape at a
+  fresh tilt relative to every earlier copy, so no two scales ever line back up. This is the
+  &ldquo;imbrication,&rdquo; or dishwasher, idea: the nested copies stack like bowls in a rack, not
+  plates in a stack — and it is what stops far-apart parts of the walk from ever drifting into
+  alignment.</p>
+</div>
+
+<h2><span class="n">7 ·</span>Self-similar at every scale</h2>
+<p>Because $M$ is exactly an enlarge-and-rotate, the object it builds is a genuine self-similar
+fractal — more precisely a <em>graph-directed</em> self-similar set, in which every point spawns one
+enlarged copy of the whole walk (its <b>anchor</b>) plus a bounded set of stitched-in children. The
+self-similarity is exact, not approximate: there is an integer quadratic form $Q$ with
+$M^{\mathsf T}QM=9Q$, which says that in the $Q$-metric $M$ multiplies <em>all</em> distances by
+exactly&nbsp;$3$.</p>
+<div class="fig">
+  <div class="eq">$$M^{\mathsf T}Q\,M = 9\,Q,\qquad Q=\begin{pmatrix}1&0&0\\0&6&-1\\0&-1&6\end{pmatrix} \ \Longrightarrow\ d_Q(Mp,Mq)=3\,d_Q(p,q).$$</div>
+  <p>A self-similar curve has a fractal (box-counting) dimension $d=\log\lambda/\log 3$, where
+  $\lambda\approx 3.36$ is the factor by which the point-count grows per enlargement; here
+  $d\approx 1.10$. That is just above&nbsp;$1$ — the walk is a slightly crinkly <em>thread</em>, not a
+  smooth line and not a space-filling blob. Self-similarity is also what makes a proof conceivable at
+  all: since every scale is a faithful copy of the one beneath it, a single argument at one scale —
+  that a fresh patch can always be stitched in without creating a collinear triple — can be lifted by
+  induction to cover all infinitely many scales <b>at once</b>.</p>
+</div>
+
+<h2><span class="n">8 ·</span>Born safe = safe forever</h2>
 <figure>
 <svg viewBox="0 0 900 230">
   <line x1="50" y1="170" x2="330" y2="170" stroke="var(--walk)" stroke-width="2"/>
@@ -223,7 +304,7 @@ is why each new round only has to worry about the fresh stitches, in nearly-empt
 </figure>
 
 <!-- ============ INTERACTIVE DEMO ============ -->
-<h2><span class="n">5 ·</span>Try to break it</h2>
+<h2><span class="n">9 ·</span>Try to break it</h2>
 <p class="sub">A real run of the machine in 2D (all 24 moves with coordinates in −2…2; enlarge by
 <code>M=[[4,−1],[1,4]]</code>, ≈4.12× and a 14° irrational twist). Click any three points — the browser
 runs the exact integer collinearity test <code>(q−p)×(r−p)</code> live. Blue points are inherited
@@ -251,7 +332,7 @@ menu ran <b>eight</b> rounds to a certified <b>311,738</b>-point walk, and the o
 provably runs forever.</p>
 
 <!-- ============ THE REMAINING LEMMA ============ -->
-<h2><span class="n">6 ·</span>The one thing that can go wrong: crowding</h2>
+<h2><span class="n">10 ·</span>The one thing that can go wrong: crowding</h2>
 <p>Because everything already placed is safe forever (step&nbsp;4), the construction can only fail one
 way: a stitch gets stuck — a gap where <em>every</em> legal hop would make three points line up. That
 happens only if too many earlier points are <b>crowded</b> around the gap, throwing off too many
@@ -286,7 +367,7 @@ walk is a fractal thread, never a blob, forever.</em> Everything else in the pro
 lemma is the whole remaining game, and it's the same claim as "our walk really sits on that bottom
 vertex of the triangle in step&nbsp;1."</p>
 
-<h2><span class="n">7 ·</span>Where it stands</h2>
+<h2><span class="n">11 ·</span>Where it stands</h2>
 <ul class="statuslist">
   <li class="done"><b>Base, inheritance, induction</b> — a triple-free seed exists (certified to
     311,738 points); enlargement freezes it safe forever; the levels chain by plain induction. <em>Proven.</em></li>

@@ -27,7 +27,7 @@
 </head>
 <body>
 <div class="wrap">
-  <header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/" class="cur">Home</a><a href="proof-steps.html">The proof</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+  <header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/" class="cur">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
   <h1>Can a walk on the 3D grid avoid every three-in-a-line, forever?</h1>
   <p class="lede">
@@ -310,6 +310,29 @@
     so bounded crowding means a stitch can never run out of options, and the construction
     runs forever. Every other step is proven or a finite check; this single bound is the
     whole remaining gap.</p>
+  </div>
+
+  <h2>Unspooling, never tangling</h2>
+  <div class="fig">
+    <svg viewBox="0 0 760 272" role="img" aria-label="Left: a walk that folds back tangles with its own past. Right: our walk unspools outward like a fishing line and can never tangle.">
+      <text x="185" y="34" text-anchor="middle" style="font-size:12.5px;font-weight:700;letter-spacing:.06em;fill:hsl(0 62% 50%)">TANGLES&#8202;&#10007;</text>
+      <path d="M 62,178 C 135,68 262,96 200,166 C 145,234 84,198 150,132 C 216,66 288,150 226,206 C 190,240 108,232 138,150" fill="none" stroke="hsl(0 62% 55%)" stroke-width="2.6" stroke-linecap="round" opacity="0.9"/>
+      <text x="185" y="256" text-anchor="middle" style="font-size:13px;fill:hsl(var(--muted-fg))">a walk that folds back crosses its own past</text>
+      <line x1="380" y1="52" x2="380" y2="216" stroke="hsl(var(--border))" stroke-width="1"/>
+      <text x="575" y="34" text-anchor="middle" style="font-size:12.5px;font-weight:700;letter-spacing:.06em;fill:hsl(217 91% 45%)">UNSPOOLS&#8202;&#10003;</text>
+      <path d="M567.0,155.0 L568.3,157.7 L568.4,161.2 L567.0,165.0 L564.0,168.3 L559.5,170.6 L554.1,171.3 L548.2,170.0 L542.6,166.4 L538.2,160.8 L535.8,153.6 L535.8,145.4 L538.8,137.2 L544.5,129.9 L552.8,124.6 L562.9,122.2 L573.7,123.2 L584.2,127.8 L593.0,136.0 L599.0,147.0 L601.3,159.8 L599.2,173.3 L592.7,185.9 L582.2,196.2 L568.4,202.7 L552.7,204.7 L536.7,201.4" fill="none" stroke="hsl(217 91% 50%)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="536.7" y1="201.4" x2="486" y2="214" stroke="hsl(217 91% 50%)" stroke-width="2.6" stroke-linecap="round"/>
+      <circle cx="560" cy="155" r="5.5" fill="hsl(217 91% 50%)"/>
+      <text x="575" y="256" text-anchor="middle" style="font-size:13px;fill:hsl(var(--muted-fg))">our walk only ever reels outward — proven</text>
+    </svg>
+    <p><b>Why the walk can never knot up.</b> The hard half of the last lemma is showing the walk
+    stays a <em>thread</em> — that far-apart parts never drift back together and crowd. Picture a
+    fishing line coming off a reel: so long as it only ever spools <em>outward</em>, it can never
+    tangle with the line already let out. Our walk has exactly this structure — a proven
+    &ldquo;spool&rdquo; coordinate that climbs by one at every scale and never reels back more than
+    half a turn. That makes the far-scale half of <b>Lemma&nbsp;R</b> a <em>theorem</em>: the walk
+    can never approach far-away parts of itself. What&rsquo;s left open is purely <em>local</em> —
+    crowding among nearby points at a single scale.</p>
   </div>
 
   <h2>Origin story</h2>
