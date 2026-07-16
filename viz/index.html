@@ -34,44 +34,14 @@
     proof programme trying to show that construction can be continued forever.
   </p>
 
-  <div class="fig" style="border-color:hsl(var(--link)/.35);background:hsl(var(--link)/.04)">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
-      <span style="width:8px;height:8px;border-radius:50%;background:hsl(142 71% 40%);box-shadow:0 0 0 4px hsl(142 71% 40%/.18);display:inline-block"></span>
-      <b>Where it stands — 16 July 2026</b>
-    </div>
-    <p>The construction reliably builds record walks; the open question is whether it
-    provably runs <em>forever</em>. That needs the walk to look statistically identical at
-    every scale &mdash; self-similar &mdash; so a single argument can cover every level at once.</p>
-    <p style="margin-top:8px"><b>The newest evidence, tested out-of-sample:</b> we
-    predicted the walk&rsquo;s density at level&nbsp;8 &mdash; a <b>311,738-point</b> walk &mdash;
-    <em>before</em> building it, and it landed inside the predicted window
-    ($N_{81}=109.4$ vs. the pre-registered $109.1\pm0.4$). The density trajectory across
-    four levels, <b>118.4 &rarr; 111.9 &rarr; 109.8 &rarr; 109.4</b>, is converging to a fixed
-    point with geometrically shrinking steps &mdash; exactly the scale-invariance the proof
-    requires &mdash; with zero dead-ends across 92,731 stitches.</p>
-    <p style="margin-top:8px"><b>Strong evidence &mdash; and now a written conditional
-    theorem.</b> The <a href="theorem.html" style="color:hsl(var(--link))">conditional
-    theorem</a> is done: the answer to&nbsp;#193 is <em>yes, provided one lemma holds</em>,
-    with every other step &mdash; base, inheritance, induction, exact self-similarity &mdash;
-    proven or certified. That one lemma, <b>Lemma&nbsp;R</b>, says local crowding stays
-    bounded at every scale (the walk stays a thread, not a blob); given it, the last gap
-    collapses to a finite, machine-checkable computation. What is still open is proving
-    Lemma&nbsp;R itself &mdash; turning it from measured-true into proven. Honest odds on that
-    full, unconditional proof today: <b>~15&ndash;25%</b>. The
-    <a href="progress.html" style="color:hsl(var(--link))">research log</a> tracks every
-    step, including the honest dead ends.</p>
-  </div>
-
   <div class="stats">
     <div class="stat"><b>311,737</b><span>steps in the record walk — built by 8 rounds of the
       construction, exactly verified (no 3 of its 311,738 points collinear, checked in parallel),
       and SHA-256 certified (c8cc3728…) so anyone can re-check it independently</span></div>
-    <div class="stat"><b>1.2&thinsp;B</b><span>exact integer transitions computed to map every
-      arithmetic situation a walk can reach — each verified to keep a safe next move along all
-      13 possible line-directions a collision could form, with zero exceptions found</span></div>
     <div class="stat"><b>124</b><span>moves in the fixed menu (every integer vector with
       coordinates in ±2) — fixed forever, as the problem demands; rich enough that stitching
       never runs out of options</span></div>
+    <div class="stat"><b style="font-size:19px">$M=\begin{pmatrix}3&0&0\\0&0&-3\\0&3&-1\end{pmatrix}$</b><span>the enlarge-and-twist matrix at the heart of the construction — every level multiplies the whole walk by M, growing it 3× in each direction (determinant 27) and rotating it by an angle that never repeats, so no two scales can ever line up</span></div>
   </div>
 
   <h2>Two equations that carry the project</h2>
