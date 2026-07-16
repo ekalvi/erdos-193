@@ -1,0 +1,19 @@
+
+=== seed 193: base 20 steps ===
+  TWIST  (M_BAL3): level 1 ->     62 steps  density 0.00243
+  TWIST  (M_BAL3): level 2 ->    211 steps  density 0.00032
+  TWIST  (M_BAL3): level 3 ->    707 steps  density 0.00004
+  TWIST  (M_BAL3): level 4 ->   2407 steps  density 0.00000
+  SCALE-ONLY (3I): level 1 ->     63 steps  density 0.00259
+  SCALE-ONLY (3I): level 2 ->    223 steps  density 0.00034
+  SCALE-ONLY (3I): level 3 ->    788 steps  density 0.00004
+  SCALE-ONLY (3I): level 4 ->   2753 steps  density 0.00001
+
+=== seed 42: base 20 steps ===
+  TWIST  (M_BAL3): level 1 ->     58 steps  density 0.00853
+  TWIST  (M_BAL3): level 2 ->    193 steps  density 0.00083
+  TWIST  (M_BAL3): level 3 ->    662 steps  density 0.00010
+  TWIST  (M_BAL3): level 4 ->   2240 steps  density 0.00001
+  SCALE-ONLY (3I): level 1 ->     58 steps  density 0.00887
+  SCALE-ONLY (3I): level 2 ->    200 steps  density 0.00108
+  SCALE-ONLY (3I): level 3 ->    706 steps  density 0.00014

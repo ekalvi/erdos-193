@@ -269,6 +269,23 @@ CONDITIONAL theorem (one hypothesis: the anti-stacking lemma) — task 11. A lat
 the joint-config automaton + a monotonicity/invariant argument for level-stability of (max-anchors,
 arc-count), or formalization-driven insight — NOT another same-shape panel.
 
+**L4' — THE EXCLUSION STRATEGY (Erik's "fishing-line" reframing, 2026-07-16, design/lemma/exclusion/).**
+All four prior rounds were COUNTING arguments (bound #points/#arcs in a ball) and died at the same
+anti-stacking residue. Erik's insight (like the dishwasher/imbrication origin, this is his): reframe
+as EXCLUSION — an unspooling fishing line stays untangled because it physically cannot pass through
+itself; the walk's substitute for that no-overlap is its OWN triple-free rule + the twist. So don't
+count the crowd — prove the walk cannot DRIFT BACK near itself. TARGET flips to the RETURN count
+A(q,r) := # distinct passes through B(q,r), r≤10 (sojourn per pass already proven ≤3.1r; bounded
+returns ⇒ linear ⇒ availability). Exclusion forces: (i) DEEP-TAIL (proven) — pieces born ≥3 levels
+apart forced ≥24 apart ⇒ every pass in a Cheb-≤10 ball comes from ≤3 ADJACENT birth levels; (ii)
+TRIPLE-FREE self-exclusion — near-parallel near-passes on the integer grid would force forbidden
+(near-)collinearity, bounding how many fit; (iii) TWIST angular decorrelation — adjacent scales
+rotated apart (arccos(-1/6)) can't be near-parallel. This is the FIRST mechanistically-new angle
+(exclusion, not counting), aimed exactly at the stuck part (returns/self-approach); ~20-30% it cracks.
+SIDE EXPERIMENT (2026-07-16): pure scaling M=3I vs twist M_BAL3, same base/menu/stitcher — pure
+scaling does NOT jam at low levels (L1-4 nearly identical step counts & density to twist, 2 seeds).
+⇒ "twist is necessary" remains EMPIRICAL, not proven; scaling is not a visible dead-end at low depth.
+
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties
 because each level is completed before the next begins and inheritance freezes
