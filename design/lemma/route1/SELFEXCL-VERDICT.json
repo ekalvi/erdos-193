@@ -1,0 +1,28 @@
+{
+  "route": "1 - TRIPLE-FREE SELF-EXCLUSION (near-parallel pass-stacking test)",
+  "premise_examined": "two close, near-parallel passes through a Cheb-r ball (r<=10) force a (near-)collinear triple, which triple-freeness forbids => bounded pass count A0",
+  "verdict": "REFUTED. Triple-freeness gives NO bound on the pass count. Near-parallel is not forbidden; only EXACT collinearity (cross=0) is, and parallel-but-OFFSET lattice arcs never produce a zero cross product.",
+  "decisive_measurements_L6_L7": {
+    "min_coexisting_pair_angle_deg": {
+      "both_arcs_len>=1": 0.0,
+      "both_arcs_len>=2": 0.0,
+      "both_arcs_len>=3": "2.0-2.4 (L7=2.02, L6=2.36)"
+    },
+    "min_triple_cross_over_all_coexisting_pairs": 1,
+    "note_cross": "|cross((a2-a1),(b-a1))| bottoms out at 1 (the SMALLEST nonzero integer) for close near-parallel passes at every rho. Triple-freeness (cross != 0) is satisfied with the thinnest possible margin and imposes no angular gap.",
+    "close_and_near_parallel_coexisting_pairs_theta<15_s<=rho/2": {
+      "L6_rho9": 33, "L6_rho10": 24, "L7_rho8": 50, "L7_rho9": 82,
+      "meaning": "the supposed FORBIDDEN region (close AND near-parallel) is heavily POPULATED - not empty."
+    },
+    "substantial_near_parallel_coexisting_pairs_len>=3_theta<10": {"L6": 7, "L7": 15}
+  },
+  "why_it_fails_geometrically": "Two lattice arcs can be exactly parallel (angle 0) and Chebyshev-close and still triple-free, because they are laterally OFFSET: no point of one is collinear with any two of the other (cross = 1, not 0). Triple-freeness = distinct primitive chord directions from an anchor = O(r^3) directions of sup-norm <=2r (geomcap), loose by ~84x vs the measured A0<=5, and it CANNOT be sharpened by angle/separation because the offending configuration (parallel offset passes) is legal.",
+  "kappa3_locally_vacuous": "confirmed by prior RESULTS.json: local kappa_3 <= 4 at rho=10 (magnitude ceiling floor(log3(8r^2))=6); the global kappa_3<=12 needs chord Cheb-distance ~515, far outside r<=10. Provides ZERO local constraint. No Diophantine direction-packing bound tightens A0.",
+  "A0_from_triple_free_alone": "O(r^3) (geomcap(2r): 144/1008/14256 at r=2/4/10). NOT level-independent A0<=5. The measured flat A0<=5 is METRIC (M-contraction/twist/deep-tail separation), a DIFFERENT exclusion force than triple-freeness.",
+  "consistency_with_prior_route1": "Matches design/lemma/route1/RESULTS.json (STUCK) and confirms it with the pass-level self-exclusion test the reframing asked for. The RETURNS-CONCLUSION.json 'CLOSES-MODULO-CLEAN-LEMMA' route does NOT use triple-freeness - it telescopes A(r) through 4 M-levels down to the single-level metric refill/anti-stacking lemma. That refill lemma is the real content; triple-freeness is not the exclusion force.",
+  "status": "STUCK (for the triple-free self-exclusion mechanism specifically)",
+  "scripts": [
+    "design/lemma/route1/selfexcl_probe.py  (PYTHONPATH=. pypy3 selfexcl_probe.py 6 7)",
+    "design/lemma/route1/selfexcl-results.json  (full per-rho pair tables + densest-ball dumps)"
+  ]
+}

@@ -1,0 +1,534 @@
+{
+ "L6": {
+  "L": 6,
+  "N": 27697,
+  "jmax": 1,
+  "theta_deg": 99.594,
+  "per_r": {
+   "5": {
+    "max_passes": 4,
+    "max_pass_center": [
+     -1865,
+     -2297,
+     592
+    ],
+    "adjacent_level_angle": {
+     "n": 1,
+     "min": 40.02,
+     "p10": 40.02,
+     "med": 40.02,
+     "mean": 40.02
+    },
+    "same_level_angle": {
+     "n": 10,
+     "min": 24.07,
+     "p10": 42.06,
+     "med": 60.36,
+     "mean": 60.82
+    },
+    "far_level_angle": null,
+    "same_level_nearparallel_lt15deg": 0,
+    "same_level_total_pairs": 10,
+    "xalign_mean_by_birthlevel": {
+     "0": 0.542,
+     "1": 0.816
+    },
+    "dense_examples": [
+     {
+      "center": [
+       -111,
+       78,
+       3206
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 5,
+        "birth": 0,
+        "xalign": 0.563
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       726,
+       -1371,
+       1481
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 5,
+        "birth": 0,
+        "xalign": 0.425
+       },
+       {
+        "len": 2,
+        "birth": 0,
+        "xalign": 0.894
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       -1866,
+       -2299,
+       591
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 5,
+        "birth": 0,
+        "xalign": 0.39
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 2,
+        "birth": 0,
+        "xalign": 0.333
+       }
+      ]
+     },
+     {
+      "center": [
+       -1865,
+       -2297,
+       592
+      ],
+      "n_passes": 4,
+      "passes": [
+       {
+        "len": 5,
+        "birth": 0,
+        "xalign": 0.468
+       },
+       {
+        "len": 2,
+        "birth": 0,
+        "xalign": 0.0
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     }
+    ]
+   },
+   "10": {
+    "max_passes": 5,
+    "max_pass_center": [
+     -5862,
+     840,
+     -2117
+    ],
+    "adjacent_level_angle": {
+     "n": 8,
+     "min": 0.0,
+     "p10": 0.0,
+     "med": 62.15,
+     "mean": 51.01
+    },
+    "same_level_angle": {
+     "n": 97,
+     "min": 14.08,
+     "p10": 25.34,
+     "med": 59.31,
+     "mean": 56.55
+    },
+    "far_level_angle": null,
+    "same_level_nearparallel_lt15deg": 2,
+    "same_level_total_pairs": 97,
+    "xalign_mean_by_birthlevel": {
+     "0": 0.479,
+     "1": 0.535
+    },
+    "dense_examples": [
+     {
+      "center": [
+       153,
+       -42,
+       412
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 11,
+        "birth": 0,
+        "xalign": 0.412
+       },
+       {
+        "len": 4,
+        "birth": 0,
+        "xalign": 0.545
+       }
+      ]
+     },
+     {
+      "center": [
+       62,
+       143,
+       975
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 11,
+        "birth": 0,
+        "xalign": 0.683
+       },
+       {
+        "len": 3,
+        "birth": 0,
+        "xalign": 0.606
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       -72,
+       -147,
+       1070
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 11,
+        "birth": 0,
+        "xalign": 0.581
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 1,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       -219,
+       -96,
+       1273
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 13,
+        "birth": 0,
+        "xalign": 0.808
+       }
+      ]
+     },
+     {
+      "center": [
+       -413,
+       -365,
+       1281
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 12,
+        "birth": 0,
+        "xalign": 0.392
+       }
+      ]
+     }
+    ]
+   }
+  }
+ },
+ "L7": {
+  "L": 7,
+  "N": 92732,
+  "jmax": 2,
+  "theta_deg": 99.594,
+  "per_r": {
+   "5": {
+    "max_passes": 4,
+    "max_pass_center": [
+     455,
+     -954,
+     -467
+    ],
+    "adjacent_level_angle": {
+     "n": 1,
+     "min": 70.02,
+     "p10": 70.02,
+     "med": 70.02,
+     "mean": 70.02
+    },
+    "same_level_angle": {
+     "n": 24,
+     "min": 13.69,
+     "p10": 38.94,
+     "med": 63.37,
+     "mean": 61.34
+    },
+    "far_level_angle": null,
+    "same_level_nearparallel_lt15deg": 1,
+    "same_level_total_pairs": 24,
+    "xalign_mean_by_birthlevel": {
+     "0": 0.446,
+     "1": 0.408
+    },
+    "dense_examples": [
+     {
+      "center": [
+       455,
+       -954,
+       -467
+      ],
+      "n_passes": 4,
+      "passes": [
+       {
+        "len": 6,
+        "birth": 0,
+        "xalign": 0.739
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 1,
+        "xalign": null
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     }
+    ]
+   },
+   "10": {
+    "max_passes": 4,
+    "max_pass_center": [
+     -630,
+     -3789,
+     -1548
+    ],
+    "adjacent_level_angle": {
+     "n": 20,
+     "min": 9.13,
+     "p10": 25.16,
+     "med": 68.78,
+     "mean": 59.87
+    },
+    "same_level_angle": {
+     "n": 171,
+     "min": 3.92,
+     "p10": 25.84,
+     "med": 61.52,
+     "mean": 58.37
+    },
+    "far_level_angle": {
+     "n": 2,
+     "min": 12.28,
+     "p10": 12.28,
+     "med": 78.01,
+     "mean": 45.14
+    },
+    "same_level_nearparallel_lt15deg": 7,
+    "same_level_total_pairs": 171,
+    "xalign_mean_by_birthlevel": {
+     "0": 0.492,
+     "1": 0.53,
+     "2": 0.622
+    },
+    "dense_examples": [
+     {
+      "center": [
+       450,
+       -957,
+       -470
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 13,
+        "birth": 0,
+        "xalign": 0.808
+       },
+       {
+        "len": 1,
+        "birth": 1,
+        "xalign": null
+       },
+       {
+        "len": 2,
+        "birth": 0,
+        "xalign": 0.408
+       }
+      ]
+     },
+     {
+      "center": [
+       630,
+       -2123,
+       -708
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 2,
+        "birth": 0,
+        "xalign": 0.707
+       },
+       {
+        "len": 11,
+        "birth": 0,
+        "xalign": 0.59
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       245,
+       -2714,
+       -563
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 6,
+        "birth": 0,
+        "xalign": 0.711
+       },
+       {
+        "len": 11,
+        "birth": 0,
+        "xalign": 0.279
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     },
+     {
+      "center": [
+       245,
+       -2716,
+       -565
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 1,
+        "xalign": null
+       },
+       {
+        "len": 2,
+        "birth": 1,
+        "xalign": 0.667
+       },
+       {
+        "len": 13,
+        "birth": 0,
+        "xalign": 0.395
+       }
+      ]
+     },
+     {
+      "center": [
+       183,
+       -2950,
+       -574
+      ],
+      "n_passes": 3,
+      "passes": [
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       },
+       {
+        "len": 12,
+        "birth": 0,
+        "xalign": 0.506
+       },
+       {
+        "len": 1,
+        "birth": 0,
+        "xalign": null
+       }
+      ]
+     }
+    ]
+   }
+  }
+ }
+}

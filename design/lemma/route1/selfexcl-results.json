@@ -1,0 +1,816 @@
+{
+ "6": {
+  "level": 6,
+  "N": 27697,
+  "per_rho": {
+   "1": {
+    "maxA": 2,
+    "n_coexisting_pairs": 43,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 4,
+    "min_triple_cross_over_all_pairs": 2
+   },
+   "2": {
+    "maxA": 3,
+    "n_coexisting_pairs": 62,
+    "min_angle_deg": 7.33,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 0,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -3080,
+      -4185,
+      -1141
+     ],
+     "A": 3,
+     "arclens": [
+      3,
+      1,
+      1
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        3,
+        1
+       ],
+       "theta_deg": 90.0,
+       "sep": 1,
+       "min_triple_cross": 2
+      },
+      {
+       "arcs": [
+        3,
+        1
+       ],
+       "theta_deg": 22.5,
+       "sep": 2,
+       "min_triple_cross": 9
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 76.4,
+       "sep": 4,
+       "min_triple_cross": null
+      }
+     ]
+    }
+   },
+   "3": {
+    "maxA": 3,
+    "n_coexisting_pairs": 244,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 1,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "4": {
+    "maxA": 3,
+    "n_coexisting_pairs": 255,
+    "min_angle_deg": 3.76,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 2,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -149,
+      35,
+      2410
+     ],
+     "A": 3,
+     "arclens": [
+      5,
+      1,
+      1
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        5,
+        1
+       ],
+       "theta_deg": 78.3,
+       "sep": 1,
+       "min_triple_cross": 7
+      },
+      {
+       "arcs": [
+        5,
+        1
+       ],
+       "theta_deg": 83.4,
+       "sep": 4,
+       "min_triple_cross": 13
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 61.9,
+       "sep": 4,
+       "min_triple_cross": null
+      }
+     ]
+    }
+   },
+   "5": {
+    "maxA": 4,
+    "n_coexisting_pairs": 642,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 3,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "6": {
+    "maxA": 4,
+    "n_coexisting_pairs": 577,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 4,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -1866,
+      -2299,
+      591
+     ],
+     "A": 4,
+     "arclens": [
+      7,
+      2,
+      1,
+      2
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        7,
+        2
+       ],
+       "theta_deg": 46.5,
+       "sep": 4,
+       "min_triple_cross": 6
+      },
+      {
+       "arcs": [
+        7,
+        1
+       ],
+       "theta_deg": 60.8,
+       "sep": 4,
+       "min_triple_cross": 12
+      },
+      {
+       "arcs": [
+        7,
+        2
+       ],
+       "theta_deg": 26.2,
+       "sep": 5,
+       "min_triple_cross": 6
+      },
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 39.2,
+       "sep": 4,
+       "min_triple_cross": 18
+      },
+      {
+       "arcs": [
+        2,
+        2
+       ],
+       "theta_deg": 72.7,
+       "sep": 7,
+       "min_triple_cross": 30
+      },
+      {
+       "arcs": [
+        1,
+        2
+       ],
+       "theta_deg": 78.9,
+       "sep": 3,
+       "min_triple_cross": 15
+      }
+     ]
+    }
+   },
+   "7": {
+    "maxA": 4,
+    "n_coexisting_pairs": 1060,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 15,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "8": {
+    "maxA": 5,
+    "n_coexisting_pairs": 983,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 14,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -5864,
+      840,
+      -2115
+     ],
+     "A": 5,
+     "arclens": [
+      2,
+      1,
+      1,
+      1,
+      10
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 90.0,
+       "sep": 8,
+       "min_triple_cross": 47
+      },
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 63.6,
+       "sep": 12,
+       "min_triple_cross": 68
+      },
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 17.7,
+       "sep": 13,
+       "min_triple_cross": 81
+      },
+      {
+       "arcs": [
+        2,
+        10
+       ],
+       "theta_deg": 47.4,
+       "sep": 5,
+       "min_triple_cross": 2
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 27.3,
+       "sep": 4,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 82.2,
+       "sep": 5,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        10
+       ],
+       "theta_deg": 54.2,
+       "sep": 6,
+       "min_triple_cross": 22
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 74.2,
+       "sep": 3,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        10
+       ],
+       "theta_deg": 80.3,
+       "sep": 7,
+       "min_triple_cross": 24
+      },
+      {
+       "arcs": [
+        1,
+        10
+       ],
+       "theta_deg": 52.9,
+       "sep": 8,
+       "min_triple_cross": 30
+      }
+     ]
+    }
+   },
+   "9": {
+    "maxA": 5,
+    "n_coexisting_pairs": 1500,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 33,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "10": {
+    "maxA": 5,
+    "n_coexisting_pairs": 1286,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 24,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -5862,
+      840,
+      -2117
+     ],
+     "A": 5,
+     "arclens": [
+      2,
+      1,
+      1,
+      2,
+      13
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 90.0,
+       "sep": 8,
+       "min_triple_cross": 47
+      },
+      {
+       "arcs": [
+        2,
+        1
+       ],
+       "theta_deg": 63.6,
+       "sep": 12,
+       "min_triple_cross": 68
+      },
+      {
+       "arcs": [
+        2,
+        2
+       ],
+       "theta_deg": 17.7,
+       "sep": 12,
+       "min_triple_cross": 58
+      },
+      {
+       "arcs": [
+        2,
+        13
+       ],
+       "theta_deg": 52.3,
+       "sep": 5,
+       "min_triple_cross": 2
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 27.3,
+       "sep": 4,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        2
+       ],
+       "theta_deg": 82.2,
+       "sep": 5,
+       "min_triple_cross": 24
+      },
+      {
+       "arcs": [
+        1,
+        13
+       ],
+       "theta_deg": 52.3,
+       "sep": 6,
+       "min_triple_cross": 3
+      },
+      {
+       "arcs": [
+        1,
+        2
+       ],
+       "theta_deg": 74.2,
+       "sep": 3,
+       "min_triple_cross": 9
+      },
+      {
+       "arcs": [
+        1,
+        13
+       ],
+       "theta_deg": 77.5,
+       "sep": 7,
+       "min_triple_cross": 6
+      },
+      {
+       "arcs": [
+        2,
+        13
+       ],
+       "theta_deg": 58.1,
+       "sep": 8,
+       "min_triple_cross": 4
+      }
+     ]
+    }
+   }
+  }
+ },
+ "7": {
+  "level": 7,
+  "N": 92732,
+  "per_rho": {
+   "1": {
+    "maxA": 2,
+    "n_coexisting_pairs": 168,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 2,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "2": {
+    "maxA": 3,
+    "n_coexisting_pairs": 213,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 3,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -489,
+      -6033,
+      -1729
+     ],
+     "A": 3,
+     "arclens": [
+      3,
+      1,
+      1
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        3,
+        1
+       ],
+       "theta_deg": 56.6,
+       "sep": 1,
+       "min_triple_cross": 5
+      },
+      {
+       "arcs": [
+        3,
+        1
+       ],
+       "theta_deg": 71.6,
+       "sep": 1,
+       "min_triple_cross": 2
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 90.0,
+       "sep": 3,
+       "min_triple_cross": null
+      }
+     ]
+    }
+   },
+   "3": {
+    "maxA": 3,
+    "n_coexisting_pairs": 838,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 4,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "4": {
+    "maxA": 3,
+    "n_coexisting_pairs": 712,
+    "min_angle_deg": 2.02,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 10,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -489,
+      -6030,
+      -1728
+     ],
+     "A": 3,
+     "arclens": [
+      1,
+      3,
+      5
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        1,
+        3
+       ],
+       "theta_deg": 84.0,
+       "sep": 3,
+       "min_triple_cross": 11
+      },
+      {
+       "arcs": [
+        1,
+        5
+       ],
+       "theta_deg": 58.2,
+       "sep": 4,
+       "min_triple_cross": 16
+      },
+      {
+       "arcs": [
+        3,
+        5
+       ],
+       "theta_deg": 75.7,
+       "sep": 1,
+       "min_triple_cross": 3
+      }
+     ]
+    }
+   },
+   "5": {
+    "maxA": 4,
+    "n_coexisting_pairs": 1955,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 11,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "6": {
+    "maxA": 4,
+    "n_coexisting_pairs": 1408,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 13,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -1565,
+      -4721,
+      -2205
+     ],
+     "A": 4,
+     "arclens": [
+      1,
+      1,
+      1,
+      8
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 70.5,
+       "sep": 4,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 78.9,
+       "sep": 8,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        8
+       ],
+       "theta_deg": 46.5,
+       "sep": 5,
+       "min_triple_cross": 30
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 15.8,
+       "sep": 4,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        8
+       ],
+       "theta_deg": 38.2,
+       "sep": 6,
+       "min_triple_cross": 24
+      },
+      {
+       "arcs": [
+        1,
+        8
+       ],
+       "theta_deg": 37.4,
+       "sep": 4,
+       "min_triple_cross": 10
+      }
+     ]
+    }
+   },
+   "7": {
+    "maxA": 4,
+    "n_coexisting_pairs": 2922,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 21,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "8": {
+    "maxA": 4,
+    "n_coexisting_pairs": 2328,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 50,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      452,
+      -956,
+      -470
+     ],
+     "A": 4,
+     "arclens": [
+      9,
+      1,
+      1,
+      2
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        9,
+        1
+       ],
+       "theta_deg": 67.3,
+       "sep": 1,
+       "min_triple_cross": 4
+      },
+      {
+       "arcs": [
+        9,
+        1
+       ],
+       "theta_deg": 75.2,
+       "sep": 3,
+       "min_triple_cross": 6
+      },
+      {
+       "arcs": [
+        9,
+        2
+       ],
+       "theta_deg": 88.6,
+       "sep": 5,
+       "min_triple_cross": 5
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 17.7,
+       "sep": 5,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        2
+       ],
+       "theta_deg": 33.6,
+       "sep": 9,
+       "min_triple_cross": 18
+      },
+      {
+       "arcs": [
+        1,
+        2
+       ],
+       "theta_deg": 17.7,
+       "sep": 4,
+       "min_triple_cross": 9
+      }
+     ]
+    }
+   },
+   "9": {
+    "maxA": 5,
+    "n_coexisting_pairs": 4223,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 82,
+    "min_triple_cross_over_all_pairs": 1
+   },
+   "10": {
+    "maxA": 4,
+    "n_coexisting_pairs": 3469,
+    "min_angle_deg": 0.0,
+    "n_close_and_near_parallel(theta<15,s<=rho/2)": 60,
+    "min_triple_cross_over_all_pairs": 1,
+    "densest_ball_dump": {
+     "center": [
+      -630,
+      -3789,
+      -1548
+     ],
+     "A": 4,
+     "arclens": [
+      13,
+      1,
+      1,
+      1
+     ],
+     "pairs": [
+      {
+       "arcs": [
+        13,
+        1
+       ],
+       "theta_deg": 86.7,
+       "sep": 2,
+       "min_triple_cross": 10
+      },
+      {
+       "arcs": [
+        13,
+        1
+       ],
+       "theta_deg": 78.6,
+       "sep": 5,
+       "min_triple_cross": 10
+      },
+      {
+       "arcs": [
+        13,
+        1
+       ],
+       "theta_deg": 78.6,
+       "sep": 9,
+       "min_triple_cross": 23
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 15.8,
+       "sep": 4,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 15.8,
+       "sep": 8,
+       "min_triple_cross": null
+      },
+      {
+       "arcs": [
+        1,
+        1
+       ],
+       "theta_deg": 0.0,
+       "sep": 4,
+       "min_triple_cross": null
+      }
+     ]
+    }
+   }
+  }
+ }
+}

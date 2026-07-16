@@ -282,9 +282,15 @@ TRIPLE-FREE self-exclusion — near-parallel near-passes on the integer grid wou
 (near-)collinearity, bounding how many fit; (iii) TWIST angular decorrelation — adjacent scales
 rotated apart (arccos(-1/6)) can't be near-parallel. This is the FIRST mechanistically-new angle
 (exclusion, not counting), aimed exactly at the stuck part (returns/self-approach); ~20-30% it cracks.
-SIDE EXPERIMENT (2026-07-16): pure scaling M=3I vs twist M_BAL3, same base/menu/stitcher — pure
-scaling does NOT jam at low levels (L1-4 nearly identical step counts & density to twist, 2 seeds).
-⇒ "twist is necessary" remains EMPIRICAL, not proven; scaling is not a visible dead-end at low depth.
+SIDE EXPERIMENT (2026-07-16, design/lemma/exclusion/scaling-vs-twist-experiment.log, 3 seeds): pure
+scaling M=3I vs twist M_BAL3, same base/menu/stitcher through level 4. FINDINGS: (a) pure scaling does
+NOT jam — comparable step counts to twist at every level; so "twist is necessary" is EMPIRICAL, not a
+proven dead-end at low depth. (b) BUT pure scaling is CONSISTENTLY ~20-40% DENSER than the twist at
+every matched level (all 3 seeds; e.g. L3 density scale/twist = 0.00014/0.00010, 0.00009/0.00007).
+⇒ the twist demonstrably makes the walk MORE THREAD-LIKE (lower density = more curve-like) than pure
+scaling — a compounding per-level density edge, plausibly why the twist matters at scale even though
+scaling survives early. Direct empirical support for the exclusion/fishing-line thesis: the twist's
+job is to keep the walk thread-density, and it measurably does so vs the aligned (scaling) baseline.
 
 **L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
 an infinite triple-free walk exists. Plain induction; no compactness subtleties

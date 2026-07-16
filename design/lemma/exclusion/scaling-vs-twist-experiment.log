@@ -17,3 +17,14 @@
   SCALE-ONLY (3I): level 1 ->     58 steps  density 0.00887
   SCALE-ONLY (3I): level 2 ->    200 steps  density 0.00108
   SCALE-ONLY (3I): level 3 ->    706 steps  density 0.00014
+  SCALE-ONLY (3I): level 4 ->   2454 steps  density 0.00002
+
+=== seed 7: base 20 steps ===
+  TWIST  (M_BAL3): level 1 ->     60 steps  density 0.00440
+  TWIST  (M_BAL3): level 2 ->    194 steps  density 0.00062
+  TWIST  (M_BAL3): level 3 ->    665 steps  density 0.00007
+  TWIST  (M_BAL3): level 4 ->   2241 steps  density 0.00001
+  SCALE-ONLY (3I): level 1 ->     59 steps  density 0.00541
+  SCALE-ONLY (3I): level 2 ->    213 steps  density 0.00070
+  SCALE-ONLY (3I): level 3 ->    736 steps  density 0.00009
+  SCALE-ONLY (3I): level 4 ->   2575 steps  density 0.00001

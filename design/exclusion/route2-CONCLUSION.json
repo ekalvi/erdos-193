@@ -1,0 +1,39 @@
+{
+  "route": "ROUTE 2 -- TWIST ANGULAR DECORRELATION (exclusion, not counting)",
+  "target": "bound return count A(q,r) on r in [1,10], uniform in level k, via: passes come from <=3 adjacent birth levels (deep-tail) AND adjacent-level passes are angularly separated by the twist arccos(-1/6)=99.594deg, so near-parallel crowding is impossible.",
+  "verdict": "REFUTED as an independent exclusion force -- STUCK. The twist does NOT decorrelate adjacent-scale arc directions; the angular-gap premise is empirically and structurally false.",
+
+  "geometry_of_the_twist": {
+    "M_BAL3": [[3,0,0],[0,0,-3],[0,3,-1]],
+    "x_axis": "e1 is an eigenvector, eigenvalue 3, PURE DILATION -- NOT rotated. angle(M e1, e1)=0.",
+    "yz_plane": "block [[0,-3],[3,-1]], trace -1, det 9, modulus 3, rotation cos t = -1/2/3 = -1/6, t=99.594deg. Only the yz-components rotate.",
+    "consequence": "the twist is a rotation of ONLY the yz-part of a direction; any x-aligned component is twist-invariant across all levels."
+  },
+
+  "empirical_refutation_L6_L7": {
+    "max_passes": "L6 r10 = 5, L7 r10 = 4 (consistent with measured A0<=5) -- but NOT produced by angular separation.",
+    "adjacent_level_pass_angle_min": {"L6_r10": 0.0, "L7_r10": 9.13, "note": "NOT bounded away from 0; the predicted definite angle gap is absent."},
+    "returns_are_same_level_dominated": {"L7_r10": "171 same-birth-level pass-pairs vs 20 adjacent-level pairs", "note": "the return count is overwhelmingly WITHIN one birth level; the twist rotates only BETWEEN levels, so it cannot touch the dominant term."},
+    "same_level_near_parallel_events": {"L7_r10_lt15deg": "7/171", "min_same_level_angle": 3.92, "verified_substantial_arc_pair": {"center": [741,-4548,-3844], "birth": 0, "angle_deg": 10.6, "arclens": [4,12], "dirs": [[-6,4,-1],[20,-16,8]]}, "note": "two DISTINCT fresh-level passes through one Cheb-10 ball, near-parallel. Triple-free forbids exact collinearity, NOT near-parallel. The twist gives no protection here (same level)."},
+    "x_alignment_of_passes": {"typical_mean": 0.5, "note": "arc directions carry a large x-component on average; the x-axis is exactly the twist's non-rotating eigendirection, so a substantial part of every direction escapes decorrelation."}
+  },
+
+  "structural_reason_it_fails": {
+    "isotropy_kills_rotation": "Each birth level already carries a near-ISOTROPIC spread of arc directions (the 124-step menu spans all directions; realized same-level pass angles span 4deg..90deg). A rotation maps an isotropic ensemble into itself, so it creates NO angular gap.",
+    "menu_self_overlap_under_M": "For EVERY menu direction d, min_j angle(M.d, d_j) over the menu is <= 9.462deg, and for many it is exactly 0. So rotating level-j's direction set by the twist to obtain level-(j+1)'s set reproduces essentially the SAME set of directions -- level-j and level-(j+1) arcs can always be near-parallel.",
+    "summary": "Angular decorrelation between two rotation-invariant ensembles is vacuous. The 'unspooling fishing line cannot drift back near-parallel' intuition is FALSE for this walk: adjacent scales offer a full spread of directions, so near-parallel returns are geometrically available at every scale, and same-level returns (the dominant term) are untouched by any inter-level rotation."
+  },
+
+  "what_survives": {
+    "deep_tail_still_holds": "passes come from <=3 adjacent birth levels (j=0,1,2); far-level pairs essentially absent (0 at r=5, 2 at L7 r=10). This is the ONLY real exclusion and it is the previously-proven min|M^3 v|inf=24 packing fact, not an angular one.",
+    "A0_le_5_measured": "still true and level-stable L6/L7, consistent with route1/route4 -- but the bound is NOT explained by the twist."
+  },
+
+  "reduction_is_circular_for_this_route": "Route 2's angular force cannot bound the same-birth-level return count, which is exactly the SINGLE-LEVEL REFILL / ANTI-STACKING count b_m(r) that routes 1/3/4 already isolate as the sole residue. Route 2 provides no independent purchase on it; the honest residue is unchanged.",
+
+  "scripts": [
+    "design/exclusion/route2_angular.py  (birth-tagged pass directions in dense Cheb-r balls, L6/L7; adjacent- vs same-level angle histograms, x-alignment, near-parallel stacking events)",
+    "inline menu-isotropy test: min_j angle(M.d_i, d_j) <= 9.462deg for all 124 menu directions (no rotation gap)"
+  ],
+  "status": "STUCK (route refuted); overall programme remains CLOSES-MODULO-CLEAN-LEMMA via the single-level refill linearity that routes 1/3/4 isolate."
+}
