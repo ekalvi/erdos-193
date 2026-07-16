@@ -1,0 +1,4 @@
+=== m=4 depth=4 ===
+  m=4 L=1: 84 pts, triple-free OK (0.9s)
+  m=4 L=2: 384 pts, triple-free OK (13.4s)
+  m=4 L=3: 1733 pts, triple-free OK (576.5s)
