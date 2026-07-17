@@ -1,0 +1,14 @@
+{
+ "kind": "collar",
+ "|D|": 2103,
+ "|E|": 15545,
+ "Emax_Q": 2116,
+ "carry_ball": 8649,
+ "closure_escapes": 0,
+ "|R_nonzero|": 1726,
+ "R_symmetric": true,
+ "distinct_directions": 718,
+ "proper_parallel_directions": 91,
+ "unconstrained_cross_can_vanish": true,
+ "runtime_s": 2.5
+}

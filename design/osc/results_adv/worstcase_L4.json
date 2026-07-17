@@ -1,0 +1,22 @@
+{
+  "note": "Reference-level (top_level=4, depth=3) worst-case covering multiplicity mult_g(r=3^g), g=1,2,3. Every walk is independently triple-free-verified (first_disqualifier==None asserted on the full chain at each level) => a legal orbit. g=1 (r=3, finest) is the most level-robust scale; g=3 at low top_level is finite-level-inflated (see L3 where even the design 'base' route showed g3=9 despite its true 4/5/4 at L7).",
+  "regimes": {
+    "base_short_design_routing": {
+      "seed42":  {"mult": [4,3,4], "lambda": 3.366, "d": 1.1048, "N": 2161},
+      "seed193": {"mult": [4,3,6], "lambda": 3.433, "d": 1.1227, "N": 2458}
+    },
+    "shortcrowd_matched_density_adversary": {
+      "seed42":  {"mult": [5,6,5], "lambda": 3.3474, "d": 1.0997, "N": 2216},
+      "seed193": {"mult": [5,4,5], "lambda": 3.4153, "d": 1.118,  "N": 2418}
+    },
+    "fold_s1_wider_closure_adversary": {
+      "seed42":  {"mult": [8,8,9], "lambda": 4.0784, "d": 1.2795, "N": 5151},
+      "seed193": {"mult": [9,8,9], "lambda": 4.078,  "d": 1.2794, "N": 5591}
+    }
+  },
+  "L3_seed193_fold_s2": {"mult": [10,9,6], "lambda": 4.9863, "d": 1.4625, "N": 2553,
+    "comment": "slack=2, densest system probed"},
+  "reliable_g1_worstcase": {"base_design": 4, "matched_density_adversary": 6, "fold_closure_adversary": 9},
+  "prongB_packing_bound_P_g": {"1": 315, "2": 480, "3": 612},
+  "verdict": "Legal (triple-free-verified) orbits EXCEED the measured cap of 5. At the reliable finest scale g=1: design route <=4, matched-density max-crowding adversary up to 6, wider-closure fold adversary up to 9. All remain << Prong B packing bound 612, so FINITENESS is intact; only the TIGHT constant (4/5/4) is broken. Covering multiplicity tracks the routing density lambda/d: at the design's own density (d~1.10) the worst case is ~5-6, and it climbs to ~9-11 only as longer legal stitches raise d to 1.28-1.46 (a denser self-similar system in the same menu closure). This confirms gap (i): the tight cap 5 is a property of the specific minimal-lambda short-route construction, not of the legal closure."
+}

@@ -1,0 +1,79 @@
+{
+  "self_similar": {
+    "MTQM_eq_9Q": true,
+    "per_g": [
+      {
+        "g": 1,
+        "MgTQMg_eq_9g_Q": true,
+        "norm_scales_by_3g": true
+      },
+      {
+        "g": 2,
+        "MgTQMg_eq_9g_Q": true,
+        "norm_scales_by_3g": true
+      },
+      {
+        "g": 3,
+        "MgTQMg_eq_9g_Q": true,
+        "norm_scales_by_3g": true
+      },
+      {
+        "g": 4,
+        "MgTQMg_eq_9g_Q": true,
+        "norm_scales_by_3g": true
+      }
+    ]
+  },
+  "min_sep": {
+    "s2": 1,
+    "s": 1.0,
+    "witness": [
+      -1,
+      0,
+      0
+    ]
+  },
+  "eta2": 15,
+  "eta": 3.872983346207417,
+  "eta_grid_confirmed": true,
+  "kappa": 1.0,
+  "rho_c2": 745,
+  "rho_c": 27.294688127912362,
+  "R_diam": 31.16767147411978,
+  "R_diam2": 971.4237451186598,
+  "R_tight_radius_from_source": 17.5203274101636,
+  "N_uniform": 21441,
+  "N_tight_radius_from_source": 3789,
+  "mu_Q_upper": 1.9364916731037085,
+  "N_worst_center_upper": 25719,
+  "validation": {
+    "measured_mult": {
+      "g1_r3": 4,
+      "g2_r9": 5,
+      "g3_r27": 4
+    },
+    "measured_max": 5,
+    "prior_packing": {
+      "1": 315,
+      "2": 480,
+      "3": 612
+    },
+    "finite": true,
+    "dominates_measured": true,
+    "level_independent": true
+  },
+  "summary": {
+    "s (min Q-sep, s^2)": [
+      1.0,
+      1
+    ],
+    "eta = sqrt(15)": 3.872983346207417,
+    "kappa": 1.0,
+    "rho_c = sqrt(745)": 27.294688127912362,
+    "R = rho_c + eta = sqrt(745)+sqrt(15)": 31.16767147411978,
+    "N_uniform = #{a in Z^3 : |a|_Q <= R}": 21441,
+    "N_worst_center_upper (rigorous)": 25719,
+    "R_tight = rho_c/2 + eta": 17.5203274101636,
+    "N_tight": 3789
+  }
+}

@@ -1,0 +1,41 @@
+{
+ "finite_type": {
+  "certified": true,
+  "gives": "WSC",
+  "translation_types_reachable": 115235,
+  "translation_ball_is_full": true,
+  "translation_meeting_ball_Q2": 2980,
+  "T_meet": "2*rho_c",
+  "side_state_factor": 78728,
+  "ambient": "115235 x 78728^2 (finite product) -> Ngai-Wang/Zerner FINITE TYPE"
+ },
+ "osc_decision": {
+  "verdict": "WSC-ONLY (OSC not established; near-overlap boundary)",
+  "reason_1_closure_floods": "translation-part neighbor automaton, decoupled from the side-state, reaches delta=0 (root coincidence) and saturates the ENTIRE lattice ball -> menu-closure coincidence set NON-empty -> OSC fails on the closure; min nonzero Q(delta)=1 (lattice quantum) does NOT separate arcs of extent rho_c~27",
+  "reason_2_relative_gap_to_zero": "realized-walk min sibling gap pinned at Cheb=1 (absolute) for gen 1/2/3; relative gap rho0 = 1.0, 0.3333, 0.1111 = 3^{-(g-1)} -> inf of relative sibling separations = 0 -> Bandt-Graf positive-separation criterion NOT met; finite-depth gap is O(3^{-h}) = same order as tail rho_c*3^{-h} -> positivity undecidable at any finite depth (near-overlap boundary)"
+ },
+ "incidence_locality": {
+  "function_of_finite_local_state_on_closure": true,
+  "couples_non_locally_on_realized_walk": true,
+  "explanation": "sigma (78728 NP-HC state) determines the LEGAL connector menu, so on the menu-closure incidence is a function of the finite local state. But the REALIZED connector word is picked by the GLOBAL triple-free/shortest-legal rule -> realized subsystem is a sofic/S-adic subshift, not clean finite type; the decoupled automaton flooding to delta=0 is concrete proof separation is NOT a function of the translation type alone"
+ },
+ "refill_incidence_bound_level_uniform": {
+  "covering_mult_matched_scale_r_3^g_L8": [
+   5,
+   5,
+   4
+  ],
+  "covering_mult_full_diameter_max": 9,
+  "ahlfors_ratio_ck_over_rd_max": 3.3,
+  "per_word_interiors_proven_cap": 4,
+  "per_arc_donation_measured": 3,
+  "E_refill_slope_measured": 3.0,
+  "level_uniform_because": "neighbor types are level-free -> max incidence over the finite type set is a level-uniform constant by construction",
+  "loose_packing_bound_N_uniform": 21441
+ },
+ "dimension": {
+  "lam_level_stable_L8": 3.3617,
+  "d": 1.1036,
+  "exact_perron_not_computed": "sharp stitch-incidence matrix T needs full-sigma neighbor-type resolution; only measured lambda delivered here"
+ }
+}

@@ -1,0 +1,32 @@
+=== GAP (ii): D_g CLOSURE-UNIFORMITY -- finite-menu reach-to-source ===
+
+(a) M^T Q M == 9 Q : True   (exact Q self-similarity ||Mv||_Q=3||v||_Q)
+    M^T Q M = ((9, 0, 0), (0, 54, -9), (0, -9, 54))
+
+(e) kappa = sup ||v||_inf/||v||_Q = 1.000000  (witness (-40, 0, 0))
+
+scanning menu word sets (reach-to-source over the whole closure):
+  connector_domains4:    7114584 words | reach_src_cheb=6 reach_near_cheb=4 rsQ=23.000 diam1_cheb=6 ints_max=3  [16s]
+  dstar5_fragile:        5422562 words | reach_src_cheb=8 reach_near_cheb=4 rsQ=25.612 diam1_cheb=8 ints_max=4  [34s]
+  dstar5_band:          66466692 words | reach_src_cheb=8 reach_near_cheb=4 rsQ=27.295 diam1_cheb=8 ints_max=4  [484s]
+
+  TOTAL words scanned: 79003838
+
+(b/c) CLOSURE CONSTANTS over the ENTIRE menu:
+    max reach-to-source  Cheb = 8   Q = 27.2947  = rho_c
+    max reach-to-nearer  Cheb = 4   Q = 15.2643
+    max interiors / word      = 4
+    max gen-1 cyl diam   Cheb = 8   Q = 27.2947
+
+(d) TELESCOPE: D^Q_g <= rho_c (3^g - 1),  rho_c = 27.2947
+    D_g^cheb <= kappa * D^Q_g <= kappa*rho_c*(3^g-1),  kappa*rho_c = 27.2947
+
+    g |  bound D^Q_g=rho_c(3^g-1) | measured D_q | bound D_cheb=k*rho_c(3^g-1) | measured D_cheb
+    1 |     54.59  (/3^g=18.196) |   21.2 |    54.59 |    6   OK
+    2 |    218.36  (/3^g=24.262) |   62.6 |   218.36 |   25   OK
+    3 |    709.66  (/3^g=26.284) |  212.0 |   709.66 |   83   OK
+
+    D^Q_g/3^g -> rho_c = 27.2947   (measured D_q/3^g = 7.08/7.83/7.85, monotone up, < rho_c)
+    VALIDATION (bound dominates measured at every g): PASS
+
+wrote design/osc/dg_closure_uniform_results.json   [484s]

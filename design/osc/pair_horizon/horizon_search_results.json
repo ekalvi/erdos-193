@@ -1,0 +1,98 @@
+{
+ "gmax": "INF",
+ "gdepth": 0,
+ "garg": [
+  [
+   -5,
+   0,
+   0
+  ],
+  [
+   -4,
+   0,
+   0
+  ]
+ ],
+ "gfmax_finite": 24,
+ "gfdepth": 19,
+ "gfarg": [
+  [
+   -5466933567,
+   -681671865,
+   -1462011355
+  ],
+  [
+   -4476858984,
+   447955797,
+   960750319
+  ]
+ ],
+ "best_by_depth": [
+  "INF",
+  4,
+  6,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24
+ ],
+ "best_finite_by_depth": [
+  2,
+  4,
+  6,
+  8,
+  9,
+  10,
+  11,
+  12,
+  13,
+  14,
+  15,
+  16,
+  17,
+  18,
+  19,
+  20,
+  21,
+  22,
+  23,
+  24
+ ],
+ "inf_count_by_depth": [
+  174,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0,
+  0
+ ],
+ "offset_subset_cheb_le1": 27,
+ "interpretation": "EXCESS=v3(U1xU2)=lookahead digits of primitive-part parallelism. max FINITE excess bounded & flat across depth => bounded horizon (HOLDS). grows with depth => unbounded lookahead (FAILS). INF states = exact Omega=0 cross-collinear pairs reachable in UNCONSTRAINED ambient descent (the construction forbids these via joint legality; their reachability alone is not a FAILS)."
+}

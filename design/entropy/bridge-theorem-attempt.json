@@ -1,0 +1,45 @@
+{
+  "task": "EXECUTE the BRIDGE/THEOREM: rigorously connect a cross-entropy / subword-complexity bound to the geometric O(rho) arc-count. State the would-be theorem, check whether the twist supplies its hypothesis, and decide whether the implication is NON-CIRCULAR (does not assume bounded crowding).",
+  "date": "2026-07-16",
+  "residue": "ARC-INCIDENCE: b_m(r)=sup_q #{level-m stitch interiors in Cheb-r} <= E*r+F, uniform in m. A Cheb-r ball meets O(r) not O(r^3) connector-arcs of ONE level. Sole open link; all 7 routes reduce here.",
+
+  "candidate_theorem": {
+    "setup": "Instruction sequence = fixed point of the primitive substitution with expansion M = 3*O, O in O(3,Q) the Q-orthogonal twist (angle arccos(-1/6)). phi = position cocycle (partial step-sums), Delone set Lambda = phi(Z_{>=0}) in Z^3. (X,sigma) = the substitution subshift.",
+    "hypothesis_H1": "(X,sigma) is LINEARLY RECURRENT (LR): equivalently linear subword complexity p(n) <= K*n, and return words to every factor have bounded length ratio (bounded recurrence gaps).",
+    "conclusion": "Lambda is Ahlfors d-regular with d = log(lambda)/log 3 ~ 1.10; in particular single-level b_m(r) = O(r) uniformly in m (arc-incidence).",
+    "would_be_named_form": "'LR (Sturmian-like / linear symbolic complexity) => Ahlfors-d-regular geometric realization => O(rho) crowding.'"
+  },
+
+  "does_twist_give_H1": {
+    "answer": "YES, but trivially and for the WRONG reason -- twist NOT load-bearing.",
+    "durand_1998": "Every fixed point of a PRIMITIVE substitution is linearly recurrent. LR / linear complexity comes from Perron-Frobenius primitivity of M's incidence matrix (dominant lambda), which holds for 3I (pure scale, NO rotation) identically to M=3*O.",
+    "empirical_confirmation": "design/lemma/exclusion/scaling-vs-twist-experiment.log: TWIST (M=3*O) vs SCALE-ONLY (3I) give equal densities to ~2 sig figs at levels 1-4 across seeds 193/42/7. Twist is not load-bearing for crowding.",
+    "sturmian_analogy_false": "Sturmian complexity n+1 is a codim-1 cutting sequence of ONE circle rotation. Our object is a finite-menu substitutive subshift with linear-but-LARGE-constant complexity generic to ALL primitive substitutions, twisted or not. The irrational rotation is not producing low complexity here; primitivity is.",
+    "verdict": "REFUTED-LIKE-ANGULAR: the twist supplies the hypothesis only via generic primitivity that pure dilation already supplies."
+  },
+
+  "is_implication_non_circular": {
+    "answer": "NO. As stated the implication is FALSE; the repair reintroduces the crowding quantity verbatim (circular).",
+    "space_filling_counterexample": "A Peano/Hilbert-type space-filling curve has a primitive-substitutive => LR => linear-symbolic-complexity instruction sequence, yet its image is a BLOB: crowding ~ r^2 (planar) or r^3, Ahlfors 2- or 3-regular, NOT 1-regular. Therefore LR / linear symbolic complexity provably does NOT imply geometric 1-dimensionality or O(r) crowding. H1 does not imply the conclusion.",
+    "what_repair_requires": "A true 'LR => Ahlfors-d' theorem needs the extra hypothesis that phi is a NO-FOLDING (bi-Lipschitz-type) geometric realization: the number of ABSTRACT return words realized inside a metric ball B(q,r) is O(r). But that statement IS arc-incidence. So the only correct bridge theorem carries a hypothesis = bounded geometric multiplicity of the phi-suspension = uniform patch frequency = the lemma being proved. CIRCULAR.",
+    "mauldin_williams_same_wall": "OSC is PROVEN here (disjoint recursion Walk_{k+1}=M*Walk_k disjoint-union Stitch_k, zero overlap). MW then delivers the EXPONENT d and ASYMPTOTIC (r->0) d-regularity of the LIMIT attractor -- but NOT the finite-window constant. dim/route3: the load-bearing window r in [1,10] at every finite level is PRE-ASYMPTOTIC (box ratio 1.12->3.0, reaches lambda only at box-count b>=27) with ZERO margin. MW discharges everything EXCEPT the finite-window constant = the refill/arc-incidence lemma.",
+    "automaton_bound2": "Finiteness resolved non-circularly via 3-separation packing but yields only the CUBIC bound (~1000, already known). TIGHT sub-cubic count is CIRCULAR: it needs bounding #returns and anchor-density-along-the-path = the SAME crowding quantity one level down (well-founded via the 4/9 anisotropic contraction, fixed point phi=0.353)."
+  },
+
+  "cross_entropy_incarnation": {
+    "hoped_mechanism": "Two arcs stacking in one ball must have divergent step distributions, D(P_A||P_B) >= floor > 0, capping the stack count.",
+    "directly_refuted": "design/lemma/route1/SELFEXCL-VERDICT.json: min coexisting-pair angle = 0.00 deg at L6 and L7 -- stacked passes routinely coexist EXACTLY PARALLEL (identical direction/step marginals). Then H(P_A,P_B)=H(P_A) and D(P_A||P_B)=0. The cross-entropy FLOOR is provably ZERO for the realized failure mode.",
+    "why_parallel_is_legal": "Parallel OFFSET lattice arcs stay triple-free because the integer cross product bottoms out at 1 (smallest nonzero integer), never 0. Triple-freeness imposes NO angular gap, so any bound built on the direction/step marginal is vacuous (loose by ~84x vs measured A0<=5).",
+    "same_scale_vs_cross_scale": "The 'different scales diverge' half of the cross-entropy hope succeeds ONLY across birth-levels -- and that half is ALREADY discharged non-circularly (spool coordinate + deep-tail, min|M^3 v|=24 => birthspread<=4). The residual crowding is SAME-birth-level, SAME-shell, where all coexisting arcs are M^j-images of the IDENTICAL level-0 interior alphabet => identical generating rule => step distributions coincide EXACTLY. Cross-entropy is zero precisely where a floor is needed. The information-theoretic quantity VANISHES on the actual obstruction."
+  },
+
+  "non_vacuous_residue_if_pushed": "The only info-theoretic quantity not already killed is a per-ball GEOMETRIC coding cost that is (a) NOT a functional of the direction/step marginal (provably 0) and (b) NOT the arc-count itself (circular): e.g. a description-length lower bound for a k-stacked ball forced by integer-lattice offsets (cross>=1) plus M's anisotropy. Speculative, unproven, and at structural risk of collapsing to the same OSC/finite-window constant. Not invested. The real residue lives in the metric refill-linearity attack (anisotropic contraction fixed point), not in symbolic complexity or direction cross-entropy.",
+
+  "outcome": "REDUCES-TO-ARC-INCIDENCE",
+  "one_line": "The would-be bridge theorem (LR/linear-complexity => Ahlfors-d => O(rho)) is FALSE as stated (space-filling counterexample) and its only correct form carries a hypothesis equal to arc-incidence itself (circular, MW finite-window constant). The twist supplies H1 only via generic primitivity that pure scaling already gives. The cross-entropy floor is provably ZERO because stacked arcs are exactly parallel and same-birth-level arcs share an identical generating rule. Same wall, restated in information-theoretic language.",
+  "scripts_relied_on": [
+    "design/lemma/route1/SELFEXCL-VERDICT.json + selfexcl_probe.py (min coexisting-pair angle = 0.00 deg)",
+    "design/lemma/exclusion/scaling-vs-twist-experiment.log (TWIST ~ SCALE-ONLY densities)",
+    "design/entropy/cross-entropy-VERDICT.json (prior equivalent-statement writeup)"
+  ]
+}

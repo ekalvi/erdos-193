@@ -1,0 +1,247 @@
+{
+  "rhos": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "levels": {
+    "6": {
+      "nA": 8214,
+      "nI": 19483,
+      "ngaps": 8213,
+      "centres_used": 27697,
+      "a_anchor_crowd": [
+        1,
+        2,
+        3,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        8
+      ],
+      "b_interior_refill": [
+        3,
+        5,
+        6,
+        7,
+        9,
+        11,
+        12,
+        15,
+        16,
+        19
+      ],
+      "I_arc_incidence": [
+        2,
+        4,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        10
+      ],
+      "ratio_b_over_a": [
+        3.0,
+        2.5,
+        2.0,
+        2.333,
+        2.25,
+        2.2,
+        2.0,
+        2.143,
+        2.0,
+        2.375
+      ],
+      "ratio_I_over_a": [
+        2.0,
+        2.0,
+        1.333,
+        1.667,
+        1.5,
+        1.4,
+        1.333,
+        1.286,
+        1.25,
+        1.25
+      ],
+      "slope_a": 0.909,
+      "slope_b": 0.785,
+      "slope_I": 0.69,
+      "E_b_over_rho_max": 3.0,
+      "E_I_over_rho_max": 2.0
+    },
+    "7": {
+      "nA": 27697,
+      "nI": 65035,
+      "ngaps": 27696,
+      "centres_used": 30911,
+      "a_anchor_crowd": [
+        1,
+        2,
+        3,
+        3,
+        5,
+        5,
+        6,
+        6,
+        6,
+        8
+      ],
+      "b_interior_refill": [
+        3,
+        5,
+        8,
+        9,
+        9,
+        11,
+        13,
+        15,
+        16,
+        17
+      ],
+      "I_arc_incidence": [
+        3,
+        4,
+        5,
+        5,
+        6,
+        6,
+        7,
+        8,
+        9,
+        11
+      ],
+      "ratio_b_over_a": [
+        3.0,
+        2.5,
+        2.667,
+        3.0,
+        1.8,
+        2.2,
+        2.167,
+        2.5,
+        2.667,
+        2.125
+      ],
+      "ratio_I_over_a": [
+        3.0,
+        2.0,
+        1.667,
+        1.667,
+        1.2,
+        1.2,
+        1.167,
+        1.333,
+        1.5,
+        1.375
+      ],
+      "slope_a": 0.855,
+      "slope_b": 0.743,
+      "slope_I": 0.51,
+      "E_b_over_rho_max": 3.0,
+      "E_I_over_rho_max": 3.0
+    },
+    "8": {
+      "nA": 92732,
+      "nI": 219006,
+      "ngaps": 92731,
+      "centres_used": 34638,
+      "a_anchor_crowd": [
+        1,
+        2,
+        3,
+        3,
+        4,
+        6,
+        6,
+        6,
+        8,
+        9
+      ],
+      "b_interior_refill": [
+        3,
+        5,
+        6,
+        8,
+        10,
+        12,
+        13,
+        16,
+        17,
+        19
+      ],
+      "I_arc_incidence": [
+        3,
+        4,
+        5,
+        6,
+        6,
+        8,
+        8,
+        9,
+        10,
+        11
+      ],
+      "ratio_b_over_a": [
+        3.0,
+        2.5,
+        2.0,
+        2.667,
+        2.5,
+        2.0,
+        2.167,
+        2.667,
+        2.125,
+        2.111
+      ],
+      "ratio_I_over_a": [
+        3.0,
+        2.0,
+        1.667,
+        2.0,
+        1.5,
+        1.333,
+        1.333,
+        1.5,
+        1.25,
+        1.222
+      ],
+      "slope_a": 0.921,
+      "slope_b": 0.812,
+      "slope_I": 0.563,
+      "E_b_over_rho_max": 3.0,
+      "E_I_over_rho_max": 3.0
+    }
+  },
+  "closure_multiplicity_L6_sample": {
+    "domain_size_per_gap": {
+      "n": 200,
+      "min": 46,
+      "median": 6736,
+      "mean": 17105.3,
+      "max": 305966
+    },
+    "corridor_distinct_interior_pts_per_gap": {
+      "n": 200,
+      "min": 22,
+      "median": 148,
+      "mean": 159.3,
+      "max": 476
+    },
+    "note": "realized fills a gap with <=4 interior pts; closure (all legal connectors) fills the whole corridor box (median corridor size below); both anchored on the SAME skeleton -> same rho-scaling, different constant."
+  },
+  "elapsed_sec": 16.3
+}

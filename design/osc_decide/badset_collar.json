@@ -1,0 +1,392 @@
+{
+ "kind": "collar",
+ "note": "UNCONSTRAINED rank-pair bad-set. Joint reachable set over-approximated by R x R (single-stream reachable carries, both nonzero). R is the FULL all-generation reachable set (BFS to fixpoint), not depth-limited.",
+ "|D|": 2103,
+ "|E|": 15545,
+ "Emax_Q": 2116,
+ "carry_ball": 8649,
+ "closure_escapes": 0,
+ "|R_nonzero|": 1726,
+ "R_symmetric_under_negation": true,
+ "gen_parity_both": 1726,
+ "bad_set": {
+  "total_parallel_unordered_pairs": 1827,
+  "antipodal_pairs": 863,
+  "proper_pairs": 964,
+  "distinct_direction_lines": 718,
+  "lines_with_ge2_abs_magnitudes": 91,
+  "proper_integer_ratio_census": {
+   "5": 40,
+   "2": 428,
+   "4": 52,
+   "3": 124,
+   "6": 12
+  },
+  "proper_noninteger_ratio_pairs": 308
+ },
+ "real_eigen_axis_family": {
+  "primdir": [
+   1,
+   0,
+   0
+  ],
+  "M_action": "eigenvalue 3",
+  "C_action": "eigenvalue 9",
+  "twist": "identity on this axis",
+  "carries": [
+   [
+    -5,
+    0,
+    0
+   ],
+   [
+    -4,
+    0,
+    0
+   ],
+   [
+    -3,
+    0,
+    0
+   ],
+   [
+    -2,
+    0,
+    0
+   ],
+   [
+    -1,
+    0,
+    0
+   ],
+   [
+    1,
+    0,
+    0
+   ],
+   [
+    2,
+    0,
+    0
+   ],
+   [
+    3,
+    0,
+    0
+   ],
+   [
+    4,
+    0,
+    0
+   ],
+   [
+    5,
+    0,
+    0
+   ]
+  ],
+  "signed_multiples": [
+   -5,
+   -4,
+   -3,
+   -2,
+   -1,
+   1,
+   2,
+   3,
+   4,
+   5
+  ],
+  "parallel_pairs": 45,
+  "antipodal": 5,
+  "proper": 40
+ },
+ "richest_lines": [
+  {
+   "n_mags": 12,
+   "primdir": [
+    0,
+    1,
+    1
+   ],
+   "mults": [
+    -6,
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "n_mags": 12,
+   "primdir": [
+    0,
+    1,
+    0
+   ],
+   "mults": [
+    -6,
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "n_mags": 12,
+   "primdir": [
+    0,
+    0,
+    1
+   ],
+   "mults": [
+    -6,
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    1,
+    1
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    1,
+    0
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    0,
+    1
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    0,
+    0
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    0,
+    -1
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    -1,
+    0
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 10,
+   "primdir": [
+    1,
+    -1,
+    -1
+   ],
+   "mults": [
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4,
+    5
+   ]
+  },
+  {
+   "n_mags": 8,
+   "primdir": [
+    1,
+    1,
+    -1
+   ],
+   "mults": [
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "n_mags": 8,
+   "primdir": [
+    1,
+    -1,
+    1
+   ],
+   "mults": [
+    -4,
+    -3,
+    -2,
+    -1,
+    1,
+    2,
+    3,
+    4
+   ]
+  }
+ ],
+ "witnesses": {
+  "xaxis_max": {
+   "c1": [
+    5,
+    0,
+    0
+   ],
+   "c2": [
+    -5,
+    0,
+    0
+   ],
+   "cross": [
+    0,
+    0,
+    0
+   ]
+  },
+  "proper_vkv": {
+   "pd": [
+    1,
+    1,
+    1
+   ],
+   "c1": [
+    1,
+    1,
+    1
+   ],
+   "c2": [
+    5,
+    5,
+    5
+   ],
+   "ratio": 5.0,
+   "cross": [
+    0,
+    0,
+    0
+   ],
+   "both_in_R": true
+  }
+ },
+ "runtime_s": 4.7
+}

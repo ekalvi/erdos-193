@@ -1,0 +1,19 @@
+{
+ "rho_c": 27.294688127912362,
+ "eta": 3.872983346207417,
+ "R": 31.16767147411978,
+ "R2_seed_lattice": 971,
+ "T2_meet": 2980,
+ "menu_O": 2103,
+ "diffs_D": 15545,
+ "maxQ_D": 2116,
+ "seed_lattice_count": 21441,
+ "seeds_in_meeting_ball": 4306,
+ "reachable_translation_types": 115235,
+ "contains_zero_root_coincidence": true,
+ "min_nonzero_Q_delta": 1,
+ "min_Q_root_separation": 1.0,
+ "incidence_window_offsets_le_rhoc": 2103,
+ "finite": true,
+ "note": "translation-part Bandt-Graf neighbor set; FINITE (bounded Z^3 ball). Full type = this x (78728 NP-HC side states)^2, also finite -> FINITE TYPE = WSC. min nonzero root-sep>0 rules out ROOT-coincidence overlaps, but LIMIT-ARC overlap (OSC) needs finite-depth arc-gap positivity, decided separately."
+}

@@ -1,0 +1,93 @@
+{
+ "variant": "V1 (accelerating prescaled M_k=M3(k+2)^2), with V2/V3 alongside",
+ "object": "mu = inf{ |B_J|_Q : J>=1, delta_J in E\\0, delta_i in E }, B_J = delta_J + sum_{i>=1} Q_i delta_{J-i}",
+ "true_E": {
+  "|D|": 2103,
+  "|E|": 15545,
+  "x_range": [
+   -12,
+   12
+  ],
+  "0_in_E": true
+ },
+ "invariant_forms_verified": "M^T Q M = rho^2 Q EXACT for M_BAL3(rho3), M3(a)^2 a=2..8; x-coordinate block-decoupled from yz for all",
+ "WAY0_zero_cycles": {
+  "V3_MBAL3": {
+   "cycle": [
+    [
+     -12,
+     -12,
+     -7
+    ],
+    [
+     4,
+     1,
+     -4
+    ]
+   ],
+   "len": 2,
+   "note": "HARNESS SANITY: reproduces known mu=0"
+  },
+  "V2_M3(3)^2_fixed": {
+   "cycle": [
+    [
+     -9,
+     -9,
+     -10
+    ],
+    [
+     1,
+     -2,
+     -1
+    ]
+   ],
+   "len": 2,
+   "note": "FIXED prescaled control IS RESONANT on true E => mu(V2)=0"
+  },
+  "V1_accelerating": {
+   "cycle_at_J=1": {
+    "delta_1": [
+     1,
+     -2,
+     -1
+    ],
+    "delta_0": [
+     -9,
+     -9,
+     -10
+    ],
+    "B_1": [
+     0,
+     0,
+     0
+    ],
+    "exact": true
+   },
+   "note": "outermost map at J=1 is M3(3)^2 (a=lev+2, lev=1); delta_0 = -M3(3)^2 delta_1 in E => B_1=0 EXACT => mu(V1)=0 ATTAINED"
+  }
+ },
+ "resonance_scan_M3(a)^2_on_trueE": {
+  "2": 292,
+  "3": 26,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": 0,
+  "9": 0,
+  "10": 0,
+  "11": 0,
+  "12": 0
+ },
+ "mu_bracket": {
+  "lower": 0,
+  "upper": 0,
+  "exact": 0,
+  "attained": true,
+  "depth_attained": "J=1 (finite, no tail truncation needed)"
+ },
+ "tail_error_bound": "MOOT: mu=0 attained EXACTLY at finite J=1 (B=0 exactly, not a geometric limit); no eps_d truncation involved.",
+ "verdict": "mu = 0 for V1 (and V2, V3). METRIC-SEPARATION ROUTE CLOSED.",
+ "acceleration_thesis": "DEAD: fixed prescaled control V2 (constant M3(3)^2) has the SAME exact zero-cycle as V1 (both use the resonant a=3 map). Prescaling/squaring does NOT clear resonance on the TRUE closure E; the earlier 'non-resonant' claim held only on the {-2..2}^3 proxy box. Acceleration adds nothing.",
+ "why_prior_proxy_floors_were_fake": "The a=2,3 prescaled maps ARE resonant on true E (292 and 26 witness pairs), but map any nonzero e OUT of the small proxy box {-2..2}^3 -> proxy floor 0.61/0.47 was a box-clearing artifact that erodes to 0 exactly as predicted."
+}

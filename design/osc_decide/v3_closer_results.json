@@ -1,0 +1,178 @@
+{
+ "variant": "V3_FIXED_M_BAL3",
+ "map": [
+  [
+   3,
+   0,
+   0
+  ],
+  [
+   0,
+   0,
+   -3
+  ],
+  [
+   0,
+   3,
+   -1
+  ]
+ ],
+ "rho": 3,
+ "Q_form": "x^2+6y^2-2yz+6z^2",
+ "MtQM_eq_9Q": true,
+ "E": "menu-menu true closure",
+ "E_size": 15545,
+ "R_E_Q": 46.0,
+ "maxQ": 2116,
+ "WAY0_zero_cycle": {
+  "length": 2,
+  "digit_diffs": [
+   [
+    -12,
+    -12,
+    -7
+   ],
+   [
+    4,
+    1,
+    -4
+   ]
+  ],
+  "sum_Mk_fk": [
+   0,
+   0,
+   0
+  ],
+  "valid_proof_mu_eq_0": true
+ },
+ "WAY1_depth_bracket": [
+  {
+   "d": 1,
+   "eps_d": 7.666667,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -7.666667,
+   "mu_upper_bracket": 0.0
+  },
+  {
+   "d": 2,
+   "eps_d": 2.555556,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -2.555556,
+   "mu_upper_bracket": 0.0
+  },
+  {
+   "d": 3,
+   "eps_d": 0.851852,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -0.851852,
+   "mu_upper_bracket": 0.0
+  },
+  {
+   "d": 4,
+   "eps_d": 0.283951,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -0.283951,
+   "mu_upper_bracket": 0.0
+  },
+  {
+   "d": 5,
+   "eps_d": 0.09465,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -0.09465,
+   "mu_upper_bracket": 0.0
+  },
+  {
+   "d": 6,
+   "eps_d": 0.03155,
+   "inner_min": 0.0,
+   "mu_lower_bracket": -0.03155,
+   "mu_upper_bracket": 0.0
+  }
+ ],
+ "WAY1_inner_min_all_depths": 0.0,
+ "WAY1_zero_witnesses_depth1": [
+  [
+   [
+    -4,
+    -5,
+    -3
+   ],
+   [
+    12,
+    -9,
+    12
+   ]
+  ],
+  [
+   [
+    -4,
+    -4,
+    -3
+   ],
+   [
+    12,
+    -9,
+    9
+   ]
+  ],
+  [
+   [
+    -4,
+    -4,
+    -2
+   ],
+   [
+    12,
+    -6,
+    10
+   ]
+  ],
+  [
+   [
+    -4,
+    -4,
+    -1
+   ],
+   [
+    12,
+    -3,
+    11
+   ]
+  ],
+  [
+   [
+    -4,
+    -4,
+    0
+   ],
+   [
+    12,
+    0,
+    12
+   ]
+  ]
+ ],
+ "WAY2_convex_lower": 0.0,
+ "WAY2_witness": {
+  "delta_J": [
+   4,
+   1,
+   -4
+  ],
+  "tail_term": [
+   "-4",
+   "-1",
+   "4"
+  ],
+  "e0_in_box_C": true,
+  "convex_lower": 0.0
+ },
+ "mu_bracket": {
+  "lower": 0.0,
+  "upper": 0.0,
+  "exact": 0.0,
+  "note": "WAY-0 gives an exact machine-checked zero cycle => mu=0 ATTAINED; WAY-1 inner_min=0 at all depths (lower bracket = -eps_d <= 0, no positive floor); WAY-2 convex bound=0."
+ },
+ "verdict": "mu = 0 (route CLOSED for V3; harness reproduces the known resonance). ",
+ "harness_pass": true
+}

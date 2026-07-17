@@ -1,0 +1,29 @@
+{
+  "task": "Evaluate Erik's cross-entropy / subword-complexity wildcard for the arc-incidence lemma (Lemma R residue).",
+  "date": "2026-07-16",
+  "residue_being_attacked": "SINGLE-LEVEL REFILL / ARC-INCIDENCE: b_m(r) = sup_q #{level-m stitch interiors in Cheb-r} <= E*r+F, level-uniform; equivalently a Cheb-r ball meets O(r) (not O(r^3)) connector-arcs of ONE level. This is the sole open link in birth-telescope + Ahlfors/MW + box-dim + automaton routes (all reduce here).",
+
+  "entropy_formulation_equivalent_to_arc_incidence": "The walk point-set is a LINEARLY REPETITIVE (Lagarias-Pleasants) Delone set of exponent d=log(lambda)/log3 ~ 1.10 in R^3 on the fixed window r in [1,10]. Equivalently: for the M-substitution subshift (X,sigma) with position cocycle phi (partial sums of steps), the GEOMETRIC RETURN-WORD count -- #distinct phi-arcs of the walk meeting B(q,r) -- is O(r^d) with bounded recurrence gaps. Arc-incidence = uniform patch-frequency / bounded return-word multiplicity of the phi-suspension. Cross-entropy version: two arcs stacking in one ball must have divergent step distributions, D(P_A||P_B) >= floor > 0, capping stack count.",
+
+  "twist_gives_low_complexity": "REFUTED-LIKE-ANGULAR",
+  "twist_reasons": [
+    "Primitive substitution => linearly recurrent (Durand 1998) => LINEAR symbolic subword complexity p(n)<=Kn AUTOMATICALLY, from primitivity of M's incidence matrix, NOT from the irrational twist.",
+    "scaling-vs-twist-experiment.log: TWIST (M_BAL3) vs SCALE-ONLY (3I, pure dilation, NO rotation) give identical densities to 3 sig figs at levels 1-4, 3 seeds. The twist is not load-bearing for crowding.",
+    "Sturmian analogy is false: Sturmian complexity n+1 is a codim-1 cutting sequence of ONE circle rotation; our subshift is a finite-menu substitution with linear-but-large-constant complexity, generic to all primitive substitutions (twisted or not).",
+    "exclusion route 2 (twist angular decorrelation): STUCK/REFUTED. x-axis (eigenvalue 3) is a NON-rotating eigendirection (loophole); yz-rotation maps an isotropic arc-direction ensemble into itself (<=9.46 deg self-overlap); and the dominant return count is SAME-birth-level, which the between-scale twist leaves untouched."
+  ],
+
+  "cross_entropy_direction_version": "REFUTED. route1 selfexcl: min coexisting-pair angle = 0.00 deg -- stacked passes routinely coexist EXACTLY parallel (identical direction/step distributions). Hence H(P_A,P_B)=H(P_A), D(P_A||P_B)=0: the cross-entropy FLOOR is ZERO for the actual failure mode. Direction/step-marginal cross-entropy cannot bound stacking (parallel arcs stay triple-free by lateral integer offset, cross>=1 never 0).",
+
+  "bridge_non_circular": "CIRCULAR for the tight (sub-cubic) bound; non-circular only down to the already-known CUBIC bound.",
+  "bridge_detail": [
+    "Symbolic-complexity => geometric O(r) crowding is EXACTLY the OSC / bounded-overlap hypothesis of Mauldin-Williams graph-directed regularity. OSC is PROVEN here (disjoint recursion), so MW delivers the EXPONENT d and level-uniformity -- but only asymptotic (r->0) d-regularity of the LIMIT attractor.",
+    "The load-bearing quantity is on the FIXED window r in [1,10] at every FINITE level. dim/route3: this window is PRE-ASYMPTOTIC (box ratio 1.12->3.0, reaches lambda only at b>=27) with ZERO margin (c(4.44)=12=availability threshold). MW does NOT supply the finite-window constant = the refill lemma itself.",
+    "automaton/BOUND2 circularity_verdict: finiteness RESOLVED non-circularly via 3-separation packing but yields only the CUBIC bound (~1000, already known); TIGHTNESS is CIRCULAR -- proving the arc-like sub-cubic count needs bounding #returns and anchor-density-along-the-path = the SAME crowding quantity one level down (well-founded via 4/9 contraction = same anisotropic fixed point phi=0.353).",
+    "SPACE-FILLING-CURVE COUNTEREXAMPLE (task caution 2, realized): a space-filling curve has a primitive-substitutive (linearly recurrent, linear symbolic complexity) instruction sequence and IS a blob (crowding r^2/r^3). So low symbolic complexity provably does NOT imply low geometric crowding. The distinguishing info is in the geometric OSC/overlap = arc-incidence, not in symbolic complexity or direction cross-entropy.",
+    "Cross-scale vs same-scale: the cross-entropy 'different scales diverge' hope succeeds only cross-birth-level -- but that half is ALREADY discharged non-circularly by the spool coordinate + deep-tail (min|M^3 v|=24 => birthspread<=4). The residual is SAME-birth-level SAME-shell, where all arcs are M^j-images of the identical level-0 interior alphabet => identical generating rule => distributions coincide => cross-entropy zero exactly where a floor is needed."
+  ],
+
+  "verdict": "mirage-or-same-wall",
+  "one_line": "The subword-complexity framing is a correct restatement tied to real theorems (Durand LR, Lagarias-Pleasants, Mauldin-Williams), but (i) primitivity already gives linear symbolic complexity for free with the twist irrelevant, (ii) the bridge to geometric O(r) is precisely the finite-window OSC/refill constant = arc-incidence (circular for the tight bound, non-circular only to the cubic bound already in hand), and (iii) the direction cross-entropy floor is provably ZERO because stacked arcs are exactly parallel. Same wall, restated in information-theoretic language."
+}

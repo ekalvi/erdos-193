@@ -1,0 +1,34 @@
+{
+ "prong": "C - bigger-twist margin + easier OSC",
+ "matrix_family": "M_m = ((m,0,0),(0,0,-m),(0,m,-1)); eigenvalue moduli m, extent-ratio exactly m, anchor separation min|M_m v|_inf = m, irrational twist arccos(-1/2m)",
+ "build": "amplify193.amplify_level (global-check, VERIFIED triple-free), seg_maxlen=2m+6, depth 3 (generations 1,2,3), seed 193, base_len 20, menu=candidate_step_vectors(2) size 124",
+ "triple_free_verified": {"m3": true, "m4": true, "m5": true, "m6": true, "note": "first_disqualifier(chain) is None asserted at every level; sizes 716/1733/3219/5471 pts"},
+ "dimension_d_logLambda_over_logm": {"m3": 1.071, "m4": 1.061, "m5": 1.042, "m6": 1.035, "trend": "monotone toward 1.0 -> purer thread (matches design/lemma/exclusion sweep exactly)"},
+ "OSC_covering_multiplicity": {
+   "at_matched_cyl_scale_r=m^g_[g1,g2,g3]": {"m3": [3,6,5], "m4": [4,4,5], "m5": [4,4,5], "m6": [4,4,5]},
+   "cap_at_match_scale": {"m3": 6, "m4": 5, "m5": 5, "m6": 5},
+   "at_full_maxdiam_[g1,g2,g3]": {"m3": [7,10,10], "m4": [7,9,10], "m5": [6,9,9], "m6": [5,7,10]},
+   "reading": "match-scale multiplicity is ROCK-STABLE at [4,4,5] (cap 5) for every m>=4 -- the clean OSC signature; m=3 spikes to 6. Fine-scale (g1) full-diameter multiplicity DROPS with m (7->5). Bigger m => cleaner, tighter-capped OSC signature, not dramatically lower."
+ },
+ "sibling_relative_gap_rho0_min": {"m3": 0.333, "m4": 0.25, "m5": 0.40, "m6": 0.333, "reading": "local one-generation OSC quantity: bounded away from 0 (~0.25-0.40) for all m, no monotone degradation. Local finite OSC check stays clean at every m."},
+ "availability_proxy": {
+   "definition": "direct Ahlfors ratio C_d(r)=max_q c(q,r)/r^d and margin vs the Q-metric Mauldin-Williams bound 2*r^d; m=3 reference runs at ~0 margin (c(~4.44)=12 == 2*4.44^d threshold)",
+   "max_C_d_over_r_in_1..10": {"m3": 2.46, "m4": 2.88, "m5": 2.43, "m6": 2.44, "note": "peak is a small-r (r=2) lattice artifact for all m"},
+   "margin_vs_2rd_in_danger_window_r3to6": {
+     "m3": [0.49, -0.18, 0.21, -0.38],
+     "m4": [-0.58, -1.29, 0.03, -0.61],
+     "m5": [-0.71, -1.52, -0.30, -1.06],
+     "m6": [0.23, 0.40, 0.58, 0.77],
+     "reading": "m=6 is the ONLY m whose crowd sits UNDER the 2*r^d MW bound with POSITIVE slack across the whole core danger window r=3..6 (margin up to +0.77); m=3 is binding (~0), m=4/m=5 dip negative. Driven by d->1.035 (r^d larger) + slow crowd growth."
+   },
+   "r_star_analog_1.48m": {"m3": {"r":4,"c":9,"margin":-0.18}, "m4": {"r":6,"c":14,"margin":-0.61}, "m5": {"r":7,"c":16,"margin":-0.8}, "m6": {"r":9,"c":20,"margin":-0.57}, "note": "at the connector-reach analog the crowd tracks the C~2 bound for every m (d-regularity constant is ~2 universally); anisotropy leak makes Chebyshev margins slightly negative at large r"},
+   "connector_word_space": "seg_maxlen 2m+6 = 12/14/16/18 over a fixed 124-symbol menu -> the raw per-stitch legal-word space grows exponentially with m; no jam at any m (feasibility never lost)"
+ },
+ "verdict": {
+   "bigger_m_opens_margin": "MODESTLY YES. The d-regularity constant stays ~2 for every m, so bigger m does NOT transform raw crowding. But d->1.035, the match-scale multiplicity cap tightens 6->5 and stays g-stable, fine-scale full-diameter multiplicity drops (7->5), and m=6 is the first matrix with genuinely POSITIVE availability slack (crowd < 2*r^d) across the danger window r=3..6. Sibling gap stays ~0.3 (local OSC intact) at every m.",
+   "cleaner_OSC_signature": "YES for bigger m: match-scale mult is a flat, tightly-capped [4,4,5] (cap 5) for m>=4 vs m=3's [3,6,5] (cap 6); fine scales cleaner.",
+   "pick_the_provable_matrix": "m=6 (with m=5 as a balanced alternative). m=6 has the purest thread (d=1.035), the cleanest & tightest-capped covering multiplicity ([4,4,5], full-diam g1=5), and the ONLY positive availability margin in the danger window. Multiplicity is uniformly bounded (cap 5) for all m, so 'bounded mult' is equally plausible to prove for any m -- m=6 just gives the most slack.",
+   "caveat": "The win over m=3 is modest, not dramatic. And bigger m has a LONGER connector alphabet (seg_maxlen 18 for m=6), so the MENU-CLOSURE graph (all legal stitch transitions) that the actual open OSC proof must bound is COMBINATORIALLY LARGER -- the realized-walk signature is cleaner but the finite menu-closure certificate to discharge is heavier. 'Easier OSC' holds for the measured/realized multiplicity, not automatically for the menu-closure formalization."
+ },
+ "scripts": ["design/lemma/osc/prongC_osc.py", "design/lemma/osc/run_d3.log", "design/lemma/exclusion/matrix_sweep.py (dimension trend cross-check)"]
+}

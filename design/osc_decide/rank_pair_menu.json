@@ -1,0 +1,14 @@
+{
+ "kind": "menu",
+ "|D|": 729,
+ "|E|": 4913,
+ "Emax_Q": 960,
+ "carry_ball": 2671,
+ "closure_escapes": 0,
+ "|R_nonzero|": 510,
+ "R_symmetric": true,
+ "distinct_directions": 211,
+ "proper_parallel_directions": 28,
+ "unconstrained_cross_can_vanish": true,
+ "runtime_s": 0.7
+}

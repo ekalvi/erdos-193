@@ -1,0 +1,32 @@
+{
+ "rho_c": 27.294688127912362,
+ "realized_sibling_gap_abs": {
+  "1": 1,
+  "2": 1,
+  "3": 1
+ },
+ "realized_rel_gap_rho0": {
+  "1": 1.0,
+  "2": 0.3333333333333333,
+  "3": 0.1111111111111111
+ },
+ "sepnorm_g": {
+  "1": 0.012212388424121862,
+  "2": 0.004070796141373954,
+  "3": 0.0013569320471246511
+ },
+ "slope_log_gabs_vs_g": 0.0,
+ "slope_interpretation": "0.0 = g_abs plateau at lattice quantum 1 => sepnorm ~ 3^{-g} -> 0 (fail-signature IF this is the OSC-normalized separation; but boundary-touching is Koch-compatible with OSC)",
+ "individual_legality_E4_frac": 4.3855880386207606e-05,
+ "individual_legality_E3_frac": 5.324282989203472e-06,
+ "states_with_zero_legal_succ": 0,
+ "min_nsucc": 26,
+ "mean_nsucc": 15402.5,
+ "menu": 15545,
+ "individual_legality_prunes": "0.004% of transitions -> negligible; a (Delta,sigma,sigma) automaton with clauses (1)(2) ONLY floods identically to the decoupled tautology (fills full Q<=2980 ball, reaches Delta=0)",
+ "clause3_status": "UNPROVEN & UNIMPLEMENTED. Cross-cylinder collinearity Omega=0 decidable from (Delta,sigma,sigma) is the load-bearing new lemma (task risk #1), not certified. np_hc.F E4 is SINGLE-cylinder collision, not the pair predicate.",
+ "joint_automaton_run": false,
+ "finiteness": "FINITE-BY-CLIP-ONLY (closes only by hitting Q<=2980 clip wall = full ball = clip tautology; NOT discovery)",
+ "coincidence_shell": "Delta=0 REACHABLE in every buildable relaxation (decoupled + individual-legality); cannot test whether genuine JOINT clause(3) excludes off-diagonal (0,sigma,sigma) because clause(3) is unbuildable",
+ "verdict": "INCONCLUSIVE"
+}

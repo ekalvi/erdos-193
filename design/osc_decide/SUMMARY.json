@@ -1,0 +1,37 @@
+{
+ "task": "Decider (A): Delta=0 exact anchor-coincidence search for the M_BAL3 ratio-3 Q-self-similar walk (Erdos #193 OSC).",
+ "setup": {
+  "M": [[3,0,0],[0,0,-3],[0,3,-1]],
+  "Q": "x^2+6y^2-2yz+6z^2, M^T Q M = 9 Q (|M v|_Q = 3|v|_Q, verified)",
+  "digit_set_D": "{0} U O, O = connector interior offsets (collar), |O|=2102, maxQ(O)=529, so |D|=2103",
+  "neighbor_map": "equal-gen words u,v (|u|=|v|=g): h_{u,v}=f_u^-1 f_v = translation by Delta=Y_v-Y_u, Y_w=sum M^{g-j} d_{w_j}; OSC fails <=> some distinct legal meeting pair has Delta=0 exactly"
+ },
+ "phase1_carry_automaton": {
+  "E_eq_D_minus_D": {"size": 15545, "Emax_Q": 2116},
+  "carry_bound": "Q(c) <= Emax_Q/4 = 529 (from |c'|_Q=(1/3)|c+e|_Q => fixed point |c|_Q<=Emax_Q/2)",
+  "carry_ball_states": 8649,
+  "bound_closed_under_transitions": true,
+  "closure_check": "4,979,157 legal transitions from the ball, 0 escapes (Q>529) -> RIGOROUS finiteness certificate: Delta=0 is decidable for ALL g at once via this finite carry graph",
+  "residue_census_mod_MZ3": "all 27 cosets occupied, ALL with >=2 digits -> the clean 'distinct-residue' one-line no-coincidence proof FAILS (low-digit cancellation is possible)",
+  "unconstrained_zero_cycle": {"exists": true, "length": 2, "e_k": [[-12,-12,-7],[4,1,-4]], "note": "norm/lattice ALONE cannot exclude Delta=0; verdict hinges entirely on legality"}
+ },
+ "phase2_legality": {
+  "gds_type": "state = node outgoing-step direction (one of 124 menu steps). Children available at a node depend ONLY on its outgoing step (which connector, keyed by step). Hence this IS the exact menu-closure graph-directed system, NOT a coarsening.",
+  "single_word_automaton": {"states": 124, "distinct_(digit,next)_transitions": 703596, "per_state_digits_available": "min 23, max 521, mean 236 (of 2103) -> the type constraint bites"},
+  "g2_anchor_collisions_typeblind": 83951,
+  "g2_typed_exact_overlaps": "MILLIONS: probe over start types {0,1,2} alone gave 2,968,843 + 9,038,599 + 5,212,135 = 17,219,577 distinct-word pairs with SAME start type, SAME anchor, SAME end type => identical cylinders",
+  "type_refinement_result": "requiring same start AND same end type does NOT kill the flood -> the type-correct menu-closure OSC genuinely FAILS (this resolves the prior joint_automaton open question 'does clause-3/type-matching exclude the off-diagonal Delta=0 flood?': it does NOT)"
+ },
+ "verified_witness_g2": {
+  "start_type": 1,
+  "end_type": 22,
+  "anchor_V": [-2,2,1],
+  "w1": {"digits": [[0,1,0],[-2,2,-2]], "leg1_connector": [66,0,20,21], "leg1_next_state": 0, "leg2_connector": [20,22,20]},
+  "w2": {"digits": [[0,0,0],[-2,2,1]], "leg1_connector": [5,20,21], "leg1_next_state": 5, "leg2_connector": [23,22,20]},
+  "why_overlap": "same start type 1, same composed affine map (same anchor, gen 2 => M^-2 contraction), same end type 22 => K_w1 = f(K_22) = K_w2 IDENTICAL cylinder => id in Bandt-Graf neighbor set => OSC FAILS on the menu-closure GDS",
+  "connectors_are_certified_legal": "all four connectors are elements of connector_domains4 (triple-free, correct M.step endpoints)"
+ },
+ "verdict": "EXACT-OVERLAP-FOUND on the MENU-CLOSURE GDS (type-correct, generation 2, explicit reconstructed witness + millions more). => the OSC, in the form Mauldin-Williams/Schief requires (on the full menu-closure graph, per CONDITIONAL-THEOREM), FAILS.",
+ "critical_caveat": "The overlap uses the menu-closure freedom of letting one node's cylinder be the UNION over ALL legal connector choices (w1 and w2 reach the coincidence via DIFFERENT root connectors, (66,0,20,21) vs (5,20,21)). The REALIZED adaptive walk uses ONE connector per gap and provably has 0 duplicate points (disjoint-union theorem) -- it DODGES every such overlap. Therefore this CLOSES the OSC-via-menu-closure route to Lemma R but does NOT refute Lemma R nor Erdos #193: Lemma R (if true) must be proven on the sparse sofic/S-adic realized subsystem, not via generic OSC/Mauldin-Williams on the menu-closure. This is exactly the frontier the CONDITIONAL-THEOREM names ('multiplicity measured on realized adaptive walk vs MW needs full menu-closure graph').",
+ "guardrail_check": "NOT the debunked round-5 3-adic artifact (this is a real integer/geometric exact anchor coincidence, reconstructed with explicit legal connectors). NOT inferred from chain-adjacency. Bound is rigorous (8649-state closed carry ball), not read off a single depth. The one honest hedge: 'legal' here = menu-closure locally-legal (each connector triple-free + connector-domain), which is the design's decider(A) clauses (a)(b)(c); it does NOT enforce a SINGLE global connector selection, which is what separates menu-closure from the realized walk."
+}

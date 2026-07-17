@@ -1,0 +1,57 @@
+{
+ "digits": {
+  "O": 2102,
+  "D": 2103,
+  "maxQ_O": 529
+ },
+ "E": {
+  "size": 15545,
+  "Emax_Q": 2116,
+  "carry_bound_Qc_le": 529.0
+ },
+ "residue_census": {
+  "distinct_residues_occupied": 27,
+  "of_27": 27,
+  "cosets_with_ge2_digits": 27,
+  "top_occupancy_sizes": [
+   103,
+   103,
+   90,
+   90,
+   88,
+   88,
+   88,
+   88,
+   85,
+   85
+  ],
+  "note": "D has 2103 digits over <=27 cosets -> the clean distinct-residue one-line no-coincidence proof FAILS; low-digit cancellation possible."
+ },
+ "carry_ball": {
+  "Q_bound": 529.0,
+  "num_states": 8649,
+  "closure_escapes": 0,
+  "bound_closed": true
+ },
+ "unconstrained_cycle": {
+  "length": 2,
+  "e_k": [
+   [
+    -12,
+    -12,
+    -7
+   ],
+   [
+    4,
+    1,
+    -4
+   ]
+  ],
+  "verify_sum": [
+   0,
+   0,
+   0
+  ]
+ },
+ "runtime_s": 36.5
+}

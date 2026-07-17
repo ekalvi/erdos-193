@@ -1,0 +1,69 @@
+{
+  "question": "Does the NORMALIZED sibling separation PLATEAU (OSC-consistent) or DECAY (OSC-fails)?",
+  "resolution": "TWO distinct separations were being conflated. Corrected normalization (ROOT/map separation) PLATEAUS at a positive floor; the DECAYING 0.333->0.111 was the point-set/boundary gap, which is OSC-permitted (closures may touch).",
+
+  "realized_orbit_L8": {
+    "N": 311738, "topL": 8, "depth_available": 4, "lambda": 3.3617, "d": 1.1036,
+    "per_gen": [
+      {"g": 1, "root_sep_cheb": 3,  "pointset_gap_cheb": 1, "diam_med": 4,  "diam_max": 6,  "root_over_diammax": 0.5000, "pointset_over_diammax": 0.1667, "pointset_over_3^(g-1)": 1.0000},
+      {"g": 2, "root_sep_cheb": 8,  "pointset_gap_cheb": 1, "diam_med": 19, "diam_max": 25, "root_over_diammax": 0.3200, "pointset_over_diammax": 0.0400, "pointset_over_3^(g-1)": 0.3333},
+      {"g": 3, "root_sep_cheb": 24, "pointset_gap_cheb": 1, "diam_med": 63, "diam_max": 84, "root_over_diammax": 0.2857, "pointset_over_diammax": 0.0119, "pointset_over_3^(g-1)": 0.1111}
+    ]
+  },
+
+  "lattice_floor_minMg_over_v_in_pm3": {"1": 3, "2": 8, "3": 24, "4": 55, "5": 165, "6": 624,
+    "ratio_over_3^g": [1.0, 0.889, 0.889, 0.679, 0.679, 0.856],
+    "bounded_below_by": 0.68, "note": "min|M^g v|_inf stays in [0.68,1.0]*3^g -> NEVER decays relative to 3^g (quasi-similarity)."},
+
+  "exact_Q_metric_plateau": {
+    "MtQM_eq_9Q": true, "per_g_1_to_4_confirmed": true,
+    "consequence": "|M^g v|_Q = 3^g |v|_Q EXACTLY. Root sep of any two distinct gen-g cyls = 3^g * |a-a'|_Q >= 3^g * s_min. Gen-g cyl Q-diameter = 3^g * D_seed. Hence ROOT-sep / diam = s_min/D_seed = CONSTANT in g -> EXACT PLATEAU, positive floor, scale-invariant.",
+    "s_min_Q": 1.0, "witness_step": [-1,0,0]
+  },
+
+  "two_separations": {
+    "ROOT_map_separation": {
+      "what": "min |root_a - root_b| over distinct equal-gen cyls; root = M^g * ancestor. This is the Bandt-Graf neighbor-MAP quantity (id in closure of neighbor set).",
+      "cheb_normalized": [0.500, 0.320, 0.286],
+      "Q_normalized": "EXACTLY constant (see exact_Q_metric_plateau)",
+      "trend": "PLATEAU at positive floor ~0.28-0.29 (Cheb) / exact constant (Q)",
+      "verdict_contribution": "OSC-CONSISTENT: neighbor maps with distinct roots stay bounded away from identity."
+    },
+    "POINTSET_gap": {
+      "what": "min point-set Cheb distance over sibling cyls (closest twig/refill approach).",
+      "value_cheb": [1, 1, 1],
+      "normalized_by_3^(g-1)": [1.0, 0.3333, 0.1111],
+      "trend": "DECAYS as 3^-(g-1); numerator PINNED at lattice quantum 1.",
+      "verdict_contribution": "Boundary-contact only. OSC PERMITS closures to touch on measure-zero sets. NOT an OSC violation by itself."
+    }
+  },
+
+  "prior_0.333_0.111_reexamined": {
+    "were_they_absolute_or_normalized": "NORMALIZED (scale-relative): pointset_gap(=1, absolute pinned) / child-scale 3^(g-1).",
+    "realized_or_closure": "REALIZED orbit (gate2 L8 ancestry).",
+    "why_it_looked_like_OSC_fails": "It used the POINT-SET/boundary gap (wrong quantity) as numerator; that gap is pinned at the lattice quantum 1, so dividing by a 3^g-growing scale manufactures a spurious 3^-(g-1) decay.",
+    "correct_quantity": "ROOT/map separation -> plateaus positive; boundary touching is OSC-allowed."
+  },
+
+  "adversarial_routing": {
+    "covering_multiplicity_matched_density_shortcrowd": [[5,6,5],[5,4,5]],
+    "covering_multiplicity_wider_fold_closure": [[8,8,9],[9,8,9]],
+    "flooded": false,
+    "root_sep_router_independent": "root = M^g*(integer anchor); root-sep >= 3^g*s_min for ANY legal router (linear-algebra fact, M invertible + MtQM=9Q). No adversarial legal router can push normalized root separation below the deep-tail/packing floor. Point-set gap >= 1 for any router (distinct points, disjoint-union 0 duplicates)."
+  },
+
+  "covering_multiplicity_bounded": {"gen_r_eq_3^g_L8": [5,5,4,4], "grows_with_g": false, "means": "WSC holds; no positive-fraction overlap (would flood)."},
+
+  "what_is_NOT_certified": {
+    "joint_automaton_run": false,
+    "reason": "The JOINT (Delta,sigma,sigma) neighbor automaton under JOINT legality was NOT built/closed (78728^2 side-state product infeasible in budget). Only the prior DECOUPLED (sigma-ignored) automaton exists; it reached Delta=0 (word-address map-coincidence f_v=f_w, v!=w) but that is the sigma-ignored FLOODING artifact and is not trustworthy.",
+    "open_OSC_gap": "Finite type => OSC <=> id not in neighbor set <=> no two DISTINCT jointly-legal words yield the same map (Delta=0). Realized orbit has 0 coincidences (disjoint union). Whether a Delta=0 word-address coincidence is reachable under JOINT legality is UNRESOLVED."
+  },
+
+  "verdict": {
+    "scaling_answer": "PLATEAU (OSC-consistent) on the correct (root/map) normalization; the DECAY is the boundary-contact artifact of the wrong (point-set) normalization.",
+    "reverses_prior_round": "Yes -- last round read the 0.333->0.111 point-set decay as 'OSC fails'; corrected, the OSC-deciding root separation plateaus positive (exactly, via MtQM=9Q).",
+    "certified_floor": "WSC (bounded multiplicity, robust under adversarial routing).",
+    "OSC_status": "OSC-CONSISTENT but NOT CERTIFIED -- sole remaining gap is the joint-legality Delta=0 map-coincidence check (joint automaton unbuilt)."
+  }
+}

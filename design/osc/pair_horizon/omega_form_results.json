@@ -1,0 +1,76 @@
+{
+ "cofM": [
+  [
+   9,
+   0,
+   0
+  ],
+  [
+   0,
+   -3,
+   -9
+  ],
+  [
+   0,
+   9,
+   0
+  ]
+ ],
+ "cofM_is_3N": {
+  "N": [
+   [
+    3,
+    0,
+    0
+   ],
+   [
+    0,
+    -1,
+    -3
+   ],
+   [
+    0,
+    3,
+    0
+   ]
+  ],
+  "detN": 27
+ },
+ "detM": 27,
+ "detCOF": 729,
+ "L2_inheritance_verified": true,
+ "decomposition_identity_verified": true,
+ "B0_identically_zero": true,
+ "B1_form_verified": true,
+ "Omega_form": "Omega = sum_{l=0..g} cof(M)^(g-l) B_l ; B_l = c1_l x c2_l + sum_{i<l}(M^{l-i}c1_i)xc2_l + sum_{j<l}c1_l x(M^{l-j}c2_j); c1_0=c2_0=delta=a'-a",
+ "B1_explicit": "B_1 = sigma1 x tau1 + Delta x (tau1 - sigma1),  Delta = M.delta",
+ "min_Mjv_inf": {
+  "1": {
+   "min_Minf": 3,
+   "argmin": [
+    -1,
+    -1,
+    -1
+   ]
+  },
+  "2": {
+   "min_Minf": 8,
+   "argmin": [
+    0,
+    0,
+    -1
+   ]
+  },
+  "3": {
+   "min_Minf": 24,
+   "argmin": [
+    0,
+    -1,
+    0
+   ]
+  }
+ },
+ "reach_le_4": "PROVEN over entire menu (design/lemma/finite_menu_check.py: reach<=4, interiors/word<=4)",
+ "deep_tail_packing": "min|M^3 v|_inf = 24 > 2*reach = 8 : any Cheb-4 ball holds <=1 point of any M^3 Z^3 coset",
+ "all_pass": true
+}

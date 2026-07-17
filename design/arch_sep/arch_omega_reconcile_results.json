@@ -1,0 +1,228 @@
+{
+ "A_realized": [
+  {
+   "g": 1,
+   "n_meeting_pairs": 101492,
+   "arch_Qstar_over_9^g_INF": 0.2721655269759087,
+   "arch_Qstar_over_9^g_SUP": 17.074997966487597,
+   "arch_eucl_over_9^g_INF": 0.1111111111111111,
+   "arch_Qstar_ABS_min": 2.449489742783178,
+   "clearance_over_3^g_INF": 0.3333333333333333,
+   "rootsep_over_3^g_INF": 1.0,
+   "cyl_diam_over_3^g_MAX": 7.666666666666667,
+   "v3_Omega_max": 2,
+   "v3_Omega_min": 0,
+   "E(g)=v3-2g_range": [
+    -2,
+    0
+   ],
+   "EXCESS_max": 2,
+   "EXCESS_min": 0,
+   "clearance_abs_min_Q": 1.0
+  },
+  {
+   "g": 2,
+   "n_meeting_pairs": 27719,
+   "arch_Qstar_over_9^g_INF": 0.0302406141084343,
+   "arch_Qstar_over_9^g_SUP": 1.4584631531478873,
+   "arch_eucl_over_9^g_INF": 0.012345679012345678,
+   "arch_Qstar_ABS_min": 2.449489742783178,
+   "clearance_over_3^g_INF": 0.1111111111111111,
+   "rootsep_over_3^g_INF": 1.0,
+   "cyl_diam_over_3^g_MAX": 8.000771567730974,
+   "v3_Omega_max": 2,
+   "v3_Omega_min": 0,
+   "E(g)=v3-2g_range": [
+    -4,
+    -2
+   ],
+   "EXCESS_max": 2,
+   "EXCESS_min": 0,
+   "clearance_abs_min_Q": 1.0
+  },
+  {
+   "g": 3,
+   "n_meeting_pairs": 8213,
+   "arch_Qstar_over_9^g_INF": 0.0033600682342704775,
+   "arch_Qstar_over_9^g_SUP": 0.07026748134357036,
+   "arch_eucl_over_9^g_INF": 0.0013717421124828533,
+   "arch_Qstar_ABS_min": 2.449489742783178,
+   "clearance_over_3^g_INF": 0.037037037037037035,
+   "rootsep_over_3^g_INF": 1.0,
+   "cyl_diam_over_3^g_MAX": 7.926964279509183,
+   "v3_Omega_max": 2,
+   "v3_Omega_min": 0,
+   "E(g)=v3-2g_range": [
+    -6,
+    -4
+   ],
+   "EXCESS_max": 2,
+   "EXCESS_min": 0,
+   "clearance_abs_min_Q": 1.0
+  }
+ ],
+ "B_legal_descent_inf": [
+  {
+   "g": 1,
+   "arch_Qstar_over_9^g_INF": 0.2721655269759087,
+   "arch_Qstar_over_9^g_SUP": 3.624334762288909,
+   "EXCESS_max": 1,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 0.3333333333333333
+  },
+  {
+   "g": 2,
+   "arch_Qstar_over_9^g_INF": 0.0302406141084343,
+   "arch_Qstar_over_9^g_SUP": 5.701431860094133,
+   "EXCESS_max": 3,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 0.037037037037037035
+  },
+  {
+   "g": 3,
+   "arch_Qstar_over_9^g_INF": 0.0033600682342704775,
+   "arch_Qstar_over_9^g_SUP": 5.782146681344249,
+   "EXCESS_max": 5,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 0.00411522633744856
+  },
+  {
+   "g": 4,
+   "arch_Qstar_over_9^g_INF": 0.0009017039754762408,
+   "arch_Qstar_over_9^g_SUP": 5.5196926754589155,
+   "EXCESS_max": 6,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 0.0013717421124828531
+  },
+  {
+   "g": 5,
+   "arch_Qstar_over_9^g_INF": 0.0010033235613540364,
+   "arch_Qstar_over_9^g_SUP": 5.558022788131849,
+   "EXCESS_max": 8,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 0.00015241579027587258
+  },
+  {
+   "g": 6,
+   "arch_Qstar_over_9^g_INF": 7.792503491769982e-05,
+   "arch_Qstar_over_9^g_SUP": 5.586887267762791,
+   "EXCESS_max": 10,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 1.6935087808430286e-05
+  },
+  {
+   "g": 7,
+   "arch_Qstar_over_9^g_INF": 6.060836049154431e-05,
+   "arch_Qstar_over_9^g_SUP": 5.5818685026458805,
+   "EXCESS_max": 12,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 1.8816764231589208e-06
+  },
+  {
+   "g": 8,
+   "arch_Qstar_over_9^g_INF": 2.748678480342146e-07,
+   "arch_Qstar_over_9^g_SUP": 5.580044203547165,
+   "EXCESS_max": 14,
+   "EXCESS_min": 0,
+   "padic_sep_3^-EXCESSmax": 2.0907515812876897e-07
+  }
+ ],
+ "B_witness_pureM_perseed": {
+  "witness_(-1,0,0)-eigendir": {
+   "|Om|_Q*/9^g_g0..GMAX": [
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616,
+    5.916079783099616
+   ],
+   "v3(Om)": [
+    0,
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14,
+    16
+   ]
+  },
+  "generic_A": {
+   "|Om|_Q*/9^g_g0..GMAX": [
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178,
+    2.449489742783178
+   ],
+   "v3(Om)": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+   ]
+  },
+  "generic_B": {
+   "|Om|_Q*/9^g_g0..GMAX": [
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949,
+    11.180339887498949
+   ],
+   "v3(Om)": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+   ]
+  }
+ },
+ "depth_realized": 4,
+ "N_L8": 311738,
+ "a_padic": 2,
+ "slopes_natural_log_per_g": {
+  "arch_|Omega|_Q*_over_9^g_A": -2.1972245773362196,
+  "arch_|Omega|_Q*_over_9^g_B": -1.6534175741090267,
+  "geometric_clearance_over_3^g_A": -1.0986122886681098,
+  "rootsep_over_3^g_A": 0.0,
+  "EXCESS_arith_per_g_B": 1.8571428571428572,
+  "padic_3adic_sep_logslope_B": -2.040279964669347
+ },
+ "conformal_exact_facts": {
+  "M^T Q M == 9Q": true,
+  "cof^T adjQ cof == 81 adjQ": true,
+  "consequence": "|Omega|_Q*/9^g EXACTLY constant per descended triple (tautology of conformality)",
+  "witness": "Omega_n = cof^n (-1,0,0) = 9^n(-1,0,0): |Om|/9^n=1, v3(Om)=2n, EXCESS=2n-1"
+ },
+ "VERDICT": {
+  "padic_vs_archimedean": "MIXED",
+  "detail": "PER-SEED on the self-similar backbone: |Om|_Q*/9^g is EXACTLY constant (5.916/2.449/11.180) while v3(Om)=0,2,4,... grows -> DIVERGE (judge's claim CONFIRMED, a tautology of cof^T adjQ cof = 81 adjQ). AS AN INF over legal offset-injected descents (the OSC worst case): |Om|_Q*/9^g DECAYS (A slope -2.197~-ln9, B slope -1.653) with ABSOLUTE |Om| PINNED at lattice quantum ~2.45>0; the p-adic EXCESS grows (3-adic sep 3^-EXCESS decays) -> both normalized quantities decay -> AGREE. The 'constant' was per-seed only.",
+  "osc_verdict": "INCONCLUSIVE",
+  "osc_detail": "ROOT/MAP separation |Y_v-Y_u|/3^g PLATEAUS EXACTLY (slope 0, floor 1.0; MtQM=9Q) -> distinct-root Bandt-Graf neighbor maps stay bounded away from identity (OSC-consistent). BUT geometric point-set CLEARANCE/3^g DECAYS (slope -ln3, absolute gap pinned at lattice quantum 1) and |Om|/9^g DECAYS as inf (absolute pinned ~2.45): NEAR-OVERLAP BOUNDARY. Decisive touch-vs-overlap (measure-zero contact=OSC-ok vs positive-measure overlap=OSC-fail) and Delta=0 joint-legality coincidence are UNRESOLVED (joint automaton unbuilt). Neither OSC-HOLDS nor OSC-FAILS is certified.",
+  "guardrail_note": "Do NOT read |Om|/9^g per-seed constancy as 'OSC holds' (tautology trap, would be overclaim #6). Do NOT read its inf decay as 'OSC fails' (absolute |Om| and clearance stay pinned at a POSITIVE lattice quantum -> pieces do not provably interpenetrate; decay is the wrong-normalization shadow of a measure-zero boundary touch). The ONLY OSC-decisive gap is Delta=0 joint legality + positive-measure overlap classification, both unresolved."
+ }
+}

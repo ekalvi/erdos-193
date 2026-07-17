@@ -1,0 +1,37 @@
+==============================================================================
+GEOMETRIC CLEARANCE  topL=7 depth=3   (conformal M^TQM=9Q: True)
+==============================================================================
+N=92732 chain points; levels available for roots: [5, 6, 7]
+
+ g=1: #cyl=27697 maxsize=4 cell=4
+   Q-diam median=266 max=385 (sqrt=19.6); 3^g=3
+   RAW clearance (all distinct pairs): Qdist=1 sqrt=1.000 norm/diam=0.0510 /3^g=0.3333 witness idxgap=1
+   LONG-RANGE clearance (idxgap>8): Qdist=14 sqrt=3.742 norm/diam=0.1907 /3^g=1.2472 witness idxgap=10
+   touch/overlap: 200 closest distinct-cyl encounters, of which 0 are chain-distant (idxgap>8)
+   root/map sep |Delta|_Q min=9 sqrt=3.000 /3^g=1.0000 ; Delta=0 hits (distinct cyls, same anchor)=0
+   ARCH |Omega|^2_Qdual/81^g EXACTLY conformal-invariant under cof descent? True  (=> archimedean magnitude does NOT decay);  p-adic v3(Omega) med=1 max=6, E=v3-2g med=-1 (over 3000 triples)
+
+ g=2: #cyl=8214 maxsize=15 cell=9
+   Q-diam median=3487 max=4792 (sqrt=69.2); 3^g=9
+   RAW clearance (all distinct pairs): Qdist=1 sqrt=1.000 norm/diam=0.0144 /3^g=0.1111 witness idxgap=1
+   LONG-RANGE clearance (idxgap>30): Qdist=350 sqrt=18.708 norm/diam=0.2703 /3^g=2.0787 witness idxgap=31
+   touch/overlap: 200 closest distinct-cyl encounters, of which 0 are chain-distant (idxgap>30)
+   root/map sep |Delta|_Q min=81 sqrt=9.000 /3^g=1.0000 ; Delta=0 hits (distinct cyls, same anchor)=0
+   ARCH |Omega|^2_Qdual/81^g EXACTLY conformal-invariant under cof descent? True  (=> archimedean magnitude does NOT decay);  p-adic v3(Omega) med=2 max=7, E=v3-2g med=-2 (over 3000 triples)
+
+ g=3: #cyl=2458 maxsize=51 cell=27
+   Q-diam median=41510 max=44270 (sqrt=210.4); 3^g=27
+   RAW clearance (all distinct pairs): Qdist=1 sqrt=1.000 norm/diam=0.0048 /3^g=0.0370 witness idxgap=2
+   LONG-RANGE clearance (idxgap>102): Qdist=681 sqrt=26.096 norm/diam=0.1240 /3^g=0.9665 witness idxgap=197
+   touch/overlap: 200 closest distinct-cyl encounters, of which 0 are chain-distant (idxgap>102)
+   ARCH |Omega|^2_Qdual/81^g EXACTLY conformal-invariant under cof descent? True  (=> archimedean magnitude does NOT decay);  p-adic v3(Omega) med=3 max=10, E=v3-2g med=-3 (over 3000 triples)
+
+------------------------------------------------------------------------------
+SLOPES (log-quantity regressed on g):
+  RAW clearance/diam        : seq=[0.051, 0.0144, 0.0048]  log-slope=-1.1862047978596024
+  RAW clearance/3^g         : seq=[0.3333, 0.1111, 0.037]  log-slope=-1.0986122886681098
+  LONG clearance/diam       : seq=[0.1907, 0.2703, 0.124]  log-slope=-0.21507855372603638
+  |Omega|_Qdual descent-invariant seq=[True, True, True]  (all True => archimedean magnitude EXACTLY constant, conformal)
+  p-adic v3(Omega) max seq=[6, 7, 10]  (climbs => 3-adic parallelism, the ghost the 5 rounds read as decay)
+  root-sep/3^g seq=[1.0, 1.0, None]  (Bandt-Graf translation, normalized)
+  Delta=0 hits seq=[0, 0, None]  (any nonzero => id in closure => OSC FAILS)

@@ -1,0 +1,31 @@
+{
+ "digit_set": "E = D - D (menu-closure), |E|=15545, contains 0: True",
+ "exact_zero_cycle": {
+  "e0": [
+   -12,
+   -12,
+   -7
+  ],
+  "e1": [
+   4,
+   1,
+   -4
+  ],
+  "e0_plus_M_e1": [
+   0,
+   0,
+   0
+  ],
+  "bracket_B": [
+   "0",
+   "0",
+   "0"
+  ],
+  "B_is_zero": true
+ },
+ "min_bracket_Q_attained": 0.0,
+ "nonzero_accumulation_at_0": true,
+ "shortest_zero_cycle_len": 2,
+ "verdict": "c = 0 on the 8649-state carry automaton (menu-closure digit set E): min |Delta| = 0 is ATTAINED (exact coincidence), and nonzero brackets accumulate at 0. NO positive uniform separation from this structure.",
+ "runtime_s": 0.8
+}

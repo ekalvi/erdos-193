@@ -1,0 +1,24 @@
+{
+ "family": "F3_prescaled_M3a_squared_MILD (index 2): M_k = M3(a_k)^2, a_k=k+2, moduli 4,9,16,25,... incommensurate angles 2*theta_k",
+ "method": "branch-and-bound, exact Fractions, tail-norm pruning, digits sorted by norm; per-depth time budget",
+ "box_-2..2^3": {
+  "FAMILY2_prescaled_accel_EXACT_to_J5": {"J1":0.612948,"J2":0.732129,"J3":0.831367,"J4":0.885289,"J5":0.916647,"J6_upperbound":0.983728,"J7_upperbound":0.999996},
+  "CONTROLB_fixed_prescaled_EXACT_to_J6": {"J1":0.612948,"J2":0.559507,"J3":0.552431,"J4":0.551589,"J5":0.551492,"J6":0.551480},
+  "CONTROLA_resonant_accel": {"J1":0.0,"J2":0.0,"J3":0.0,"J4":0.0},
+  "BASELINE_M_BAL3": {"J1":0.333333,"J2":0.105482,"J3":0.035161,"J4":0.011432,"note":"geometric x~1/3 shrink toward its true-closure 0"}
+ },
+ "box_-3..3^3": {
+  "FAMILY2_prescaled_accel_EXACT_to_J4": {"J1":0.474305,"J2":0.612145,"J3":0.751057,"J4":0.829546},
+  "CONTROLB_fixed_prescaled_EXACT_to_J4": {"J1":0.474305,"J2":0.423198,"J3":0.416629,"J4":0.415779},
+  "CONTROLA_resonant_accel": {"all":0.0},
+  "BASELINE_M_BAL3": {"all":0.0,"note":"resonance (1,0,0)->(3,0,0) realized once box contains (3,0,0) => exact c=0"}
+ },
+ "argmin_channel": "always in the (0,y,z) companion-shear plane for the prescaled family",
+ "key_findings": [
+  "WITHIN a fixed box: prescaled family mu_J is POSITIVE and NON-shrinking (grows, asymptoting ~1.0 on box2). Geometric-shrink signature of the fixed-case failure is ABSENT here.",
+  "M_BAL3 baseline SHRINKS ~x1/3 per level on box2 (toward its true 0), and hits EXACTLY 0 on box3 once (3,0,0) enters the box.",
+  "BUT the prescaled floor is BOX-DEPENDENT and ERODES as the digit box grows: J1 floor 0.613 (box2) -> 0.474 (box3). The true menu-closure E=D-D (|E|=15545, entries to +-12) was NOT reachable at depth; the floor plausibly continues eroding toward 0 there (deferred resonance not excluded).",
+  "PRESCALE, not acceleration, produces the floor: CONTROL B (fixed constant prescaled map) converges to a stable positive floor (0.5515 box2 / 0.4158 box3). Incommensurate acceleration adds no measurable benefit."
+ ],
+ "verdict": "One narrow positive signal (positive, non-shrinking mu_J vs DEPTH at fixed box; resonance broken vs M_BAL3 at these box sizes) but NOT a margin proof: floor erodes with box/digit-set SIZE toward the true closure where baseline=0, prescale not acceleration does the work, depth only exact to J<=5, and no proof of k->k+1 propagation."
+}

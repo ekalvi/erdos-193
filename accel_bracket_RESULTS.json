@@ -1,0 +1,20 @@
+{
+ "families_verified": {
+  "M3(a) a=2..7": {"equal_moduli": true, "cos_theta": "-1/(2a)", "niven_irrational": true, "angles_distinct": true},
+  "M4(a,b,c)": {"equal_moduli": true, "two_distinct_irrational_angles": true, "examples": [[3,1,2],[4,2,3],[5,1,3]]},
+  "prescaled M3(a)^2": {"moduli": "a^2 increasing", "angle": "2*theta irrational", "equal_moduli": true}
+ },
+ "resonance_check_box_-2..2^3": {
+  "M_BAL3_fixed": "non-resonant on small box; resonant on {-4..4} via (1,0,0)->(3,0,0)",
+  "M3(a) all a=2..50": "RESONANT, 4 stable a-INDEPENDENT pairs e.g (0,-2,0)->(0,0,-2) via O(1) companion shear",
+  "M4(a,b,c)": "RESONANT, 24 stable pairs",
+  "prescaled M3(a)^2": "NON-RESONANT (0 pairs) - squaring absorbs the O(1) shear channel"
+ },
+ "min_bracket_B_vs_depth": {
+  "FIXED M_BAL3 (closure E=D-D)": "0 ATTAINED (baseline c=0, refuted)",
+  "ACCEL M3(a_k) no prescale": {"J1": 0.0, "J2": 0.0},
+  "PRESCALED accel M3(a_k)^2": {"J1": 0.612948, "J2": 0.732129, "J3": 0.914590},
+  "FIXED prescaled M3(3)^2": {"J1": 0.612948, "J2": 0.559507, "J3": 0.762006}
+ },
+ "verdict": "M3(a)/M4 accelerating families REPRODUCE the c=0 resonance (a-independent O(1) shear channel); only PRESCALED/squared maps are non-resonant and give min|B_J| bounded-below & non-shrinking at J<=3 on a SMALL box. Not a uniform-floor proof: only shallow depth, favorable small-box proxy, prescale (not acceleration) does the work, and metric-separation is orthogonal to the real arc-incidence barrier."
+}
