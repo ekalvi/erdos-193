@@ -108,7 +108,7 @@ All machine-verified / exact (design/lemma/):
   σᵢ(Mʲ)/3ʲ ∈ [0.846, 1.182]). So the walk is quasi-self-similar, not wildly
   anisotropic.
 - **Anisotropic contraction.** In M's singular-value metric the pull-back factor
-  is φ = σ₁(M⁻¹)·σ₂(M⁻¹)^{d−1} = 0.353 < 1 — the renormalization contracts
+  is φ = σ₁(M⁻¹)·σ₂(M⁻¹)^{d−1} = 0.351 < 1 — the renormalization contracts
   (the isotropic 4/9-based recursion diverged; this one does not).
 - **Anchor separation.** min over nonzero integer v of |M·v|∞ = 3 — anchors are
   3-separated at every level, non-circular, exact.
