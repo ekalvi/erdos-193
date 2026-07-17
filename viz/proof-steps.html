@@ -380,20 +380,27 @@ vertex of the triangle in step&nbsp;1."</p>
   <li class="done"><b>No far-tangle</b> — a "spool" coordinate proves the thread can never drift back
     near far-away parts of itself. <em>Proven.</em></li>
   <li class="open"><b>Lemma R (the tight bound)</b> — that the thread is <em>uniformly</em> lean at
-    every scale. In its sharpest form this is a single textbook condition — the <b>Open Set Condition</b>
-    for the self-similar system (the scaled copies tile cleanly instead of piling up). It is measured
-    true across the whole 311,738-point walk, and proving it is the sole remaining step.</li>
+    every scale (it threads any ball in about radius-many points, never piling into a blob). It is
+    measured true across the whole 311,738-point walk with a stable constant, and proving it is the sole
+    remaining step. The standard routes to it — the Open Set Condition, a better matrix, a metric
+    separation bound, a local finite-state check — are all now <em>provably closed</em> (see below); what
+    remains is genuinely open.</li>
 </ul>
 <p class="sub" style="margin-top:14px">In short: <b>Erdős #193 holds — yes — modulo one geometric
-regularity lemma</b>, with every other piece proven or certified by exhaustive computation. That last
-lemma is now pinned to a single irreducible <em>metric</em> fact (uniform bounded crowding — the walk
-threads any ball in about radius-many points at every scale). Eight adversarial rounds closed the three
-standard shortcuts to it: you cannot get it from the Open Set Condition (the OSC <em>provably fails</em>
-on the connector menu-closure), you cannot escape by swapping the enlarging matrix (a clean
-impossibility theorem), and you cannot get it from information theory (the cross-entropy floor between
-coexisting arcs is provably zero). Honest odds: the walk almost certainly exists (<b>~85%</b>); a full
-<em>unconditional</em> proof with currently-known tools is <b>~5–15%</b>. (Those numbers are honest
-working estimates, not computed quantities.) The full, referee-checkable statement lives in
+regularity lemma</b> (the walk stays uniformly lean at every scale), with every other piece proven or
+certified by exhaustive computation. A long adversarial, computer-assisted campaign has now <b>mapped the
+whole affirmative program and closed every standard route</b> to that last lemma: it does not follow from
+the Open Set Condition (which <em>provably fails</em> on the connector menu-closure), nor from swapping the
+enlarging matrix (a crystallographic impossibility, via Niven's theorem), nor from a metric separation
+bound (which is <em>exactly zero</em> on the true connector closure), nor from any local finite-state
+verification (a rigorous impossibility — the legal-carry automaton is primitive), nor from information
+theory (the cross-entropy floor is zero), nor from the standard global-analysis toolkit (Fourier decay,
+additive combinatorics, homogeneous dynamics, transversality — each collapses to the same obstruction).
+The unifying reason: collinearity is an <em>exact integer</em> condition (a triple is on a line or it is
+not), and every density, measure, and separation tool is constitutively blind to it. Honest odds: the walk
+almost certainly exists (<b>~85%</b>); a full <em>unconditional</em> proof with currently-known tools is
+<b>under 5%</b> and would need a genuinely new, global argument. (Those numbers are honest working
+estimates, not computed quantities.) The full, referee-checkable statement lives in
 <a href="https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md" style="color:hsl(var(--link))">CONDITIONAL-THEOREM.md</a>;
 the live hunt for that last lemma is on the <a href="progress.html" style="color:hsl(var(--link))">research log</a>.</p>
 

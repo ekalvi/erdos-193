@@ -214,16 +214,23 @@ is confined. Everything else — the base, inheritance, induction, the exact
 recursion, qualitative no-blow-up, the exact Q-metric self-similarity, the
 deep-tail collapse, cross-scale transience — is proven. Lemma R is the **metric
 arc-incidence / uniform bounded-crowding lemma** (the walk threads any ball in about
-radius-many points at every scale). It has resisted eight distinct proof attacks —
-counting, fractal-dimension, transfer-operator, exclusion, matrix redesign,
-graph-directed IFS, and information theory — each of which sharpened it and proved
-new machinery, and three of which produced clean closures (see *Routes explored and
-closed*): the OSC/Mauldin–Williams route is dead (the Open Set Condition provably
-*fails* on the menu-closure), no better matrix exists (a crystallographic
-impossibility theorem), and the cross-entropy route is refuted at a zero floor. What
-remains is a single irreducible *metric* fact — the level-uniformity of the
-single-level refill slope, which the exact birth-telescope reduces the whole problem
-to and which closes only along the proven anisotropic 4/9-contraction (φ = 0.353 < 1),
-not by any finite check. Measured rock-stable across levels 5–8; the walk almost
-certainly exists (~85%), and a full unconditional proof with currently-known tools
-is the sole remaining gap.
+radius-many points at every scale). A long adversarial, computer-assisted campaign has
+now **mapped the whole affirmative program and closed every standard route to it**: it
+does not follow from the Open Set Condition (which provably *fails* on the connector
+menu-closure), nor from swapping the enlarging matrix (a crystallographic impossibility,
+via Niven's theorem), nor from a *metric separation* bound (the telescoping-sum
+separation is **exactly zero** on the true connector closure — an exact integer
+zero-cycle at depth 1, for the fixed matrix and accelerating variants alike), nor from
+any *local finite-state* verification (a rigorous impossibility — the legal-carry
+automaton is a single primitive strongly-connected component, so a rule with power over
+the collinear configurations must constrain the walk at unbounded depth, which *is* the
+theorem), nor from information theory (the cross-entropy floor is zero), nor from the
+standard global-analysis toolkit (Fourier decay, additive combinatorics, homogeneous
+dynamics, transversality — each collapses to the same obstruction). The unifying reason
+is that collinearity is an **exact integer** condition (a triple lies on a line or it
+does not), to which every density, measure, and separation tool is constitutively blind.
+What remains is genuinely open, and a proof of Lemma R now appears to require a new,
+*global* argument outside every tool tried here. The walk itself is measured rock-stable
+— triple-free and self-avoiding across the 311,738-point record — so the open question
+is **provability, not existence**: the walk almost certainly exists (~85%); a full
+unconditional proof with currently-known tools is **under 5%**.
