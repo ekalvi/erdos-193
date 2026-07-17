@@ -1,9 +1,15 @@
 # Erdős Problem #193 — a conditional theorem
 
-**Status (2026-07-16): the affirmative answer is reduced to a single geometric
-regularity lemma, with every other step proven-exact or certified by exhaustive
-computation.** This document is the referee-checkable statement: the chain, what
-is proven, the one remaining hypothesis, and how to reproduce every claim.
+**Status (2026-07-16): the affirmative answer stands as a conditional theorem —
+Erdős #193 = YES modulo a single geometric regularity lemma (Lemma R,
+arc-incidence / uniform bounded crowding), with every other step proven-exact or
+certified by exhaustive computation. The OSC/Mauldin–Williams route to *proving*
+Lemma R is now closed — the Open Set Condition provably fails on the connector
+menu-closure (exact generation-2 overlap), so Lemma R is stated and must be proven
+directly as the metric arc-incidence lemma, not as an OSC. The walk itself is
+strongly evidenced (311,738 points, no three collinear, SHA-256 c8cc3728).** This
+document is the referee-checkable statement: the chain, what is proven, the one
+remaining metric hypothesis, the closed routes, and how to reproduce every claim.
 
 ---
 
@@ -119,40 +125,55 @@ All machine-verified / exact (design/lemma/):
   words. The walk **provably never densifies without limit.**
 - **Box-dimension d ≈ 1.10**, measured level-stable across levels 5–8.
 
-### Lemma R = the Open Set Condition (its sharpest form)
+### Routes explored and closed (why Lemma R needs its own metric proof)
 
-Lemma R is exactly **Ahlfors d-regularity of the walk-curve**, and the classical
-theorem that supplies it is **Mauldin–Williams (1988)** for graph-directed
-self-similar systems, sharpened by **Schief (1994)** (OSC ⇔ positive measure ⇔
-bounded covering multiplicity):
+Eight adversarial rounds established that the three standard tools that *would*
+supply Lemma R for free each provably do not. These are closures, not refutations:
+the conditional theorem is untouched — each result only removes a shortcut and
+confirms that Lemma R must be proven directly as the metric arc-incidence lemma
+above. (The exact self-similarity MᵀQM = 9Q and the other proven machinery still
+stand — see "What is PROVEN around Lemma R"; what is closed is the *route from that
+machinery to Lemma R via a separation condition*.)
 
-- The walk is a single-vertex graph-directed self-similar system — every point
-  emits one M-contraction child (its anchor) plus a finite, menu-drawn set of
-  stitch-children, each a 1/3-scaled statistical copy. *(Cylinder point-counts
-  scale as λ^g, diameters as 3^g — verified.)*
-- **Exact self-similarity [PROVEN].** MᵀQM = 9Q with Q = [[1,0,0],[0,6,−1],
-  [0,−1,6]] (integer identity), so M = 3·O with O a Q-orthogonal rotation:
-  d_Q(Mp,Mq) = 3·d_Q(p,q) exactly. In the Q-metric the walk is an exact ratio-3
-  self-similar covering; the Q↔Chebyshev distortion is the fixed κ = 1.323.
-- **All Mauldin–Williams hypotheses are proven EXCEPT the OSC**: contraction
-  ratio 1/3 (proven), bounded distortion (proven), dimension d = log λ/log 3
-  (λ ≈ 3.37 level-stable). In the Q-metric the theorem already yields the clean
-  bound c(R) ≤ 2·R^d.
+- **The OSC / Mauldin–Williams route is DEAD — the Open Set Condition provably
+  FAILS on the connector menu-closure.** The intended proof of Lemma R was
+  OSC ⟹ Ahlfors d-regularity ⟹ bounded crowding. But the menu-closure graph-directed
+  system that Mauldin–Williams/Schief require has a genuine exact overlap already at
+  generation 2: two *distinct* legal words reach the same anchor (−2, 2, 1) via
+  *different* root connectors ((66,0,20,21) vs (5,20,21)), producing identical
+  cylinders — the identity in the Bandt–Graf neighbour set, so the OSC fails
+  (17,219,577 such type-correct pairs; explicit reconstructed witness). The mechanism:
+  the closure's freedom is the union over *all* legal connectors per gap. The
+  *realized* adaptive walk uses one connector per gap and is provably vertex-
+  self-avoiding (Δ = Mᵍ(p_v − p_u); Δ = 0 ⟺ a repeated vertex, forbidden — a rigorous
+  8,649-state closed carry-automaton certificate), so it dodges every such overlap.
+  Net: MW on the closure certifies the wrong (blob) attractor, and MW on the realized
+  sofic subsystem has separation hypothesis = Lemma R itself (circular).
+  *(design/osc_decide/.)*
 
-So **Lemma R ⟸ the Open Set Condition** for this self-similar system —
-equivalently, that the generation-g cylinder covering multiplicity is bounded
-uniformly in g and k. This is a *named, standard* condition, not a bespoke one.
+- **No better matrix — the crystallographic impossibility theorem.** One might hope
+  to swap M for an expand-and-twist similarity M′ that *does* satisfy the separation
+  screen. It cannot exist with the twist the construction needs: passing the
+  absorbing-separation screen at every prime dividing the ratio r ⟺ SNF_ℤ(M′) = r·I
+  ⟺ M′/r is a finite-order integral isometry ⟺ the twist angle is a rational multiple
+  of π (Niven). So the *irrational* twist arccos(−1/6) the construction requires is
+  fundamentally incompatible with the separation any OSC needs. Empirical seal: 0 of
+  504 irrational-twist integer similarities (r = 2…12, incl. axis-free 3D-mixing
+  quaternion rotations) pass at all primes; every rational-twist control passes.
+  *(design/mprime/.)*
 
-**Status of the OSC.** Measured satisfied and level/generation-stable — covering
-multiplicity 4 / 5 / 4 at matched scale r = 3^g, ≤ 9 at full diameter, *identical*
-at levels 6 and 7 — the exact OSC signature, and the strongest evidence to date.
-Not yet proven, for two reasons: (i) the finite-alphabet claim (that sibling
-separation is a function of the finite local-config state, e.g. the 78,728 NP-HC
-states) is not formalized, so the reduction of the OSC to a one-generation finite
-check is not yet rigorous; (ii) the multiplicity is measured on the *realized*
-adaptive walk, whereas Mauldin–Williams needs it on the full menu-closure graph
-(all legal stitch transitions). Proving the OSC for this **adaptive** self-similar
-system is the single frontier. *(design/lemma/ahlfors/, design/lemma/route1/mw_osc.py.)*
+- **Information theory (cross-entropy / subword complexity) refuted.** The hope: two
+  arcs stacking in one ball must have divergent step distributions, D(P_A‖P_B) ≥
+  floor > 0, capping the stack count. The cross-entropy floor is provably **zero**:
+  same-birth-level arcs are M-images of one identical base alphabet ⟹ identical step
+  marginals ⟹ D = 0, and exactly-parallel laterally-offset lattice arcs are forced
+  (min coexisting-pair angle 0.00°, the floor *decreasing* to 0 as stacking grows).
+  They stay triple-free by integer lateral offset (cross ≥ 1, never 0). Subword
+  complexity is near-maximal (p(8)/L = 0.989) in the load-bearing window; and a
+  space-filling curve is linearly recurrent yet a blob — so low symbolic complexity
+  provably does **not** imply low geometric crowding. Same wall, restated in
+  information-theoretic language; the cross-entropy sub-hypothesis is refuted at 0.
+  *(design/entropy/.)*
 
 ### Evidence for Lemma R (why it is believed true)
 
@@ -191,14 +212,18 @@ sharply-stated geometric regularity lemma that is measured true across a
 311,738-point certified construction and to which the entire remaining difficulty
 is confined. Everything else — the base, inheritance, induction, the exact
 recursion, qualitative no-blow-up, the exact Q-metric self-similarity, the
-deep-tail collapse, cross-scale transience — is proven. Lemma R is the Ahlfors
-regularity of the walk-curve, and it now stands in its sharpest possible form:
-**the Open Set Condition for an exact self-similar system** (Mauldin–Williams
-supplies everything else). It has resisted seven distinct proof attacks
-(counting, fractal-dimension, transfer-operator, exclusion, redesign, graph-directed
-IFS), each of which sharpened it and proved new machinery — the current best form
-reduces the whole problem to a single, standard, measured-true condition. Proving
-the OSC for this *adaptive* self-similar construction is the frontier, and the
-concrete next step is to show the covering multiplicity is bounded on the finite
-menu-closure graph (converting the measured OSC into a one-generation finite check
-via Schief 1994).
+deep-tail collapse, cross-scale transience — is proven. Lemma R is the **metric
+arc-incidence / uniform bounded-crowding lemma** (the walk threads any ball in about
+radius-many points at every scale). It has resisted eight distinct proof attacks —
+counting, fractal-dimension, transfer-operator, exclusion, matrix redesign,
+graph-directed IFS, and information theory — each of which sharpened it and proved
+new machinery, and three of which produced clean closures (see *Routes explored and
+closed*): the OSC/Mauldin–Williams route is dead (the Open Set Condition provably
+*fails* on the menu-closure), no better matrix exists (a crystallographic
+impossibility theorem), and the cross-entropy route is refuted at a zero floor. What
+remains is a single irreducible *metric* fact — the level-uniformity of the
+single-level refill slope, which the exact birth-telescope reduces the whole problem
+to and which closes only along the proven anisotropic 4/9-contraction (φ = 0.353 < 1),
+not by any finite check. Measured rock-stable across levels 5–8; the walk almost
+certainly exists (~85%), and a full unconditional proof with currently-known tools
+is the sole remaining gap.
