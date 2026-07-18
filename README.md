@@ -20,7 +20,7 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 | 28,271-step walk (earlier record) | verified + SHA-256 certified, `amplified-193-28271.txt` |
 | Exact maxima for small menus: **20** (±e₁,±e₂,±e₃), 14, 7; **3** in 2D | proven by exhaustive search |
 | Universal availability: every one of 78,728 arithmetic states can steer in all 13 mod-3 directions | proven by exhaustion (1.22B transitions) |
-| Exact global connector-poison audit | far secants remove 51–68% of apparent radius-40 survivors; a frozen-L7 robust early action has target-clean floor 45 and one exact successor retains 2,747 words |
+| Exact global connector-poison audit | far secants remove 51–68% of apparent radius-40 survivors; the causal tile pipeline has a one-state target-to-guard floor of 1,153, while an L7 shell-5 validation failure keeps the theorem open |
 | Five earlier proof strategies refuted with quantitative tombstones | documented in `REPORT.md` |
 
 ## Verify our record walk yourself (30 seconds)
@@ -78,6 +78,19 @@ env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
 env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 \
     nice -n 15 python3 -B design/l7_robust_successor_probe.py
 
+# inherited-tile causal pipeline: lifetime, literal transition, macrotransition
+env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+    nice -n 15 python3 -B design/inherited_tile_lifetime.py run \
+    --output /tmp/inherited-tile-lifetime.json
+env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+    nice -n 15 python3 -B design/pipeline_transition_stabilization.py \
+    --output /tmp/pipeline-transition-stabilization.json
+env OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+    VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+    nice -n 15 python3 -B design/l7_pipeline_macrotransition.py
+
 # independent affine-decimation route
 clang++ -O3 -std=c++17 design/affine/check_affine_125.cpp -o /tmp/check_affine_125
 nice -n 15 /tmp/check_affine_125 30000
@@ -105,6 +118,9 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/l7_four_gap_probe.py` | Exact first-12 slice of the four-connector L7 cone (`l7-four-gap-probe-summary.json`); bounded result, not the full cone |
 | `design/l7_robust_d_selector.py` | Frozen-L7 early-action certificate: one precommitted D leaves a uniform target floor of 45 (`l7-robust-d-selector-summary.json`) |
 | `design/l7_robust_successor_probe.py` | One action-aligned far-jump successor edge with 2,747 survivors (`l7-robust-successor-summary.json`) |
+| `design/inherited_tile_lifetime.py` | Exact 18-probe causal-pipeline witness audit: global atom/word masks, owner horizons, and correlated birth/shell provenance (`inherited-tile-lifetime-summary.json`) |
+| `design/pipeline_transition_stabilization.py` | Four exact source/action/successor sentinels; literal L5–L6 transition codes do not recur at L7/L8 (`pipeline-transition-stabilization-summary.json`) |
+| `design/l7_pipeline_macrotransition.py` | Causal one-state macrotransition: all 111 legal target words retain at least 1,153 short next-guard words (`l7-pipeline-macrotransition-summary.json`) |
 | `design/WEAK-ABELIAN-LIFT.md` | Exact word lift, literature check, and the dimension-three projection obstruction |
 | `design/affine/` | Reproducible affine candidate, prefix checker, base-7 recurrence, and exact C=9 modular obstruction |
 | `results/`, `collar_multiplicity4.json`, `wsw_sameword.pkl` | Data artifacts (large binaries are local-only, rebuildable) |
@@ -116,8 +132,8 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 The scale-and-rotate construction gives an exceptional verified finite walk, but
 the old claimed reduction to bounded crowding is not valid: arbitrary bounded
 crowding on a fixed radius interval is too weak, and connector legality includes
-far secants.  An exact ordered-path poison game remains conceivable, but its
-local states do not stabilize in L5–L8 and a scalar shell contraction is false.
+far secants.  An exact ordered-path poison game remains conceivable, but literal
+local states do not stabilize and a scalar shell contraction is unsound.
 The first exact backward-cone test exhausts 811,250 assignments to two earlier
 path-neighbour connectors: none jams the target, but the worst legal assignment
 leaves only 59 of 9,046 words.  Adding the third nearby connector creates 1.44
@@ -133,8 +149,21 @@ target-clean words for every one of 865,674 base-compatible `(A,B)` pairs even
 after unioning all `C` effects.  A concrete aligned continuation retains 2,747
 words after the scheduler's Chebyshev-102 jump.  The early action was selected
 using thousands of recorded future choices, however, so neither result is an
-online selector or a cross-level invariant.  The next test changes to a bounded
-inherited-tile guard schedule and asks for an action-labelled macrotransition.
+online selector or a cross-level invariant.
+
+The inherited-tile guard schedule removes that future oracle at the known L7
+bottleneck.  Its causal state has 36,589 points before the early action; the
+pinned D/A/B choices remain legal, leave 111 target words, and every one of
+those targets leaves at least 1,153 / 1,505 short words at the next guard.  This
+is a genuine two-ply certificate at one incoming state, not closure over all
+incoming histories.  Separately, an 18-probe L5–L8 audit learns an all-poisoned-
+atom owner radius of 625 on L5–L6 and sees no validation or holdout exceedance.
+But its shell-4 cutoff fails at two L7 probes: new shell-5 atoms are uniquely
+responsible for 56 and 9 killed words, including a same-level witness.  Every
+tested exact mask is distinct, and neither L7 nor L8 matches the frozen L5–L6
+literal source/action/successor codes.  The surviving proof target is therefore
+a finite noncontracting current/age-one state plus a typed deep endpoint/secant
+frontier with a proved common rank—not a fixed shell cutoff.
 
 The product candidate `P_n=(W_n,W_{2n},W_{5n})` in `Z^9` is only a
 higher-dimensional test bed; no collinearity-faithful integer projection is

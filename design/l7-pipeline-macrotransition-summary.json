@@ -1,0 +1,95 @@
+{
+  "status": "exact causal L7 pipeline macrotransition probe complete",
+  "known_assertions_passed": true,
+  "scope": "one exact inherited-tile pipeline state with pinned D/A/B; uniform over every legal target action only; not uniform over incoming histories, tiles, or levels and not a fixed-point proof",
+  "pipeline": {
+    "definition": "bootstrap tile-0 guard; before tile t place the guard of tile t+1; then place unplaced tile-t gaps by (d24,index)",
+    "segments": [3785, 3782, 3784, 3783, 3788, 3786],
+    "roles": ["D", "A", "B", "target", "G", "C"],
+    "ranks_zero_based": [3782, 3783, 3784, 3785, 3786, 3787],
+    "tiles": [1125, 1124, 1124, 1124, 1126, 1125]
+  },
+  "causal_base_before_D": {
+    "points": 36589,
+    "placed_connector_gaps": 3782,
+    "future_connectors_included": false,
+    "placed_set_sha256": "4b526480697bf324560aec75ead678686de50993fa84a62777bae4d77ebd24b7"
+  },
+  "pinned_DAB": [
+    {
+      "role": "D",
+      "segment": 3785,
+      "domain_index": 8681,
+      "word": [34, 24, 19, 22, 98],
+      "exactly_legal": true
+    },
+    {
+      "role": "A",
+      "segment": 3782,
+      "domain_index": 1465,
+      "word": [102, 103, 100, 63],
+      "exactly_legal": true
+    },
+    {
+      "role": "B",
+      "segment": 3784,
+      "domain_index": 425,
+      "word": [77, 82, 102, 107],
+      "exactly_legal": true
+    }
+  ],
+  "pretarget_state": {
+    "points": 36599,
+    "placed_set_sha256": "af23333a9b765e907a0449723fd324ad6f653e2a8babe1d7369f1a342dfc9ac8"
+  },
+  "target_availability": {
+    "segment": 3783,
+    "domain_size": 9046,
+    "survivors": 111,
+    "poisoned_atoms": 164,
+    "survivor_mask_sha256": "be83fa5b1ca906421e85d4de2a28619a3507b4336f2d7ba807576f72ae92c13b",
+    "pinned_domain_index": 26,
+    "pinned_word": [51, 103, 108, 123]
+  },
+  "universal_target_to_guard": {
+    "quantifier": "for every one of the 111 exactly legal target words W, at least 1153 length-2--4 G words are exactly legal after W",
+    "guard_segment": 3788,
+    "guard_step": 114,
+    "guard_full_domain_size": 453015,
+    "guard_short_domain_size": 1505,
+    "guard_short_survivors_before_target": 1264,
+    "uniform_short_guard_floor_after_target": 1153,
+    "target_indices_attaining_floor": [3056],
+    "target_point_universe": 54,
+    "target_pair_effects_evaluated": 165,
+    "far_endpoint_truncation": null,
+    "floor_attainer_independent_exact_mask_crosscheck": true,
+    "soundness_partition": [
+      "base collision and base--base secants at every G site",
+      "base points on every line through two G interiors",
+      "target-point collisions and base--target secants at G sites",
+      "target--target secants at G sites",
+      "target points on lines through two G interiors"
+    ]
+  },
+  "pinned_target_full_guard_crosscheck": {
+    "full_guard_survivors": 350509,
+    "full_guard_poisoned_atoms": 62,
+    "full_guard_survivor_mask_sha256": "05028572b2f90ca808f4c59a8024b8730119769444778aa7718bef37e3ed130c",
+    "short_guard_survivors": 1263,
+    "short_guard_survivor_mask_sha256": "ddd74373c1fa65b5c7ad6534d790422121bbcdd1d5ae64258df2618beab2f990",
+    "transfer_mask_equals_independent_full_poison_prefix": true,
+    "chosen_least_short_guard_index": 0,
+    "chosen_least_short_guard_word": [123, 122, 123]
+  },
+  "next_C_availability": {
+    "segment": 3786,
+    "domain_size": 2570,
+    "survivors": 1887,
+    "poisoned_atoms": 22,
+    "survivor_mask_sha256": "4eb56678e4bc5b792370b0e8f8504a378a072f66f65bf61d7242a20f0c0b905f"
+  },
+  "interpretation": "the scale-and-rotate recorded walk supplies a legal causal prefix, and the old robust D/A/B choices survive the pipeline reorder; the unresolved obstruction is closure over all incoming states",
+  "elapsed_seconds": 66.703,
+  "checker_sha256": "b3e8b5e4e830179e657b42513ebd349129b5cde132d541a46c8b882e703c8ae9"
+}

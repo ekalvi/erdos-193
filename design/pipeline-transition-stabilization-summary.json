@@ -1,0 +1,251 @@
+{
+  "status": "exact four-sentinel recorded-orbit transition probe complete",
+  "scope": "One fixed transition per L5--L8. Complete global secant scans were used for every audited atom, with no endpoint or distance cutoff. This is not a census, closure proof, or greatest-fixed-point certificate.",
+  "checker": "design/pipeline_transition_stabilization.py",
+  "executed_checker_sha256": "82b1b157798e2a9b4cf9b7ceb8788bd37199d471b8de8d1438c0c3c6ac5eb5a5",
+  "current_checker_sha256": "83c0bd76f258657d08dafa0434b7bfa30ce119f61a77de6fcb800696483139c0",
+  "post_run_checker_change": "The current checker adds only fixed input/headline assertions for the recorded output; the heavy scan was not rerun after this assertion-only change.",
+  "full_tmp_result_sha256": "06725436db4aa0e08642d3941e16f9558fbb47e5ea44475c6de335a3bf21a4c1",
+  "input_sha256": {
+    "viz/walk3d-data.json": "d4392af018ee7d7c40c224622e9a606d3b1fb3da0c8c25613c93cb2dc901c883",
+    "connector_domains4.pkl": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dstar5_fragile.pkl": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3",
+    "gate2-l7-construction-L5.pkl": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d",
+    "gate2-l7-construction-L6.pkl": "70fa3baac057492fb8ad325eba5417bdc1e98fbd474bec37dc5f5465230f9298",
+    "gate2-l7-construction-L7.pkl": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660",
+    "gate2-l7-construction-L8.pkl": "cc4002ebccde737ab46dc016937be4aa653620d809908d48d35bcf06fc884141"
+  },
+  "runtime": {
+    "checker_elapsed_seconds": 132.615,
+    "wall_seconds": 133.64,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "normalization": {
+    "factor": "Contiguous inherited tiles cursor-1 through cursor+2 in natural path order",
+    "coordinates": "Cursor start translated to (0,0,0); no rotation, reflection, or path-reversal quotient",
+    "connector_choices": "Exact recorded word retained only for gaps already causally placed; unplaced choices remain hidden",
+    "action": "Exact recorded source connector word and its translated interior offsets"
+  },
+  "successor_domain_policy": {
+    "full_domain_threshold": 50000,
+    "large_domain_rule": "Stop the full-domain audit and exactly audit only the pre-existing length-2--4 prefix; never extrapolate to omitted length-5 words",
+    "important_limitation": "The L5--L7 successor results are not full-domain availability results"
+  },
+  "training_freeze": {
+    "levels": [5, 6],
+    "sentinels_per_level": 1,
+    "comparison": "Exact SHA-256 code equality only",
+    "source_mask_span": {
+      "poisoned_atom_union": 148,
+      "poisoned_atom_intersection": 47,
+      "killed_word_union": 8413,
+      "killed_word_intersection": 6889
+    },
+    "transition_codes": [
+      "0c7733aaae26596e877c81fa67310b1b29c741c60e1ec94c3b919fc19c1b16c1",
+      "6f3b39131af441831fe3d9be02681930a6f8e6dd27061ed3984c452d27f86f66"
+    ]
+  },
+  "records": [
+    {
+      "level": 5,
+      "source": {
+        "gap": 989,
+        "placed_points": 4796,
+        "step": 122,
+        "domain_words": 9046,
+        "poisoned_atoms": 104,
+        "poisoned_atom_mask_sha256": "1d719b7fb53fc8db767c9770ad0d9c5d1296ab4620a94b277adb3477508ccf29",
+        "killed_words": 7679,
+        "surviving_words": 1367,
+        "killed_word_mask_sha256": "3513d1309f217fa1bef3d89cfa35e9de3a39a08110d79f3148574eeabf4d1c65"
+      },
+      "action": {
+        "recorded_domain_index": 1503,
+        "word": [78, 93, 101, 112],
+        "exactly_legal": true
+      },
+      "successor": {
+        "gap": 996,
+        "tile_offset_from_source": 2,
+        "step": 69,
+        "full_domain_words": 298775,
+        "audited_words": 600,
+        "audit_kind": "exact-length-2-4-prefix",
+        "omitted_words": 298175,
+        "poisoned_atoms": 3,
+        "killed_words": 44,
+        "surviving_words": 556,
+        "killed_word_mask_sha256": "f3dcb3facfb1dab23450e76a640992db15e0c12a3aa716ccb90886b0e7b8ae9a"
+      },
+      "codes": {
+        "source_factor": "82bb5792a9f6fd34c87d1c442bf28472cb09381431d053621de245860740a51d",
+        "source_poison": "4d5cc1b4156e856711df68d239fc509c7fd0cd09fa6890c495372d43148af975",
+        "action": "54f83f88b1741b133eaaa3bf310e26a2f36594946a63ae8f0109351dc7afc053",
+        "successor_factor": "8bb98a0e10faae6f9c0dfb83d16221e5cc3dcb20951707d81ab3540533a7acc6",
+        "successor_poison": "0ac31825b1e4e16b79ef0b9bc7701b6a891070307378ec21554ac4db044a5387",
+        "transition": "6f3b39131af441831fe3d9be02681930a6f8e6dd27061ed3984c452d27f86f66"
+      },
+      "all_codes_seen_in_L5_L6_training": true
+    },
+    {
+      "level": 6,
+      "source": {
+        "gap": 8033,
+        "placed_points": 27253,
+        "step": 122,
+        "domain_words": 9046,
+        "poisoned_atoms": 91,
+        "poisoned_atom_mask_sha256": "348ddec2eb7d8306e0fc669fb08374d062dac04734bcd8970a4bc4bf4763e6fc",
+        "killed_words": 7623,
+        "surviving_words": 1423,
+        "killed_word_mask_sha256": "f9e6946f759b8a5ada3cd8551a6076871c8ba5f8379aeb0abefa673be4beb8e3"
+      },
+      "action": {
+        "recorded_domain_index": 7220,
+        "word": [111, 103, 83, 87],
+        "exactly_legal": true
+      },
+      "successor": {
+        "gap": 8035,
+        "tile_offset_from_source": 1,
+        "step": 21,
+        "full_domain_words": 501044,
+        "audited_words": 1732,
+        "audit_kind": "exact-length-2-4-prefix",
+        "omitted_words": 499312,
+        "poisoned_atoms": 40,
+        "killed_words": 1206,
+        "surviving_words": 526,
+        "killed_word_mask_sha256": "7d7558b5c9d5e236232c5d46a2c662240ac10b2e3b61d91949c0c645cb4c6a0f"
+      },
+      "codes": {
+        "source_factor": "057949ec3fd7895e4732713156e7967645dd79efa7b517ea3d1a2e1a722c59ff",
+        "source_poison": "dba078a4fda4c3c93562bd091395f047258eb47d6b9b798b869585953019b4c9",
+        "action": "cc9759ba7dfd31821a2082b7ed7f87eb5bf1658fe7259fd4c58fe477d4500a3d",
+        "successor_factor": "98181ad190d22dacf72cf00d6f710bf4ab490841b017dbca78376b53769f4a82",
+        "successor_poison": "46c96d05fa03dcc5b2bfab1a97cc4f9fe965e8d049d2e9e62563ca750b2f3b4e",
+        "transition": "0c7733aaae26596e877c81fa67310b1b29c741c60e1ec94c3b919fc19c1b16c1"
+      },
+      "all_codes_seen_in_L5_L6_training": true
+    },
+    {
+      "level": 7,
+      "source": {
+        "gap": 3783,
+        "placed_points": 36596,
+        "step": 122,
+        "domain_words": 9046,
+        "poisoned_atoms": 135,
+        "poisoned_atom_mask_sha256": "b46c62779d72cad193c3ed7b74bc042092c0f5717f8c010c24c0725089ac56a0",
+        "killed_words": 8643,
+        "surviving_words": 403,
+        "killed_word_mask_sha256": "b16faafedf67753a7194fa8678b44ea19c62eee0440edc246e84029c794aea06"
+      },
+      "action": {
+        "recorded_domain_index": 8779,
+        "word": [121, 108, 78, 77],
+        "exactly_legal": true
+      },
+      "successor": {
+        "gap": 3788,
+        "tile_offset_from_source": 2,
+        "step": 114,
+        "full_domain_words": 453015,
+        "audited_words": 1505,
+        "audit_kind": "exact-length-2-4-prefix",
+        "omitted_words": 451510,
+        "poisoned_atoms": 9,
+        "killed_words": 241,
+        "surviving_words": 1264,
+        "killed_word_mask_sha256": "b7667aa97e6de9feb0353fb9180339be0523c11c40351760585d1c23619b10e3"
+      },
+      "codes": {
+        "source_factor": "d9e308409617c082db340fb347785a47e14597e9b91a78d574baad07ad1ce523",
+        "source_poison": "ac25eaf73979b3e3875c5466f91b946ba9394ece178741f5fb73003a4a6fb080",
+        "action": "a327815b680791cc53d6541ea7306aa426e4e52d43206ff914c77a30bd1370e9",
+        "successor_factor": "200256d7662bf3a13d5203cba6f287d51435c3bb9d96d56e95c01183d253348d",
+        "successor_poison": "acfc32ea34e306a8fb8560b52bfe57f86227bab175fbf510c13a7210bf8343e1",
+        "transition": "3898c40b5f287984ee96fe735f3c10c23cdbed9b116f1907722666149b3c9f74"
+      },
+      "seen_in_L5_L6": {
+        "source_factor": false,
+        "source_poison": false,
+        "action": false,
+        "state_action": false,
+        "successor_factor": false,
+        "successor_poison": false,
+        "transition": false
+      },
+      "source_mask_distance": {
+        "to_L5": {"poisoned_atom_xor": 87, "killed_word_xor": 1392},
+        "to_L6": {"poisoned_atom_xor": 112, "killed_word_xor": 1368}
+      }
+    },
+    {
+      "level": 8,
+      "source": {
+        "gap": 65694,
+        "placed_points": 247564,
+        "step": 122,
+        "domain_words": 9046,
+        "poisoned_atoms": 111,
+        "poisoned_atom_mask_sha256": "5c1c6a07a303cf9c4b22189a5cbca9ef5d17f3b6b08935de36a3531aac1d6bfa",
+        "killed_words": 7533,
+        "surviving_words": 1513,
+        "killed_word_mask_sha256": "eb43d5705b286c513d49bded059c699cfd91f4e51172dc34a4ddf22ae355ce3b"
+      },
+      "action": {
+        "recorded_domain_index": 18,
+        "word": [112, 103, 108],
+        "exactly_legal": true
+      },
+      "successor": {
+        "gap": 65699,
+        "tile_offset_from_source": 1,
+        "step": 123,
+        "full_domain_words": 2570,
+        "audited_words": 2570,
+        "audit_kind": "full-domain",
+        "omitted_words": 0,
+        "poisoned_atoms": 19,
+        "killed_words": 672,
+        "surviving_words": 1898,
+        "killed_word_mask_sha256": "ce13f467e4a59f3359df4133368665ad80e8cec32dc79f822940f7cfb63367bf"
+      },
+      "codes": {
+        "source_factor": "6b9cd21de3b726dbe8c640c9d7a6149903ee0f9123a564dd27bae5c140026851",
+        "source_poison": "22041fa53aa7e5703ee8950b782a20e8c698786e6d5977abf49345d31e9cb0ef",
+        "action": "cd8a5e30ba0b8941fbac423229a9e781143072b2f0aa1e32ac7b456fb1a09806",
+        "successor_factor": "91cc756657381281349c106fdb491f1caa0b371bf43ce3d2efbf3ca31dd9be60",
+        "successor_poison": "ab0cb90762e84c6aa82235b7a1b4ea57b1bdae05ff80d8b603f35016ef112b88",
+        "transition": "4f1269d9a3895e742a9d2e367c415a08c934a38ddd67112d022cbc7c07ebf29c"
+      },
+      "seen_in_L5_L6": {
+        "source_factor": false,
+        "source_poison": false,
+        "action": false,
+        "state_action": false,
+        "successor_factor": false,
+        "successor_poison": false,
+        "transition": false
+      },
+      "source_mask_distance": {
+        "to_L5": {"poisoned_atom_xor": 97, "killed_word_xor": 1384},
+        "to_L6": {"poisoned_atom_xor": 142, "killed_word_xor": 2070}
+      }
+    }
+  ],
+  "independent_source_crosscheck": {
+    "against": "/tmp/inherited-tile-lifetime-canonical.json",
+    "levels": [5, 6, 7, 8],
+    "poisoned_atom_counts_equal": true,
+    "killed_word_counts_equal": true,
+    "survivor_counts_equal": true,
+    "killed_word_mask_sha256_equal": true
+  },
+  "decisive_observation": "Neither L7 nor L8 matches any L5--L6 exact source factor, source poison, recorded action, state/action, successor factor, successor poison, or whole-transition code. Thus the literal four-tile-plus-exact-mask representation has not stabilized even on these four recorded sentinels.",
+  "adversarial_interpretation": "This refutes only literal exact-code stabilization. It does not refute a coarser sound antichain, BDD, or shell-transfer abstraction. The training sample has only two transitions, the validation/holdout sample has one each, and three successor audits omit their huge length-5 layers."
+}
