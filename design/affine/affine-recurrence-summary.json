@@ -1,0 +1,29 @@
+{
+  "status": "exact finite recurrence table constructed",
+  "candidate": "P_n=(W_n,W_{2n},W_{5n})",
+  "ambient_dimension": 9,
+  "base": 7,
+  "q_scaling": 4,
+  "defect_scaling_for_all_indices_times_7": 28,
+  "joint_symbol_state_width": 8,
+  "reachable_joint_states": 17280,
+  "minimal_correction_transducer_states": 17280,
+  "partition_refinement_rounds": 2,
+  "distinct_q_corrections": 8074,
+  "weighted_merge": {
+    "candidate": "R_n=W_n+9W_{2n}+81W_{5n} in Z^3",
+    "coefficient": 9,
+    "step_coordinate_sum": 424,
+    "distinct_corrections": 8074,
+    "minimal_correction_transducer_states": 17280,
+    "partition_refinement_rounds": 2,
+    "interpretation": "The projected correction automaton has no ordinary state reduction; projected defect zero-exclusion is still open."
+  },
+  "max_abs_q_correction": 21,
+  "verified_parent_indices": 10001,
+  "verified_digit_transitions": 70007,
+  "exact_integer_arithmetic": true,
+  "finite_computation_only": true,
+  "interpretation": "The Q recurrence is exact; exclusion of zero from the bilinear three-index defect is still open.",
+  "source_sha256": "c3db92602bd7a0336869b1155040aae887aabb9dfac6a385d5e6099b67c2492f"
+}

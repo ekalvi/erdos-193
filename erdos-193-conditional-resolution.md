@@ -1,5 +1,15 @@
 # Erdős Problem #193: A Conditional Resolution and a Map of the Obstruction
 
+> **SUPERSEDED (2026-07-17).**  The conditional reduction in this document is
+> not referee-valid.  Lemma R as stated is already implied by the repository's
+> qualitative uniform crowding bound on its fixed radius interval, yet it does
+> not imply connector availability.  Exact replay shows that global far secants
+> kill 51–68% of the apparent radius-40 survivors at key bottlenecks.  The actual
+> missing hypothesis is a reachable connector-survivor safety invariant, or a
+> sharp near-mask bound plus a separate uniform far-secant lemma.  See
+> `CONDITIONAL-THEOREM.md` and `design/ORDERED-PATH-SAFETY-GATE.md`.  Historical
+> claims below are retained as a research record, not as the current theorem.
+
 *An AI–human "centaur" attack on the no-three-collinear infinite-walk problem. This document reports exactly what was proven, what remains open, and why the endpoint resists every standard tool. It is written to be checked by a referee and read by a curious non-specialist. Every load-bearing number below was re-verified in exact or high-precision arithmetic against the working repository.*
 
 ---
@@ -27,7 +37,7 @@ We did **not** resolve #193 unconditionally. We want to be completely clear abou
 
 What we did produce is two things:
 
-1. **A conditional theorem.** We give an explicit construction of an infinite triple-free 3D walk, and we prove — with exact algebra and exhaustive machine verification at every step — that it succeeds, *provided* one clean geometric regularity fact holds. We call that fact **Lemma R** (bounded crowding / arc-incidence). Everything else in the argument is proven. So: **Erdős #193 is YES, modulo Lemma R.** A record instance of the walk has been built and machine-verified triple-free at **311,738 points**.
+1. **A corrected conditional theorem.** We give an explicit scale-and-rotate construction and prove that it succeeds provided a reachable-state connector-safety invariant, **Lemma A**, holds with a sound treatment of far secants.  The earlier claim “YES modulo bounded-crowding Lemma R” was too weak and is withdrawn.  A record finite instance has been machine-verified triple-free at **311,738 points**.
 
 2. **A rigorous map of why the unconditional endpoint resists.** We prove **five negative results** — "the five walls" — each showing that a specific standard proof technique *cannot* supply Lemma R, plus a global-analysis reconnaissance showing the heavy machinery of modern harmonic and arithmetic analysis is likewise blind to the obstruction. These are genuine theorems about the *tools*, not about the walk. They explain, precisely, why the last step is hard.
 
@@ -75,13 +85,13 @@ Writing `Ω(x,y,z) = (y−x)×(z−x)` for the exact integer collinearity form (
 
 - **L1 — Base [PROVEN].** A triple-free walk over `S` exists; verified up to 311,738 points by an independent exact-integer verifier.
 - **L2 — Inheritance [PROVEN].** Cross products transform by the cofactor matrix: `(Ma)×(Mb) = C·(a×b)`, with `C = cof(M) = [[9,0,0],[0,−3,−9],[0,9,0]]`, `det 729`, invertible. Hence a triple that is non-collinear when created stays non-collinear at **every** later level; completed levels are frozen safe forever. (This is also the exact reduction "three collinear ⟺ a carry-cross vanishes": an *integer* condition, so "≠ 0" means "|·| ≥ 1" — a hard 0-vs-≥1 gap with no metric slack. See §3.)
-- **L3 — Availability [reduces to a finite check, given Lemma R].** At every stitch a legal connector word exists. Empirically `log(available words) ≈ 11.9 − 0.265·crowding`, so bounded crowding gives a positive availability floor (measured floors 317 / 180 / 271 words at levels 5/6/7, non-eroding).
-- **L4′ / Lemma R — the one open hypothesis (below).** Bounds the crowding uniformly across all levels; feeds L3.
-- **L5 — Induction [PROVEN given L1–L4′].** Each level is finished before the next starts and L2 freezes it, so the construction never halts ⇒ an infinite triple-free walk exists.
+- **L3 — Availability [OPEN].** At every reachable stitch at least one exact connector word must survive every local and far secant.  The reported 317 / 180 / 271 values are extrapolations from samples of at most 200 words per stitch, not exhaustive lower bounds.
+- **L4′ / Lemma A — the open hypothesis.** A policy-independent finite history abstraction, finitely represented invariant, and total selector must supply a legal connector for every represented concrete history and keep every sound abstract successor safe.  A separate far-secant/tail lemma is required for any truncated poison state.  Saying only "reachable under the certified policy" is circular unless this total closure certificate is provided.
+- **L5 — Induction plus König [PROVEN given L1–L4′].** The hypotheses inductively produce valid finite walks of unbounded length over the same finite step alphabet.  These levels are not nested point sets; König's infinity lemma applied to the finitely branching tree of valid prefixes extracts an infinite triple-free walk.
 
-So **L1, L2, L5 are proven, L3 becomes a finite computation once Lemma R is granted, and the theorem holds if Lemma R holds.**
+So **L1, L2, and the formal induction step are proven; the theorem is conditional on the direct reachable-state safety Lemma A, not on generic bounded crowding.**
 
-### Lemma R — the single remaining hypothesis
+### Lemma R — withdrawn as an availability hypothesis
 
 > **Lemma R (bounded crowding / arc-incidence).** For the construction orbit there is a level-independent constant `C_R` such that, for every level `k`, every centre `q`, and every radius `r ∈ [1, 10]`,
 >
@@ -89,7 +99,13 @@ So **L1, L2, L5 are proven, L3 becomes a finite computation once Lemma R is gran
 >
 > with `d = log λ / log 3 ≈ 1.10` (`λ ≈ 3.36` the per-level point-growth ratio).
 
-In words: the walk threads any small ball in about *radius-many* points (dimension ≈ 1.10) at every scale, forever — Ahlfors *d*-regularity of the walk-curve on the fixed neighbourhood scale. This is the metric arc-incidence statement to which the entire remaining difficulty is confined.
+On the fixed interval `1 <= r <= 10`, the already-claimed level-uniform cubic
+crowding bound implies the existence of some such `C_R`.  Therefore this
+statement is too weak to imply connector availability.  Exact replay also
+shows that secants with distant endpoints kill many words that survive a
+radius-40 truncation.  A useful replacement must be either a sharp numerical
+bound coupled to an exhaustive local poison calculation and a uniform tail
+bound, or the direct reachable-state Lemma A above.
 
 ### The proven machinery around Lemma R (verified constants)
 
@@ -105,7 +121,13 @@ Every number below was re-verified in exact arithmetic:
 
 ### The honest status
 
-What is *not* proven is exactly Lemma R in its sharp linear/arc-incidence form: promoting the measured level-stable single-level refill slope (`E ≈ 2–3`, load-bearing `c(4) = 10/11/12` across levels 6/7/8) to a level-uniform theorem. It is measured rock-stable across levels 5–8, and every proof shortcut that would supply it for free (the Open Set Condition, a better matrix, an information-theoretic separation) has been shown to fail — see the five walls (§4). The affirmative answer to #193 therefore stands as a **conditional theorem**: YES, modulo Lemma R, with the walk itself strongly evidenced (311,738 certified points) and honestly estimated to exist (~85%), while a full unconditional proof with currently-known tools remains the sole — and hard — open gap.
+What is not proved is a finitely certified connector-survivor invariant and
+total selector that includes
+global secant poisoning.  The measured crowding and sampled connector data are
+useful finite evidence, but neither promotes the old Lemma R to availability.
+The corrected conditional statement is therefore: the construction continues
+forever if Lemma A, the exact finite-invariant safety assertion, is proved; the
+resulting arbitrarily long words yield an infinite one by König's lemma.
 
 ---
 
@@ -253,9 +275,9 @@ Then `M·(4,1,−4) = (12,12,7) = −(−12,−12,−7) = −e₀`, so `e₀ + M
 
 — a resonance living entirely inside the small proxy box, *independent of the inflation `a`*. Branch-and-bound confirms `min|B_J| = 0` at every depth for the whole accelerating `M3(a)` and double-rotation `M4(a,b,c)` families. This is the W2 Niven obstruction wearing a new mask: "integer + equal moduli + irrational angle" *forces* an `a`-free shear pair, so acceleration is powerless against it.
 
-**The prescaled "floor" is a box-clearing artifact.** One family — the *prescaled/squared* maps `M3(a)²` (moduli `a²`, angle `2θ`) — does show a positive, non-shrinking bracket floor on the small search box: `μ_{J1..J5} ≈ 0.613, 0.732, 0.831, 0.885, 0.917`. But this "floor" is an artifact of the truncated window, for three independently checked reasons: (1) **prescale, not acceleration, does the work** — the *fixed* prescaled control reproduces the same first-level floor 0.613 and converges to 0.551, incommensurate acceleration adds no benefit; (2) **the floor is box-dependent and erodes toward 0** — enlarging the digit box from `{−2..2}³` to `{−3..3}³` drops the depth-1 floor from 0.613 to 0.474 and re-introduces exact `c = 0` once `(3,0,0)` enters the box; (3) **the resonant digits sit outside the proxy box** — the zero-cycle digits `(4,1,−4)` and `(−12,−12,−7)` have coordinates up to 12, outside `{−2..2}³`; on the true `|E| = 15,545` closure they are present and `μ = 0`. The repo's own verdict records this honestly: *"prescale (not acceleration) does the work … floor erodes with box/digit-set size toward the true closure where baseline = 0."*
+**The prescaled "floor" is only a small-box signal.** One family — the *prescaled/squared* maps `M3(a)²` (moduli `a²`, angle `2θ`) — shows a positive bracket floor on the truncated search box: `μ_{J1..J5} ≈ 0.613, 0.732, 0.831, 0.885, 0.917`. Three checks sharply limit what this means: (1) **prescale, not acceleration, does the work** — the fixed prescaled control reproduces the first-level floor and incommensurate acceleration adds no demonstrated benefit; (2) **the floor is box-dependent** — enlarging the proxy digit box lowers it and can reintroduce exact zero; (3) the resonant digits for the baseline fixed system lie outside the smallest proxy box. The accelerating/chiral computation did **not** propagate the true `|E| = 15,545` difference closure, so one cannot transfer the baseline closure verdict to that system without another exact run.
 
-**Conclusion.** On the true closure `E`, `μ = inf|B_J| = 0`, attained at depth J = 1 by an exact integer zero-cycle, and every equal-moduli accelerating variant reproduces the same `a`-independent shear resonance. **The positive-metric-separation form of Lemma R is provably false** — Lemma R, if true, must hold for a reason invisible to any separation/margin argument. W4 closes the separation route; it does not touch the conditional theorem.
+**Conclusion.** For the baseline fixed-matrix system, the true closure `E` has `μ = inf|B_J| = 0`, attained by an exact integer zero-cycle, so its positive-metric-separation route is closed.  For the accelerating/chiral variants, the current computation is only a prescaled small-box experiment; the full 15,545-element closure remains untreated.  It supplies neither a positive separation theorem nor a full-closure refutation.
 
 ### Wall W5 — Information theory: a symbolic argument cannot see the geometry
 
@@ -313,7 +335,7 @@ Four of the six global tools reduce visibly to fact (1); the matrix-redesign and
 
 **Honest odds** (two separate, deliberately conservative estimates):
 
-- **Does the infinite triple-free walk exist? ~85%.** Every direct measurement points the same way: the 311,738-point certified walk, level-stable crowding, non-eroding availability floors, geometrically-converging renormalization density. Stable across every round; unchanged by the negative results (a closed *proof route* says nothing about existence).
+- **Does the infinite triple-free walk exist? ~85% (historical subjective estimate).** The 311,738-point certified walk and stable finite-level density are positive evidence.  The availability values are sampled extrapolations, not non-eroding certified floors, so they should not be counted as a theorem-level input.
 - **Can it be proven unconditionally with currently-known tools? Roughly 1–5%.** The figure varies by route in our records: the local-automaton program is rated ≤1% (route proven dead within its formalization), and the global-analysis scout puts the total global-attack chance at ~3–5% (nearly all of it the ESS longshot). We report the range, not a point estimate.
 
 One-line summary: **the walk almost certainly exists; an unconditional proof almost certainly requires a genuinely new, non-local idea that no tool in the current kit supplies.**
@@ -322,13 +344,16 @@ One-line summary: **the walk almost certainly exists; an unconditional proof alm
 
 ## 7. What would it take, and the centaur framing
 
-**What would close it.** Every wall points the same direction: the missing argument must be *global / non-local*. It must reach past every bounded window into the arbitrary-depth carry (W3), must not rely on any positive metric margin (W4) or any density/measure/entropy quantity (W1, W5, §5), and must survive the fact that the design lever itself is pinned by Niven (W2). The one tool whose *form* fits — Subspace / Elekes–Szabó — needs a non-degeneracy input that is currently the theorem restated; making it non-circular (e.g. by a genuinely non-conformal construction that breaks the self-similar degenerate stratum while still dodging periodicity) is the single most promising, and still speculative, direction. Absent that, Lemma R remains a sharp, isolated, measured-but-unproven arc-incidence estimate.
+**What would close it.** Every wall points the same direction: the missing argument must be *global / non-local*. It must reach past every bounded window into the arbitrary-depth carry (W3), must not rely on any positive metric margin (W4) or any density/measure/entropy quantity (W1, W5, §5), and must survive the fact that the design lever itself is pinned by Niven (W2). The one tool whose *form* fits — Subspace / Elekes–Szabó — needs a non-degeneracy input that is currently the theorem restated; making it non-circular (e.g. by a genuinely non-conformal construction that breaks the self-similar degenerate stratum while still dodging periodicity) is the single most promising, and still speculative, direction. Absent that, the direct reachable-state Lemma A remains open.  Exact L7 cones now give finite floors 59 and six, plus a precommitted early action with a frozen-future floor 45 and one 2,747-survivor successor edge.  None supplies a causal cross-level fixed point or the required far-tail rank.
 
 **The centaur framing.** This is, as far as we know, the **first sustained assault on a hard open Erdős problem by an AI–human "centaur"** — a human steering, an AI system doing all of the mathematics and computation, with **no participating human mathematicians**. The division of labour was strict: the human supplied direction, creative seeds (the "imbrication / dishwasher" enlargement, the fishing-line-spool coordinate, the "dark-energy + chirality" accelerating-expansion idea), and go/no-go judgment; every construction, proof attempt, certificate, and refutation was generated and machine-checked by the agentic system.
 
 Two features keep the claim honest rather than hype:
 
-- **What was actually produced is a conditional theorem plus a rigorous map of why the endpoint resists.** The affirmative answer to #193 stands *modulo one clearly-marked lemma* (uniform bounded crowding / arc-incidence); it is **not** an unconditional resolution, and this document never claims one. The by-product — the five walls and the meta-theorem — is itself a coherent negative-results suite: the exact rank ⟺ carry-cross reduction, the primitivity/impotence local-automaton impossibility, OSC-fails-on-closure, the crystallographic no-`M′` theorem, and the cross-entropy-floor-zero result.
+- **What was actually produced is a corrected conditional theorem plus a map of why the endpoint resists.** The affirmative answer stands only modulo the direct reachable-state safety Lemma A, including far secants; generic bounded crowding is insufficient.  It is **not** an unconditional resolution.
 - **Adversarial self-verification was essential and load-bearing.** This problem has a documented history of agent overclaims; across the multi-agent rounds the skeptic/verifier phase caught five to six distinct "the lemma is proven" overclaims (agents repeatedly mistaking finite-depth or p-adic readings for the full statement). The guardrail — never trust a positive verdict without the across-generations, geometric-not-p-adic recheck — is the reason the conditional theorem here can be trusted where earlier drafts could not.
 
-**Bottom line.** Erdős #193 is, on the evidence assembled here, **very likely YES** — an explicit infinite triple-free 3D walk almost certainly exists, and it is a theorem the moment one geometric regularity lemma (Lemma R) is proven. What is not yet in hand is that final, genuinely global, step. The rest of this document is the honest map of why.
+**Bottom line.** The repository contains exceptional finite `Z^3` evidence but
+no unconditional solution.  Closing the scale-and-rotate route requires the
+global reachable-state safety Lemma A; the old bounded-crowding Lemma R does
+not suffice.

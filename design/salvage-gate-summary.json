@@ -1,0 +1,107 @@
+{
+  "status": "exact finite construction-orbit audit; not an all-level proof",
+  "result_generator_script_sha256": "a1a03be1a30b27f6b836140c331ff47cb1ed36184953f1ed78487488768aea94",
+  "current_distance_sorted_script_sha256": "ef1838b6561d68547fa3423353483bece656198458973a984188d441a0767d95",
+  "shell_threshold_correction": "distance-sorted witness rerun leaves all published near, global, far and first-shell counts unchanged; first_* fields separate nearest-threshold provenance from exact any-witness memberships",
+  "resource_policy": {
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "poison_and_original_state_run_elapsed_seconds": 273.874,
+    "path_order_state_run_elapsed_seconds": 23.155
+  },
+  "bottlenecks": [
+    {
+      "level": 5,
+      "segment": 1173,
+      "step": 1,
+      "domain": 9046,
+      "D40_survivors": 919,
+      "global_survivors": 454,
+      "far_unique_kills": 465,
+      "minimum_additional_arbitrary_poison_atoms": 22,
+      "cover_status": "exact",
+      "near_mask_sha256": "40cc8aa039fceda619c94ba79c9c73ce86483f560601172db223ae1bc5146d03",
+      "global_mask_sha256": "62a339db4fb8d7441f36df3a44c6b5d2b2e48df258dd7d9618d8bf4fc701beae"
+    },
+    {
+      "level": 6,
+      "segment": 8006,
+      "step": 115,
+      "domain": 15920,
+      "D40_survivors": 1891,
+      "global_survivors": 710,
+      "far_unique_kills": 1181,
+      "minimum_additional_arbitrary_poison_atoms": 23,
+      "cover_status": "exact",
+      "near_mask_sha256": "8dee56c46e4fb4b906695e92d756ea080bd4da7cc127fc54b89a1f6e47cb30ef",
+      "global_mask_sha256": "9193ad4258e9f68fc056ef6945aedd2ea51b5844aa6444906813c420f7d3be2d"
+    },
+    {
+      "level": 7,
+      "segment": 3783,
+      "step": 122,
+      "domain": 9046,
+      "D40_survivors": 830,
+      "global_survivors": 262,
+      "far_unique_kills": 568,
+      "minimum_additional_arbitrary_poison_atoms": 15,
+      "cover_status": "exact",
+      "near_mask_sha256": "7e08fae8bcec159e1a7d23db165e45c43c3e9636594292ca05709eca58465d1f",
+      "global_mask_sha256": "bbd4e0e9dd7cda95c3c270adb1f6ae2a6e29fe6040cc5edf824090f5d353f3b7"
+    },
+    {
+      "level": 8,
+      "segment": 0,
+      "step": 0,
+      "domain": 2570,
+      "D40_survivors": 2276,
+      "global_survivors": 1779,
+      "far_unique_kills": 497,
+      "additional_arbitrary_poison_atom_bounds": [20, 32],
+      "cover_status": "timeout-upper-bound-32",
+      "near_mask_sha256": "f8db010a5e15b40bcbb77290f0014fbc59b3809a27140c83dd38017b9bdcea50",
+      "global_mask_sha256": "c613b1902848b16eb7006d3e8b6f536c27f14c0a8fc1a40d594fd1acb3a25f9b"
+    }
+  ],
+  "ordered_alias": {
+    "states": [[6, 2892], [7, 1103]],
+    "domain": 47467,
+    "global_killed": [17966, 19237],
+    "killed_mask_symmetric_difference": 7991,
+    "common_survivors": 24870
+  },
+  "ordered_state_scan": {
+    "stitches": 131097,
+    "half_window_2_unique": 127172,
+    "half_window_4_unique": 131044,
+    "half_window_8_unique": 131097,
+    "half_window_2_repeat_participants": 6231,
+    "half_window_2_plus_D40_cloud_unique": 6231,
+    "path_order": {
+      "half_window_2_unique": 130643,
+      "half_window_4_unique": 131097,
+      "half_window_8_unique": 131097,
+      "half_window_2_repeat_participants": 823,
+      "half_window_2_plus_D40_cloud_unique": 823,
+      "repeated_half_window_2_plus_D40_cloud_classes": 0
+    }
+  },
+  "negative_controls": {
+    "fixed_length_at_most_4_jam": {
+      "points": 56,
+      "step": 115,
+      "domain": 15920,
+      "survivors": 0,
+      "certified_escape_length": 5
+    },
+    "L7_point_set_completion_jam": {
+      "initial_points": 70334,
+      "sequentially_legal_added_points": 20,
+      "final_points": 70354,
+      "domain": 9046,
+      "survivors": 0,
+      "ordered_path_reachable": "not established"
+    }
+  }
+}

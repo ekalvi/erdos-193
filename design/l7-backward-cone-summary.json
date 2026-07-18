@@ -1,0 +1,132 @@
+{
+  "actual_pair": {
+    "domain_indices": [0, 1],
+    "target_survivors": 262
+  },
+  "fixed_base": {
+    "actual_pre_target_points": 70334,
+    "placed_set_sha256": "bfced58117342431be114b2caf1c1bac15efab14dcdb2ef5829d5fc75395028c",
+    "points": 70330,
+    "removed_actual_interiors": 4,
+    "removed_interiors_sha256": "b7eb4ccae0b5dd5aa2a57eacc7b328cfba7a524323ef47a805e6985a09902b2d",
+    "target_base_survivor_mask_sha256": "c3a3a3d4dead1312284c3e31df14b51767a410757a304c2600e5d6ccc7d23163",
+    "target_survivors_before_replacements": 1251
+  },
+  "independent_production_crosscheck": {
+    "replacement_words_sequentially_legal": true,
+    "skipped": false,
+    "survivor_indices_match_atom_model": true,
+    "target_survivors": 59,
+    "target_words_checked": 9046
+  },
+  "input_sha256": {
+    "checker": "ba6c819dcb7c89c27be6d388f5aee7b006df5d872835d1940a6aa7d468d1f37d",
+    "L7_pickle": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660",
+    "connector_domains4": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dependencies": {
+      "design/salvage_gate.py": "ef1838b6561d68547fa3423353483bece656198458973a984188d441a0767d95",
+      "fast_legal.py": "7e99bb3f7da040a74c57245e6e64f438ec8b925153b8ccd343ec27c829f694ed",
+      "gate_run.py": "16da12c29406dfb10d4eacbadd4c9cee1f595f6f23bcab8fd07827acc3b7cc37",
+      "search193.py": "0588060ebc443cc85521af1a34a6a3f94b4c4462365c7e03282bf1afb7cdcffc"
+    },
+    "dstar5_fragile": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3",
+    "effective_menu": "bd5fd545baa5ff0987cd0607b6e6ca85c143541b22bf460c4815e1f0c49e3f5d",
+    "effective_target_domain": "664ef26059b048dfe8845dc76f00bd919044f312d9a64ec43e643b4d6275e68d",
+    "effective_variable_domains": [
+      "645ef82e48d325df21510adeceb1d6b501838d922cd382cfe2e8b2b77639202f",
+      "645ef82e48d325df21510adeceb1d6b501838d922cd382cfe2e8b2b77639202f"
+    ]
+  },
+  "known_assertions_passed": true,
+  "level": 7,
+  "minimum_pair": {
+    "domain_indices": [1534, 1969],
+    "number_of_minimizing_pairs": 1,
+    "placed_set_sha256": "8ed6459f1b4ff3caea4e4a4a2a3fdc322331b2824829b89a9fd51147a3c8201d",
+    "placed_points": 70336,
+    "residual_arbitrary_atom_cover": {
+      "maximal_coverage_patterns": 20,
+      "minimum_or_upper": 9,
+      "nodes": 9,
+      "one_cover_atom_ids": [15, 598, 964, 2098, 336, 601, 1310, 1497, 283],
+      "raw_candidate_atoms": 129,
+      "root_lower_bound": 8,
+      "status": "exact"
+    },
+    "target_survivor_indices": [
+      62, 375, 412, 423, 489, 500, 554, 556, 560, 578, 580, 803,
+      809, 956, 1044, 1048, 1053, 1932, 1998, 2002, 2007, 2039, 2050,
+      2061, 2149, 2153, 2158, 2165, 2171, 2172, 2177, 2179, 2180, 2211,
+      2213, 2241, 2721, 2730, 2763, 3571, 3731, 3743, 8202, 8234, 8240,
+      8242, 8249, 8836, 8842, 8843, 8847, 8854, 8856, 8861, 8867, 8947,
+      8968, 8974, 9023
+    ],
+    "target_survivor_mask_sha256": "068a6444c78de8708d2f2456fcb3a35781e8bbb0b2116ac3bec3bb708fced68a",
+    "target_survivors": 59,
+    "words": [
+      [102, 112, 53, 102],
+      [106, 59, 101, 103]
+    ]
+  },
+  "pair_exhaustion": {
+    "compatible_pair_relation_sha256": "b5b4f693dce477738e2d2cd4bfab15304bdfaa0fcf656c01879a81f5bb9da94e",
+    "fatal_target_pairs": 0,
+    "globally_illegal_pairs": 43539,
+    "globally_triple_free_pairs": 767711,
+    "legal_pair_survivor_count_stream_sha256": "a639f9d750c78152f6f29c383cefb968b8bd2fae7a68b399d0f8e482f0e433c6",
+    "raw_unary_legal_pairs": 811250,
+    "target_survivor_quantiles": {
+      "p00": 59,
+      "p10": 304,
+      "p50": 487,
+      "p90": 772,
+      "p100": 1195
+    },
+    "target_survivor_sum": 395412591
+  },
+  "reachability_scope": "reachable in the legal-choice game by replacing these two early connectors and retaining every other frozen pre-target choice; not claimed to follow the constructor's deterministic selector",
+  "schedule": "fragile-first",
+  "soundness_partition": [
+    "unary: collision or two fixed-base endpoints with one new point",
+    "unary: one fixed-base point with two interiors of one connector",
+    "cross: collision between the two connector interiors",
+    "cross: one fixed-base point and one interior from each connector",
+    "cross: two interiors from one connector and one from the other",
+    "target: fixed-base poison plus unary and cross new-point effects"
+  ],
+  "status": "exact finite fragile-first two-gap certificate; not a uniform safety proof",
+  "target_domain_size": 9046,
+  "target_schedule_rank_zero_based": 16790,
+  "target_segment": 3783,
+  "target_step": 122,
+  "timing_seconds": {
+    "pair_enumeration": 12.48,
+    "postchecks": 10.724,
+    "preprocessing": 72.656,
+    "total": 95.86
+  },
+  "unary_legal_mask_sha256": [
+    "0dbf68170cc1654277a46f1243f37c7de428330a69954daae494f2b07edf83f3",
+    "8f7ab81fc9bc80e4164202b2332bdaf50099fa38534f30cccb08063f38cdb5da"
+  ],
+  "variable_gaps": [
+    {
+      "actual_word_index": 0,
+      "domain_size": 2570,
+      "schedule_rank_zero_based": 8828,
+      "segment": 3782,
+      "step": 123,
+      "unary_legal_words": 649,
+      "unique_candidate_interior_sites": 76
+    },
+    {
+      "actual_word_index": 1,
+      "domain_size": 2570,
+      "schedule_rank_zero_based": 8829,
+      "segment": 3784,
+      "step": 123,
+      "unary_legal_words": 1250,
+      "unique_candidate_interior_sites": 93
+    }
+  ]
+}

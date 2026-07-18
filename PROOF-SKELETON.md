@@ -1,5 +1,12 @@
 # Proof skeleton — Problem #193, affirmative answer
 
+> **SUPERSEDED STATUS (2026-07-17).**  The availability chain below remains a
+> historical development log, not a valid proof skeleton.  Local crowding does
+> not control global connector legality; a separate far-secant/reachable-state
+> lemma is required.  The current referee-grade statement is in
+> `CONDITIONAL-THEOREM.md`, with the exact audit in
+> `design/ORDERED-PATH-SAFETY-GATE.md`.
+
 Status legend: [PROVEN] machine-verified or exact algebra · [MEASURED] holds with
 margin on certified instances, needs promotion to all-instances theorem ·
 [ROUTE] argument type identified, not yet written.
@@ -292,10 +299,12 @@ scaling — a compounding per-level density edge, plausibly why the twist matter
 scaling survives early. Direct empirical support for the exclusion/fishing-line thesis: the twist's
 job is to keep the walk thread-density, and it measurably does so vs the aligned (scaling) baseline.
 
-**L5 (Induction) [ROUTE].** L1 + L2 + L3 + L4 ⇒ the construction never halts ⇒
-an infinite triple-free walk exists. Plain induction; no compactness subtleties
-because each level is completed before the next begins and inheritance freezes
-completed levels.
+**L5 (Induction plus compactness) [ROUTE].** L1 + L2 + L3 + L4 imply
+inductively that valid finite levels exist at unbounded lengths.  The amplified
+levels are not nested point sets, so they do not have the formerly claimed
+literal nested limit.  Instead, all are words over the same finite step
+alphabet; the finitely branching tree of valid prefixes has arbitrary depth,
+and König's infinity lemma supplies an infinite branch.
 
 ## The gate (2026-07-14) — RESULTS
 Two runs, both letter-verdicts FAIL, with opposite meanings:
@@ -308,10 +317,11 @@ Two runs, both letter-verdicts FAIL, with opposite meanings:
 - **v2 (seeded-random among shortest words — the original's statistics): letter-FAIL,
   spirit-PASS.** N₈₁ = 118.39 → 111.88 → 109.76 (±0.09): MONOTONE convergence with
   geometric contraction (increments −6.51, −2.12; ratio 0.33), all density statistics
-  falling; zero escalations at every level; floors 317/180/271 — NO EROSION (L7 floor
-ROSE), mean availability RISING (0.465/0.458/0.528), below-δ share FALLING
-(4.9%/4.2%/3.1%): the absolute-floor form of L3'' holds with margin on the
-orbit at three scales. The registered
+  falling; zero escalations at every level. The reported 317/180/271 "floors"
+are extrapolations from samples of at most 200 words per stitch, not exhaustive
+lower bounds. Mean sampled availability rises (0.465/0.458/0.528) and the sampled
+below-δ share falls (4.9%/4.2%/3.1%); these are finite orbit signals and do **not**
+prove the absolute-floor form of L3''. The registered
   target 112.6 ± 0.7 was extrapolated from the ORIGINAL constructor — v2 converges to
   its own fixed point ≈ 108.7–109.3, ~3% below. KS(L6,L7) = 0.081 > 0.018 critical:
   with n ≈ 27k, KS detects the still-contracting 2.1 shift — this test was
