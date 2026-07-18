@@ -1,0 +1,54 @@
+{
+  "all_c_residual_census": {
+    "coarse_zero_abd_cores": 3221,
+    "compatible_ab_pairs": 865674,
+    "minimum_residual": 53,
+    "states_retained": 100,
+    "states_with_coarse_zero_d_core": 100,
+    "unrefined_cores_outside_first_twelve": 2716
+  },
+  "first_twelve_result": {
+    "abd_exact_refined_cores": 334,
+    "abd_incompatible_cores": 171,
+    "all_coarse_zero_cores_discharged": true,
+    "coarse_zero_abd_cores": 505,
+    "compatible_c_assignments_checked": 318319
+  },
+  "fixed_base": {
+    "actual_pre_target_points": 70334,
+    "placed_set_sha256": "fd226a96108e94e80d133b644e6df463e532362209bbdd6ed826fe5873a6c757",
+    "points": 70325,
+    "removed_actual_interiors": 9,
+    "removed_interiors_sha256": "b920f2f25e75d4f06e7db9bb738b739d8f18d3b5365aca9feabf67f8dd82beac",
+    "target_survivors_before_replacements": 1394
+  },
+  "input_sha256": {
+    "L7_pickle": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660",
+    "checker": "ac2b87ea9515a2b167e584d8368e3011158fc2fdb89f5142a45826c83d8a3b98",
+    "connector_domains4": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dstar5_fragile": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3"
+  },
+  "known_assertions_passed": true,
+  "minimum_reachable_refined_core": {
+    "candidate_list_indices": [412, 1100, 1166, 15682],
+    "domain_indices": [1534, 1969, 1505, 41092],
+    "state_rank": 2,
+    "survivor_domain_indices": [493, 556, 601, 824, 1048, 2002, 2055, 2153, 2171, 2177, 2180, 3731, 3733, 3743, 5624, 7100, 8854, 8856, 8857, 8861, 8893, 8975],
+    "target_survivors": 22,
+    "words": [[102, 112, 53, 102], [106, 59, 101, 103], [102, 107, 108, 52], [18, 24, 72, 39, 44]]
+  },
+  "quantifier": "for each of the selected first 12 A/B states, for every unary-legal D at 3785 and C at 3786, if the fixed base plus A,B,C,D is triple-free, at least one target word at 3783 is exactly legal",
+  "scope": "exact for 12 selected A/B states only; not all 865674 compatible A/B states, not level-uniform, and not an unconditional theorem",
+  "sound_d_interface_quotient": {
+    "full_sound_interface_classes": 17821,
+    "largest_full_class": 2,
+    "singleton_full_classes": 17805,
+    "target_mask_classes": 10796,
+    "target_plus_cross_effect_classes": 17120,
+    "unary_legal_d_words": 17837
+  },
+  "status": "exact finite first-12 four-gap non-jamming computation complete",
+  "target_segment": 3783,
+  "timing_seconds": 238.37,
+  "unary_legal_by_gap_3782_3784_3786_3785": [651, 1408, 1802, 17837]
+}

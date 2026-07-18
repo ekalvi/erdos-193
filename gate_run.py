@@ -41,6 +41,7 @@ L7_RECORD_STRIDE = 5  # at level 7, record fragile segments + every 5th other
 
 def load_domains():
     d4 = pickle.load(open("connector_domains4.pkl", "rb"))
+    assert tuple(map(tuple, d4["menu"])) == tuple(MENU)
     doms = {si: sorted(ws, key=len) for si, ws in d4["domains"].items()}
     d24_size = {si: len(ws) for si, ws in doms.items()}
     d5 = pickle.load(open("dstar5_fragile.pkl", "rb"))

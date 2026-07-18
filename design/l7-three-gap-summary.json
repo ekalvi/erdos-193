@@ -1,0 +1,101 @@
+{
+  "actual_choice_decomposition_crosscheck": {
+    "candidate_list_indices": [0, 0, 1],
+    "decomposed_survivors": 262,
+    "direct_survivors": 262,
+    "survivor_sets_equal": true
+  },
+  "choice_model": {
+    "added_site_universe": 267,
+    "base_secant_bad_site_pairs": 456,
+    "compatible_ab_immune_count_stream_sha256": "1c828900c0f5a2355c9b4e63dce76d28ac16eaad8265f11fea64e8edf270cf93",
+    "compatible_ab_pairs": 789797,
+    "compatible_ab_relation_sha256": "f0620105472c8445d4c1782bea90d20d5647a0791ca088af92335a3400e20411",
+    "minimum_ab_pair_survivors": 76,
+    "nonzero_added_pair_target_masks": 3725,
+    "potential_a_mask_stream_sha256": "a6b2d43d61cce2a53bbdf8503e77693301012a1704897ba6a4f086d8dedf61ad",
+    "potential_b_mask_stream_sha256": "671364b8c7e716a15ef84b14c563d335e62aa1205de73d95db6fa450344c778b",
+    "raw_ab_pairs": 835912,
+    "raw_three_gap_assignments_avoided": 1444455936
+  },
+  "fixed_base": {
+    "actual_pre_target_points": 70334,
+    "placed_set_sha256": "75711ab21eb27c15f023c80287f0867e1c804d10402f551c3a29906951150a0c",
+    "points": 70328,
+    "removed_actual_interiors": 6,
+    "removed_interiors_sha256": "ea90f1bc1500bb63e8a3f5f71b6ecccd5da7ad1e4e9f07eb975db8a40f589b0f",
+    "target_base_survivor_mask_sha256": "9542a31a077d8ffe509de14176415d7195e67c6bb5ab532bb1f0637619551172",
+    "target_survivors_before_replacements": 1324
+  },
+  "input_sha256": {
+    "L7_pickle": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660",
+    "checker": "d43d7561091698d5c8d615f55866f17d818c36cd8383551453660ee161c2302e",
+    "connector_domains4": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dependencies": {
+      "design/l7_backward_cone.py": "ba6c819dcb7c89c27be6d388f5aee7b006df5d872835d1940a6aa7d468d1f37d",
+      "design/salvage_gate.py": "ef1838b6561d68547fa3423353483bece656198458973a984188d441a0767d95",
+      "fast_legal.py": "7e99bb3f7da040a74c57245e6e64f438ec8b925153b8ccd343ec27c829f694ed",
+      "gate_run.py": "16da12c29406dfb10d4eacbadd4c9cee1f595f6f23bcab8fd07827acc3b7cc37",
+      "search193.py": "0588060ebc443cc85521af1a34a6a3f94b4c4462365c7e03282bf1afb7cdcffc"
+    },
+    "dstar5_fragile": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3",
+    "effective_menu": "bd5fd545baa5ff0987cd0607b6e6ca85c143541b22bf460c4815e1f0c49e3f5d",
+    "effective_target_domain": "664ef26059b048dfe8845dc76f00bd919044f312d9a64ec43e643b4d6275e68d",
+    "effective_variable_domains": [
+      "645ef82e48d325df21510adeceb1d6b501838d922cd382cfe2e8b2b77639202f",
+      "645ef82e48d325df21510adeceb1d6b501838d922cd382cfe2e8b2b77639202f",
+      "645ef82e48d325df21510adeceb1d6b501838d922cd382cfe2e8b2b77639202f"
+    ]
+  },
+  "known_assertions_passed": true,
+  "independent_audit": "full low-priority rerun reproduced every assertion; direct geometry confirmed the tight pair and all six target words against all 1,728 unary-legal third choices",
+  "level": 7,
+  "schedule": "fragile-first",
+  "scope": "frozen three-gap cone in the legal-choice game; not a deterministic-selector claim, a cross-level fixed point, or an all-history availability theorem",
+  "status": "exact finite fragile-first three-gap certificate: uniform target-survivor lower bound six",
+  "target_domain_size": 9046,
+  "target_schedule_rank_zero_based": 16790,
+  "target_segment": 3783,
+  "target_step": 122,
+  "timing_seconds": 137.134,
+  "unary_legal_mask_sha256": [
+    "0dbf68170cc1654277a46f1243f37c7de428330a69954daae494f2b07edf83f3",
+    "73442480ab68bfc1885f3087191fc87dfea835f3fb23e4ff80ea16edd275a8f1",
+    "ba01654a2bbdbed7f2aad04eec7d6c6e5690c9ffe4ea206d34d287a5f7bdc997"
+  ],
+  "uniform_certificate": {
+    "immune_target_domain_indices": [1220, 2177, 2508, 8241, 8242, 8771],
+    "immune_target_mask_sha256": "73917ee094f577c444cad937427241f43f4de98eace4ae3349346c1412d2a1fb",
+    "logic": "for each compatible (a,b), union every unary-legal c effect and every a-c/b-c target secant; this overapproximates every actual third choice and still leaves at least six words",
+    "target_survivor_lower_bound": 6,
+    "tight_pair_candidate_list_indices": [351, 1060],
+    "tight_pair_domain_indices": [1386, 2029],
+    "tight_pair_words": [
+      [102, 80, 108, 78],
+      [106, 108, 52, 103]
+    ]
+  },
+  "variable_gaps": [
+    {
+      "domain_size": 2570,
+      "schedule_rank_zero_based": 8828,
+      "segment": 3782,
+      "step": 123,
+      "unary_legal_words": 649
+    },
+    {
+      "domain_size": 2570,
+      "schedule_rank_zero_based": 8829,
+      "segment": 3784,
+      "step": 123,
+      "unary_legal_words": 1288
+    },
+    {
+      "domain_size": 2570,
+      "schedule_rank_zero_based": 8830,
+      "segment": 3786,
+      "step": 123,
+      "unary_legal_words": 1728
+    }
+  ]
+}

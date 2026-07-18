@@ -1,0 +1,47 @@
+{
+  "cursor": {
+    "corridor_start_chebyshev_distance": 102,
+    "corridor_start_translation": [102, -54, 75],
+    "source_schedule_rank_zero_based": 16790,
+    "source_segment": 3783,
+    "successor_schedule_rank_zero_based": 16791,
+    "successor_segment": 3806
+  },
+  "deterministic_c": {
+    "criterion": "least effective-domain index exactly legal against the full frozen base plus D,A,B",
+    "domain_index": 0,
+    "word": [102, 103, 102]
+  },
+  "deterministic_target": {
+    "certified_set_size": 45,
+    "criterion": "first exactly legal index in the certified 45-index order",
+    "domain_index": 26,
+    "word": [51, 103, 108, 123]
+  },
+  "elapsed_seconds": 30.22,
+  "input_sha256": {
+    "checker": "0f3b7f1d175bb7e30fb259777a262ddce5e70ecf5523f2b679bc2fab0ee934d1",
+    "gate2-l7-construction-L7.pkl": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660"
+  },
+  "known_assertions_passed": true,
+  "precommitment_caveat": "D is chosen at rank 433 using a frozen base containing recorded future connectors; the computation supplies no D policy for other possible future histories",
+  "pretarget_state": {
+    "placed_set_sha256": "555b9f67d287c03a3b61cddbcd6d6eb0ea8d922ea58d262527d5b2d72f39f6ff",
+    "points": 70337
+  },
+  "quantifier": "for the pinned robust D and tight A/B, choose the least-domain exactly legal C and then the first exactly legal member of the certified 45-word target set; that concrete successor at segment 3806 retains 2747 exactly legal words",
+  "scope": "one concrete frozen-cone history only; the successor count is not uniform over C/target actions or abstract histories, and this is not an online selector, fixed point, cross-level invariant, deterministic first-legal theorem, or unconditional proof",
+  "status": "exact frozen-L7 robust-D one-edge successor certificate complete",
+  "successor_availability": {
+    "domain_size": 9046,
+    "poisoned_atoms": 78,
+    "recorded_word_domain_index": 15,
+    "recorded_word_legal": true,
+    "survivor_mask_sha256": "5efdf9263ce992cbde50b484a546f04d692eeff0e86b6bc7bc3a6f60c6edf4cd",
+    "survivors": 2747
+  },
+  "successor_state": {
+    "placed_set_sha256": "036479527b9f4ef742b56db70786ccfd566bf7cc9c7abb6d7a120baed5bdbae3",
+    "points": 70340
+  }
+}

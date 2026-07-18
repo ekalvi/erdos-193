@@ -1,0 +1,72 @@
+{
+  "base": 7,
+  "canonical_payload_sha256": "fb7a2ace90bd758b65686fcc7a2aa2d3e8a2e7d06f8810f02ac034a01755f764",
+  "checker_sha256": "e938d32e16b564630ceefd79c93389b8efcadfd738fbc388680dc850346924a7",
+  "coefficient": 9,
+  "direct_recurrence_checks": 7007,
+  "mod243": {
+    "distinct_correction_vectors": 325,
+    "distinct_output_rows": 360,
+    "minimality_witness": "every state has a distinct seven-output row",
+    "modulus": 243,
+    "reachable_states": 360
+  },
+  "mod243_depth_profile": {
+    "depth": 7,
+    "full_word_counts": [7, 49, 343, 2401, 16807, 117649, 823543],
+    "interpretation": "prefix lift is near-injective; no eventual SCC claim",
+    "reachable_layer_counts": [7, 49, 343, 2401, 16806, 117573, 820225]
+  },
+  "mod27": {
+    "distinct_correction_vectors": 31,
+    "distinct_output_rows": 12,
+    "minimality_witness": "every state has a distinct seven-output row",
+    "modulus": 27,
+    "reachable_states": 12
+  },
+  "mod27_single_index_lift": {
+    "edges": 183708,
+    "primitive": true,
+    "product_consequence": "the independent three-endpoint product has no SCC-only modular-zero separator",
+    "start_has_digit_zero_self_loop": true,
+    "state": "(t mod 27, lambda_t, Z_t mod 27)",
+    "state_edge_sha256": "79e6c19c7c7ec11949cf52ad7707c5b9b2e6afc3e03df5b3807acbdcd771e32c",
+    "states": 26244,
+    "strongly_connected": true
+  },
+  "modular_witnesses": [
+    {
+      "defect": [-486, 459, 27],
+      "indices": [2, 3, 4],
+      "modulus": 27
+    },
+    {
+      "base7_parents": [0, 1, 5],
+      "defect": [10314, -18522, 8208],
+      "indices": [0, 7, 36],
+      "modulus": 27,
+      "parent_defect": [222, -678, 456],
+      "zero_not_prefix_closed": true
+    },
+    {
+      "base7_parents": [0, 1, 3],
+      "defect": [21384, -25272, 3888],
+      "indices": [4, 10, 22],
+      "modulus": 243,
+      "parent_defect": [462, -678, 216],
+      "zero_not_prefix_closed": true
+    }
+  ],
+  "soundness_warning": "modular zero is not prefix-closed; quotients are filters, not a zero-language invariant",
+  "staged_mod27_lift": {
+    "edges": 5511240,
+    "interpretation": "all 360 future-correction classes still create no SCC invariant before values lift",
+    "primitive": true,
+    "start_has_digit_zero_self_loop": true,
+    "state": "(t mod 27, q_243(t), Z_t mod 27)",
+    "state_edge_sha256": "1dd2fb566fbb0fd1b5a63e9c8060709cdca0f88fdb1c2ba9b8a9437440575f90",
+    "states": 787320,
+    "strongly_connected": true
+  },
+  "status": "exact modular quotients; fixed-modulus SCC gate refuted"
+}

@@ -1,0 +1,48 @@
+{
+  "altered_successor": {
+    "placed_set_sha256": "81e8039d20f2a7b290956f2fbb0fa79698c95e7507e3b4ed413f1de407372009",
+    "points": 70341,
+    "poisoned_atoms": 75,
+    "recorded_successor_word_legal": true,
+    "survivor_mask_sha256": "4565d52c74070225f52cf1cbb352390dd9f74f93c6f36256018eb2889ea01750",
+    "survivors": 3082
+  },
+  "chosen_target": {
+    "domain_index": 493,
+    "word": [59, 102, 103, 121]
+  },
+  "cursor": {
+    "corridor_start_chebyshev_distance": 102,
+    "corridor_start_translation": [102, -54, 75],
+    "domain_size": 9046,
+    "source_schedule_rank_zero_based": 16790,
+    "source_segment": 3783,
+    "successor_schedule_rank_zero_based": 16791,
+    "successor_segment": 3806
+  },
+  "elapsed_seconds": 49.913,
+  "input_sha256": {
+    "checker": "fbaf9db39b4ceba6e8522973e3b52613f94c0705ddabd61737c02f83245329a9",
+    "gate2-l7-construction-L7.pkl": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660"
+  },
+  "known_assertions_passed": true,
+  "mask_comparison": {
+    "altered_is_subset_of_actual": true,
+    "intersection": 3082,
+    "symmetric_difference": 60,
+    "union": 3142
+  },
+  "quantifier": "for the stated concrete compatible four-gap assignment, target word 493 is legal and its concrete successor at segment 3806 retains at least one exactly legal word",
+  "recorded_history_baseline": {
+    "poisoned_atoms": 73,
+    "survivor_mask_sha256": "3c484de2ebdaa0cd655379930f8fdbf0ff096eb8a7ac4dd1e026a0c168cb77d2",
+    "survivors": 3142
+  },
+  "recorded_successor_action": {
+    "domain_index": 15,
+    "legal_in_altered_state": true,
+    "word": [108, 107, 108]
+  },
+  "scope": "one concrete reachable transition only; not an all-history abstract transition, deterministic-selector result, greatest fixed point, level-uniform certificate, or unconditional theorem",
+  "status": "exact finite L7 one-edge successor certificate complete"
+}

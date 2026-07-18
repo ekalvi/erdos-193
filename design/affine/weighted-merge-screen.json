@@ -1,0 +1,78 @@
+{
+  "status": "exact finite-prefix computation; not an infinite theorem",
+  "candidate": "R_n(C) = W_n + C W_(2n) + C^2 W_(5n) in Z^3",
+  "proved_finite_menu_upper_bound": 378,
+  "step_coordinate_sum": "1 + 2*C + 5*C^2",
+  "checker": {
+    "source": "design/affine/check_weighted_merge.cpp",
+    "source_sha256": "5496c6a4fc041a01030d6be640253add7de07ca65cc1c96f3e066a4a4109764c",
+    "recorded_run_binary_sha256": "64698ecacaff8d9444e5d88728ff72192d6e64e6abc296dcc2b5781d3c6ab58b",
+    "compiler": "Apple clang 14.0.3",
+    "arithmetic": "exact signed 64-bit coordinates and primitive chord directions",
+    "algorithm": "all O(N^2) chords, hashed by first vertex",
+    "resource_policy": {
+      "processes": 1,
+      "thread_cap": 1,
+      "nice": 15
+    }
+  },
+  "controls": [
+    {
+      "coefficient": 1,
+      "counterexample_indices": [3, 4, 5],
+      "points": [[13, 8, 3], [18, 10, 4], [23, 12, 5]]
+    }
+  ],
+  "screens": [
+    {
+      "coefficient": 3,
+      "certified_clean_through_index": 615,
+      "counterexample_indices": [604, 610, 616],
+      "points": [[12360, 9978, 9070], [12520, 10039, 9161], [12680, 10100, 9252]],
+      "primitive_direction": [160, 61, 91]
+    },
+    {
+      "coefficient": 4,
+      "counterexample_within_index": 30000,
+      "counterexample_indices": [1725, 1823, 2803],
+      "points": [[57660, 50627, 45238], [60746, 53265, 48236], [91606, 79645, 78216]],
+      "primitive_direction": [1543, 1319, 1499]
+    },
+    {
+      "coefficient": 5,
+      "counterexample_within_index": 30000,
+      "counterexample_indices": [825, 833, 841],
+      "points": [[41054, 37323, 33823], [41320, 37864, 34104], [41586, 38405, 34385]],
+      "primitive_direction": [266, 541, 281]
+    },
+    {
+      "coefficient": 6,
+      "counterexample_within_index": 30000,
+      "counterexample_indices": [1382, 1424, 1466],
+      "points": [[98017, 89196, 79513], [101567, 91666, 81599], [105117, 94136, 83685]],
+      "primitive_direction": [1775, 1235, 1043]
+    },
+    {
+      "coefficient": 7,
+      "counterexample_within_index": 21148,
+      "counterexample_indices": [16244, 18696, 21148],
+      "points": [[1480366, 1381556, 1361518], [1712204, 1584974, 1563782], [1944042, 1788392, 1766046]],
+      "primitive_direction": [115919, 101709, 101132]
+    },
+    {
+      "coefficient": 8,
+      "counterexample_within_index": 30000,
+      "counterexample_indices": [6458, 7424, 8873],
+      "points": [[756014, 739619, 680713], [876200, 848213, 777475], [1056479, 1011104, 922618]],
+      "primitive_direction": [20031, 18099, 16127]
+    },
+    {
+      "coefficient": 9,
+      "status": "no counterexample in prefix",
+      "certified_clean_through_index": 30000,
+      "vertices": 30001,
+      "chords_checked": 450014999
+    }
+  ],
+  "interpretation": "C=9 is finite evidence only. Finite prefixes forbid only finitely many projection coefficients, so coefficient search can manufacture long survivors without a uniform invariant."
+}

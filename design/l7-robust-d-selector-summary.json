@@ -1,0 +1,54 @@
+{
+  "artifact_kind": "curated extract; run l7_robust_d_selector.py for full assertion-checked stdout",
+  "fixed_base": {
+    "actual_pre_target_points": 70334,
+    "placed_set_sha256": "fd226a96108e94e80d133b644e6df463e532362209bbdd6ed826fe5873a6c757",
+    "points": 70325,
+    "removed_actual_interiors": 9,
+    "removed_interiors_sha256": "b920f2f25e75d4f06e7db9bb738b739d8f18d3b5365aca9feabf67f8dd82beac",
+    "target_domain_size": 9046,
+    "target_survivors_before_replacements": 1394
+  },
+  "fixed_d_witness": {
+    "D_only_plus_all_C_cross_mask_words": 12,
+    "candidate_list_index": 2950,
+    "domain_index": 8681,
+    "word": [34, 24, 19, 22, 98]
+  },
+  "input_sha256": {
+    "checker": "502ce218a9b960b7efc39bfea3ad0ee41983f56c0d721d2098511c090e7cc4aa",
+    "gate2-l7-construction-L7.pkl": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660"
+  },
+  "known_assertions_passed": true,
+  "nonvacuity_witness": {
+    "recorded_abc_candidate_indices": [0, 0, 1],
+    "recorded_abc_domain_indices": [0, 1, 1],
+    "valid_distinct_triple_free_with_recorded_abc": true
+  },
+  "precommitment_caveat": "D is scheduled before many points in the frozen base. This finite instance may precommit the pinned word, but the search used the recorded future base and supplies no policy for other future histories.",
+  "quantifier": "there exists the pinned unary-legal D; for every unary-legal base-compatible A/B pair, at least 45 target words survive D and the union of every unary-legal C effect; therefore for every jointly legal A,B,C,D state at least one target word is legal",
+  "scope": "exact only in the cone with every other pre-target connector frozen to its recorded L7 choice; not an online all-history selector, successor invariant, cross-level certificate, or unconditional theorem",
+  "status": "exact frozen-L7 robust early-D selector certificate complete",
+  "stronger_order": "exists D; forall base-compatible A,B; exists >=45 W whose target atoms stay clean for every unary C; prior-state legality remains in the implication antecedent",
+  "target_segment": 3783,
+  "tight_state": {
+    "a_candidate_index": 388,
+    "a_domain_index": 1465,
+    "a_word": [102, 103, 100, 63],
+    "all_C_residual_before_D": 93,
+    "b_candidate_index": 215,
+    "b_domain_index": 425,
+    "b_word": [77, 82, 102, 107],
+    "sound_target_floor_after_D": 45,
+    "surviving_target_domain_indices": [26, 415, 492, 884, 900, 934, 982, 998, 2053, 2208, 2211, 3105, 3107, 3110, 3114, 3126, 3129, 3132, 3660, 3676, 3722, 3731, 3733, 3734, 3743, 3745, 3758, 3759, 7100, 7101, 7113, 7114, 7116, 8154, 8156, 8241, 8242, 8243, 8245, 8250, 8762, 8763, 8771, 8772, 8780]
+  },
+  "timing_seconds": 173.255,
+  "universal_ab_result": {
+    "all_C_compatibility_ignored": true,
+    "compatible_pairs_checked": 865674,
+    "minimum_all_C_residual_before_D": 53,
+    "uniform_sound_target_floor_after_D": 45,
+    "zero_sound_cores": 0
+  },
+  "unary_legal_by_gap_3782_3784_3786_3785": [651, 1408, 1802, 17837]
+}
