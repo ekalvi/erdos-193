@@ -1,0 +1,85 @@
+{
+  "status": "exact finite action-labelled collapse of the pinned observed x-axis Bellman core; not a universal promotion automaton, birth closure, availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_axis_core_promotion_probe.py run --output /tmp/x-axis-core-promotion-probe-canonical.json",
+    "raw_path": "/tmp/x-axis-core-promotion-probe-canonical.json",
+    "raw_bytes": 4841523,
+    "raw_sha256": "79f690c1fcc9e60c14413dc93e6157c5096373defb8337e22e009ac875413cc1",
+    "checker_sha256": "d4bcecab4189b9f3605eb4434ce806e2886cd05592406bf8a04c2227504aa3a1",
+    "elapsed_seconds": 7.254,
+    "maximum_resident_bytes": 579301376,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "byte_identical_repeat": true
+  },
+  "pinned_inputs": {
+    "x_axis_raw_sha256": "0ebbfd97194fce4453269ad1c01eb1281e9d3a5aa526f1f036e409b82ad36cc1",
+    "x_axis_checker_sha256": "7a0ea121ad91fa578026225a0c892eabf564c7250d9f3acb1a6ba7bbd162dd4c",
+    "barrier_raw_sha256": "f0a30cd341548539b9e0e3ecaa7cad57727e052f873f91649c0102c00c4262a9",
+    "barrier_checker_sha256": "c9cd69eb345c4bfab9355570fffe5b05a809b9e64ad05d243e0aaaac39fa5582"
+  },
+  "core_collapse": {
+    "strict_core_occurrences": 11107,
+    "latent_core_occurrences": 2096,
+    "geometric_states_step_and_lateral_offset": 1312,
+    "strict_states": 748,
+    "latent_states": 564,
+    "combined_killed_word_mask_noncongruent_states": 0,
+    "strict_role_mask_noncongruent_states": 92,
+    "collision_role_mask_noncongruent_states": 92,
+    "states_with_multiple_endpoint_pairs": 575,
+    "states_with_multiple_observed_selected_words": 545
+  },
+  "observed_transition_probe": {
+    "core_source_occurrences_with_descendants": 3994,
+    "L8_horizon_core_occurrences_without_descendants": 9209,
+    "core_source_transition_occurrences": 13277,
+    "core_to_core": 5129,
+    "core_to_exterior": 8148,
+    "unique_action_slot_labelled_edges": 5542,
+    "action_slot_noncongruent_classes": 0,
+    "unique_whole_action_bundles": 1645,
+    "whole_action_noncongruent_classes": 0,
+    "carried_edges_changing_endpoint_pair_identity": 0,
+    "core_occurrences_without_a_retained_incoming_lineage_edge": 8074
+  },
+  "return_mapping": {
+    "effect_key_return_occurrences": 36,
+    "unique_geometric_effect_return_states": 15,
+    "effect_and_selected_action_return_occurrences": 6,
+    "unique_geometric_action_return_states": 3,
+    "all_return_endpoints_in_observed_core": true
+  },
+  "action_coverage": {
+    "unique_step_and_selected_word_pairs_on_core_occurrences": 2882,
+    "full_effective_domain_words_across_steps": 12537146,
+    "interpretation": "The recorded words are a policy-specific sample, not a statistical sample or a universal action set."
+  },
+  "minimal_missing_universal_state": {
+    "required": [
+      "singleton endpoint occupancy for each relevant lateral class as well as active two-endpoint line presence",
+      "a truncated legal-history occupancy 0/1/2, with a distinct insertion into occupancy 1 creating an x-line",
+      "exact axial collision data or a separately certified collision frontier",
+      "actual ordered connector interiors for the selected word",
+      "an honest coexistence representation for endpoint and line states on one realized path"
+    ],
+    "reason": "Every retained transition carries one existing endpoint pair unchanged. The pinned artifact contains no singleton-occupancy table and no birth edge for a new x-line."
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "the 13203 observed core occurrences collapse to 1312 exact geometric states",
+      "the complete combined killed-word mask is congruent on every geometric state",
+      "the carried-line successor is congruent after the actual action and ordered slot are retained",
+      "all finite realized return mappings remain in the observed Bellman core"
+    ],
+    "refuted_or_missing": [
+      "the strict-versus-collision role is not determined by the geometric state in 92 classes",
+      "the geometric state does not determine the policy action",
+      "the artifact does not close singleton occupancy or new-line births",
+      "unobserved connector actions, L9/later closure, availability, and a safety fixed point remain untreated"
+    ],
+    "next_exact_test": "Scan every effective-domain word for unique action/slot prefix controls, recompute a full-domain Bellman barrier, enumerate its finite integer x-core, and add exact singleton-occupancy insertion transitions before a BDD or antichain safety test."
+  }
+}

@@ -1,0 +1,199 @@
+{
+  "status": "exact finite inherited-anchor age-2 precursor on the pinned 42-to-146-to-488 realized trace; not a full L9 poison, legality, availability, or theorem certificate",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/l9_anchor_age2_precursor.py run --output /tmp/l9-anchor-age2-precursor-canonical.json",
+    "raw_path": "/tmp/l9-anchor-age2-precursor-canonical.json",
+    "raw_bytes": 3312472,
+    "raw_sha256": "961f9e5f0772d9df508ab0aefaa7405e3cc21637d59560cdda95c4edf61d809f",
+    "checker_sha256": "66f776e7ae4eff4c35d004d870d82458582a4c2b6516f20257149a08e5535b90",
+    "resource_policy": {
+      "processes": 1,
+      "thread_cap": 1,
+      "nice": 15,
+      "elapsed_seconds": 283.553
+    }
+  },
+  "pinned_provenance": {
+    "upstream_birth_shell_trace_sha256": "5c525ef4cc0c77ed96a2f67238e785d0382ead806f96479854a691498de99488",
+    "upstream_birth_shell_checker_sha256": "dd35f8ac5459d6df05d8b960f82b709f69380268ed144ac5c0e6789d178c35b9",
+    "future_trace_checker_sha256": "6f286cb118166c1375eb777ec6e24bcdc58766b98538099c604eb97b5c3dd430",
+    "deep_incidence_checker_sha256": "cde329fafc79ec95ea0f3d8d8a060219af45633f6414f7f3fb8426fad4888be7",
+    "input_sha256": {
+      "amplify_rich.py": "4ca067a352db370c3c7c254a89655dd00b01f629eb1f2f5faebe97a64222a02e",
+      "connector_domains4.pkl": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+      "design/deep_incidence_lineage.py": "cde329fafc79ec95ea0f3d8d8a060219af45633f6414f7f3fb8426fad4888be7",
+      "design/far_secant_birth_shell_trace.py": "dd35f8ac5459d6df05d8b960f82b709f69380268ed144ac5c0e6789d178c35b9",
+      "design/far_secant_future_trace.py": "6f286cb118166c1375eb777ec6e24bcdc58766b98538099c604eb97b5c3dd430",
+      "design/salvage_gate.py": "ef1838b6561d68547fa3423353483bece656198458973a984188d441a0767d95",
+      "dstar5_fragile.pkl": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3",
+      "gate2-l7-construction-L8.pkl": "cc4002ebccde737ab46dc016937be4aa653620d809908d48d35bcf06fc884141",
+      "gate_run.py": "16da12c29406dfb10d4eacbadd4c9cee1f595f6f23bcab8fd07827acc3b7cc37",
+      "imbricate193.py": "0f6c97255a5f01f0ec1d0d9fc9219d67ac8f115f558f82745fdc4be7c7a5e3cb",
+      "search193.py": "0588060ebc443cc85521af1a34a6a3f94b4c4462365c7e03282bf1afb7cdcffc",
+      "viz/walk3d-data.json": "d4392af018ee7d7c40c224622e9a606d3b1fb3da0c8c25613c93cb2dc901c883"
+    }
+  },
+  "exact_lineage": {
+    "parent_states": 42,
+    "parent_identity_stream_sha256": "58cd87a92f28dbc1c16df8193bfba19695f50063c122c34d376365dc21bc7df3",
+    "child_states": 146,
+    "child_identity_stream_sha256": "fa061a23af382b3e8b005f848c86983b0817bec9b476e1bd3426674df22bcf9a",
+    "descendant_corridors": 488,
+    "descendant_identity_stream_sha256": "25f2ed5965c68a3ed91175a040bb68940899a548cf2637c5e2f4746dd7d90361",
+    "descendant_gap_stream_sha256": "c983ad2a8af899460beeb91c3a6fae0b790e5c7251bec1f586fc6322fff355a9",
+    "descendant_gap_range": [138338, 230558],
+    "effective_step_domains": 90,
+    "per_source": {
+      "13171": {
+        "parent_states": 27,
+        "child_states": 89,
+        "descendant_corridors": 305
+      },
+      "21115": {
+        "parent_states": 15,
+        "child_states": 57,
+        "descendant_corridors": 183
+      }
+    }
+  },
+  "complete_initial_anchor_skeleton": {
+    "completed_l8_points": 311738,
+    "complete_transformed_l8_l9_anchors": 311738,
+    "anchor_identity_coordinate_stream_sha256": "aa824a1660febd499b92b84821a0539c70a75a146bc66d56b22920ecb7dece15",
+    "coordinate_spans": [295479, 154674, 166849],
+    "tagged_age2_endpoints": [
+      {
+        "stable_id": "connector:L7:G12291:I1",
+        "l9_anchor_index": 138424,
+        "birth_level": 7,
+        "age_at_l9": 2
+      },
+      {
+        "stable_id": "connector:L7:G12324:I2",
+        "l9_anchor_index": 138810,
+        "birth_level": 7,
+        "age_at_l9": 2
+      },
+      {
+        "stable_id": "connector:L7:G19950:I2",
+        "l9_anchor_index": 224864,
+        "birth_level": 7,
+        "age_at_l9": 2
+      }
+    ],
+    "directions_per_tagged_endpoint": 311737,
+    "direction_index_sha256": {
+      "connector:L7:G12291:I1": "ca9ec30154d5500370703f6cbe542178da5f808ae8cdcca4fc232bfd221bbda5",
+      "connector:L7:G12324:I2": "7f76d9da674b0be1d12f50f205d92bd1703838bdb8a9b170724699f2a1489b4d",
+      "connector:L7:G19950:I2": "3e2cfd07b26edddd31d3548b044c9299aec2a11fa1bd255c624679a71ef402c2"
+    },
+    "endpoint_cutoff": null,
+    "distance_cutoff": null,
+    "current_l9_connector_interiors_included": false
+  },
+  "exact_covered_channels": [
+    "tagged endpoint collides with a candidate interior",
+    "tagged endpoint lies on a line through two distinct candidate interiors",
+    "candidate interior lies on a tagged-to-tagged inherited-anchor secant",
+    "candidate interior lies on a tagged-to-any-other-initial-anchor secant"
+  ],
+  "computation_census": {
+    "model_census_sha256": "672bc1431e7e532f842aed492d9b6d089306f127f5ef62db58720770b0c64636",
+    "domains_processed_scanned_and_released_sequentially": true,
+    "effective_domains": 90,
+    "distinct_domain_words": 8530195,
+    "corridor_weighted_domain_words": 50221944,
+    "endpoint_corridor_weighted_domain_words": 81133048,
+    "distinct_site_atoms": 23484,
+    "endpoint_corridor_weighted_site_joins": 189830,
+    "distinct_line_atoms": 453212,
+    "distinct_line_directions": 13440,
+    "endpoint_corridor_weighted_line_direction_joins": 107789,
+    "exact_mask_payloads": 200,
+    "mask_encoding": "deduplicated zlib+base64 fixed-length little-endian word bitsets; SHA-256 covers the uncompressed bytes",
+    "stable_partner_profiles": 35,
+    "partner_profile_stream_sha256": "1ab8df1f58005576891ce7d01f546a1c1f8dee795999146ba3cbededbe721a8d"
+  },
+  "finite_result": {
+    "record_stream_sha256": "5c0dc1d722ebf826534f67da2f0d47901552b703be5194942ae0d33b1636e71a",
+    "effectful_corridors": 58,
+    "zero_effect_corridors": 430,
+    "effectful_corridors_by_source": {
+      "13171": 39,
+      "21115": 19
+    },
+    "effectful_corridors_by_channel": {
+      "collision": 0,
+      "endpoint-old-new-new": 21,
+      "tagged-tagged-old-old": 0,
+      "tagged-other-anchor-old-old": 53
+    },
+    "channel_killed_word_sums_over_distinct_corridors_not_unions": {
+      "collision": 0,
+      "endpoint-old-new-new": 4130,
+      "tagged-tagged-old-old": 0,
+      "tagged-other-anchor-old-old": 219776
+    },
+    "effectful_channel_combinations": {
+      "tagged-other-anchor-old-old_only": 37,
+      "endpoint-old-new-new_only": 5,
+      "both_endpoint-line_and_tagged-other-anchor": 16
+    },
+    "minimum_tagged_component_survivors": {
+      "source_gap": 13171,
+      "l7_parent_gap": 12324,
+      "l8_gap": 41266,
+      "l9_gap": 138811,
+      "step": 99,
+      "domain_words": 2570,
+      "killed_words": 157,
+      "survivors": 2413,
+      "mask_sha256": "072624bec3c3f6628fe1c6efce007e8a98c59eade92a43185e6a856c0a1eca8f"
+    },
+    "maximum_killed_words_and_fraction": {
+      "source_gap": 13171,
+      "l7_parent_gap": 12324,
+      "l8_gap": 41265,
+      "l9_gap": 138809,
+      "step": 120,
+      "domain_words": 501044,
+      "killed_words": 113998,
+      "survivors": 387046,
+      "reduced_fraction_numerator": 56999,
+      "reduced_fraction_denominator": 250522,
+      "decimal_fraction": 0.22752093628503683,
+      "mask_sha256": "9340a4cba9d0608b66b611d4f009d2ed45ab49c873d49c621cee12b534fb5afd"
+    }
+  },
+  "independent_direct_word_backstops": [
+    {
+      "l9_gap": 138338,
+      "stable_order_role": "first target",
+      "domain_words_recomputed": 31718,
+      "all_four_direct_channel_masks_equal_composed_masks": true
+    },
+    {
+      "l9_gap": 230558,
+      "stable_order_role": "last target",
+      "domain_words_recomputed": 35751,
+      "all_four_direct_channel_masks_equal_composed_masks": true
+    }
+  ],
+  "referee_conclusion": {
+    "proved_by_this_finite_computation": [
+      "all 488 exact realized descendants of the pinned 42-to-146 trace were joined to the complete transformed completed-L8 initial anchor set",
+      "every emitted killed bit has an exact tagged-endpoint and candidate/initial-anchor witness in one of the four covered channels",
+      "the three tagged endpoints retain stable identity and are tested against every initial L9 anchor without endpoint or distance truncation",
+      "the exact tagged age-2 inherited-anchor component leaves at least 2413 domain words on every tested corridor"
+    ],
+    "not_proved": [
+      "that any of the 2413-or-more component survivors is a legal L9 connector word",
+      "poisoning from untagged sources or any current-L9 connector interior",
+      "an actual L9 connector choice or L9 construction",
+      "alternate-history or universal Post closure",
+      "full sig2 stabilization, positive complete availability, or an unconditional Erdos #193 theorem"
+    ],
+    "critical_semantics": "The survivor counts are complements of an exact under-approximation of full L9 poison. They are not availability lower bounds."
+  }
+}

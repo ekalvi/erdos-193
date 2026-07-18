@@ -1,0 +1,81 @@
+{
+  "status": "canonical exact finite transition from the ten-leaf A-B-C-D policy through the immediately following E stitch; not a future-state congruence or greatest fixed point",
+  "canonical_scope": {
+    "frozen_prefix_points": 250697,
+    "source_policy_leaves": 10,
+    "exact_A_B_C_D_histories": 1997,
+    "E_gap": 67012,
+    "E_step": 17,
+    "E_rank": 67014,
+    "E_domain_words": 35751,
+    "E_atoms": 4843,
+    "distance_cutoff": null
+  },
+  "canonical_run": {
+    "local_raw_artifact": "/tmp/l8-fifth-ply-transition-canonical.json",
+    "raw_bytes": 470497,
+    "raw_sha256": "5218b498ece1d2affbf802ef295c23287752c407bdd464668854c1a9af846f10",
+    "checker_sha256": "d312a6988dbdfb6e22c961f27367b152cefbe22d7af37ef4e15c037443c476e7",
+    "source_fourth_ply_raw_sha256": "61ce7ebd1fdff96fbf7df2fd741223f447515bab6f61b1741fec132653d44e01",
+    "source_fourth_ply_transition_sha256": "1500f0b8b686192e626be8d88aa5b586d3d7cc2677b814fecfa076e5bff76b7a",
+    "third_ply_helper_sha256": "0b2b14b94bdf786075d3f3f5dcb70f2eb7ee5daa5ea23e9b943be7e56fc780db",
+    "elapsed_seconds": 389.43,
+    "maximum_resident_bytes": 761561088,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "exact_poison_identity": {
+    "formula": "Q_E(P,A,B,C,D) = BaseE(P) | UA(A) | UB(B) | UC(C) | UD(D) | XAB(A,B) | XAC(A,C) | XAD(A,D) | XBC(B,C) | XBD(B,D) | XCD(C,D)",
+    "complete_old_endpoint_pair_coverage": true,
+    "complete_old_point_on_candidate_line_coverage": true,
+    "components_may_overlap": true,
+    "candidate_internal_defects_excluded_by_domain": true
+  },
+  "BaseE": {
+    "poison_atoms": 73,
+    "killed_E_words": 16344,
+    "surviving_E_words": 19407,
+    "atom_mask_sha256": "3b4cfc4c33fade1c11f6facc752a055dbe07d6229c65c0e9b65f039bafaf5610",
+    "killed_word_mask_sha256": "97d25c2262a60411ad4d2f7592cc49a155c776c4c22e7c1023c0aa539854d71e"
+  },
+  "transition_result": {
+    "source_A_actions": 1997,
+    "source_policy_leaves": 10,
+    "E_response_leaves": 10,
+    "unresolved_A_actions": 0,
+    "all_1997_selected_histories_have_E": true,
+    "every_source_leaf_has_a_common_E": true,
+    "additional_E_predicate_splits": 0,
+    "selected_E_domain_indices_by_source_leaf": [4048, 63, 26, 25, 63, 100, 63, 26, 25, 25],
+    "distinct_selected_E_domain_indices": [25, 26, 63, 100, 4048],
+    "minimum_per_history_E_survivors": 6995,
+    "minimum_common_E_words_in_one_source_leaf": 46,
+    "maximum_common_E_words_in_one_source_leaf": 1923,
+    "fifth_ply_transition_sha256": "6b3f19ecd390287c239666445f11c38a7cd7d1c60719f7409e51911c592ddc9a"
+  },
+  "source_leaf_common_E_counts": [58, 95, 1075, 1543, 46, 118, 362, 1923, 1451, 983],
+  "source_leaf_minimum_per_history_survivors": [7242, 8072, 7174, 6995, 7736, 8585, 8616, 10092, 9336, 9643],
+  "mixed_pair_poison": {
+    "genuinely_incremental": true,
+    "maximizing_A_domain_index": 3458,
+    "maximizing_B_domain_index": 2935,
+    "maximizing_C_domain_index": 16834,
+    "maximizing_D_domain_index": 0,
+    "incremental_atoms_beyond_BaseE_and_unaries": 6,
+    "newly_killed_E_words_beyond_BaseE_and_unaries": 3058,
+    "E_survivors_in_maximizing_history": 11361
+  },
+  "validation": {
+    "full_global_E_backstops": 2,
+    "backstop_histories_distinct": true,
+    "optimized_atom_masks_equal_full_compute_poison": true,
+    "optimized_killed_word_masks_equal_full_compute_poison": true,
+    "emitted_E_responses_checked_sequentially": true
+  },
+  "interpretation": {
+    "proved_finite_fact": "The exact ten-leaf A-B-C-D policy extends through the actual next scheduler stitch: every one of its 1,997 concrete histories admits E, and each existing source leaf already has a common E word.",
+    "positive_signal": "No additional poison predicate or response leaf is needed at E; the policy partition remains at ten leaves for a second consecutive transition.",
+    "not_implied": "This is one more transition on one frozen L8 prefix. It does not prove that the ten leaves are observable at other prefixes, that successors are congruent, that far secants contract, or that an infinite legal walk exists."
+  }
+}

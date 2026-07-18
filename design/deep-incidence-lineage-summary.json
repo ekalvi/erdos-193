@@ -1,0 +1,225 @@
+{
+  "status": "exact finite recorded-orbit L7-to-L8 endpoint-incidence closure; not an unconditional theorem or an age-at-least-2 contraction certificate",
+  "date": "2026-07-18",
+  "resource_policy": {
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+    "canonical_run": {
+        "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/deep_incidence_lineage.py run --output /tmp/deep-incidence-lineage-final-canonical.json",
+        "exit_code": 0,
+        "raw_path": "/tmp/deep-incidence-lineage-final-canonical.json",
+        "raw_bytes": 839489,
+        "raw_sha256": "7195c4d72a71c0b819da1c2d9ba16165ea2aa1c71ffdfd61ae980fc7975388ab",
+        "checker_sha256": "cde329fafc79ec95ea0f3d8d8a060219af45633f6414f7f3fb8426fad4888be7",
+    "model_census_sha256": "bff91ea1ae23aee38c0fab868e704fa83e739f95a80cd00f2b7d98f3cc94d3e9"
+  },
+  "source_classification": {
+    "source_level": 7,
+    "source_endpoint_ages": [
+      0
+    ],
+    "successor_level": 8,
+    "successor_endpoint_ages": [
+      1
+    ],
+    "residual_age_threshold": 2,
+    "age_at_least_2_testable_from_available_levels": false,
+    "conclusion": "the two shell-5 failures are same-level source injection, not evidence for a contracting deep residual"
+  },
+  "source_atoms": [
+    {
+      "l7_gap": 13171,
+      "atom_id": 905,
+      "atom": [
+        "site",
+        [
+          3,
+          0,
+          4
+        ]
+      ],
+      "word_membership": {
+        "words": 154,
+        "mask_sha256": "d2abd53fcdf66a9f11b519a01b6a139090dc8d2b04eab14129e4dbe85d068594"
+      },
+      "first_visible_shell_5_words": {
+        "words": 56,
+        "mask_sha256": "51fae9aa4965bcb0e866eb1affcb454e5cc48b8f5a785f608fb2a6b853f6fbc9"
+      },
+      "attaining_endpoint_ids": [
+        "connector:L7:G12291:I1",
+        "connector:L7:G12324:I2"
+      ],
+      "l8_anchor_indices": [
+        41157,
+        41266
+      ],
+      "transported_mode": "old-old secant plus both endpoint frontiers"
+    },
+    {
+      "l7_gap": 21115,
+      "atom_id": 611,
+      "atom": [
+        "line",
+        [
+          [
+            2,
+            1,
+            1
+          ],
+          [
+            -4,
+            1,
+            7
+          ]
+        ]
+      ],
+      "word_membership": {
+        "words": 18,
+        "mask_sha256": "1c212c13f571c08847ffb4dd937d543eecbd5235a4fcd97efb339cd532565237"
+      },
+      "first_visible_shell_5_words": {
+        "words": 9,
+        "mask_sha256": "cbc8c345b46f680f9354bf3991d52c7798da7656d12d4b22f41b9ba6170d9e9a"
+      },
+      "attaining_endpoint_ids": [
+        "connector:L7:G19950:I2"
+      ],
+      "l8_anchor_indices": [
+        66975
+      ],
+      "transported_mode": "endpoint frontier"
+    }
+  ],
+  "exact_scope": {
+    "l8_recorded_stitches": 92731,
+    "effective_step_domains": 124,
+    "domain_words_scanned": 12537146,
+    "final_l8_points_indexed": 311738,
+    "directions_per_tagged_endpoint": 311737,
+    "tagged_endpoints": 3,
+    "endpoint_cutoff": null,
+    "distance_cutoff": null,
+    "prefix_semantics": "an L8 point is active exactly when its pipeline activation rank is less than the pending stitch rank",
+    "covered_failures": [
+      "tagged endpoint collides with a candidate site",
+      "tagged endpoint lies on a line through two candidate sites",
+      "candidate site lies on a secant through a tagged endpoint and any active prefix point"
+    ],
+    "not_covered": [
+      "other L7 endpoints",
+      "alternate L8 connector histories",
+      "levels after L8",
+      "age-at-least-2 residual behavior",
+      "poisoning unrelated to the three tagged endpoints"
+    ]
+  },
+  "result": {
+    "effectful_gaps": 64,
+    "zero_effect_gaps": 92667,
+        "combined_occurrence_stream_sha256": "5bc8602fb0abf4552bd46d5679cdd458841947afac6e81f706fdd03c748ee5e9",
+        "minimum_domain_words": 2570,
+        "minimum_source_only_survivors": 2397,
+    "minimum_source_only_survivors_gap": 41265,
+    "maximum_killed_fraction": {
+      "gap": 41266,
+      "killed_words": 131472,
+      "domain_words": 501044
+    },
+    "direct_affine_image_occurrences": 0,
+    "tagged_tagged_secant_effectful_gaps": 0,
+    "collision_effectful_gaps": 0,
+    "actual_child_corridor_effectful_gaps": 0,
+    "global_step_122_same_mode_effectful_gaps": 0,
+        "all_recorded_chosen_words_avoid_the_tagged_endpoint_closure": true,
+        "survivor_counts_are_against_only_the_three_tagged_endpoint_submask": true,
+    "sources": [
+      {
+        "l7_gap": 13171,
+        "effectful_gaps": 40,
+        "effect_atom_occurrences": 111,
+        "endpoint_old_new_new_effectful_gaps": 6,
+        "tagged_other_old_old_effectful_gaps": 39,
+        "original_same_mode_effectful_gaps": 0,
+        "maximum_spatial_shell_in_recorded_witnesses": 6,
+        "maximum_minimum_owner_radius": 882,
+        "partner_ages_seen": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "worst_gap": 41266,
+        "worst_step": 102,
+        "worst_domain_size": 501044,
+        "worst_killed_words": 131472,
+        "survivors_at_maximum_killed_words_record": 369572,
+        "minimum_source_only_survivors": 2397,
+        "minimum_source_only_survivors_gap": 41265,
+        "maximum_killed_fraction": {
+          "gap": 41266,
+          "killed_words": 131472,
+          "domain_words": 501044
+        },
+        "worst_mask_sha256": "c0f8e97558602073824b5a2e4f3afad3f9b3538c52f70063cedab73fca6a103a",
+        "occurrence_stream_sha256": "af874f391f48f99c24e33df403a95bbd0eb8ef151cfadba7abc2a0b20d1f5990"
+      },
+      {
+        "l7_gap": 21115,
+        "effectful_gaps": 24,
+        "effect_atom_occurrences": 45,
+        "endpoint_old_new_new_effectful_gaps": 6,
+        "tagged_other_old_old_effectful_gaps": 22,
+        "original_same_mode_effectful_gaps": 6,
+        "maximum_spatial_shell_in_recorded_witnesses": 5,
+        "maximum_minimum_owner_radius": 710,
+        "partner_ages_seen": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "worst_gap": 66997,
+        "worst_step": 3,
+        "worst_domain_size": 501044,
+        "worst_killed_words": 11453,
+        "survivors_at_maximum_killed_words_record": 489591,
+        "minimum_source_only_survivors": 2475,
+        "minimum_source_only_survivors_gap": 66955,
+        "maximum_killed_fraction": {
+          "gap": 66977,
+          "killed_words": 3452,
+          "domain_words": 38022
+        },
+        "worst_mask_sha256": "727d9413614697dc26f884ad45b2cc86caf059bb1a374c7bbda1ad1db207a230",
+        "occurrence_stream_sha256": "46cb1d6bdf929cf925a552e7baa8d3545ee46be0a814d1b4534fcb45bc97f42d"
+      }
+    ]
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "the two unique first-visible shell-5 atoms have exact age-zero endpoint lineages",
+      "their three endpoint images give a complete prefix-aware source-incidence closure on the single recorded L8 orbit",
+      "the exact affine image of neither source atom is a candidate atom at any recorded L8 stitch",
+      "endpoint roles are not mode-stable: cross old-old and new old-new-new effects occur in other domains",
+      "the recorded chosen word is outside the tagged-source mask at every L8 stitch"
+    ],
+    "finite_evidence_only": [
+      "the source masks remain nonfatal on this one recorded orbit",
+      "the 64 effects are sparse as a fraction of recorded stitches",
+      "the carried old-old line happens to be inert through L8"
+    ],
+    "not_proved": [
+      "a finite abstract type quotient",
+      "transition congruence under alternate connector choices",
+      "a strict rank or common contraction for age-at-least-2 endpoints/secants",
+      "a uniform connector-survivor bound",
+      "an unconditional infinite walk"
+    ],
+    "architectural_consequence": "a sound transfer state must retain endpoint and secant frontiers separately and close endpoints under both old-new-new and mixed old-old poisoning; a scalar shell-mass operator or mode-preserving atom transition is unsound"
+  }
+}

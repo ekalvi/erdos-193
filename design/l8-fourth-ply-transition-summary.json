@@ -1,0 +1,79 @@
+{
+  "status": "canonical exact finite transition from the ten-leaf A-B-C policy through the immediately following D stitch; not a future-state congruence or greatest fixed point",
+  "canonical_scope": {
+    "frozen_prefix_points": 250697,
+    "source_policy_leaves": 10,
+    "exact_A_B_C_histories": 1997,
+    "D_gap": 67013,
+    "D_step": 19,
+    "D_rank": 67013,
+    "D_domain_words": 6736,
+    "D_atoms": 1658,
+    "distance_cutoff": null
+  },
+  "canonical_run": {
+    "local_raw_artifact": "/tmp/l8-fourth-ply-transition-canonical.json",
+    "raw_bytes": 408307,
+    "raw_sha256": "61ce7ebd1fdff96fbf7df2fd741223f447515bab6f61b1741fec132653d44e01",
+    "checker_sha256": "c69bcada5fca24352d67658b226c37260e44a6615b62b16fe3bf9dfc83b519fa",
+    "source_third_ply_raw_sha256": "f5b197116c223fe32c5458a800b382e8a4994393439ca2ba1c8ab9cc5d2b9ccf",
+    "source_policy_sha256": "81d85f1a5e21959d5e062c6a26cc43dc77fc54fd5acb810444feece41736d78d",
+    "elapsed_seconds": 253.866,
+    "maximum_resident_bytes": 759406592,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "exact_poison_identity": {
+    "formula": "Q_D(P,A,B,C) = BaseD(P) | UA(A) | UB(B) | UC(C) | XAB(A,B) | XAC(A,C) | XBC(B,C)",
+    "complete_old_endpoint_pair_coverage": true,
+    "complete_old_point_on_candidate_line_coverage": true,
+    "components_may_overlap": true,
+    "candidate_internal_defects_excluded_by_domain": true
+  },
+  "BaseD": {
+    "poison_atoms": 58,
+    "killed_D_words": 3399,
+    "surviving_D_words": 3337,
+    "atom_mask_sha256": "59db466e87a4abb64fda898a4be563bf4ae7533848075f7b5671642475475c9e",
+    "killed_word_mask_sha256": "d504f60c64e439b8e271e55094a01ed12d65b99763914302f3fb83c812fd393a"
+  },
+  "transition_result": {
+    "source_A_actions": 1997,
+    "source_policy_leaves": 10,
+    "D_response_leaves": 10,
+    "unresolved_A_actions": 0,
+    "all_1997_selected_histories_have_D": true,
+    "every_source_leaf_has_a_common_D": true,
+    "additional_D_predicate_splits": 0,
+    "single_D_domain_index_common_to_all_ten_policy_leaves": 0,
+    "single_D_word_common_to_all_ten_policy_leaves": [0, 3, 4],
+    "minimum_per_history_D_survivors": 1601,
+    "minimum_common_D_words_in_one_source_leaf": 283,
+    "maximum_common_D_words_in_one_source_leaf": 796,
+    "fourth_ply_transition_sha256": "1500f0b8b686192e626be8d88aa5b586d3d7cc2677b814fecfa076e5bff76b7a"
+  },
+  "source_leaf_common_D_counts": [426, 456, 623, 796, 422, 443, 283, 629, 611, 614],
+  "source_leaf_minimum_per_history_survivors": [1846, 2275, 2107, 2536, 2219, 1937, 1601, 2466, 2742, 2827],
+  "mixed_pair_poison": {
+    "genuinely_incremental": true,
+    "maximizing_A_domain_index": 4767,
+    "maximizing_B_domain_index": 836,
+    "maximizing_C_domain_index": 33318,
+    "incremental_atoms_beyond_BaseD_and_unaries": 3,
+    "newly_killed_D_words_beyond_BaseD_and_unaries": 230,
+    "D_survivors_in_maximizing_history": 2723
+  },
+  "validation": {
+    "full_global_D_backstops": 2,
+    "backstop_histories_distinct": true,
+    "optimized_atom_masks_equal_full_compute_poison": true,
+    "optimized_killed_word_masks_equal_full_compute_poison": true,
+    "emitted_D_responses_checked_sequentially": true
+  },
+  "interpretation": {
+    "proved_finite_fact": "The exact ten-leaf A-B-C policy extends through the actual next scheduler stitch: every one of its 1,997 concrete histories admits D, and the same D word [0,3,4] works for every history after observing the existing ten-leaf state.",
+    "positive_signal": "No additional poison predicate or response leaf is needed at D; the policy partition remains at ten leaves for this transition.",
+    "not_implied": "This is one transition on one frozen L8 prefix. It does not prove that the ten leaves are observable at other prefixes, that successors are congruent, that far secants contract, or that an infinite legal walk exists."
+  }
+}

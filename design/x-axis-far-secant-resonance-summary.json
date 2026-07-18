@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact finite realized L5-L8 x-axis old-secant/site-word audit and actual selected-child recurrence census; not a universal tail quotient, policy cycle, contraction lemma, or availability proof",
+  "checker": {
+    "path": "design/x_axis_far_secant_resonance.py",
+    "sha256": "7a0ea121ad91fa578026225a0c892eabf564c7250d9f3acb1a6ba7bbd162dd4c"
+  },
+  "canonical_artifact": {
+    "path": "/tmp/x-axis-far-secant-resonance-canonical.json",
+    "bytes": 121520326,
+    "sha256": "0ebbfd97194fce4453269ad1c01eb1281e9d3a5aa526f1f036e409b82ad36cc1",
+    "rerun_path": "/tmp/x-axis-far-secant-resonance-rerun.json",
+    "rerun_sha256": "791aec0a105dc3d902462e8b9f5c22fd6f275abfb330580d562027ce79aa62e7",
+    "normalized_sha256": "07bb4b6b26877aff0eb07495fbe43a74e9fbc7dd171f1fc28d66aacf108a8c00",
+    "normalization": "parse JSON, remove resource_policy.elapsed_seconds, then serialize with sorted keys and separators (comma, colon)",
+    "determinism_check": "the two parsed artifacts differ only in resource_policy.elapsed_seconds (171.179 versus 170.827); their normalized byte streams are identical"
+  },
+  "resource_policy": {
+    "processes": 1,
+    "thread_cap": 1,
+    "observed_nice": 15,
+    "minimum_nice": 10,
+    "canonical_checker_elapsed_seconds": 171.179,
+    "rerun_checker_elapsed_seconds": 170.827
+  },
+  "scope": {
+    "levels": [5, 6, 7, 8],
+    "stitch_orders": ["gate", "pipeline"],
+    "construction_corridors_per_order": 131097,
+    "prefix_cursors_across_both_orders": 262194,
+    "step_domains": 124,
+    "effective_domain_words": 12537146,
+    "endpoint_cutoff": null,
+    "distance_cutoff": null,
+    "covered_channel": "candidate interior site on an already active x-parallel secant through two actual completed-level points",
+    "selected_descendants": "all actual recorded child slots from every strict-effect seed through L8, including zero-effect intermediate lineage states"
+  },
+  "x_parallel_line_census": [
+    {
+      "level": 5,
+      "completed_points": 8214,
+      "corridors": 2457,
+      "lines": 97,
+      "inherited_lines": 31,
+      "new_lines": 66
+    },
+    {
+      "level": 6,
+      "completed_points": 27697,
+      "corridors": 8213,
+      "lines": 296,
+      "inherited_lines": 97,
+      "new_lines": 199
+    },
+    {
+      "level": 7,
+      "completed_points": 92732,
+      "corridors": 27696,
+      "lines": 977,
+      "inherited_lines": 296,
+      "new_lines": 681
+    },
+    {
+      "level": 8,
+      "completed_points": 311738,
+      "corridors": 92731,
+      "lines": 3261,
+      "inherited_lines": 977,
+      "new_lines": 2284
+    }
+  ],
+  "exact_prefix_effects": {
+    "strict_x_secant_occurrences": 11154,
+    "strict_x_secant_occurrences_by_order": {
+      "gate": 5577,
+      "pipeline": 5577
+    },
+    "strict_effectful_corridors_by_order": {
+      "gate": 4839,
+      "pipeline": 4874
+    },
+    "strict_site_line_equation_checks": 36958,
+    "maximum_words_killed_by_one_x_line": 115269,
+    "recorded_selected_words_killed_by_complete_x_line_union": 0,
+    "collision_only_occurrences": 0,
+    "occurrence_stream_sha256": "33e3a401f4249ec0050618ec60164b7375d751ff3dee4ecb530d1245a55338d0"
+  },
+  "closed_selected_lineage_graph": {
+    "strict_effect_seeds": 11154,
+    "lineage_nodes": 35220,
+    "materialized_latent_zero_effect_nodes": 24066,
+    "transitions": 27103,
+    "transition_classes": {
+      "effect->effect": 3002,
+      "effect->zero": 8109,
+      "zero->effect": 35,
+      "zero->zero": 15957
+    },
+    "transition_stream_sha256": "001aa694e4002ea95a3908e0dd59816168bf080ba2fb4e47440778273c00d362",
+    "consequence": "current zero poison is not an irrelevance certificate: 35 exact selected transitions reactivate a latent zero-effect x-line"
+  },
+  "short_actual_control_returns": {
+    "period_1": {
+      "all_lineage_paths": 11111,
+      "effectful_terminals": 3002,
+      "effectful_terminal_paths_with_zero_effect_intermediate": 0,
+      "effectful_terminal_reachable_lateral_returns": 1492,
+      "exact_effect_key_returns": 12,
+      "effect_and_selected_action_returns": 0
+    },
+    "period_2": {
+      "all_lineage_paths": 11456,
+      "effectful_terminals": 935,
+      "effectful_terminal_paths_with_zero_effect_intermediate": 35,
+      "effectful_terminal_reachable_lateral_returns": 472,
+      "exact_effect_key_returns": 2,
+      "effect_and_selected_action_returns": 0
+    },
+    "period_3": {
+      "all_lineage_paths": 10540,
+      "effectful_terminals": 250,
+      "effectful_terminal_paths_with_zero_effect_intermediate": 16,
+      "effectful_terminal_reachable_lateral_returns": 145,
+      "exact_effect_key_returns": 22,
+      "effect_and_selected_action_returns": 6
+    },
+    "effect_key_return_records": 36,
+    "physically_distinct_effect_key_returns_after_identifying_the_two_orders": 18,
+    "physically_distinct_effect_and_action_returns_after_identifying_the_two_orders": 3,
+    "physical_deduplication": "strip the stitch-order prefix from the same source and target level/gap/line descendant path; every class contains exactly one gate record and one pipeline record",
+    "unique_returned_effect_keys": 15,
+    "exact_effect_key_return_stream_sha256": "6e59b401ebce53bf60efd4e919130199e9b1e31bd861ec927527a38f43ce301a",
+    "interpretation": "the exact effect key is parent step, relative lateral coordinate, ordered strict site-offset tuple, and its deterministic killed-word mask; the six action returns also repeat the recorded selected connector word. These are exact finite projected cycles, not a proof that source and target have congruent infinite futures."
+  },
+  "selected_slot_phase_test": {
+    "phase_classes": 12781,
+    "repeated_phase_classes": 4491,
+    "phase_classes_with_multiple_effect_posts": 4396,
+    "class_stream_sha256": "3870b8e8c7470086e5ee66eeced8d56167f268aded9084335c10ec1b94aa9c59",
+    "consequence": "the tested finite key of stitch order, source step, selected word, child slot, prefix control, and child step is not a transition congruence on this frozen lineage graph"
+  },
+  "proof_assessment": {
+    "proved_finite_facts": [
+      "the listed x-parallel lines, prefix activations, exact site masks, selected descendant transitions, latent states, and returns of length at most three are exhaustive for the pinned L5-L8 artifacts and the two named schedules",
+      "a strict residual DAG rank on the tested effect key is impossible because exact effect-key returns occur",
+      "adjoining the recorded selected action still does not remove every witnessed period-three return",
+      "forgetting a line whenever its current poison mask is empty is unsound on the recorded lineage"
+    ],
+    "not_proved": [
+      "a universal transition quotient over alternate connector histories",
+      "an infinite realized policy cycle or a connector jam",
+      "period four or any L9-and-later recurrence statement",
+      "any result for non-x-parallel secants, old endpoints on candidate-internal lines, or the union with other poison channels",
+      "connector availability or an unconditional theorem"
+    ],
+    "architectural_consequence": "the x-resonant block must be promoted with additional honest lineage/phase information or controlled by a non-strict contraction; step, offset, exact x-poison mask, and recorded action are not by themselves a strict finite rank"
+  }
+}

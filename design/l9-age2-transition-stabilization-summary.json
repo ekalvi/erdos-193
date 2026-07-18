@@ -1,0 +1,201 @@
+{
+  "status": "exact finite realized-path L8-to-L9 age-2 state and ordered-transition stabilization diagnostic; not a universal quotient, full sig2, or theorem certificate",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/l9_age2_transition_stabilization.py run --output /tmp/l9-age2-transition-stabilization.json",
+    "raw_path": "/tmp/l9-age2-transition-stabilization.json",
+    "raw_bytes": 39911,
+    "raw_sha256": "eb4f676c8a34c4572cf2047a91de821e4ec980482a5486e2834d09fd8e0690b9",
+    "checker_sha256": "00577a9564f6b60c31d85898f3239e3fbbead6fb0e1890ab3c9641156c9f7d1c",
+    "resource_policy": {
+      "processes": 1,
+      "thread_cap": 1,
+      "nice": 15
+    },
+    "byte_identical_repeat": {
+      "path": "/tmp/l9-age2-transition-stabilization-repeat.json",
+      "sha256": "eb4f676c8a34c4572cf2047a91de821e4ec980482a5486e2834d09fd8e0690b9"
+    }
+  },
+  "pinned_inputs": {
+    "upstream_birth_shell_trace_sha256": "5c525ef4cc0c77ed96a2f67238e785d0382ead806f96479854a691498de99488",
+    "upstream_birth_shell_checker_sha256": "dd35f8ac5459d6df05d8b960f82b709f69380268ed144ac5c0e6789d178c35b9",
+    "l9_anchor_age2_precursor_sha256": "961f9e5f0772d9df508ab0aefaa7405e3cc21637d59560cdda95c4edf61d809f",
+    "l9_anchor_age2_precursor_checker_sha256": "66f776e7ae4eff4c35d004d870d82458582a4c2b6516f20257149a08e5535b90"
+  },
+  "exact_join": {
+    "l7_parent_states": 42,
+    "l8_states": 146,
+    "l8_states_with_complete_ordered_l9_descendants": 146,
+    "l9_descendant_states": 488,
+    "l9_nonzero_tagged_component_states": 58,
+    "l9_zero_tagged_component_states": 430,
+    "actual_parent_words_and_slots_retained": true,
+    "l9_node_stream_sha256": "8743174cc518d5678cb48cd0a2f33aa71652fc33eeaf2e88fa0f3c35a8aeb9c9",
+    "l8_transition_node_stream_sha256": "04a9e73cf0446cfa6203c6300dac807047e580bb91c88ee7bbdc0bff2b24e379",
+    "l7_transition_node_stream_sha256": "b3b40520e05a0e547da5bc2dbcd7e48042c69fd6d49174565ca2c2645e96b00a"
+  },
+  "candidate_state_keys": {
+    "a_context": "source mode + L9 step + actual selected L8 parent word + actual slot in that word",
+    "b_direct": "a_context + exact endpoint-old-new-new killed-word mask",
+    "c_partner_birth": "b_direct + sparse exact partner-birth-level killed-word mask vector; absent levels mean the exact zero mask for the fixed step domain",
+    "d_partner_identity": "c_partner_birth + stable partner identity, birth level, age, and exact per-partner mask vector",
+    "outcome": "exact full tagged age-2 inherited-anchor component mask"
+  },
+  "l9_candidate_state_tests": {
+    "a_context": {
+      "nodes": 488,
+      "classes": 449,
+      "singleton_classes_inconclusive": 422,
+      "singleton_zero_nodes": 370,
+      "singleton_nonzero_nodes": 52,
+      "repeated_classes": 27,
+      "nodes_in_repeated_classes": 66,
+      "largest_repeated_class": 4,
+      "repeated_class_kind_census": {
+        "all-zero": 22,
+        "mixed-zero-nonzero": 5
+      },
+      "finite_congruent_repeated_classes": 22,
+      "finite_congruent_repeated_classes_are_all_zero": true,
+      "noncongruent_classes": 5,
+      "largest_noncongruent_class": 4,
+      "refuted_on_this_finite_trace": true,
+      "stabilization_proved": false
+    },
+    "b_direct": {
+      "nodes": 488,
+      "classes": 451,
+      "singleton_classes_inconclusive": 424,
+      "singleton_zero_nodes": 370,
+      "singleton_nonzero_nodes": 54,
+      "repeated_classes": 27,
+      "nodes_in_repeated_classes": 64,
+      "largest_repeated_class": 4,
+      "repeated_class_kind_census": {
+        "all-zero": 23,
+        "mixed-zero-nonzero": 4
+      },
+      "finite_congruent_repeated_classes": 23,
+      "finite_congruent_repeated_classes_are_all_zero": true,
+      "noncongruent_classes": 4,
+      "largest_noncongruent_class": 4,
+      "refuted_on_this_finite_trace": true,
+      "stabilization_proved": false
+    },
+    "c_partner_birth": {
+      "nodes": 488,
+      "classes": 455,
+      "singleton_classes_inconclusive": 430,
+      "singleton_zero_nodes": 372,
+      "singleton_nonzero_nodes": 58,
+      "repeated_classes": 25,
+      "nodes_in_repeated_classes": 58,
+      "largest_repeated_class": 3,
+      "repeated_class_kind_census": {
+        "all-zero": 25
+      },
+      "finite_congruent_repeated_classes": 25,
+      "noncongruent_classes": 0,
+      "refuted_on_this_finite_trace": false,
+      "all_nonzero_states_are_singletons": true,
+      "stabilization_proved": false
+    },
+    "d_partner_identity": {
+      "nodes": 488,
+      "classes": 455,
+      "singleton_classes_inconclusive": 430,
+      "singleton_zero_nodes": 372,
+      "singleton_nonzero_nodes": 58,
+      "repeated_classes": 25,
+      "nodes_in_repeated_classes": 58,
+      "largest_repeated_class": 3,
+      "repeated_class_kind_census": {
+        "all-zero": 25
+      },
+      "finite_congruent_repeated_classes": 25,
+      "noncongruent_classes": 0,
+      "refuted_on_this_finite_trace": false,
+      "all_nonzero_states_are_singletons": true,
+      "identity_refinement_splits_no_additional_classes_beyond_birth_level": true,
+      "stabilization_proved": false
+    }
+  },
+  "finite_counterexample_exemplars": {
+    "a_context": {
+      "candidate_key_sha256": "909459e4423aa1efb04449b7d8fa31ba6137b487bca23de8f280f9b0e8f4936a",
+      "class_nodes": 4,
+      "distinct_full_mask_outcomes": 3,
+      "class_kind": "mixed-zero-nonzero",
+      "members": [
+        {"l9_gap": 138477, "source_gap": 13171, "step": 120, "killed_words": 0},
+        {"l9_gap": 138807, "source_gap": 13171, "step": 120, "killed_words": 35403},
+        {"l9_gap": 138834, "source_gap": 13171, "step": 120, "killed_words": 2017},
+        {"l9_gap": 138904, "source_gap": 13171, "step": 120, "killed_words": 0}
+      ]
+    },
+    "b_direct": {
+      "candidate_key_sha256": "743ba7dd0af44d458967123ffb6eb910ddc310ada0e60895011a354a4451d6a4",
+      "class_nodes": 4,
+      "distinct_full_mask_outcomes": 2,
+      "class_kind": "mixed-zero-nonzero",
+      "members": [
+        {"l9_gap": 138479, "source_gap": 13171, "step": 120, "killed_words": 0},
+        {"l9_gap": 138809, "source_gap": 13171, "step": 120, "killed_words": 113998},
+        {"l9_gap": 138836, "source_gap": 13171, "step": 120, "killed_words": 0},
+        {"l9_gap": 138906, "source_gap": 13171, "step": 120, "killed_words": 0}
+      ]
+    }
+  },
+  "ordered_transition_tests": {
+    "l8_to_ordered_l9": {
+      "parent_key": "source mode + L8 step + actual L7 parent word/slot + actual selected L8 connector action",
+      "nodes": 146,
+      "classes": 146,
+      "singleton_classes_inconclusive": 146,
+      "singleton_zero_nodes": 115,
+      "singleton_nonzero_nodes": 31,
+      "repeated_classes": 0,
+      "noncongruent_classes_for_each_of_a_b_c_d": 0,
+      "stabilization_proved": false,
+      "interpretation": "Retaining the actual selected action makes every observed parent class a singleton, so the transition test supplies no repeat evidence."
+    },
+    "l7_to_enriched_ordered_l8_l9": {
+      "parent_key": "source mode + L7 step + actual selected L7 connector word",
+      "nodes": 42,
+      "classes": 40,
+      "singleton_classes_inconclusive": 38,
+      "singleton_zero_nodes": 22,
+      "singleton_nonzero_nodes": 16,
+      "repeated_classes": 2,
+      "nodes_in_repeated_classes": 4,
+      "repeated_class_kind_census": {
+        "all-zero": 1,
+        "mixed-zero-nonzero": 1
+      },
+      "noncongruent_classes_for_each_of_a_b_c_d": 2,
+      "largest_noncongruent_class": 2,
+      "stabilization_proved": false,
+      "counterexample_parent_key_sha256": [
+        "607926d142c46485f4fb2d8285738ee846552320670f519896e8ef7f2d9cbd57",
+        "94b89062343481db6b0cddc2937e28bac90a49feb0936cb2e9e29257057237fb"
+      ]
+    }
+  },
+  "referee_conclusion": {
+    "finite_refutations": [
+      "a_context is noncongruent in 5 repeated classes",
+      "adding the direct endpoint-old-new-new mask leaves 4 noncongruent repeated classes",
+      "the enriched 42-parent ordered transition quotient has 2 noncongruent repeated classes at every tested refinement"
+    ],
+    "non_refutation_that_is_not_positive_evidence": "Adding exact partner-birth-level masks removes observed L9 state conflicts, and stable partner identities add no further split, but all 58 nonzero states then become singletons. The 25 remaining repeats are exclusively all-zero states.",
+    "singleton_rule": "Singleton classes are inconclusive and are never counted as stabilization evidence.",
+    "not_proved": [
+      "stabilization on effectful far-poison states",
+      "a transition-congruent finite quotient over alternate legal histories",
+      "a universal greatest-fixed-point safety strategy",
+      "poisoning from current-L9 connector interiors",
+      "full sig2, positive complete connector availability, or an unconditional Erdos #193 theorem"
+    ]
+  }
+}
