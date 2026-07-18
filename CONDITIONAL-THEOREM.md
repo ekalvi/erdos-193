@@ -212,6 +212,14 @@ only one connector per gap.
 - The ledgers report extrapolated availability floors 317 / 180 / 271 at levels
   5–7 after testing at most 200 words per stitch.  These are useful sampling
   signals, not certified floors.
+- Under the causal inherited-tile pipeline, a fixed-before-run 18-probe audit
+  learns an all-poisoned-atom owner radius 625 on L5–L6 and sees no L7/L8
+  exceedance.  The same audit refutes a fixed shell-4 cutoff at two L7 probes:
+  new shell-5 atoms uniquely kill 56 and 9 words.  This is finite evidence, not
+  a uniform horizon or transfer theorem.
+- At the causal L7 bottleneck, pinned D/A/B choices leave 111 target words and
+  every one retains at least 1,153 / 1,505 short words at the next-tile guard.
+  This is one incoming state, not safety-game closure.
 - Purer-thread trend: bigger-twist matrices drive d monotonically toward 1.0
   (1.071 → 1.035 for m = 3…6), confirming the thread picture.
 
@@ -238,6 +246,9 @@ to exhaustive certificates.
 | Exact bounded L7 four-gap probe | `design/l7_four_gap_probe.py`, `design/l7-four-gap-probe-summary.json` |
 | Frozen-L7 robust early action | `design/l7_robust_d_selector.py`, `design/l7-robust-d-selector-summary.json` |
 | Concrete robust-action successor edge | `design/l7_robust_successor_probe.py`, `design/l7-robust-successor-summary.json` |
+| Exact inherited-tile witness/horizon audit | `design/inherited_tile_lifetime.py`, `design/inherited-tile-lifetime-summary.json` |
+| Four-sentinel literal transition test | `design/pipeline_transition_stabilization.py`, `design/pipeline-transition-stabilization-summary.json` |
+| Causal L7 target-to-guard macrotransition | `design/l7_pipeline_macrotransition.py`, `design/l7-pipeline-macrotransition-summary.json` |
 | Dimension / regularity measurements | `design/lemma/dim/`, `design/tight/` |
 
 ## Honest summary
@@ -278,5 +289,13 @@ base-compatible `(A,B)` pairs under the all-`C` overapproximation, and one
 aligned successor retains 2,747 words after a distance-102 scheduler jump.
 These remain frozen-future finite certificates: the early rank-433 word was
 selected using the recorded completion through rank 16,789, so no causal
-all-history or cross-level selector is proved.  Numerical confidence
+all-history or cross-level selector is proved.  Reordering the same recorded
+walk into the causal inherited-tile pipeline removes that future oracle at the
+tested L7 state and yields an exact 1,153-word target-to-guard floor.  Across
+18 L5–L8 probes, the all-atom owner horizon learned on L5–L6 survives validation
+and holdout, but a new shell-5 effect and completely novel literal L7/L8
+transition codes show that neither fixed shell truncation nor exact-state reuse
+has closed.  The plausible remaining route needs an exact current/age-one state
+plus a typed deep endpoint/secant frontier with a proved common contraction or
+strict arithmetic rank.  Numerical confidence
 percentages are opinions and are not part of the mathematical result.

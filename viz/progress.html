@@ -134,7 +134,10 @@ const EVENTS = [
   ['sci','🔎','Conditional endpoint repaired: total selector plus König','"Reachable under the certified policy" is not enough unless a finite total selector and universal abstraction-closure check are supplied. Also, amplified levels are not nested point sets: arbitrary finite lengths yield an infinite walk by König’s lemma on the finite-alphabet prefix tree.',['CONDITIONAL-THEOREM.md','design/ORDERED-PATH-SAFETY-GATE.md']],
   ['ok','✅','A robust early action exists in the frozen L7 cone','Choose gap-3785 domain word 8681 first. For all 865,674 base-compatible A/B pairs, at least 45 target words stay clean after unioning every unary-legal C effect. A non-vacuity continuation is asserted. This is exact, but D is rank 433 and was chosen using recorded future geometry through rank 16,789, so it is not an online selector.',['design/l7_robust_d_selector.py','design/l7-robust-d-selector-summary.json']],
   ['ok','✅','The robust action has an exact far-jump successor','With the tight A/B state, least legal C and first certified target word, the next fragile-first corridor is segment 3806, translated by (102,−54,75). Its exact global domain retains 2,747 / 9,046 words and the recorded successor action remains legal. This is one concrete edge, not abstract closure.',['design/l7_robust_successor_probe.py','design/l7-robust-successor-summary.json']],
-  ['live','📍','Current frontier: bounded inherited-tile guard pipeline','Replace the global fragile-first cursor with a left-to-right tile pipeline: place the next tile’s fragile guard, then finish the current tile locally. The next exact gate is D8681 → every compatible A/B → some target word plus a legal guard at gap 3788. First measure exact poison-witness lifetime on L5–L8, freezing the model on L5–L6 and holding out L8.',['design/ORDERED-PATH-SAFETY-GATE.md','design/l7_robust_d_selector.py']],
+  ['ok','✅','The causal L7 pipeline has a two-ply guard floor','Under the inherited-tile schedule, the pre-D state has 36,589 points and no frozen future connectors. Pinned D/A/B leave 111 legal target words; every one leaves at least 1,153 / 1,505 short words at the next guard. Pinned target26 leaves 350,509 / 453,015 full guard words, then G0 leaves 1,887 C choices. Exact at one incoming state, not all-history closure.',['design/l7_pipeline_macrotransition.py','design/l7-pipeline-macrotransition-summary.json']],
+  ['sci','🔬','Owner horizon survives; fixed shell truncation fails','An exact 18-probe causal replay freezes an all-poisoned-atom owner radius of 625 on L5–L6, with zero L7/L8 exceedances. But two L7 validation probes introduce first-visible shell-5 atoms uniquely killing 56 and 9 words; one is explicitly age zero. This preserves a typed far-frontier route while refuting a fixed shell-4 cutoff.',['design/inherited_tile_lifetime.py','design/inherited-tile-lifetime-summary.json']],
+  ['dead','💀','Literal four-tile transition codes do not stabilize','Four exact sentinels retain contiguous actual path factors, causal connector choices, global poison masks, actions and successors. Neither L7 nor L8 matches any frozen L5–L6 exact code on any component. This kills literal exact-code reuse, not a coarser sound BDD, antichain or arithmetic quotient.',['design/pipeline_transition_stabilization.py','design/pipeline-transition-stabilization-summary.json']],
+  ['live','📍','Current frontier: exact age-0/1 state plus a ranked deep tail','The next lemma must retain current and parent-age geometry without contraction, while transporting deep endpoint and secant incidences—including near–deep pairs—under a common Lyapunov function or strict 3-adic rank. A reachable resonant secant cycle is the strongest likely obstruction.',['design/ORDERED-PATH-SAFETY-GATE.md','design/inherited-tile-lifetime-summary.json']],
  ]],
 ];
 // STAMPS-BEGIN
@@ -183,7 +186,10 @@ const STAMPS = {
 "The exact large-gap quotient barely compresses": "Jul 18 · 00:38 EDT",
 "Conditional endpoint repaired: total selector plus König": "Jul 18 · 00:38 EDT",
 "A robust early action exists in the frozen L7 cone": "Jul 18 · 01:13 EDT",
-"The robust action has an exact far-jump successor": "Jul 18 · 01:13 EDT"
+"The robust action has an exact far-jump successor": "Jul 18 · 01:13 EDT",
+"The causal L7 pipeline has a two-ply guard floor": "Jul 18 · 08:51 EDT",
+"Owner horizon survives; fixed shell truncation fails": "Jul 18 · 08:51 EDT",
+"Literal four-tile transition codes do not stabilize": "Jul 18 · 08:51 EDT"
 };
 // STAMPS-END
 const C = {ok:'--tl-ok', dead:'--tl-dead', sci:'--tl-sci', build:'--tl-build', live:'--tl-live'};

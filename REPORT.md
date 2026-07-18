@@ -203,3 +203,93 @@ remaining mathematics: scale-invariance of the constants, and hostile review.
    killed by the PF-contraction argument.
 3. Literature check: exact maxima (20 for ±eᵢ), and whether the PF-contraction
    observation about return displacements is already recorded.
+
+## Correction and ordered-path safety audit (2026-07-18)
+
+The July 14 claim above that the per-stitch ledger gave a proof is withdrawn.
+Its reported availability floors were extrapolated after testing at most 200
+words per stitch, not exhaustive lower bounds.  More fundamentally, connector
+legality is global: a candidate point can lie on a secant whose endpoints are
+both far from its corridor.  Exact replay shows far secants remove 51--68% of
+the apparent radius-40 survivors at the principal L5--L7 bottlenecks.  Bounded
+local crowding therefore does not imply positive connector availability without
+a separate uniform far-secant lemma.
+
+The old Lemma R is also too weak.  It asks only for some constant `C` with
+`c_k(q,r) <= C r^d` on the fixed interval `1 <= r <= 10`; the repository's
+level-uniform cubic crowding bound already implies such a constant.  The real
+remaining statement is a finite, policy-independent reachable-state invariant
+with a total legal-word selector and universally checked successor closure, or
+a sharp numerical near-mask theorem plus a uniform far-tail theorem whose union
+still leaves a word.  Unbounded finite levels would then yield an infinite word
+by König's lemma; the amplified point sets themselves are not nested.
+
+The full connector-menu OSC remains refuted by its exact generation-2 overlap,
+but that overlap is between alternative connector choices.  A realized path
+chooses only one connector per gap, so it does not by itself refute an ordered-
+path certificate.  Conversely, the accelerating/chiral small-box separation
+signal was caused by prescaling and never covered the true 15,545-element
+difference closure.
+
+### Causal inherited-tile pipeline
+
+To remove the global fragile-first cursor, inherited tiles are swept left to
+right: place the next tile's fragile guard when it has one, then finish the
+current tile in local `(domain size, gap index)` order.  At the L7 bottleneck
+this gives exactly
+
+```text
+D3785, A3782, B3784, target3783, G3788, C3786.
+```
+
+The exact causal state before D has 36,589 points and no frozen future
+connectors.  Pinned D8681/A1465/B425 choices remain sequentially legal and
+leave 111 / 9,046 target words.  Every one of those 111 target choices leaves
+at least 1,153 / 1,505 short words at G3788.  The unique floor target was
+recomputed independently.  Pinned target26 leaves 350,509 / 453,015 words in
+G's complete domain; choosing G0 leaves 1,887 / 2,570 words at C3786.  This is
+an exact two-ply certificate at one incoming state, not closure over incoming
+histories or levels.
+
+### Exact lifetime and transition experiment
+
+Eighteen middle-step-122 corridors with inherited signature `(123,122,123)`
+were fixed before inspecting their poison results: L5--L6 train, four L7
+validation probes, and three untouched L8 holdouts.  Every collision,
+old--old--new secant, and old--new--new line witness was scanned against the
+complete causal prefix with no endpoint cutoff.  Endpoint birth ages, owner
+tiles, placement times, and factor-of-three spatial shells remain correlated.
+
+Training fixes minimum owner radius 625 for both every killed word and every
+poisoned atom.  No L7 or L8 probe exceeds it.  This is encouraging finite
+evidence only: 625 is not a useful literal window, and 18 probes cannot prove a
+uniform horizon.  More decisively, the training first-visible spatial horizon
+of shell 4 fails in L7.  Gap 13,171 has one first-visible shell-5 atom uniquely
+killing 56 words, with an age-0/age-0 shell-4/shell-5 witness; gap 21,115 has an
+age-0 shell-5 point atom uniquely killing nine.  A scalar or fixed-cutoff deep
+tail cannot absorb same-level outer-shell effects.
+
+All 18 killed-word masks, poisoned-atom masks, and witness hashes are distinct.
+A four-sentinel exact transition test freezes L5--L6 codes for the contiguous
+four-tile factor, source poison, recorded action, successor, and whole edge.
+Every corresponding L7 and L8 code is new.  Literal exact-state stabilization
+therefore fails on this sample, although a coarser sound antichain/BDD/arithmetic
+quotient remains possible.  The L8 successor has 1,898 / 2,570 full-domain
+survivors; the other successor scans are explicitly limited to their exact
+length-2--4 cores because the complete domains contain 298,775--501,044 words.
+
+The plausible remaining analytic lemma is now sharply split.  Current and
+age-one geometry must remain in an exact, noncontracting safety state.  The
+age-at-least-two residual needs both endpoint and already formed secant
+frontiers, including near--deep generation.  A scalar shell count is unsound;
+the transition family needs a common Lyapunov function with joint contraction
+or a strict integer/3-adic rank, followed by direct nonfatality of the resulting
+poison masks.  The strongest obstruction is a reachable resonant secant cycle:
+linear scaling preserves collinearity, so such a type can recur with unit
+effect unless retained exactly or ruled out arithmetically.
+
+Reproducible artifacts are `design/ORDERED-PATH-SAFETY-GATE.md`,
+`design/inherited_tile_lifetime.py`,
+`design/pipeline_transition_stabilization.py`, and
+`design/l7_pipeline_macrotransition.py`, with compact JSON summaries beside
+each checker.  None of these results is an unconditional solution.
