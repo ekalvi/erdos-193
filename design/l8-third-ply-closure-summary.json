@@ -1,0 +1,149 @@
+{
+  "status": "canonical exact finite A+B-to-C sweep and C-response policy refinement on one frozen prefix; not a greatest fixed point",
+  "canonical_scope": {
+    "frozen_prefix_points": 250697,
+    "A_actions": 1997,
+    "partition_leaves": 4,
+    "A_B_histories_scanned_including_overlapping_probe": 21669,
+    "C_domain_words": 49402,
+    "distance_cutoff": null
+  },
+  "canonical_run": {
+    "local_raw_artifact": "/tmp/l8-third-ply-cegar-canonical.json",
+    "raw_bytes": 4329036,
+    "raw_sha256": "f5b197116c223fe32c5458a800b382e8a4994393439ca2ba1c8ab9cc5d2b9ccf",
+    "checker_sha256": "0b2b14b94bdf786075d3f3f5dcb70f2eb7ee5daa5ea23e9b943be7e56fc780db",
+    "elapsed_seconds": 388.988,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "BaseC": {
+    "poison_atoms": 151,
+    "killed_C_words": 34043,
+    "surviving_C_words": 15359,
+    "atom_mask_sha256": "441c784eb95bf889664ddd3b8845c2ba0e480494fa83d01721a9f947b35ec303",
+    "killed_word_mask_sha256": "62867f99d5d0b037fcc430c35cfdfbc84e9c422e134bfab4ecfaa35d790485bd"
+  },
+  "partition_results": [
+    {
+      "leaf": "partition-leaf-0-node-1",
+      "A_actions": 1241,
+      "common_B_actions_tested": 4,
+      "fixed_B_and_C_for_all_A": false,
+      "all_histories_have_C": true,
+      "minimum_C_survivors_over_tested_histories": 7224
+    },
+    {
+      "leaf": "partition-leaf-1-node-4",
+      "A_actions": 206,
+      "common_B_actions_tested": 1,
+      "fixed_B_and_C_for_all_A": true,
+      "all_histories_have_C": true,
+      "winning_B_domain_index": 8768,
+      "winning_C_domain_index": 15748,
+      "winning_C_word": [19, 9, 58, 76],
+      "common_C_words": 9,
+      "minimum_C_survivors_over_tested_histories": 7438
+    },
+    {
+      "leaf": "partition-leaf-2-node-5",
+      "A_actions": 188,
+      "common_B_actions_tested": 6,
+      "fixed_B_and_C_for_all_A": true,
+      "all_histories_have_C": true,
+      "least_winning_B_domain_index": 2935,
+      "least_winning_C_domain_index": 16834,
+      "least_winning_C_word": [23, 4, 59, 76],
+      "minimum_C_survivors_over_tested_histories": 5893
+    },
+    {
+      "leaf": "partition-leaf-3-node-6",
+      "A_actions": 362,
+      "common_B_actions_tested": 37,
+      "fixed_B_and_C_for_all_A": false,
+      "all_histories_have_C": true,
+      "minimum_C_survivors_over_tested_histories": 7550
+    }
+  ],
+  "overlapping_probe": {
+    "A_actions": 1977,
+    "fixed_B_domain_index": 8765,
+    "fixed_C_for_all_A": false,
+    "all_histories_have_C": true,
+    "minimum_C_survivors": 6754,
+    "maximum_C_survivors": 13587
+  },
+  "C_response_CEGAR": {
+    "core_sweep_regression_sha256": "51447a8e566113061c981ee00578889ec8cf07933006707455964a48f6d96fbf",
+    "all_49_tree_stream_sha256": "e571715d13fe110543557043ef9613335aaa54e60abe1d3e615cd02acaa8c48c",
+    "all_trees": 49,
+    "all_tree_nodes": 243,
+    "maximum_nodes_in_one_tree": 15,
+    "maximum_depth": 4,
+    "selected_policy_partition_sha256": "81d85f1a5e21959d5e062c6a26cc43dc77fc54fd5acb810444feece41736d78d",
+    "selected_source_leaf_policies": [
+      {
+        "source_A_actions": 1241,
+        "fixed_B_domain_index": 836,
+        "response_leaves": 5,
+        "tree_nodes": 9,
+        "maximum_depth": 3,
+        "largest_response_leaf": 525,
+        "tree_sha256": "677a6f2f68714d69070ea3b3748a8770276d030f692665a084678690d8a18308"
+      },
+      {
+        "source_A_actions": 206,
+        "fixed_B_domain_index": 8768,
+        "response_leaves": 1,
+        "tree_nodes": 1,
+        "maximum_depth": 0,
+        "largest_response_leaf": 206,
+        "tree_sha256": "2eb72a1c39f85c8504b8944c326b93d49178e8d1f310fbf13fcd117853bdaba8"
+      },
+      {
+        "source_A_actions": 188,
+        "fixed_B_domain_index": 2935,
+        "response_leaves": 1,
+        "tree_nodes": 1,
+        "maximum_depth": 0,
+        "largest_response_leaf": 188,
+        "tree_sha256": "05abeb100ef4b46064d9796ceba26f33e407ea65fb304990fa4c1f520edb41cd"
+      },
+      {
+        "source_A_actions": 362,
+        "fixed_B_domain_index": 8529,
+        "response_leaves": 3,
+        "tree_nodes": 5,
+        "maximum_depth": 2,
+        "largest_response_leaf": 140,
+        "tree_sha256": "2b81069e3a3e91418cc7f19d5bec02672e9947d5049e8c71310e82442e028ebf"
+      }
+    ],
+    "combined_response_leaves": 10,
+    "covered_A_actions": 1997,
+    "unresolved_A_actions": 0,
+    "exact_finite_policy_partition_available": true,
+    "future_state_congruence_or_GFP_proved": false,
+    "overlapping_probe_response_leaves": 8,
+    "overlapping_probe_policy_partition_sha256": "342d9d10c1f28ee636913c59aa97f28c825e358063217ea07458005d7bea2829"
+  },
+  "mixed_A_B_C_poison": {
+    "genuinely_incremental": true,
+    "maximizing_A_domain_index": 3198,
+    "maximizing_B_domain_index": 7819,
+    "incremental_atoms": 5,
+    "newly_killed_C_words": 2898
+  },
+  "validation": {
+    "full_global_C_backstops": 2,
+    "backstops_use_distinct_B": true,
+    "optimized_masks_equal_full_compute_poison": true,
+    "core_class_results_sha256": "df5f68ccf172774e942ba7b169d1bcf7f7391f507bced08cea03d01d0acdcb68"
+  },
+  "interpretation": {
+    "proved_finite_fact": "Every tested exact A,B history has a legal C; exact C-poison predicates refine the four coarse leaves into 10 fixed-B,fixed-C response leaves covering all 1,997 A actions.",
+    "obstruction": "The 1241-action and 362-action leaves have no fixed B,C pair, so the current coarse A-to-B response leaves are not closed third-ply states.",
+    "not_implied": "The 10 response leaves are not proved future-state congruences, bounded-state observables, an inductive invariant, or an unconditional infinite-walk theorem."
+  }
+}

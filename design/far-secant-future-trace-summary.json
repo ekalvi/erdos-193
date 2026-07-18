@@ -1,0 +1,80 @@
+{
+  "status": "exact finite realized-path L7-to-L8 sig_0/sig_1 trace; not a universal Post quotient, contraction lemma, availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/far_secant_future_trace.py run --output /tmp/far-secant-future-trace-canonical.json",
+    "raw_path": "/tmp/far-secant-future-trace-canonical.json",
+    "raw_bytes": 954668,
+    "raw_sha256": "611bf74be1d42bd15d311964603daa573f8ff39a0f3bcb9542f4063341919b87",
+    "checker_sha256": "6f286cb118166c1375eb777ec6e24bcdc58766b98538099c604eb97b5c3dd430",
+    "elapsed_seconds": 0.74,
+    "maximum_resident_bytes": 202010624,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "pinned_source": {
+    "deep_result_sha256": "7195c4d72a71c0b819da1c2d9ba16165ea2aa1c71ffdfd61ae980fc7975388ab",
+    "deep_checker_sha256": "cde329fafc79ec95ea0f3d8d8a060219af45633f6414f7f3fb8426fad4888be7"
+  },
+  "exact_scope": {
+    "tagged_endpoint_birth_level": 7,
+    "observation_level": 8,
+    "actual_L7_parent_states": 42,
+    "actual_L8_child_states": 146,
+    "address_semantics": "the contiguous realized ordered path and its actual parent and child connector choices; no independent address-stream product",
+    "alternate_connector_histories": false,
+    "endpoint_or_distance_cutoff": null,
+    "sig_2_available": false
+  },
+  "result": {
+    "direct_frontier_effectful_children": 12,
+    "full_endpoint_closure_effectful_children": 64,
+    "children_with_strict_join_residual": 61,
+    "unique_joined_partner_ids": 57,
+    "unique_current_L8_connector_partners": 24,
+    "partner_birth_level_histogram": {
+      "3": 1,
+      "4": 2,
+      "5": 2,
+      "6": 7,
+      "7": 21,
+      "8": 24
+    },
+    "endpoint_shell_transfer_edges": 235,
+    "archimedean_shell_delta_histogram": {
+      "0": 8,
+      "1": 202,
+      "2": 22,
+      "undefined_at_zero_vector": 3
+    }
+  },
+  "quotient_tests": {
+    "mode_step_direct_mask_without_actual_choice_noncongruent_classes": 24,
+    "mode_step_actual_choice_direct_mask_noncongruent_classes": 2,
+    "diagnostic_shell_actual_choice_direct_mask_noncongruent_classes": 0,
+    "diagnostic_shell_actual_choice_merged_classes": 1,
+    "exact_centered_actual_choice_classes": 146,
+    "exact_centered_actual_choice_singletons": 146,
+    "parent_shell_sig_1_classes": 42,
+    "parent_shell_sig_1_singletons": 42
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "the retained L7 parents are closed under exactly the child slots of their actually selected connector words",
+      "each sig_0 is the pinned exact tagged-endpoint killed-word mask and each sig_1 is its actual ordered one-generation trace",
+      "a direct endpoint/carried-line state, even with the actual connector word, is noncongruent in two concrete classes because it omits endpoint-to-other-point joins"
+    ],
+    "evidence_only": [
+      "the diagnostic shell projection is not refuted in its sole merged child class",
+      "most endpoint shell edges increase by one under the recorded affine transport"
+    ],
+    "not_proved": [
+      "a finite exact centered-state quotient, because all 146 literal child states and all 42 parent trace states are singletons",
+      "transition congruence under alternate legal connector choices",
+      "sig_2 stabilization or an age-at-least-two recurrence",
+      "a contraction or ranking inequality controlling the endpoint-to-other-point join closure",
+      "positive connector availability or an unconditional infinite walk"
+    ]
+  }
+}

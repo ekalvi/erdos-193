@@ -153,6 +153,14 @@ All machine-verified / exact (design/lemma/):
   a level-independent (cubic) crowding bound c_k(q,r) ≤ 1.1·g·(⌊2(r+4)/3⌋+1)³ for
   all k — proven, non-circular, finite-menu-certified over all 78,999,838 menu
   words. The walk **provably never densifies without limit.**
+- **Finite synchronized x-line core [full theorem].**  For an x-parallel line,
+  the exact integer lateral offset obeys `z' = B(z-c)` and its invariant norm
+  expands by three.  Every length-at-most-five connector prefix has norm at
+  most `C`, so `D=3C/2` is a phase-free forward-invariant barrier.  Every
+  candidate site lies inside it and the positive-definite norm leaves at most
+  1,681 integer offsets per corridor phase.  This proves finiteness of x-line
+  geometry only; singleton occupancy, new-line births, collision data, and
+  unrelated same-level cursor jumps remain open.
 - **Box-dimension d ≈ 1.10**, measured level-stable across levels 5–8.
 
 ### Routes explored and closed
@@ -217,9 +225,56 @@ only one connector per gap.
   exceedance.  The same audit refutes a fixed shell-4 cutoff at two L7 probes:
   new shell-5 atoms uniquely kill 56 and 9 words.  This is finite evidence, not
   a uniform horizon or transfer theorem.
+- Exact lineage enrichment shows that both shell-5 counterexamples are born at
+  L7, hence are age-zero source terms.  Their three endpoint images were then
+  checked against every one of the 92,731 recorded L8 pipeline prefixes and
+  all 124 effective connector domains.  The direct affine-image atoms never
+  recur, but the endpoints generate different poison atoms at 64 corridors,
+  including mixed secants reaching shell 6 and owner radius 882.  This is a
+  finite source-transport certificate, not an age-at-least-two tail theorem.
 - At the causal L7 bottleneck, pinned D/A/B choices leave 111 target words and
   every one retains at least 1,153 / 1,505 short words at the next-tile guard.
   This is one incoming state, not safety-game closure.
+- At one frozen 250,697-point L8 prefix, all 1,997 exact legal first actions
+  have replies.  Exact C-poison predicates give ten fixed-B/fixed-C response
+  leaves, and the same fourth word `[0,3,4]` works across all ten leaves at the
+  actual next stitch.  The per-history fourth-response floor is 1,601.  At the
+  immediately following fifth stitch, every history again survives; every
+  existing leaf has a common response, with a per-history floor of 6,995 and
+  no new predicate split.  This is an exact five-stitch finite policy
+  transition, not cross-prefix or cross-level closure.
+- The exact one-generation far trace retains 42 realized L7 parents, 146 L8
+  children, and every actual connector choice.  In 61 children the full mask
+  strictly exceeds the direct endpoint/carried-line mask.  A birth/shell replay
+  keeps 94 exact descriptor commitments, but only zero-poison child classes
+  repeat and all 42 enriched parent transitions are singletons.  This is a
+  finite falsifier for an underspecified frontier, not a finite quotient or
+  contraction theorem.
+- The exact L5--L8 x-parallel audit scans all 131,097 corridors per schedule
+  against 12,537,146 effective domain words.  Its selected-lineage closure has
+  35 zero-to-effect reactivations and 18 physical effect-key returns of periods
+  one through three; three period-three returns also repeat the recorded
+  action.  This refutes current-mask forgetting and a strict rank on the tested
+  effect/action key.  It is not a universal quotient, policy cycle, or tail
+  theorem.
+- The exact observed x-axis Bellman join puts only 47 of 11,154 strict-effect
+  nodes outside the noncontracting core.  Every one of 13,826 recorded
+  exterior-source transitions stays exterior with a certified factor-three
+  escape margin, but all 36 effect-key and all six effect/action return sources
+  lie in the core.  This validates the exterior theorem on the finite orbit
+  while leaving universal core promotion open.
+- Collapsing all 13,203 observed strict-or-latent core occurrences by exact
+  `(step, lateral offset)` gives 1,312 geometric states.  Their combined poison
+  and actual-action/slot carried successors are congruent on this trace.  The
+  artifact has no singleton occupancy or new-line births and covers only 2,882
+  observed step/action pairs, so this is a candidate promotion coordinate, not
+  a universal automaton.
+- The selected-horizon L9 age-two audit follows the actual `42 -> 146 -> 488`
+  tagged lineage against every L9 anchor and finds 58 nonzero states.  Anchor
+  joins dominate the direct poison and partners born at L6, L7, and L8 all
+  contribute.  Every nonzero state is a singleton under the finest tested
+  observed refinements, so this refutes age-two inertness without proving a
+  finite transition quotient.  Current L9 connector interiors are omitted.
 - Purer-thread trend: bigger-twist matrices drive d monotonically toward 1.0
   (1.071 → 1.035 for m = 3…6), confirming the thread picture.
 
@@ -249,6 +304,14 @@ to exhaustive certificates.
 | Exact inherited-tile witness/horizon audit | `design/inherited_tile_lifetime.py`, `design/inherited-tile-lifetime-summary.json` |
 | Four-sentinel literal transition test | `design/pipeline_transition_stabilization.py`, `design/pipeline-transition-stabilization-summary.json` |
 | Causal L7 target-to-guard macrotransition | `design/l7_pipeline_macrotransition.py`, `design/l7-pipeline-macrotransition-summary.json` |
+| Exact shell-5 endpoint lineage and all-domain L8 source closure | `design/deep_incidence_lineage.py`, `design/deep-incidence-lineage-summary.json` |
+| Exact frozen-L8 A-B-C-D-E response transition | `design/l8_immediate_action_cegar.py`, `design/l8_third_ply_closure.py`, `design/l8_fourth_ply_transition.py`, `design/l8_fifth_ply_transition.py` and their compact summaries |
+| Exact realized far-frontier and birth/shell traces | `design/far_secant_future_trace.py`, `design/far_secant_birth_shell_trace.py` and their compact summaries |
+| Exact x-parallel latent-line and recurrence audit | `design/x_axis_far_secant_resonance.py`, `design/x-axis-far-secant-resonance-summary.json` |
+| Exact observed x-axis Bellman barrier and realized-node join | `design/x_axis_bellman_barrier.py`, `design/x_axis_barrier_node_join.py` and their compact summaries |
+| Exact observed x-axis core-promotion collapse | `design/x_axis_core_promotion_probe.py`, `design/x-axis-core-promotion-probe-summary.json` |
+| Exact selected-horizon L9 age-two poison and stabilization audit | `design/l9_anchor_age2_precursor.py`, `design/l9_anchor_age2_positive_mask_verifier.py`, `design/l9_age2_transition_stabilization.py` and their compact summaries |
+| Far-secant frontier algebra and safety-game obligations | `design/FAR-SECANT-RANK-LEMMA.md` |
 | Dimension / regularity measurements | `design/lemma/dim/`, `design/tight/` |
 
 ## Honest summary
@@ -295,7 +358,27 @@ tested L7 state and yields an exact 1,153-word target-to-guard floor.  Across
 18 L5–L8 probes, the all-atom owner horizon learned on L5–L6 survives validation
 and holdout, but a new shell-5 effect and completely novel literal L7/L8
 transition codes show that neither fixed shell truncation nor exact-state reuse
-has closed.  The plausible remaining route needs an exact current/age-one state
-plus a typed deep endpoint/secant frontier with a proved common contraction or
-strict arithmetic rank.  Numerical confidence
+has closed.  Following the two shell-5 witnesses confirms the sharper failure:
+their direct atoms disappear at L8, yet their endpoints switch roles and create
+156 atom occurrences on 64 recorded corridors (channel memberships overlap),
+with one source-only mask killing 131,472 of 501,044 words.  Thus a vanished
+poison mask cannot be discarded; the noncontracting state must retain endpoint
+and secant frontiers and close them under mixed-pair generation.  The exact
+future trace sharpens this: a direct state is noncongruent even with the actual
+connector choice, while the enriched birth/shell state has no repeated nonzero
+child or parent transition from which to infer stabilization.  The plausible
+remaining route also has a concrete resonance obstruction: the exact
+x-parallel graph contains latent reactivation and short returns even after the
+effect mask and, in three physical cases, the selected action repeat.  Those
+returns demand a finer lineage phase, exact promotion, or a non-strict
+contraction; they are not evidence for an infinite policy cycle.  The plausible
+exterior Bellman rank is exact on every observed exterior transition, but
+11,107 / 11,154 actual effect nodes and every observed return source are in its
+core.  The first L9 continuation also falsifies age-two inertness and finds no
+repeated effectful refined state.  The route therefore needs a finite universal
+promotion or other control of the bounded core.  The observed 1,312-state
+geometric collapse is promising but lacks full-domain actions, singleton
+occupancy, and line-birth closure.  The route also needs a full current-L9
+connector closure, before a typed residual contraction can support
+availability.  Numerical confidence
 percentages are opinions and are not part of the mathematical result.

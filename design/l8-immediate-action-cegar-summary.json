@@ -1,0 +1,108 @@
+{
+  "status": "exact finite two-stitch action/response certificate on one recorded L8 causal prefix; not a greatest fixed point",
+  "canonical_run": {
+    "local_raw_artifact": "/tmp/l8-immediate-action-cegar-hardened-canonical.json",
+    "raw_bytes": 1445421,
+    "raw_sha256": "32b1518bf7ad1a80448720198932799e5e3a7aa689b3e7833c0460ce24e3b828",
+    "checker": "design/l8_immediate_action_cegar.py",
+    "checker_sha256": "a77df39c7d91f6f12cb7adb769ebc86db62bf798e76cb14c2aa4d3647cbed339",
+    "elapsed_seconds": 357.278,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "frozen_prefix": {
+    "points": 250697,
+    "point_set_sha256": "7ba05e8ced59f2fb341e2ab1487d6a6aab34123fa7b982f53ea84879d2382aae"
+  },
+  "availability": {
+    "legal_A_actions": 1997,
+    "A_actions_with_no_B_response": 0,
+    "minimum_B_survivors": 2282,
+    "maximum_B_survivors": 4866,
+    "recorded_A_B_survivors": 3499,
+    "universal_common_B_responses": 0,
+    "largest_single_B_response_class_actions": 1977,
+    "largest_single_B_response": 8765
+  },
+  "compression": {
+    "B_atom_mask_classes": 1949,
+    "B_killed_word_mask_classes": 1949,
+    "inclusion_maximal_killed_masks": 1704,
+    "inclusion_minimal_killed_masks": 1058,
+    "cegar_nodes": 7,
+    "B_response_compatible_leaves": 4,
+    "unresolved_leaves": 0
+  },
+  "third_ply_interface": {
+    "sha256": "c31864a8fa4bbd1214cd21a8bda1075d80ef96c12077711855746da9ec1edcdd",
+    "status": "C_unchecked",
+    "quantifier_order": "exists_B_exists_C_forall_A",
+    "covers_all_legal_A_exactly_once": true,
+    "leaves": [
+      {
+        "cegar_node_id": 1,
+        "A_actions": 1241,
+        "common_B_domain_indices": [836, 839, 850, 855]
+      },
+      {
+        "cegar_node_id": 4,
+        "A_actions": 206,
+        "common_B_domain_indices": [8768]
+      },
+      {
+        "cegar_node_id": 5,
+        "A_actions": 188,
+        "common_B_domain_indices": [2935, 8747, 8784, 8844, 8848, 8986]
+      },
+      {
+        "cegar_node_id": 6,
+        "A_actions": 362,
+        "common_B_domain_indices": [
+          7689,
+          7691,
+          7698,
+          7701,
+          7703,
+          7705,
+          7745,
+          7752,
+          7754,
+          7765,
+          7811,
+          7812,
+          7819,
+          7821,
+          7836,
+          8529,
+          8531,
+          8539,
+          8542,
+          8543,
+          8545,
+          8585,
+          8591,
+          8593,
+          8595,
+          8599,
+          8605,
+          8652,
+          8653,
+          8676,
+          8728,
+          8734,
+          8760,
+          8761,
+          8768,
+          8770,
+          8777
+        ]
+      }
+    ],
+    "selected_overlapping_probe": {
+      "A_actions": 1977,
+      "fixed_B_domain_index": 8765
+    }
+  },
+  "scope_warning": "This is an exact finite certificate for one frozen incoming prefix and two consecutive stitches. It is neither an availability theorem for all histories nor a greatest-fixed-point proof."
+}

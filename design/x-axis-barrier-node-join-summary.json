@@ -1,0 +1,77 @@
+{
+  "status": "exact finite realized-node join to the pinned observed/coarse x-axis Bellman barrier; not a universal transition quotient, tail lemma, availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_axis_barrier_node_join.py run --output /tmp/x-axis-barrier-node-join-canonical.json",
+    "raw_path": "/tmp/x-axis-barrier-node-join-canonical.json",
+    "raw_bytes": 35095,
+    "raw_sha256": "ed7d4758f47a335fe0b27b865ba5fc9224604d318c2fcf1d66ad0ab85c238e22",
+    "checker_sha256": "5a81350a86ec42f985f8d8bc8f9aa0c3c802f5d1d7b287ef26451cabbc71d84c",
+    "elapsed_seconds": 7.529,
+    "maximum_resident_bytes": 560680960,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "byte_identical_repeat": true
+  },
+  "pinned_inputs": {
+    "x_axis_raw_sha256": "0ebbfd97194fce4453269ad1c01eb1281e9d3a5aa526f1f036e409b82ad36cc1",
+    "x_axis_checker_sha256": "7a0ea121ad91fa578026225a0c892eabf564c7250d9f3acb1a6ba7bbd162dd4c",
+    "barrier_raw_sha256": "f0a30cd341548539b9e0e3ecaa7cad57727e052f873f91649c0102c00c4262a9",
+    "barrier_checker_sha256": "c9cd69eb345c4bfab9355570fffe5b05a809b9e64ad05d243e0aaaac39fa5582"
+  },
+  "barrier_step_census": {
+    "H_at_most_D": 77,
+    "H_greater_than_D": 47,
+    "H_greater_than_D_nonterminal": 41,
+    "H_greater_than_D_observed_terminal": 6,
+    "observed_terminal_steps_with_D_zero_by_convention": [57, 65, 67, 80, 81, 86]
+  },
+  "realized_node_census": {
+    "strict_effect_nodes": 11154,
+    "strict_core": 11107,
+    "strict_exterior": 47,
+    "latent_zero_effect_nodes": 24066,
+    "latent_core": 2096,
+    "latent_exterior": 21970,
+    "unresolved_interval_overlaps": 0,
+    "terminal_vacuous_strict_core": 8,
+    "terminal_vacuous_strict_exterior": 15,
+    "terminal_vacuous_latent_exterior": 22
+  },
+  "transition_result": {
+    "recorded_transitions": 27103,
+    "core_to_core": 5129,
+    "core_to_exterior": 8148,
+    "exterior_to_exterior": 13826,
+    "exterior_to_core_or_unresolved": 0,
+    "distinct_exterior_source_nodes_with_a_transition": 4139,
+    "exact_lateral_recurrence_failures": 0,
+    "negative_delta_expansion_lower_bounds": 0,
+    "minimum_certified_delta_target_minus_three_delta_source_lower_bound": {
+      "numerator": 376053264847381826695274826349389718998512040907806840015051419,
+      "denominator": 42391158275216203514294433201000000000000000000000000000000000000,
+      "decimal_lower_bound": "0.008871030661769"
+    },
+    "terminal_vacuous_exterior_source_transitions": 0
+  },
+  "return_result": {
+    "exact_effect_key_return_sources": 36,
+    "effect_key_return_sources_in_core": 36,
+    "effect_and_selected_action_return_sources": 6,
+    "effect_and_selected_action_return_sources_in_core": 6,
+    "interpretation": "Every finite realized return source lies in the noncontracting observed Bellman core. No transition-congruent policy cycle or universal recurrence follows."
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "all 35220 pinned lineage nodes are separated from their step's outward D interval with no unresolved overlap",
+      "all 13826 recorded transitions from certified exterior nodes satisfy the exact lateral recurrence and a strictly positive outward interval for delta_target - 3 delta_source",
+      "all 36 exact effect-key return sources and all six selected-action-return sources lie in the observed Bellman core"
+    ],
+    "not_proved": [
+      "that the observed step-only graph is a universal Post relation or transition congruence",
+      "that observed-terminal steps have no unobserved successors",
+      "a finite promoted core, uniform residual rank, non-x channel bound, endpoint-on-candidate-line bound, join closure, positive connector availability, or an unconditional theorem"
+    ]
+  }
+}

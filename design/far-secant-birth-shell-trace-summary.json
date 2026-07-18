@@ -1,0 +1,82 @@
+{
+  "status": "exact finite realized-path birth/shell mask-expression and one-generation transition experiment; not a contraction, Post quotient, availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/far_secant_birth_shell_trace.py run --output /tmp/far-secant-birth-shell-trace-canonical.json",
+    "raw_path": "/tmp/far-secant-birth-shell-trace-canonical.json",
+    "raw_bytes": 652686,
+    "raw_sha256": "5c525ef4cc0c77ed96a2f67238e785d0382ead806f96479854a691498de99488",
+    "checker_sha256": "dd35f8ac5459d6df05d8b960f82b709f69380268ed144ac5c0e6789d178c35b9",
+    "future_trace_checker_sha256": "6f286cb118166c1375eb777ec6e24bcdc58766b98538099c604eb97b5c3dd430",
+    "deep_result_sha256": "7195c4d72a71c0b819da1c2d9ba16165ea2aa1c71ffdfd61ae980fc7975388ab",
+    "elapsed_seconds": 0.77,
+    "maximum_resident_bytes": 212586496,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "byte_identical_repeat": true
+  },
+  "core_census": {
+    "parent_states": 42,
+    "child_states": 146,
+    "effect_records": 64,
+    "strict_join_residual_states": 61,
+    "correlated_descriptor_terms": 94,
+    "unique_correlated_descriptors": 32,
+    "inherited_descriptor_terms": 53,
+    "current_descriptor_terms": 29,
+    "direct_descriptor_terms": 12,
+    "records_with_inherited_partner_terms": 43,
+    "records_with_current_partner_terms": 28,
+    "records_with_both_partner_ages": 10
+  },
+  "exact_information": {
+    "aggregate_mask_commitments": [
+      "full tagged-endpoint closure",
+      "direct transport",
+      "tagged-other partner total",
+      "direct-only remainder after partner-first priority"
+    ],
+    "symbolic_mask_commitments": [
+      "inherited-partner birth/shell monotone OR expression",
+      "current-level-partner birth/shell monotone OR expression"
+    ],
+    "not_available_without_connector_domain_rescan": [
+      "aggregate inherited-only bitset/hash and union cardinality when multiple descriptor terms occur",
+      "aggregate current-level-only bitset/hash and union cardinality when multiple descriptor terms occur",
+      "a disjoint inherited-versus-current killed-word partition"
+    ]
+  },
+  "child_quotient_result": {
+    "nodes": 146,
+    "classes_for_each_of_exact_terms_counts_and_presence_keys": 137,
+    "merged_classes": 6,
+    "merged_classes_with_nonzero_full_poison": 0,
+    "noncongruent_classes": 0,
+    "interpretation": "The only repeated child keys are zero-poison states. No repeated nonzero state exists, so finite non-falsification supplies no substantive stabilization evidence."
+  },
+  "parent_transition_result": {
+    "nodes": 42,
+    "enriched_classes": 42,
+    "enriched_merged_classes": 0,
+    "diagnostic_mode_step_parent_choice_classes": 40,
+    "diagnostic_merged_classes": 2,
+    "diagnostic_noncongruent_classes": 2,
+    "interpretation": "The parent projection that omits child poison states and child connector choices is refuted twice. Every enriched ordered parent state is a singleton, so sig_1 transition stabilization remains untested."
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "the pinned 42-parent/146-child realized trace admits an exact full/direct/partner-total/direct-only mask identity",
+      "the stored correlated descriptors give an exact symbolic inherited/current birth-shell cover without adding overlapping word counts",
+      "a parent state omitting its ordered child poison and choice trace is noncongruent in two observed classes"
+    ],
+    "not_proved": [
+      "a repeated nonzero birth/shell state",
+      "a repeated enriched parent transition state",
+      "sig_2 or age-at-least-two stabilization",
+      "a contracting shell transfer operator",
+      "positive connector availability or an unconditional infinite walk"
+    ],
+    "next_data_obligation": "Obtain an L9 selected construction and exact prefix-aware endpoint-to-other-point closure, or rescan connector domains while retaining raw inherited/current component bitsets, before testing a genuine second-generation transfer or contraction inequality."
+  }
+}

@@ -1,0 +1,109 @@
+{
+  "schema": "x-axis-bellman-barrier-summary/v1",
+  "status": "finite observed x-parallel Bellman-barrier and realized-node escape certificate; not a universal tail lemma, availability bound, safety fixed point, or unconditional theorem",
+  "date": "2026-07-18",
+  "source_certificates": {
+    "bellman_canonical": {
+      "path": "/tmp/x-axis-bellman-barrier-canonical.json",
+      "bytes": 2716023,
+      "sha256": "f0a30cd341548539b9e0e3ecaa7cad57727e052f873f91649c0102c00c4262a9",
+      "checker_path": "design/x_axis_bellman_barrier.py",
+      "checker_sha256": "c9cd69eb345c4bfab9355570fffe5b05a809b9e64ad05d243e0aaaac39fa5582",
+      "pinned_x_axis_artifact_sha256": "0ebbfd97194fce4453269ad1c01eb1281e9d3a5aa526f1f036e409b82ad36cc1"
+    },
+    "realized_node_join_summary": {
+      "path": "design/x-axis-barrier-node-join-summary.json",
+      "bytes": 3948,
+      "sha256": "6897a0d5b7c4036eb0bb908e5381ebdb8e860f57fcd70c429d34b9ff0c537638",
+      "canonical_path": "/tmp/x-axis-barrier-node-join-canonical.json",
+      "canonical_bytes": 35095,
+      "canonical_sha256": "ed7d4758f47a335fe0b27b865ba5fc9224604d318c2fcf1d66ad0ab85c238e22",
+      "checker_path": "design/x_axis_barrier_node_join.py",
+      "checker_sha256": "5a81350a86ec42f985f8d8bc8f9aa0c3c802f5d1d7b287ef26451cabbc71d84c"
+    }
+  },
+  "finite_observed_scope": {
+    "data": "one pinned realized L5-L8 closed-lineage graph",
+    "levels": [5, 6, 7, 8],
+    "stitch_orders": ["gate", "pipeline"],
+    "secant_channel": "x-parallel old--old--new candidate-site secants",
+    "graph_semantics": "step-only arbitrary-switching over exact edges observed in the pinned realized graph; this is an overapproximation of those finite records, not a universal Post relation",
+    "effective_step_types": 124,
+    "effective_domain_words": 12537146,
+    "exact_phase_classes": 12781,
+    "recorded_selected_child_transitions": 27103,
+    "coarse_unique_edges": 3944,
+    "source_step_types_with_observed_outgoing_edges": 118,
+    "observed_terminal_step_types_assigned_D_zero_by_convention": [57, 65, 67, 80, 81, 86]
+  },
+  "finite_observed_bellman_certificate": {
+    "exact_transport": "z_target = B (z_source - c_e), with B=[[0,-3],[3,-1]]",
+    "metric_squared": "(36*y^2-12*y*z+36*z^2)/35",
+    "verified_identity": "B^T S B = 9 S",
+    "threshold_definition": "H_s is the maximum S-norm of an interior candidate site over the reconstructed effective connector domain for step s",
+    "barrier_definition": "D_s=max over observed coarse edges e:s->t of (||c_e||_S+D_t/3); an empty observed maximum is assigned zero",
+    "arithmetic": "exact rational squared norms and outward rational square-root/fixed-point intervals",
+    "fixed_point_iterations": 62,
+    "maximum_final_interval_width": {
+      "numerator": 14242793299426822894738943954043437,
+      "denominator": 423911582752162035142944332010000000000000000000000000000000000
+    },
+    "step_classification": {
+      "proved_H_s_at_most_D_s_on_observed_graph": 77,
+      "proved_H_s_greater_than_D_s_on_observed_graph": 47,
+      "H_s_greater_than_D_s_nonterminal": 41,
+      "H_s_greater_than_D_s_observed_terminal_D_zero_by_convention": 6
+    },
+    "interpretation": "H_s>D_s only identifies a potential x-parallel effectful exterior for this observed graph; it does not assert that an old secant realizes that exterior. H_s<=D_s only places the candidate-site effect region in this observed Bellman core."
+  },
+  "finite_observed_realized_node_join": {
+    "classification_rule": "core if exact h^2<=D_lower^2; exterior if exact h^2>D_upper^2; interval overlap would be unresolved",
+    "node_census": {
+      "strict_effect": {"total": 11154, "core": 11107, "exterior": 47},
+      "latent_zero_effect": {"total": 24066, "core": 2096, "exterior": 21970},
+      "combined": {"total": 35220, "core": 13203, "exterior": 22017, "unresolved": 0},
+      "terminal_vacuous_subsets": {"core": 8, "exterior": 37, "total": 45}
+    },
+    "transition_census": {
+      "total": 27103,
+      "core_to_core": 5129,
+      "core_to_exterior": 8148,
+      "exterior_to_exterior": 13826,
+      "exterior_to_core_or_unresolved": 0,
+      "distinct_exterior_source_nodes_with_transition": 4139,
+      "exact_lateral_recurrence_failures": 0,
+      "negative_delta_expansion_lower_bounds": 0,
+      "terminal_vacuous_exterior_source_transitions": 0,
+      "minimum_certified_lower_bound_for_delta_target_minus_3_delta_source": {
+        "numerator": 376053264847381826695274826349389718998512040907806840015051419,
+        "denominator": 42391158275216203514294433201000000000000000000000000000000000000,
+        "decimal_lower_bound": "0.008871030661769"
+      }
+    },
+    "return_census": {
+      "exact_effect_key_return_sources": 36,
+      "effect_key_return_sources_in_core": 36,
+      "effect_and_selected_action_return_sources": 6,
+      "effect_and_selected_action_return_sources_in_core": 6
+    }
+  },
+  "finite_observed_claims_verified": [
+    "all 124 effective domains match the pinned word and candidate-site metadata in the authoritative reconstruction order",
+    "all reported signs of H_s-D_s follow from disjoint outward rational intervals on the finite observed coarse graph",
+    "all 35220 pinned strict or latent lineage nodes are separated from their step barrier interval with no unresolved overlap",
+    "all 13826 recorded transitions from certified exterior nodes obey the exact lateral recurrence and have a strictly positive certified lower bound for delta_target-3*delta_source",
+    "all 36 finite exact effect-key return sources and all six finite effect-and-selected-action return sources lie in the observed Bellman core"
+  ],
+  "universal_status": {
+    "unconditional_theorem_proved": false,
+    "claims_not_established": [
+      "that the observed step-only graph is a universal Post relation or a transition-congruent quotient",
+      "that the six observed-terminal step types have no successors in alternate histories or at L9 and later",
+      "that the potential exterior annulus contains a realized old secant",
+      "control of non-x directions, endpoint-on-candidate-line poisoning, near-deep joins, deep-deep births, or Boolean unions of poison channels",
+      "a finite promoted core, a uniform residual rank, positive connector availability, or a greatest-fixed-point safety strategy"
+    ],
+    "remaining_far_secant_requirement": "Construct a sound history-independent state or a contraction/ranking argument whose universal successor relation covers alternate connector choices and later levels, includes all secant-birth and join channels, and proves that every reachable core state retains at least one legal connector.",
+    "referee_conclusion": "The pinned computation proves an exterior escape inequality only for the recorded x-parallel transitions. It isolates the observed Bellman core as the unresolved region; it does not close that core or convert finite path evidence into a universal availability theorem."
+  }
+}
