@@ -35,10 +35,12 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 | Exact common-potential action falsifier | the old height-two region has only 601 words in total and eight for the repeated step-20 corridor; its exact correlated `8 x 8` two-stitch response matrix is empty at the second L5 stitch |
 | Exact lattice-`T` action census | 8,367,038 zero-envelope and 10,252,458 ordered-envelope words give acyclic arbitrary-switching unions for contiguous direction-blind candidate chains; they do not control silent re-entry, cursor imports, line births, or global poison |
 | Strict zero-`T`, no-new-yz L5 construction | exact independent terminal certificate: all 2,457 first-survivor choices and the complete 8,268-point natural-order chain are verified; this is one finite orbit, not an all-level availability theorem |
-| Primary strict zero-`T`, no-new-yz L6 | all 8,267 first-survivor choices and 28,665 points constructed; independent firstness replay is complete, while the natural-order audit is paused at point 8,233 / 28,665 with no failure |
+| Primary strict zero-`T`, no-new-yz L6 | exact terminal finite certificate: all 8,267 first-survivor choices and the complete 28,665-point ordered chain verified, including all 410,826,780 terminal pairs |
 | Independently audited two-cone guarded L5 | all 2,457 stitches and 34,407,660 terminal pairs checked; 4,211 guard rejections reproduced, zero connector-born guarded-cone secants, and zero triples; two cones and one finite orbit only |
-| Two-cone guarded L6 continuation | 6,348 / 8,267 stitches completed without obstruction from the ordinary audited L5 base; paused with a separate fail-closed auditor prepared |
+| Independently audited two-cone guarded L6 | all 8,267 stitches and 414,014,700 terminal pairs checked; 17,087 guard rejections reproduced, zero new guarded-cone secants, and zero triples; it starts from ordinary primary L5, so this is not a consecutive guarded-L5-to-L6 induction |
 | Exact short-return affine holonomy | 746,496 correlated `8 -> 16 -> 8` role pairs give 3,136 maps, 2,094 fixed points, and 47,942 additional abstract guard polynomials; reachability, secant birth, and availability remain unproved |
+| Exact primary-L5 role-first birth census | all 34,175,778 pairs partitioned into 65 sealed chunks; 4,597 matched births yield only three actual initial-phase connector effects and kill no recorded selected word; compact merger does not independently recompute domain membership |
+| Exact carried-ghost depth-0/1 probe | 48,237,501 tagged token occurrences checked with no distance cutoff: 97 act immediately, 15 first act one level later, and 48,237,389 remain silent; full correlated states are all singleton, so this is not stabilization or a tail lemma |
 | Two-spectrum birth exclusion | refuted at the seed: anchor pair 30/33 already has `J=11/3`, so a direction-only ban on `{11/3,348/275}` cannot be imposed without exact inherited-line promotion |
 | Exact short-connector closure | all 552 legal length-2 and 56,516 legal length-3 words have empty greatest fixed point after nine pruning rounds; every recurrent closed policy must use length 4 or 5, while mixed-length Perron growth exactly 3 remains open |
 | Exact latent non-x re-entry | under the same fixed actions, an explicit family of integer lattice lines has zero full candidate mask for arbitrarily many `8 -> 16 -> 8` cycles and then reappears; no reachable placed-point birth is proved |
@@ -177,13 +179,15 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/lattice_t_projective_spectrum_census.py`, `design/lattice_t_projective_spectrum_diagnostic.py` | Exact seed refutation and complete 34,175,778-pair cone/ray/Pluecker diagnostic |
 | `design/generic_ghost_transfer_census.py` | Exact whole-word role branching and finite lattice-`T` transfer census (`generic-ghost-transfer-census-summary.json`) |
 | `design/lattice_t_l5_cone_guard_audit.py` | Independent exact guarded-L5 firstness and all-pairs certificate (`lattice-T-L5-cone-guard-audit-summary.json`) |
-| `design/lattice_t_l6_continuation.py`, `design/lattice_t_l6_audit.py` | Resumable primary chronological L6 constructor and independently pinned terminal auditor |
-| `design/lattice_t_l6_cone_birth_guard.py`, `design/lattice_t_l6_cone_guard_audit.py` | Separate no-new-two-cone L6 selector and fail-closed independent auditor |
+| `design/lattice_t_l6_continuation.py`, `design/lattice_t_l6_audit.py` | Primary chronological L6 constructor and completed independent terminal auditor |
+| `design/lattice_t_l6_cone_birth_guard.py`, `design/lattice_t_l6_cone_guard_audit.py` | Separate no-new-two-cone L6 selector and completed fail-closed audit (`lattice-T-L6-cone-guard-audit-summary.json`) |
 | `design/lattice_t_short_return_holonomy.py` | Exact correlated short-return affine/guard census (`lattice-T-short-return-holonomy-zero-8-16-summary.json`) |
-| `design/lattice_t_role_first_holonomy_reachability.py` | Fail-closed actual-lineage role/Pluecker reachability filter, pending terminal L6 pins |
-| `design/lattice_t_birth_shell_transition_v2.py` | Reviewed five-corridor chronological raw-mask census, pending terminal L6 pins |
-| `design/ordered_path_matched_transition_experiment.py` | Poison-blind matched-state and exact source/successor experiment, prepared but unrun |
-| `design/PAUSE-STATE-2026-07-18.md` | Exact paused checkpoints, hashes, scope, and resume gates |
+| `design/lattice_t_role_first_holonomy_reachability.py`, `design/lattice_t_role_first_l5_range_merge.py` | Complete 65-chunk primary-L5 role/Pluecker census and compact integrity merge (`lattice-T-role-first-L5-merged-summary.json`) |
+| `design/lattice_t_birth_shell_transition_v2.py` | Reviewed five-corridor chronological raw-mask census; terminal L6 pins are available, but this census has not been run |
+| `design/ordered_path_matched_transition_experiment.py`, `design/ordered_path_near_state_ablation.py` | Exact matched-state phase-A census (literal classes all singleton) and reviewed poison-blind near-state ablation checker; the ablation census has not been run |
+| `design/correlated_ghost_depth_probe.py` | Exact three-endpoint depth-0/1 carried-token census (`correlated-ghost-depth-probe-summary.json`) |
+| `design/POLICY-WEIGHTED-CONTACT-LYAPUNOV.md` | Deterministic fractional Bellman extraction theorem and the still-missing reachable-contact-zeta obligations |
+| `design/PAUSE-STATE-2026-07-18.md` | Historical checkpoint hashes and resume gates from before the completed L6 audits |
 | `design/lattice_t_birth_shell_mask_experiment.py` | Exact finite external-geometric L5/induced-L6 owner-frame shell census (`lattice-T-L5-L6-birth-shell-mask-summary.json`); not chronological L6 transfer |
 | `design/exact_length3_gfp.py` | Independent forward/reverse exact GFP certificate for length 3 and for lengths 2-or-3 (`exact-length3-gfp-summary.json`) |
 | `design/nonx_latent_reentry_certificate.py` | Exact all-depth zero-mask/re-entry obstruction to the common-potential core (`nonx-latent-reentry-certificate-summary.json`) |
@@ -466,16 +470,17 @@ scan uses every endpoint and overlap-aware unions.  It is not yet a transfer
 test: those L6 frames omit prior chronological L6 interiors, recursive birth
 levels are collapsed, policy masks are not intersected, and only mask hashes
 and counts are sealed.  The terminal result is therefore an exact finite
-owner-frame census, while a chronological raw-mask v2 waits on the terminal
-L6 audit.
+owner-frame census.  The terminal primary-L6 pins now exist, so the
+chronological raw-mask v2 is unblocked but remains unrun at this pause.
 
 A finite all-poisoned state would be trivially sound, so the real open
 requirement is an availability-grade quotient fine enough to leave a connector
-in a safety greatest fixed point.  The immediate technical target is now to
-finish the independent audits of the constrained constructions and turn the
-lattice-`T` action census into a successor-closed selector, while preserving
-the exact birth and cursor-import channels.  A full current-L9 connector
-closure and an exact cursor-import relation remain necessary.  A
+in a safety greatest fixed point.  The independent primary and guarded L6
+audits are now complete.  The next technical target is the reviewed near-state
+ablation census, followed by a poison-aware successor test, while preserving
+the exact birth and cursor-import channels.  Neither has been started at this
+pause.  A full current-L9 connector closure and an exact cursor-import relation
+remain necessary.  A
 componentwise-maximal occupancy
 antichain is exact for uniform x-channel availability, but its correlated
 cursor transfer has not yet been proved finite.
@@ -487,6 +492,15 @@ line hit—persists exactly, with full Boolean poison weight.  Therefore a sound
 tail operator must promote or rule out every recurrent zero-incidence class
 and make the remaining Boolean transfer nilpotent; a scalar decay fit to the
 observed fatal-mass profile is evidence, not a proof.
+
+A deterministic extraction step is now rigorous.  For a frozen reference
+distribution on connector words, if one proves a uniform bad-mass bound and a
+worst-successor potential inequality with
+`rho+n+R+b/R < 1`, a common legal word returns every represented successor to
+the barrier.  This fractional Bellman lemma does not supply its own hypotheses.
+The missing analytic theorem is a correlation-preserving reachable-contact
+zeta that includes births, silent zero-mask returns, current joins, and cursor
+imports; the exact all-descendant kernel by itself is noncontracting.
 
 The product candidate `P_n=(W_n,W_{2n},W_{5n})` in `Z^9` is only a
 higher-dimensional test bed; no collinearity-faithful integer projection is
@@ -514,8 +528,12 @@ auditor reproduced all 4,211 guard rejections and scanned all 34,407,660 final
 pairs.  Exactly 246 guarded-cone pairs remain, all inherited anchor--anchor
 pairs.  This validates the grandfathering mechanism for those two cones, but
 not their exhaustiveness or uniform connector availability.  A separate
-guarded L6 continuation from the ordinary primary L5 base is paused at
-6,348 / 8,267 stitches without a jam.
+guarded L6 continuation from the ordinary primary L5 base also completed all
+8,267 stitches.  Its independent auditor reproduced 17,087 guard rejections
+and scanned all 414,014,700 pairs of the 28,776-point chain, finding no triple
+and no newly created secant in either cone.  Because that base is not the
+guarded-L5 output, this is another finite orbit certificate, not a consecutive
+guarded-L5-to-guarded-L6 induction.
 
 The reason two cones cannot be advertised as the far theorem is now exact.
 The correlated strict-zero `8 -> 16 -> 8` holonomy census contains 3,136
@@ -524,8 +542,23 @@ guard polynomials outside the four previously named classes.  Those extra
 polynomials are algebraic candidates, not proved chronological secants.  The
 next filter therefore retains actual selected words, slots, child gaps,
 endpoint births, Pluecker moments, and raw killed-word masks before declaring
-any one reachable.  The exact paused state and hashes are recorded in
-`design/PAUSE-STATE-2026-07-18.md`.
+any one reachable.  The completed primary-L5 role-first partition scans all
+34,175,778 pairs in 65 sealed chunks and finds 4,597 matched births.  Only
+three have a connector effect in the tested role, all at the initial phase;
+none kills the recorded selected word.  This is a finite selected-history
+filter, and its compact merger deliberately does not recompute killed-word
+membership from the 1.8-GiB connector domains.
+
+The correlated carried-ghost follow-up then scans 48,237,501 exact tagged
+endpoint/partner occurrences across 146 L8 states and 488 actual L9 children.
+Exactly 97 tokens act at depth zero, 15 first reveal at depth one, and
+48,237,389 remain silent through depth one.  Exact physical Pluecker data
+repairs the known 3,998-versus-zero mask witness, but its three repeated mask
+classes still have different coordinate-correlated successors.  Retaining
+both endpoint coordinates removes those disagreements only by making every
+class singleton.  Thus this large finite panel supports neither a finite
+quotient nor a contracting tail; it sharpens the variable that a future
+symbolic/ranked state must retain.
 
 ## Background
 

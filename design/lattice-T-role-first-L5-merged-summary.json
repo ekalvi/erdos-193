@@ -1,0 +1,89 @@
+{
+  "date": "2026-07-19",
+  "merger": {
+    "path": "design/lattice_t_role_first_l5_range_merge.py",
+    "sha256": "f1cf1c292cb00cb1052467ff17772e4e0bd9ee47a48ddcb71eac3ace89024d99",
+    "unchanged_during_run": true
+  },
+  "not_proved": [
+    "an independent second scan of all secant pairs by the compact merger",
+    "candidate-hit-site completeness or killed-word membership recomputed from connector domains; those semantics remain pinned to the frozen source checker and sealed chunks",
+    "coverage of the separately preregistered primary-L6 endpoint partition",
+    "repeatability, a closed far-secant state, contraction or ranking, positive connector availability, a safety greatest fixed point, or an unconditional theorem"
+  ],
+  "partition": {
+    "birth_layer": "primary L5",
+    "chunks": 65,
+    "contiguous_later_endpoint_id_range": [
+      1,
+      8268
+    ],
+    "endpoint_distance_cutoff": null,
+    "spatial_distance_cutoff": null,
+    "unordered_pairs_covered": 34175778
+  },
+  "result": {
+    "birth_classification": {
+      "inherited-base-base": 1527,
+      "old-new": 2960,
+      "same-word-new-new": 110
+    },
+    "distinct_birth_guard_keys": 154,
+    "effect_witnesses": 3,
+    "fixed_point_moment_equal_effects": 0,
+    "matched_line_births": 4597,
+    "phase_effects": {
+      "middle_16": 0,
+      "returned_8_future_L7": 0,
+      "start_8": 3
+    },
+    "selected_words_killed": 0,
+    "unique_killed_word_masks": [
+      {
+        "domain_words": 15920,
+        "full_domain_kills": 28,
+        "step": 8,
+        "zero_envelope_kills": 28
+      },
+      {
+        "domain_words": 15920,
+        "full_domain_kills": 551,
+        "step": 8,
+        "zero_envelope_kills": 365
+      },
+      {
+        "domain_words": 15920,
+        "full_domain_kills": 1537,
+        "step": 8,
+        "zero_envelope_kills": 916
+      }
+    ]
+  },
+  "schema_version": 1,
+  "source_checker": {
+    "path": "design/lattice_t_role_first_holonomy_reachability.py",
+    "sha256": "19b95490e8f9f74cb0ae7ea89e8caed58c36c107dcd0143ef3f280c36b388f64"
+  },
+  "status": "verified compact merge of the complete preregistered primary-L5 role-first later-endpoint partition; finite evidence only",
+  "terminal_artifact": {
+    "bytes": 71032,
+    "path": "/private/tmp/lattice-T-role-first-l5-merged-v1.json",
+    "payload_sha256": "2cc4c0b420d0a9b19ff2dd98eeaf322fad330b8c56fc01debf402f6dba84079e",
+    "sha256": "fc3c5d17155e7ded299ae7905e9ca86e2fed3097dd381bec24808986dc313302"
+  },
+  "trust_boundary": {
+    "candidate_hit_site_completeness_recomputed": false,
+    "connector_domains_loaded": false,
+    "killed_word_membership_recomputed": false,
+    "mask_encoding_hash_population_padding_and_subset_integrity_checked": true,
+    "record_identity_and_integer_line_geometry_checked": true,
+    "secant_pairs_rescanned_by_merger": false
+  },
+  "verified": [
+    "the 65 immutable chunks form the exact preregistered cover with no bisections or omissions",
+    "all 34,175,778 primary-L5 unordered point pairs belong to exactly one certified later-endpoint chunk",
+    "every source raw digest and internal payload seal matches its frozen pin",
+    "all reported birth identities, elementary integer line data, effect references, and serialized mask integrity checks pass",
+    "the three actual effects occur only at the initial start-8 phase and kill none of the recorded selected words"
+  ]
+}

@@ -1065,3 +1065,69 @@ in `design/PAUSE-STATE-2026-07-18.md`.  The unconditional gap remains the same:
 every reachable old--new/new--new birth and cursor import must be promoted or
 strictly ranked, and the resulting exact mask union must retain a legal word
 inside a successor-closed greatest fixed point.
+
+## Terminal L6 audits and the correlated-state obstruction (2026-07-19)
+
+The two L6 audits described above are now terminal.  The primary strict
+zero-`T`, fresh-yz construction passed every first-survivor check and all
+`410,826,780` terminal point pairs in its 28,665-point ordered chain.  The
+separate two-cone guarded L6 construction also completed all 8,267 stitches.
+Its auditor reproduced 17,087 cone rejections and checked all `414,014,700`
+pairs of the 28,776-point result, finding no triple and no new secant in either
+guarded cone.  This guarded L6 base is the ordinary primary L5 path, not the
+guarded-L5 result, so the two audits do not form a consecutive inductive
+guarded lineage.
+
+The preregistered primary-L5 role-first census consequently ran to completion
+in 65 immutable endpoint-range chunks covering all `34,175,778` pairs.  It
+finds 4,597 matched line births: 1,527 inherited-base-base, 2,960 old--new, and
+110 same-word-new--new.  Only three records affect a tested connector domain,
+all at the initial start-8 phase; none kills the recorded selected word.  The
+compact merger checks the range lattice, hashes, record identities, elementary
+line geometry, effect references, and serialized mask integrity.  It does not
+load the connector domains or independently recompute candidate-hit-site
+completeness or killed-word membership, which remain pinned to the frozen
+source checker and chunks.  The sealed summary is
+`design/lattice-T-role-first-L5-merged-summary.json`.
+
+The exact matched-transition phase-A census then supplied a useful negative
+result: its full literal source/action key gives 139,344 classes for 139,344
+recorded occurrences, so there is no nontrivial panel on which to test a
+right-congruence.  A poison-blind near-state ablation checker was designed to
+remove scheduler and coordinate identities while keeping each realized
+ordered factor atomic.  A first census attempt failed closed on a false schema
+assertion that ancestry ages were consecutive.  The repaired checker retains
+the exact nonconsecutive ages, validates every parent-word/child-step link,
+passes its synthetic and complete trace-schema audits, and has been
+independently reviewed.  Its actual census has not been run.
+
+The correlated carried-ghost depth probe is terminal.  For three pinned L7
+connector endpoints, every physical partner preexisting at each of 146 actual
+L8 source stitches is carried through all 488 actual L9 children, with no
+spatial or endpoint cutoff.  The scan covers 99 effective connector domains,
+634 upstream masks, 1,827 resumable token blocks, and exactly `48,237,501`
+token occurrences.  Of those, 97 have a nonzero source mask, 15 first reveal
+at depth one, and `48,237,389` remain silent through depth one.
+
+The projection result is adverse to a small literal automaton.  The legacy
+current-effect key has 2,774,576 repeated classes and is massively
+noncongruent.  Adding exact primitive Pluecker data leaves only three repeated
+classes; their ordered child mask trees agree, but all three have different
+coordinate-correlated child trees.  Adding the two individual endpoint
+coordinates removes those disagreements only by making all 48,237,501 classes
+singletons.  The required 3,998-versus-zero regression is reproduced exactly.
+Thus the experiment identifies missing correlated coordinates but proves no
+finite quotient, tail rank, or availability bound.  Its complete scope and
+terminal hash are sealed in
+`design/correlated-ghost-depth-probe-summary.json`.
+
+Finally, `design/POLICY-WEIGHTED-CONTACT-LYAPUNOV.md` proves the deterministic
+extraction step that a weighted policy argument would need.  With a frozen
+word distribution, a uniform bad-mass bound, a worst-successor expected
+potential bound, and `rho+n+R+b/R < 1`, at least one word is legal for every
+history represented by the state and returns every sound successor to the
+barrier.  This theorem does not establish those hypotheses.  The remaining
+analytic obligation is a correlation-preserving reachable-contact zeta that
+charges births, silent zero-mask returns, current joins, and cursor imports.
+No unconditional theorem or uniform connector-survivor lemma follows from the
+finite experiments above.
