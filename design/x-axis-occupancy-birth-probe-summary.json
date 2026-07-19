@@ -1,0 +1,140 @@
+{
+  "status": "exact finite realized-word x-parallel occupancy, birth, and L7-to-L8 decomposition smoke probe; the full literal occupancy state is singleton on this horizon, not stabilized; not a universal Post quotient, availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_axis_occupancy_birth_probe.py run --output /tmp/x-axis-occupancy-birth-probe-canonical.json",
+    "checker_sha256": "d7223799439cc3e5d8e94dbb2a3fe5d50ec008d1f28c438f86c9db331bfd9550",
+    "raw_path": "/tmp/x-axis-occupancy-birth-probe-canonical.json",
+    "raw_bytes": 33437,
+    "raw_sha256": "086c06e106956def3b1e5898e0c60a9e36b628b5e3cb9ace697753c9df952eaf",
+    "elapsed_seconds": 7.715,
+    "external_maximum_resident_bytes": 615526400,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "independent_repeat": {
+    "raw_path": "/tmp/x-axis-occupancy-birth-probe-repeat.json",
+    "raw_bytes": 33437,
+    "raw_sha256": "f6736454a3747e4dc3d230830af4b1748d76c5b899dca86637c2b4741f995c8d",
+    "elapsed_seconds": 7.454,
+    "normalization": "parse JSON, remove resource_policy.elapsed_seconds, serialize with sorted keys and separators (comma, colon)",
+    "normalized_sha256": "522d05e4abece2f96e9ef7cbab65bd02c549b566534559187a4c9e47ba093fd6",
+    "normalized_identical": true
+  },
+  "estimate_artifact": {
+    "path": "/tmp/x-axis-occupancy-birth-probe-estimate.json",
+    "bytes": 2531,
+    "sha256": "b23987e6b7c045b03e7ba9634dbd2ee3fb5aaaa37d5c33bb40adb2a943094629"
+  },
+  "finite_scope": {
+    "L7_parent_gaps": 42,
+    "L8_child_gaps": 146,
+    "schedules": ["gate", "pipeline", "left_to_right"],
+    "cursor_observations": 564,
+    "edge_schedule_records": 438,
+    "alternate_connector_words": false,
+    "left_to_right_semantics": "counterfactual replay of the same pinned selected words with gap rank equal to path order; not a constructed alternate path or universal policy",
+    "covered_channel": "prefix occupancy and births of x-parallel secants, with exact selected-point collision assertions"
+  },
+  "universal_length_five_core": {
+    "definition": "(36*y^2-12*y*z+36*z^2)/35 <= 1728/5",
+    "exact_integer_cells": 1073,
+    "proved_square_upper_bound": 1681,
+    "cell_stream_sha256": "222fb9486f7895c189a7e09b00603eef0f86dcf800f6c6f85995e498c37ab911"
+  },
+  "prefix_occupancy_result": {
+    "every_L7_singleton_mask_distinct_within_each_schedule": true,
+    "every_L8_singleton_mask_distinct_within_each_schedule": true,
+    "L7_distinct_singleton_masks_per_schedule": 42,
+    "L8_distinct_singleton_masks_per_schedule": 146,
+    "maximum_singleton_cells": {
+      "L7_gate": 20,
+      "L7_pipeline": 21,
+      "L7_left_to_right": 19,
+      "L8_gate": 35,
+      "L8_pipeline": 29,
+      "L8_left_to_right": 27
+    },
+    "distinct_active_line_masks": {
+      "L7_gate": 1,
+      "L7_pipeline": 2,
+      "L7_left_to_right": 3,
+      "L8_gate": 7,
+      "L8_pipeline": 8,
+      "L8_left_to_right": 11
+    },
+    "stream_sha256": "1226d85720c3983208b14b9f51ad03f1844e67e467f6c45a299d409d7f9f5773"
+  },
+  "selected_action_result": {
+    "actions": 564,
+    "collision_failures": 0,
+    "active_x_line_hit_failures": 0,
+    "x_line_births": 9,
+    "births_per_schedule": {
+      "gate": {"anchor_plus_selected": 2, "prior_interior_plus_selected": 1},
+      "pipeline": {"anchor_plus_selected": 2, "prior_interior_plus_selected": 1},
+      "left_to_right": {"anchor_plus_selected": 2, "prior_interior_plus_selected": 1}
+    },
+    "stream_sha256": "aaae83a5a7ec864aef34bf435b525f32e0b9fc7ccfc056d332e7db3176d9ba1e"
+  },
+  "four_way_decomposition_result": {
+    "exact_total_mismatches": 0,
+    "source_prefix_transport_mismatches": 0,
+    "point_occurrences_by_schedule": {
+      "gate": {"transported_source_prefix": 417, "source_action": 364, "late_parent_completion": 136, "child_prior_insertions": 958},
+      "pipeline": {"transported_source_prefix": 432, "source_action": 364, "late_parent_completion": 121, "child_prior_insertions": 1026},
+      "left_to_right": {"transported_source_prefix": 452, "source_action": 364, "late_parent_completion": 101, "child_prior_insertions": 1049}
+    },
+    "records_with_nonzero_late_parent_completion": {
+      "gate": 73,
+      "pipeline": 67,
+      "left_to_right": 66
+    },
+    "stream_sha256": "2732137758b73cf3e08bf366f88e64b78947e586d1e59846d079de150faf4c7f"
+  },
+  "cegar_result": {
+    "ladder": "ancestry depth 0..2, causal path-window radius 0..3, with active-line-only diagnostic, full occupancies, and full occupancies plus anchor/insertion provenance",
+    "full_occupancy_at_depth_0_radius_0": {
+      "nodes": 126,
+      "classes": 126,
+      "merged_classes": 0,
+      "largest_class": 1,
+      "interpretation": "the exact singleton-plus-active occupancy already makes every tested L7 schedule state unique, so deeper CEGAR refinements cannot test repeated-state transition stabilization"
+    },
+    "active_line_only_at_depth_0_radius_0": {
+      "nodes": 126,
+      "state_classes": 76,
+      "merged_state_classes": 33,
+      "state_action_classes": 120,
+      "merged_state_action_classes": 6,
+      "noncongruent_state_action_classes": 2,
+      "witness_gap_pairs": {
+        "pipeline": [12291, 12341],
+        "left_to_right": [12291, 12341]
+      },
+      "interpretation": "dropping singleton occupancy is concretely noncongruent even after conditioning on the recorded action"
+    },
+    "active_line_only_with_radius_1": {
+      "classes": 126,
+      "merged_classes": 0,
+      "interpretation": "one causal path neighbor separates the sample completely; this is state explosion, not finite closure evidence"
+    }
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "all 564 target cursor occupancies are exact for the pinned recorded words and named schedules",
+      "every selected word passes the sequential x-channel legality assertions and every reported birth is an exact occupancy transition from one to two",
+      "all 438 target decompositions are exact and the inherited source-prefix component obeys the exact B transport",
+      "the active-line-only projection has two exact finite noncongruent state/action classes"
+    ],
+    "finite_obstruction": "The full literal x occupancy is finite but does not compress on this horizon: all 126 source schedule states are singletons. The left-to-right schedule reduces late-parent completion but does not create a repeated full occupancy state in this sample.",
+    "not_proved": [
+      "that no coarser monotone or symbolic occupancy quotient can stabilize",
+      "transition congruence for alternate legal connector choices or L9 and later",
+      "a Markov update across arbitrary same-level corridor recenterings",
+      "control of non-x secants, endpoint-on-candidate-line defects, or combined poison availability",
+      "a safety greatest fixed point or unconditional theorem"
+    ]
+  }
+}

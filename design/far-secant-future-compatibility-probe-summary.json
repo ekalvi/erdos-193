@@ -1,0 +1,527 @@
+{
+  "status": "exact finite realized-tree physical-token future-compatibility probe; finite counterexamples to the tested channel, birth/owner-shell, and current-physical-partner keys; not a universal Post quotient, availability bound, contraction lemma, safety certificate, or theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "/usr/bin/time -l env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/far_secant_future_compatibility_probe.py run --output /tmp/far-secant-future-compatibility-probe-canonical.json",
+    "raw_path": "/tmp/far-secant-future-compatibility-probe-canonical.json",
+    "raw_bytes": 5637477,
+    "raw_sha256": "72af973f12179f1b25b24a23d77d8420888964bce219b0106a32c79be698dda6",
+    "checker_sha256": "4f95c0afd084306e7ecb202c49567a376e52d101cb3f9274fefd01d6d62fbf46",
+    "elapsed_seconds_internal": 40.053,
+    "wall_seconds_external": 41.0,
+    "user_seconds_external": 40.43,
+    "system_seconds_external": 0.54,
+    "maximum_resident_bytes": 740007936,
+    "peak_memory_footprint_bytes": 734183424,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "repeat_run_performed": false
+  },
+  "input_sha256": {
+    "future": "611bf74be1d42bd15d311964603daa573f8ff39a0f3bcb9542f4063341919b87",
+    "birth": "5c525ef4cc0c77ed96a2f67238e785d0382ead806f96479854a691498de99488",
+    "deep": "7195c4d72a71c0b819da1c2d9ba16165ea2aa1c71ffdfd61ae980fc7975388ab",
+    "l9": "961f9e5f0772d9df508ab0aefaa7405e3cc21637d59560cdda95c4edf61d809f",
+    "viz/walk3d-data.json": "d4392af018ee7d7c40c224622e9a606d3b1fb3da0c8c25613c93cb2dc901c883",
+    "gate2-l7-construction-L8.pkl": "cc4002ebccde737ab46dc016937be4aa653620d809908d48d35bcf06fc884141",
+    "connector_domains4.pkl": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dstar5_fragile.pkl": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3"
+  },
+  "self_audit": {
+    "realized_tree_nodes": {
+      "L7": 42,
+      "L8": 146,
+      "L9": 488
+    },
+    "effectful_local_tagged_components": {
+      "L8": 64,
+      "L9": 58
+    },
+    "L8_raw_domain_rescan": {
+      "effect_records": 64,
+      "requested_atom_occurrences": 156,
+      "unique_step_atoms": 151,
+      "effective_steps": 40,
+      "domain_words": 3751509,
+      "placed_point_pairs_rescanned": 0,
+      "all_atom_and_aggregate_channel_commitments_reproduced": true
+    },
+    "exact_mask_store": {
+      "unique_payloads": 370,
+      "uncompressed_bytes": 5560482,
+      "zlib_bytes": 415170,
+      "all_partition_operations_used_raw_integer_bitsets_not_hashes": true
+    },
+    "state_stream_sha256": {
+      "L7": "89c6ab37e226f372c082a37d8fd465bffb8c6e42485a24d6d9a1117da2a9b273",
+      "L8": "c5c86014f8b52ad1892b4d811ef45aae142794b65bf7aae0513e4e4a849ac5d5",
+      "L9": "1a690ae9abecf8917e6df73a76a9f07907ca3926f154fdba3d49aec7a6dc6e59"
+    },
+    "canonical_process_exit_code": 0,
+    "all_assertions_passed": true
+  },
+  "exact_partition_statistics": {
+    "channel": {
+      "color_stream_sha256": "519a204a76cafc3a28f78676cf00f7d16f79c8a0634be3bfcade7c99ecc8c65d",
+      "L9_exact_local": {
+        "nodes": 488,
+        "classes": 175,
+        "singleton_classes": 99,
+        "merged_classes": 76,
+        "largest_class": 20
+      },
+      "L8_exact_local": {
+        "nodes": 146,
+        "classes": 110,
+        "singleton_classes": 90,
+        "merged_classes": 20,
+        "largest_class": 6
+      },
+      "L8_ordered_future_refined": {
+        "nodes": 146,
+        "classes": 140,
+        "singleton_classes": 136,
+        "merged_classes": 4,
+        "largest_class": 3
+      },
+      "L8_transition_audit": {
+        "classes_after_actual_word_is_retained": 137,
+        "repeated_classes": 6,
+        "noncongruent_classes": 3,
+        "maximum_distinct_outcomes": 2
+      },
+      "L7_structural_base": {
+        "nodes": 42,
+        "classes": 26,
+        "singleton_classes": 15,
+        "merged_classes": 11,
+        "largest_class": 3
+      },
+      "L7_ordered_future_refined": {
+        "nodes": 42,
+        "classes": 42,
+        "singleton_classes": 42,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L7_transition_audit": {
+        "classes_after_actual_word_is_retained": 40,
+        "repeated_classes": 2,
+        "noncongruent_classes": 2,
+        "maximum_distinct_outcomes": 2
+      }
+    },
+    "birth_owner_shell": {
+      "color_stream_sha256": "65a36ae304976c1c249357f25c3fb700bb45d4c4ed646253434ea9a48c8f9bcf",
+      "L9_exact_local": {
+        "nodes": 488,
+        "classes": 313,
+        "singleton_classes": 223,
+        "merged_classes": 90,
+        "largest_class": 7
+      },
+      "L8_exact_local": {
+        "nodes": 146,
+        "classes": 135,
+        "singleton_classes": 128,
+        "merged_classes": 7,
+        "largest_class": 4
+      },
+      "L8_ordered_future_refined": {
+        "nodes": 146,
+        "classes": 145,
+        "singleton_classes": 144,
+        "merged_classes": 1,
+        "largest_class": 2
+      },
+      "L8_transition_audit": {
+        "classes_after_actual_word_is_retained": 142,
+        "repeated_classes": 4,
+        "noncongruent_classes": 3,
+        "maximum_distinct_outcomes": 2
+      },
+      "L7_structural_base": {
+        "nodes": 42,
+        "classes": 26,
+        "singleton_classes": 15,
+        "merged_classes": 11,
+        "largest_class": 3
+      },
+      "L7_ordered_future_refined": {
+        "nodes": 42,
+        "classes": 42,
+        "singleton_classes": 42,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L7_transition_audit": {
+        "classes_after_actual_word_is_retained": 40,
+        "repeated_classes": 2,
+        "noncongruent_classes": 2,
+        "maximum_distinct_outcomes": 2
+      }
+    },
+    "physical_partner": {
+      "color_stream_sha256": "65a36ae304976c1c249357f25c3fb700bb45d4c4ed646253434ea9a48c8f9bcf",
+      "same_finite_partition_counts_as_birth_owner_shell": true,
+      "reason_the_extra_fields_do_not_split_the_decisive_classes": "the repeated decisive L8 states have zero current partner masks and identical ordered tagged source identities",
+      "L9_exact_local": {
+        "nodes": 488,
+        "classes": 313,
+        "singleton_classes": 223,
+        "merged_classes": 90,
+        "largest_class": 7
+      },
+      "L8_exact_local": {
+        "nodes": 146,
+        "classes": 135,
+        "singleton_classes": 128,
+        "merged_classes": 7,
+        "largest_class": 4
+      },
+      "L8_ordered_future_refined": {
+        "nodes": 146,
+        "classes": 145,
+        "singleton_classes": 144,
+        "merged_classes": 1,
+        "largest_class": 2
+      },
+      "L8_transition_audit": {
+        "classes_after_actual_word_is_retained": 142,
+        "repeated_classes": 4,
+        "noncongruent_classes": 3,
+        "maximum_distinct_outcomes": 2
+      },
+      "L7_structural_base": {
+        "nodes": 42,
+        "classes": 26,
+        "singleton_classes": 15,
+        "merged_classes": 11,
+        "largest_class": 3
+      },
+      "L7_ordered_future_refined": {
+        "nodes": 42,
+        "classes": 42,
+        "singleton_classes": 42,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L7_transition_audit": {
+        "classes_after_actual_word_is_retained": 40,
+        "repeated_classes": 2,
+        "noncongruent_classes": 2,
+        "maximum_distinct_outcomes": 2
+      }
+    },
+    "literal_address": {
+      "color_stream_sha256": "0b104ed3d940842b48b4a547ece2f4f038f33d490c83263562287dd7c77a17d3",
+      "L9_exact_local": {
+        "nodes": 488,
+        "classes": 488,
+        "singleton_classes": 488,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L8_exact_local": {
+        "nodes": 146,
+        "classes": 146,
+        "singleton_classes": 146,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L8_ordered_future_refined": {
+        "nodes": 146,
+        "classes": 146,
+        "singleton_classes": 146,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L8_transition_audit": {
+        "classes_after_actual_word_is_retained": 146,
+        "repeated_classes": 0,
+        "noncongruent_classes": 0,
+        "maximum_distinct_outcomes": 1
+      },
+      "L7_structural_base_and_refined": {
+        "nodes": 42,
+        "classes": 42,
+        "singleton_classes": 42,
+        "merged_classes": 0,
+        "largest_class": 1
+      },
+      "L7_transition_audit": {
+        "classes_after_actual_word_is_retained": 42,
+        "repeated_classes": 0,
+        "noncongruent_classes": 0,
+        "maximum_distinct_outcomes": 1
+      },
+      "interpretation": "zero disagreement is vacuous because every literal-address state is a singleton"
+    }
+  },
+  "decisive_3998_vs_0_counterexample": {
+    "claim_falsified_on_this_finite_tree": "current exact direct/endpoint/near-deep masks, birth/owner shells, ordered tagged source identities, current effectful physical partners, and the actual selected connector word determine the next exact compatibility signature",
+    "common_L8_tested_key": {
+      "source_gap": 13171,
+      "witness_type": "old-old-secant",
+      "ordered_tagged_endpoint_stable_ids": [
+        "connector:L7:G12291:I1",
+        "connector:L7:G12324:I2"
+      ],
+      "step": 100,
+      "domain_words": 9046,
+      "actual_selected_connector_word": [120, 114, 109],
+      "direct_killed_words": 0,
+      "endpoint_collision_killed_words": 0,
+      "endpoint_internal_line_killed_words": 0,
+      "near_deep_killed_words": 0,
+      "full_tagged_component_killed_words": 0,
+      "exact_zero_mask": {
+        "domain_words": 9046,
+        "killed_words": 0,
+        "mask_sha256": "bf7956a61a1512efea5b366e00014c4597c514f88a06635a2058e3481eb060d3",
+        "exact_payload_ref": "9046:bf7956a61a1512efea5b366e00014c4597c514f88a06635a2058e3481eb060d3"
+      },
+      "source_minimum_joint_owner_base3_shell": 5,
+      "endpoint_birth_owner_shell_masks": [
+        {
+          "key": [1, 3],
+          "killed_words": 0
+        },
+        {
+          "key": [1, 5],
+          "killed_words": 0
+        }
+      ],
+      "near_deep_birth_owner_shell_masks": [],
+      "current_effectful_physical_partner_masks": [],
+      "selected_word_avoids_tagged_component": true,
+      "same_channel_key": true,
+      "same_birth_owner_shell_key": true,
+      "same_physical_partner_key": true,
+      "same_literal_address_key": false
+    },
+    "L8_state_A": {
+      "identity": {
+        "source_gap": 13171,
+        "l7_parent_gap": 12329,
+        "l8_gap": 41282
+      },
+      "L7_actual_parent_word": [107, 100, 106, 53],
+      "L7_child_slot_zero_based": 1,
+      "L7_actual_prefix_vector": [2, -1, 1],
+      "source_endpoint_exact_owner_radii": [38, 5],
+      "source_endpoint_owner_shells": [5, 3],
+      "source_joint_exact_owner_radius": 38,
+      "ordered_L9_successors": [
+        {
+          "slot": 0,
+          "l9_gap": 138865,
+          "step": 120,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L7:G12329:I1",
+            "connector:L8:G41282:I1"
+          ]
+        },
+        {
+          "slot": 1,
+          "l9_gap": 138866,
+          "step": 114,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L8:G41282:I1",
+            "connector:L8:G41282:I2"
+          ]
+        },
+        {
+          "slot": 2,
+          "l9_gap": 138867,
+          "step": 109,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L8:G41282:I2",
+            "connector:L7:G12329:I2"
+          ]
+        }
+      ]
+    },
+    "L8_state_B": {
+      "identity": {
+        "source_gap": 13171,
+        "l7_parent_gap": 12333,
+        "l8_gap": 41297
+      },
+      "L7_actual_parent_word": [50, 100, 109, 114],
+      "L7_child_slot_zero_based": 1,
+      "L7_actual_prefix_vector": [0, -2, -2],
+      "source_endpoint_exact_owner_radii": [42, 9],
+      "source_endpoint_owner_shells": [5, 3],
+      "source_joint_exact_owner_radius": 42,
+      "ordered_L9_successors": [
+        {
+          "slot": 0,
+          "l9_gap": 138913,
+          "step": 120,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L7:G12333:I1",
+            "connector:L8:G41297:I1"
+          ]
+        },
+        {
+          "slot": 1,
+          "l9_gap": 138914,
+          "step": 114,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L8:G41297:I1",
+            "connector:L8:G41297:I2"
+          ]
+        },
+        {
+          "slot": 2,
+          "l9_gap": 138915,
+          "step": 109,
+          "ordered_corridor_endpoint_stable_ids": [
+            "connector:L8:G41297:I2",
+            "connector:L7:G12333:I2"
+          ]
+        }
+      ]
+    },
+    "different_slot_1_L9_outcomes": {
+      "state_A": {
+        "identity": {
+          "source_gap": 13171,
+          "l7_parent_gap": 12329,
+          "l8_gap": 41282,
+          "l9_gap": 138866
+        },
+        "step": 114,
+        "domain_words": 453015,
+        "selected_L9_connector_word": null,
+        "direct_killed_words": 0,
+        "endpoint_collision_killed_words": 0,
+        "endpoint_internal_line_killed_words": 0,
+        "near_deep_killed_words": 3998,
+        "full_tagged_component_killed_words": 3998,
+        "exact_near_deep_mask": {
+          "domain_words": 453015,
+          "killed_words": 3998,
+          "mask_sha256": "ea2336c635af801427f98932c26c03dcafccf652967781f753d45e87f61948be",
+          "exact_payload_ref": "453015:ea2336c635af801427f98932c26c03dcafccf652967781f753d45e87f61948be"
+        },
+        "birth_owner_shell_mask": {
+          "key": [2, 2, 4],
+          "killed_words": 3998,
+          "mask_sha256": "ea2336c635af801427f98932c26c03dcafccf652967781f753d45e87f61948be"
+        },
+        "exact_witness": {
+          "candidate_site_offset": [2, 3, 5],
+          "tagged_endpoint_stable_id": "connector:L7:G12324:I2",
+          "tagged_endpoint_birth_level": 7,
+          "tagged_endpoint_age": 2,
+          "tagged_endpoint_owner_options": [41265, 41266],
+          "partner_stable_id": "connector:L7:G12329:I2",
+          "partner_birth_level": 7,
+          "partner_age": 2,
+          "partner_birth_parent_endpoint_stable_ids": [
+            "connector:L6:G3661:I2",
+            "connector:L6:G3661:I3"
+          ],
+          "partner_owner_options": [41282, 41283],
+          "target_tile": 41282,
+          "joint_owner_pareto_spans": [[16, 0]],
+          "minimum_joint_owner_radius": 16,
+          "minimum_joint_owner_base3_shell": 4
+        }
+      },
+      "state_B": {
+        "identity": {
+          "source_gap": 13171,
+          "l7_parent_gap": 12333,
+          "l8_gap": 41297,
+          "l9_gap": 138914
+        },
+        "step": 114,
+        "domain_words": 453015,
+        "selected_L9_connector_word": null,
+        "direct_killed_words": 0,
+        "endpoint_collision_killed_words": 0,
+        "endpoint_internal_line_killed_words": 0,
+        "near_deep_killed_words": 0,
+        "full_tagged_component_killed_words": 0,
+        "near_deep_birth_owner_shell_masks": [],
+        "physical_partner_masks": [],
+        "exact_zero_mask": {
+          "domain_words": 453015,
+          "killed_words": 0,
+          "mask_sha256": "1848a4118123c129928c08aa9f080173a93997eb465534299e0675f5fd99b71c",
+          "exact_payload_ref": "453015:1848a4118123c129928c08aa9f080173a93997eb465534299e0675f5fd99b71c"
+        }
+      }
+    },
+    "interpretation": {
+      "proved_by_this_finite_counterexample": "zero current poison and an empty current effectful-partner mask do not make a tagged token future-inert, even after retaining its birth/owner shells and actual connector choice",
+      "missing_information_exposed": "the latent physical partner connector:L7:G12329:I2 has no current L8 effect in the tested key but becomes an exact L9 near-deep witness killing 3998 words",
+      "required_response": "retain latent zero-effect joint endpoint-partner address tokens, prove them unreachable or ranked, or refine by a sound future-compatibility right congruence",
+      "not_proved": "this does not show that every correlated address quotient has infinite index and does not test alternate legal actions"
+    }
+  },
+  "decisive_exact_mask_payloads": {
+    "verification_rule": "base64-decode payload_base64, zlib-decompress, require uncompressed_bytes bytes, SHA-256 the raw bytes, interpret them as a fixed-length little-endian integer bitset, and count set bits",
+    "9046:bf7956a61a1512efea5b366e00014c4597c514f88a06635a2058e3481eb060d3": {
+      "domain_words": 9046,
+      "uncompressed_bytes": 1131,
+      "zlib_bytes": 18,
+      "encoding": "zlib+base64 fixed-length little-endian word bitset; bit i is domain word i",
+      "payload_base64": "eNpjYBgFo2AUjAKaAwAEawAB"
+    },
+    "453015:1848a4118123c129928c08aa9f080173a93997eb465534299e0675f5fd99b71c": {
+      "domain_words": 453015,
+      "uncompressed_bytes": 56627,
+      "zlib_bytes": 78,
+      "encoding": "zlib+base64 fixed-length little-endian word bitset; bit i is domain word i",
+      "payload_base64": "eNrtwTEBAAAAwqD1T20MH6AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAowHdMwAB"
+    },
+    "453015:ea2336c635af801427f98932c26c03dcafccf652967781f753d45e87f61948be": {
+      "domain_words": 453015,
+      "uncompressed_bytes": 56627,
+      "zlib_bytes": 1307,
+      "encoding": "zlib+base64 fixed-length little-endian word bitset; bit i is domain word i",
+      "payload_base64": "eNrtnc1y4ygQx1FpajKHrfUcc4pn32COOaRW+xhznEfIMYepCfNmPAqPoCMHit5gS7a+kAAjS5b/v0rFH5IwArppugExtim+ffrC/mGfGP94/9/omT//ZIIxnjH2mNv/4vCtfXfk9ZWVjEn7+cUeeBC5/X849lKf9JQw6zzL2COrM1Ll5LNoZOp74+zHsaRkzpR9LY4f1emmyvyY9v58kP1uXFgdP/N7vVX9xF7ty1v9edc8+HauoOP3Vc1VtzlQ+g8XZ0jaX+J1sYqieUz1ki/P+ZX77jen71yXdH96n7x4f3y3beznsfl9a7S4s4i0eX62pW6l5Cg1HwXP86awtKRF5OtpSW/smdk/JrJuXl/YUAOSA4mUKXP0q242TklsfCza1xwyM1xHxchPagauyEHTVlIrW8rBJcqqUad833zxqd/CL1vFjRerrou0dSOSXGX6PpVeMXUNJ3fPUZJ3xmkX3oQIYgS2Q92cy65AqTHbTAcYErwn7o2kuUMXCH+dqC4yItUD2sAammG3HXAas64FhfSZhrLYbLm1PSdH01Xk3aQkXTyEKCP6sJmztB0evzKWn0dhhxfR8Al8bnkS+tf/NUuuflXmatE1ZE/G6uCwQj44TWIMT3wtXXbw8/SGBmJY5MVuoDC79cAdAvevX/+V3V8tqKrll/tWl5A5uoo8dLDRN/K1UykaT2XPKdzQ4JRD5AC4dcxJsWSuI9E9b3fgZvx+oFalwRpGpLMPeYGmAS43ykKGd/pK/js13nfTVDYix6yU/vbiR8/L5hsAAAC446FH11zn0925jOzx54qNjri4tWMIEeFu0SlHI2I5143GqAoAEDTGm1QaiuL0Cqd5IoqKKLtuEb37nywpuP8hSqq3dUh2Z6Ck1QUvCKFtsKxQHCdnn2Y1t+djnyYzvwwdrSd4OxSOpy7km5/udIxPnJRfe/r+wHQz0y65XuR3RIvxkB4hRveYDDIDwK1a1ZX49ubWjsl1yNTafjqdqycUSLh+0emMOsy8BUnGZV0DYHRGbNB8WR07hpkIZ06mG/nDM0RR9TWGcYqgCwAAAIDbp2y5RrjbLlH+Xm+dyn1rdqG5kYGGlUxuiClEdQEAN850mFPHBUJpjoCnuGrMUIeGtE3sgJ9miw6LBaOsS8e8XV33lWcqAAAAAAAAAAAAm2V8XoeJdgzMuDA99dZtgXCHn437e1HSz9sw63CVmC14bAz2VAAAAADA7aIpzg4XNOcyVJv6oktK+UcGdjdRgSpNRaj09bl4JfZb+iajxfJm2uoseuJObx0AsDnsDgV/V+/fWkeGn8jW3J6geYb7gXQh+vLSB0I+oUK3N2KoPNPivdMVD549tov/8CXa2UBNyLORUth6Iv1iA2yUAwAAACxByyIpnf2x9I3VJzESXL43d+IR3rrkDtulrBmB+DsA4Op6x90phIXRLg+26PSOb+OfKRUe2dHptyLSi+5uROt8iKAkbGgAAAAAAAAAAACsHeWcuaDC1lqKBadG+j0Mmvt7kWR6V49Zx55W5TrdSKE3gY24AAAAAAAWQkatc9OpF1IpWnjP2AuXcCpKv0HN4mXSq/P3TYoAv+NlgQYP4wUAAAAAAAAAAAAAAAAAAAAAhKFCQsd6rmisXtVaZ06Lrke/ApHlLS/eeXkNFW0QWPdj82IAAAAAAAAAAACAGrsQKfna9pLWsGilJKINLNu3a5zueOG+fXrYzK6qhRvKoYKhSu6JYJn+H3Zj9CA="
+    }
+  },
+  "scope_and_omissions": {
+    "included": [
+      "the two pinned physical source tokens: one ordered L7 endpoint pair and one singleton L7 endpoint",
+      "the single realized contiguous path with every actual L7 and L8 connector word and parent/slot address retained",
+      "exact L8 prefix-aware direct, endpoint, and tagged-partner killed-word masks",
+      "exact L9 joins from each tagged endpoint to every one of the 311738 transformed completed-L8 initial anchors",
+      "overlapping exact birth/owner-shell mask ORs and bottom-up ordered-successor refinement",
+      "no endpoint or distance cutoff"
+    ],
+    "omitted": [
+      "a selected L9 connector word",
+      "all current-L9 connector interiors and their candidate-prefix near-deep joins",
+      "untagged deep tokens and an all-point-pair closure",
+      "alternate connector histories and universal all-action Post closure",
+      "an exact L7 pipeline completion-tile owner address, which the pinned L7 parent trace does not supply",
+      "complete connector availability, a contracting tail operator, an infinite safety fixed point, or an unconditional Erdos #193 theorem"
+    ],
+    "referee_interpretation": {
+      "proved_by_finite_computation": [
+        "all emitted L8 masks were reconstructed as raw bitsets and independently matched the pinned atom and aggregate channel commitments",
+        "the tested channel, birth/owner-shell, and current-physical-partner keys each have exact noncongruent repeated states on the recorded tree",
+        "the explicit L8 pair in this summary has the same tested current key and actual word but exact slot-1 L9 masks of 3998 and 0 words"
+      ],
+      "adverse_evidence_only": [
+        "the literal-address representation separates every observed state and therefore supplies no finite-index evidence",
+        "two of the three birth/owner-shell L8 disagreements change successor shell/color while all immediate L9 masks remain zero; only the recorded 3998-versus-0 pair is the decisive mask-level witness",
+        "continued refinement growth is adverse evidence but does not prove infinite Myhill-Nerode index"
+      ],
+      "not_proved": [
+        "noncongruence of every possible correlated address-state representation",
+        "transition closure under alternate legal connector choices",
+        "positive complete availability at L9 or any later level",
+        "a uniform far-secant tail lemma or unconditional theorem"
+      ]
+    }
+  }
+}

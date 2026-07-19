@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact pinned L5 counterexample to the greedy common-potential chronological selector",
+  "checker": {
+    "path": "design/potential_policy_chronological_rescue.py",
+    "sha256": "2b1bde9e846211cd53f75b6300c540a99b92d25b706c174c137f32c9cbf19ebc"
+  },
+  "pinned_potential_filter": {
+    "checker_sha256": "21b84e6ef80c1b8184cb3c06f08d674983f10cd91759b204e1170186319b1062",
+    "summary_sha256": "de736b10b18051e61ca2060f09c8819a847a1979210d5b9c39ad2239557257ec",
+    "raw_sha256": "f4e809f611fc0fd18a511f95d982c8a6f5d2a2936c2d9014c3f30ef622c9b080",
+    "accepted_ordinal_sidecar_sha256": "dfe3d0b758663219ef2db7c205be15716927cfa91a6391f41b389335c40680e7",
+    "accepted_ordinal_sidecar_bytes": 3136860,
+    "common_potential_edge_stream_sha256": "0d42fc09d958fce8a2a9ed2fe02ae4f2cca3f3c3549c68a8bc3e5835780b70a8",
+    "common_potential_rank_stream_sha256": "79a83e18f61a95c81e24a7493e9175c034fb06719f19fa8172fa041477295056"
+  },
+  "pinned_construction": {
+    "L5_state_sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d",
+    "compact_cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "compact_metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "anchors": 2458,
+    "gaps": 2457,
+    "schedule_sha256": "031e4dc1ed31fba2ff930036dd0b1f81bb516d3d4c98818def6d9085179b4422"
+  },
+  "runs": {
+    "canonical": {
+      "raw_path": "/tmp/potential-policy-L5-gap2-probe-witness.json",
+      "raw_sha256": "dcae54427d4f9871bcfcbddf35b4f68ecb2dc1f2a958988f8bf29f76c6dd1e80",
+      "checkpoint_path": "/tmp/potential-policy-L5-checkpoint-witness.json",
+      "checkpoint_sha256": "322705a4afd607cbc01f90a2a91044fffb69518765d61b05226ae58947931901",
+      "elapsed_seconds": 0.60347,
+      "maximum_resident_set_bytes": 30302208
+    },
+    "repeat": {
+      "raw_path": "/tmp/potential-policy-L5-gap2-probe-witness-repeat.json",
+      "raw_sha256": "0459ac76f1c0045c8e8360388bf5cf5538e83c58925d9db44450771fb571338d",
+      "checkpoint_path": "/tmp/potential-policy-L5-checkpoint-witness-repeat.json",
+      "checkpoint_sha256": "c0be16a68f5b5ee703d66c51d392dc2afad17eda3f1ae938e3fa1b365a2d4d51",
+      "elapsed_seconds": 0.633509,
+      "maximum_resident_set_bytes": 31047680
+    },
+    "semantic_repeat_canonicalization": {
+      "operation": "parse JSON; delete checkpoint_payload_sha256, observation.elapsed_seconds, and observation.maximum_resident_bytes; encode with sort_keys=true and separators=(',',':')",
+      "canonical_bytes": 8888,
+      "canonical_sha256": "710fc7b7c5c3b0479625c097b0d77ba522b0a36a7d9d4beac6b36c2b92a2fb05",
+      "identical": true
+    },
+    "resource_policy": {
+      "processes": 1,
+      "threads": 1,
+      "nice": 15,
+      "both_runs_below_300_MiB_and_120_seconds": true
+    }
+  },
+  "selector": {
+    "rule": "at each stitch, choose the first cache word whose potential-only accepted bit is set, whose proper interiors use globally empty pairwise-distinct yz fibres, and which passes exact global 3D legality",
+    "digit_simple_channel_used": false,
+    "fallback_outside_common_potential_menu": false,
+    "mid_domain_resume_supported": true
+  },
+  "first_stitch": {
+    "construction_rank_0_based": 0,
+    "gap": 0,
+    "step": 20,
+    "selected_ordinal_1_based": 1,
+    "word": [14, 24, 73, 24],
+    "potential_compatible_words_for_step": 8,
+    "projection_clean": true,
+    "exactly_legal": true,
+    "placed_points_after_commit": 2461
+  },
+  "first_failure": {
+    "construction_rank_0_based": 1,
+    "construction_rank_1_based": 2,
+    "gap": 2,
+    "step": 20,
+    "domain_words": 47467,
+    "potential_incompatible_words": 47459,
+    "potential_compatible_words": 8,
+    "potential_compatible_ordinals_1_based": [1, 3513, 3530, 3585, 5479, 12492, 17775, 46804],
+    "projection_rejected": 0,
+    "projection_clean_exactly_tested": 8,
+    "exact_legality_rejected": 8,
+    "exact_full_restricted_domain_exhausted": true,
+    "greedy_selector_has_no_survivor": true
+  },
+  "exact_rejection_witnesses": [
+    {
+      "ordinals_1_based": [1, 3530, 3585, 5479, 12492, 46804],
+      "primary_channel": "old_old_new",
+      "existing_point_indices": [1, 2],
+      "new_interior_index": 0,
+      "points": [[-6, 6, 8], [-12, 6, 14], [-14, 6, 16]],
+      "primitive_direction": [1, 0, -1],
+      "cross_product": [0, 0, 0]
+    },
+    {
+      "ordinals_1_based": [3513],
+      "word": [22, 19, 14, 19, 123],
+      "failed_channels": ["old_old_new", "old_new_new"],
+      "primary_old_old_new": {
+        "existing_point_indices": [0, 2459],
+        "new_interior_index": 2,
+        "points": [[0, 0, 0], [-4, 2, 4], [-18, 9, 18]],
+        "primitive_direction": [2, -1, -2],
+        "cross_product": [0, 0, 0]
+      },
+      "secondary_old_new_new": {
+        "existing_point_index": 0,
+        "new_interior_indices": [2, 3],
+        "points": [[0, 0, 0], [-18, 9, 18], [-20, 10, 20]],
+        "cross_product": [0, 0, 0]
+      }
+    },
+    {
+      "ordinals_1_based": [17775],
+      "word": [22, 14, 24, 14, 123],
+      "failed_channels": ["old_old_new", "old_new_new"],
+      "primary_old_old_new": {
+        "existing_point_indices": [0, 2459],
+        "new_interior_index": 1,
+        "points": [[0, 0, 0], [-4, 2, 4], [-16, 8, 16]],
+        "primitive_direction": [2, -1, -2],
+        "cross_product": [0, 0, 0]
+      },
+      "secondary_old_new_new": {
+        "existing_point_index": 0,
+        "new_interior_indices": [1, 3],
+        "points": [[0, 0, 0], [-16, 8, 16], [-20, 10, 20]],
+        "cross_product": [0, 0, 0]
+      }
+    }
+  ],
+  "proved": [
+    "the exact common-potential menu and exact evolving global-yz constraint leave eight candidates at the second scheduled stitch",
+    "all eight candidates are killed by explicit global collinearity witnesses",
+    "therefore the deterministic greedy first-survivor common-potential selector cannot pass the pinned second L5 stitch"
+  ],
+  "not_proved": [
+    "failure of a non-greedy or lookahead policy that chooses a different potential-compatible word at the first stitch",
+    "failure of a larger or state-dependent potential-safe action family",
+    "failure of the unconstrained no-new-x construction, which has an exact full L5 certificate",
+    "control of exact-zero latent re-entry, selector edges, births, cursor jumps, or a uniform far-secant theorem"
+  ],
+  "smallest_next_test_if_pursued": "evaluate the exact 8-by-8 two-stitch action matrix for step 20, retaining the rank-0 choice in state; this distinguishes a greedy-policy obstruction from a common-potential-menu obstruction"
+}

@@ -1,0 +1,166 @@
+{
+  "checker": {
+    "path": "design/lattice_t_projective_spectrum_census.py",
+    "sha256": "034744d9b5da4e3ffd4147bbaf0bf123cc620943bf3337bc0070a6f427edf48b",
+    "unchanged_during_census": true
+  },
+  "commitments": {
+    "construction_order_point_stream_sha256": "ab2bca974ea94b3b32750d5b1bea71cf7bc6707792e78b47e7d827db32240b40",
+    "later_birth_pair_count_stream_sha256": "14362a95f12ac0a84d4df56778843fab372526b3a3e5093a78d9414c663013fb",
+    "point_set_sha256": "320ea9923f57acbf55ba6c9775b67d894b12324a8debdf0ceac85fe4147fedc4",
+    "provenance_stream_sha256": "80d88149b1e0ea7321116c8a7b7acf41d96fa783d0e2fa14d38cac7fa39eee78",
+    "static_state_sha256": "4f82accfe3d319305089c1f48a4356498161bd36698efee87b138ccb28df72e1"
+  },
+  "date": "2026-07-18",
+  "inputs": {
+    "L5_state_sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d",
+    "source_checkpoint": {
+      "bytes": 5369433,
+      "path": "/private/tmp/lattice-T-chronological-L5-primary.json",
+      "payload_sha256": "4957ae7456b95d9d1c0033077eee136dfcda820e2ae4fdb9f1037490457dd71c",
+      "sha256": "9c711e396dc75042b747a1bcacb5093aa8b4c84c316a89081b2e246bdae0c2b8"
+    },
+    "terminal_audit_summary": {
+      "bytes": 3061,
+      "path": "/Users/erik/homelab/math193/design/lattice-T-chronological-L5-summary.json",
+      "raw_payload_sha256": "832e8ce9c44f2528ffd3e39996572b3622e5d4b29ed47bfa593621d8c346528b",
+      "raw_sha256": "144eb1d78a2a9c62be0747be50a2e135a8b8e91d5d2335e64398bf5af5146194",
+      "sha256": "88fa0f41674d71cc9cf84fc1bd4b70949ab91cd1e8d83a435bb7b6bec5fc9df5"
+    }
+  },
+  "not_proved": [
+    "uniform connector availability beyond this frozen finite orbit",
+    "exclusion of latent families with other projective spectra or affine moments",
+    "a general far-secant tail lemma or an unconditional infinite construction"
+  ],
+  "payload_sha256": "59e52ce5a55a2c42e5ecb6f0076fd5b8fd2b960084bb9b2f70aada1bc8f7d24d",
+  "proved": [
+    "the displayed pair is the earliest exact E-valued secant in construction birth/id order",
+    "the strict finite-spectrum policy is already false on this frozen L5 path"
+  ],
+  "resource_policy": {
+    "compliant": true,
+    "hard_maximum_seconds": 115.0,
+    "maximum_resident_bytes": 293601280,
+    "maximum_work_seconds": 110.0,
+    "process_nice": 15,
+    "processes": 1,
+    "required_minimum_nice": 15,
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "threads": 1
+  },
+  "result": {
+    "classification_counts_scanned": {
+      "old-new": 0,
+      "same-word-new-new": 0,
+      "seed": 559
+    },
+    "earliest_witness": {
+      "F_values_on_primitive_direction": {
+        "11/3": 0,
+        "348/275": 5943
+      },
+      "F_values_on_raw_direction": {
+        "11/3": 0,
+        "348/275": 213948
+      },
+      "J": {
+        "denominator": 3,
+        "label": "11/3",
+        "numerator": 11
+      },
+      "canonical_primitive_direction": [
+        3,
+        -3,
+        1
+      ],
+      "classification": "seed",
+      "earlier_point": [
+        45,
+        162,
+        12
+      ],
+      "earlier_point_id": 30,
+      "earlier_provenance": {
+        "birth_kind": "seed-anchor",
+        "birth_rank": -1,
+        "gap": null,
+        "interior_slot": null,
+        "point_id": 30
+      },
+      "earliest_order_key": [
+        -1,
+        33,
+        30
+      ],
+      "later_endpoint_birth_rank": -1,
+      "later_point": [
+        27,
+        180,
+        6
+      ],
+      "later_point_id": 33,
+      "later_provenance": {
+        "birth_kind": "seed-anchor",
+        "birth_rank": -1,
+        "gap": null,
+        "interior_slot": null,
+        "point_id": 33
+      },
+      "line_moment": [
+        198,
+        -9,
+        -621
+      ],
+      "matched_spectra": [
+        "11/3"
+      ],
+      "quadratic_Q": 33,
+      "raw_direction": [
+        -18,
+        18,
+        -6
+      ]
+    },
+    "expected_full_classification_counts": {
+      "old-new": 31151826,
+      "same-word-new-new": 4299,
+      "seed": 3019653
+    },
+    "first_weaker_survivor_is_first_stronger_survivor": false,
+    "matched_spectrum_counts": {
+      "11/3": 1,
+      "348/275": 0
+    },
+    "strict_policy_survives_frozen_L5": false
+  },
+  "schema_version": 1,
+  "scope": {
+    "all_unordered_pairs_scanned": false,
+    "pair_order": "increasing later point id, then increasing earlier id",
+    "points": 8268,
+    "spectra": [
+      {
+        "denominator": 3,
+        "label": "11/3",
+        "numerator": 11,
+        "polynomial": "3*(3*y^2-y*z+3*z^2)-11*r^2"
+      },
+      {
+        "denominator": 275,
+        "label": "348/275",
+        "numerator": 348,
+        "polynomial": "275*(3*y^2-y*z+3*z^2)-348*r^2"
+      }
+    ],
+    "unordered_pairs_scanned": 559,
+    "unordered_pairs_total": 34175778
+  },
+  "status": "exact earliest finite-spectrum secant witness"
+}

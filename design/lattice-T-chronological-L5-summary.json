@@ -1,0 +1,60 @@
+{
+  "checker": {
+    "path": "design/lattice_t_chronological_audit.py",
+    "sha256": "8c616ea15a7aaae3e1d70f07415dd74641c2cf4fafa22050c873d31bb1ac64e8",
+    "unchanged_during_audit": true
+  },
+  "commitments": {
+    "alternate_flat_step_word_sha256": "1429806fba4ec5703a44516863c34776cd4aa07764c687909c7bda29ef915fa7",
+    "alternate_ordered_point_stream_sha256": "5da8880898a38de73b30b1570c1ac3de1c4c06b47c1da7eabc30d156e9123d08",
+    "alternate_words_by_gap_sha256": "0d1b413c1ef2acf87db1fd56e6283fc8093ae2ac6f83badbf3bd764f740c32ad",
+    "audit_record_stream_sha256": "774fb1bb8bd7dce32322c74906a805826ec368c497df81626ffd2ec109b82f58",
+    "final_point_set_sha256": "320ea9923f57acbf55ba6c9775b67d894b12324a8debdf0ceac85fe4147fedc4",
+    "final_yz_occupancy_sha256": "a27701eccdfe87c1a393e37a7cae69ae07b22aa3502e5c0e0d53b25ae1d118a5",
+    "selection_record_stream_sha256": "73f8eb68b593cc268f254f30a84152b3d40887038b58f314f361fd107da066bd",
+    "source_prefix_state_sha256": "5eb60096ccc3b0b51c17bb44bc782aa6c4106fb5dfa24c56952c5a4e914413a7"
+  },
+  "date": "2026-07-18",
+  "not_proved": [
+    "positive availability for every safe state or at levels beyond this pinned L5 orbit",
+    "control of latent zero-mask re-entry, births, cursor injection, or arbitrary far secants",
+    "an unconditional infinite construction"
+  ],
+  "proved": [
+    "the pinned L5 primary policy has an exact first survivor at every chronological stitch",
+    "each winner is zero-T, globally yz-fresh, and reference-legal against its complete prefix",
+    "the final realized chain creates no new yz-fibre coincidence",
+    "an independent ordered-pair direction scan finds no collinear triple in the realized chain"
+  ],
+  "result": {
+    "construction_completed": true,
+    "fast_reference_agreement_verified_for_every_exact_test": true,
+    "final_no_new_yz_coincidence": true,
+    "first_survivor_audit_completed": true,
+    "gaps": 2457,
+    "global_empty_yz_verified_at_every_stitch": true,
+    "independent_ordered_no_three_collinear_verified": true,
+    "maximum_first_survivor_ordinal_1_based": 2455,
+    "minimum_primary_survivors_certified_per_stitch": 1,
+    "points": 8268,
+    "selected_reference_legality_verified_at_every_stitch": true,
+    "steps": 8267,
+    "sum_first_survivor_ordinals": 91374,
+    "survivor_counts_exhaustive": false,
+    "zero_T_projection_clean_exact_tests": 48214
+  },
+  "schema_version": 1,
+  "source_checkpoint": {
+    "bytes": 5369433,
+    "path": "/private/tmp/lattice-T-chronological-L5-primary.json",
+    "payload_sha256": "4957ae7456b95d9d1c0033077eee136dfcda820e2ae4fdb9f1037490457dd71c",
+    "sha256": "9c711e396dc75042b747a1bcacb5093aa8b4c84c316a89081b2e246bdae0c2b8"
+  },
+  "status": "exact independent terminal finite certificate",
+  "terminal_raw_artifact": {
+    "bytes": 3437,
+    "path": "/private/tmp/lattice-T-chronological-L5-audit-v2.json",
+    "payload_sha256": "832e8ce9c44f2528ffd3e39996572b3622e5d4b29ed47bfa593621d8c346528b",
+    "sha256": "144eb1d78a2a9c62be0747be50a2e135a8b8e91d5d2335e64398bf5af5146194"
+  }
+}

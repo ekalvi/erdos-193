@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact strict-zero-envelope short-return affine-holonomy census; algebraic action-channel evidence only, not an unconditional Erdős #193 theorem",
+  "checker": {
+    "path": "design/lattice_t_short_return_holonomy.py",
+    "sha256": "bd1b8308216bb47f9c83d3f2ed2a50e30011d623ea63030f6cde82203a0b536b",
+    "frozen_chunk_checker_sha256": "01964e05dc8fd4334bfff325b6bfede034c7c9ee2ed1ac3c85259a0d3088e23c",
+    "revision_note": "the frozen checker produced every pair chunk; the current revision changes only streaming merge aggregation and its hard-gate checks"
+  },
+  "canonical_raw_result": {
+    "path": "/tmp/lattice-T-short-return-holonomy-zero-8-16.json",
+    "bytes": 97258680,
+    "sha256": "a1789f881fcced4abe6ac2d5aed2f001b867cae815a8c2c59dcd601aaee6d6bc"
+  },
+  "pinned_inputs": {
+    "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "word_cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "whole_word_actions_sha256": "9ce2de5f7936349b4cc7e830dcf962f26164693dbf66da1ba3fcc9a1d73e2112",
+    "accepted_ordinal_bitsets_sha256": "f75568afab8b17df620d3fed4cd174862db33c20f482a07ef38741db0c9e88cb",
+    "action_checker_sha256": "9056394f5529036f2e4515490de4940ca42d04165eae928c32f1b027aae36fed"
+  },
+  "scope": {
+    "channel": "zero_envelope",
+    "start_step": 8,
+    "completed_middle_steps": [16],
+    "direct_8_to_8_returns_included": true,
+    "all_124_middle_steps_completed": false,
+    "length_at_most_two_same_phase_census_complete": false,
+    "ordered_envelope_channel_run": false,
+    "correlation_preserved": "every role retains its actual accepted whole word, ordinal, slot, prefix control, and all proper interiors"
+  },
+  "direct_8_to_8_returns": {
+    "actual_role_occurrences": 602,
+    "unique_affine_maps": 52,
+    "full_candidate_reveals": 128828,
+    "unique_guard_polynomials": 1538,
+    "guard_spectrum": {
+      "F11": {"unique_polynomials": 1, "occurrences": 1080},
+      "F348": {"unique_polynomials": 1, "occurrences": 130},
+      "lateral_plane": {"unique_polynomials": 1, "occurrences": 11592},
+      "x_axis": {"unique_polynomials": 1, "occurrences": 1032},
+      "other": {"unique_polynomials": 1534, "occurrences": 114994}
+    },
+    "role_stream_sha256": "3b9e9a78d862dd8f56f95c9267822d8cde4b0eff61f7e710b7748e69c6ff0f64",
+    "direct_return_stream_sha256": "1c1959615bfaf426680ae15b65418755ce62dd2020dccfe14034704fdbff2cae"
+  },
+  "correlated_8_to_16_to_8_returns": {
+    "actual_first_role_occurrences": 864,
+    "actual_second_role_occurrences": 864,
+    "actual_correlated_pairs": 746496,
+    "unique_affine_return_maps": 3136,
+    "distinct_affine_fixed_points": 2094,
+    "selected_word_reveals": {
+      "occurrences": 4468608,
+      "unique_guard_polynomials": 8565,
+      "guard_spectrum": {
+        "F11": {"unique_polynomials": 1, "occurrences": 5272},
+        "F348": {"unique_polynomials": 1, "occurrences": 18676},
+        "lateral_plane": {"unique_polynomials": 1, "occurrences": 34040},
+        "x_axis": {"unique_polynomials": 1, "occurrences": 6616},
+        "other": {"unique_polynomials": 8561, "occurrences": 4404004}
+      }
+    },
+    "full_candidate_reveals": {
+      "unique_map_reveals": 1342208,
+      "actual_pair_weighted_reveals": 319500288,
+      "unique_guard_polynomials": 47946,
+      "guard_spectrum": {
+        "F11": {"unique_polynomials": 1, "occurrences": 636636},
+        "F348": {"unique_polynomials": 1, "occurrences": 166280},
+        "lateral_plane": {"unique_polynomials": 1, "occurrences": 7478400},
+        "x_axis": {"unique_polynomials": 1, "occurrences": 623128},
+        "other": {"unique_polynomials": 47942, "occurrences": 310595844}
+      }
+    }
+  },
+  "two_loop_composition_witness": {
+    "available": true,
+    "U": {
+      "controls": [[-4, -4, -3], [-4, 2, 1]],
+      "fixed_point": [[-6, 1], [-113, 33], [-338, 99]],
+      "pair_multiplicity": 1737,
+      "first_word": {"ordinal_1_based": 14669, "slot_zero_based": 3, "word": [51, 1, 11, 16]},
+      "second_word": {"ordinal_1_based": 1764, "slot_zero_based": 2, "word": [11, 24, 8, 73]}
+    },
+    "V": {
+      "controls": [[-4, -4, -3], [-4, 2, 2]],
+      "fixed_point": [[-6, 1], [-103, 33], [-337, 99]],
+      "pair_multiplicity": 772,
+      "first_word": {"ordinal_1_based": 9567, "slot_zero_based": 3, "word": [25, 2, 36, 16]},
+      "second_word": {"ordinal_1_based": 1997, "slot_zero_based": 2, "word": [12, 24, 8, 72]}
+    },
+    "exact_identity": "p_(V o U^n)-p_U=(I-M^(len(V)+n*len(U)))^-1*(I-M^len(V))*(p_V-p_U)",
+    "nonzero_formula_numerator": [0, 3, 1],
+    "sample_product_fixed_points": [
+      {"n": 1, "fixed_point": [[-6, 1], [-2472, 715], [-2432, 715]]},
+      {"n": 2, "fixed_point": [[-6, 1], [-37937, 11088], [-56827, 16632]]},
+      {"n": 3, "fixed_point": [[-6, 1], [-49133287, 14347905], [-146940481, 43043715]]}
+    ],
+    "scope_warning": "this proves an infinite exact affine-semigroup family in the per-step action channel; it does not prove that U and V can repeat at one reachable chronological safety state"
+  },
+  "chunk_commitments": [
+    {"first_role_range": [0, 128], "sha256": "937bc069bee49f8eef18ef8bcb97fc3c5837d2c179418753fb3afe6875e0b6a1"},
+    {"first_role_range": [128, 256], "sha256": "6c42d93aedf5aa9c07fffb40777e286d789d8490fe9c48516a967d7fe45ccf11"},
+    {"first_role_range": [256, 384], "sha256": "936b0e8c8145af7f5d5580ab08506296725c2aac573afa1db8aece34cc23d6a0"},
+    {"first_role_range": [384, 512], "sha256": "6890723d1ad30c607a8b1b60b3632c1484da6a56b69c03f1c8e5c5cb2f26df25"},
+    {"first_role_range": [512, 640], "sha256": "c288f7429a6a84d80dc18585a136669fdafae3a7dbbc99dbf2e4170b686769f5"},
+    {"first_role_range": [640, 768], "sha256": "881fee6c7273d57d2390b93efc7b2c18aae31908a500318a66d53649b9f971ca"},
+    {"first_role_range": [768, 864], "sha256": "b680888a0c1400d7500a8c88bc5a1664db11edbe833650e59bc02b7b7fdf4fa1"}
+  ],
+  "resource_policy": {
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1"
+    },
+    "chunk_limits": {"work_seconds": 110, "resident_bytes": 293601280},
+    "merge_elapsed_seconds": 66.54152715892997,
+    "merge_maximum_resident_bytes": 164302848,
+    "compliant": true
+  },
+  "proved": [
+    "every reported direct return and pair uses exact accepted whole-word/slot occurrences",
+    "every affine map, rational fixed point, phase pullback, and guard coefficient is exact",
+    "the reported guard spectra distinguish F11, F348, x-axis, lateral-plane, and all other primitive polynomials without floating point",
+    "the displayed two-loop sample fixed points satisfy the exact symbolic composition identity"
+  ],
+  "interpretation": "F11 and F348 are a tiny part of the abstract exact guard spectrum, so a proof cannot simply assume that those two cones exhaust short-return holonomy. The many other guards are not yet counterexamples: this census does not establish silence, integral lattice-line moments, secant birth, reachability, or repeatable chronological legality.",
+  "not_proved": [
+    "all-depth silence for any reported direction family",
+    "integer lattice-line existence or moment integrality",
+    "birth as a secant in a reachable walk",
+    "chronological legality, repeatability, or successor closure",
+    "that any other abstract guard polynomial is imposed by the realized path policy",
+    "positive connector availability, the far-secant tail lemma, or an unconditional theorem"
+  ]
+}

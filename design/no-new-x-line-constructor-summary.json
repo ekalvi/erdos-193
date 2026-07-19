@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact finite certificate",
+  "checker": {
+    "path": "design/no_new_x_line_constructor.py",
+    "sha256": "6eca827ef7b6a4dfad57554bb89156fff79c2f495e89ba33e166aebbba21fffd"
+  },
+  "canonical_artifact": {
+    "path": "/tmp/no-new-x-line-L5-canonical.json",
+    "bytes": 45693,
+    "sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a"
+  },
+  "independent_repeat": {
+    "path": "/tmp/no-new-x-line-L5-repeat.json",
+    "bytes": 45693,
+    "sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "byte_identical_to_canonical": true
+  },
+  "resource_policy": {
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "canonical_wall_seconds": 131.61,
+    "canonical_maximum_resident_set_bytes": 747839488,
+    "repeat_wall_seconds": 134.70,
+    "repeat_maximum_resident_set_bytes": 749891584
+  },
+  "compact_domain_cache": {
+    "format": "8-byte magic; repeated [uint8 length, uint8 menu-index...]",
+    "bytes": 68050680,
+    "sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "D2_to_D4_words": 7114584,
+    "D5_appended_words": 5422562,
+    "effective_words": 12537146,
+    "word_slots": 55513526,
+    "fragile_steps": 18,
+    "nonfragile_steps": 106,
+    "block_metadata_sha256": "838cbe6fc0205d293191c4f656fb9c7181074849d8cfdaaed83107da2d0ebc0e"
+  },
+  "scope": {
+    "level": 5,
+    "schedule": "pinned fragile-first gate order",
+    "selector": "first effective-domain word that is globally projection-clean and exactly legal against the alternate prefix",
+    "gaps": 2457,
+    "anchors": 2458,
+    "all_anchors_present_before_first_stitch": true
+  },
+  "result": {
+    "construction_completed": true,
+    "points": 8260,
+    "steps": 8259,
+    "selected_word_length_histogram": {
+      "2": 50,
+      "3": 1469,
+      "4": 938
+    },
+    "initial_doubled_yz_fibres": 31,
+    "final_doubled_yz_fibres": 31,
+    "new_doubled_yz_fibres": 0,
+    "doubled_fibre_set_preserved_exactly": true,
+    "independent_ordered_chain_disqualifier": null,
+    "fast_and_reference_legality_agreed_on_every_selected_word": true,
+    "minimum_effective_domain_words_over_stitches": 2570,
+    "minimum_joint_survivors_certified_per_stitch": 1,
+    "survivor_counts_exhaustive": false,
+    "first_domain_word_survived_stitches": 1160,
+    "median_first_survivor_ordinal_1_based": 2,
+    "maximum_first_survivor_ordinal_1_based": 2455,
+    "maximum_ordinal_witness": {
+      "construction_rank": 1423,
+      "gap": 1400,
+      "step": 19,
+      "domain_words": 6736,
+      "first_survivor_ordinal_1_based": 2455,
+      "projection_rejected_before_survivor": 234,
+      "projection_clean_exact_tested_through_survivor": 2221,
+      "selected_word": [
+        6,
+        0,
+        4,
+        59
+      ]
+    },
+    "total_projection_rejections_before_selected_words": 8685,
+    "total_projection_clean_exact_tests_through_survivors": 73623
+  },
+  "commitments": {
+    "schedule_sha256": "031e4dc1ed31fba2ff930036dd0b1f81bb516d3d4c98818def6d9085179b4422",
+    "selection_record_stream_sha256": "1979af1139a707304147d4fb3e7a9d97af46a92c4ec1a783d567ca966b79531c",
+    "alternate_words_by_gap_sha256": "32d5c762c15ce574c87427ee198b22e758fe4b714989cba52a9d9d54c71a02a7",
+    "alternate_flat_step_word_sha256": "8f94471be8be8bfe8c790470e392fa7ac40d5834db86aa5f594c0aa500e741b9",
+    "alternate_ordered_point_stream_sha256": "a9522b6403c869016dc77ba00646af5240b416c06a57e8434fadea519b7fb5e5",
+    "final_point_set_sha256": "9dfdb584080c4ed05c37578660c6ec3a7567fd09637bcc22374bc57ca34b357e",
+    "inherited_doubled_fibre_stream_sha256": "d697a3b3feee953fb8cc3794f7c8f7a8108c98c70bce2d29466e62f590f0fd8f"
+  },
+  "proved_finite_facts": [
+    "the pinned L4-to-L5 state admits a complete fragile-first connector selection that is exactly triple-free",
+    "no selected connector creates a new doubled yz fibre, so no new x-parallel secant line is born",
+    "the only doubled yz fibres in the completed alternate L5 walk are the same 31 fibres inherited among the anchors",
+    "the independent repeat reproduces every deterministic cache, selection, word, and point commitment"
+  ],
+  "not_proved": [
+    "global yz injectivity for the current construction, because its L4 anchors already contain 31 doubled fibres",
+    "more than one joint survivor at the worst stitch, because survivor counts were not exhaustively enumerated",
+    "a uniform all-level no-new-fibre availability theorem",
+    "a safety-game transition invariant over alternate histories",
+    "elimination or summable control of non-x-parallel far secants",
+    "an unconditional theorem for Erdos problem 193"
+  ],
+  "proof_assessment": "This is a new coherent finite orbit, not a menu sample or a pointwise replacement test. It makes no new x-lines through L5, but the 31 inherited lines and all non-x far-secant channels remain. The next decisive test is whether the same policy closes from an injective seed or through L6 without collapsing joint availability."
+}

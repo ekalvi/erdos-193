@@ -1,0 +1,66 @@
+{
+  "status": "both exact length-three and lengths-two-or-three child-step greatest fixed points are empty",
+  "scope": {
+    "menu": "all 124 nonzero vectors in [-2,2]^3",
+    "matrix": [[3, 0, 0], [0, 0, -3], [0, 3, -1]],
+    "channels": ["exact length 3", "all legal lengths 2 or 3"],
+    "legality": "all connector vertices distinct and no collinear triple",
+    "closure": "a parent survives iff it has a legal ordered word all of whose child steps survive"
+  },
+  "canonical_run": {
+    "command": "nice -n 15 python3 -B design/exact_length3_gfp.py --output /tmp/exact-length3-gfp-canonical-v2.json",
+    "raw_artifact": "/tmp/exact-length3-gfp-canonical-v2.json",
+    "raw_bytes": 30991,
+    "raw_sha256": "3243e80f12f3bb88d9ead485d957824c606e8364324c814a96f9ffd9b8790fa1",
+    "checker_sha256": "657b9c7aafde0570eacdb553ec942a2c804e68a99429a9a18135794d31cf5aaf",
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "maximum_resident_bytes": 23068672
+  },
+  "input_regression_sha256": {
+    "step1_connectors4.py": "fadd1c7157ca4ceb765997e3b7c6a14843667a13b1dfd381269e47d8f156fd60",
+    "router_synthesis.py": "1713dc165b3daa8e6dd9dce05911c357aa768be0f42abd43fd83bda9c8d5281e",
+    "search193.py": "0588060ebc443cc85521af1a34a6a3f94b4c4462365c7e03282bf1afb7cdcffc",
+    "connector_domains4.pkl": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f"
+  },
+  "channels": {
+    "exact_length_3": {
+      "forward_reverse_semantic_identity": true,
+      "semantic_sha256": "51b21c49e66668a95a08652e22ca88f0783b251dcf3f049b9f3f6e23666ba85c",
+      "forward_seconds": 0.78575,
+      "reverse_seconds": 0.786884,
+      "total_legal_words": 56516,
+      "before_step_counts": [124, 104, 84, 70, 56, 36, 20, 10, 2],
+      "internal_word_counts": [56516, 32362, 15712, 8794, 4120, 826, 72, 12, 0],
+      "zero_witness_parent_counts": [20, 20, 14, 14, 20, 16, 10, 8, 2],
+      "minimum_positive_witness_counts": [1, 1, 1, 3, 1, 1, 2, 6, null],
+      "maximum_witness_counts": [3232, 2134, 1176, 798, 516, 180, 22, 6, 0],
+      "terminal_pair": [[-1, 0, 0], [1, 0, 0]],
+      "surviving_subalphabet": []
+    },
+    "lengths_2_or_3": {
+      "forward_reverse_semantic_identity": true,
+      "semantic_sha256": "523a91729d041436c646b67d06fdb674a15f3b9caf6a9bd14583ec9264b0513f",
+      "forward_seconds": 0.794207,
+      "reverse_seconds": 0.807061,
+      "legal_word_counts_by_length": {"2": 552, "3": 56516},
+      "total_legal_words": 57068,
+      "before_step_counts": [124, 104, 84, 70, 56, 36, 20, 10, 2],
+      "internal_word_counts": [57068, 32718, 15944, 8922, 4188, 854, 80, 12, 0],
+      "zero_witness_parent_counts": [20, 20, 14, 14, 20, 16, 10, 8, 2],
+      "minimum_positive_witness_counts": [1, 1, 1, 3, 1, 1, 2, 6, null],
+      "maximum_witness_counts": [3272, 2164, 1208, 822, 532, 192, 26, 6, 0],
+      "terminal_pair": [[-1, 0, 0], [1, 0, 0]],
+      "surviving_subalphabet": []
+    }
+  },
+  "theorem_boundary": {
+    "proved_exact_length_three": "There is no nonempty child-step-closed subalphabet when every connector word has exact length three.",
+    "proved_lengths_two_or_three": "There is no nonempty child-step-closed subalphabet even when every parent may choose any legal connector word of length two or three.",
+    "cache_consistency": "The independent enumeration gives 552 legal length-two words and the previously recorded 56,516 legal length-three words without loading connector_domains4.pkl.",
+    "tail_consequence": "Any child-step-closed policy for this radius-two menu and matrix must use a length-four or length-five connector in its recurrent dependency core; the hoped-for uniformly low-branching length-at-most-three policy is impossible.",
+    "not_implied": "This does not rule out a mixed-length policy using length-four or length-five words whose incidence matrix has Perron-Frobenius growth exactly three, and it does not prove connector availability, a contracting far-secant transfer, or an unconditional theorem.",
+    "remaining_obstruction": "Longer words restore larger birth cohorts, while exact-zero residual lines and global old-old secants retain Boolean-strength poison. They still require a promoted finite state or a separate reachable-tail argument."
+  }
+}
