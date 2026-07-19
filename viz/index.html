@@ -55,38 +55,25 @@
     <b>Current status: the record is verified; an infinite walk is not proved.</b>
     <p>The earlier claim that bounded local crowding would guarantee a legal stitch was
     wrong: a candidate can be killed by a line through two points arbitrarily far away.
-    The old height-two action region is now ruled out exactly: it has 601 words overall,
-    only eight at the repeated step-20 corridor, and no legal entry in its correlated
-    8-by-8 second-stitch matrix. A much larger lattice-envelope filter retains 8,367,038
-    strict zero-envelope words and 10,252,458 ordered-envelope words. Those counts prove
-    acyclicity only for contiguous, direction-blind candidate chains &mdash; not for silent
-    lines, newly born secants, unrelated cursor imports, or the complete global poison set.
-    A strict zero-envelope construction using globally fresh yz fibres has completed all
-    2,457 L5 stitches and stores 8,268 points; a separate exact audit has now verified every
-    first-survivor choice and the full natural-order chain. This is one finite certificate,
-    not an all-level selector. A direction-only ban on the two known latent spectra fails
-    already at inherited anchors 30/33, whose secant has J=11/3. Restricting to short
-    connectors does not close the induction: the exact
-    greatest fixed point of all length-2 and length-3 connector words is empty, so every
-    recurrent closed policy must use a length-4 or length-5 word. Mixed-length growth
-    exactly 3 remains open. The exact ghost family is spaced like 9<sup>n</sup>, which gives
-    a cutoff at each finite level but no uniform cutoff as the walk grows. Exact birth
-    equations are known; weighted local-lemma and shell-transfer arguments remain proposed
-    routes, not proofs.</p>
+    Since then the project has produced a large batch of exact, machine-checked results
+    &mdash; deeper record constructions, independent audits at the next scales, and a proof
+    that the relevant &ldquo;far-line&rdquo; geometry is finite &mdash; each ruling out a
+    specific shortcut or certifying one more piece. What none of them yet delivers is a
+    single finite rule that provably picks a safe next move for <em>every</em> possible
+    history. That one missing ingredient &mdash; uniform control of distant lines &mdash; is
+    the whole gap between the verified record and an infinite walk.</p>
     <div class="status-grid">
       <div class="yes"><b>Verified</b>311,737 steps (311,738 vertices), with no repeated
-      point and no three collinear. The two lattice-envelope word censuses and the empty
-      length-at-most-three closure are also exact finite results.</div>
-      <div class="now"><b>Exact finite construction</b>The strict zero-envelope,
-      fresh-yz L5 and primary L6 terminal audits are complete, including the full
-      28,665-point L6 pair scan. The separate two-cone guarded L5 and ordinary-base L6
-      finite audits are also complete. The alternate no-new-x L6 run has made all 8,259
-      choices but still requires completion of its ordered-chain audit.</div>
-      <div class="no"><b>Still missing</b>A finite state and transition rule that works for
-      every reachable history and leaves a connector after all local, birth, import, and
-      far-secant poison is combined. The alternate no-new-x audit, near-state census,
-      mixed-length policy search, uniform reachable-birth bound, and safety greatest fixed
-      point all remain open.</div>
+      point and no three collinear &mdash; every check is exact integer arithmetic. A number
+      of supporting finite results are proved exactly too.</div>
+      <div class="now"><b>Progress</b>Deeper walks and their independent
+      &ldquo;no-three-in-a-line&rdquo; audits are complete at the next scales, and the
+      far-line geometry is proved finite. These confirm the construction keeps working
+      further out.</div>
+      <div class="no"><b>Still missing</b>A finite rule &mdash; a &ldquo;safety
+      controller&rdquo; &mdash; that works for every reachable history and always leaves a
+      legal next move once distant lines are taken into account. Proving such a rule exists
+      (or that none can) is the open problem.</div>
     </div>
   </section>
 
@@ -357,70 +344,13 @@
     killed by a collision or by a secant through <em>any</em> two points already placed,
     including points far from the gap. A successful proof needs a finite, reachable safety
     state that always leaves at least one word outside this exact poison set and whose chosen
-    word leads to another safe state. The state must preserve the realized path order and
-    recent connector choices, while a separate ranked or contracting tail controls distant
-    endpoints and secants. The centred endpoint/line equations and a phase-adjusted
-    factor-three escape rank are now proved for one far channel. On the recorded graph, all
-    13,826 exterior transitions obey it with no return to the core. But 11,107 of 11,154
-    actual x-line effects, including every short recurrence source, are already in that
-    core. Those 13,203 strict-or-latent occurrences compress to 1,312 geometric states with
-    consistent poison on the recorded actions. The exhaustive all-action follow-up checks
-    55.5 million ordered slots and proves a 53,216-state synchronized core. A subsequent
-    exact replay closes 564 occupancy/birth updates and 438 four-way transports, including
-    nine genuine line births, but all 126 source occupancy states are unique and the
-    active-line-only compression is noncongruent. A separate exact alternate L5 path now
-    avoids all new x-line births for 2,457 consecutive stitches while retaining global
-    three-dimensional legality; its hardest first survivor is word 2,455, so this is not a
-    uniform availability floor. The full unrelated-cursor follow-up checks 189.4 million
-    successor-core cells and refutes the strongest local state tested: remote occupancy
-    changes the imported mask even when exact jump, phase, and all predecessor-core cells
-    agree. An exact
-    one-generation trace found 61 child states whose full poison exceeds the
-    direct frontier, and the selected L9 continuation finds 58 of 488 tagged age-two states
-    still effectful. A newer translation-normalized witness has the same tested zero mask
-    in two L8 states but 3,998 versus zero killed words one slot later; exact endpoint/partner
-    line geometry explains the difference. The x-direction geometry itself is finite for
-    every domain action, and projection collisions reduce to a radius-seven finite CSP
-    (radius five on the pinned cache). The alternate no-new-x L6 construction has selected
-    every gap, but its separate independent audit is unfinished. For non-x lines, an
-    all-iterate two-word cycle
-    refutes arbitrary-switching rank. The first 601-word height-two action region fails
-    completely at the second stitch. Its lattice-envelope successor retains millions of
-    words and proves direction-blind chain acyclicity, but not global legality. A strict
-    zero-envelope, fresh-yz run has completed L5 with 8,268 points and passed its
-    independent terminal audit. A direction-only two-spectrum exclusion is refuted at the
-    inherited seed. The complete 34.2-million-pair follow-up finds 758 cone secants and 76
-    named macro-ray secants, including 61 born by connectors. None of the inherited cone
-    lines matches the tested actual L5 or induced-L6 affine phase roles, so exact line moments
-    still matter; connector-born roles and selected L6 actions are not yet closed. A separate
-    grandfathered two-cone selector now has an exact independent finite certificate: all
-    2,457 guarded L5 stitches and all 34,407,660 terminal pairs pass, with 4,211 rejected
-    cone births independently reproduced and no connector-born guarded-cone secant. This
-    validates the guard mechanism on one orbit, not uniform availability. A guarded L6 run
-    from the ordinary audited L5 base has now completed all 8,267 stitches, and its
-    independent auditor has checked all 414,014,700 terminal pairs in the 28,776-point
-    chain, reproducing 17,087 guard rejections and finding no new guarded-cone secant. The
-    base is ordinary primary L5 rather than the guarded-L5 output, so this is not a
-    consecutive inductive transition.
-    The exact correlated short-return census nevertheless finds 3,136 affine maps, 2,094
-    fixed points, and 47,942 additional abstract guard polynomials, so the two known cones
-    cannot be assumed exhaustive. The primary chronological L6 path has completed all 8,267
-    choices; independent firstness and all 410,826,780 terminal pair checks on its
-    28,665-point chain are complete. A 65-chunk role-first scan of all 34,175,778 primary-L5
-    pairs finds 4,597 matched births but only three actual tested-role connector effects,
-    none killing the recorded selected word. The carried-ghost follow-up then checks
-    48,237,501 endpoint/partner occurrences: 97 act at depth zero, 15 first act at depth
-    one, and the rest stay silent through depth one. Exact Pluecker data repairs the known
-    mask mismatch, but repeated classes still disagree once coordinate-correlated children
-    are retained; keeping full coordinates makes every class singleton. This is a sharper
-    state obstruction, not a tail lemma or finite quotient. The exact
-    length-at-most-three GFP is empty, so longer
-    connectors cannot be removed from the recurrent policy. The open step is to turn a
-    larger action region into a successor-closed selector, then close correlated births,
-    current connector joins, cursor imports, latent zero-mask returns, and the
-    greatest-fixed-point availability condition. The current research processes are paused
-    after these completed audits and the reviewed near-state ablation checker has not yet
-    begun its census.</p>
+    word leads to another safe state. The state has to remember the realized path exactly
+    nearby, while a separate ranked or contracting summary keeps distant endpoints and
+    secants from piling up. Extensive exact computation has now mapped this out: the
+    near-side geometry is proved finite, and many partial controllers have been certified on
+    real constructions. The piece still missing is that tail control &mdash; a uniform bound
+    showing distant lines can never exhaust the available words &mdash; which would turn one
+    selector into a proof that the walk continues forever.</p>
   </div>
 
   <h2>Why a local view is not enough</h2>
@@ -449,27 +379,15 @@
     <p><b>Connector legality is global.</b> A new connector point is illegal if it lies on
     a line through any two earlier points. Those endpoints need not be close to the pending
     gap, so a bound on local crowding &mdash; even a very strong one &mdash; cannot by itself prove
-    that some connector survives. Exact replay confirms the issue quantitatively, and a
-    general counterexample can keep every small ball sparse while remote pairs seal every
+    that some connector survives. Exact replay confirms the issue quantitatively: a walk
+    can keep every small neighbourhood sparse while remote pairs quietly seal off every
     first move. The potential repair is to carry nearby geometry exactly and summarize
-    distant endpoint/secant effects by birth level or 3-adic shell, with a proved rank or
-    contraction that prevents an unbounded tail from accumulating. The current exact trace
-    confirms that joins with other points must be retained. The x-parallel closure also
-    proves that a currently empty mask is not enough to discard a line and that adding the
-    current exact mask and action still leaves short recurrences. The Bellman audit proves
-    outward escape only after a line is outside the core; all observed recurrence sources
-    remain inside. At L9, old tagged endpoints still poison connector words through joins
-    with anchors born at several earlier levels. A sound tail state must preserve those
-    hidden future effects and correlations. Exact ghost spacing gives a deterministic
-    cutoff for any one bounded finite level, but that cutoff grows with the walk and is not
-    an all-level tail theorem. The exact endpoint-and-line birth operator is now written
-    down. A complete generic transfer census shows why simple averaging does not close it:
-    the all-descendant role kernel has spectral radius at least two, although the finite
-    continuously effectful lattice-T contact kernel is nilpotent. Silent ghosts, births,
-    legality conditioning, and cursor imports are precisely what remain. A weighted
-    local-lemma proof or a mask-valued shell transfer built from the exact operator remains
-    a research route until a uniform reachable-birth bound and a positive survivor
-    inequality are certified.</p>
+    distant endpoint/secant effects by birth level or scale, with a proved rank or
+    contraction that prevents an unbounded tail from accumulating. Recent exact traces
+    pin down what such a summary must track: distant joins genuinely matter, and a line that
+    looks harmless now can reappear later. So the repair needs a proved tail bound, not just
+    a larger local window &mdash; and that bound is exactly what has not yet been
+    established.</p>
   </div>
 
   <h2>Origin story</h2>
