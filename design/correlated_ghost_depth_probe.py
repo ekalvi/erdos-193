@@ -77,7 +77,7 @@ thread and fails closed unless it is run at nice value at least 15::
         --database /tmp/correlated-ghost-depth-probe.sqlite \
         --output /tmp/correlated-ghost-depth-probe.json
 
-The default safety caps are six elapsed hours, 1,400 MiB resident memory, and
+The default safety caps are six elapsed hours, 2,200 MiB resident memory, and
 200 million checked work units per invocation.  Work/RSS/time are checked at
 least every 50,000 units and before every durable step or token-block commit.
 Stopping on a cap is graceful and leaves only completed transactions to
@@ -118,21 +118,24 @@ from deep_incidence_lineage import (  # noqa: E402
     build_l8_catalog,
     build_path_origins,
 )
-from gate_run import MENU, load_domains, word_interiors  # noqa: E402
+from gate_run import FRAGILE_CUT, IDX, MENU, word_interiors  # noqa: E402
 from imbricate193 import apply  # noqa: E402
 from inherited_tile_lifetime import exact_birth_levels, load_viz  # noqa: E402
 from salvage_gate import cross, primitive, sub  # noqa: E402
 
 
-SCHEMA_VERSION = 2
+SCHEMA_VERSION = 3
 TARGET_LEVEL = 8
 EXPECTED_L8_STATES = 146
 EXPECTED_L9_CHILDREN = 488
 EXPECTED_L8_POINTS = 311_738
-EXPECTED_EFFECTIVE_STEPS = 90
+# The 146 source stitches use 58 steps and their selected child words use 90;
+# their exact union contains 99 connector-domain steps.
+EXPECTED_EFFECTIVE_STEPS = 99
 EXPECTED_ENDPOINT_STATE_PAIRS = 235
 TOKEN_OCCURRENCE_UPPER_BOUND = 73_258_195
 DEFAULT_BLOCK_SIZE = 512
+DEFAULT_MAX_RSS_MIB = 2200.0
 DEFAULT_DATABASE = Path("/tmp/correlated-ghost-depth-probe.sqlite")
 DEFAULT_OUTPUT = Path("/tmp/correlated-ghost-depth-probe.json")
 DEFAULT_TRACE = Path("/tmp/far-secant-birth-shell-trace-canonical.json")
@@ -421,6 +424,72 @@ def validate_run_inputs(arguments):
     assert len(compatibility["states"]["L9"]) == EXPECTED_L9_CHILDREN
     assert compatibility["scope"]["endpoint_or_distance_cutoff"] is None
     return trace, l9, compatibility, observed
+
+
+def relevant_connector_steps(trace):
+    """Derive the exact source/child step support before opening domains."""
+    steps = set()
+    for item in trace["child_states"]:
+        source_step = item["step"]
+        actual_word = tuple(item["actual_selected_connector_word"])
+        assert source_step in range(len(MENU))
+        assert actual_word
+        assert all(step in range(len(MENU)) for step in actual_word)
+        steps.add(source_step)
+        steps.update(actual_word)
+    assert len(steps) == EXPECTED_EFFECTIVE_STEPS
+    return frozenset(steps)
+
+
+def load_relevant_domains(relevant_steps):
+    """Load exactly the 99 used domains with ``gate_run`` ordering.
+
+    The complete D2--4 size map is retained because the chronological catalog
+    needs it to reconstruct the frozen fragile-first schedule.  Domain words
+    for unused steps are discarded before any sorted copy is made.  For every
+    retained step, the ordering is byte-for-byte semantic-equivalent to
+    ``gate_run.load_domains``: stable ``sorted(..., key=len)`` followed by the
+    original D*5 fragile-word stream in pickle order.
+    """
+    relevant_steps = frozenset(relevant_steps)
+    assert len(relevant_steps) == EXPECTED_EFFECTIVE_STEPS
+    d4_path = ROOT / "connector_domains4.pkl"
+    with d4_path.open("rb") as handle:
+        d4 = pickle.load(handle)
+    assert tuple(map(tuple, d4["menu"])) == tuple(MENU)
+    raw_domains = d4["domains"]
+    d24_size = {step: len(words) for step, words in raw_domains.items()}
+    assert relevant_steps <= set(raw_domains)
+    for step in tuple(raw_domains):
+        if step not in relevant_steps:
+            del raw_domains[step]
+    del d4
+    gc.collect()
+
+    domains = {}
+    for step in sorted(relevant_steps):
+        raw_words = raw_domains.pop(step)
+        domains[step] = sorted(raw_words, key=len)
+        del raw_words
+    assert not raw_domains
+    del raw_domains
+    gc.collect()
+
+    d5_path = ROOT / "dstar5_fragile.pkl"
+    with d5_path.open("rb") as handle:
+        d5 = pickle.load(handle)
+    for step_vector, words in d5.items():
+        step = IDX[tuple(step_vector)]
+        assert d24_size[step] < FRAGILE_CUT
+        if step in relevant_steps:
+            domains[step].extend(
+                tuple(IDX[tuple(vector)] for vector in word)
+                for word in words
+            )
+    del d5
+    gc.collect()
+    assert set(domains) == set(relevant_steps)
+    return domains, d24_size
 
 
 def initialize_database(path, run_signature, metadata):
@@ -2344,8 +2413,16 @@ def estimate_result(resource_policy, arguments):
             "commitments; every zero token is streamed through the exact "
             "census/congruence reductions without a materialized row"
         ),
+        "domain_loading": (
+            "the full D2--4 size map is read for schedule reconstruction, "
+            "but only the 99 source/child step domains are retained and "
+            "sorted; unused word lists are discarded first"
+        ),
         "rough_runtime": "tens of minutes to several hours at nice 15",
-        "rough_peak_RSS": "expected below the enforced 1400 MiB default cap",
+        "rough_peak_RSS": (
+            "expected below the enforced 2200 MiB default cap; the former "
+            "all-domain loader was observed to peak at 1880 MiB before work"
+        ),
         "not_a_proof": True,
     }
 
@@ -2470,9 +2547,13 @@ def run_result(arguments, resource_policy):
     )
     stop_reason = None
     try:
-        domains, d24 = load_domains()
+        relevant_steps = relevant_connector_steps(trace)
+        domains, d24 = load_relevant_domains(relevant_steps)
         budget.check("after connector-domain load")
         context = build_structural_context(trace, domains, d24)
+        del d24
+        gc.collect()
+        budget.check("after structural context and D2--4 release")
         for state in context["states"]:
             state["domain_words"] = len(domains[state["step"]])
             for child in state["children"]:
@@ -2497,6 +2578,7 @@ def run_result(arguments, resource_policy):
             for item in chunk_lattice.values()
         ) == expected_occurrences
         relevant_steps = {item["step"] for item in observations}
+        assert relevant_steps == set(domains)
         for step in list(domains):
             if step not in relevant_steps:
                 del domains[step]
@@ -2690,7 +2772,9 @@ def parse_arguments():
         "--partner-block-size", type=int, default=DEFAULT_BLOCK_SIZE
     )
     parser.add_argument("--max-seconds", type=float, default=6 * 60 * 60)
-    parser.add_argument("--max-rss-mib", type=float, default=1400.0)
+    parser.add_argument(
+        "--max-rss-mib", type=float, default=DEFAULT_MAX_RSS_MIB
+    )
     parser.add_argument("--max-work-units", type=int, default=200_000_000)
     parser.add_argument("--check-interval", type=int, default=50_000)
     parser.add_argument("--stop-after-steps", type=int)
