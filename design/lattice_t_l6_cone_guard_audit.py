@@ -71,26 +71,52 @@ DEFAULT_SUMMARY = (
 )
 GUARD_CHECKER = ROOT / "design" / "lattice_t_l6_cone_birth_guard.py"
 
-# Freeze every value in this block only after guarded L6 construction is
-# terminal.  Keeping the constructor source pin pending prevents a later
-# correction from being accidentally paired with an earlier checkpoint.
-EXPECTED_GUARD_CHECKER_SHA256 = "PENDING"
-EXPECTED_PRODUCER_SHA256 = "PENDING"
-EXPECTED_L5_PRODUCER_SHA256 = "PENDING"
-EXPECTED_RESCUE_SHA256 = "PENDING"
-EXPECTED_SOURCE_SHA256 = "PENDING"
-EXPECTED_SOURCE_BYTES = 0
-EXPECTED_SOURCE_PAYLOAD_SHA256 = "PENDING"
-EXPECTED_SOURCE_STATIC_SHA256 = "PENDING"
-EXPECTED_SOURCE_PREFIX_SHA256 = "PENDING"
-EXPECTED_SOURCE_SELECTION_SHA256 = "PENDING"
-EXPECTED_SOURCE_MAX_FIRST_ORDINAL = 0
-EXPECTED_POINTS = 0
-EXPECTED_POINT_SET_SHA256 = "PENDING"
-EXPECTED_FINAL_YZ_SHA256 = "PENDING"
-EXPECTED_FINAL_DOUBLE_FIBRE_SHA256 = "PENDING"
-EXPECTED_PROMOTED_LINES = 0
-EXPECTED_PROMOTED_LINE_STREAM_SHA256 = "PENDING"
+# Frozen from the terminal guarded-L6 source after the independent pin report
+# reconstructed its full selected geometry and matched two exact 34,175,778-
+# pair enumerations of the inherited cone lines record for record.
+EXPECTED_GUARD_CHECKER_SHA256 = (
+    "0a3041a77fffd954bd7ff2478427d1c7f6ea6f6951b9f8465c0a0966b6b3d376"
+)
+EXPECTED_PRODUCER_SHA256 = (
+    "048c4c5457f75b7d45bf6f4bc22fcfec77d99b114f02e68982849db229358906"
+)
+EXPECTED_L5_PRODUCER_SHA256 = (
+    "6310c6e23f03e26507005744985676388fba308cf08096a21abab017b6b90e51"
+)
+EXPECTED_RESCUE_SHA256 = (
+    "2b1bde9e846211cd53f75b6300c540a99b92d25b706c174c137f32c9cbf19ebc"
+)
+EXPECTED_SOURCE_SHA256 = (
+    "0e5a35690b7508c067624da9533b67b0de7d6798abd1a145c2ce3ba13b7f255d"
+)
+EXPECTED_SOURCE_BYTES = 22_479_157
+EXPECTED_SOURCE_PAYLOAD_SHA256 = (
+    "ef70bf19e14996ef01607007519d417370463e74ec8343902815d8b4bcf9040f"
+)
+EXPECTED_SOURCE_STATIC_SHA256 = (
+    "e49ade10eb2fb82eef88f4469d1a2c5ac2acdb93ebba619170a86d8e3909dc60"
+)
+EXPECTED_SOURCE_PREFIX_SHA256 = (
+    "e09cdf70c4721dbc9eb28b97de2f1d1c733e1ec20cc84b7992fc9e5fb7ea73fb"
+)
+EXPECTED_SOURCE_SELECTION_SHA256 = (
+    "af74f2e2ff8996e8c3e41f3822dc3b9785abfe188da1b8344d101ccb93a1e0a2"
+)
+EXPECTED_SOURCE_MAX_FIRST_ORDINAL = 19_356
+EXPECTED_POINTS = 28_776
+EXPECTED_POINT_SET_SHA256 = (
+    "f61cf22b10a08d5c2feb3b761e89f239ab3b3bb873b65a4c5bc104be76875ada"
+)
+EXPECTED_FINAL_YZ_SHA256 = (
+    "454c199ca524655e7dbfcc402638b5f5252c86174cfff4f72a116344e36ab183"
+)
+EXPECTED_FINAL_DOUBLE_FIBRE_SHA256 = (
+    "43e6bf852454d9514c526098b1fb55105fe2bd4155b297b42b2adcdaa53466fc"
+)
+EXPECTED_PROMOTED_LINES = 758
+EXPECTED_PROMOTED_LINE_STREAM_SHA256 = (
+    "ef835d3faa689e23cb8c96ea900e573b037e3d90d896b6fb1ca4b855982653af"
+)
 
 EXPECTED_GAPS = producer.EXPECTED_PARENT_STEPS
 EXPECTED_ANCHORS = producer.EXPECTED_PARENT_POINTS
@@ -1567,11 +1593,12 @@ def self_check():
             raise
     else:
         raise AssertionError("guarded-L6 synthetic new cone was accepted")
+    pins_finalized = terminal_pins_finalized()
     return {
         "status": "passed",
         "checker_sha256": PROCESS_START_CHECKER_SHA256,
-        "terminal_pins_finalized": terminal_pins_finalized(),
-        "heavy_audit_locked_until_terminal_pins": True,
+        "terminal_pins_finalized": pins_finalized,
+        "heavy_audit_locked": not pins_finalized,
         "large_artifacts_opened": False,
         "independent_ordinal_bits_tested": 10,
         "both_target_cones_tested": True,
@@ -1584,11 +1611,17 @@ def self_check():
 
 
 def estimate():
+    pins_finalized = terminal_pins_finalized()
     return {
-        "status": "prepared; audit is fail-closed pending guarded-L6 pins",
+        "status": (
+            "prepared; guarded-L6 pins finalized"
+            if pins_finalized
+            else "prepared; audit is fail-closed pending guarded-L6 pins"
+        ),
         "checker_sha256": PROCESS_START_CHECKER_SHA256,
         "terminal_pins": terminal_string_pins(),
-        "terminal_pins_finalized": terminal_pins_finalized(),
+        "terminal_pins_finalized": pins_finalized,
+        "heavy_audit_locked": not pins_finalized,
         "source_checkpoint_is_read_only": True,
         "audit_checkpoint_is_separate": True,
         "all_writable_paths_are_resolved_and_disjoint": True,
