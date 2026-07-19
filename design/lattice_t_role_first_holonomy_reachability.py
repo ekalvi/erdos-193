@@ -69,6 +69,8 @@ DEFAULT_L5_TERMINAL = Path("/tmp/lattice-T-chronological-L5-audit-v2.json")
 DEFAULT_L5_SUMMARY = ROOT / "design" / "lattice-T-chronological-L5-summary.json"
 DEFAULT_L6_SOURCE = Path("/tmp/lattice-T-chronological-L6-checkpoint-v1.json")
 DEFAULT_L6_TERMINAL = Path("/tmp/lattice-T-chronological-L6-audit-v1.json")
+L5_AUDITOR = ROOT / "design" / "lattice_t_chronological_audit.py"
+L6_AUDITOR = ROOT / "design" / "lattice_t_l6_audit.py"
 
 # Immutable holonomy and primary-L5 inputs.
 EXPECTED_HOLONOMY_RAW_SHA256 = (
@@ -103,18 +105,24 @@ EXPECTED_L5_TERMINAL_BYTES = 3_437
 EXPECTED_L5_TERMINAL_PAYLOAD_SHA256 = (
     "832e8ce9c44f2528ffd3e39996572b3622e5d4b29ed47bfa593621d8c346528b"
 )
+EXPECTED_L5_AUDIT_CHECKER_SHA256 = (
+    "8c616ea15a7aaae3e1d70f07415dd74641c2cf4fafa22050c873d31bb1ac64e8"
+)
 EXPECTED_L5_SUMMARY_SHA256 = (
     "88fa0f41674d71cc9cf84fc1bd4b70949ab91cd1e8d83a435bb7b6bec5fc9df5"
 )
 EXPECTED_L5_SUMMARY_BYTES = 3_061
 EXPECTED_PRIMARY_L5_ORDERED_POINT_STREAM_SHA256 = (
-    "5da8880898a38de73b30f1570c1ac3de1c4c06b47c1da7eabc30d156e9123d08"
+    "5da8880898a38de73b30b1570c1ac3de1c4c06b47c1da7eabc30d156e9123d08"
 )
 EXPECTED_PRIMARY_L5_FLAT_WORD_SHA256 = (
     "1429806fba4ec5703a44516863c34776cd4aa07764c687909c7bda29ef915fa7"
 )
 EXPECTED_PRIMARY_L5_POINT_SET_SHA256 = (
     "320ea9923f57acbf55ba6c9775b67d894b12324a8debdf0ceac85fe4147fedc4"
+)
+EXPECTED_PRIMARY_L5_FINAL_YZ_SHA256 = (
+    "a27701eccdfe87c1a393e37a7cae69ae07b22aa3502e5c0e0d53b25ae1d118a5"
 )
 EXPECTED_PRIMARY_L5_POINTS = 8_268
 EXPECTED_PRIMARY_L5_GAPS = 2_457
@@ -179,6 +187,9 @@ EXPECTED_L6_TERMINAL_FLAT_WORD_SHA256 = (
 )
 EXPECTED_L6_TERMINAL_POINT_SET_SHA256 = (
     "c7d9c7bf11aa3817799733b48ab630c361e582e12100ffd4f847b5ac0ed18842"
+)
+EXPECTED_L6_TERMINAL_FINAL_YZ_SHA256 = (
+    "8ce7f58ffbeebaed1b4acc6ca961a45ccb116499a53b66ab16f629192313c119"
 )
 
 EXPECTED_L6_GAPS = 8_267
@@ -435,11 +446,15 @@ def verify_dependencies(budget):
         "l6_producer": file_sha256(
             Path(l6_producer.__file__).resolve(), budget=budget
         ),
+        "l5_auditor": file_sha256(L5_AUDITOR, budget=budget),
+        "l6_auditor": file_sha256(L6_AUDITOR, budget=budget),
     }
     expected = {
         "holonomy": EXPECTED_HOLONOMY_CHECKER_SHA256,
         "l5_producer": EXPECTED_L5_PRODUCER_SHA256,
         "l6_producer": EXPECTED_L6_PRODUCER_SHA256,
+        "l5_auditor": EXPECTED_L5_AUDIT_CHECKER_SHA256,
+        "l6_auditor": EXPECTED_L6_AUDIT_CHECKER_SHA256,
     }
     if observed != expected:
         raise AssertionError("checker dependency drift", expected, observed)
@@ -562,12 +577,31 @@ def verify_fixed_inputs(args, budget):
     )
     required_terminal = (
         "construction_completed",
+        "fast_reference_agreement_verified_for_every_exact_test",
+        "final_no_new_yz_coincidence",
         "first_survivor_audit_completed",
+        "global_empty_yz_verified_at_every_stitch",
         "selected_reference_legality_verified_at_every_stitch",
         "independent_ordered_no_three_collinear_verified",
     )
-    if any(not l5_terminal.get("result", {}).get(key) for key in required_terminal):
+    l5_result = l5_terminal.get("result", {})
+    if any(not l5_result.get(key) for key in required_terminal):
         raise AssertionError("primary L5 terminal certificate is incomplete")
+    if (
+        l5_terminal.get("schema_version") != 1
+        or l5_terminal.get("status")
+        != "exact independent terminal finite certificate"
+        or l5_terminal.get("checker", {}).get("sha256")
+        != EXPECTED_L5_AUDIT_CHECKER_SHA256
+        or l5_terminal.get("source_checkpoint")
+        != snapshots["primary_L5_source"]
+        or l5_terminal.get("source_producer_sha256")
+        != EXPECTED_L5_PRODUCER_SHA256
+        or l5_result.get("gaps") != EXPECTED_PRIMARY_L5_GAPS
+        or l5_result.get("points") != EXPECTED_PRIMARY_L5_POINTS
+        or l5_result.get("steps") != EXPECTED_PRIMARY_L5_STEPS
+    ):
+        raise AssertionError("primary L5 terminal provenance/extent drift")
     commitments = l5_terminal.get("commitments", {})
     if (
         commitments.get("selection_record_stream_sha256")
@@ -578,6 +612,8 @@ def verify_fixed_inputs(args, budget):
         != EXPECTED_PRIMARY_L5_FLAT_WORD_SHA256
         or commitments.get("final_point_set_sha256")
         != EXPECTED_PRIMARY_L5_POINT_SET_SHA256
+        or commitments.get("final_yz_occupancy_sha256")
+        != EXPECTED_PRIMARY_L5_FINAL_YZ_SHA256
     ):
         raise AssertionError("primary L5 terminal commitment drift")
     with Path(args.parent_summary).open() as handle:
@@ -655,22 +691,38 @@ def verify_terminal_l6(args, context, budget):
     )
     budget("terminal primary L6 audit load")
     terminal_snapshot["payload_sha256"] = EXPECTED_L6_TERMINAL_PAYLOAD_SHA256
-    if terminal.get("checker", {}).get("sha256") != (
-        EXPECTED_L6_AUDIT_CHECKER_SHA256
+    if (
+        terminal.get("schema_version") != 1
+        or terminal.get("status")
+        != "exact independent terminal finite certificate"
+        or terminal.get("checker", {}).get("sha256")
+        != EXPECTED_L6_AUDIT_CHECKER_SHA256
+        or terminal.get("source_producer_sha256")
+        != EXPECTED_L6_PRODUCER_SHA256
     ):
-        raise AssertionError("terminal L6 audit checker drift")
+        raise AssertionError("terminal L6 audit provenance drift")
     if terminal.get("source_checkpoint") != source_snapshot:
         raise AssertionError("terminal L6 audit/source snapshot disagreement")
     required = (
         "construction_completed",
+        "fast_reference_agreement_verified_for_every_exact_test",
+        "final_no_new_yz_coincidence",
         "first_survivor_audit_completed",
+        "global_empty_yz_verified_at_every_stitch",
         "selected_reference_legality_verified_at_every_stitch",
         "independent_ordered_no_three_collinear_verified",
     )
     if any(not terminal.get("result", {}).get(key) for key in required):
         raise AssertionError("terminal L6 audit is incomplete")
-    if terminal.get("result", {}).get("points") != EXPECTED_L6_FINAL_POINTS:
-        raise AssertionError("terminal L6 audited point extent drift")
+    result = terminal.get("result", {})
+    if (
+        result.get("gaps") != EXPECTED_L6_GAPS
+        or result.get("points") != EXPECTED_L6_FINAL_POINTS
+        or result.get("steps") != EXPECTED_L6_FINAL_POINTS - 1
+        or result.get("maximum_first_survivor_ordinal_1_based")
+        != EXPECTED_L6_SOURCE_MAX_FIRST_ORDINAL
+    ):
+        raise AssertionError("terminal L6 audited extent drift")
     commitments = terminal.get("commitments", {})
     if (
         commitments.get("source_prefix_state_sha256")
@@ -683,6 +735,8 @@ def verify_terminal_l6(args, context, budget):
         != EXPECTED_L6_TERMINAL_FLAT_WORD_SHA256
         or commitments.get("final_point_set_sha256")
         != EXPECTED_L6_TERMINAL_POINT_SET_SHA256
+        or commitments.get("final_yz_occupancy_sha256")
+        != EXPECTED_L6_TERMINAL_FINAL_YZ_SHA256
     ):
         raise AssertionError("terminal L6 audit commitment drift")
     return source, terminal, source_snapshot, terminal_snapshot
@@ -1583,7 +1637,10 @@ def estimate():
     ))
     return {
         "status": (
-            "prepared exact role-first checker; heavy mode is fail-closed "
+            "prepared exact role-first checker; terminal primary L6 pins "
+            "finalized"
+            if finalized
+            else "prepared exact role-first checker; heavy mode is fail-closed "
             "pending terminal primary L6 construction/audit pins"
         ),
         "checker_sha256": PROCESS_START_CHECKER_SHA256,
