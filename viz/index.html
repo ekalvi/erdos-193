@@ -55,27 +55,25 @@
     <b>Current status: the record is verified; an infinite walk is not proved.</b>
     <p>The earlier claim that bounded local crowding would guarantee a legal stitch was
     wrong: a candidate can be killed by a line through two points arbitrarily far away.
-    The live route is an ordered-path safety game that remembers actual connector choices
-    and a compressed ledger of both nearby and distant secant threats. An exact x-parallel
-    audit now shows why that ledger must retain latent lines: some disappear from the current
-    poison mask and later return. Its exterior escape rule works exactly on the recorded
-    graph, but almost every actual x-line effect and every short return lies in the unresolved
-    core. That core compresses to 1,312 exact geometric states on the recorded data, but the
-    full action set and births of new lines have not yet been closed. Algebra now proves that
-    synchronized x-line geometry always fits in at most 1,681 integer offsets per phase;
-    tracking which offsets hold zero, one or two actual points is the next missing layer.</p>
+    Since then the project has produced a large batch of exact, machine-checked results
+    &mdash; deeper record constructions, independent audits at the next scales, and a proof
+    that the relevant &ldquo;far-line&rdquo; geometry is finite &mdash; each ruling out a
+    specific shortcut or certifying one more piece. What none of them yet delivers is a
+    single finite rule that provably picks a safe next move for <em>every</em> possible
+    history. That one missing ingredient &mdash; uniform control of distant lines &mdash; is
+    the whole gap between the verified record and an infinite walk.</p>
     <div class="status-grid">
       <div class="yes"><b>Verified</b>311,737 steps (311,738 vertices), with no repeated
-      point and no three collinear.</div>
-      <div class="now"><b>Encouraging finite test</b>At one exact L8 prefix, all 1,997
-      legal first choices extend through five stitches. Ten fixed-response leaves cover
-      them; one fourth word works globally, and each leaf has a fifth response, with
-      per-history survivor floors of 1,601 and 6,995.</div>
-      <div class="no"><b>Still missing</b>A finite state and transition rule that works for
-      every reachable history, including a uniform treatment of far secants and proof of
-      safe continuation forever. The ten finite leaves are not yet an invariant, and exact
-      short x-line recurrences sit inside the Bellman core. An L9 continuation also refutes
-      the shortcut that tagged threats become harmless merely by reaching age two.</div>
+      point and no three collinear &mdash; every check is exact integer arithmetic. A number
+      of supporting finite results are proved exactly too.</div>
+      <div class="now"><b>Progress</b>Deeper walks and their independent
+      &ldquo;no-three-in-a-line&rdquo; audits are complete at the next scales, and the
+      far-line geometry is proved finite. These confirm the construction keeps working
+      further out.</div>
+      <div class="no"><b>Still missing</b>A finite rule &mdash; a &ldquo;safety
+      controller&rdquo; &mdash; that works for every reachable history and always leaves a
+      legal next move once distant lines are taken into account. Proving such a rule exists
+      (or that none can) is the open problem.</div>
     </div>
   </section>
 
@@ -346,22 +344,13 @@
     killed by a collision or by a secant through <em>any</em> two points already placed,
     including points far from the gap. A successful proof needs a finite, reachable safety
     state that always leaves at least one word outside this exact poison set and whose chosen
-    word leads to another safe state. The state must preserve the realized path order and
-    recent connector choices, while a separate ranked or contracting tail controls distant
-    endpoints and secants. The centred endpoint/line equations and a phase-adjusted
-    factor-three escape rank are now proved for one far channel. On the recorded graph, all
-    13,826 exterior transitions obey it with no return to the core. But 11,107 of 11,154
-    actual x-line effects, including every short recurrence source, are already in that
-    core. Those 13,203 strict-or-latent occurrences compress to 1,312 geometric states with
-    consistent poison on the recorded actions, a promising candidate rather than a proof:
-    singleton points, newly born lines and millions of unobserved actions remain. An exact
-    one-generation trace found 61 child states whose full poison exceeds the
-    direct frontier, and the selected L9 continuation finds 58 of 488 tagged age-two states
-    still effectful. Those are finite obstructions, not an infinite-policy counterexample.
-    The x-direction geometry itself is now proved finite for synchronized descendants, with
-    at most 1,681 offsets per phase. The open step is an exact occupancy/birth promotion and
-    control of unrelated cursor jumps, together with current connector joins and a
-    greatest-fixed-point availability proof.</p>
+    word leads to another safe state. The state has to remember the realized path exactly
+    nearby, while a separate ranked or contracting summary keeps distant endpoints and
+    secants from piling up. Extensive exact computation has now mapped this out: the
+    near-side geometry is proved finite, and many partial controllers have been certified on
+    real constructions. The piece still missing is that tail control &mdash; a uniform bound
+    showing distant lines can never exhaust the available words &mdash; which would turn one
+    selector into a proof that the walk continues forever.</p>
   </div>
 
   <h2>Why a local view is not enough</h2>
@@ -390,18 +379,15 @@
     <p><b>Connector legality is global.</b> A new connector point is illegal if it lies on
     a line through any two earlier points. Those endpoints need not be close to the pending
     gap, so a bound on local crowding &mdash; even a very strong one &mdash; cannot by itself prove
-    that some connector survives. Exact replay confirms the issue quantitatively, and a
-    general counterexample can keep every small ball sparse while remote pairs seal every
+    that some connector survives. Exact replay confirms the issue quantitatively: a walk
+    can keep every small neighbourhood sparse while remote pairs quietly seal off every
     first move. The potential repair is to carry nearby geometry exactly and summarize
-    distant endpoint/secant effects by birth level or 3-adic shell, with a proved rank or
-    contraction that prevents an unbounded tail from accumulating. The current exact trace
-    confirms that joins with other points must be retained. The x-parallel closure also
-    proves that a currently empty mask is not enough to discard a line and that adding the
-    current exact mask and action still leaves short recurrences. The Bellman audit proves
-    outward escape only after a line is outside the core; all observed recurrence sources
-    remain inside. At L9, old tagged endpoints still poison connector words through joins
-    with anchors born at several earlier levels. A sound tail state must preserve those
-    hidden future effects and correlations.</p>
+    distant endpoint/secant effects by birth level or scale, with a proved rank or
+    contraction that prevents an unbounded tail from accumulating. Recent exact traces
+    pin down what such a summary must track: distant joins genuinely matter, and a line that
+    looks harmless now can reappear later. So the repair needs a proved tail bound, not just
+    a larger local window &mdash; and that bound is exactly what has not yet been
+    established.</p>
   </div>
 
   <h2>Origin story</h2>

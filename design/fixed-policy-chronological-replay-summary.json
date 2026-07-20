@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact pinned L5 counterexample to chronological use of the 124-word fixed acyclic pilot policy",
+  "checker": {
+    "path": "design/fixed_policy_chronological_replay.py",
+    "sha256": "474a525fce7291b00d9c8cd669fd960af742cd0109899b820ae65e2ffe341595"
+  },
+  "pinned_inputs": {
+    "policy_summary": {
+      "path": "design/nonx-fixed-word-policy-probe-summary.json",
+      "sha256": "7a2e8c9e8c4845a5f7be7620ab7b8a12a53cae4fe24cf53f76228bd3e3fd739c"
+    },
+    "policy_checker": {
+      "path": "design/nonx_fixed_word_policy_probe.py",
+      "sha256": "531ba6ee0bfa8d5bf7485d70b13687ace4e1b100cdcdfd739b8bdcac9d8efdd3"
+    },
+    "L5_state": {
+      "path": "gate2-l7-construction-L5.pkl",
+      "sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d"
+    },
+    "pinned_interface": {
+      "path": "design/no_new_x_line_constructor.py",
+      "sha256": "6eca827ef7b6a4dfad57554bb89156fff79c2f495e89ba33e166aebbba21fffd"
+    }
+  },
+  "runs": {
+    "canonical": {
+      "raw_path": "/tmp/fixed-policy-chronological-replay-v2.json",
+      "raw_sha256": "082149c46fb28bac91ecffd70c11d699c95bf9dadf0a86b2ae08b2aec53ce7e5",
+      "elapsed_seconds": 4.200377,
+      "maximum_resident_set_bytes": 19886080
+    },
+    "repeat": {
+      "raw_path": "/tmp/fixed-policy-chronological-replay-v2-repeat.json",
+      "raw_sha256": "58d6db347f088b36ecb49b21d797ce9f8ea2ec8f62862a3778acac72ef33b06b",
+      "elapsed_seconds": 4.563366,
+      "maximum_resident_set_bytes": 20004864
+    },
+    "semantic_repeat_canonicalization": {
+      "operation": "parse JSON; delete elapsed_seconds and maximum_resident_set_raw; encode with sort_keys=true and separators=(',',':')",
+      "canonical_bytes": 3578,
+      "canonical_sha256": "d73d72ef8ad6294b744a3e2973a06f5a13e9d17da55474aff51226da0c75a59e",
+      "identical": true
+    },
+    "resource_policy": {
+      "processes": 1,
+      "threads": 1,
+      "nice": 15,
+      "both_runs_below_300_MiB_and_120_seconds": true
+    }
+  },
+  "initial_state": {
+    "anchors": 2458,
+    "gaps": 2457,
+    "all_anchors_present_before_first_stitch": true,
+    "triple_free_and_vertex_injective": true,
+    "ordered_anchor_stream_sha256": "1baf7b206cc3cf59d41cf1b27cd29af6a5e36ad79d71bf602aa6ef87c598646a",
+    "parent_word_sha256": "316c30558d05ab75ac4c556b8c985f1dce638025d75af287772eae903f531952",
+    "fragile_first_schedule_sha256": "031e4dc1ed31fba2ff930036dd0b1f81bb516d3d4c98818def6d9085179b4422"
+  },
+  "replay_result": {
+    "completed_L5": false,
+    "successful_stitches_before_failure": 1,
+    "failed_construction_rank_0_based": 1,
+    "failed_construction_rank_1_based": 2,
+    "failed_gap": 2,
+    "parent_step": 20,
+    "policy_word_ordinal_1_based": 1,
+    "fixed_word": [14, 24, 73, 24],
+    "same_step_and_word_as_immediately_prior_success": true,
+    "immediately_prior_success": {
+      "construction_rank_0_based": 0,
+      "gap": 0,
+      "parent_step": 20,
+      "fixed_word": [14, 24, 73, 24],
+      "proper_interiors": [[-2, 0, 2], [-4, 2, 4], [-4, 4, 6]]
+    },
+    "failed_attempt": {
+      "start": [-12, 6, 14],
+      "target": [-18, 12, 22],
+      "proper_interiors": [[-14, 6, 16], [-16, 8, 18], [-16, 10, 20]],
+      "placed_points_before_attempt": 2461,
+      "endpoint_passed": true,
+      "projection_freshness_passed": true,
+      "collision_passed": true,
+      "old_old_new_passed": false,
+      "old_new_new_passed": true,
+      "new_new_new_passed": true
+    },
+    "exact_killed_channel": "old_old_new_collinearity",
+    "exact_witness": {
+      "existing_point_indices": [1, 2],
+      "new_interior_index": 0,
+      "points": [[-6, 6, 8], [-12, 6, 14], [-14, 6, 16]],
+      "primitive_direction": [1, 0, -1],
+      "cross_product": [0, 0, 0]
+    },
+    "fallback_words_tried": 0,
+    "deeper_continuation_attempted": false
+  },
+  "proved": [
+    "the first occurrence of parent step 20 accepts the pilot's fixed word on the pinned chronological state",
+    "the immediately following scheduled occurrence of the same parent step rejects that identical word by an exact old-old-new secant",
+    "therefore parent step alone is not a sufficient state for this fixed policy, even on the pinned L5 orbit"
+  ],
+  "not_proved": [
+    "failure of every state-dependent word policy",
+    "failure of the no-new-x L5 construction, which selects a different legal word from the full effective domain",
+    "a positive or negative uniform availability theorem",
+    "a far-secant theorem"
+  ],
+  "conclusion": "The height-two acyclic direction-blind pilot graph cannot be inserted as a context-free connector policy. A viable safety state must distinguish at least these two chronological occurrences of step 20 and select actions using correlated placed-path information."
+}

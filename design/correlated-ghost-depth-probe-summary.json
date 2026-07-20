@@ -1,0 +1,104 @@
+{
+  "checker": {
+    "path": "design/correlated_ghost_depth_probe.py",
+    "sha256": "54c3718fcefb80bfaaf724f602b4f6afb0d3c4527e8c5ea768f73c1d880adb67",
+    "unchanged_during_run": true
+  },
+  "date": "2026-07-19",
+  "database": {
+    "effect_stream_sha256": "43cf1753ba59e0fcc07d9e40f455e170f5ec4ccaa90f85b981aebcbe91a18efd",
+    "mask_manifest_sha256": "e0e4b61a7e259b96a118ca9a7bff9140bd7c8f73996fa35f68603d5714c7f2a1",
+    "path": "/private/tmp/correlated-ghost-depth-probe-v2.sqlite",
+    "resume_fail_closed": true,
+    "schema_version": 3,
+    "unique_exact_masks": 166
+  },
+  "interpretation": [
+    "The legacy current-effect projection is decisively noncongruent.",
+    "Exact primitive Pluecker data makes all three repeated mask-tree classes congruent as masks, but all three still have different coordinate-correlated child trees; individual endpoint coordinates cannot yet be discarded.",
+    "The full correlated and literal-address projections have zero disagreements only because all 48,237,501 classes are singletons. This is vacuous, not stabilization.",
+    "Depth-one reveals are rare in this finite selected panel, but rarity is evidence only and supplies neither a tail inequality nor a rank."
+  ],
+  "not_proved": [
+    "coverage of secants with neither endpoint among the three tagged endpoints",
+    "coverage of tokens born at or after the L8 source stitch, selected L9 interiors, collision channels, or candidate-internal-line channels",
+    "alternate connector histories, universal all-action post closure, or any depth-two or infinite-tail statement",
+    "a finite right congruence, contracting shell transfer, uniform connector availability, safety greatest fixed point, or unconditional theorem"
+  ],
+  "proved": [
+    "for the pinned selected panel, every one of the three tagged endpoints was paired with every physical point preexisting at each of 146 L8 source stitches, with no endpoint or spatial-distance cutoff",
+    "all exact source and ordered-child masks were scanned over 99 effective connector domains and 488 actual L9 children",
+    "all 634 upstream direct carried-pair masks were reproduced exactly, including zero-current-mask tokens",
+    "the mandatory equal-legacy-key witness with 3,998 versus zero child kills was reproduced and separated by exact physical Pluecker data",
+    "the complete 48,237,501-occurrence stream and every reported projection partition satisfy their independent count identities"
+  ],
+  "resource_policy": {
+    "elapsed_seconds": 12708.1,
+    "nice": 15,
+    "peak_rss_mib": 1664.703,
+    "processes": 1,
+    "thread_cap": 1,
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "work_units": 92425543
+  },
+  "result": {
+    "depth_shells": {
+      "depth_0": 97,
+      "depth_1": 15,
+      "silent_through_depth_1": 48237389
+    },
+    "effective_connector_domains": 99,
+    "hierarchical_token_stream_sha256": "69cbd99535e1e251b7836d5d53208b56ca676ba237df4d43e3172fcbdc12750d",
+    "L8_source_states": 146,
+    "L9_children": 488,
+    "nonzero_effect_rows": 140,
+    "projection_stats": {
+      "full_correlated": {
+        "classes": 48237501,
+        "noncongruent_correlated_tree_classes": 0,
+        "noncongruent_mask_tree_classes": 0,
+        "repeated_classes": 0,
+        "zero_disagreement_is_vacuous": true
+      },
+      "legacy_current_effect": {
+        "classes": 44071779,
+        "noncongruent_correlated_tree_classes": 2774576,
+        "noncongruent_mask_tree_classes": 2,
+        "repeated_classes": 2774576,
+        "zero_disagreement_is_vacuous": false
+      },
+      "literal_address": {
+        "classes": 48237501,
+        "noncongruent_correlated_tree_classes": 0,
+        "noncongruent_mask_tree_classes": 0,
+        "repeated_classes": 0,
+        "zero_disagreement_is_vacuous": true
+      },
+      "physical_pluecker": {
+        "classes": 48237498,
+        "noncongruent_correlated_tree_classes": 3,
+        "noncongruent_mask_tree_classes": 0,
+        "repeated_classes": 3,
+        "zero_disagreement_is_vacuous": false
+      }
+    },
+    "regression_3998_vs_zero_passed": true,
+    "token_blocks": 1827,
+    "token_occurrences": 48237501,
+    "upstream_direct_masks_reproduced": 634
+  },
+  "run_signature": "f0700b3841389a0e0e3a3e57560792d1a55ecea6574980edee5e9ec19e88cbe0",
+  "schema_version": 1,
+  "status": "complete exact finite carried-ghost depth-0/1 probe; not a tail lemma, all-action safety certificate, or theorem",
+  "terminal_artifact": {
+    "bytes": 406328,
+    "path": "/private/tmp/correlated-ghost-depth-probe-v2.json",
+    "sha256": "e0593a9af289c0fdfa6b633ae23d070eb198c6a55d8f2153bc811daf87bd37df"
+  }
+}

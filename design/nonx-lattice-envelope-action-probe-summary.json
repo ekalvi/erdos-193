@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact full-cache lattice-envelope whole-word action certificate; not chronological availability or a complete far-secant theorem",
+  "checker": {
+    "path": "design/nonx_scc_core_action_probe.py",
+    "sha256": "9056394f5529036f2e4515490de4940ca42d04165eae928c32f1b027aae36fed"
+  },
+  "theorem": {
+    "image_lattice": "M Z^3 is exactly the integer vectors (X,Y,Z) with X=0 mod 3, Y=0 mod 3, and Y-3Z=0 mod 9; the inverse is (X/3,(Z-Y/3)/3,-Y/3)",
+    "cycle_envelope": "every direction-blind edge target is M(x-c), so every vertex on every directed cycle lies in T={(s,x):x in C_s intersect M Z^3}",
+    "zero_envelope_filter": "a whole word is retained when the union of its exact T-source role masks is contained in that same word's exact proper-interior mask; the arbitrary-action union then has no edge sourced in T and is acyclic",
+    "ordered_envelope_filter": "a whole word is retained when every T-sourced edge not removed by that same word's interiors follows one common strict order; the arbitrary-action union is acyclic",
+    "whole_word_correlation_preserved": true
+  },
+  "pinned_inputs": {
+    "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "fixed_policy_sha256": "e30732d2833b3c93ae2ccbbc5f37ddd3069346899c24d49fc18aabfa1a48485e",
+    "prepared_candidate_table_sha256": "5210a61f556573d39ad1ea2f3039bd5c36772b1fad4597d0920e5d6d9e6a28e1",
+    "fixed_policy_checker_sha256": "531ba6ee0bfa8d5bf7485d70b13687ace4e1b100cdcdfd739b8bdcac9d8efdd3",
+    "potential_checker_sha256": "21b84e6ef80c1b8184cb3c06f08d674983f10cd91759b204e1170186319b1062",
+    "nonx_checker_sha256": "4eb928bad0c0104d34b68424b07dd3b6a4939f216968bd6b2399a540b592e755"
+  },
+  "canonical_artifacts": {
+    "raw_result": {
+      "path": "/tmp/nonx-lattice-envelope-action-probe.json",
+      "bytes": 460704,
+      "sha256": "9ce2de5f7936349b4cc7e830dcf962f26164693dbf66da1ba3fcc9a1d73e2112"
+    },
+    "accepted_ordinal_bitsets": {
+      "path": "/tmp/nonx-lattice-envelope-action-probe-bitsets.bin",
+      "bytes": 3136860,
+      "sha256": "f75568afab8b17df620d3fed4cd174862db33c20f482a07ef38741db0c9e88cb",
+      "zero_envelope_channel_sha256": "76f4a610196465d7620f48c48644a9c7e816c1e4a7a4792aeb494ae4c8eeada0",
+      "ordered_envelope_channel_sha256": "71c2762e82f1ac32da09f455b50b4f2536dc402c718c7db5fbcfadcb24c9dc39"
+    }
+  },
+  "exact_chunk_runs": [
+    {
+      "steps_inclusive": [0, 32],
+      "words": 3059661,
+      "slots": 14438291,
+      "elapsed_seconds": 61.508,
+      "maximum_resident_bytes": 52613120,
+      "raw_sha256": "12053212db011550ca53c3c654cec25f99f5e6afc4dd2825f05a3ac1b8418c53",
+      "bitset_sha256": "97b20bec8202ae12d30ab5f345cbc99b6960d2bee373f4a6006fda79f077e266"
+    },
+    {
+      "steps_inclusive": [33, 62],
+      "words": 3514878,
+      "slots": 14539024,
+      "elapsed_seconds": 67.071,
+      "maximum_resident_bytes": 51535872,
+      "raw_sha256": "bb9b4e66d4f2b5623238b0e0b786965a3dbfbe3f9341a8fc733b72b39e92f2d9",
+      "bitset_sha256": "505073839bdc6a49d36159ed2860256145067cb21cd1540400683af41d918f48"
+    },
+    {
+      "steps_inclusive": [63, 94],
+      "words": 3492382,
+      "slots": 14660754,
+      "elapsed_seconds": 65.333,
+      "maximum_resident_bytes": 51929088,
+      "raw_sha256": "9690586470a498e1caa7556c47509a00a9b8ec379225a5cd46b082ee0ebfd121",
+      "bitset_sha256": "9dcae48271204dcf029c9a91dd009e8f633c6388ff6a29c60767d7b5fff5f2ac"
+    },
+    {
+      "steps_inclusive": [95, 123],
+      "words": 2470225,
+      "slots": 11875457,
+      "elapsed_seconds": 48.676,
+      "maximum_resident_bytes": 49430528,
+      "raw_sha256": "052f0dce751c97b7415fd3d80a894c8597467808fe2a4dca1355689c729149ff",
+      "bitset_sha256": "28e1923d4e521421505805a2e9f432481a3c8c54494915a561e04d280164f235"
+    }
+  ],
+  "resource_policy": {
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "largest_successful_chunk_seconds": 67.071,
+    "largest_successful_chunk_resident_bytes": 52613120,
+    "limits": {
+      "work_seconds": 115,
+      "resident_bytes": 293601280
+    },
+    "aborted_pilot_note": "an earlier 0-60 attempt finished its last step at 115.170 seconds and was rejected by the hard 115-second gate before writing an artifact"
+  },
+  "lattice_envelope": {
+    "vertices": 780,
+    "nonempty_steps": 120,
+    "per_step_count_range": [0, 16],
+    "vertex_stream_sha256": "cb07c8c0f10f0de7d4032a346bd0a827d9dce554b777033b5c168108f4d3c09e",
+    "count_stream_sha256": "020c60265370ea973927c7436a96d4b73e022332daec214ff619753f6f22a20e",
+    "fixed_policy_restricted_edges": 20,
+    "fixed_policy_restricted_edge_stream_sha256": "03bab1c820eb691a622a3bd30fbd36b8cb9d074b9b6915f3976c37cc68ec0082",
+    "topological_order_stream_sha256": "cf791ccf331d3f4484ee90cc78bd5c5ac2649dadd6e1246643b42ce7d96c9182"
+  },
+  "baseline_census_reproduced": {
+    "words": 12537146,
+    "slots": 55513526,
+    "distinct_ordered_slot_roles": 840794,
+    "ordered_projection_signatures": 291414,
+    "projection_role_masks": 216322,
+    "digit_simple_words": 6755766
+  },
+  "zero_envelope_result": {
+    "words": 8367038,
+    "fraction_of_all_words": 0.6673798007935777,
+    "per_step_word_count": {
+      "minimum": 2570,
+      "lower_quartile": 8054,
+      "median": 22168,
+      "upper_quartile": 112934,
+      "maximum": 270730
+    },
+    "projection_role_masks": 213378,
+    "fraction_of_baseline_projection_role_masks": 0.9863906583703923,
+    "per_step_projection_role_mask_minimum": 201,
+    "intrinsic_fibre_clean_words": 7066150,
+    "per_step_intrinsic_fibre_clean_minimum": 2422,
+    "digit_simple_words": 4486922,
+    "digit_simple_projection_role_masks": 112490,
+    "selected_fixed_policy_words_accepted": 104,
+    "same_word_interior_covered_nonempty_bad_mask_words": 3576,
+    "steps_with_zero_words": [],
+    "steps_with_zero_intrinsic_fibre_clean_words": []
+  },
+  "ordered_envelope_result": {
+    "words": 10252458,
+    "fraction_of_all_words": 0.817766499648325,
+    "per_step_word_count": {
+      "minimum": 2570,
+      "lower_quartile": 11701,
+      "median": 31220,
+      "upper_quartile": 143967,
+      "maximum": 435984
+    },
+    "projection_role_masks": 215647,
+    "fraction_of_baseline_projection_role_masks": 0.9968796516304398,
+    "per_step_projection_role_mask_minimum": 201,
+    "intrinsic_fibre_clean_words": 8689103,
+    "per_step_intrinsic_fibre_clean_minimum": 2422,
+    "digit_simple_words": 5523386,
+    "digit_simple_projection_role_masks": 113740,
+    "selected_fixed_policy_words_accepted": 124,
+    "same_word_interior_covered_nonempty_backward_mask_words": 1957,
+    "steps_with_zero_words": [],
+    "steps_with_zero_intrinsic_fibre_clean_words": []
+  },
+  "verification": {
+    "merge_revalidated_every_chunk_sidecar_and_exact_partition": true,
+    "merge_reproduced_all_pinned_baseline_censuses": true,
+    "independent_final_sidecar_reread_blocks": 124,
+    "independent_channel_populations_match_merged_totals": true,
+    "zero_channel_is_bitwise_subset_of_ordered_channel": true,
+    "lightweight_merge_elapsed_seconds": 0.699,
+    "lightweight_merge_maximum_resident_bytes": 26140672
+  },
+  "proved": [
+    "the congruence description of M Z^3 is necessary and sufficient",
+    "all direction-blind cycles lie inside the exact 780-vertex candidate envelope",
+    "both emitted whole-word action unions are acyclic under arbitrary switching",
+    "same-word interior masking and whole-word slot correlation are retained",
+    "both filters retain at least one word, one intrinsic-fibre-clean word, and one projection-role mask for every parent step"
+  ],
+  "not_proved": [
+    "that the retained counts are chronological survivor floors",
+    "that a retained word is globally legal in every ordered-path state",
+    "control of nondegenerate selector changes, latent empty-effect re-entry, or unrelated cursor jumps",
+    "control of newly born lines, endpoint effects, or near/deep and deep/deep secants",
+    "a successor-closed safety policy, a complete far-secant lemma, or an unconditional Erdős #193 theorem"
+  ],
+  "next_decisive_experiment": "without changing the certificate, intersect the ordered-envelope ordinal bitsets with exact chronological legality on the pinned L5/L6 construction; report first failure and per-stitch survivor counts, preserving actual whole-word choices and path history"
+}

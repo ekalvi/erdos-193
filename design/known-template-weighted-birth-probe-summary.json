@@ -1,0 +1,206 @@
+{
+  "artifact": {
+    "bytes": 102276,
+    "path": "/tmp/known-template-weighted-birth-probe.json",
+    "sha256": "af466dccabbc56d720effb0d0a811c69cc3d727cfedc92f04ccff44a2a9583d1"
+  },
+  "checker": {
+    "bytes": 48847,
+    "path": "design/known_template_weighted_birth_probe.py",
+    "sha256": "cba506adefbc75f0fceab04a707d84e9538602133da4516fa0006348642748ee"
+  },
+  "date": "2026-07-18",
+  "exact_action_coefficients": {
+    "ordered_envelope": {
+      "J_11_over_3": {
+        "incremental_reveal_fraction": {
+          "denominator": 4519,
+          "numerator": 7
+        },
+        "phase_A": {
+          "denominator": 4519,
+          "numerator": 4
+        },
+        "phase_B": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "theta": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      "accepted_words": {
+        "step_1": 9038,
+        "step_8": 14418,
+        "step_16": 14005
+      },
+      "latent_L_n": {
+        "a16": {
+          "denominator": 14005,
+          "numerator": 319
+        },
+        "a8": {
+          "denominator": 14418,
+          "numerator": 287
+        },
+        "r8": {
+          "denominator": 14418,
+          "numerator": 1493
+        },
+        "theta": {
+          "denominator": 201924090,
+          "numerator": 91553
+        }
+      }
+    },
+    "zero_envelope": {
+      "J_11_over_3": {
+        "incremental_reveal_fraction": {
+          "denominator": 1712,
+          "numerator": 3
+        },
+        "phase_A": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "phase_B": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "theta": {
+          "denominator": 1,
+          "numerator": 0
+        }
+      },
+      "accepted_words": {
+        "step_1": 5136,
+        "step_8": 9954,
+        "step_16": 9954
+      },
+      "latent_L_n": {
+        "a16": {
+          "denominator": 9954,
+          "numerator": 193
+        },
+        "a8": {
+          "denominator": 9954,
+          "numerator": 193
+        },
+        "r8": {
+          "denominator": 4977,
+          "numerator": 503
+        },
+        "theta": {
+          "denominator": 99082116,
+          "numerator": 37249
+        }
+      }
+    }
+  },
+  "finite_scan": {
+    "J_11_over_3": {
+      "levels": {
+        "5": {
+          "address_shells_tested": [0, 1, 2, 3],
+          "live_secant_corridors": 0,
+          "source_corridors_per_shell": 44
+        },
+        "6": {
+          "address_shells_tested": [0, 1, 2, 3, 4],
+          "live_secant_corridors": 0,
+          "source_corridors_per_shell": 122
+        },
+        "7": {
+          "address_shells_tested": [0, 1, 2, 3, 4],
+          "live_secant_corridors": 0,
+          "source_corridors_per_shell": 420
+        },
+        "8": {
+          "address_shells_tested": [0, 1, 2, 3, 4, 5],
+          "live_by_address_shell": {
+            "0": 1,
+            "1": 0,
+            "2": 0,
+            "3": 0,
+            "4": 0,
+            "5": 0
+          },
+          "source_corridors_per_shell": 1538
+        }
+      },
+      "only_live_witness": {
+        "endpoint_coordinates": [
+          [-23349, 37211, 5011],
+          [-23337, 37207, 5023]
+        ],
+        "endpoint_origin_ids": [
+          "L8:G43703:I1",
+          "L8:G43701:I1"
+        ],
+        "gap": 43702,
+        "pair_birth_shell": "L8",
+        "stitch_order_position": 58689
+      }
+    },
+    "latent_L_n": {
+      "all_tested_live_secant_counts_are_zero": true,
+      "levels": {
+        "5": {
+          "address_shells_tested": [0, 1, 2],
+          "source_corridors_per_shell": 15
+        },
+        "6": {
+          "address_shells_tested": [0, 1, 2, 3],
+          "source_corridors_per_shell": 40
+        },
+        "7": {
+          "address_shells_tested": [0, 1, 2, 3],
+          "source_corridors_per_shell": 155
+        },
+        "8": {
+          "address_shells_tested": [0, 1, 2, 3, 4],
+          "source_corridors_per_shell": 374
+        }
+      }
+    },
+    "method": "Exact requested-line moment hashing with stitch-time liveness and inherited endpoint birth identities; no point-pair enumeration.",
+    "spacing_cutoff": "The first omitted primitive direction has infinity norm greater than 2(N-1), so it cannot be a secant of that finite N-point walk. The cutoff uses the full primitive infinity norm, not only its x-coordinate."
+  },
+  "inputs": {
+    "action_checker_sha256": "9056394f5529036f2e4515490de4940ca42d04165eae928c32f1b027aae36fed",
+    "action_certificate_sha256": "9ce2de5f7936349b4cc7e830dcf962f26164693dbf66da1ba3fcc9a1d73e2112",
+    "accepted_bitsets_sha256": "f75568afab8b17df620d3fed4cd174862db33c20f482a07ef38741db0c9e88cb",
+    "compact_cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "construction_pickles_sha256": {
+      "L5": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d",
+      "L6": "70fa3baac057492fb8ad325eba5417bdc1e98fbd474bec37dc5f5465230f9298",
+      "L7": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660",
+      "L8": "cc4002ebccde737ab46dc016937be4aa653620d809908d48d35bcf06fc884141"
+    },
+    "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a"
+  },
+  "interpretation": {
+    "finite_evidence": [
+      "The known latent countdown family is not born as a live secant anywhere in its complete L5-L8 finite range on the pinned realized orbit.",
+      "The J=11/3 family has exactly one immediate n=0 L8 birth and no delayed n>=1 birth in its complete finite range.",
+      "Both frozen action filters give the J=11/3 macro cycle exact transfer coefficient zero.",
+      "The latent macro transfer coefficient is positive but small under the artificial uniform accepted-word model; its observed weighted birth source is exactly zero on this orbit."
+    ],
+    "not_proved": [
+      "No finite-orbit zero count proves a level-uniform reachable-birth exclusion or summable far-secant tail.",
+      "The uniform accepted-word coefficients are not probabilities of a chronological safe policy.",
+      "The two templates do not cover arbitrary directions, old-new births, deep-deep pairs, or unrelated cursor imports.",
+      "The weighted rows are not an exact union of killed-word masks and do not prove positive connector availability or Erdos #193."
+    ]
+  },
+  "resource_use": {
+    "elapsed_seconds": 8.931547079933807,
+    "maximum_resident_bytes": 108032000,
+    "processes": 1,
+    "threads": 1,
+    "nice": 15
+  },
+  "schema_version": 1,
+  "status": "Exact finite known-template weighted birth experiment; evidence only, not a uniform far-secant theorem."
+}

@@ -1,0 +1,139 @@
+{
+  "checker": {
+    "path": "design/lattice_t_l6_cone_birth_guard.py",
+    "sha256": "0a3041a77fffd954bd7ff2478427d1c7f6ea6f6951b9f8465c0a0966b6b3d376"
+  },
+  "date": "2026-07-18",
+  "not_proved": [
+    "exclusion of any projective spectrum other than 11/3 and 348/275",
+    "a bound on affine line moments inside either cone",
+    "positive connector availability, a generic far-secant tail, or an unconditional theorem"
+  ],
+  "payload_sha256": "c1d66738678c722b7380269546f75ec4567ae5750afdadd332af76ab1c6de64d",
+  "proved": [
+    "every classified pair in the audited L6 prefix was tested against both displayed homogeneous integer equations",
+    "base-base secants were grandfathered and every later pair was assigned at its actual later-endpoint birth",
+    "the reported earliest witness is first in rank/later-slot/earlier-id order"
+  ],
+  "result": {
+    "classification_pair_counts": {
+      "old-new": 1024344,
+      "same-word-new-new": 123
+    },
+    "earliest_new_cone_birth": {
+      "F_values_on_primitive_direction": {
+        "11/3": 0,
+        "348/275": 5943
+      },
+      "F_values_on_raw_direction": {
+        "11/3": 0,
+        "348/275": 23772
+      },
+      "L6_birth_rank": 5,
+      "birth_order_key": [
+        5,
+        2,
+        23
+      ],
+      "canonical_primitive_direction": [
+        3,
+        -2,
+        -3
+      ],
+      "classification": "old-new",
+      "earlier_point": [
+        -48,
+        -42,
+        88
+      ],
+      "earlier_point_id": 23,
+      "earlier_provenance": {
+        "L6_birth_rank": -1,
+        "birth_kind": "grandfathered-base",
+        "gap": null,
+        "interior_slot": null,
+        "point_id": 23
+      },
+      "gap": 23,
+      "later_interior_slot": 2,
+      "later_point": [
+        -54,
+        -38,
+        94
+      ],
+      "later_point_id": 8285,
+      "matched_spectra": [
+        "11/3"
+      ],
+      "raw_direction": [
+        -6,
+        4,
+        6
+      ],
+      "step": 20
+    },
+    "matched_birth_chain_sha256": "1881db5f900ba823d029fe0c34f46c80f7ce1087bc2121173771a40326fe7ed3",
+    "matched_classification_counts": {
+      "old-new": {
+        "11/3": 19,
+        "348/275": 0
+      },
+      "same-word-new-new": {
+        "11/3": 0,
+        "348/275": 0
+      }
+    },
+    "matched_spectrum_chain_sha256": {
+      "11/3": "1881db5f900ba823d029fe0c34f46c80f7ce1087bc2121173771a40326fe7ed3",
+      "348/275": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "matched_spectrum_counts": {
+      "11/3": 19,
+      "348/275": 0
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "audited_construction_ranks": 41,
+    "base_base_secants_scanned": false,
+    "distance_cutoff": null,
+    "endpoint_cutoff": null,
+    "grandfathered_base_points": 8268,
+    "new_birth_classes": [
+      "old-new",
+      "same-word-new-new"
+    ],
+    "pending_pair_scan": null,
+    "spectra": [
+      {
+        "denominator": 3,
+        "label": "11/3",
+        "numerator": 11
+      },
+      {
+        "denominator": 275,
+        "label": "348/275",
+        "numerator": 348
+      }
+    ]
+  },
+  "source_snapshot_after_run": {
+    "bytes": 10167550,
+    "path": "/private/tmp/lattice-T-chronological-L6-checkpoint-v1.json",
+    "payload_sha256": "b5ad1e988d91ac1f922d032a740df55b0be08fd65c862bbcef3c1409fbe4f1eb",
+    "selected_ranks": 5000,
+    "selection_prefix_sha256": "bbbba17b87daa64bb841b6693038cc3a10235cf1d06116273e75d5cbf5fe8db7",
+    "sha256": "a3290fd6a252c1edd8a7c7be90ce10fff28e9a27879205b8eebead91216de101",
+    "status": "partial"
+  },
+  "source_snapshot_loaded": {
+    "bytes": 10167550,
+    "path": "/private/tmp/lattice-T-chronological-L6-checkpoint-v1.json",
+    "payload_sha256": "b5ad1e988d91ac1f922d032a740df55b0be08fd65c862bbcef3c1409fbe4f1eb",
+    "selected_ranks": 5000,
+    "selection_prefix_sha256": "bbbba17b87daa64bb841b6693038cc3a10235cf1d06116273e75d5cbf5fe8db7",
+    "sha256": "a3290fd6a252c1edd8a7c7be90ce10fff28e9a27879205b8eebead91216de101",
+    "status": "partial"
+  },
+  "status": "partial"
+}

@@ -1,0 +1,242 @@
+{
+  "status": "exact L5--L8 realized cursor-jump census: the finite universal x-core is not Markov under unrelated chronological anchors, even after retaining the exact jump and complete predecessor-core capped occupancy; not a uniform far-secant lemma or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_axis_cursor_jump_injection.py run --output /tmp/x-axis-cursor-jump-injection-canonical.json",
+    "raw_path": "/tmp/x-axis-cursor-jump-injection-canonical.json",
+    "raw_bytes": 1744285,
+    "raw_sha256": "cfab763985c70959dea63cedfef0850429ad2b542e534a910c4ac296f9a4fc72",
+    "checker_sha256": "073952b960355035c04c18c935fa3a3d5d001e6a8eb503a8a9e61b029bf4436b",
+    "payload_elapsed_seconds": 257.55,
+    "command_elapsed_seconds": 257.834,
+    "wall_seconds": 257.97,
+    "maximum_resident_bytes": 823246848,
+    "peak_memory_footprint_bytes": 800481280,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15,
+    "repeat_run_performed": true
+  },
+  "independent_repeat": {
+    "raw_path": "/tmp/x-axis-cursor-jump-injection-repeat.json",
+    "raw_bytes": 1744289,
+    "raw_sha256": "301b02f4c7ddb61c481acd4d0ee13990f23f5a9d882068b30e9116aa169c90d6",
+    "payload_elapsed_seconds": 253.477,
+    "checker_sha256": "073952b960355035c04c18c935fa3a3d5d001e6a8eb503a8a9e61b029bf4436b",
+    "difference_audit": "the 25 differing leaves are exclusively per-level/per-order elapsed timings and total resource elapsed time",
+    "timing_stripped_canonical_sha256": "f1b1a26adb5a50b78c54276b4166ff60ff9ac2adf38de066231671b114727a60",
+    "timing_stripped_repeat_sha256": "f1b1a26adb5a50b78c54276b4166ff60ff9ac2adf38de066231671b114727a60",
+    "all_nontiming_fields_identical": true
+  },
+  "pinned_scope": {
+    "levels": [5, 6, 7, 8],
+    "orders": ["gate", "pipeline", "left-to-right"],
+    "construction": "the actual selected connector word in each pinned gate2 L5--L8 construction pickle",
+    "transition_semantics": "all anchors are initially present; insert the complete recorded connector at cursor r, then inspect cursor r+1 before inserting its connector",
+    "universal_core_raw_sha256": "9028a2872e5e0530d329e983652eec8c6d2f3391c8f24bd99e81b1708da69275",
+    "universal_core_checker_sha256": "cd16f5600747b168a3deeb7c6d74164e9463fed6889054f5a39227a42b731bb7",
+    "universal_core_integer_stream_sha256": "69aff7637458575a64e44e2be04d7f9837d9ff629f7a03aa36c6b494b1ea8b01",
+    "D2-4_size_stream_sha256": "7261f8005f86b6107cbd83fbcd150010658b6e48e464e45176e16d1a31533097"
+  },
+  "full_census": {
+    "transitions": 393279,
+    "successor_core_cells_scanned": 189394231,
+    "absolute_core_overlap_cells": 63319904,
+    "successor_cells_outside_predecessor_core": 126074327,
+    "injected_point_records": 1690409,
+    "injected_active_x_lines": 21284,
+    "transitions_with_injected_points": 359153,
+    "transitions_with_injected_active_x_lines": 16674
+  },
+  "strongest_state_tested": {
+    "key": [
+      "predecessor and successor step",
+      "complete predecessor promoted-core capped point occupancy, with values 0, 1, or 2",
+      "exact lateral cursor jump",
+      "exact signed inherited-tile jump",
+      "both local tile step signatures, gap positions, tile sizes, schedule phases, tile-local action ordinals, guard flags, and fragile flags"
+    ],
+    "target": [
+      "successor offsets geometrically outside the predecessor core",
+      "capped point occupancy injected at those offsets",
+      "active two-point x-lines injected at those offsets"
+    ],
+    "exactness": "state keys and targets were compared as exact tuples and arbitrary-size integers; SHA-256 values are output commitments only",
+    "consequence_of_noncongruence": "for fixed predecessor/successor steps and exact jump the geometric target mask is fixed, so a differing target witnesses genuinely different remote point or active-line injection not determined by the local core state"
+  },
+  "orders": {
+    "gate": {
+      "work": {
+        "transitions": 131093,
+        "successor_core_cells_scanned": 63131251,
+        "transition_scan_seconds": 69.668731,
+        "total_order_seconds": 88.294448
+      },
+      "injection": {
+        "point_records": 929903,
+        "active_x_lines": 11610,
+        "transitions_with_points": 130564,
+        "transitions_with_active_x_lines": 8669,
+        "point_roles": {
+          "anchor": 489597,
+          "older_current_level_interior": 440306,
+          "just_inserted_predecessor_interior": 0
+        },
+        "line_endpoint_role_pairs": {
+          "anchor_anchor": 8070,
+          "anchor_older_current_level_interior": 1155,
+          "older_current_level_interior_pair": 2385
+        },
+        "maximum_point_owner_base3_address_shell": 11,
+        "point_records_in_nonzero_owner_shells": 328445,
+        "maximum_line_joint_owner_base3_address_shell": 11,
+        "active_x_lines_in_nonzero_owner_shells": 9112,
+        "maximum_point_birth_age_levels": 8,
+        "maximum_line_birth_age_levels": 6
+      },
+      "cursor_geometry": {
+        "maximum_lateral_chebyshev_jump_by_level": {"5": 1404, "6": 3180, "7": 9839, "8": 20318},
+        "minimum_absolute_core_overlap_by_level": {"5": 0, "6": 0, "7": 0, "8": 0}
+      },
+      "exact_jump_plus_prior_occupancy": {
+        "classes": 127734,
+        "singleton_classes": 126239,
+        "repeated_classes": 1495,
+        "congruent_repeated_classes": 355,
+        "noncongruent_classes": 1140,
+        "multi_level_classes": 851,
+        "cross_level_noncongruent_classes": 657,
+        "maximum_distinct_targets_in_one_class": 14,
+        "class_stream_sha256": "4107804825a268e639d8e8244b806f9afae629cce8a16a79e0ade1b7377a6b76"
+      },
+      "phase_plus_prior_occupancy_mod81": {
+        "classes": 131090,
+        "singleton_classes": 131087,
+        "repeated_classes": 3,
+        "noncongruent_classes": 0,
+        "cross_level_noncongruent_classes": 0
+      }
+    },
+    "pipeline": {
+      "work": {
+        "transitions": 131093,
+        "successor_core_cells_scanned": 63131383,
+        "transition_scan_seconds": 68.043833,
+        "total_order_seconds": 85.39912
+      },
+      "injection": {
+        "point_records": 601351,
+        "active_x_lines": 7366,
+        "transitions_with_points": 125575,
+        "transitions_with_active_x_lines": 5894,
+        "point_roles": {
+          "anchor": 333797,
+          "older_current_level_interior": 267554,
+          "just_inserted_predecessor_interior": 0
+        },
+        "line_endpoint_role_pairs": {
+          "anchor_anchor": 5060,
+          "anchor_older_current_level_interior": 860,
+          "older_current_level_interior_pair": 1446
+        },
+        "maximum_point_owner_base3_address_shell": 11,
+        "point_records_in_nonzero_owner_shells": 291509,
+        "maximum_line_joint_owner_base3_address_shell": 11,
+        "active_x_lines_in_nonzero_owner_shells": 6500,
+        "maximum_point_birth_age_levels": 8,
+        "maximum_line_birth_age_levels": 6
+      },
+      "cursor_geometry": {
+        "maximum_lateral_chebyshev_jump_by_level": {"5": 63, "6": 60, "7": 63, "8": 63},
+        "minimum_absolute_core_overlap_by_level": {"5": 0, "6": 0, "7": 0, "8": 0}
+      },
+      "exact_jump_plus_prior_occupancy": {
+        "classes": 122686,
+        "singleton_classes": 119537,
+        "repeated_classes": 3149,
+        "congruent_repeated_classes": 413,
+        "noncongruent_classes": 2736,
+        "multi_level_classes": 1827,
+        "cross_level_noncongruent_classes": 1608,
+        "maximum_distinct_targets_in_one_class": 31,
+        "class_stream_sha256": "ab6fe9ceac1dc42a4d4386d81fa8d20f10e2d5fea640c13a7fcbda13532dde7a"
+      },
+      "phase_plus_prior_occupancy_mod81": {
+        "classes": 131084,
+        "singleton_classes": 131075,
+        "repeated_classes": 9,
+        "noncongruent_classes": 9,
+        "cross_level_noncongruent_classes": 2
+      }
+    },
+    "left-to-right": {
+      "work": {
+        "transitions": 131093,
+        "successor_core_cells_scanned": 63131597,
+        "transition_scan_seconds": 65.289196,
+        "total_order_seconds": 82.72864
+      },
+      "injection": {
+        "point_records": 159155,
+        "active_x_lines": 2308,
+        "transitions_with_points": 103014,
+        "transitions_with_active_x_lines": 2111,
+        "point_roles": {
+          "anchor": 142904,
+          "older_current_level_interior": 16251,
+          "just_inserted_predecessor_interior": 0
+        },
+        "line_endpoint_role_pairs": {
+          "anchor_anchor": 2063,
+          "anchor_older_current_level_interior": 74,
+          "older_current_level_interior_pair": 171
+        },
+        "maximum_point_owner_base3_address_shell": 11,
+        "point_records_in_nonzero_owner_shells": 50666,
+        "maximum_line_joint_owner_base3_address_shell": 11,
+        "active_x_lines_in_nonzero_owner_shells": 2078,
+        "maximum_point_birth_age_levels": 8,
+        "maximum_line_birth_age_levels": 6
+      },
+      "cursor_geometry": {
+        "maximum_lateral_chebyshev_jump_by_level": {"5": 8, "6": 8, "7": 8, "8": 8},
+        "minimum_absolute_core_overlap_by_level": {"5": 210, "6": 210, "7": 210, "8": 210}
+      },
+      "exact_jump_plus_prior_occupancy": {
+        "classes": 126456,
+        "singleton_classes": 124258,
+        "repeated_classes": 2198,
+        "congruent_repeated_classes": 1126,
+        "noncongruent_classes": 1072,
+        "multi_level_classes": 1192,
+        "cross_level_noncongruent_classes": 641,
+        "maximum_distinct_targets_in_one_class": 15,
+        "class_stream_sha256": "915c7444272d5810532cd065131b222e97c393389be3099c5f0ef434f95fafa4"
+      },
+      "phase_plus_prior_occupancy_mod81": {
+        "classes": 131088,
+        "singleton_classes": 131083,
+        "repeated_classes": 5,
+        "noncongruent_classes": 4,
+        "cross_level_noncongruent_classes": 0
+      }
+    }
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "Every consecutive cursor transition in all three stated orders of the pinned L5--L8 realized constructions was scanned without a distance or endpoint cutoff.",
+      "The absolute predecessor/successor promoted-core relation, capped point occupancy, active x-lines, and injection masks were computed exactly.",
+      "All three orders have repeated exact-jump-plus-prior-occupancy states with different successor injection targets, including cross-level noncongruence.",
+      "The pipeline and left-to-right orders reduce injection counts and observed jump sizes but do not make the tested local state Markov.",
+      "No just-inserted predecessor interior is a remote injection; the remote source is an anchor or an interior inserted at an older cursor."
+    ],
+    "strongest_obstruction": "A finite state containing only the current universal x-core, bounded local tile/order data, and even the exact next cursor translation loses exterior birth/address information that later re-enters the core. A global birth-shell/address state or a separate ranking controlling that injection is required.",
+    "mod81_warning": "The mod-81 phase-plus-occupancy refinement is almost entirely singleton in every order, so its few congruent repeats are not stabilization evidence; pipeline and left-to-right still contain noncongruent repeats.",
+    "not_proved": [
+      "Any statement beyond the pinned finite L5--L8 realized connector choices or any L9/infinite stabilization claim.",
+      "A uniform quantitative bound on exterior injection, a contracting birth-shell transfer operator, or a finite global cursor state.",
+      "Closure for non-x secants, exact axial collision provenance, or all connector actions rather than the selected realized words.",
+      "A positive connector-survivor bound, a greatest safety fixed point, or an unconditional theorem."
+    ]
+  }
+}

@@ -269,6 +269,135 @@ only one connector per gap.
   artifact has no singleton occupancy or new-line births and covers only 2,882
   observed step/action pairs, so this is a candidate promotion coordinate, not
   a universal automaton.
+- The full-domain synchronized x-line scan covers all 12,537,146 actions and
+  55,513,526 ordered slots.  Its 236,572 exact prefix edges all satisfy a
+  rational postfixed barrier.  The resulting integer core has 53,216 states,
+  and all 6,288 candidate lateral classes lie inside it.  This closes carried
+  x-line geometry for every domain action, but not occupancy, line births,
+  whole-word coexistence, or chronological jumps to unrelated anchors.
+- The first exact occupancy/birth smoke test reconstructs 564 pinned cursor
+  states and 438 L7-to-L8 transport decompositions.  All identities pass and
+  nine insertion-driven x-line births occur.  However, all 126 tested L7
+  full-occupancy schedule states are distinct, while deleting singleton cells
+  gives two noncongruent state/action classes.  This refutes both literal-state
+  stabilization on this horizon and the active-line-only shortcut; it does not
+  refute a symbolic monotone quotient.
+- For the x channel, componentwise-maximal occupancy antichains preserve
+  uniform connector availability exactly, and the four-way occupancy update is
+  an exact monotone Boolean circuit.  Conversely, a finite moving window cannot
+  update without an import oracle around any same-level abstract cycle with
+  nonzero net drift.  These are theorems; existence of the required correlated
+  import relation is still open.
+- The full realized L5--L8 cursor census tests 393,279 transitions.  Exact
+  jump, both local/tile phases, and complete predecessor-core capped occupancy
+  still give 1,140 gate, 2,736 pipeline, and 1,072 left-to-right noncongruent
+  repeated classes.  This refutes those local Markov states, not all possible
+  finite address/shell quotients.
+- Non-x primitive direction height is not a rank: the exact `t=9`
+  normalization branch admits arbitrarily long factor-one-third runs.  For a
+  lineage that poisons a candidate at every synchronized stitch, nondegenerate
+  site changes do fall into a finite selector set; only the finite
+  direction-blind site graph remains.  The exhaustive graph is not acyclic:
+  its x-avoiding 4,774,932-edge refinement has a 768-state SCC.  An exact
+  quadratic-form invariant proves its canonical two-word carried-line cycle is
+  clean for every iterate and has infinitely many abstract future reveal
+  languages.  Reachable secant births and globally legal correlated repetition
+  are not proved, so this rejects an arbitrary-switching rank rather than the
+  ordered-path strategy.  Empty-mask intervals, births, and unrelated cursors
+  remain outside the reduction.
+- The canonical cycle is absent from every selected L5--L8 word/address chain;
+  its only recorded reveal-direction secant uses a different actual word.  A
+  separate one-fixed-word-per-step pilot reduces the direction-blind union to
+  a 1,321-edge DAG of height two.  These are exact finite policy signals, not
+  a proof that the cycle stays unreachable.  In fact exact L5 chronological
+  replay rejects the context-free fixed policy at the second scheduled stitch:
+  its first new point lies on an old--old secant.
+- The old multi-action common-potential repair is also false on that second
+  stitch.  Its full-cache census retains 601 words overall but only eight for
+  the repeated step-20 corridor.  All eight work at the first stitch, while
+  the exact correlated `8 x 8` response matrix at the second stitch is empty;
+  anchor-only witnesses kill every response.  This rejects that frozen action
+  region, not every larger or state-dependent controller.
+- The exact lattice-`T` replacement retains 8,367,038 zero-envelope and
+  10,252,458 ordered-envelope words.  Their whole-word arbitrary-switching
+  unions are acyclic on the finite lattice envelope, preserving actual slot
+  correlation.  This controls only contiguous direction-blind
+  candidate-to-candidate chains.  Silent zero-mask intervals, nondegenerate
+  selectors, births, unrelated-cursor imports, and complete global poison are
+  outside the certificate.
+- A chronological L5 construction using the strict zero-envelope channel and
+  globally unused yz fibres completes all 2,457 stitches and contains 8,268
+  points.  Its independent audit has rescanned every cache ordinal through
+  the selected winner and verified the full natural-order point stream, so it
+  is an exact terminal finite certificate.  It remains one finite orbit, not
+  a safety invariant or an all-level survivor theorem.  A stronger proposal
+  forbidding secant directions with `J` in `{11/3,348/275}` is already
+  incompatible with the inherited seed: anchors 30 and 33 have `J=11/3`.
+  The complete 34,175,778-pair diagnostic finds 758 cone secants and 76 named
+  macro-ray secants, including 61 connector-born named-ray pairs.  Its exact
+  moment join finds no inherited cone line in the tested actual L5 or induced
+  L6 named roles; connector-born roles and selected L6 actions remain open.
+  A proved conditional repair is to grandfather a finite base and forbid every
+  later old--new and new--new birth on the two entire invariant cones.  The
+  cone equations are preserved by `M`, so this freezes those populations, but
+  availability under the added global guard and exhaustiveness of the two
+  cones are unproved.
+- That conditional guard now has one exact independent finite test.  A guarded
+  L5 path completes all 2,457 stitches; its auditor reproduces all 4,211 guard
+  rejections and checks all 34,407,660 terminal pairs, leaving only the 246
+  inherited anchor--anchor cone pairs and no triple.  This validates the
+  grandfathering mechanism on one orbit, not uniform availability.  A
+  separate guarded L6 path from the ordinary primary L5 base is paused at
+  6,348 / 8,267 stitches, so the two positive computations are not consecutive
+  levels of one guarded history.
+- The exact correlated `8 -> 16 -> 8` holonomy census prevents treating those
+  two cones as exhaustive: 3,136 affine return maps and 2,094 fixed points
+  yield 47,942 primitive full-candidate guard polynomials outside the four
+  known classes.  These are abstract action-channel candidates, not proved
+  chronological secants.  The fail-closed role-first checker must still show
+  an actual selected role, physical line birth, Pluecker compatibility, and
+  killed-word mask before any such polynomial becomes a reachable obstruction.
+- The exact short-word GFP is empty.  There are 552 legal length-2 words and
+  56,516 legal length-3 words, but even their union prunes
+  `124 -> 104 -> 84 -> 70 -> 56 -> 36 -> 20 -> 10 -> 2 -> 0`.
+  Consequently every recurrent closed policy must use length 4 or 5.  A
+  mixed-length policy with Perron--Frobenius growth exactly 3 remains open.
+- The exact ghost-site pullback contracts addresses by one third but sends the
+  normalized nonzero incidence residual to three times itself and preserves
+  zero residual exactly.  Thus a shell transfer can rank positive residuals
+  only after a discrete gap; recurrent exact incidences need a finite
+  correlated future-compatibility quotient or explicit promotion.
+- The common height-two policy potential does not repair zero-mask re-entry.
+  Under its pinned fixed actions, exact integer lattice lines can remain
+  invisible through arbitrarily many `8 -> 16 -> 8` phase cycles and then hit
+  a selected interior.  This proves infinite geometric right-language
+  complexity, but not reachable secant births in a legal ordered history.
+- The same latent family has exact primitive spacing proportional to `9^n`
+  and a level-independent positive reveal weight.  Bounded diameter gives a
+  deterministic cutoff at each fixed finite level, but the cutoff grows with
+  the construction and is not a uniform tail bound.  The exact birth operator
+  shows what must be charged; a weighted LLL or mask-valued shell transfer is
+  still only a proposed route because no uniform reachable-birth envelope or
+  inductive availability inequality has been proved.
+- The exact generic whole-word transfer census rules out replacing that
+  envelope by average descendant branching: both all-descendant kernels obey
+  `2 <= rho <= 5`.  The continuously effectful lattice-`T` subkernel is zero
+  for the strict envelope and nilpotent of exponent at most 218 for the
+  ordered envelope, but silent ghosts, line births, legality conditioning, and
+  coefficient-one cursor imports are outside those finite kernels.
+- The first exact translation CEGAR witness has identical tested zero current
+  masks and birth/owner shells but produces 3,998 versus zero killed words one
+  recorded slot later.  Exact centred endpoint/partner Pluecker data explains
+  the split; retaining it makes all 146 tested L8 states singleton.  This
+  repairs that finite transition without supplying finite-index evidence.
+- A constrained alternate L5 selector now chooses only projection-fresh words
+  that also pass exact global 3D legality.  It completes all 2,457 stitches and
+  8,260 points, preserving exactly the 31 doubled yz fibres inherited from L4
+  and creating no x-line.  This is one reproducible finite orbit, not a
+  survivor floor or non-x tail theorem.  A separately committed L6 prefix is
+  now construction-complete at 8,259 stitches and 28,737 points, but its
+  independent first-survivor and ordered-chain audit is still running; it is
+  not yet a terminal finite certificate.
 - The selected-horizon L9 age-two audit follows the actual `42 -> 146 -> 488`
   tagged lineage against every L9 anchor and finds 58 nonzero states.  Anchor
   joins dominate the direct poison and partners born at L6, L7, and L8 all
@@ -310,6 +439,20 @@ to exhaustive certificates.
 | Exact x-parallel latent-line and recurrence audit | `design/x_axis_far_secant_resonance.py`, `design/x-axis-far-secant-resonance-summary.json` |
 | Exact observed x-axis Bellman barrier and realized-node join | `design/x_axis_bellman_barrier.py`, `design/x_axis_barrier_node_join.py` and their compact summaries |
 | Exact observed x-axis core-promotion collapse | `design/x_axis_core_promotion_probe.py`, `design/x-axis-core-promotion-probe-summary.json` |
+| Exact all-action synchronized x-line core | `design/x_axis_universal_bellman.py`, `design/x-axis-universal-bellman-summary.json` |
+| Exact realized-word x-line occupancy/birth smoke test | `design/x_axis_occupancy_birth_probe.py`, `design/x-axis-occupancy-birth-probe-summary.json` |
+| Exact unrelated-cursor x-core injection census | `design/x_axis_cursor_jump_injection.py`, `design/x-axis-cursor-jump-injection-summary.json` |
+| Exact no-new-x-line alternate L5 construction | `design/no_new_x_line_constructor.py`, `design/no-new-x-line-constructor-summary.json` |
+| Exact ghost/future compatibility CEGAR | `design/far_secant_future_compatibility_probe.py`, `design/far_secant_translation_cegar.py` and their compact summaries |
+| Exact full-domain non-x graph and all-iterate cycle certificate | `design/nonx_degenerate_site_graph.py`, `design/nonx_cycle_invariant_certificate.py`, their compact summaries, and `design/GHOST-LANGUAGE-AUTOMATON.md` |
+| Recorded non-x cycle reachability, acyclic fixed-word pilot, and chronological falsifier | `design/nonx_cycle_realized_reachability.py`, `design/nonx_fixed_word_policy_probe.py`, `design/fixed_policy_chronological_replay.py` and their compact summaries |
+| Exact common-potential second-stitch falsifier | `design/potential_policy_chronological_rescue.py`, `design/potential_policy_two_stitch_matrix.py` and their compact summaries |
+| Exact lattice-`T` whole-word action envelopes | `design/nonx_scc_core_action_probe.py`, `design/nonx-lattice-envelope-action-probe-summary.json` |
+| Strict zero-`T`, fresh-yz L5 construction and pending audit | `design/lattice_t_chronological_replay.py`, `design/lattice_t_chronological_audit.py` |
+| Exact length-3 and length-at-most-3 GFP no-go | `design/exact_length3_gfp.py`, `design/exact-length3-gfp-summary.json` |
+| Exact latent re-entry under the fixed policy | `design/nonx_latent_reentry_certificate.py`, `design/nonx-latent-reentry-certificate-summary.json`, `design/LATENT-REENTRY-OBSTRUCTION.md` |
+| Exact far-birth operator and proposed reachable envelope | `design/FAR-SECANT-BIRTH-OPERATOR.md` |
+| Exact x-projection coset address | `design/X-PROJECTION-COSET-ADDRESS.md`, `design/x_projection_coset_address.py` |
 | Exact selected-horizon L9 age-two poison and stabilization audit | `design/l9_anchor_age2_precursor.py`, `design/l9_anchor_age2_positive_mask_verifier.py`, `design/l9_age2_transition_stabilization.py` and their compact summaries |
 | Far-secant frontier algebra and safety-game obligations | `design/FAR-SECANT-RANK-LEMMA.md` |
 | Dimension / regularity measurements | `design/lemma/dim/`, `design/tight/` |
@@ -376,9 +519,30 @@ exterior Bellman rank is exact on every observed exterior transition, but
 11,107 / 11,154 actual effect nodes and every observed return source are in its
 core.  The first L9 continuation also falsifies age-two inertness and finds no
 repeated effectful refined state.  The route therefore needs a finite universal
-promotion or other control of the bounded core.  The observed 1,312-state
-geometric collapse is promising but lacks full-domain actions, singleton
-occupancy, and line-birth closure.  The route also needs a full current-L9
+promotion or other control of the bounded core.  For synchronized carried
+x-lines this part is now exact: the all-action module has a 53,216-state core.
+Exact finite replay now supplies the occupancy and birth equations, but not a
+stabilizing quotient: every tested literal occupancy state is unique and the
+active-line-only quotient is noncongruent.  A symbolic monotone occupancy state
+and the interface for chronological jumps to unrelated anchors remain open.
+The full cursor census now rules out the most natural version of that
+interface: exact jump and complete local core occupancy still do not determine
+the imported mask.  Pipeline and left-to-right orders reduce imports but do
+not restore congruence, so an exterior birth/address-shell state or a genuine
+tail rank is required.
+The alternate no-new-x-line L5 orbit shows that one coherent policy can avoid
+all new x-line births while remaining globally legal, but it certifies only one
+survivor at the worst stitch and starts with 31 inherited x-lines.  Extending
+that policy through a fully audited L6 certificate, or restarting it from a
+yz-injective seed, remains a construction obligation; neither option controls
+non-x secants.  The lateral quotient `Z^2/BZ^2 ~= Z/9Z` does prove that new
+x-fibre collisions are a bounded-range CSP, but a 25-fibre local cage shows
+that bounded projection multiplicity alone cannot guarantee a connector.
+For non-x lines, the full-domain degenerate graph contains a 768-state SCC and
+an all-iterate clean geometric two-cycle.  A policy must exclude that cycle or
+prove its inverse-direction secant births unreachable; a full-menu strict
+lifetime rank is impossible.
+The route also needs a full current-L9
 connector closure, before a typed residual contraction can support
 availability.  Numerical confidence
 percentages are opinions and are not part of the mathematical result.

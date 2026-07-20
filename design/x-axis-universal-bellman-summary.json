@@ -1,0 +1,106 @@
+{
+  "status": "exact full-effective-domain Bellman barrier and finite integer core for one synchronized carried x-parallel secant channel; not a global cursor-transfer lemma, occupancy/birth closure, connector-availability bound, or unconditional theorem",
+  "date": "2026-07-18",
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_axis_universal_bellman.py run --output /tmp/x-axis-universal-bellman-canonical-v2.json",
+    "postrun_canonical_path": "/tmp/x-axis-universal-bellman-canonical.json",
+    "raw_bytes": 4661270,
+    "raw_sha256": "9028a2872e5e0530d329e983652eec8c6d2f3391c8f24bd99e81b1708da69275",
+    "checker_sha256": "cd16f5600747b168a3deeb7c6d74164e9463fed6889054f5a39227a42b731bb7",
+    "elapsed_seconds": 351.522,
+    "maximum_resident_bytes": 730791936,
+    "processes": 1,
+    "thread_cap": 1,
+    "nice": 15
+  },
+  "repeat_audit": {
+    "first_full_run_checker_sha256": "b2ec9df2424fb98c2dcec1ab60e9e28bde45d97102e84b19140ab61695ee59fe",
+    "first_full_run_raw_sha256": "40b185fd0bdd49c44837774debd81135bfbe226a711e739e05b58711afadc154",
+    "second_run_reason": "The proof boundary was tightened to exclude unrelated chronological anchor jumps.",
+    "only_json_differences": [
+      "checker_sha256",
+      "missing_for_a_universal_safety_automaton gained the explicit unrelated-anchor exclusion",
+      "proof_boundary.not_proved gained the explicit unrelated-cursor exclusion"
+    ],
+    "all_computational_and_numerical_fields_identical": true
+  },
+  "pinned_inputs": {
+    "observed_bellman_raw_sha256": "f0a30cd341548539b9e0e3ecaa7cad57727e052f873f91649c0102c00c4262a9",
+    "observed_bellman_checker_sha256": "c9cd69eb345c4bfab9355570fffe5b05a809b9e64ad05d243e0aaaac39fa5582",
+    "connector_domains4_sha256": "d3dbfd54b724b91b1391d2233931a865a5ff371789029556949c953419fa3e4f",
+    "dstar5_fragile_sha256": "fe6ca45eda2874833d8257324bf7e29e2a4e855b0c4c27a9d2312702f28aefb3",
+    "gate_run_sha256": "16da12c29406dfb10d4eacbadd4c9cee1f595f6f23bcab8fd07827acc3b7cc37",
+    "search193_sha256": "0588060ebc443cc85521af1a34a6a3f94b4c4462365c7e03282bf1afb7cdcffc",
+    "amplify_rich_sha256": "4ca067a352db370c3c7c254a89655dd00b01f629eb1f2f5faebe97a64222a02e"
+  },
+  "full_domain_census": {
+    "source_steps": 124,
+    "D2_to_D4_words": 7114584,
+    "appended_D5_words": 5422562,
+    "effective_domain_words": 12537146,
+    "maximum_connector_word_length": 5,
+    "ordered_word_slot_occurrences_before_deduplication": 55513526,
+    "unique_source_child_prefix_lateral_edges": 236572,
+    "unique_edges_per_source_step_minimum": 550,
+    "unique_edges_per_source_step_maximum": 4416,
+    "edge_stream_sha256": "8fdfb9a54b8e367f7738635b725dfb7e3560323989116a1a57b6b434ffefd6d7"
+  },
+  "universal_bellman_certificate": {
+    "state_key": "source step s",
+    "edge_key": "(source step s, child step t, exact lateral prefix control c)",
+    "transport": "z_child = B(z_parent-c), with B^T S B=9S",
+    "postfixed_inequality": "U_s >= ||c||_S + U_t/3 on every full-domain edge",
+    "consequence": "If ||z_parent||_S>U_s for this synchronized carried line, then ||z_child||_S-U_t >= 3(||z_parent||_S-U_s)>0.",
+    "arbitrary_switching_role": "Allowing every deduplicated edge at every step is an overapproximation for exterior invariance; it does not preserve whole-word or realized-path correlations.",
+    "rational_interval_iterations": 62,
+    "unique_prefix_lateral_norms": 217,
+    "all_236572_edges_postfixed": true,
+    "zero_postfixed_slack_edges": 0,
+    "minimum_postfixed_slack_exact": {
+      "numerator": 36853084388432305510701323139749207,
+      "denominator": 11922513264904557238395309337781250000000000000000000000000000000
+    },
+    "minimum_postfixed_slack_approximate": 3.0910499799496195e-30,
+    "minimum_slack_witness": {
+      "source_step": 10,
+      "child_step": 15,
+      "prefix_lateral_control": [5, 4]
+    },
+    "barrier_value_range_approximate": [10.203816105784119, 14.226786500361966],
+    "barrier_stream_sha256": "41f025abdb0a5d78033ff54977dc0985bf6c42bd4740811e9adc5e8c4111b913",
+    "postfixed_slack_stream_sha256": "2f69f6921e84e97d5d4c46b9f3183588bc9e523d8252f06e1a7a282c54a1f197"
+  },
+  "finite_integer_core": {
+    "finiteness_reason": "The minimum Euclidean eigenvalue of S is 6/7, so ||(y,z)||_S<=U implies y^2+z^2<=(7/6)U^2.",
+    "maximum_coordinate_box_bound": 15,
+    "total_inner_integer_states": 53216,
+    "total_interval_fringe_integer_states": 0,
+    "total_promoted_integer_states": 53216,
+    "promoted_states_per_step_range": [327, 631],
+    "candidate_site_lateral_classes": 6288,
+    "candidate_classes_in_interval_fringe": 0,
+    "candidate_classes_exterior_to_promoted_core": 0,
+    "candidate_class_edge_transitions": {
+      "inner_to_inner": 7545414,
+      "inner_to_exterior": 5779904,
+      "total": 13325318
+    },
+    "integer_core_stream_sha256": "69aff7637458575a64e44e2be04d7f9837d9ff629f7a03aa36c6b494b1ea8b01"
+  },
+  "referee_interpretation": {
+    "proved_by_finite_computation": [
+      "Every word in the pinned 124 effective connector domains was scanned in authoritative order.",
+      "Every exact source-step, ordered-child-step, and lateral-prefix-control edge was retained before deduplication.",
+      "A rational postfixed barrier holds on every resulting edge, so the exterior is invariant for one synchronized carried x-line.",
+      "The corresponding fixed-direction integer core is finite and was exhaustively enumerated.",
+      "Every connector-interior lateral class that could be affected by an x-parallel line lies inside that promoted core."
+    ],
+    "not_proved": [
+      "Singleton occupancy, insertion-driven births of new x-lines, and exact axial collision provenance.",
+      "Whole-word action correlation and coexistence on one realized ordered path.",
+      "Transfer of far-line offsets when the chronological stitch cursor changes to an unrelated anchor; this is a translation without the checked factor-three expansion and can bring a discarded line back into the core.",
+      "Non-x secants, endpoint-on-candidate-line poison, positive connector availability, or a greatest safety fixed point."
+    ],
+    "smallest_next_exact_test": "Retain the whole selected connector word and add capped x-line occupancy n_a(z) in {0,1,2} plus separate collision data on this finite core. Test insertion births and all ordered child slots exactly. In parallel, seek a birth-shell/address ranking for unrelated-anchor cursor changes; without that extra state the finite core is not a global far-secant automaton."
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact geometric latent-reentry obstruction under the pinned height-two fixed-word policy; not a reachable-history theorem",
+  "checker": {
+    "path": "design/nonx_latent_reentry_certificate.py",
+    "sha256": "bad51e7b437cca4c73acd3b961ef1871f526e6ffe543e3e4b1c6286fc1c7fb32"
+  },
+  "pinned_inputs": {
+    "fixed_policy_artifact": {
+      "path": "/tmp/nonx-fixed-word-policy-probe-v2.json",
+      "sha256": "e30732d2833b3c93ae2ccbbc5f37ddd3069346899c24d49fc18aabfa1a48485e"
+    },
+    "fixed_policy_checker": {
+      "path": "design/nonx_fixed_word_policy_probe.py",
+      "sha256": "531ba6ee0bfa8d5bf7485d70b13687ace4e1b100cdcdfd739b8bdcac9d8efdd3"
+    },
+    "metadata": {
+      "path": "/tmp/no-new-x-line-L5-canonical.json",
+      "sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a"
+    },
+    "compact_domain_cache": {
+      "path": "/tmp/no-new-x-line-domains.bin",
+      "sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7"
+    }
+  },
+  "runs": {
+    "first": {
+      "raw_path": "/tmp/nonx-latent-reentry-certificate.json",
+      "raw_sha256": "937cbb6d2a192c72e57c5ad3e7ff6542c7c8449ebbfb718c51b083e6c1d7389f",
+      "elapsed_seconds": 0.893,
+      "maximum_resident_set_bytes": 20905984
+    },
+    "repeat": {
+      "raw_path": "/tmp/nonx-latent-reentry-certificate-repeat.json",
+      "raw_sha256": "1d0593669c2f4971eaa52448cc2af527c691d91a102515012147c7a25791d30b",
+      "elapsed_seconds": 0.933,
+      "maximum_resident_set_bytes": 21094400
+    },
+    "semantic_repeat": {
+      "normalization": "delete elapsed_seconds and maximum_resident_set_raw, then encode sorted compact JSON",
+      "sha256": "913c915acdc9dbc67762efd3c526c35be4b4fb141d41473bea375d6f6448e3e7",
+      "bytes": 3828,
+      "identical": true
+    },
+    "resource_policy": {
+      "processes": 1,
+      "threads": 1,
+      "nice": 15
+    }
+  },
+  "scan_scope": {
+    "domain_steps": [8, 16],
+    "domain_words": 31840,
+    "cache_bytes": 159096,
+    "candidate_sites_per_step": {
+      "8": 214,
+      "16": 214
+    },
+    "candidate_site_stream_sha256": "6cda4eea1d2499f796493a5ed062579bd210fe5e5e50a0d1aea373e7a8a9bf33"
+  },
+  "fixed_policy_cycle": {
+    "potential": {
+      "maximum": 2,
+      "strictly_decreases_on_every_policy_degenerate_edge": true,
+      "stream_sha256": "79a83e18f61a95c81e24a7493e9175c034fb06719f19fa8172fa041477295056"
+    },
+    "edges": [
+      {
+        "source_step": 8,
+        "selected_word": [0, 1, 16],
+        "slot_0_based": 2,
+        "target_step": 16,
+        "prefix_control": [-4, -4, -3]
+      },
+      {
+        "source_step": 16,
+        "selected_word": [8, 23, 24],
+        "slot_0_based": 0,
+        "target_step": 8,
+        "prefix_control": [0, 0, 0]
+      }
+    ],
+    "macro_map": "F(x)=M^2(x-(-4,-4,-3))",
+    "fixed_point": [[-9, 2], [-39, 11], [-31, 11]]
+  },
+  "infinite_integer_line_family": {
+    "definition": "h=(55,34,18), g_n=N^(2n)h, L_n={x:x cross g_n=p cross g_n}",
+    "primitive": "h_y is nonzero modulo 3; N preserves that fact and is invertible modulo every other prime",
+    "integer_moment": "g_n modulo 22 has exact period five and P cross g_n is zero modulo 22 for P=22p=(-99,-78,-62)",
+    "integer_line_criterion": "for primitive g, the map x -> x cross g has saturated image in the integer plane orthogonal to g",
+    "transport": "F(L_n)=L_(n-1)",
+    "x_coordinate": "(g_n)_x=55*9^n"
+  },
+  "all_n_zero_mask_and_reentry": {
+    "invariant": "J(r,y,z)=(3y^2-yz+3z^2)/r^2=348/275 on every g_n",
+    "phase_adjustment": "step-8 candidate x is tested directly; step-16 candidate x is pulled back to (-4,-4,-3)+M^(-1)x",
+    "equal_invariant_candidates": [
+      {
+        "phase": 8,
+        "site": [-2, -2, -2],
+        "primitive_direction_from_p": [55, 34, 18]
+      },
+      {
+        "phase": 16,
+        "site": [-4, 1, 2],
+        "primitive_direction_from_p": [165, -20, 102]
+      }
+    ],
+    "exclusion": "the first is g_0; the second has primitive x-coordinate 165, which is not 55*9^n for any integer n>=1",
+    "theorem": "for every n>=1, L_n has empty full candidate-site masks through n complete phase-cycle traversals, then returns as L_0 and hits selected step-8 interior (-2,-2,-2)",
+    "independent_direct_replay_depth": 64
+  },
+  "exact_consequence": "The direct carried-line right congruence over all integer lattice lines has infinite index even under these common-potential-compatible fixed actions. The height-two potential ranks continuously effectful candidate-to-candidate chains only; it says nothing about an arbitrarily long zero-mask interval. Calling these lines reachable secants additionally requires two placed endpoints, which this certificate does not prove.",
+  "smallest_sound_direct_state": {
+    "state": "current correlated cursor plus the exact centered primitive Pluecker pair (g,m); a current candidate mask or potential value is derived data and is not a transition-sufficient replacement",
+    "ancestral_transition": "g'=canon(Mg), m'=canonically scaled C(m-c cross g)",
+    "latent_reentry": "a future candidate y is a hit exactly when its rational pullback ghost lies on the retained line"
+  },
+  "not_proved": [
+    "that any L_n is born as a secant in a reachable globally legal ordered-path history",
+    "that this phase cycle repeats in the reachable safety-game subgraph after all other poison channels are imposed",
+    "failure of a finite quotient after unreachable births are removed or the action filter is strengthened to break this cycle",
+    "control of endpoint, near-deep, deep-deep, collision, or unrelated same-level cursor-jump channels",
+    "an unconditional far-secant lemma or Erdős #193 theorem"
+  ]
+}

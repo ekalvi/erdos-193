@@ -1,0 +1,415 @@
+{
+  "checker": {
+    "path": "design/nonx_cycle_realized_reachability.py",
+    "sha256": "2c860659c51bf84bc434458ccae7500b5f3b3b5dda8190157dc9a06d00aa6cf8"
+  },
+  "chronological_secant_reachability": {
+    "queries": [
+      {
+        "available_selected_action_transitions": 0,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 0,
+        "level": 5,
+        "placed_points_scanned": 8214,
+        "primitive_direction": [
+          3,
+          -1,
+          3
+        ],
+        "source_step_corridors": 44,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 2,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 1,
+        "level": 5,
+        "placed_points_scanned": 8214,
+        "primitive_direction": [
+          27,
+          -1,
+          -30
+        ],
+        "source_step_corridors": 44,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 4,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 2,
+        "level": 5,
+        "placed_points_scanned": 8214,
+        "primitive_direction": [
+          243,
+          98,
+          267
+        ],
+        "source_step_corridors": 44,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 0,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 0,
+        "level": 6,
+        "placed_points_scanned": 27697,
+        "primitive_direction": [
+          3,
+          -1,
+          3
+        ],
+        "source_step_corridors": 122,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 2,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 1,
+        "level": 6,
+        "placed_points_scanned": 27697,
+        "primitive_direction": [
+          27,
+          -1,
+          -30
+        ],
+        "source_step_corridors": 122,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 0,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 0,
+        "level": 7,
+        "placed_points_scanned": 92732,
+        "primitive_direction": [
+          3,
+          -1,
+          3
+        ],
+        "source_step_corridors": 420,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 2,
+        "chronologically_live_secant_corridors": 0,
+        "cycles": 1,
+        "level": 7,
+        "placed_points_scanned": 92732,
+        "primitive_direction": [
+          27,
+          -1,
+          -30
+        ],
+        "source_step_corridors": 420,
+        "witnesses": []
+      },
+      {
+        "available_selected_action_transitions": 0,
+        "chronologically_live_secant_corridors": 1,
+        "cycles": 0,
+        "level": 8,
+        "placed_points_scanned": 311738,
+        "primitive_direction": [
+          3,
+          -1,
+          3
+        ],
+        "source_step_corridors": 1538,
+        "witnesses": [
+          {
+            "absolute_query_point": [
+              -23343,
+              37209,
+              5017
+            ],
+            "actual_selected_word": [
+              20,
+              21,
+              5
+            ],
+            "candidate_site": [
+              -3,
+              0,
+              -3
+            ],
+            "corridor_start": [
+              -23340,
+              37209,
+              5020
+            ],
+            "cycles": 0,
+            "endpoints": [
+              {
+                "birth_gap": 43703,
+                "birth_order_position": 23672,
+                "coordinate": [
+                  -23349,
+                  37211,
+                  5011
+                ],
+                "interior_slot_zero_based": 1,
+                "kind": "connector_interior",
+                "stable_id": "connector:L8:G43703:I1"
+              },
+              {
+                "birth_gap": 43701,
+                "birth_order_position": 34519,
+                "coordinate": [
+                  -23337,
+                  37207,
+                  5023
+                ],
+                "interior_slot_zero_based": 1,
+                "kind": "connector_interior",
+                "stable_id": "connector:L8:G43701:I1"
+              }
+            ],
+            "gap": 43702,
+            "level": 8,
+            "literal_phase_A_slots": [],
+            "macro_phase_A_slots": [],
+            "primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "stitch_order_position": 58689
+          }
+        ]
+      }
+    ],
+    "semantics": "all anchors have birth -1; connector interiors have their gap's constructor-order position; two distinct endpoints must have birth strictly before the queried stitch"
+  },
+  "correlated_address_validation": {
+    "alternate_connector_histories": false,
+    "every_L5_to_L8_flattened_parent_word_checked": true,
+    "every_parent_prefix_to_child_anchor_checked": true,
+    "every_selected_word_endpoint_checked": true,
+    "independent_address_streams": false,
+    "levels": [
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "cycle": {
+    "inverse_direction_family": "g_n=canonprim(N^(2n)*(3,-1,3))",
+    "phases": [
+      {
+        "candidate_site": [
+          -3,
+          0,
+          -3
+        ],
+        "name": "A",
+        "prefix_control": [
+          -2,
+          1,
+          -2
+        ],
+        "slot": 1,
+        "target_step": 1,
+        "word": [
+          15,
+          1,
+          20,
+          71
+        ]
+      },
+      {
+        "candidate_site": [
+          -3,
+          3,
+          -2
+        ],
+        "name": "B",
+        "prefix_control": [
+          -2,
+          4,
+          -2
+        ],
+        "slot": 2,
+        "target_step": 1,
+        "word": [
+          20,
+          71,
+          1,
+          15
+        ]
+      }
+    ],
+    "reveal_site": [
+      -6,
+      1,
+      -6
+    ],
+    "source_step": 1
+  },
+  "cycle_source": {
+    "bytes": 5748,
+    "path": "design/nonx-cycle-invariant-certificate-summary.json",
+    "sha256": "cdc50b48655a80731bf66ae1461116963277e4ed622b17ad1c2849dcebcfd6dd"
+  },
+  "date": "2026-07-18",
+  "decisive_result": {
+    "chronologically_live_g_n_entry_lines_all_queries": 1,
+    "chronologically_live_g_n_entry_lines_n_ge_1": 0,
+    "correlated_literal_action_chain_maximum": 0,
+    "correlated_macro_action_chain_maximum": 0,
+    "exact_control_target_x_avoiding_macro_actions_L5_to_L8": 0,
+    "fixed_cycle_reachable_in_this_realized_horizon": false,
+    "literal_complete_nontrivial_countdowns": 0,
+    "literal_selected_cycle_actions_L5_to_L8": 0,
+    "macro_complete_nontrivial_countdowns": 0,
+    "reason": "Neither selected cycle word occurs, no selected connector realizes either exact control/target macro edge, and no chronological inverse-family entry secant with n>=1 occurs."
+  },
+  "exact_macro_chains": {
+    "length_in_actions_histogram": {},
+    "longest_chain_samples": [],
+    "longest_correlated_chain_actions": 0,
+    "starting_action_occurrences": 0
+  },
+  "inputs": {
+    "gate2-l7-construction-L5.pkl": {
+      "bytes": 71933,
+      "path": "gate2-l7-construction-L5.pkl",
+      "sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d"
+    },
+    "gate2-l7-construction-L6.pkl": {
+      "bytes": 242888,
+      "path": "gate2-l7-construction-L6.pkl",
+      "sha256": "70fa3baac057492fb8ad325eba5417bdc1e98fbd474bec37dc5f5465230f9298"
+    },
+    "gate2-l7-construction-L7.pkl": {
+      "bytes": 818165,
+      "path": "gate2-l7-construction-L7.pkl",
+      "sha256": "304e71eb74939662c0d0251864193171e74f49fd2023a98df09dc45d99fa0660"
+    },
+    "gate2-l7-construction-L8.pkl": {
+      "bytes": 2709484,
+      "path": "gate2-l7-construction-L8.pkl",
+      "sha256": "cc4002ebccde737ab46dc016937be4aa653620d809908d48d35bcf06fc884141"
+    }
+  },
+  "literal_countdown_join": {
+    "complete_correlated_countdowns": 0,
+    "nontrivial_chronological_g_n_entries": 0,
+    "successes": []
+  },
+  "literal_named_word_chains": {
+    "length_in_actions_histogram": {},
+    "longest_chain_samples": [],
+    "longest_correlated_chain_actions": 0,
+    "starting_action_occurrences": 0
+  },
+  "macro_countdown_join": {
+    "complete_correlated_countdowns": 0,
+    "nontrivial_chronological_g_n_entries": 0,
+    "successes": []
+  },
+  "resource_policy": {
+    "nice": 15,
+    "processes": 1,
+    "thread_cap": 1
+  },
+  "scope_limitations": [
+    "finite L5--L8 gate2 realized history only",
+    "does not exclude the same geometric cycle under a different ordered connector policy",
+    "does not exclude a different direction-blind cycle",
+    "does not independently rerun the global triple-free verification",
+    "the computed L9 endpoint after an L8 action has no selected L9 connector",
+    "a live g_0 line is an immediate reveal, not evidence of repeatability"
+  ],
+  "selected_action_census": {
+    "5": {
+      "A": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 11,
+        "source_step_gaps": 44,
+        "target_step_slots": 1,
+        "x_avoiding_macro_slots": 0
+      },
+      "B": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 0,
+        "source_step_gaps": 44,
+        "target_step_slots": 1,
+        "x_avoiding_macro_slots": 0
+      }
+    },
+    "6": {
+      "A": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 36,
+        "source_step_gaps": 122,
+        "target_step_slots": 0,
+        "x_avoiding_macro_slots": 0
+      },
+      "B": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 0,
+        "source_step_gaps": 122,
+        "target_step_slots": 0,
+        "x_avoiding_macro_slots": 0
+      }
+    },
+    "7": {
+      "A": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 109,
+        "source_step_gaps": 420,
+        "target_step_slots": 3,
+        "x_avoiding_macro_slots": 0
+      },
+      "B": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 1,
+        "source_step_gaps": 420,
+        "target_step_slots": 3,
+        "x_avoiding_macro_slots": 0
+      }
+    },
+    "8": {
+      "A": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 402,
+        "source_step_gaps": 1538,
+        "target_step_slots": 6,
+        "x_avoiding_macro_slots": 0
+      },
+      "B": {
+        "control_and_target_slots": 0,
+        "literal_selected_action_slots": 0,
+        "named_word_any_source": 0,
+        "named_word_at_source_step": 0,
+        "prefix_control_slots": 3,
+        "source_step_gaps": 1538,
+        "target_step_slots": 6,
+        "x_avoiding_macro_slots": 0
+      }
+    }
+  },
+  "status": "exact finite realized-path obstruction for the fixed non-x two-cycle"
+}

@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact finite quotient/address and pinned connector-mask census; projection-only, not an availability lemma, far-secant lemma, safety fixed point, or unconditional theorem",
+  "design_memo": {
+    "path": "design/X-PROJECTION-COSET-ADDRESS.md",
+    "sha256": "71d97a86626622ce08eed07abe9abacb85769b598c372394029238e0f1a1f86b"
+  },
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/x_projection_coset_address.py run --cache /tmp/no-new-x-line-domains.bin --metadata /tmp/no-new-x-line-L5-canonical.json --output /tmp/x-projection-coset-address-canonical.json",
+    "checker_path": "design/x_projection_coset_address.py",
+    "checker_sha256": "9055e66c4b729e032098ab15aa5760c3591838ba6b2da474dcdcc099189de239",
+    "raw_path": "/tmp/x-projection-coset-address-canonical.json",
+    "raw_bytes": 64889,
+    "raw_sha256": "a7e1fd6c59d35a47b72c1c36feec23a5ea0de5338afd967de85ad2214b560e31",
+    "wall_seconds": 76.03,
+    "maximum_resident_bytes": 105910272,
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "independent_repeat": false
+  },
+  "pinned_inputs": {
+    "gate_run.py": "16da12c29406dfb10d4eacbadd4c9cee1f595f6f23bcab8fd07827acc3b7cc37",
+    "metadata_path": "/tmp/no-new-x-line-L5-canonical.json",
+    "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "metadata_checker_sha256": "6eca827ef7b6a4dfad57554bb89156fff79c2f495e89ba33e166aebbba21fffd",
+    "cache_path": "/tmp/no-new-x-line-domains.bin",
+    "cache_bytes": 68050680,
+    "cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "block_metadata_sha256": "838cbe6fc0205d293191c4f656fb9c7181074849d8cfdaaed83107da2d0ebc0e"
+  },
+  "exact_algebra": {
+    "lateral_matrix": [[0, -3], [3, -1]],
+    "determinant": 9,
+    "smith_normal_form": [1, 9],
+    "quotient": "Z^2/BZ^2 is isomorphic to Z/9Z",
+    "quotient_coordinate": "q(y,z)=y-3z mod 9",
+    "kernel": "ker(q)=B Z^2",
+    "canonical_digit": "d_r=(r,0), 0<=r<9",
+    "canonical_carry": "c(y,z)=((r-y+3z)/9,(r-y)/3), where r=q(y,z)",
+    "address_bijection": "(a,r) maps to B a + (r,0)",
+    "child_interior_address": "for parent gap start a and lateral prefix u, address=(a+c(u),q(u))",
+    "collision_criterion": "two child yz coordinates agree if and only if their exact addresses agree"
+  },
+  "exact_cache_census": {
+    "effective_words": 12537146,
+    "word_slots": 55513526,
+    "interior_prefix_occurrences": 42976380,
+    "word_length_histogram": {
+      "2": 552,
+      "3": 56516,
+      "4": 7057516,
+      "5": 5422562
+    },
+    "distinct_lateral_prefix_offsets": 217,
+    "distinct_carries": 39,
+    "digits_present": [0, 1, 2, 3, 4, 5, 6, 7, 8],
+    "step_specific_ordered_lateral_prefix_signatures": 291414,
+    "step_specific_unordered_projection_role_masks": 216322,
+    "minimum_role_masks_per_step": 201,
+    "maximum_role_masks_per_step": 8059,
+    "lateral_simple_words": 11582258,
+    "all_prefix_digits_nonzero_words": 9687350,
+    "digit_simple_words": 6755766,
+    "minimum_digit_simple_words_on_one_step": 2000,
+    "steps_with_a_digit_simple_word": 124,
+    "first_prefix_lateral_projections": 25,
+    "analytic_same_digit_interaction_radius": 7,
+    "pinned_cache_sharp_same_digit_interaction_radius": 5
+  },
+  "commitments": {
+    "offset_stream_sha256": "6a3c07e48fcd43b3b75f84c7d8f579fb4cf7e2f61c0321e3a3e6c562dcbd9bf0",
+    "carries_by_digit_sha256": "9d8b524e5d64a5520464daf271a815d21e243d936cd49f4231b686c58f6f0038",
+    "role_occurrence_stream_sha256": "a9f8586a4aaf21741f6ba97642dd81e5e2d2f7e7bb760a0b634b87b0816cfc2d",
+    "step_census_sha256": "2fe5bd08d3e9a4a4f259833459e4f68c4fdb54aaa3093b5783841483bd76cd93"
+  },
+  "projection_locality": {
+    "analytic_proof": "A length-at-most-five interior prefix lies in [-8,8]^2. Equal digits give delta_c=((-delta_y+3*delta_z)/9,-delta_y/3), so the two carry coordinates differ by at most 7 and 5 respectively.",
+    "analytic_radius": 7,
+    "pinned_cache_sharp_radius": 5,
+    "parent_fibre_multiplicity_two_neighbor_cap_at_radius_7": 450,
+    "interpretation": "x-projection poisoning is an exact bounded-range constraint; it has no far-secant tail",
+    "global_caveat": "bounded range does not itself imply a global extension or a finite online safety strategy"
+  },
+  "static_25_fibre_cage": {
+    "lateral_offsets": "[-2,2]^2",
+    "fibres": 25,
+    "central_fibre_already_contains_start_anchor": true,
+    "additional_fibres_in_this_sufficient_cage": 24,
+    "effect": "every connector word has a first interior in an occupied fibre and is projection-killed",
+    "triple_free_static_lift": "one point per fibre can be made triple-free by choosing integer x coordinates successively outside finitely many forbidden values",
+    "reachability_caveat": "not proved reachable as a contiguous ordered MENU walk or under the projection-fresh selector"
+  },
+  "proved": [
+    "the quotient coordinate, canonical carry, and exact address bijection",
+    "analytic radius-seven projection locality for every radius-two MENU word of length at most five",
+    "the named pinned-cache word, prefix, carry, role-mask, digit-simple, and sharp-radius counts",
+    "the 25-fibre cage refutes availability based only on triple-freeness and yz-fibre multiplicity at most two",
+    "the projection effect uses only the one role mask actually selected at each realized gap"
+  ],
+  "not_proved": [
+    "reachability of the static cage in the ordered construction",
+    "positive connector availability in every reachable state",
+    "a simultaneous all-gap role-mask assignment or greatest safety fixed point",
+    "transition closure under alternate realized connector histories",
+    "control of non-x-parallel local or far secants",
+    "an unconditional theorem for Erdos problem 193"
+  ]
+}

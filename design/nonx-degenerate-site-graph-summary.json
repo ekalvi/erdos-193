@@ -1,0 +1,439 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "audited exact finite synchronized candidate-site graph certificate; not an unconditional theorem",
+  "checker": {
+    "path": "design/nonx_degenerate_site_graph.py",
+    "sha256": "4eb928bad0c0104d34b68424b07dd3b6a4939f216968bd6b2399a540b592e755"
+  },
+  "canonical_artifact": {
+    "path": "/tmp/nonx-degenerate-site-graph-canonical.json",
+    "bytes": 19905,
+    "sha256": "e0f5765fec55b25b9392333c25da037d9d073b7bc95b81680bb4e5957a0c4d92"
+  },
+  "canonical_run": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/nonx_degenerate_site_graph.py run --output /tmp/nonx-degenerate-site-graph-canonical.json",
+    "payload_elapsed_seconds": 480.212,
+    "maximum_resident_set_bytes": 516444160,
+    "processes": 1,
+    "threads": 1,
+    "nice": 15,
+    "resource_policy": {
+      "compliant": true,
+      "process_nice": 15,
+      "required_minimum_nice": 15,
+      "required_thread_value": "1",
+      "thread_environment": {
+        "MKL_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "VECLIB_MAXIMUM_THREADS": "1"
+      }
+    }
+  },
+  "provenance": {
+    "pinned_inputs": {
+      "block_metadata_sha256": "838cbe6fc0205d293191c4f656fb9c7181074849d8cfdaaed83107da2d0ebc0e",
+      "cache_builder_sha256": "6eca827ef7b6a4dfad57554bb89156fff79c2f495e89ba33e166aebbba21fffd",
+      "cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+      "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+      "universal_scanner_sha256": "cd16f5600747b168a3deeb7c6d74164e9463fed6889054f5a39227a42b731bb7"
+    },
+    "execution_files": {
+      "cache": {
+        "path": "/private/tmp/no-new-x-line-domains.bin",
+        "bytes": 68050680,
+        "sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7"
+      },
+      "checker": {
+        "path": "/Users/erik/homelab/math193/design/nonx_degenerate_site_graph.py",
+        "bytes": 99363,
+        "sha256": "4eb928bad0c0104d34b68424b07dd3b6a4939f216968bd6b2399a540b592e755"
+      },
+      "metadata": {
+        "path": "/private/tmp/no-new-x-line-L5-canonical.json",
+        "bytes": 45693,
+        "sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a"
+      }
+    },
+    "start_and_end_files_byte_and_identity_identical": true,
+    "packed_arc_spools": {
+      "record_bytes": 12,
+      "original_sha256": "72796577ba9fd566fce3acaaaa715fbcbf036419e2094cf177a04bfbf409b114",
+      "x_avoiding_sha256": "d420419f0dd723ab53304fe4c9ccf1b9d46b0daa91650cb1c9de3d3d73f420e5"
+    }
+  },
+  "self_tests": {
+    "selector_optimization": {
+      "candidate_sites": 12,
+      "convolution_groups": 9,
+      "quotient_groups": 9,
+      "selector_directions": 110,
+      "selector_flag_sha256": "f37dc9067978a25d33c6f0b5f9cf4c68702adeccb932aa4fcc6015ccb97b688f",
+      "source_phases": 4,
+      "status": "passed exact reduced legacy-pair-loop equivalence"
+    },
+    "packed_graph": {
+      "arcs": 4,
+      "record_bytes": 12,
+      "status": "passed fixed-record forward/reverse/metadata/SCC test",
+      "vertices": 3
+    }
+  },
+  "domain_scan_census": {
+    "candidate_site_stream_sha256": "d3f5892f3edb518fcdad88457f04fddb4eb3cece48102cfbdd801353897e4e07",
+    "candidate_sites_per_step_range": [
+      122,
+      520
+    ],
+    "candidate_sites_total": 34520,
+    "effective_words": 12537146,
+    "forced_transition_interior_stream_sha256": "6b794fead8a4d914329bc24645d0a625ecaf74fa2f404e8103cc2d5c9baf55b8",
+    "permanently_forced_source_control_target_site_triples": 1681308,
+    "source_control_pairs": 34644,
+    "source_control_target_transitions_with_nonempty_forced_word_intersection": 840794,
+    "transition_occurrence_stream_sha256": "afd4a9d7cb31ba3a5bd353306999be5e6086f9d179f10ae0472e0ea10193815a",
+    "transitions_with_compulsory_nonzero_control_site": 830762,
+    "transitions_with_nonempty_residual_after_compulsory_control_removed": 830802,
+    "unique_full_3d_source_target_control_transitions": 840794,
+    "unique_transition_stream_sha256": "7ebdc0e3d0408c47c96cee55043801d4ff111056e404ae8ab049fb140060a0de",
+    "word_length_histogram": {
+      "2": 552,
+      "3": 56516,
+      "4": 7057516,
+      "5": 5422562
+    },
+    "word_slots_and_transition_occurrences": 55513526
+  },
+  "graph_and_selector_census": {
+    "ambient_nonzero_vector_bound_before_primitive_deduplication": 1851504,
+    "candidate_vertices": 34520,
+    "carry_safe_integer_multiplication_groups": 2103,
+    "coefficient_lane_bits": 16,
+    "compatible_packed_arc_spool_sha256": "d420419f0dd723ab53304fe4c9ccf1b9d46b0daa91650cb1c9de3d3d73f420e5",
+    "distinct_carried_base_target_site_pairs_tested": 10993326392,
+    "distinct_pairs_after_exact_global_quotient": 13914492,
+    "distinct_source_mask_carried_base_states": 10474412,
+    "exact_successor_site_equivalence_classes": 2103,
+    "full_3d_control_labelled_degenerate_edges": 4774988,
+    "globally_merged_carried_base_states": 6545,
+    "groups_skipped_only_after_full_difference_box_saturation": 0,
+    "labelled_edge_stream_sha256": "2eec2a4a0c53d65853a0f3c291b1e0e0a934b37b12f5cbd287bd32b9adadf65c",
+    "maximum_bases_in_one_convolution_group": 2661,
+    "maximum_compatible_controls_for_one_unlabelled_arc": 1,
+    "maximum_controls_for_one_unlabelled_arc": 1,
+    "maximum_selector_primitive_coordinate": 32,
+    "maximum_sites_in_one_convolution_group": 2882,
+    "non_x_selector_primitive_directions": 83580,
+    "nonzero_difference_vectors_before_primitive_quotient": 201252,
+    "original_packed_arc_spool_sha256": "72796577ba9fd566fce3acaaaa715fbcbf036419e2094cf177a04bfbf409b114",
+    "packed_arc_spool_record_bytes": 12,
+    "packed_graph_memory_schedule": "write original and compatible sorted spools together; release scan poison maps before convolution; then mmap and analyze original and compatible graphs one at a time with one uint32 reverse-source array per active graph",
+    "peak_python_arc_deduplication_scope": "one source step",
+    "proved_maximum_coefficient": 4913,
+    "proved_selector_coordinate_box": [
+      [
+        -56,
+        56
+      ],
+      [
+        -56,
+        56
+      ],
+      [
+        -72,
+        72
+      ]
+    ],
+    "selector_census_method": "preserve every source/exact-target-mask carried-base relation; OR target masks only for identical carried bases in the final existential union; group identical exact successor-site sets; then take carry-safe 16-bit-lane integer difference convolutions",
+    "selector_direction_stream_sha256": "b092fd68968d62e4a9d1c70a49022cc32d97af8479906c2923230c2da06d69c7",
+    "selector_primitive_directions": 83581,
+    "target_step_mask_site_union_cache_entries": 10773,
+    "total_exact_successor_site_groups_before_safe_saturation_shortcut": 2103,
+    "unique_unlabelled_degenerate_arcs": 4774988,
+    "unlabelled_arc_stream_sha256": "12f2a9a4fa824d79ecad9db0f053b2324c5a2011ba4294576baa5a6bd40698a1",
+    "vertices_with_outgoing_degenerate_arcs": 32640,
+    "x_avoiding_compatible_control_labelled_degenerate_edges": 4774932,
+    "x_avoiding_compatible_labelled_edge_stream_sha256": "536bd0566e3b3ef96299a50bfef8c987cde44b4d8bd47e0108e055b4bfabc69e",
+    "x_avoiding_compatible_unique_unlabelled_degenerate_arcs": 4774932,
+    "x_avoiding_compatible_unlabelled_arc_stream_sha256": "0d9a3347bb1e64f3618588526bbd211e23e18830151d618a249a44e656f93280",
+    "x_avoiding_compatible_vertices_with_outgoing_arcs": 32640,
+    "x_selector_direction_present": true
+  },
+  "original_graph_scc": {
+    "component_size_histogram": {
+      "1": 33752,
+      "768": 1
+    },
+    "condensation_edge_stream_sha256": "8f128f64b2774920373668902aadd8ad225dfe281ece8df57ff559cf74902dd9",
+    "condensation_edges": 98356,
+    "condensation_longest_path_edges": 2,
+    "cyclic_components": 1,
+    "degenerate_site_graph_is_acyclic": false,
+    "largest_cyclic_component": 768,
+    "longest_degenerate_path_edges_if_acyclic": null,
+    "strongly_connected_components": 33753,
+    "vertices_in_cyclic_components": 768
+  },
+  "x_avoiding_graph_scc": {
+    "component_size_histogram": {
+      "1": 33752,
+      "768": 1
+    },
+    "condensation_edge_stream_sha256": "8f128f64b2774920373668902aadd8ad225dfe281ece8df57ff559cf74902dd9",
+    "condensation_edges": 98356,
+    "condensation_longest_path_edges": 2,
+    "cyclic_components": 1,
+    "degenerate_site_graph_is_acyclic": false,
+    "largest_cyclic_component": 768,
+    "longest_degenerate_path_edges_if_acyclic": null,
+    "strongly_connected_components": 33753,
+    "vertices_in_cyclic_components": 768
+  },
+  "canonical_x_avoiding_cycle": {
+    "cycle_length_edges": 2,
+    "cycle_node_sequence": [
+      {
+        "candidate_site": [
+          -3,
+          0,
+          -3
+        ],
+        "step": 1
+      },
+      {
+        "candidate_site": [
+          -3,
+          3,
+          -2
+        ],
+        "step": 1
+      },
+      {
+        "candidate_site": [
+          -3,
+          0,
+          -3
+        ],
+        "step": 1
+      }
+    ],
+    "edge_records": [
+      {
+        "control_label_multiplicity_for_this_unlabelled_arc": 1,
+        "cycle_edge_index": 0,
+        "exact_cache_occurrence_witness": {
+          "carried_site": [
+            -3,
+            0,
+            -3
+          ],
+          "interior_avoids_carried_site": true,
+          "interior_sites": [
+            [
+              -6,
+              1,
+              -5
+            ],
+            [
+              -4,
+              -1,
+              -3
+            ],
+            [
+              -2,
+              1,
+              -2
+            ]
+          ],
+          "prefix_control": [
+            -2,
+            1,
+            -2
+          ],
+          "slot_0_based": 1,
+          "source_step": 1,
+          "target_step": 1,
+          "word": [
+            15,
+            1,
+            20,
+            71
+          ],
+          "word_ordinal_1_based": 2020
+        },
+        "selected_minimum_control": [
+          -2,
+          1,
+          -2
+        ],
+        "source": {
+          "candidate_site": [
+            -3,
+            0,
+            -3
+          ],
+          "step": 1
+        },
+        "target": {
+          "candidate_site": [
+            -3,
+            3,
+            -2
+          ],
+          "step": 1
+        },
+        "verified_delta": [
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "control_label_multiplicity_for_this_unlabelled_arc": 1,
+        "cycle_edge_index": 1,
+        "exact_cache_occurrence_witness": {
+          "carried_site": [
+            -3,
+            3,
+            -2
+          ],
+          "interior_avoids_carried_site": true,
+          "interior_sites": [
+            [
+              -4,
+              2,
+              -3
+            ],
+            [
+              -2,
+              2,
+              -2
+            ],
+            [
+              -2,
+              4,
+              -2
+            ]
+          ],
+          "prefix_control": [
+            -2,
+            4,
+            -2
+          ],
+          "slot_0_based": 2,
+          "source_step": 1,
+          "target_step": 1,
+          "word": [
+            20,
+            71,
+            1,
+            15
+          ],
+          "word_ordinal_1_based": 4415
+        },
+        "selected_minimum_control": [
+          -2,
+          4,
+          -2
+        ],
+        "source": {
+          "candidate_site": [
+            -3,
+            3,
+            -2
+          ],
+          "step": 1
+        },
+        "target": {
+          "candidate_site": [
+            -3,
+            0,
+            -3
+          ],
+          "step": 1
+        },
+        "verified_delta": [
+          0,
+          0,
+          0
+        ]
+      }
+    ],
+    "every_selected_cycle_word_avoids_its_carried_site": true,
+    "implication": "Each selected exact word avoids the carried site, so the permanent self-poison objection is removed on this cycle. Other interior alignments along a countdown are tested separately; no infinite compatible repetition or globally legal ordered policy is asserted.",
+    "recurrent_start_phase": {
+      "carried_site": [
+        -3,
+        0,
+        -3
+      ],
+      "first_non_x_delayed_reveal_witness": {
+        "primitive_direction_from_carried_site": [
+          3,
+          -1,
+          3
+        ],
+        "site": [
+          -6,
+          1,
+          -6
+        ]
+      },
+      "non_x_delayed_reveal_site_count": 171,
+      "step": 1,
+      "x_parallel_reveal_site_count": 2
+    },
+    "word_slot_witnesses_are_exact_cache_occurrences": true
+  },
+  "canonical_x_avoiding_cycle_countdown_boundary": {
+    "clean_countdown_prefix_cycles": 256,
+    "configured_limit": 256,
+    "cycle_length_edges": 2,
+    "first_poison": null,
+    "scope": "the canonical x-avoiding cycle with its fixed selected witness word on each edge; adaptive label choices are not searched",
+    "status": "no alignment found through the finite cap; this is not an infinite compatibility proof",
+    "tested_residual_cycles": 256,
+    "transform_budget": 10000
+  },
+  "conditional_continuous_non_x_effect_bound": {
+    "bound_in_edges": null,
+    "formula_if_acyclic": "|V_nonx| + (|V_nonx|+1)*L",
+    "longest_degenerate_path_L": null,
+    "scope": "one already-existing non-x line which hits at least one candidate site at every synchronized parent-to-child stitch",
+    "selector_direction_count_V_nonx": 83580
+  },
+  "audit": {
+    "method": "JSON parse; checker AST parse; direct SHA-256 of canonical, checker, metadata, and cache; exact arithmetic checks of census totals, packed-graph relations, SCC partitions, both cycle words, and the countdown boundary",
+    "canonical_rerun_performed_for_summary": false,
+    "independent_repeat_performed": false,
+    "all_assertions_passed": true,
+    "assertions": [
+      "canonical JSON is valid and its byte count and SHA-256 match this summary",
+      "checker parses as Python AST and its direct SHA-256 matches the canonical checker and both execution snapshots",
+      "metadata and compact-cache direct SHA-256 values match pinned inputs and identical start/end execution snapshots",
+      "one-process one-thread nice-15 resource policy was compliant",
+      "word histogram sums to 12,537,146 words and its weighted sum is 55,513,526 slots",
+      "34,520 candidate sites equal the graph vertex count",
+      "4,774,988 original labels equal unique arcs because every original arc has one control",
+      "4,774,932 x-avoiding labels equal unique arcs because every compatible arc has one control; exactly 56 original arcs are removed",
+      "83,581 selector directions split into 83,580 non-x directions and the x direction",
+      "all 2,103 exact successor-site groups were convolved with 16-bit lanes and the proved coefficient bound 4,913 is carry-safe",
+      "both SCC histograms contain 33,752 singleton components and one 768-vertex cyclic component, totaling 34,520 vertices",
+      "original and x-avoiding SCC/condensation summaries are byte-for-byte equal despite the 56 removed arcs",
+      "the canonical x-avoiding cycle is a closed two-edge cycle and both selected exact words reproduce their prefixes, child steps, endpoints, interiors, and zero displacement",
+      "both selected cycle words avoid their carried sites and the non-x reveal direction is the canonical primitive site displacement",
+      "the fixed-label countdown has no interior alignment through all 256 tested residual cycles, with no extrapolation beyond 256"
+    ]
+  },
+  "proof_boundary_not_proved": [
+    "In the original arbitrary-switching graph, the word witnessing a slot may itself contain the carried poison site x; its cycles are therefore not word-compatible certificates.",
+    "The x-avoiding graph removes that permanent self-poison only. It does not prove that its witness word avoids other points of the carried line, other existing secants, collisions, or all exact-legality constraints.",
+    "A compatibility-graph cycle's action labels coexist in one globally legal realized ordered path or survive the history-dependent no-new-x-line policy.",
+    "A finite clean countdown prefix is not extrapolated. One poisoned residual contaminates every longer fixed-label countdown that traverses it; an infinite claim needs no positive orbit hit or an adaptive compatible-label proof.",
+    "Acyclicity controls a line across intervals in which its candidate poison mask is empty; latent effectless re-entry remains open.",
+    "Unrelated chronological cursor jumps, newly born near-deep or deep-deep non-x lines, endpoint-on-candidate-line poison, or collision provenance.",
+    "Connector availability, a greatest safety fixed point, or an unconditional theorem."
+  ]
+}

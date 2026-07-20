@@ -1,0 +1,89 @@
+{
+  "checker": {
+    "path": "design/lattice_t_l5_cone_guard_audit.py",
+    "sha256": "b5d6b841fb8bcdfb606666dd653f05ce0e4af303a9f9840f83d0ae902c978e87",
+    "unchanged_during_audit": true
+  },
+  "commitments": {
+    "alternate_flat_step_word_sha256": "24e60da88d787b78697673a1734f1ccc4b8e4bfacdefbf06544e25766ffe6619",
+    "alternate_ordered_point_stream_sha256": "2b3d99c21e062e3e76c6037ad042f4be21591b8b53714c617d41f9968e2117fd",
+    "alternate_words_by_gap_sha256": "c8fdcf6e6fd561e0b92c2501e979c612bbde669521aa9a07cdf44b0f747f07a0",
+    "audit_record_stream_sha256": "3111dec1e615b74c8d765b8d9cf0cef330a97f5f597f384059cf0e01019b0814",
+    "final_double_fibre_sha256": "d697a3b3feee953fb8cc3794f7c8f7a8108c98c70bce2d29466e62f590f0fd8f",
+    "final_point_set_sha256": "1827b9595de7a95747cc290a1fcdde64cbf4214293e1603c22a5ec7a364391a9",
+    "final_yz_occupancy_sha256": "899f963392893cf9035a63470eaa96a1401e04d9d55a97c7bceb3a9e6706f470",
+    "promoted_seed_line_stream_sha256": "fde18771786475d9a79d19634cd0d0ef908b8cd92f734a1212d4f9049a485d81",
+    "selection_record_stream_sha256": "dc39dcf34f5a15458ecd42641d39c481ac856f19921f82edbd980c70518b73a6",
+    "source_prefix_state_sha256": "6d4f45fbf7f4d606fb36e8b1c37b77f6148ff0b3851580a98e34497259635680"
+  },
+  "date": "2026-07-18",
+  "not_proved": [
+    "control of any projective direction outside J=11/3 and J=348/275",
+    "positive guarded availability for every reachable state or at levels beyond this pinned L5 orbit",
+    "a contracting far-secant tail bound or an unconditional infinite construction"
+  ],
+  "pinned_dependencies": {
+    "L5_producer": "6310c6e23f03e26507005744985676388fba308cf08096a21abab017b6b90e51",
+    "guard_checker": "0a3041a77fffd954bd7ff2478427d1c7f6ea6f6951b9f8465c0a0966b6b3d376",
+    "rescue_geometry": "2b1bde9e846211cd53f75b6300c540a99b92d25b706c174c137f32c9cbf19ebc"
+  },
+  "proved": [
+    "the pinned two-cone-guarded L5 policy has an exact first survivor at every chronological stitch",
+    "every selected word is zero-T, globally yz-fresh, reference-legal, and creates no new secant in either named cone",
+    "the inherited anchor skeleton contains exactly 246 affine lines in the two named projective cones",
+    "the final realized walk has no collinear triple and no target-cone secant with a connector endpoint"
+  ],
+  "resource_policy": {
+    "compliant": true,
+    "maximum_resident_bytes": 314572800,
+    "maximum_seconds": 120.0,
+    "process_nice": 15,
+    "processes": 1,
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "threads": 1
+  },
+  "result": {
+    "anchors": 2458,
+    "construction_completed": true,
+    "fast_reference_agreement_verified_for_every_exact_test": true,
+    "final_no_new_yz_coincidence": true,
+    "first_survivor_audit_completed": true,
+    "gaps": 2457,
+    "global_empty_yz_verified_at_every_stitch": true,
+    "independent_ordered_no_three_collinear_verified": true,
+    "independently_recounted_cone_rejections": 4211,
+    "maximum_first_survivor_ordinal_1_based": 3417,
+    "new_target_cone_secants": 0,
+    "ordered_pair_checks": 34407660,
+    "points": 8296,
+    "promoted_base_cone_lines": 246,
+    "selected_reference_legality_verified_at_every_stitch": true,
+    "steps": 8295,
+    "sum_first_survivor_ordinals": 126015,
+    "target_cone_pair_matches_in_terminal_pair_scan": 246
+  },
+  "schema_version": 1,
+  "source_checkpoint": {
+    "bytes": 6525395,
+    "path": "/private/tmp/lattice-T-chronological-L5-cone-guard-v1.json",
+    "payload_sha256": "19c70eafa7b8c076764b711e8e8c77167d3f90c2e4509ce2432aab4cf04d946d",
+    "sha256": "e22a0f71516e152f93f2d8f1c25a43fe79e6b7be384196845ebdb153bb2c0e01"
+  },
+  "source_pins": {
+    "bytes": 6525395,
+    "file_sha256": "e22a0f71516e152f93f2d8f1c25a43fe79e6b7be384196845ebdb153bb2c0e01",
+    "payload_sha256": "19c70eafa7b8c076764b711e8e8c77167d3f90c2e4509ce2432aab4cf04d946d",
+    "prefix_state_sha256": "6d4f45fbf7f4d606fb36e8b1c37b77f6148ff0b3851580a98e34497259635680",
+    "selection_record_stream_sha256": "dc39dcf34f5a15458ecd42641d39c481ac856f19921f82edbd980c70518b73a6",
+    "static_state_sha256": "4c696ebe6f9bc153843bb566e50faed05649aedef1db1d79a4986f59fcee3759"
+  },
+  "static_state_sha256": "fe228ac2aa430d98cc4c372986590f26a125560592e445fe8b98120936e05da2",
+  "status": "exact independent guarded-L5 finite certificate",
+  "terminal_payload_sha256": "4b5c82d7b26f34b4d75a8a8d40f98b023ab1aa3fb78a7041ef47be8411968dc4"
+}

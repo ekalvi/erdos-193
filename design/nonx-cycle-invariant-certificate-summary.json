@@ -1,0 +1,219 @@
+{
+  "all_n_cleanliness_theorem": {
+    "fixed_label_countdown_is_carried_line_clean_for_every_cycle_count": true,
+    "reason": "J is invariant under both forward and inverse projective transport, and each of the six exact displacement values differs from 11/3.",
+    "statement": "For every integer j, no projective iterate T^j(3,-1,3) is parallel to an interior displacement of either fixed cycle word.",
+    "supersedes_finite_256_cycle_alignment_test_for_this_fixed_pair": true
+  },
+  "checker": {
+    "path": "design/nonx_cycle_invariant_certificate.py",
+    "sha256": "9486783f1ea176f8ada9bc55a1751e414160bad7c0e0383a3c77fc07fe3dae22"
+  },
+  "cycle": {
+    "containing_exact_x_avoiding_scc_vertices": 768,
+    "each_edge_is_direction_blind": true,
+    "edges": [
+      {
+        "edge_index": 0,
+        "interior_J_values": [
+          {
+            "denominator": 9,
+            "numerator": 17,
+            "text": "17/9"
+          },
+          {
+            "denominator": 1,
+            "numerator": 3,
+            "text": "3"
+          },
+          {
+            "denominator": 1,
+            "numerator": 5,
+            "text": "5"
+          }
+        ],
+        "interior_displacements": [
+          [
+            -3,
+            1,
+            -2
+          ],
+          [
+            -1,
+            -1,
+            0
+          ],
+          [
+            1,
+            1,
+            1
+          ]
+        ],
+        "prefix_control": [
+          -2,
+          1,
+          -2
+        ],
+        "slot_0_based": 1,
+        "source_site": [
+          -3,
+          0,
+          -3
+        ],
+        "target_site": [
+          -3,
+          3,
+          -2
+        ],
+        "word": [
+          15,
+          1,
+          20,
+          71
+        ],
+        "word_ordinal_1_based": 2020
+      },
+      {
+        "edge_index": 1,
+        "interior_J_values": [
+          {
+            "denominator": 1,
+            "numerator": 5,
+            "text": "5"
+          },
+          {
+            "denominator": 1,
+            "numerator": 3,
+            "text": "3"
+          },
+          {
+            "denominator": 1,
+            "numerator": 3,
+            "text": "3"
+          }
+        ],
+        "interior_displacements": [
+          [
+            -1,
+            -1,
+            -1
+          ],
+          [
+            1,
+            -1,
+            0
+          ],
+          [
+            1,
+            1,
+            0
+          ]
+        ],
+        "prefix_control": [
+          -2,
+          4,
+          -2
+        ],
+        "slot_0_based": 2,
+        "source_site": [
+          -3,
+          3,
+          -2
+        ],
+        "target_site": [
+          -3,
+          0,
+          -3
+        ],
+        "word": [
+          20,
+          71,
+          1,
+          15
+        ],
+        "word_ordinal_1_based": 4415
+      }
+    ],
+    "fixed_words_are_exact_cache_occurrences": true,
+    "nodes": [
+      {
+        "candidate_site": [
+          -3,
+          0,
+          -3
+        ],
+        "step": 1
+      },
+      {
+        "candidate_site": [
+          -3,
+          3,
+          -2
+        ],
+        "step": 1
+      },
+      {
+        "candidate_site": [
+          -3,
+          0,
+          -3
+        ],
+        "step": 1
+      }
+    ],
+    "step": 1
+  },
+  "date": "2026-07-18",
+  "infinite_right_language_implication": {
+    "actual_ordered_path_conclusion_is_conditional": "The realized-path quotient has infinite index if all ell_n are reachable carried secants at this interface and the same two connector words are globally legal, correlated, and repeatable from those histories.",
+    "distinguishing_query": "after k fixed two-edge cycles, query candidate site (-6,1,-6)",
+    "exact_result": "ell_n hits the distinguishing site exactly when k=n",
+    "fixed_geometric_cycle_has_infinitely_many_line-effect_right_languages": true,
+    "integer_primitive_family": "g_n=canonprim(N^(2n)*(3,-1,3)), n>=0",
+    "line_family": "ell_n is the integer line through (-3,0,-3) with direction g_n"
+  },
+  "nonperiodicity_theorem": {
+    "determinant": 1,
+    "normalized_yz_matrix": "A=B/3",
+    "reason": "If A had a periodic nonzero real vector, an eigenvalue u would be a root of unity. Then u+u^-1=-1/3 would be a rational algebraic integer and hence an integer, contradiction.",
+    "reveal_direction_has_no_nonzero_projective_period": true,
+    "trace": "-1/3"
+  },
+  "pinned_graph_checker": {
+    "path": "design/nonx_degenerate_site_graph.py",
+    "sha256": "4eb928bad0c0104d34b68424b07dd3b6a4939f216968bd6b2399a540b592e755"
+  },
+  "pinned_input": {
+    "bytes": 19905,
+    "path": "/tmp/nonx-degenerate-site-graph-canonical.json",
+    "sha256": "e0f5765fec55b25b9392333c25da037d9d073b7bc95b81680bb4e5957a0c4d92"
+  },
+  "projective_invariant": {
+    "all_six_interior_J_values_differ_from_reveal_J": true,
+    "domain": "r != 0",
+    "formula": "J(r,y,z)=(3*y^2-y*z+3*z^2)/r^2",
+    "reveal_J": {
+      "denominator": 3,
+      "numerator": 11,
+      "text": "11/3"
+    },
+    "reveal_direction": [
+      3,
+      -1,
+      3
+    ],
+    "reveal_site": [
+      -6,
+      1,
+      -6
+    ],
+    "universal_identity": "B^T [[6,-1],[-1,6]] B = 9 [[6,-1],[-1,6]], while r maps to 3r"
+  },
+  "scope_limitations": [
+    "does not prove any ell_n is born from two points of the realized walk",
+    "does not prove the two fixed words coexist in one globally legal repeatable ordered history",
+    "checks carried-line poisoning of the two selected words, not collisions, other existing secants, endpoint-on-candidate-line effects, or near--deep births",
+    "does not by itself prove infinite index for the realized ordered-path safety game"
+  ],
+  "status": "all-n theorem for the fixed geometric two-word cycle"
+}

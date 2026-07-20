@@ -1,0 +1,204 @@
+{
+  "status": "exact lightweight algebraic CEGAR analysis of the finite 3998-vs-0 witness; not a universal refinement, finite quotient, or proof",
+  "date": "2026-07-18",
+  "run_identity": {
+    "command": "env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 nice -n 15 python3 -B design/far_secant_translation_cegar.py --output /tmp/far-secant-translation-cegar.json",
+    "checker_path": "design/far_secant_translation_cegar.py",
+    "checker_sha256": "1d6ea4a58203a1bb51c0ba1297a1610e0b7247dc7cc5aa792db46456d655b468",
+    "canonical_output": {
+      "path": "/tmp/far-secant-translation-cegar.json",
+      "bytes": 22969,
+      "sha256": "058817d88449c5fd01be61c74a1d6735ca76ae02751c274df92cadf429d7eb2a",
+      "elapsed_seconds_internal": 0.052,
+      "maximum_resident_bytes_macos": 52178944
+    },
+    "inputs": {
+      "compatibility": {
+        "path": "/tmp/far-secant-future-compatibility-probe-canonical.json",
+        "sha256": "72af973f12179f1b25b24a23d77d8420888964bce219b0106a32c79be698dda6",
+        "checker_sha256": "4f95c0afd084306e7ecb202c49567a376e52d101cb3f9274fefd01d6d62fbf46"
+      },
+      "future": {
+        "path": "/tmp/far-secant-future-trace-canonical.json",
+        "sha256": "611bf74be1d42bd15d311964603daa573f8ff39a0f3bcb9542f4063341919b87",
+        "checker_sha256": "6f286cb118166c1375eb777ec6e24bcdc58766b98538099c604eb97b5c3dd430"
+      },
+      "l9": {
+        "path": "/tmp/l9-anchor-age2-precursor-canonical.json",
+        "sha256": "961f9e5f0772d9df508ab0aefaa7405e3cc21637d59560cdda95c4edf61d809f",
+        "checker_sha256": "66f776e7ae4eff4c35d004d870d82458582a4c2b6516f20257149a08e5535b90"
+      }
+    },
+    "resource_policy": {
+      "processes": 1,
+      "thread_cap": 1,
+      "nice": 15,
+      "all_assertions_passed": true
+    }
+  },
+  "deterministic_repeat": {
+    "executions": [
+      {
+        "label": "canonical",
+        "raw_sha256": "058817d88449c5fd01be61c74a1d6735ca76ae02751c274df92cadf429d7eb2a",
+        "raw_bytes": 22969,
+        "elapsed_seconds_internal": 0.052,
+        "maximum_resident_bytes_macos": 52178944
+      },
+      {
+        "label": "repeat_a",
+        "raw_sha256": "06fbe10b3c02dd75778e1fbf85a0006f3edd87adbb9311747062f8c3f37760a3",
+        "raw_bytes": 22969,
+        "elapsed_seconds_internal": 0.054,
+        "maximum_resident_bytes_macos": 52178944
+      },
+      {
+        "label": "repeat_b",
+        "raw_sha256": "335e051d07cae3d5be0851fef598f6b3864d791c07768bb0591057dec41d8ae8",
+        "raw_bytes": 22969,
+        "elapsed_seconds_internal": 0.052,
+        "maximum_resident_bytes_macos": 52461568
+      }
+    ],
+    "canonicalization": "parse JSON, delete resource_policy.elapsed_seconds and resource_policy.maximum_resident_platform_units, then encode with sort_keys=true and separators=(',', ':')",
+    "stripped_payload_bytes": 12980,
+    "stripped_payload_sha256": "1b7f27dd2374b7a37974664d191b96fed1690b69998a846478ac55b03826a936",
+    "all_three_stripped_payloads_equal": true,
+    "reason_raw_hashes_differ": "only nondeterministic elapsed-time and peak-resident observations differ"
+  },
+  "exact_algebra": {
+    "translation_origin": "the concrete pending corridor start",
+    "matrix_M": [
+      [3, 0, 0],
+      [0, 0, -3],
+      [0, 3, -1]
+    ],
+    "ghost_incidence_test": "r = mu - (c + M^{-1} x') cross g; incidence holds exactly iff r=(0,0,0)",
+    "query": {
+      "source_gap": 13171,
+      "l8_state_A": [13171, 12329, 41282],
+      "l8_state_B": [13171, 12333, 41297],
+      "actual_selected_word": [120, 114, 109],
+      "selected_slot_zero_based": 1,
+      "selected_prefix_c": [2, 2, -1],
+      "child_site_x_prime": [2, 3, 5],
+      "ghost_site_c_plus_M_inverse_x_prime": ["8/3", "10/3", -2],
+      "tagged_endpoint": "connector:L7:G12324:I2",
+      "latent_partner": "connector:L7:G12329:I2",
+      "latent_partner_birth": [7, 12329, 2],
+      "latent_partner_absolute_L8_coordinate": [-22740, 36531, 14112]
+    },
+    "state_A": {
+      "corridor_start": [-22746, 36528, 14117],
+      "tagged_endpoint_centered": [-84, 12, 76],
+      "latent_partner_centered": [6, 3, -5],
+      "selected_terminal_centered": [6, 3, -5],
+      "latent_partner_is_selected_terminal": true,
+      "fixed_tagged_partner_line": {
+        "primitive_direction_g": [10, -1, -9],
+        "centered_moment_mu": [-32, 4, -36],
+        "ghost_residual_r": [0, 0, 0]
+      },
+      "source_token_line": {
+        "primitive_direction_g": [75, 60, 611],
+        "centered_moment_mu": [2772, 57024, -5940]
+      },
+      "selected_terminal_moment_mod_3": [1, 1, 0],
+      "empirical_rho_mod_9": 4
+    },
+    "state_B": {
+      "corridor_start": [-22698, 36567, 14064],
+      "tagged_endpoint_centered": [-132, -27, 129],
+      "latent_partner_centered": [-42, -36, 48],
+      "selected_terminal_centered": [6, 3, -5],
+      "latent_partner_is_selected_terminal": false,
+      "fixed_tagged_partner_line": {
+        "primitive_direction_g": [10, -1, -9],
+        "centered_moment_mu": [372, 102, 402],
+        "ghost_residual_r": [404, 98, 438]
+      },
+      "selected_terminal_relation_line": {
+        "primitive_direction_g": [69, 15, -67],
+        "centered_moment_mu": [-126, 57, -117],
+        "ghost_residual_r": ["202/3", "49/3", 73]
+      },
+      "source_token_line": {
+        "primitive_direction_g": [75, 60, 611],
+        "centered_moment_mu": [-24237, 90327, -5895]
+      },
+      "selected_terminal_moment_mod_3": [0, 0, 0],
+      "empirical_rho_mod_9": 6
+    },
+    "exact_next_effect": {
+      "step": 114,
+      "slot_zero_based": 1,
+      "A_l9_gap": 138866,
+      "B_l9_gap": 138914,
+      "domain_words": 453015,
+      "A_near_deep_killed_words": 3998,
+      "A_mask_sha256": "ea2336c635af801427f98932c26c03dcafccf652967781f753d45e87f61948be",
+      "B_near_deep_killed_words": 0,
+      "B_mask_sha256": "1848a4118123c129928c08aa9f080173a93997eb465534299e0675f5fd99b71c",
+      "owner_birth_age_and_shell": [2, 4]
+    },
+    "conclusion": "the common current key omits a latent zero-current-effect endpoint-partner relation; direction alone is insufficient, while its exact centered Plucker moment decides the future incidence"
+  },
+  "finite_partition_audit": {
+    "nodes": 146,
+    "row_fields": [
+      "classes",
+      "repeated_classes",
+      "largest_class",
+      "mask_transition_noncongruent_classes",
+      "full_state_transition_noncongruent_classes"
+    ],
+    "rows": {
+      "current_key_only": [142, 4, 2, 1, 3],
+      "one_bit_discovered_partner_is_selected_terminal": [143, 3, 2, 0, 2],
+      "one_bit_decisive_ghost_residual_is_zero": [143, 3, 2, 0, 2],
+      "selected_terminal_relative_moment_mod_3": [143, 3, 2, 0, 2],
+      "empirical_rho_mod_9": [145, 1, 2, 0, 0],
+      "one_exact_centered_tagged_endpoint_offset": [146, 0, 1, 0, 0],
+      "exact_centered_tagged_endpoint_offsets": [146, 0, 1, 0, 0],
+      "source_token_primitive_direction_only": [142, 4, 2, 1, 3],
+      "exact_source_token_primitive_Plucker_line": [146, 0, 1, 0, 0],
+      "selected_terminal_partner_primitive_directions": [146, 0, 1, 0, 0],
+      "exact_selected_terminal_partner_relations": [146, 0, 1, 0, 0]
+    },
+    "only_empirical_rho_repeated_class": [
+      [13171, 12283, 41133],
+      [13171, 12296, 41174]
+    ],
+    "interpretation": "one exact query bit is the information-theoretic minimum for this witness and removes all observed mask-transition conflicts, but not all full-state conflicts; every tested exact geometric refinement makes all states singleton and therefore supplies no nonvacuous finite-index evidence"
+  },
+  "proposed_sound_CEGAR_refinement": {
+    "state_token": "retain the discovered latent joint token (tagged endpoint stable/birth address, partner stable/birth/owner address, primitive direction g, exact centered moment mu) even when its current killed mask is empty",
+    "transition": "keep the two endpoint streams correlated; transport the joint line by the exact affine/cofactor rule and test every actual prefix c and candidate site x' with r=mu-(c+M^{-1}x') cross g",
+    "first_token": [
+      "connector:L7:G12324:I2",
+      "connector:L7:G12329:I2"
+    ],
+    "why_exact_not_modular": "exact Plucker data decides every incidence for this retained line and admits an exact transfer; the one-bit, mod-3, and post-selected rho refinements decide only observed finite queries"
+  },
+  "soundness_boundary": {
+    "proved_by_this_computation": [
+      "the displayed rational algebra exactly explains the finite 3998-vs-0 transition",
+      "the listed partition counts use decoded raw integer masks rather than mask hashes as semantic values",
+      "the three timing/resource-stripped executions are identical"
+    ],
+    "not_proved": [
+      "a universal finite right congruence",
+      "closure under every alternate connector action",
+      "a uniform far-secant tail or contraction bound",
+      "positive connector availability or the Erdos #193 theorem"
+    ],
+    "limitations": [
+      "the proposed token closes only the discovered tagged-partner line; other remote partners may force additional refinements",
+      "a selected-terminal relation misses a partner that is neither the selected endpoint nor otherwise retained",
+      "the L9 horizon omits current-L9 connector interiors and contains no selected L9 word",
+      "the finite trace has one realized action per stitch and no alternate-action Post closure",
+      "finite repeated-class congruence cannot establish a universal right congruence",
+      "exact Plucker refinements are singleton on these 146 states, so a separate contraction, ranking, promotion rule, or proved finite quotient is still required"
+    ]
+  }
+}

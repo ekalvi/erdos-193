@@ -1,0 +1,115 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact empty 8-by-8 two-stitch common-potential safety matrix on the pinned L5 state",
+  "checker": {
+    "path": "design/potential_policy_two_stitch_matrix.py",
+    "sha256": "773feb4ba6b7bb42c48447c309bac11212bb0ef184c326c170a0d7a6dcfac2f9"
+  },
+  "pinned_inputs": {
+    "chronological_rescue_checker_sha256": "2b1bde9e846211cd53f75b6300c540a99b92d25b706c174c137f32c9cbf19ebc",
+    "chronological_rescue_summary_sha256": "8f975dc8dad64f70a1a7b759a25e2cfaccd6e0261079bbd0235332d6b8c99582",
+    "potential_filter_checker_sha256": "21b84e6ef80c1b8184cb3c06f08d674983f10cd91759b204e1170186319b1062",
+    "potential_filter_raw_sha256": "f4e809f611fc0fd18a511f95d982c8a6f5d2a2936c2d9014c3f30ef622c9b080",
+    "potential_filter_sidecar_sha256": "dfe3d0b758663219ef2db7c205be15716927cfa91a6391f41b389335c40680e7",
+    "compact_cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "L5_state_sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d"
+  },
+  "runs": {
+    "canonical": {
+      "raw_path": "/tmp/potential-policy-two-stitch-matrix.json",
+      "raw_sha256": "c21ec5b27488954c5eeb8a88646077a798593fd3edf907b90546f6eeaea225c7",
+      "elapsed_seconds": 1.746002,
+      "maximum_resident_set_bytes": 29274112
+    },
+    "repeat": {
+      "raw_path": "/tmp/potential-policy-two-stitch-matrix-repeat.json",
+      "raw_sha256": "11384a34e0c5689d823d6e8a8238a5bee51f79197ce06a1a816a462f469467b6",
+      "elapsed_seconds": 1.745996,
+      "maximum_resident_set_bytes": 29532160
+    },
+    "semantic_repeat_canonicalization": {
+      "operation": "parse JSON; delete elapsed_seconds and maximum_resident_bytes; encode with sort_keys=true and separators=(',',':')",
+      "canonical_bytes": 65992,
+      "canonical_sha256": "166880d7ca380bc445b00c561a36f722b38a44143097cefdaa7e73f728d9c26e",
+      "identical": true
+    },
+    "resource_policy": {
+      "processes": 1,
+      "threads": 1,
+      "nice": 15,
+      "both_runs_below_300_MiB_and_120_seconds": true
+    }
+  },
+  "scope": {
+    "level": 5,
+    "scheduled_gaps": [0, 2],
+    "common_parent_step": 20,
+    "anchors_present_before_first_stitch": 2458,
+    "matrix_shape": [8, 8],
+    "row_semantics": "commit one exactly legal gap-0 word in a row-specific state, then test all eight gap-2 words against that correlated state",
+    "potential_compatible_ordinals_1_based": [1, 3513, 3530, 3585, 5479, 12492, 17775, 46804]
+  },
+  "actions": [
+    {"ordinal_1_based": 1, "word": [14, 24, 73, 24]},
+    {"ordinal_1_based": 3513, "word": [22, 19, 14, 19, 123]},
+    {"ordinal_1_based": 3530, "word": [14, 123, 14, 22, 24]},
+    {"ordinal_1_based": 3585, "word": [14, 24, 14, 22, 123]},
+    {"ordinal_1_based": 5479, "word": [14, 24, 14, 121, 24]},
+    {"ordinal_1_based": 12492, "word": [14, 24, 22, 14, 123]},
+    {"ordinal_1_based": 17775, "word": [22, 14, 24, 14, 123]},
+    {"ordinal_1_based": 46804, "word": [14, 24, 113, 22, 24]}
+  ],
+  "matrix_result": {
+    "valid_gap0_action_count": 8,
+    "valid_gap0_ordinals_1_based": [1, 3513, 3530, 3585, 5479, 12492, 17775, 46804],
+    "gap0_projection_clean_and_exactly_legal_for_all_eight": true,
+    "response_masks_lsb_is_ordinal_1": [0, 0, 0, 0, 0, 0, 0, 0],
+    "gap0_actions_with_a_legal_gap2_response": 0,
+    "legal_ordered_pair_count": 0,
+    "two_stitch_safety_choice_exists": false,
+    "all_64_gap2_entries_projection_clean": true,
+    "all_64_gap2_entries_exactly_illegal": true
+  },
+  "anchor_only_cover_of_all_gap2_actions": [
+    {
+      "response_ordinals_1_based": [1, 3530, 3585, 5479, 12492, 46804],
+      "channel": "old_old_new",
+      "anchor_indices": [1, 2],
+      "new_interior_index": 0,
+      "points": [[-6, 6, 8], [-12, 6, 14], [-14, 6, 16]],
+      "primitive_direction": [1, 0, -1],
+      "cross_product": [0, 0, 0]
+    },
+    {
+      "response_ordinals_1_based": [3513],
+      "channel": "old_new_new",
+      "anchor_index": 0,
+      "new_interior_indices": [2, 3],
+      "points": [[0, 0, 0], [-18, 9, 18], [-20, 10, 20]],
+      "cross_product": [0, 0, 0]
+    },
+    {
+      "response_ordinals_1_based": [17775],
+      "channel": "old_new_new",
+      "anchor_index": 0,
+      "new_interior_indices": [1, 3],
+      "points": [[0, 0, 0], [-16, 8, 16], [-20, 10, 20]],
+      "cross_product": [0, 0, 0]
+    }
+  ],
+  "stronger_conclusion": "The anchor-only witness cover kills every common-potential action at gap 2 before any connector choice is committed. Therefore no choice at gap 0, potential-compatible or otherwise, can make this fixed eight-word gap-2 menu available on the pinned all-anchors-present construction.",
+  "proved": [
+    "all eight common-potential actions are individually legal at gap 0",
+    "the exact correlated 8-by-8 legal-response matrix is empty",
+    "every gap-2 action has an explicit killing witness using anchors only",
+    "the failure is a common-potential-menu obstruction, not merely a greedy-choice obstruction"
+  ],
+  "not_proved": [
+    "failure of a larger potential-compatible action family obtained from a different common rank",
+    "failure of the unconstrained effective connector domain at gap 2",
+    "failure of a policy whose abstract state changes or relaxes the frozen common height-two potential",
+    "a uniform far-secant impossibility theorem or Erdős #193 counterexample"
+  ],
+  "smallest_next_design_change": "The common rank/filter must be changed or made state-dependent so that at least one anchor-legal word survives at gap 2; lookahead among the current eight actions cannot help."
+}

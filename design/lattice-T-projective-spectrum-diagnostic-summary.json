@@ -1,0 +1,5988 @@
+{
+  "checker": {
+    "path": "design/lattice_t_projective_spectrum_diagnostic.py",
+    "sha256": "c217bd77c9353b3645d59e7b0549c85a34642a2c230578f23b7988cdc6ab0f89",
+    "unchanged_during_scan": true
+  },
+  "commitments": {
+    "J_cycle_role_indexes": {
+      "L5": {
+        "actual_words_available": true,
+        "level": 5,
+        "phase_line_roles": 352,
+        "role_stream_sha256": "8a79270c8bd813c1e5c7d37ea4f22840c3c7fc68b3e062a2893719796de4647c",
+        "step_1_corridors": 44
+      },
+      "L6": {
+        "actual_words_available": false,
+        "level": 6,
+        "phase_line_roles": 2052,
+        "role_stream_sha256": "a34c01cfb431dbbbfc62a2e230993b5812d29006fb2933f81364710f86a08890",
+        "step_1_corridors": 228
+      }
+    },
+    "actual_L5_selected_word_stream_sha256": "66cb89d087da8874e4ac765bfc5d0375292dd61e4b2048ba91446967dd2ba50f",
+    "actual_L6_anchor_stream_sha256": "d665fb198f6e5e0cf841fbeb5ce6e39fc8c76586126a9df5c7acbd338a6b9e88",
+    "actual_L6_owner_stream_sha256": "d16fa59eda6b0dd0cd6c82862e727efcbd2106dc3c29b6cd592850ddfafe79e6",
+    "actual_L6_parent_word_sha256": "125fef5df74931793f82da9e60af363f118c11c06e08862949fce86896f5c43f",
+    "construction_order_point_stream_sha256": "ab2bca974ea94b3b32750d5b1bea71cf7bc6707792e78b47e7d827db32240b40",
+    "provenance_stream_sha256": "80d88149b1e0ea7321116c8a7b7acf41d96fa783d0e2fa14d38cac7fa39eee78",
+    "static_state_sha256": "053acd86f78eedbf3ed92fe6327c04e8492d91803c00352ef5ea5df3eb73cac2"
+  },
+  "date": "2026-07-18",
+  "inputs": {
+    "L5_state_sha256": "bfe3efdd0ea2676122e06fcbe0ac79bf9bbefeb52c21bbe49bcf8f81cfb4232d",
+    "frozen_spectrum_checker": {
+      "bytes": 35712,
+      "path": "design/lattice_t_projective_spectrum_census.py",
+      "sha256": "034744d9b5da4e3ffd4147bbaf0bf123cc620943bf3337bc0070a6f427edf48b"
+    },
+    "source_checkpoint": {
+      "bytes": 5369433,
+      "path": "/private/tmp/lattice-T-chronological-L5-primary.json",
+      "payload_sha256": "4957ae7456b95d9d1c0033077eee136dfcda820e2ae4fdb9f1037490457dd71c",
+      "sha256": "9c711e396dc75042b747a1bcacb5093aa8b4c84c316a89081b2e246bdae0c2b8"
+    },
+    "strict_refutation_summary": {
+      "bytes": 4980,
+      "path": "design/lattice-T-projective-spectrum-census-summary.json",
+      "payload_sha256": "59e52ce5a55a2c42e5ecb6f0076fd5b8fd2b960084bb9b2f70aada1bc8f7d24d",
+      "sha256": "b3106b286a821337a2199dec275ca8a7630184662658c71cd7d0a847c4dfb664"
+    },
+    "terminal_audit_summary": {
+      "bytes": 3061,
+      "path": "/Users/erik/homelab/math193/design/lattice-T-chronological-L5-summary.json",
+      "raw_payload_sha256": "832e8ce9c44f2528ffd3e39996572b3622e5d4b29ed47bfa593621d8c346528b",
+      "raw_sha256": "144eb1d78a2a9c62be0747be50a2e135a8b8e91d5d2335e64398bf5af5146194",
+      "sha256": "88fa0f41674d71cc9cf84fc1bd4b70949ab91cd1e8d83a435bb7b6bec5fc9df5"
+    }
+  },
+  "interpretation": {
+    "diagnostic_only": [
+      "frequency of E-valued pairs and exact-orbit pairs on this one frozen path",
+      "absence or presence of the named seed-line cycle roles through the induced L6 skeleton"
+    ],
+    "not_proved": [
+      "that forbidding the exact named direction orbits preserves a legal connector at every future stitch",
+      "that all dangerous latent cycles are among the two named families",
+      "a complete two-edge cycle join for the new policy, because selected L6 connector actions do not yet exist",
+      "a level-uniform reachable-birth exclusion or far-secant tail bound",
+      "an unconditional infinite construction or Erdos #193 theorem"
+    ],
+    "proved_finite_facts": [
+      "every unordered pair of the frozen audited 8268-point path is tested exactly against both spectra",
+      "the exact named macro-direction membership test includes both single-phase directions and all n allowed by the finite x diameter",
+      "the seed affine-role join uses exact Pluecker moments and the actual selected L5 parent-to-child cursor map"
+    ]
+  },
+  "payload_sha256": "0229d00f71eafb22f205489e94e1f9d393a852333e693288cb9ba68efa1c5ad4",
+  "resource_policy": {
+    "compliant": true,
+    "hard_maximum_seconds": 115.0,
+    "maximum_resident_bytes": 293601280,
+    "maximum_work_seconds": 110.0,
+    "process_nice": 15,
+    "processes": 1,
+    "required_minimum_nice": 15,
+    "thread_environment": {
+      "MKL_NUM_THREADS": "1",
+      "NUMEXPR_NUM_THREADS": "1",
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "threads": 1
+  },
+  "result": {
+    "E_valued_pair_count": 758,
+    "class_spectrum_counts": {
+      "new-new|11/3": 6,
+      "old-new|11/3": 505,
+      "old-new|348/275": 1,
+      "seed|11/3": 242,
+      "seed|348/275": 4
+    },
+    "classification_counts_all_pairs": {
+      "new-new": 4299,
+      "old-new": 31151826,
+      "seed": 3019653
+    },
+    "exact_affine_Pluecker_line_groups": {
+      "group_count": 758,
+      "multiplicity_histogram": {
+        "1": 758
+      },
+      "ordered_joint_match_stream_hash_chain": "bebb6a4f9a08f71a4b12a29ee5f3257673e43e81b62c72f767b69db8953d755a",
+      "ordered_line_hash_chains_by_class_spectrum": {
+        "new-new|11/3": "f093bd528eee052ff4f9220beaf784dfe59a18f8de51ebd939288f1765ceb03d",
+        "old-new|11/3": "e89ba3c0b46b824455bda363a806791c3fc0d777324226e072ffb2f492019be0",
+        "old-new|348/275": "4fec41dae3cb0ea47860860f9846b0fe904cee408c40e6c6c380096ed241b685",
+        "seed|11/3": "353b42f67b1d6771ab4c7a4d098d163b934b7fc28d1030eaaed39977a8924ebd",
+        "seed|348/275": "6a11bde947cecdfc9171b9c78798af113425ff81be601ddbdafae7df8469dee4"
+      },
+      "reason_multiplicity_is_one": "the pinned independent audit proves no three collinear points, so two distinct pairs cannot determine the same exact affine line"
+    },
+    "inherited_seed_J_cycle_affine_role_test": {
+      "counts": {
+        "L5_exact_phase_line_pairs": 0,
+        "L5_exact_phase_line_roles": 0,
+        "L5_exact_selected_child_transitions": 0,
+        "L5_exact_terminal_forward_exit_transitions": 0,
+        "L5_literal_selected_action_roles": 0,
+        "L5_macro_compatible_roles": 0,
+        "L6_exact_phase_line_pairs": 0,
+        "L6_exact_phase_line_roles": 0,
+        "seed_E_pairs": 246
+      },
+      "phase_n_counts": {},
+      "samples": {}
+    },
+    "known_exact_macro_direction_orbits": {
+      "E_cone_pairs_outside_both_exact_orbits": 682,
+      "distinct_matching_pairs": 76,
+      "membership_counts": {
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=A|n=0": 18,
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=A|n=1": 3,
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=0": 30,
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=1": 9,
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=2": 1,
+        "seed|seed|11/3|J_11_over_3_cycle|phase=A|n=0": 3,
+        "seed|seed|11/3|J_11_over_3_cycle|phase=B|n=0": 12
+      },
+      "strict_first_witness_g_3_minus3_1_is_in_orbit": false,
+      "witnesses": {
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=A|n=0": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 5711223
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -1041,
+              684,
+              1053
+            ],
+            "earlier_point_id": 1199,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 1199
+            },
+            "earliest_order_key": [
+              141,
+              2883,
+              1199
+            ],
+            "later_endpoint_birth_rank": 141,
+            "later_point": [
+              -1134,
+              715,
+              960
+            ],
+            "later_point_id": 2883,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 141,
+              "gap": 1228,
+              "interior_slot": 2,
+              "point_id": 2883
+            },
+            "line_moment": [
+              3105,
+              6282,
+              -1011
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              -93,
+              31,
+              -93
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 2876412
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -1989,
+              -297,
+              198
+            ],
+            "earlier_point_id": 1547,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 1547
+            },
+            "earliest_order_key": [
+              186,
+              3018,
+              1547
+            ],
+            "later_endpoint_birth_rank": 186,
+            "later_point": [
+              -2055,
+              -275,
+              132
+            ],
+            "later_point_id": 3018,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 186,
+              "gap": 1562,
+              "interior_slot": 2,
+              "point_id": 3018
+            },
+            "line_moment": [
+              -693,
+              6561,
+              2880
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              -66,
+              22,
+              -66
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 213948
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -423,
+              624,
+              955
+            ],
+            "earlier_point_id": 782,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 782
+            },
+            "earliest_order_key": [
+              566,
+              4113,
+              782
+            ],
+            "later_endpoint_birth_rank": 566,
+            "later_point": [
+              -405,
+              618,
+              973
+            ],
+            "later_point_id": 4113,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 566,
+              "gap": 778,
+              "interior_slot": 2,
+              "point_id": 4113
+            },
+            "line_moment": [
+              2827,
+              4134,
+              -1449
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              18,
+              -6,
+              18
+            ]
+          }
+        ],
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=A|n=1": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              27,
+              -1,
+              -30
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -869,
+              178,
+              829
+            ],
+            "earlier_point_id": 2782,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 108,
+              "gap": 898,
+              "interior_slot": 0,
+              "point_id": 2782
+            },
+            "earliest_order_key": [
+              439,
+              3762,
+              2782
+            ],
+            "later_endpoint_birth_rank": 439,
+            "later_point": [
+              -896,
+              179,
+              859
+            ],
+            "later_point_id": 3762,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 439,
+              "gap": 905,
+              "interior_slot": 0,
+              "point_id": 3762
+            },
+            "line_moment": [
+              -4511,
+              -3687,
+              -3937
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 2673,
+            "raw_direction": [
+              -27,
+              1,
+              30
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 1925532
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              27,
+              -1,
+              -30
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              124,
+              651,
+              507
+            ],
+            "earlier_point_id": 2698,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 80,
+              "gap": 631,
+              "interior_slot": 0,
+              "point_id": 2698
+            },
+            "earliest_order_key": [
+              2319,
+              8043,
+              2698
+            ],
+            "later_endpoint_birth_rank": 2319,
+            "later_point": [
+              70,
+              653,
+              567
+            ],
+            "later_point_id": 8043,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 2319,
+              "gap": 642,
+              "interior_slot": 1,
+              "point_id": 8043
+            },
+            "line_moment": [
+              -19023,
+              17409,
+              -17701
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 2673,
+            "raw_direction": [
+              -54,
+              2,
+              60
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              27,
+              -1,
+              -30
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -2584,
+              -170,
+              59
+            ],
+            "earlier_point_id": 6535,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 1604,
+              "gap": 1676,
+              "interior_slot": 1,
+              "point_id": 6535
+            },
+            "earliest_order_key": [
+              2324,
+              8053,
+              6535
+            ],
+            "later_endpoint_birth_rank": 2324,
+            "later_point": [
+              -2611,
+              -169,
+              89
+            ],
+            "later_point_id": 8053,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 2324,
+              "gap": 1682,
+              "interior_slot": 1,
+              "point_id": 8053
+            },
+            "line_moment": [
+              5159,
+              -75927,
+              7174
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 2673,
+            "raw_direction": [
+              -27,
+              1,
+              30
+            ]
+          }
+        ],
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=0": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 103550832
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -1112,
+              754,
+              1048
+            ],
+            "earlier_point_id": 3459,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 333,
+              "gap": 1213,
+              "interior_slot": 2,
+              "point_id": 3459
+            },
+            "earliest_order_key": [
+              841,
+              4827,
+              3459
+            ],
+            "later_endpoint_birth_rank": 841,
+            "later_point": [
+              -716,
+              358,
+              784
+            ],
+            "later_point_id": 4827,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 841,
+              "gap": 858,
+              "interior_slot": 0,
+              "point_id": 4827
+            },
+            "line_moment": [
+              1636,
+              920,
+              1074
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              396,
+              -396,
+              -264
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 23772
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -2452,
+              -275,
+              -330
+            ],
+            "earlier_point_id": 3216,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 252,
+              "gap": 2071,
+              "interior_slot": 2,
+              "point_id": 3216
+            },
+            "earliest_order_key": [
+              1029,
+              5238,
+              3216
+            ],
+            "later_endpoint_birth_rank": 1029,
+            "later_point": [
+              -2446,
+              -281,
+              -334
+            ],
+            "later_point_id": 5238,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 1029,
+              "gap": 2070,
+              "interior_slot": 1,
+              "point_id": 5238
+            },
+            "line_moment": [
+              -440,
+              -5894,
+              8181
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              6,
+              -6,
+              -4
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 23772
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -3292,
+              418,
+              -69
+            ],
+            "earlier_point_id": 3303,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 281,
+              "gap": 2387,
+              "interior_slot": 2,
+              "point_id": 3303
+            },
+            "earliest_order_key": [
+              1083,
+              5347,
+              3303
+            ],
+            "later_endpoint_birth_rank": 1083,
+            "later_point": [
+              -3286,
+              412,
+              -73
+            ],
+            "later_point_id": 5347,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 1083,
+              "gap": 2386,
+              "interior_slot": 1,
+              "point_id": 5347
+            },
+            "line_moment": [
+              -1043,
+              -6791,
+              8622
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              6,
+              -6,
+              -4
+            ]
+          }
+        ],
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=1": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              9,
+              10,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -863,
+              304,
+              1381
+            ],
+            "earlier_point_id": 2850,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 130,
+              "gap": 1074,
+              "interior_slot": 2,
+              "point_id": 2850
+            },
+            "earliest_order_key": [
+              131,
+              2851,
+              2850
+            ],
+            "later_endpoint_birth_rank": 131,
+            "later_point": [
+              -854,
+              314,
+              1384
+            ],
+            "later_point_id": 2851,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 131,
+              "gap": 1076,
+              "interior_slot": 0,
+              "point_id": 2851
+            },
+            "line_moment": [
+              -12898,
+              15018,
+              -11366
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 297,
+            "raw_direction": [
+              9,
+              10,
+              3
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              9,
+              10,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -228,
+              486,
+              147
+            ],
+            "earlier_point_id": 146,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 146
+            },
+            "earliest_order_key": [
+              377,
+              3590,
+              146
+            ],
+            "later_endpoint_birth_rank": 377,
+            "later_point": [
+              -237,
+              476,
+              144
+            ],
+            "later_point_id": 3590,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 377,
+              "gap": 144,
+              "interior_slot": 1,
+              "point_id": 3590
+            },
+            "line_moment": [
+              -12,
+              2007,
+              -6654
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 297,
+            "raw_direction": [
+              -9,
+              -10,
+              -3
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 855792
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              9,
+              10,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -3304,
+              261,
+              -156
+            ],
+            "earlier_point_id": 3287,
+            "earlier_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 276,
+              "gap": 2348,
+              "interior_slot": 1,
+              "point_id": 3287
+            },
+            "earliest_order_key": [
+              1307,
+              5865,
+              3287
+            ],
+            "later_endpoint_birth_rank": 1307,
+            "later_point": [
+              -3340,
+              221,
+              -168
+            ],
+            "later_point_id": 5865,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 1307,
+              "gap": 2341,
+              "interior_slot": 1,
+              "point_id": 5865
+            },
+            "line_moment": [
+              2343,
+              8508,
+              -35389
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 297,
+            "raw_direction": [
+              -36,
+              -40,
+              -12
+            ]
+          }
+        ],
+        "connector-born|old-new|11/3|J_11_over_3_cycle|phase=B|n=2": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 4332447
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 4332447
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              81,
+              -89,
+              3
+            ],
+            "classification": "old-new",
+            "earlier_point": [
+              -3063,
+              -312,
+              -197
+            ],
+            "earlier_point_id": 2234,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 2234
+            },
+            "earliest_order_key": [
+              1204,
+              5612,
+              2234
+            ],
+            "later_endpoint_birth_rank": 1204,
+            "later_point": [
+              -2982,
+              -401,
+              -194
+            ],
+            "later_point_id": 5612,
+            "later_provenance": {
+              "birth_kind": "connector-interior",
+              "birth_rank": 1204,
+              "gap": 2215,
+              "interior_slot": 2,
+              "point_id": 5612
+            },
+            "line_moment": [
+              -18469,
+              -6768,
+              297879
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 24057,
+            "raw_direction": [
+              81,
+              -89,
+              3
+            ]
+          }
+        ],
+        "seed|seed|11/3|J_11_over_3_cycle|phase=A|n=0": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              -336,
+              612,
+              1005
+            ],
+            "earlier_point_id": 764,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 764
+            },
+            "earliest_order_key": [
+              -1,
+              769,
+              764
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              -363,
+              621,
+              978
+            ],
+            "later_point_id": 769,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 769
+            },
+            "line_moment": [
+              2841,
+              4023,
+              -1500
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              -27,
+              9,
+              -27
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              -2274,
+              -327,
+              -112
+            ],
+            "earlier_point_id": 1613,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 1613
+            },
+            "earliest_order_key": [
+              -1,
+              1618,
+              1613
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              -2301,
+              -318,
+              -139
+            ],
+            "later_point_id": 1618,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 1618
+            },
+            "line_moment": [
+              -1093,
+              6486,
+              3255
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              -27,
+              9,
+              -27
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 481383
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -1,
+              3
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              -2475,
+              -255,
+              -316
+            ],
+            "earlier_point_id": 2076,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 2076
+            },
+            "earliest_order_key": [
+              -1,
+              2081,
+              2076
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              -2502,
+              -246,
+              -343
+            ],
+            "later_point_id": 2081,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 2081
+            },
+            "line_moment": [
+              -1081,
+              6477,
+              3240
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              -27,
+              9,
+              -27
+            ]
+          }
+        ],
+        "seed|seed|11/3|J_11_over_3_cycle|phase=B|n=0": [
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              -108,
+              549,
+              -6
+            ],
+            "earlier_point_id": 183,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 183
+            },
+            "earliest_order_key": [
+              -1,
+              185,
+              183
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              -99,
+              540,
+              -12
+            ],
+            "later_point_id": 185,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 185
+            },
+            "line_moment": [
+              -1116,
+              -234,
+              -1323
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              9,
+              -9,
+              -6
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 53487
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              54,
+              1017,
+              -282
+            ],
+            "earlier_point_id": 377,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 377
+            },
+            "earliest_order_key": [
+              -1,
+              379,
+              377
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              63,
+              1008,
+              -288
+            ],
+            "later_point_id": 379,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 379
+            },
+            "line_moment": [
+              -2880,
+              -738,
+              -3213
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              9,
+              -9,
+              -6
+            ]
+          },
+          {
+            "F_values_on_primitive_direction": {
+              "11/3": 0,
+              "348/275": 5943
+            },
+            "F_values_on_raw_direction": {
+              "11/3": 0,
+              "348/275": 4332447
+            },
+            "J": {
+              "denominator": 3,
+              "label": "11/3",
+              "numerator": 11
+            },
+            "canonical_primitive_direction": [
+              3,
+              -3,
+              -2
+            ],
+            "classification": "seed",
+            "earlier_point": [
+              -9,
+              1077,
+              -226
+            ],
+            "earlier_point_id": 364,
+            "earlier_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 364
+            },
+            "earliest_order_key": [
+              -1,
+              381,
+              364
+            ],
+            "later_endpoint_birth_rank": -1,
+            "later_point": [
+              72,
+              996,
+              -280
+            ],
+            "later_point_id": 381,
+            "later_provenance": {
+              "birth_kind": "seed-anchor",
+              "birth_rank": -1,
+              "gap": null,
+              "interior_slot": null,
+              "point_id": 381
+            },
+            "line_moment": [
+              -2832,
+              -696,
+              -3204
+            ],
+            "matched_spectra": [
+              "11/3"
+            ],
+            "quadratic_Q": 33,
+            "raw_direction": [
+              81,
+              -81,
+              -54
+            ]
+          }
+        ]
+      }
+    },
+    "later_birth_rank_groups": {
+      "exact_nonzero_group_records": [
+        {
+          "classification": "seed",
+          "later_birth_rank": -1,
+          "pair_count": 242,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "later_birth_rank": -1,
+          "pair_count": 4,
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 8,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 10,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 12,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 17,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 18,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 19,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 20,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 22,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 24,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 25,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 26,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 27,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 29,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 36,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 39,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 42,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 44,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 45,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 46,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 47,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 48,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 52,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 58,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 60,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 62,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 68,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 69,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 75,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 81,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 82,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 83,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 87,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 91,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 96,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 101,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 103,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 106,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 108,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 114,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 116,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 124,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 125,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 131,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 132,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 141,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 145,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 149,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 150,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 151,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 152,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 154,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 156,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 157,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 158,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 159,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 164,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 165,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 167,
+          "pair_count": 4,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 168,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 170,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 171,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 174,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 180,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 183,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 186,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 194,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 200,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 203,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 205,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 208,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 209,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 211,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 212,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 213,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 216,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 218,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 220,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 221,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 222,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 223,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 224,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 225,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 226,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 227,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 228,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 229,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 230,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 231,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 232,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 233,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 234,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 235,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 236,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 241,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 244,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 245,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 250,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 251,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 253,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 256,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 257,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 259,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 268,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 271,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 273,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 275,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 294,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 318,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 323,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 374,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 377,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 410,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 411,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 412,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 428,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 429,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 437,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 439,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 473,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 478,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 505,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 512,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 536,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 547,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 550,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 558,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 559,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 561,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 563,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 566,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 569,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 576,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 594,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 599,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 607,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 643,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 644,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 648,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 651,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 657,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 693,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 716,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 717,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 718,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 732,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 733,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 737,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 743,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 746,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 747,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 750,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 751,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 760,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 767,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 799,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 801,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 815,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 829,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 841,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 842,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 845,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 852,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 855,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 865,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 866,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 871,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 876,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 877,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 880,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 882,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 883,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 889,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 890,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 908,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 934,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 935,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 936,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 954,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 959,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 963,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 999,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1001,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1003,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1006,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1007,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1029,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1039,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1050,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1052,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1078,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1080,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1083,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1084,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1093,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1094,
+          "pair_count": 4,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1103,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1116,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1117,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1124,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1128,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1129,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1133,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1137,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1138,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1140,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1148,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1149,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1160,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1162,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1163,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1164,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1166,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1170,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1171,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1176,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1177,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1181,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1185,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1190,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1191,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1192,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1195,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1198,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1204,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1211,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1214,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1222,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1230,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1234,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1236,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1255,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1256,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1258,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1266,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1271,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1272,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1275,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1296,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1298,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1299,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1300,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1307,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1308,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1309,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1310,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1316,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1317,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1347,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1363,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1369,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1371,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1374,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1375,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1384,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1387,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1388,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1396,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1411,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1413,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1423,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1427,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1427,
+          "pair_count": 1,
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1435,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1437,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1450,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1452,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1463,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1475,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1481,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1491,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1496,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1497,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1531,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1543,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1548,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1552,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1566,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1581,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1584,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1592,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1594,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1598,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1610,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1614,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1616,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1619,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1620,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1621,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1627,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1632,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1634,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1642,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1650,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1652,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1656,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1663,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1669,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 1670,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1670,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 1675,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1675,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 1678,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1682,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "new-new",
+          "later_birth_rank": 1684,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1686,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1687,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1688,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1689,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1690,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1692,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1695,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1700,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1706,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1713,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1714,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1720,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1725,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1730,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1742,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1745,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1762,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1768,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1773,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1783,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1784,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1788,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1791,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1796,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1812,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1816,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1817,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1820,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1828,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1834,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1837,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1841,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1842,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1852,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1857,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1875,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1878,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1888,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1889,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1890,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1894,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1912,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1921,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1927,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1934,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1935,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1936,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1942,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1953,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1954,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1955,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1959,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1961,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1962,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1974,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1986,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1989,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 1995,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2001,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2004,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2026,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2031,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2042,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2044,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2050,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2057,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2059,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2063,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2065,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2066,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2067,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2069,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2070,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2071,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2084,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2087,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2088,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2095,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2097,
+          "pair_count": 3,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2105,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2106,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2109,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2134,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2135,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2148,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2153,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2154,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2157,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2164,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2166,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2176,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2177,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2180,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2181,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2186,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2193,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2196,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2200,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2202,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2207,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2214,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2215,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2235,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2241,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2244,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2245,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2251,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2256,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2257,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2261,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2266,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2284,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2286,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2293,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2295,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2296,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2303,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2305,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2307,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2316,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2319,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2324,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2326,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2334,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2339,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2342,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2351,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2353,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2366,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2369,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2374,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2378,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2386,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2390,
+          "pair_count": 2,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2395,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2396,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2398,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2403,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2409,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2422,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2431,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2435,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "later_birth_rank": 2442,
+          "pair_count": 1,
+          "spectrum": "11/3"
+        }
+      ],
+      "group_record_stream_sha256": "46f58ddbeaf87b6f07c013ba0a72e47751f796bea51a65a5de57a7d2a0ec9953",
+      "nonzero_group_count": 451
+    },
+    "primitive_direction_groups": {
+      "exact_group_records": [
+        {
+          "classification": "new-new",
+          "pair_count": 6,
+          "primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 30,
+          "primitive_direction": [
+            3,
+            -3,
+            -2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 48,
+          "primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 116,
+          "primitive_direction": [
+            3,
+            -2,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 18,
+          "primitive_direction": [
+            3,
+            -1,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 20,
+          "primitive_direction": [
+            3,
+            1,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 60,
+          "primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 71,
+          "primitive_direction": [
+            3,
+            3,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 35,
+          "primitive_direction": [
+            3,
+            3,
+            2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 7,
+          "primitive_direction": [
+            9,
+            -10,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 3,
+          "primitive_direction": [
+            9,
+            -6,
+            7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 10,
+          "primitive_direction": [
+            9,
+            -3,
+            -10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 7,
+          "primitive_direction": [
+            9,
+            3,
+            10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 2,
+          "primitive_direction": [
+            9,
+            6,
+            -7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 7,
+          "primitive_direction": [
+            9,
+            7,
+            -6
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 9,
+          "primitive_direction": [
+            9,
+            10,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 4,
+          "primitive_direction": [
+            27,
+            -30,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            27,
+            -25,
+            -21
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 4,
+          "primitive_direction": [
+            27,
+            -21,
+            -25
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 3,
+          "primitive_direction": [
+            27,
+            -1,
+            -30
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            27,
+            1,
+            30
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            27,
+            21,
+            25
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 8,
+          "primitive_direction": [
+            27,
+            30,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            33,
+            -35,
+            6
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            33,
+            6,
+            37
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 2,
+          "primitive_direction": [
+            33,
+            37,
+            6
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            -42,
+            -19
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            -42,
+            5
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            -15,
+            -43
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 4,
+          "primitive_direction": [
+            39,
+            -5,
+            42
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 2,
+          "primitive_direction": [
+            39,
+            5,
+            -42
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 2,
+          "primitive_direction": [
+            39,
+            15,
+            -38
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 4,
+          "primitive_direction": [
+            39,
+            15,
+            43
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            43,
+            15
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            -53,
+            -30
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            -43,
+            30
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            -14,
+            -57
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            -5,
+            -57
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            14,
+            57
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            57,
+            14
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            81,
+            -89,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 6,
+          "primitive_direction": [
+            81,
+            75,
+            -38
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            87,
+            -97,
+            -6
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            87,
+            -6,
+            -97
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            87,
+            74,
+            75
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            87,
+            75,
+            -49
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            213,
+            -111,
+            -227
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            729,
+            -703,
+            294
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            729,
+            294,
+            -703
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 1,
+          "primitive_direction": [
+            55,
+            10,
+            36
+          ],
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 12,
+          "primitive_direction": [
+            3,
+            -3,
+            -2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 29,
+          "primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 3,
+          "primitive_direction": [
+            3,
+            -1,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 4,
+          "primitive_direction": [
+            3,
+            1,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 5,
+          "primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 33,
+          "primitive_direction": [
+            3,
+            3,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 16,
+          "primitive_direction": [
+            3,
+            3,
+            2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 9,
+          "primitive_direction": [
+            9,
+            -6,
+            7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 22,
+          "primitive_direction": [
+            9,
+            -3,
+            -10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 21,
+          "primitive_direction": [
+            9,
+            3,
+            10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 16,
+          "primitive_direction": [
+            9,
+            6,
+            -7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 9,
+          "primitive_direction": [
+            27,
+            -30,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 8,
+          "primitive_direction": [
+            27,
+            -21,
+            -25
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            27,
+            1,
+            30
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            27,
+            21,
+            25
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 13,
+          "primitive_direction": [
+            27,
+            30,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            33,
+            -6,
+            -37
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 2,
+          "primitive_direction": [
+            39,
+            -15,
+            -43
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            15,
+            -38
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 2,
+          "primitive_direction": [
+            39,
+            15,
+            43
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            39,
+            42,
+            -5
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            51,
+            57,
+            14
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            81,
+            -75,
+            38
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 5,
+          "primitive_direction": [
+            81,
+            -3,
+            89
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 3,
+          "primitive_direction": [
+            81,
+            3,
+            -89
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 7,
+          "primitive_direction": [
+            81,
+            75,
+            -38
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            99,
+            -111,
+            -19
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 2,
+          "primitive_direction": [
+            99,
+            105,
+            53
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            117,
+            -15,
+            -131
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            117,
+            15,
+            131
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            117,
+            114,
+            83
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 3,
+          "primitive_direction": [
+            153,
+            15,
+            -166
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            243,
+            -267,
+            -98
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 2,
+          "primitive_direction": [
+            243,
+            -114,
+            -263
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            243,
+            267,
+            98
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            261,
+            285,
+            113
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            297,
+            159,
+            -262
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            459,
+            498,
+            211
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            165,
+            -84,
+            -82
+          ],
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            165,
+            82,
+            84
+          ],
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            165,
+            84,
+            82
+          ],
+          "spectrum": "348/275"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 1,
+          "primitive_direction": [
+            165,
+            102,
+            -20
+          ],
+          "spectrum": "348/275"
+        }
+      ],
+      "group_count": 92,
+      "group_record_stream_sha256": "ac6d73286ea69376d047adca31243ad9ca0ca122504e2a55eebef5d7770b0abc",
+      "pair_multiplicity_histogram": {
+        "1": 44,
+        "10": 1,
+        "116": 1,
+        "12": 1,
+        "13": 1,
+        "16": 2,
+        "18": 1,
+        "2": 8,
+        "20": 1,
+        "21": 1,
+        "22": 1,
+        "29": 1,
+        "3": 5,
+        "30": 1,
+        "33": 1,
+        "35": 1,
+        "4": 5,
+        "48": 1,
+        "5": 2,
+        "6": 2,
+        "60": 1,
+        "7": 4,
+        "71": 1,
+        "8": 2,
+        "9": 3
+      },
+      "top_20_groups": [
+        {
+          "classification": "old-new",
+          "pair_count": 116,
+          "primitive_direction": [
+            3,
+            -2,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 71,
+          "primitive_direction": [
+            3,
+            3,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 60,
+          "primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 48,
+          "primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 35,
+          "primitive_direction": [
+            3,
+            3,
+            2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 33,
+          "primitive_direction": [
+            3,
+            3,
+            -1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 30,
+          "primitive_direction": [
+            3,
+            -3,
+            -2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 29,
+          "primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 22,
+          "primitive_direction": [
+            9,
+            -3,
+            -10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 21,
+          "primitive_direction": [
+            9,
+            3,
+            10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 20,
+          "primitive_direction": [
+            3,
+            1,
+            -3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 18,
+          "primitive_direction": [
+            3,
+            -1,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 16,
+          "primitive_direction": [
+            3,
+            3,
+            2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 16,
+          "primitive_direction": [
+            9,
+            6,
+            -7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 13,
+          "primitive_direction": [
+            27,
+            30,
+            1
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 12,
+          "primitive_direction": [
+            3,
+            -3,
+            -2
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 10,
+          "primitive_direction": [
+            9,
+            -3,
+            -10
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "old-new",
+          "pair_count": 9,
+          "primitive_direction": [
+            9,
+            10,
+            3
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 9,
+          "primitive_direction": [
+            9,
+            -6,
+            7
+          ],
+          "spectrum": "11/3"
+        },
+        {
+          "classification": "seed",
+          "pair_count": 9,
+          "primitive_direction": [
+            27,
+            -30,
+            -1
+          ],
+          "spectrum": "11/3"
+        }
+      ]
+    },
+    "witnesses_by_birth_class": {
+      "new-new": [
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "classification": "new-new",
+          "earlier_point": [
+            211,
+            619,
+            444
+          ],
+          "earlier_point_id": 3731,
+          "earlier_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 428,
+            "gap": 613,
+            "interior_slot": 0,
+            "point_id": 3731
+          },
+          "earliest_order_key": [
+            428,
+            3733,
+            3731
+          ],
+          "later_endpoint_birth_rank": 428,
+          "later_point": [
+            208,
+            617,
+            441
+          ],
+          "later_point_id": 3733,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 428,
+            "gap": 613,
+            "interior_slot": 2,
+            "point_id": 3733
+          },
+          "line_moment": [
+            969,
+            699,
+            -1435
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -3,
+            -2,
+            -3
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "classification": "new-new",
+          "earlier_point": [
+            -1967,
+            -317,
+            205
+          ],
+          "earlier_point_id": 4345,
+          "earlier_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 644,
+            "gap": 1542,
+            "interior_slot": 0,
+            "point_id": 4345
+          },
+          "earliest_order_key": [
+            644,
+            4347,
+            4345
+          ],
+          "later_endpoint_birth_rank": 644,
+          "later_point": [
+            -1970,
+            -319,
+            202
+          ],
+          "later_point_id": 4347,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 644,
+            "gap": 1542,
+            "interior_slot": 2,
+            "point_id": 4347
+          },
+          "line_moment": [
+            -1361,
+            6516,
+            -2983
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -3,
+            -2,
+            -3
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "classification": "new-new",
+          "earlier_point": [
+            -476,
+            610,
+            892
+          ],
+          "earlier_point_id": 6691,
+          "earlier_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 1670,
+            "gap": 794,
+            "interior_slot": 0,
+            "point_id": 6691
+          },
+          "earliest_order_key": [
+            1670,
+            6693,
+            6691
+          ],
+          "later_endpoint_birth_rank": 1670,
+          "later_point": [
+            -479,
+            608,
+            889
+          ],
+          "later_point_id": 6693,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 1670,
+            "gap": 794,
+            "interior_slot": 2,
+            "point_id": 6693
+          },
+          "line_moment": [
+            46,
+            4104,
+            -2782
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -3,
+            -2,
+            -3
+          ]
+        }
+      ],
+      "old-new": [
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 23772
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            -2,
+            -3
+          ],
+          "classification": "old-new",
+          "earlier_point": [
+            -12,
+            6,
+            14
+          ],
+          "earlier_point_id": 2,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 2
+          },
+          "earliest_order_key": [
+            1,
+            2463,
+            2
+          ],
+          "later_endpoint_birth_rank": 1,
+          "later_point": [
+            -18,
+            10,
+            20
+          ],
+          "later_point_id": 2463,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 1,
+            "gap": 2,
+            "interior_slot": 2,
+            "point_id": 2463
+          },
+          "line_moment": [
+            10,
+            6,
+            6
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -6,
+            4,
+            6
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 23772
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            2,
+            3
+          ],
+          "classification": "old-new",
+          "earlier_point": [
+            48,
+            111,
+            13
+          ],
+          "earlier_point_id": 21,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 21
+          },
+          "earliest_order_key": [
+            2,
+            2464,
+            21
+          ],
+          "later_endpoint_birth_rank": 2,
+          "later_point": [
+            42,
+            107,
+            7
+          ],
+          "later_point_id": 2464,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 2,
+            "gap": 20,
+            "interior_slot": 0,
+            "point_id": 2464
+          },
+          "line_moment": [
+            307,
+            -105,
+            -237
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -6,
+            -4,
+            -6
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 23772
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            -2,
+            -3
+          ],
+          "classification": "old-new",
+          "earlier_point": [
+            -21,
+            369,
+            45
+          ],
+          "earlier_point_id": 74,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 74
+          },
+          "earliest_order_key": [
+            8,
+            2484,
+            74
+          ],
+          "later_endpoint_birth_rank": 8,
+          "later_point": [
+            -27,
+            373,
+            51
+          ],
+          "later_point_id": 2484,
+          "later_provenance": {
+            "birth_kind": "connector-interior",
+            "birth_rank": 8,
+            "gap": 74,
+            "interior_slot": 2,
+            "point_id": 2484
+          },
+          "line_moment": [
+            -1017,
+            72,
+            -1065
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -6,
+            4,
+            6
+          ]
+        }
+      ],
+      "seed": [
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 213948
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "classification": "seed",
+          "earlier_point": [
+            45,
+            162,
+            12
+          ],
+          "earlier_point_id": 30,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 30
+          },
+          "earliest_order_key": [
+            -1,
+            33,
+            30
+          ],
+          "later_endpoint_birth_rank": -1,
+          "later_point": [
+            27,
+            180,
+            6
+          ],
+          "later_point_id": 33,
+          "later_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 33
+          },
+          "line_moment": [
+            198,
+            -9,
+            -621
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -18,
+            18,
+            -6
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 53487
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "classification": "seed",
+          "earlier_point": [
+            36,
+            279,
+            -36
+          ],
+          "earlier_point_id": 54,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 54
+          },
+          "earliest_order_key": [
+            -1,
+            56,
+            54
+          ],
+          "later_endpoint_birth_rank": -1,
+          "later_point": [
+            27,
+            288,
+            -39
+          ],
+          "later_point_id": 56,
+          "later_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 56
+          },
+          "line_moment": [
+            171,
+            -144,
+            -945
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -9,
+            9,
+            -3
+          ]
+        },
+        {
+          "F_values_on_primitive_direction": {
+            "11/3": 0,
+            "348/275": 5943
+          },
+          "F_values_on_raw_direction": {
+            "11/3": 0,
+            "348/275": 53487
+          },
+          "J": {
+            "denominator": 3,
+            "label": "11/3",
+            "numerator": 11
+          },
+          "canonical_primitive_direction": [
+            3,
+            -3,
+            1
+          ],
+          "classification": "seed",
+          "earlier_point": [
+            -21,
+            369,
+            45
+          ],
+          "earlier_point_id": 74,
+          "earlier_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 74
+          },
+          "earliest_order_key": [
+            -1,
+            77,
+            74
+          ],
+          "later_endpoint_birth_rank": -1,
+          "later_point": [
+            -30,
+            378,
+            42
+          ],
+          "later_point_id": 77,
+          "later_provenance": {
+            "birth_kind": "seed-anchor",
+            "birth_rank": -1,
+            "gap": null,
+            "interior_slot": null,
+            "point_id": 77
+          },
+          "line_moment": [
+            504,
+            156,
+            -1044
+          ],
+          "matched_spectra": [
+            "11/3"
+          ],
+          "quadratic_Q": 33,
+          "raw_direction": [
+            -9,
+            9,
+            -3
+          ]
+        }
+      ]
+    }
+  },
+  "schema_version": 1,
+  "scope": {
+    "all_unordered_pairs_scanned": true,
+    "exact_x_diameter": 3647,
+    "macro_direction_record_count": 13,
+    "macro_direction_record_stream_sha256": "4e410b78c2d7868fb5627f32899cc90da9714c1c76100e727def1b45a22c91be",
+    "macro_orbit_cutoffs": {
+      "J_11_over_3_cycle": {
+        "exact_pair_x_diameter": 3647,
+        "exclusion_reason": "a primitive secant direction has |r| no larger than the exact x diameter; each phase's subsequent |r| grows by an exact factor nine after the checked initial normalization",
+        "phase_cutoffs": {
+          "A": {
+            "first_excluded_abs_x_component": 19683,
+            "first_excluded_n": 4,
+            "included_n": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          "B": {
+            "first_excluded_abs_x_component": 6561,
+            "first_excluded_n": 4,
+            "included_n": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        }
+      },
+      "latent_348_over_275_cycle": {
+        "exact_pair_x_diameter": 3647,
+        "exclusion_reason": "a primitive secant direction has |r| no larger than the exact x diameter; each phase's subsequent |r| grows by an exact factor nine after the checked initial normalization",
+        "phase_cutoffs": {
+          "16": {
+            "first_excluded_abs_x_component": 13365,
+            "first_excluded_n": 3,
+            "included_n": [
+              0,
+              1,
+              2
+            ]
+          },
+          "8": {
+            "first_excluded_abs_x_component": 4455,
+            "first_excluded_n": 2,
+            "included_n": [
+              0,
+              1
+            ]
+          }
+        }
+      }
+    },
+    "pair_order": "increasing later point id, then increasing earlier id",
+    "points": 8268,
+    "spectra": [
+      "11/3",
+      "348/275"
+    ],
+    "unordered_pairs_scanned": 34175778
+  },
+  "status": "exact finite full-pair spectrum and macro-orbit diagnostic; evidence only, not a certificate"
+}

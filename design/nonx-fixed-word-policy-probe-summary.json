@@ -1,0 +1,149 @@
+{
+  "schema_version": 1,
+  "date": "2026-07-18",
+  "status": "exact finite fixed-word policy restriction of the pinned non-x degenerate-site graph; not a legality, availability, or far-secant certificate",
+  "checker": {
+    "path": "design/nonx_fixed_word_policy_probe.py",
+    "current_sha256": "531ba6ee0bfa8d5bf7485d70b13687ace4e1b100cdcdfd739b8bdcac9d8efdd3"
+  },
+  "pinned_inputs": {
+    "metadata": {
+      "path": "/tmp/no-new-x-line-L5-canonical.json",
+      "sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a"
+    },
+    "compact_domain_cache": {
+      "path": "/tmp/no-new-x-line-domains.bin",
+      "sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7"
+    },
+    "nonx_canonical_result": {
+      "path": "/tmp/nonx-degenerate-site-graph-canonical.json",
+      "sha256": "e0f5765fec55b25b9392333c25da037d9d073b7bc95b81680bb4e5957a0c4d92"
+    },
+    "nonx_checker": {
+      "path": "design/nonx_degenerate_site_graph.py",
+      "sha256": "4eb928bad0c0104d34b68424b07dd3b6a4939f216968bd6b2399a540b592e755"
+    }
+  },
+  "runs": {
+    "first": {
+      "raw_path": "/tmp/nonx-fixed-word-policy-probe.json",
+      "raw_sha256": "6f143f3f00a3216ae71106cef0cb7f2a1398598cfd51f601aa85584953f60cf8",
+      "raw_bytes": 42347,
+      "elapsed_seconds": 79.595,
+      "maximum_resident_set_bytes": 92127232,
+      "checker_revision_note": "same mathematical checker before adding self-hash capture and removing one unused import; pre-instrumentation source sha256 1bedf2a121d817520431d9e2d45bb7c63b60ae6c6346a01b4d3504dd92523b38"
+    },
+    "instrumented_repeat": {
+      "raw_path": "/tmp/nonx-fixed-word-policy-probe-v2.json",
+      "raw_sha256": "e30732d2833b3c93ae2ccbbc5f37ddd3069346899c24d49fc18aabfa1a48485e",
+      "raw_bytes": 42537,
+      "elapsed_seconds": 79.236,
+      "maximum_resident_set_bytes": 92073984,
+      "checker_sha256": "531ba6ee0bfa8d5bf7485d70b13687ace4e1b100cdcdfd739b8bdcac9d8efdd3",
+      "checker_unchanged_during_scan": true
+    },
+    "semantic_repeat_canonicalization": {
+      "operation": "parse JSON; delete checker, elapsed_seconds, and maximum_resident_set_raw; encode with sort_keys=true and separators=(',',':')",
+      "first_sha256": "b19f73d23fbe9c107c072901a0bd9fb6c175a4ea410d47a148b003ec5bc841fb",
+      "instrumented_repeat_sha256": "b19f73d23fbe9c107c072901a0bd9fb6c175a4ea410d47a148b003ec5bc841fb",
+      "canonical_bytes": 13597,
+      "identical": true,
+      "scope_note": "this is exact equality of the mathematical payload across an instrumentation-only checker revision, not a claim of same-revision raw-byte identity"
+    },
+    "resource_policy": {
+      "processes": 1,
+      "threads": 1,
+      "nice": 15,
+      "both_runs_below_300_MiB_and_120_seconds": true
+    }
+  },
+  "fixed_policy": {
+    "definition": "for each of the 124 parent steps, select the first cached whole word whose proper interiors have pairwise-distinct (y,z) fibres and avoid the two endpoint fibres; endpoint fibres may coincide with each other",
+    "intrinsic_x_projection_compatibility_only": true,
+    "selected_ordinal_range": [1, 2],
+    "steps_whose_selected_ordinal_exceeds_one": [12, 111],
+    "selected_ordinals_by_step": [1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2,1,1,1,1,1,1,1,1,1,1,1,1],
+    "selected_words_by_step": [[20,22,20],[5,20,21],[0,10,20],[0,1,5,69],[0,5,0,55],[20,21,24],[5,20,24],[0,10,23],[0,1,16],[0,1,0],[21,23,24],[5,23,24],[0,13,23],[0,1,19],[0,1,3],[24,23,24],[8,23,24],[1,14,24],[0,4,19],[0,3,4],[14,24,73,24],[3,19,24,73],[4,14,24],[3,4,19],[3,4,3],[20,21,95],[5,20,95],[0,10,94],[0,1,35,114],[0,5,25,104],[20,21,98],[15,47],[0,46],[0,30],[0,1,74],[20,24,98],[16,49],[0,49],[0,33],[0,1,77],[23,24,98],[19,49],[3,49],[2,34],[0,3,78],[14,24,49,123],[3,19,49,123],[4,14,98],[3,4,93],[2,4,78],[20,69,121],[5,69,120],[0,60,119],[0,1,104,119],[0,5,99,104],[20,70,123],[15,121],[0,120],[0,104],[0,50,100],[20,73,123],[16,123],[0,107],[0,50,103],[23,73,123],[19,123],[3,123],[2,108],[0,53,103],[14,49,98,123],[3,24,118,123],[4,63,123],[3,54,118],[2,54,103],[45,119,121],[30,119,120],[25,109,119],[0,74,104,120],[0,74,99,109],[45,120,123],[89,121],[74,120],[74,104],[25,99,100],[46,122,123],[90,123],[74,123],[74,107],[25,99,103],[49,122,123],[93,123],[77,123],[76,108],[25,102,103],[14,123,98,123],[3,98,118,123],[29,113,123],[28,103,118],[28,102,103],[119,121,119],[104,119,120],[99,109,119],[50,99,104,120],[50,99,109,99],[119,120,123],[104,119,123],[99,109,122],[99,100,115],[99,100,99],[120,122,123],[104,122,123],[99,112,122],[99,100,118],[99,100,102],[123,122,123],[107,122,123],[100,113,123],[99,103,118],[99,102,103],[68,123,118,123],[53,123,118,123],[103,113,123],[102,103,118],[102,103,102]],
+    "full_record_stream_sha256_including_reconstructed_interiors": "d0fb933ca40e7bd2ac8510336109358dc7506439af5a0583c63d72f7b75faec1"
+  },
+  "exact_edge_semantics": {
+    "candidate_sets": "C_s is the union of all proper interior sites over the full pinned domain D_s",
+    "word_data": "I_s(w) is the full proper-interior set and P_s(w)=((t_j,c_j))_j is the ordered child-step/prefix-control list of one whole cached word",
+    "edge_set": "E_s(w) contains ((s,x),(t_j,M(x-c_j))) exactly when x is in C_s minus I_s(w) and M(x-c_j) is in C_(t_j)",
+    "fixed_policy_graph": "E(sigma)=union_s E_s(sigma_s); every selected word activates all of its ordered slots jointly",
+    "correlation_guarantee": "no slot or interior-avoidance fact from one word is combined with a slot from another word at the same source occurrence"
+  },
+  "canonical_step_1_two_cycle_test": {
+    "sites": [[-3,0,-3],[-3,3,-2]],
+    "required_controls": [[-2,1,-2],[-2,4,-2]],
+    "canonical_witness_ordinals": [2020,4415],
+    "step_1_words": 9046,
+    "intrinsic_projection_compatible_words": 8066,
+    "words_avoiding_both_cycle_sites": 8642,
+    "words_realizing_first_edge": 8,
+    "words_realizing_second_edge": 8,
+    "words_realizing_both_edges": 0,
+    "intrinsic_projection_compatible_words_avoiding_both_sites_and_realizing_neither": 7646,
+    "first_robust_breaker": {
+      "ordinal_1_based": 1,
+      "word": [5,20,21],
+      "interiors": [[-2,-1,-2],[-4,1,-4]]
+    },
+    "exact_conclusion": "the displayed two-cycle is an arbitrary-switching artifact: no single step-1 word supports both directions, and it can be broken without selecting a word that contains either carried site"
+  },
+  "full_fixed_policy_result": {
+    "effective_words_scanned": 12537146,
+    "ordered_word_slots_scanned": 55513526,
+    "full_domain_candidate_vertices": 34520,
+    "unique_policy_edges": 1321,
+    "edge_stream_sha256": "0d42fc09d958fce8a2a9ed2fe02ae4f2cca3f3c3549c68a8bc3e5835780b70a8",
+    "acyclic": true,
+    "kahn_residual_vertices": 0,
+    "strict_potential": {
+      "definition": "r(v) is the maximum number of policy edges from v to a sink",
+      "maximum": 2,
+      "strictly_decreases_on_every_policy_edge": true,
+      "stream_sha256": "79a83e18f61a95c81e24a7493e9175c034fb06719f19fa8172fa041477295056"
+    },
+    "conditional_continuous_nonx_bound": {
+      "universal_nonx_selector_count": 83580,
+      "degenerate_longest_path_L": 2,
+      "formula": "|V|+(|V|+1)L",
+      "bound_in_edges": 250742,
+      "condition": "only for a non-x line that poisons a candidate site at every synchronized stitch while this fixed word is the actual selected legal action"
+    }
+  },
+  "exact_feasibility_formulation": {
+    "fixed_word_MILP_or_CP_SAT": [
+      "Use one binary y_(s,w) for each eligible whole-word class and impose sum_w y_(s,w)=1 for every step s.",
+      "Use an integer potential 0<=r_v<=|C|-1 for every vertex v=(s,x).",
+      "For every exact edge (u,v) in E_s(w), impose r_u >= r_v+1-|C|(1-y_(s,w)).",
+      "A feasible assignment is exactly a fixed whole-word policy whose induced direction-blind graph admits the displayed strict potential."
+    ],
+    "sound_word_class_quotient": "For a combined safety test, merge words only when their exact (I_s(w),P_s(w)) data and every retained x-projection or legality predicate agree. Exact E_s(w) equality alone is a valid quotient only for this isolated acyclicity objective; it may erase ordering or geometry needed elsewhere. A class is atomic: choosing it activates all slots of one member signature together.",
+    "cycle_CEGAR": [
+      "Start from one eligible whole word per step and build its exact graph.",
+      "For a found directed cycle e_1,...,e_k, let b_i=sum_{w:e_i in E_s(w)} y_(s,w); one-hot choice makes b_i Boolean.",
+      "Add the exact cycle cut sum_i b_i<=k-1, re-solve, and rebuild the exact graph.",
+      "Finite termination with an acyclic exact graph yields the potential; exhaustion proves the chosen eligibility restrictions cannot break every cycle."
+    ],
+    "allowed_subset_variant": "Replace y by inclusion variables z_(s,w), require at least one included class per step, and enforce the potential implication for every included class. This certifies acyclicity under arbitrary switching among allowed whole words, but without a survivor/cardinality or state-coverage constraint the singleton solution is vacuous for availability.",
+    "state_dependent_extension": "A genuine safety policy needs y_(q,w) on the correlated ordered-path/x-occupancy state q and graph vertices carrying q; selected-action successor closure must be checked. Per-slot variables are unsound because they splice incompatible words."
+  },
+  "proved": [
+    "the canonical step-1 two-cycle has no one-word realization",
+    "the deterministic 124-word intrinsic-projection-compatible pilot induces an exact acyclic direction-blind compatibility graph",
+    "the emitted height-two integer potential decreases on every one of the 1321 exact policy edges",
+    "whole-word correlations and the full-domain candidate-site universe are retained"
+  ],
+  "not_proved": [
+    "that the fixed word for a step is legal in every translated chronological environment",
+    "that any fixed word remains globally empty-fibre compatible with the evolving x-projection occupancy",
+    "positive connector availability after imposing this policy restriction",
+    "a state-dependent greatest fixed point or reachability closure",
+    "control of nondegenerate selector edges beyond the existing finite selector bound",
+    "control of empty-effect intervals and later re-entry, unrelated cursor jumps, newly born lines, or endpoint/deep-deep poisoning",
+    "an unconditional far-secant lemma or Erdős #193 theorem"
+  ],
+  "strongest_obstruction": "Acyclicity becomes easy when the menu is collapsed to one word per step, but exact legality and the no-new-x condition depend on the entire evolving translated prefix. The same fixed word can be blocked at another occurrence of the same step. Unless a correlated state-dependent policy retains at least one globally legal action and closes its successors, this DAG is a geometric pilot rather than a usable construction policy."
+}
