@@ -50,7 +50,7 @@
   universal reachable-state birth/promotion lemma still needed for an infinite walk.</p>
 
   <div class="banner">
-    <span class="lbl">Source: <code>CONDITIONAL-THEOREM.md</code> — pulled live from the <code>main</code> branch</span>
+    <span class="lbl">Source: <code>CONDITIONAL-THEOREM.md</code> — pinned to deployed checkpoint <code>f9f6f1a</code></span>
     <a class="src" id="ghlink" href="https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md">View &amp; verify on GitHub →</a>
   </div>
 
@@ -69,9 +69,11 @@
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
 <script>
-// The single source of truth. Swap this filename to the unconditional theorem when it lands.
-const RAW = 'https://raw.githubusercontent.com/ekalvi/erdos-193/main/CONDITIONAL-THEOREM.md';
-const BLOB = 'https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md';
+// Pin the rendered ledger to the same immutable checkpoint as this deployment. This avoids
+// branch-tip CDN races where GitHub Raw briefly serves the previous main-branch document.
+const STATUS_REF = 'f9f6f1a45f2b88b288094cd5b0f6477686f07372';
+const RAW = `https://raw.githubusercontent.com/ekalvi/erdos-193/${STATUS_REF}/CONDITIONAL-THEOREM.md`;
+const BLOB = `https://github.com/ekalvi/erdos-193/blob/${STATUS_REF}/CONDITIONAL-THEOREM.md`;
 document.getElementById('ghlink').href = BLOB;
 
 function renderDoc(md){
