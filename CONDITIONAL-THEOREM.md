@@ -1,15 +1,60 @@
-# Erdős Problem #193 — a conditional theorem
+# Erdős Problem #193 — proof status and conditional target
 
-**Corrected status (2026-07-18): the 311,738-point construction is exact finite
-evidence, but the claimed conditional theorem is not valid with Lemma R as
-currently stated.**  The repository's own level-uniform cubic crowding bound
-already implies the existence of some `C` on the fixed interval `1 <= r <= 10`,
-so that formulation of Lemma R is too weak to imply connector availability.
-Moreover, connector legality is global: far--far and near--far secants kill many
-words missed by the radius-40 experiment.  The actual remaining hypothesis is a
-uniform **reachable connector-survivor lemma**, or a sharp local bound plus a
-separate uniform far-secant tail lemma.  See
-`design/ORDERED-PATH-SAFETY-GATE.md` for the exact formulation and audit.
+**Current status (2026-07-29): the repository does not contain an unconditional
+solution.**  The 311,738-point record is exact finite evidence.  The newest
+consecutive guarded result starts from the independently certified guarded L5,
+completes all 8,295 guarded L6 stitches, and independently checks all 28,804
+points and 414,820,806 terminal pairs.  Its exhaustive all-choice census
+classifies 756,512,535 canonical connector occurrences and finds at least 71
+survivors at every realized prefix (median 1,750; maximum 198,431).
+
+That is a strong **CERTIFIED FINITE** gate on one chronology, not induction.  A
+different surviving connector creates a different future history.  The actual
+remaining hypothesis is a uniform **reachable connector-survivor lemma** closed
+under those alternate histories, with sound treatment of every line birth,
+cursor import, and silent exact return.
+
+The previous reduction to bounded local crowding remains invalid.  Far--far and
+near--far secants kill words missed by any fixed local window.  Moreover,
+bounded fractional ghost tails have infinitely many exact lattice-line
+incidence types, so phase plus bounded position cannot by itself provide the
+missing finite state.  See `design/GUARDED-L5-L6-TRANSITION.md`,
+`design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md`, and
+`design/FRACTIONAL-GHOST-TAIL.md`.
+
+## Current claim ledger
+
+### PROVED
+
+- Invariant-cone inheritance, conditional on connector availability.
+- The bounded/one-break fractional-tail formula, and infinitely many exact
+  lattice-line incidence types among unrestricted bounded fractional tails.
+- The coefficient-nine affine merge is not triple-free: the bad triple
+  `(i_k,i_k+28,i_k+36)` occurs for every `k`, where `i_0=191649` and
+  `i_(k+1)=2401i_k+74000`.
+
+### CERTIFIED FINITE
+
+- The guarded-L5 sole parent: 8,296 points and all 34,407,660 terminal pairs.
+- The consecutive guarded L5 -> L6 transition: 8,295 stitches, 28,804 points,
+  every first survivor reproduced, and all 414,820,806 terminal pairs checked.
+- The complete choice landscape on that chronology: all 756,512,535 canonical
+  word occurrences classified; minimum 71 survivors at a prefix.
+
+### REFUTED
+
+- Bounded local crowding as a sufficient connector-availability lemma.
+- A phase/spatial-only finite quotient for unrestricted bounded fractional
+  contacts.
+- The direct `C=9` weighted affine merge as an infinite triple-free walk.
+
+### OPEN
+
+For every reachable safe state, each newly born, imported, or silently
+returning exact-contact line must either enter a finite promoted class closed
+under all selected transitions or satisfy a strict escape rank.  The remaining
+whole-word effects must leave at least one connector whose sound successors
+satisfy the same invariant.  No such universal certificate is currently known.
 
 ---
 
@@ -53,17 +98,23 @@ events are exact collinear triples *at creation time*; completed levels are
 frozen safe forever. *(Three lines of exact algebra; verified on millions of
 real triples; hostile-panel confirmed.)*
 
-**L3 — Availability [OPEN].** At every reachable stitch, a globally legal
-connector word must exist.  The old ledgers inspected at most 200 words per
-stitch, so the reported floors 317 / 180 / 271 are sampled extrapolations, not
-exhaustive lower bounds.  Exact bottleneck replays show that far secants remove
-51%--68% of the words surviving a radius-40 truncation.  Bounded local crowding
-therefore does not imply L3 without a separate global tail theorem.
+**L3 — Availability [OPEN UNIVERSALLY; CERTIFIED ON ONE CHRONOLOGY].** At every
+reachable stitch, a globally legal connector word must exist.  The older record
+ledgers inspected at most 200 words per stitch, so their floors 317 / 180 / 271
+were sampled extrapolations.  The new guarded L5 -> L6 census is different: it
+exhausts all 756,512,535 canonical word occurrences and proves an exact floor of
+71 at its 8,295 realized prefixes.  This certifies L3 on that chronology only;
+it does not cover prefixes reached by choosing another survivor.  Exact replay
+also shows that far secants remove 51%--68% of words surviving a radius-40
+truncation, so bounded local crowding still cannot imply universal L3.
 
-**L4′ — Reachable-state safety [THE OPEN HYPOTHESIS].**  Either prove directly
-that `|D_s \ K(s,P)| >= 1` for every reachable stitch state and that a surviving
-choice preserves the invariant, or prove a numerical sharp local-mask bound and
-a uniform far-secant tail bound whose sum leaves at least one word.
+**L4′ — Reachable-state safety [THE OPEN HYPOTHESIS].**  Give a finite invariant
+closed under every sound successor, not just the recorded choices.  Every newly
+born, imported, or silently returning exact-contact line must enter a finite
+promoted class or have a strict escape rank.  For every represented concrete
+history, the complete correlated effects must leave a word in
+`D_s \ K(s,P)`, and every sound successor after that word must remain in the
+invariant.
 
 **L5 — Induction and compactness [PROVEN, given L1–L4′].** L1 + L2 +
 L3 + L4′ imply inductively that every finite level completes.  Their lengths
@@ -342,14 +393,18 @@ only one connector per gap.
   cone equations are preserved by `M`, so this freezes those populations, but
   availability under the added global guard and exhaustiveness of the two
   cones are unproved.
-- That conditional guard now has one exact independent finite test.  A guarded
-  L5 path completes all 2,457 stitches; its auditor reproduces all 4,211 guard
-  rejections and checks all 34,407,660 terminal pairs, leaving only the 246
-  inherited anchor--anchor cone pairs and no triple.  This validates the
-  grandfathering mechanism on one orbit, not uniform availability.  A
-  separate guarded L6 path from the ordinary primary L5 base is paused at
-  6,348 / 8,267 stitches, so the two positive computations are not consecutive
-  levels of one guarded history.
+- The guarded finite lineage now has a consecutive exact test.  The guarded L5
+  path completes all 2,457 stitches; its auditor reproduces all 4,211 guard
+  rejections and checks all 34,407,660 terminal pairs, leaving only 246
+  inherited anchor--anchor cone pairs and no triple.  Using that exact output
+  as its sole parent, guarded L6 then completes all 8,295 stitches.  Its
+  independent auditor reproduces every first survivor and checks all
+  414,820,806 terminal pairs of the 28,804-point result, again leaving exactly
+  the same 246 inherited cone pairs.  The exhaustive all-choice follow-up
+  classifies 756,512,535 canonical word occurrences and finds a finite minimum
+  of 71 survivors over the realized prefixes.  This validates one consecutive
+  transition with substantial local slack, not uniform availability on
+  alternate histories.
 - The exact correlated `8 -> 16 -> 8` holonomy census prevents treating those
   two cones as exhaustive: 3,136 affine return maps and 2,094 fixed points
   yield 47,942 primitive full-candidate guard polynomials outside the four
@@ -418,6 +473,10 @@ to exhaustive certificates.
 | Claim | Artifact |
 |---|---|
 | Record walk, 311,738 pts, no 3 collinear | `gate2-193-L8.txt`, `verify_parallel.py` (SHA-256 c8cc3728…) |
+| Consecutive guarded L5 -> L6, all first choices and 414,820,806 pairs | `design/guarded-L5-to-L6-audit-summary.json`, `design/GUARDED-L5-L6-TRANSITION.md` |
+| Exhaustive 756,512,535-occurrence guarded choice census, minimum 71 | `design/guarded-L5-to-L6-survivor-census-summary.json`, `design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md` |
+| Infinite fractional-incidence obstruction | `design/FRACTIONAL-GHOST-TAIL.md`, `design/fractional_ghost_tail_certificate.py` |
+| Infinite `C=9` affine counterexample family | `design/affine/C9-INFINITE-COUNTEREXAMPLE.md`, `design/affine/c9_infinite_counterexample.py` |
 | Inheritance algebra | `provenance193.py`, `PROOF-SKELETON.md` L2 |
 | Exact recursion, contraction, refill | `design/lemma/recursion_decomp.py`, `taskC_geometry.py` |
 | Anchor 3-separation, deep-tail, finite-menu check | `design/lemma/finite_menu_check.py` (79M words) |
@@ -448,7 +507,7 @@ to exhaustive certificates.
 | Recorded non-x cycle reachability, acyclic fixed-word pilot, and chronological falsifier | `design/nonx_cycle_realized_reachability.py`, `design/nonx_fixed_word_policy_probe.py`, `design/fixed_policy_chronological_replay.py` and their compact summaries |
 | Exact common-potential second-stitch falsifier | `design/potential_policy_chronological_rescue.py`, `design/potential_policy_two_stitch_matrix.py` and their compact summaries |
 | Exact lattice-`T` whole-word action envelopes | `design/nonx_scc_core_action_probe.py`, `design/nonx-lattice-envelope-action-probe-summary.json` |
-| Strict zero-`T`, fresh-yz L5 construction and pending audit | `design/lattice_t_chronological_replay.py`, `design/lattice_t_chronological_audit.py` |
+| Strict zero-`T`, fresh-yz L5 terminal certificate | `design/lattice_t_chronological_replay.py`, `design/lattice_t_chronological_audit.py` |
 | Exact length-3 and length-at-most-3 GFP no-go | `design/exact_length3_gfp.py`, `design/exact-length3-gfp-summary.json` |
 | Exact latent re-entry under the fixed policy | `design/nonx_latent_reentry_certificate.py`, `design/nonx-latent-reentry-certificate-summary.json`, `design/LATENT-REENTRY-OBSTRUCTION.md` |
 | Exact far-birth operator and proposed reachable envelope | `design/FAR-SECANT-BIRTH-OPERATOR.md` |
@@ -459,14 +518,17 @@ to exhaustive certificates.
 
 ## Honest summary
 
-The repository contains a rigorously checked 311,738-point triple-free walk and
-useful exact inheritance/geometry machinery.  It does **not** yet contain a valid
-conditional reduction to the old Lemma R, because that lemma is too weak and the
-claimed crowding-to-availability implication omits global secants.  The honest
-conditional statement is: the scale-and-rotate induction succeeds if Lemma A,
-the finitely certified connector-safety selector, is proved.  Once the finite
-levels have unbounded length, König's lemma—not a nested geometric limit—extracts
-the infinite walk.
+The repository contains a rigorously checked 311,738-point triple-free walk,
+useful exact inheritance/geometry machinery, and now a consecutive guarded
+L5-to-L6 certificate with a complete all-choice floor of 71 on its realized
+chronology.  It does **not** yet contain a valid conditional reduction to the
+old Lemma R, because that lemma is too weak and the claimed
+crowding-to-availability implication omits global secants.  Nor does the finite
+floor quantify over prefixes reached by choosing alternate survivors.  The
+honest conditional statement is: the scale-and-rotate induction succeeds if
+Lemma A, the finitely certified connector-safety selector, is proved.  Once the
+finite levels have unbounded length, König's lemma—not a nested geometric
+limit—extracts the infinite walk.
 
 The full-menu OSC overlap does not refute that ordered-path possibility, since
 the realized path chooses one connector per gap.  Conversely, the current

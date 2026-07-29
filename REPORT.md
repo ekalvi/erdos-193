@@ -1131,3 +1131,104 @@ analytic obligation is a correlation-preserving reachable-contact zeta that
 charges births, silent zero-mask returns, current joins, and cursor imports.
 No unconditional theorem or uniform connector-survivor lemma follows from the
 finite experiments above.
+
+## Consecutive guarded-L5 → guarded-L6 gate (2026-07-28)
+
+The previously missing finite lineage transition is now certified.  A fresh
+reproduction of the independently audited guarded-L5 selection matched its
+selection stream, ordered point stream, point set, yz state, maximum ordinal,
+ordinal sum, and 4,211 cone rejections exactly.  A deterministic canonical
+parent export then independently rescanned all 34,407,660 parent pairs and
+froze the 8,296-point parent at SHA-256 `86f068ad8de1…`.
+
+The consecutive constructor transformed that parent and completed all 8,295
+L6 stitches in the pinned D2--4 fragile-first order.  It used the complete
+cache-ordinal domain, the historical zero-envelope bitset, global yz freshness,
+full-prefix legality, and exact old--new/same-word new--new rejection in
+`J=11/3` and `J=348/275`, with no distance or endpoint cutoff.  The resulting
+28,804-point construction checkpoint has SHA-256 `420950b5dc2b…`.
+
+The independent auditor reproduced every first survivor with fresh optimized
+and reference legality memos.  It then reconstructed the natural walk and
+checked all 414,820,806 unordered pairs.  There are no repeated points and no
+collinear triples.  Exactly 246 guarded-cone pairs remain: 242 in `J=11/3`
+and four in `J=348/275`; every one is an inherited transformed-parent anchor
+pair.  The walk SHA-256 is `1cacf0b2c073…`, and the compact terminal certificate
+is `design/guarded-L5-to-L6-audit-summary.json`.
+
+This closes the finite consecutive-transition gate and proves that the output
+has exactly the same two-cone invariant needed to initialize guarded L7.  It
+does not prove that all reachable guarded states have successors.
+
+The exact all-choice follow-up is now complete.  An atomized checker preserved
+whole-word correlation while memoizing only predicates that depend on one
+candidate point or one exact interior-pair direction.  Across 32 disjoint
+sealed shards it classified all 756,512,535 canonical word occurrences at all
+8,295 realized prefixes.  The merger and independent compact summarizer
+reloaded every shard, reproduced every first winner, and found:
+
+- **minimum 71 survivors**, uniquely at construction rank 4,473 (71 of 5,257
+  words at gap 1,958, parent step 113);
+- median 1,750; maximum 198,431;
+- 136,317,832 surviving word occurrences in total;
+- merged artifact SHA-256
+  `a69e490c544f65f51bdb178b27cd92b8ad359cb01af52de96c3b9cc796031aa2`;
+- compact committed summary SHA-256
+  `b49632699f6c0c3bcad43b8282d061ffc01cdbaeb013b98d8e0d9f80eaeadb77`.
+
+This proves finite local slack at every prefix of this chronology, not
+availability after an alternate choice or on every reachable state.  See
+`design/GUARDED-L5-L6-TRANSITION.md` and
+`design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md` for the proof ledger and certificate
+boundary.
+
+## Fractional backward-ghost tail (2026-07-28)
+
+The reported silent-reentry localization is now proved directly.  The exact
+inverse has infinity norm `4/9`; radius-eight controls therefore preserve the
+cube `[-72/5,72/5]^3`.  Integrality can break at most once, and every integral
+ghost lies at one of `29^3 = 24,389` spatial sites before phase/history labels.
+An indefinitely extended history may instead remain integral throughout, a
+boundary omitted by the informal version of the claim.
+
+The fractional tail is not harmless and cannot be collapsed by bounded spatial
+state alone.  Put `h=(0,1,0)`, `N=9M^-1`, `v_n=N^n h`, and
+`y_n=M^-n h=v_n/9^n`.  Every `y_n` is bounded and nonintegral.  The integer
+lattice line through zero and `v_n` contains `y_n` and no `y_m` for `m!=n`.
+Projective repetition would force the quotient of the two non-x eigenvalues to
+be a root of unity, but `u+u^-1=-17/9`, a rational non-algebraic-integer
+contradiction.  Hence bounded fractional ghosts have infinite exact
+lattice-line incidence type.
+
+This is a theorem for arbitrary lattice lines on an abstract zero-control
+inverse branch, not a reachable-secants theorem for the correlated ordered
+walk.  It rules out a finite phase/spatial quotient and sharpens the remaining
+positive obligation to reachable-birth exclusion or exact promotion.  The
+proof and finite regression are `design/FRACTIONAL-GHOST-TAIL.md` and
+`design/fractional_ghost_tail_certificate.py`.
+
+## Coefficient-nine affine merge refuted (2026-07-28)
+
+The reported counterexample recurrence has been independently audited and is
+now a theorem.  At indices `(191649,191677,191685)`, the adjacent chords of
+`R_n=W_n+9W_(2n)+81W_(5n)` are
+
+```text
+(3759,5306,2807)=7(537,758,401),
+(1074,1516,802)=2(537,758,401),
+```
+
+so the three exact reported vertices are collinear.  If
+`i_(k+1)=2401i_k+74000`, then `(i_k)_7=142 5^(4k+2) 13`.  Multiplying by two
+and five gives repeated runs of base-7 digits four and one, respectively.  In
+the three exact morphism automata, inserting four more repeated digits returns
+the state immediately before the fixed low suffix.  The relevant factors of
+length 36, 72, and 180 are therefore identical for every `k`, so the same two
+chords occur at offsets `(0,28,36)` forever.
+
+This proves infinitely many bad triples and supersedes the clean 30,001-vertex
+prefix and coefficient-nine modular diagnostics.  It refutes this coefficient,
+not every possible weighted merge.  The all-depth proof and independent
+`O(log n)` evaluator are in
+`design/affine/C9-INFINITE-COUNTEREXAMPLE.md` and
+`design/affine/c9_infinite_counterexample.py`.

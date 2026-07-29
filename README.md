@@ -15,7 +15,7 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 |---|---|
 | **311,737-step walk, no 3 collinear** (124-move menu) | verified (parallel) + SHA-256 c8cc3728…, `gate2-193-L8.txt` (level 8, proof-orbit constructor) |
 | Affine laboratory `P_n=(W_n,W_{2n},W_{5n})` in ℤ⁹ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim and projection to ℤ³ both open |
-| Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim open |
+| Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | **refuted:** exact bad triple `(191649,191677,191685)` extends to the proved infinite family `i_(k+1)=2401i_k+74000`, offsets `(0,28,36)` |
 | 100,358-step walk (v1 record) | verified + SHA-256 c8477b01…, `gate-193-L7.txt` |
 | 28,271-step walk (earlier record) | verified + SHA-256 certified, `amplified-193-28271.txt` |
 | Exact maxima for small menus: **20** (±e₁,±e₂,±e₃), 14, 7; **3** in 2D | proven by exhaustive search |
@@ -37,10 +37,12 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 | Strict zero-`T`, no-new-yz L5 construction | exact independent terminal certificate: all 2,457 first-survivor choices and the complete 8,268-point natural-order chain are verified; this is one finite orbit, not an all-level availability theorem |
 | Primary strict zero-`T`, no-new-yz L6 | exact terminal finite certificate: all 8,267 first-survivor choices and the complete 28,665-point ordered chain verified, including all 410,826,780 terminal pairs |
 | Independently audited two-cone guarded L5 | all 2,457 stitches and 34,407,660 terminal pairs checked; 4,211 guard rejections reproduced, zero connector-born guarded-cone secants, and zero triples; two cones and one finite orbit only |
-| Independently audited two-cone guarded L6 | all 8,267 stitches and 414,014,700 terminal pairs checked; 17,087 guard rejections reproduced, zero new guarded-cone secants, and zero triples; it starts from ordinary primary L5, so this is not a consecutive guarded-L5-to-L6 induction |
+| Independently audited two-cone guarded L6 | all 8,267 stitches and 414,014,700 terminal pairs checked; 17,087 guard rejections reproduced, zero new guarded-cone secants, and zero triples; it starts from ordinary primary L5, so this lineage alone is not consecutive |
+| **Consecutive guarded L5 → guarded L6** | **exact finite certificate:** all 8,295 stitches, 28,804 points, and 414,820,806 terminal pairs passed an independent audit; an exhaustive census classified all 756,512,535 canonical connector occurrences and found at least **71** survivors at every realized prefix; one chronology, not induction |
 | Exact short-return affine holonomy | 746,496 correlated `8 -> 16 -> 8` role pairs give 3,136 maps, 2,094 fixed points, and 47,942 additional abstract guard polynomials; reachability, secant birth, and availability remain unproved |
 | Exact primary-L5 role-first birth census | all 34,175,778 pairs partitioned into 65 sealed chunks; 4,597 matched births yield only three actual initial-phase connector effects and kill no recorded selected word; compact merger does not independently recompute domain membership |
 | Exact carried-ghost depth-0/1 probe | 48,237,501 tagged token occurrences checked with no distance cutoff: 97 act immediately, 15 first act one level later, and 48,237,389 remain silent; full correlated states are all singleton, so this is not stabilization or a tail lemma |
+| **Fractional backward-ghost theorem** | `||M^-1||∞=4/9` gives the reported 24,389-site integral suffix, but bounded fractional tails have infinite exact lattice-line incidence type; this refutes any phase/spatial quotient that collapses them without a reachable-birth restriction |
 | Two-spectrum birth exclusion | refuted at the seed: anchor pair 30/33 already has `J=11/3`, so a direction-only ban on `{11/3,348/275}` cannot be imposed without exact inherited-line promotion |
 | Exact short-connector closure | all 552 legal length-2 and 56,516 legal length-3 words have empty greatest fixed point after nine pruning rounds; every recurrent closed policy must use length 4 or 5, while mixed-length Perron growth exactly 3 remains open |
 | Exact latent non-x re-entry | under the same fixed actions, an explicit family of integer lattice lines has zero full candidate mask for arbitrarily many `8 -> 16 -> 8` cycles and then reappears; no reachable placed-point birth is proved |
@@ -181,11 +183,14 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/lattice_t_l5_cone_guard_audit.py` | Independent exact guarded-L5 firstness and all-pairs certificate (`lattice-T-L5-cone-guard-audit-summary.json`) |
 | `design/lattice_t_l6_continuation.py`, `design/lattice_t_l6_audit.py` | Primary chronological L6 constructor and completed independent terminal auditor |
 | `design/lattice_t_l6_cone_birth_guard.py`, `design/lattice_t_l6_cone_guard_audit.py` | Separate no-new-two-cone L6 selector and completed fail-closed audit (`lattice-T-L6-cone-guard-audit-summary.json`) |
+| `design/guarded_l5_l6_common.py`, `design/guarded_l5_to_l6.py`, `design/audit_guarded_l5_to_l6.py` | Deterministic sole-parent export, consecutive guarded-L5→L6 constructor, and independent firstness/all-pairs certificate (`guarded-L5-to-L6-audit-summary.json`) |
+| `design/exhaustive_guarded_l5_l6_census.py`, `design/summarize_guarded_l5_l6_census.py` | Exact 756,512,535-occurrence all-choice census and compact verifier (`guarded-L5-to-L6-survivor-census-summary.json`); finite minimum 71 on the realized chronology |
 | `design/lattice_t_short_return_holonomy.py` | Exact correlated short-return affine/guard census (`lattice-T-short-return-holonomy-zero-8-16-summary.json`) |
 | `design/lattice_t_role_first_holonomy_reachability.py`, `design/lattice_t_role_first_l5_range_merge.py` | Complete 65-chunk primary-L5 role/Pluecker census and compact integrity merge (`lattice-T-role-first-L5-merged-summary.json`) |
 | `design/lattice_t_birth_shell_transition_v2.py` | Reviewed five-corridor chronological raw-mask census; terminal L6 pins are available, but this census has not been run |
 | `design/ordered_path_matched_transition_experiment.py`, `design/ordered_path_near_state_ablation.py` | Exact matched-state phase-A census (literal classes all singleton) and reviewed poison-blind near-state ablation checker; the ablation census has not been run |
 | `design/correlated_ghost_depth_probe.py` | Exact three-endpoint depth-0/1 carried-token census (`correlated-ghost-depth-probe-summary.json`) |
+| `design/FRACTIONAL-GHOST-TAIL.md`, `design/fractional_ghost_tail_certificate.py` | Proof of the bounded one-break integral suffix and the infinite exact incidence type of bounded fractional tails |
 | `design/POLICY-WEIGHTED-CONTACT-LYAPUNOV.md` | Deterministic fractional Bellman extraction theorem and the still-missing reachable-contact-zeta obligations |
 | `design/PAUSE-STATE-2026-07-18.md` | Historical checkpoint hashes and resume gates from before the completed L6 audits |
 | `design/lattice_t_birth_shell_mask_experiment.py` | Exact finite external-geometric L5/induced-L6 owner-frame shell census (`lattice-T-L5-L6-birth-shell-mask-summary.json`); not chronological L6 transfer |
@@ -200,7 +205,7 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/l9_age2_transition_stabilization.py` | Observed transition-refinement audit for the L9 tagged frontier (`l9-age2-transition-stabilization-summary.json`) |
 | `design/FAR-SECANT-RANK-LEMMA.md` | Referee-grade far-frontier algebra, quotient/envelope obligations, and greatest-fixed-point target |
 | `design/WEAK-ABELIAN-LIFT.md` | Exact word lift, literature check, and the dimension-three projection obstruction |
-| `design/affine/` | Reproducible affine candidate, prefix checker, base-7 recurrence, and exact C=9 modular obstruction |
+| `design/affine/` | Higher-dimensional affine laboratory, historical prefix/modular checks, and the proved infinite `C=9` counterexample family (`C9-INFINITE-COUNTEREXAMPLE.md`) |
 | `results/`, `collar_multiplicity4.json`, `wsw_sameword.pkl` | Data artifacts (large binaries are local-only, rebuildable) |
 | `viz/` | The website ([erdos-193.q5m.io](https://erdos-193.q5m.io)) |
 | `REPORT.md` | **The full research log** — every result, refutation and correction, in order |
@@ -504,15 +509,13 @@ imports; the exact all-descendant kernel by itself is noncontracting.
 
 The product candidate `P_n=(W_n,W_{2n},W_{5n})` in `Z^9` is only a
 higher-dimensional test bed; no collinearity-faithful integer projection is
-proved.  A direct weighted merge,
-`R_n=W_n+9W_{2n}+81W_{5n}` in `Z^3`, is now an explicit dimension-correct
-finite-menu candidate and has an exact clean prefix of 30,001 vertices.
-Coefficients 3 through 8 all have exact counterexamples, so the `C=9` prefix is
-evidence, not a stable projection theorem.  Its missing lemma is zero exclusion
-for a projected base-7 defect system.  The coefficient-specific modular audit
-compresses the first two filters to 12 and 360 correction states, but proves
-their natural 26,244- and 787,320-state lifts are primitive; a fixed-modulus
-zero-SCC proof is therefore closed.  See `design/affine/README.md` and
+proved.  The direct weighted merge
+`R_n=W_n+9W_{2n}+81W_{5n}` in `Z^3` is now refuted.  Its first certified bad
+triple is `(191649,191677,191685)`, and the exact base-7 automaton cycle proves
+that `(i_k,i_k+28,i_k+36)` is bad for every `k`, where
+`i_(k+1)=2401i_k+74000`.  Thus the clean 30,001-vertex prefix and the historical
+12-/360-state modular filters did not indicate an infinite theorem.  See
+`design/affine/C9-INFINITE-COUNTEREXAMPLE.md`, `design/affine/README.md`, and
 `design/WEAK-ABELIAN-LIFT.md`.
 
 The scale-and-rotate orbit remains the much longer verified `Z^3` witness and
@@ -532,8 +535,24 @@ guarded L6 continuation from the ordinary primary L5 base also completed all
 8,267 stitches.  Its independent auditor reproduced 17,087 guard rejections
 and scanned all 414,014,700 pairs of the 28,776-point chain, finding no triple
 and no newly created secant in either cone.  Because that base is not the
-guarded-L5 output, this is another finite orbit certificate, not a consecutive
-guarded-L5-to-guarded-L6 induction.
+guarded-L5 output, that older result by itself was not a consecutive
+transition.
+
+A new run closes this finite lineage mismatch.  It uses the independently
+certified 8,296-point guarded-L5 result as its sole parent, completes all 8,295
+transformed gaps, and produces a 28,804-point guarded L6 walk.  The independent
+checker reproduced every first survivor and scanned all 414,820,806 terminal
+pairs.  Exactly the same 246 guarded-cone pairs remain (242 on `J=11/3`, four
+on `J=348/275`), all inherited anchor--anchor pairs.  The result therefore has
+the same invariant needed to start guarded L7.  The exhaustive all-choice
+follow-up classified all 756,512,535 canonical connector occurrences at the
+8,295 realized prefixes.  Every prefix has at least 71 survivors (median
+1,750; maximum 198,431), so this chronology has substantial finite local
+slack.  It is still one finite orbit and does not prove uniform availability
+on alternate reachable states.  See `design/GUARDED-L5-L6-TRANSITION.md`,
+`design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md`, and the compact certificates
+`design/guarded-L5-to-L6-audit-summary.json` and
+`design/guarded-L5-to-L6-survivor-census-summary.json`.
 
 The reason two cones cannot be advertised as the far theorem is now exact.
 The correlated strict-zero `8 -> 16 -> 8` holonomy census contains 3,136
