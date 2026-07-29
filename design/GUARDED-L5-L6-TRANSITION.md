@@ -215,3 +215,91 @@ certified guarded L5
        + exclusion/control of latent U/V returns
   -> all-level induction
 ```
+
+## Strongest remaining lemma
+
+The finite transition and the fractional-tail theorem isolate the following
+load-bearing universal statement.  For every reachable safe guarded state and
+every connector insertion or cursor import, each exact-zero/fractional-contact
+line must either:
+
+1. belong to a **finite promoted reachable-birth class** closed under every
+   selected correlated transition, with all direct, endpoint, near--deep, and
+   killed-word effects represented exactly; or
+2. satisfy a uniform positive ghost/contact gap that gives a strict finite
+   escape rank.
+
+The union of those promoted and ranked effects must leave at least one exact
+legal connector and a successor satisfying the same assertion.  The
+24,389-site integral suffix is not enough: `FRACTIONAL-GHOST-TAIL.md` proves
+that unrestricted bounded fractional contacts already have infinite incidence
+type.  Thus reachability/birth exclusion is essential, not bookkeeping.
+
+## Deterministic reproduction
+
+The large canonical inputs are local artifacts, deliberately not committed.
+The commands below fail closed unless their bytes have the hashes in the
+preflight section.  From this branch:
+
+```sh
+# Lightweight theorem regressions.
+python3 -B design/fractional_ghost_tail_certificate.py --depth 64 \
+  --output /tmp/fractional-ghost-tail-depth64.json
+python3 -B design/affine/c9_infinite_counterexample.py --depth 64 \
+  --output /tmp/c9-infinite-counterexample-depth64.json
+
+# Deterministic sole-parent export; includes all 34,407,660 parent pairs.
+env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  nice -n 15 python3 -B design/guarded_l5_l6_common.py export-parent \
+  --source /tmp/lattice-T-chronological-L5-cone-guard-reproduced.json \
+  --output /tmp/guarded-L5-parent-canonical-v1.json
+# expected: sha256 86f068ad8de131e68c44710d976bb2bec9b4872a732359540ffe51f5ba4520a7
+
+# Resume until status is construction-complete-audit-pending.
+env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  nice -n 15 python3 -B design/guarded_l5_to_l6.py run \
+  --checkpoint /tmp/guarded-L5-to-L6-construction-v1.json \
+  --max-seconds 600 --max-new-stitches 1000
+# expected terminal source sha256:
+# 420950b5dc2bf01226d314e74389a4db1c3bff02429d993f3542b218f72277d9
+
+# Resume until status is complete.
+env OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 \
+  VECLIB_MAXIMUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  nice -n 15 python3 -B design/audit_guarded_l5_to_l6.py audit \
+  --source /tmp/guarded-L5-to-L6-construction-v1.json \
+  --expected-source-sha256 \
+    420950b5dc2bf01226d314e74389a4db1c3bff02429d993f3542b218f72277d9 \
+  --audit-checkpoint /tmp/guarded-L5-to-L6-audit-checkpoint-v1.json \
+  --output /tmp/guarded-L5-to-L6-audit-v1.json \
+  --walk-output /tmp/guarded-L5-to-L6-walk-v1.txt \
+  --max-seconds 600 --max-work-items 2000
+# expected audit sha256: 965f8af8ed243df271a390edad23ebf9663932a61b85bc81848b8c758061fe36
+# expected walk sha256:  1cacf0b2c07364fdccf2f19ca00ca8710bfda403068e14e14badb98d74280a85
+```
+
+The canonical cache and action sidecar themselves reproduce at
+`da6c8c398257…` and `f75568afab8b…`.  The old action JSON is intentionally not
+an input pin because it embeds runtime filesystem metadata; all four complete
+binary action chunks and the merged sidecar reproduced their historical
+SHA-256 identities.
+
+## Probability assessment
+
+Subjective, low-confidence assessment after this checkpoint:
+
+- **two-cone guard alone proves a universal reachable-state successor theorem:**
+  below `1%`; 47,942 abstract return polynomials outside the guarded spectra
+  and the infinite fractional-incidence obstruction make two cones plainly
+  non-exhaustive;
+- **some strengthened scale-and-rotate promotion/rank policy yields an
+  unconditional theorem without a fundamentally new idea:** about `5%`;
+- **the new consecutive finite transition itself is correct:** above `99.9%`
+  conditional on standard SHA-256 integrity and the reviewed exact arithmetic,
+  because construction firstness and all 414,820,806 terminal pairs were
+  checked independently.
+
+These are research judgments, not mathematical probabilities.  No
+unconditional Erdős #193 theorem is claimed.
