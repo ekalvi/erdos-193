@@ -15,7 +15,7 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 |---|---|
 | **311,737-step walk, no 3 collinear** (124-move menu) | verified (parallel) + SHA-256 c8cc3728…, `gate2-193-L8.txt` (level 8, proof-orbit constructor) |
 | Affine laboratory `P_n=(W_n,W_{2n},W_{5n})` in ℤ⁹ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim and projection to ℤ³ both open |
-| Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim open |
+| Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | **refuted:** exact bad triple `(191649,191677,191685)` extends to the proved infinite family `i_(k+1)=2401i_k+74000`, offsets `(0,28,36)` |
 | 100,358-step walk (v1 record) | verified + SHA-256 c8477b01…, `gate-193-L7.txt` |
 | 28,271-step walk (earlier record) | verified + SHA-256 certified, `amplified-193-28271.txt` |
 | Exact maxima for small menus: **20** (±e₁,±e₂,±e₃), 14, 7; **3** in 2D | proven by exhaustive search |
@@ -204,7 +204,7 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/l9_age2_transition_stabilization.py` | Observed transition-refinement audit for the L9 tagged frontier (`l9-age2-transition-stabilization-summary.json`) |
 | `design/FAR-SECANT-RANK-LEMMA.md` | Referee-grade far-frontier algebra, quotient/envelope obligations, and greatest-fixed-point target |
 | `design/WEAK-ABELIAN-LIFT.md` | Exact word lift, literature check, and the dimension-three projection obstruction |
-| `design/affine/` | Reproducible affine candidate, prefix checker, base-7 recurrence, and exact C=9 modular obstruction |
+| `design/affine/` | Higher-dimensional affine laboratory, historical prefix/modular checks, and the proved infinite `C=9` counterexample family (`C9-INFINITE-COUNTEREXAMPLE.md`) |
 | `results/`, `collar_multiplicity4.json`, `wsw_sameword.pkl` | Data artifacts (large binaries are local-only, rebuildable) |
 | `viz/` | The website ([erdos-193.q5m.io](https://erdos-193.q5m.io)) |
 | `REPORT.md` | **The full research log** — every result, refutation and correction, in order |
@@ -508,15 +508,13 @@ imports; the exact all-descendant kernel by itself is noncontracting.
 
 The product candidate `P_n=(W_n,W_{2n},W_{5n})` in `Z^9` is only a
 higher-dimensional test bed; no collinearity-faithful integer projection is
-proved.  A direct weighted merge,
-`R_n=W_n+9W_{2n}+81W_{5n}` in `Z^3`, is now an explicit dimension-correct
-finite-menu candidate and has an exact clean prefix of 30,001 vertices.
-Coefficients 3 through 8 all have exact counterexamples, so the `C=9` prefix is
-evidence, not a stable projection theorem.  Its missing lemma is zero exclusion
-for a projected base-7 defect system.  The coefficient-specific modular audit
-compresses the first two filters to 12 and 360 correction states, but proves
-their natural 26,244- and 787,320-state lifts are primitive; a fixed-modulus
-zero-SCC proof is therefore closed.  See `design/affine/README.md` and
+proved.  The direct weighted merge
+`R_n=W_n+9W_{2n}+81W_{5n}` in `Z^3` is now refuted.  Its first certified bad
+triple is `(191649,191677,191685)`, and the exact base-7 automaton cycle proves
+that `(i_k,i_k+28,i_k+36)` is bad for every `k`, where
+`i_(k+1)=2401i_k+74000`.  Thus the clean 30,001-vertex prefix and the historical
+12-/360-state modular filters did not indicate an infinite theorem.  See
+`design/affine/C9-INFINITE-COUNTEREXAMPLE.md`, `design/affine/README.md`, and
 `design/WEAK-ABELIAN-LIFT.md`.
 
 The scale-and-rotate orbit remains the much longer verified `Z^3` witness and

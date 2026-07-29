@@ -95,9 +95,12 @@ not a runtime-dependent raw JSON identity.
 
 ### REPORTED / UNAUDITED
 
-All interstitial affine recurrences, q-uniform classifications, and six latent
-U/V families in the task statement remain unaudited here.  None is used by
-this transition.  The fractional 3-adic-tail reduction has now been audited:
+The q-uniform classifications and six latent U/V families in the task
+statement remain unaudited here.  None is used by this transition.  The
+reported `C=9` affine recurrence has now been independently audited and proved:
+`(i_k,i_k+28,i_k+36)` is collinear for every `k`, with
+`i_(k+1)=2401i_k+74000`; see `affine/C9-INFINITE-COUNTEREXAMPLE.md`.  The
+fractional 3-adic-tail reduction has also been audited:
 its bounded/one-break part is proved, while finite spatial classification of
 the fractional tail is refuted without a reachable-birth restriction.
 

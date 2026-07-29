@@ -1,0 +1,110 @@
+{
+  "base_points": [
+    [
+      27958563,
+      26840581,
+      26460032
+    ],
+    [
+      27962322,
+      26845887,
+      26462839
+    ],
+    [
+      27963396,
+      26847403,
+      26463641
+    ]
+  ],
+  "checked_index_stream_sha256": "87afe92e479d1911f9ec0f68729f0a63bba8f8ea5ba491be1379669dd5eab74e",
+  "checked_record_stream_sha256": "0d8bc0d9a402168db4a62de29dc3e56dff69b8e963548a3a9cd93d97c87a9fb4",
+  "coefficient": 9,
+  "collinearity_identity": "2*first_chord = 7*second_chord",
+  "depth_checked": 64,
+  "direct_base_prefix_check": {
+    "direct_prefix_agrees_with_logarithmic_evaluator": true,
+    "prefix_queries_checked": 9,
+    "symbols_expanded": 958425
+  },
+  "first_chord": [
+    3759,
+    5306,
+    2807
+  ],
+  "four_digit_automatic_cycles": [
+    {
+      "four_digit_cycle_verified": true,
+      "initial_repetitions": 2,
+      "multiplier": 1,
+      "offsets_do_not_carry_into_repeated_run": true,
+      "prefix": [
+        1,
+        4,
+        2
+      ],
+      "repeated_digit": 5,
+      "state_after_four_more_repeated_digits": 10,
+      "state_after_prefix": 3,
+      "state_before_suffix": 10,
+      "suffix_digits": 2,
+      "suffix_max": 45,
+      "suffix_min": 10
+    },
+    {
+      "four_digit_cycle_verified": true,
+      "initial_repetitions": 1,
+      "multiplier": 2,
+      "offsets_do_not_carry_into_repeated_run": true,
+      "prefix": [
+        3,
+        1,
+        5
+      ],
+      "repeated_digit": 4,
+      "state_after_four_more_repeated_digits": 4,
+      "state_after_prefix": 7,
+      "state_before_suffix": 4,
+      "suffix_digits": 3,
+      "suffix_max": 238,
+      "suffix_min": 167
+    },
+    {
+      "four_digit_cycle_verified": true,
+      "initial_repetitions": 0,
+      "multiplier": 5,
+      "offsets_do_not_carry_into_repeated_run": true,
+      "prefix": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "repeated_digit": 1,
+      "state_after_four_more_repeated_digits": 4,
+      "state_after_prefix": 4,
+      "state_before_suffix": 4,
+      "suffix_digits": 4,
+      "suffix_max": 425,
+      "suffix_min": 246
+    }
+  ],
+  "index_recurrence": {
+    "base7_closed_form": "142 + 5^(4k+2) + 13 (digit concatenation)",
+    "initial": 191649,
+    "scale": 2401,
+    "translation": 74000
+  },
+  "projected_morphism_parikh_identity_verified_for_all_symbols": true,
+  "proof_boundary": "all-depth result follows from the exact base-7 closed form, no-carry suffix ranges, and four-digit symbol-state cycles; depth is only a regression parameter",
+  "second_chord": [
+    1074,
+    1516,
+    802
+  ],
+  "status": "exact finite regression for a proved infinite C=9 counterexample family",
+  "triple_offsets": [
+    0,
+    28,
+    36
+  ]
+}

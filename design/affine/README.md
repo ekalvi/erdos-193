@@ -1,8 +1,8 @@
 # Affine-decimation route
 
-**Status: the original `Z^9` walk is a higher-dimensional laboratory; a direct
-weighted merge in `Z^3` is now the dimension-correct candidate, with
-triple-freeness open.**  This route is independent of the scale-and-rotate
+**Status: the original `Z^9` walk remains a higher-dimensional laboratory; the
+direct coefficient-nine weighted merge in `Z^3` is refuted by a proved
+infinite family of collinear triples.**  This route is independent of the scale-and-rotate
 connector induction.  A proof about the nine-dimensional product alone would
 not settle Erdos #193, whose ambient lattice is fixed to `Z^3`.
 
@@ -54,9 +54,9 @@ theorem supplies either:
 
 See `../WEAK-ABELIAN-LIFT.md` for the exact projection obstruction.
 
-## Direct weighted merge in `Z^3`
+## Direct weighted merge in `Z^3` (coefficient nine refuted)
 
-A dimension-correct compression is
+The formerly live dimension-correct compression is
 
 ```text
 R_n(C) = W_n + C W_(2n) + C^2 W_(5n) in Z^3.            (A)
@@ -102,14 +102,31 @@ exact all-triples prefix checker.  The first coefficient screen found:
 | 6 | counterexample `(1382,1424,1466)` |
 | 7 | counterexample `(16244,18696,21148)` |
 | 8 | counterexample `(6458,7424,8873)` |
-| 9 | no counterexample through index 30,000; 450,014,999 chords checked |
+| 9 | clean only through index 30,000; refuted at `(191649,191677,191685)` and by the infinite family below |
 
-The full coordinates, hashes, and controls are in
-`weighted-merge-screen.json`.  The `C=9` result is finite evidence only.  For
-any finite prefix, only finitely many projection coefficients are forbidden,
-so coefficient search can manufacture long survivors without producing a
-uniform invariant.  `C=9` should be promoted only if its projected normalized
-defect graph has a finite zero-exclusion or divisibility-descent certificate.
+The original screen coordinates, hashes, and controls are in
+`weighted-merge-screen.json`.  Its `C=9` row was finite evidence only.  The
+exact chords at the first bad triple are
+
+```text
+u=(3759,5306,2807)=7(537,758,401),
+v=(1074,1516,802)=2(537,758,401),
+```
+
+so `2u=7v`.  More strongly, if
+
+```text
+i_0=191649,       i_(k+1)=2401 i_k+74000,
+```
+
+then `(i_k,i_k+28,i_k+36)` is bad for every `k>=0`.  The proof writes
+`(i_k)_7=142 5^(4k+2) 13`; the corresponding factors at multipliers 1, 2, and
+5 are invariant because four repeated base-7 digits return each of the three
+exact morphism states.  See `C9-INFINITE-COUNTEREXAMPLE.md` and
+`c9_infinite_counterexample.py`.
+
+For any finite prefix, only finitely many projection coefficients are
+forbidden, so further blind coefficient search remains unjustified.
 
 The recurrence generator now constructs the exact `C=9` projected correction
 table.  It still has 17,280 minimal Mealy states and 8,074 distinct correction
@@ -117,9 +134,10 @@ vectors--exactly the counts of the full product table.  Ordinary output/state
 minimization therefore gives no simplification; a proof quotient would have to
 use defect geometry, divisibility, or another semantic invariant.
 
-### Coefficient-nine staged modular audit
+### Coefficient-nine staged modular audit (historical diagnostics)
 
-The coefficient itself gives a cheaper *filter*, although not a proof.  Writing
+Before the infinite counterexample was known, the coefficient gave a cheaper
+*filter*, although not a proof.  Writing
 
 ```text
 E = D_1 + 9 D_2 + 81 D_5,
@@ -360,13 +378,14 @@ residues modulo seven.
 More seriously, the normalized graph-directed defect closure may contain zero
 without any finite integer triple attaining zero.  In that case the positive
 margin (6) is false and interval CEGAR will refine forever.  Long repeated
-morphic factors make this a real possibility.  The current data support the
-candidate but do not resolve this obstruction.
+morphic factors make this a real possibility.  The current data support only
+the separate `Z^9` candidate here; the `C=9` merge is refuted.
 
-## Dimension-correct certificate target
+## Former dimension-correct certificate target
 
-For #193 itself, the live automatic target is `C=9` in (A), not the full `Z^9`
-defect.  Generate the projected correction table
+The following was the proposed `C=9` certificate target before that candidate
+was refuted.  It is retained to document why the finite modular evidence did
+not imply a theorem.  The projected correction table is
 
 ```text
 h_9 = h_1 + 9 h_2 + 81 h_5
@@ -393,5 +412,5 @@ Unlike the product certificate, this graph cannot assume the compact gap range
 primitive lifts cannot themselves supply the invariant.  A non-descent
 recurrent component whose nested rational sets keep zero would refute a
 uniform-margin proof and force a different arithmetic ranking.  The clean
-30,001-vertex prefix does not rule out that obstruction; the failures for
-`C=3,...,8` show that projection cancellation is real.
+30,001-vertex prefix did not rule out that obstruction; the proved infinite
+`C=9` family now shows directly that projection cancellation is real.

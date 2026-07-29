@@ -1189,3 +1189,29 @@ walk.  It rules out a finite phase/spatial quotient and sharpens the remaining
 positive obligation to reachable-birth exclusion or exact promotion.  The
 proof and finite regression are `design/FRACTIONAL-GHOST-TAIL.md` and
 `design/fractional_ghost_tail_certificate.py`.
+
+## Coefficient-nine affine merge refuted (2026-07-28)
+
+The reported counterexample recurrence has been independently audited and is
+now a theorem.  At indices `(191649,191677,191685)`, the adjacent chords of
+`R_n=W_n+9W_(2n)+81W_(5n)` are
+
+```text
+(3759,5306,2807)=7(537,758,401),
+(1074,1516,802)=2(537,758,401),
+```
+
+so the three exact reported vertices are collinear.  If
+`i_(k+1)=2401i_k+74000`, then `(i_k)_7=142 5^(4k+2) 13`.  Multiplying by two
+and five gives repeated runs of base-7 digits four and one, respectively.  In
+the three exact morphism automata, inserting four more repeated digits returns
+the state immediately before the fixed low suffix.  The relevant factors of
+length 36, 72, and 180 are therefore identical for every `k`, so the same two
+chords occur at offsets `(0,28,36)` forever.
+
+This proves infinitely many bad triples and supersedes the clean 30,001-vertex
+prefix and coefficient-nine modular diagnostics.  It refutes this coefficient,
+not every possible weighted merge.  The all-depth proof and independent
+`O(log n)` evaluator are in
+`design/affine/C9-INFINITE-COUNTEREXAMPLE.md` and
+`design/affine/c9_infinite_counterexample.py`.
