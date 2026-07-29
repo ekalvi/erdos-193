@@ -1164,3 +1164,28 @@ independent implementation is resumable but too slow to complete as written,
 so no exact all-choice minimum is claimed.  See
 `design/GUARDED-L5-L6-TRANSITION.md` for the proof ledger and certificate
 boundary.
+
+## Fractional backward-ghost tail (2026-07-28)
+
+The reported silent-reentry localization is now proved directly.  The exact
+inverse has infinity norm `4/9`; radius-eight controls therefore preserve the
+cube `[-72/5,72/5]^3`.  Integrality can break at most once, and every integral
+ghost lies at one of `29^3 = 24,389` spatial sites before phase/history labels.
+An indefinitely extended history may instead remain integral throughout, a
+boundary omitted by the informal version of the claim.
+
+The fractional tail is not harmless and cannot be collapsed by bounded spatial
+state alone.  Put `h=(0,1,0)`, `N=9M^-1`, `v_n=N^n h`, and
+`y_n=M^-n h=v_n/9^n`.  Every `y_n` is bounded and nonintegral.  The integer
+lattice line through zero and `v_n` contains `y_n` and no `y_m` for `m!=n`.
+Projective repetition would force the quotient of the two non-x eigenvalues to
+be a root of unity, but `u+u^-1=-17/9`, a rational non-algebraic-integer
+contradiction.  Hence bounded fractional ghosts have infinite exact
+lattice-line incidence type.
+
+This is a theorem for arbitrary lattice lines on an abstract zero-control
+inverse branch, not a reachable-secants theorem for the correlated ordered
+walk.  It rules out a finite phase/spatial quotient and sharpens the remaining
+positive obligation to reachable-birth exclusion or exact promotion.  The
+proof and finite regression are `design/FRACTIONAL-GHOST-TAIL.md` and
+`design/fractional_ghost_tail_certificate.py`.

@@ -35,6 +35,16 @@ proves that all future `S`-pairs are images of the finite inherited base set,
 
 This proves inheritance, not non-emptiness of the guarded connector domain.
 
+**Fractional backward-ghost obstruction.**  The reported one-break reduction
+is correct: `||M^-1||∞=4/9`, the invariant radius is `72/5`, and an integral
+suffix has 24,389 possible spatial sites.  It does not make the fractional tail
+harmless or finite-state.  The bounded ghosts
+`y_n=M^-n(0,1,0)=N^n(0,1,0)/9^n` have pairwise distinct lattice-line incidence
+types: the integer line through `0` and `N^n(0,1,0)` contains `y_n` and no
+`y_m`, `m!=n`.  Nonperiodicity follows from `u+u^-1=-17/9` for the non-x
+eigenvalue ratio.  See `FRACTIONAL-GHOST-TAIL.md`.  This is an unrestricted
+incidence no-go, not a reachable-birth theorem.
+
 ### CERTIFIED FINITE
 
 The sole parent is the independently certified two-cone guarded L5 lineage on
@@ -85,9 +95,11 @@ not a runtime-dependent raw JSON identity.
 
 ### REPORTED / UNAUDITED
 
-All interstitial affine recurrences, q-uniform classifications, six latent
-U/V families, and the fractional 3-adic-tail reduction in the task statement
-remain unaudited here.  None is used by this transition.
+All interstitial affine recurrences, q-uniform classifications, and six latent
+U/V families in the task statement remain unaudited here.  None is used by
+this transition.  The fractional 3-adic-tail reduction has now been audited:
+its bounded/one-break part is proved, while finite spatial classification of
+the fractional tail is refuted without a reachable-birth restriction.
 
 ### CERTIFIED FINITE — consecutive transition (new)
 
@@ -194,7 +206,7 @@ certified guarded L5
   -> OPEN: exhaustive all-choice census (finite reporting obligation)
   -> optional adversarial guarded L6 -> L7 test
   -> CURRENT THEOREM GAP: universal reachable-state non-emptiness
-       requires finite/classifiable fractional tails
+       requires reachable-birth exclusion/promotion for fractional tails
        + all reachable line births
        + unrelated-cursor imports
        + exclusion/control of latent U/V returns
