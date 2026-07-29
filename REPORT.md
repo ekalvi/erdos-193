@@ -1131,3 +1131,36 @@ analytic obligation is a correlation-preserving reachable-contact zeta that
 charges births, silent zero-mask returns, current joins, and cursor imports.
 No unconditional theorem or uniform connector-survivor lemma follows from the
 finite experiments above.
+
+## Consecutive guarded-L5 → guarded-L6 gate (2026-07-28)
+
+The previously missing finite lineage transition is now certified.  A fresh
+reproduction of the independently audited guarded-L5 selection matched its
+selection stream, ordered point stream, point set, yz state, maximum ordinal,
+ordinal sum, and 4,211 cone rejections exactly.  A deterministic canonical
+parent export then independently rescanned all 34,407,660 parent pairs and
+froze the 8,296-point parent at SHA-256 `86f068ad8de1…`.
+
+The consecutive constructor transformed that parent and completed all 8,295
+L6 stitches in the pinned D2--4 fragile-first order.  It used the complete
+cache-ordinal domain, the historical zero-envelope bitset, global yz freshness,
+full-prefix legality, and exact old--new/same-word new--new rejection in
+`J=11/3` and `J=348/275`, with no distance or endpoint cutoff.  The resulting
+28,804-point construction checkpoint has SHA-256 `420950b5dc2b…`.
+
+The independent auditor reproduced every first survivor with fresh optimized
+and reference legality memos.  It then reconstructed the natural walk and
+checked all 414,820,806 unordered pairs.  There are no repeated points and no
+collinear triples.  Exactly 246 guarded-cone pairs remain: 242 in `J=11/3`
+and four in `J=348/275`; every one is an inherited transformed-parent anchor
+pair.  The walk SHA-256 is `1cacf0b2c073…`, and the compact terminal certificate
+is `design/guarded-L5-to-L6-audit-summary.json`.
+
+This closes the finite consecutive-transition gate and proves that the output
+has exactly the same two-cone invariant needed to initialize guarded L7.  It
+does not prove that all reachable guarded states have successors.  An exact
+all-choice census would require 756,512,535 word occurrences; the literal
+independent implementation is resumable but too slow to complete as written,
+so no exact all-choice minimum is claimed.  See
+`design/GUARDED-L5-L6-TRANSITION.md` for the proof ledger and certificate
+boundary.

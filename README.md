@@ -37,7 +37,8 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 | Strict zero-`T`, no-new-yz L5 construction | exact independent terminal certificate: all 2,457 first-survivor choices and the complete 8,268-point natural-order chain are verified; this is one finite orbit, not an all-level availability theorem |
 | Primary strict zero-`T`, no-new-yz L6 | exact terminal finite certificate: all 8,267 first-survivor choices and the complete 28,665-point ordered chain verified, including all 410,826,780 terminal pairs |
 | Independently audited two-cone guarded L5 | all 2,457 stitches and 34,407,660 terminal pairs checked; 4,211 guard rejections reproduced, zero connector-born guarded-cone secants, and zero triples; two cones and one finite orbit only |
-| Independently audited two-cone guarded L6 | all 8,267 stitches and 414,014,700 terminal pairs checked; 17,087 guard rejections reproduced, zero new guarded-cone secants, and zero triples; it starts from ordinary primary L5, so this is not a consecutive guarded-L5-to-L6 induction |
+| Independently audited two-cone guarded L6 | all 8,267 stitches and 414,014,700 terminal pairs checked; 17,087 guard rejections reproduced, zero new guarded-cone secants, and zero triples; it starts from ordinary primary L5, so this lineage alone is not consecutive |
+| **Consecutive guarded L5 → guarded L6** | **new exact finite certificate:** the independently audited guarded-L5 parent completed all 8,295 L6 stitches; all 28,804 points and 414,820,806 terminal pairs passed an independent audit, with exactly the same 246 inherited guarded-cone pairs and no connector-born pair; one transition, not induction |
 | Exact short-return affine holonomy | 746,496 correlated `8 -> 16 -> 8` role pairs give 3,136 maps, 2,094 fixed points, and 47,942 additional abstract guard polynomials; reachability, secant birth, and availability remain unproved |
 | Exact primary-L5 role-first birth census | all 34,175,778 pairs partitioned into 65 sealed chunks; 4,597 matched births yield only three actual initial-phase connector effects and kill no recorded selected word; compact merger does not independently recompute domain membership |
 | Exact carried-ghost depth-0/1 probe | 48,237,501 tagged token occurrences checked with no distance cutoff: 97 act immediately, 15 first act one level later, and 48,237,389 remain silent; full correlated states are all singleton, so this is not stabilization or a tail lemma |
@@ -181,6 +182,7 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/lattice_t_l5_cone_guard_audit.py` | Independent exact guarded-L5 firstness and all-pairs certificate (`lattice-T-L5-cone-guard-audit-summary.json`) |
 | `design/lattice_t_l6_continuation.py`, `design/lattice_t_l6_audit.py` | Primary chronological L6 constructor and completed independent terminal auditor |
 | `design/lattice_t_l6_cone_birth_guard.py`, `design/lattice_t_l6_cone_guard_audit.py` | Separate no-new-two-cone L6 selector and completed fail-closed audit (`lattice-T-L6-cone-guard-audit-summary.json`) |
+| `design/guarded_l5_l6_common.py`, `design/guarded_l5_to_l6.py`, `design/audit_guarded_l5_to_l6.py` | Deterministic sole-parent export, consecutive guarded-L5→L6 constructor, and independent firstness/all-pairs certificate (`guarded-L5-to-L6-audit-summary.json`) |
 | `design/lattice_t_short_return_holonomy.py` | Exact correlated short-return affine/guard census (`lattice-T-short-return-holonomy-zero-8-16-summary.json`) |
 | `design/lattice_t_role_first_holonomy_reachability.py`, `design/lattice_t_role_first_l5_range_merge.py` | Complete 65-chunk primary-L5 role/Pluecker census and compact integrity merge (`lattice-T-role-first-L5-merged-summary.json`) |
 | `design/lattice_t_birth_shell_transition_v2.py` | Reviewed five-corridor chronological raw-mask census; terminal L6 pins are available, but this census has not been run |
@@ -532,8 +534,20 @@ guarded L6 continuation from the ordinary primary L5 base also completed all
 8,267 stitches.  Its independent auditor reproduced 17,087 guard rejections
 and scanned all 414,014,700 pairs of the 28,776-point chain, finding no triple
 and no newly created secant in either cone.  Because that base is not the
-guarded-L5 output, this is another finite orbit certificate, not a consecutive
-guarded-L5-to-guarded-L6 induction.
+guarded-L5 output, that older result by itself was not a consecutive
+transition.
+
+A new run closes this finite lineage mismatch.  It uses the independently
+certified 8,296-point guarded-L5 result as its sole parent, completes all 8,295
+transformed gaps, and produces a 28,804-point guarded L6 walk.  The independent
+checker reproduced every first survivor and scanned all 414,820,806 terminal
+pairs.  Exactly the same 246 guarded-cone pairs remain (242 on `J=11/3`, four
+on `J=348/275`), all inherited anchor--anchor pairs.  The result therefore has
+the same invariant needed to start guarded L7.  This is the first certified
+consecutive guarded-L5-to-guarded-L6 transition, but it is still one finite
+orbit and does not prove uniform connector availability.  See
+`design/GUARDED-L5-L6-TRANSITION.md` and
+`design/guarded-L5-to-L6-audit-summary.json`.
 
 The reason two cones cannot be advertised as the far theorem is now exact.
 The correlated strict-zero `8 -> 16 -> 8` holonomy census contains 3,136

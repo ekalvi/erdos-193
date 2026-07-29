@@ -89,11 +89,61 @@ All interstitial affine recurrences, q-uniform classifications, six latent
 U/V families, and the fractional 3-adic-tail reduction in the task statement
 remain unaudited here.  None is used by this transition.
 
+### CERTIFIED FINITE — consecutive transition (new)
+
+The pinned guarded-L5 state has a legal first survivor at all 8,295 guarded-L6
+stitches.  The constructor completed with 28,804 placed points.  A separate
+checker then reproduced every first choice with fresh fast/reference memos and
+scanned all 414,820,806 terminal pairs.
+
+- construction source: 22,851,024 bytes, SHA-256
+  `420950b5dc2bf01226d314e74389a4db1c3bff02429d993f3542b218f72277d9`;
+- construction selection stream SHA-256:
+  `d92fd868c5aa76b678953741545e9c6f631ab7bfc9b9fb928dc44ebd166d911f`;
+- independent terminal summary: `design/guarded-L5-to-L6-audit-summary.json`,
+  SHA-256
+  `965f8af8ed243df271a390edad23ebf9663932a61b85bc81848b8c758061fe36`;
+- natural 28,804-point walk: 442,351 bytes, SHA-256
+  `1cacf0b2c07364fdccf2f19ca00ca8710bfda403068e14e14badb98d74280a85`;
+- natural point-stream SHA-256:
+  `7c091257cd2f02c683a6ec77a575c428df3eb09ce2bfed339cd4cd97ea450a70`;
+- no repeated point and no collinear triple;
+- exactly 246 guarded-cone pairs (`242` in `J=11/3`, `4` in
+  `J=348/275`), all transformed parent-anchor pairs; zero connector-born
+  guarded-cone pairs;
+- selected ordinals: minimum `1`, maximum `9,325`, sum `387,776`; the exact
+  distribution is committed in the terminal summary.
+
+Guarded-cone rejections before the selected words were:
+
+| channel | count |
+|---|---:|
+| old--new anchor, `J=11/3` | 1,548 |
+| old--new anchor, `J=348/275` | 138 |
+| old--new earlier connector, `J=11/3` | 11,707 |
+| old--new earlier connector, `J=348/275` | 266 |
+| same-word new--new, `J=11/3` | 23 |
+| same-word new--new, `J=348/275` | 0 |
+
+The output has exactly the same two-cone, zero-envelope, and global-fresh-yz
+invariant needed to initialize guarded L7.  This is one finite consecutive
+transition, not a uniform `k→k+1` theorem.
+
 ### CONJECTURED
 
-The pinned guarded-L5 state has a legal two-cone guarded survivor at all 8,295
-L6 stitches.  This is the finite claim now being tested.  Even success is not a
-uniform `k→k+1` theorem.
+Every reachable state satisfying this guarded invariant has a guarded
+successor.  The new finite transition does not prove that universal claim.
+
+### CERTIFIED FINITE — incomplete all-choice census
+
+The exact all-choice census has a complete domain of 756,512,535 word
+occurrences.  The literal independent implementation scanned the first 14,976
+words of stitch 0 and found 6,209 survivors before its 600-second checkpoint.
+This is an exact partial-domain statement only.  It does **not** provide the
+requested exact minimum/distribution over all stitches.  Atom-level memoization
+reproduced that prefix exactly and completed stitch 0 experimentally, but that
+optimization is not yet a committed independent certificate.  The terminal
+firstness certificate is unaffected.
 
 ## Frozen L6 preflight
 
@@ -139,11 +189,11 @@ and every unordered terminal point pair.  Its optional `census` mode scans all
 
 ```text
 certified guarded L5
-  -> [current] exact guarded L6 availability on this chronology
-  -> independent firstness + terminal all-pairs audit
-  -> optional exhaustive all-choice census
-  -> adversarial guarded L6 -> L7 test
-  -> universal reachable-state non-emptiness
+  -> DONE: exact guarded L6 availability on this chronology
+  -> DONE: independent firstness + terminal all-pairs audit
+  -> OPEN: exhaustive all-choice census (finite reporting obligation)
+  -> optional adversarial guarded L6 -> L7 test
+  -> CURRENT THEOREM GAP: universal reachable-state non-emptiness
        requires finite/classifiable fractional tails
        + all reachable line births
        + unrelated-cursor imports
