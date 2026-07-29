@@ -19,19 +19,30 @@
   background:hsl(var(--tl-live)/.10);border-color:hsl(var(--tl-live)/.45);
 }
 .tl .files a.pr:hover{border-color:hsl(var(--tl-live))}
+.checkpoint{margin:0 0 18px;padding:14px 16px;border:1px solid hsl(var(--border));
+  border-left:4px solid hsl(var(--tl-sci));border-radius:10px;background:hsl(var(--accent)/.45)}
+.checkpoint b{display:block;margin-bottom:4px}
+.checkpoint p{margin:0;color:hsl(var(--muted-fg));font-size:14.5px;line-height:1.5}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.io</span></a></div>
-    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html" class="cur">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">Proof status</a><a href="walk3d.html">3D</a><a href="progress.html" class="cur">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
   </header>
 
   <h1>Research log</h1>
   <p class="sub">Every result of the programme, in order — the wins, the measurements, and
   the strategies that died honest deaths. Updated with each push; full detail in
   <a href="https://github.com/ekalvi/erdos-193/blob/main/REPORT.md" style="color:hsl(var(--link))">REPORT.md</a>.</p>
+
+  <div class="checkpoint" id="current-checkpoint">
+    <b>Latest checkpoint: exhaustive guarded L5&rarr;L6 finite gate</b>
+    <p>All 8,295 stitches and 414,820,806 terminal pairs pass independently. The complete
+    756,512,535-choice census has exact floor 71 on this chronology. The universal
+    reachable-state birth/promotion lemma remains open; no induction is claimed.</p>
+  </div>
 
   <div class="legend">
     <span>✅ <b>milestone</b> — proven or verified</span>
@@ -156,7 +167,14 @@ const EVENTS = [
   ['dead','💀','Full-menu non-x lifetime rank is impossible','The x-avoiding degenerate-site graph has a 768-vertex SCC, and an exact two-word cycle is proven carried-line-clean for every iterate via a projective invariant J — so the union of all menu actions cannot support a strict non-x lifetime rank (this concerns the fixed cycle; realized birth stays open). Fixed-word and common-potential policies both die exactly at the second L5 stitch, and the length-≤3 greatest fixed point is empty (124→…→2→0), so any recurrent policy needs a length-4 or length-5 word.',['design/nonx_cycle_invariant_certificate.py','design/exact_length3_gfp.py','pr:4']],
   ['ok','✅','Terminal L6 audits: primary and two-cone-guarded','Independent auditors clear both next-scale constructions with no triple: the primary strict-zero-T / fresh-yz L6 (28,665 points, all 410,826,780 pairs) and a two-cone-guarded L6 (28,776 points, all 414,014,700 pairs, 17,087 guard rejections reproduced). Both descend from the ordinary primary L5, so they are two finite orbits, not a consecutive guarded induction.',['design/lattice_t_l6_audit.py','design/lattice_t_l6_cone_guard_audit.py','pr:4']],
   ['sci','🔬','The missing lemma, made precise','Role-first (34,175,778 pairs) and carried-ghost (48,237,501 tokens) censuses sharpen — but do not close — the gap, and an exact fractional-Bellman extraction lemma shows one deterministic connector can be legal for every history given the right averaged bound. Everything still funnels to one wall: a uniform reachable far-secant-birth bound closed under cursor imports.',['design/POLICY-WEIGHTED-CONTACT-LYAPUNOV.md','design/FAR-SECANT-BIRTH-OPERATOR.md','pr:4']],
-  ['live','📍','Current frontier: a uniform reachable far-birth bound (PR #4, in review)','The x-line geometry and the deterministic extraction step are now exact; what remains is the correlation-preserving tail that charges every reachable birth, silent zero-mask return, current join, and cursor import — the single lemma that would turn one selector into an infinite walk.',['design/PAUSE-STATE-2026-07-18.md','pr:4']],
+  ['sci','🔬','Frontier checkpoint: a uniform reachable far-birth bound','The x-line geometry and the deterministic extraction step were exact; the next target became a correlation-preserving tail charging every reachable birth, silent zero-mask return, current join, and cursor import. The later guarded transition below tests one concrete invariant without closing this universal target.',['design/PAUSE-STATE-2026-07-18.md','pr:4']],
+ ]],
+ ['July 29', [
+  ['ok','✅','Consecutive guarded L5→L6 lineage certified','Starting from the independently audited 8,296-point guarded L5 as its sole parent, the guarded selector completes all 8,295 L6 stitches. A separate checker reproduces every first survivor and scans all 414,820,806 terminal pairs of the 28,804-point output: no repeated point, no triple, and exactly the same 246 inherited cone pairs. One consecutive transition, not induction.',['design/GUARDED-L5-L6-TRANSITION.md','design/guarded-L5-to-L6-audit-summary.json','pr:6']],
+  ['dead','💀','Bounded fractional tails defeat a phase-and-position quotient','The inverse map contracts into a bounded radius with 24,389 possible integral sites, but nonintegral ghost tails have infinitely many exact lattice-line incidence types. Any finite proof state must use a reachable-birth restriction, exact promotion, or another rank; bounded spatial state alone cannot work.',['design/FRACTIONAL-GHOST-TAIL.md','design/fractional_ghost_tail_certificate.py','pr:6']],
+  ['dead','💀','The coefficient-9 affine merge is refuted infinitely','The first exact bad triple is (191649,191677,191685). Base-7 automaton cycles prove the same two proportional chords at (iₖ,iₖ+28,iₖ+36) forever, where iₖ₊₁=2401iₖ+74000. This refutes that direct Z³ merge despite its clean 30,001-vertex prefix.',['design/affine/C9-INFINITE-COUNTEREXAMPLE.md','design/affine/c9_infinite_counterexample.py','pr:6']],
+  ['ok','✅','Exhaustive guarded choice census: exact floor 71','All 32 shards classify every one of 756,512,535 canonical connector occurrences at the 8,295 realized prefixes. Every prefix has at least 71 survivors (median 1,750; maximum 198,431), and all first survivors match the earlier independent audit. This proves substantial finite slack on one chronology, not closure under alternate choices.',['design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md','design/guarded-L5-to-L6-survivor-census-summary.json','pr:6']],
+  ['live','📍','Current frontier: reachable birth, promotion and escape','Turn the finite slack into a universal theorem: every newly born, imported or silently returning exact line in every reachable safe state must enter a finite promoted class or have a strict escape rank, while at least one whole connector preserves the invariant. L6→L7 can stress-test this claim, but another finite level alone is not induction.',['design/GUARDED-L5-L6-TRANSITION.md','design/FRACTIONAL-GHOST-TAIL.md','pr:6']],
  ]],
 ];
 // STAMPS-BEGIN
@@ -220,7 +238,11 @@ const STAMPS = {
 "No-new-x-line L5, plus a bounded-range projection CSP": "Jul 19 · 05:18 EDT",
 "Full-menu non-x lifetime rank is impossible": "Jul 19 · 05:18 EDT",
 "Terminal L6 audits: primary and two-cone-guarded": "Jul 19 · 05:18 EDT",
-"The missing lemma, made precise": "Jul 19 · 05:18 EDT"
+"The missing lemma, made precise": "Jul 19 · 05:18 EDT",
+"Consecutive guarded L5→L6 lineage certified": "Jul 29 · 03:03 EDT",
+"Bounded fractional tails defeat a phase-and-position quotient": "Jul 29 · 03:09 EDT",
+"The coefficient-9 affine merge is refuted infinitely": "Jul 29 · 03:19 EDT",
+"Exhaustive guarded choice census: exact floor 71": "Jul 29 · 13:48 EDT"
 };
 // STAMPS-END
 const C = {ok:'--tl-ok', dead:'--tl-dead', sci:'--tl-sci', build:'--tl-build', live:'--tl-live'};

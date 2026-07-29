@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>Background — Problem #193</title>
-<meta name="description" content="Erdős #193, end to end: the concept, the construction, an interactive demo, and the single lemma still standing between it and a full proof.">
+<meta name="description" content="Erdős #193, end to end: the construction, exact finite certificates, refuted shortcuts, and the universal reachable-state lemma still open.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="site.css?v=6">
@@ -50,6 +50,7 @@
   .statuslist li{padding:7px 0 7px 26px;position:relative;border-bottom:1px solid hsl(var(--border));font-size:14.5px}
   .statuslist li::before{position:absolute;left:0;top:7px;font-size:14px}
   .statuslist li.done::before{content:'✅'}
+  .statuslist li.dead::before{content:'⛔'}
   .statuslist li.open::before{content:'🔄'}
   .eq{margin:6px 0 10px;font-size:1.05em;overflow-x:auto}
 </style>
@@ -60,13 +61,13 @@
 </head>
 <body>
 <div class="viz-root"><div class="wrap wide">
-<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">Background</a><a href="theorem.html">The theorem</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html" class="cur">Background</a><a href="theorem.html">Proof status</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
 <h1>Background: the key ideas</h1>
-<p class="sub">A primer on the concepts behind the construction and the conditional theorem — the
-game itself, what&rsquo;s known in two dimensions versus three, and the machinery that makes it
-work: exact integer arithmetic, the enlarge-and-twist matrix, self-similarity, and the one thing
-that can still go wrong. Every number here is a real, exhaustively computed value from the project
+<p class="sub">A primer on the concepts behind the construction and the current proof programme — the
+game itself, what&rsquo;s known in two dimensions versus three, exact integer arithmetic, the
+enlarge-and-twist matrix, and the global connector-safety problem that remains. Every certified
+number is an exhaustively computed value from the project
 (<a href="https://github.com/ekalvi/erdos-193">github.com/ekalvi/erdos-193</a>).</p>
 
 <!-- ============ THE MAP ============ -->
@@ -333,76 +334,74 @@ menu ran <b>eight</b> rounds to a certified <b>311,738</b>-point walk, and the o
 provably runs forever.</p>
 
 <!-- ============ THE REMAINING LEMMA ============ -->
-<h2><span class="n">10 ·</span>The one thing that can go wrong: crowding</h2>
-<p>Because everything already placed is safe forever (step&nbsp;4), the construction can only fail one
-way: a stitch gets stuck — a gap where <em>every</em> legal hop would make three points line up. That
-happens only if too many earlier points are <b>crowded</b> around the gap, throwing off too many
-forbidden lines. So the whole question of "does it run forever?" collapses to one geometric fact about
-the shape:</p>
+<h2 id="global-safety"><span class="n">10 ·</span>The real obstruction: connector legality is global</h2>
+<p>Everything already placed remains safe when the whole level is enlarged, but each <em>new</em>
+connector point must be checked against every pair already in the prefix. A stitch can therefore jam
+without any local crowding: two remote old points can define a secant that passes through an otherwise
+clear candidate site. This is why the former &ldquo;Lemma R&rdquo; reduction to a uniformly lean thread was
+withdrawn. Local sparsity is useful geometry, but it is not an availability theorem.</p>
 <figure>
-<svg viewBox="0 0 900 250">
-  <!-- thread through a ball: OK -->
-  <circle cx="220" cy="125" r="95" fill="var(--ok)" fill-opacity="0.06" stroke="var(--ok)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <path d="M 90 190 C 170 150, 180 100, 250 70 S 340 60, 360 40" fill="none" stroke="var(--walk)" stroke-width="2.4"/>
-  <g fill="var(--stitch)"><circle cx="150" cy="163" r="4"/><circle cx="196" cy="123" r="4"/><circle cx="235" cy="88" r="4"/><circle cx="285" cy="72" r="4"/></g>
-  <text x="220" y="245" text-anchor="middle" class="mut">THREAD — a ball holds only ~radius-many points</text>
-  <text x="220" y="30" text-anchor="middle" style="fill:var(--ok);font-weight:600">what Lemma R claims (always)</text>
-  <!-- blob: bad -->
-  <circle cx="680" cy="125" r="95" fill="var(--danger)" fill-opacity="0.05" stroke="var(--danger)" stroke-opacity="0.5" stroke-width="1.5"/>
-  <g fill="var(--danger)">
-    <circle cx="640" cy="90" r="3.6"/><circle cx="670" cy="85" r="3.6"/><circle cx="700" cy="95" r="3.6"/><circle cx="720" cy="115" r="3.6"/>
-    <circle cx="635" cy="120" r="3.6"/><circle cx="665" cy="120" r="3.6"/><circle cx="695" cy="125" r="3.6"/><circle cx="725" cy="145" r="3.6"/>
-    <circle cx="645" cy="150" r="3.6"/><circle cx="675" cy="155" r="3.6"/><circle cx="705" cy="160" r="3.6"/><circle cx="655" cy="180" r="3.6"/>
-    <circle cx="690" cy="185" r="3.6"/><circle cx="715" cy="175" r="3.6"/><circle cx="660" cy="100" r="3.6"/><circle cx="710" cy="140" r="3.6"/></g>
-  <text x="680" y="245" text-anchor="middle" class="mut">BLOB — a ball fills up, stitches jam</text>
-  <text x="680" y="30" text-anchor="middle" style="fill:var(--danger);font-weight:600">what would kill it</text>
+<svg viewBox="0 0 900 250" role="img" aria-label="A locally clear connector killed by a line through two remote old points">
+  <text x="210" y="28" text-anchor="middle" style="fill:var(--ok);font-weight:600">LOCAL VIEW</text>
+  <rect x="55" y="65" width="310" height="125" rx="18" fill="var(--ok)" fill-opacity=".05" stroke="var(--ok)" stroke-opacity=".45" stroke-dasharray="7 5"/>
+  <path d="M80 150 L135 112 L205 151 L270 101 L340 145" fill="none" stroke="var(--walk)" stroke-width="2.6" stroke-linejoin="round"/>
+  <circle cx="205" cy="151" r="6" fill="var(--stitch)"/>
+  <text x="210" y="220" text-anchor="middle" class="mut">the candidate looks clear nearby</text>
+  <line x1="450" y1="35" x2="450" y2="218" stroke="var(--grid)"/>
+  <text x="680" y="28" text-anchor="middle" style="fill:var(--danger);font-weight:600">EXACT GLOBAL CHECK</text>
+  <rect x="585" y="65" width="190" height="125" rx="18" fill="var(--walk)" fill-opacity=".03" stroke="var(--grid)" stroke-dasharray="7 5"/>
+  <path d="M600 150 L635 112 L680 151 L725 101 L760 145" fill="none" stroke="var(--walk)" stroke-width="2.6" stroke-linejoin="round"/>
+  <line x1="495" y1="220" x2="855" y2="57" stroke="var(--danger)" stroke-width="2.4"/>
+  <circle cx="495" cy="220" r="6" fill="var(--danger)"/><circle cx="855" cy="57" r="6" fill="var(--danger)"/>
+  <circle cx="680" cy="136.3" r="7" fill="var(--surface-1)" stroke="var(--danger)" stroke-width="2.5"/>
+  <path d="M674 130.3 L686 142.3 M686 130.3 L674 142.3" stroke="var(--danger)" stroke-width="2"/>
+  <text x="680" y="220" text-anchor="middle" class="mut">a remote secant kills the same site</text>
 </svg>
-<figcaption>Availability of a legal stitch is, in the data, a clean function of local crowding: bounded
-crowding ⇒ a legal hop always exists. So the construction runs forever <b>if and only if</b> the walk
-stays a thread — never bunching into a blob — at every scale.</figcaption>
+<figcaption>The old endpoints can be arbitrarily far from the pending gap. No fixed-radius point count
+can see every such line; a proof must carry their effect or prove a sound way for it to disappear.</figcaption>
 </figure>
 
-<p style="margin-top:14px"><b>Lemma R</b> is exactly that statement: <em>no matter how large the walk
-grows or where you look, any small ball contains at most about radius-many points (radius^1.10) — the
-walk is a fractal thread, never a blob, forever.</em> Everything else in the proof is done; this one
-lemma is the whole remaining game, and it's the same claim as "our walk really sits on that bottom
-vertex of the triangle in step&nbsp;1."</p>
+<p><b>The strongest finite guard so far.</b> The quadratic direction ratio
+$J=(3y^2-yz+3z^2)/r^2$ is invariant under the enlarge-and-twist matrix. The guarded policy
+&ldquo;grandfathers&rdquo; the finite cone pairs already in its base, then refuses every connector that
+would create a new pair on $J=11/3$ or $J=348/275$. Starting from the independently certified guarded
+level&nbsp;5, that policy completed all 8,295 level-6 stitches. A separate auditor checked all
+28,804 points, all 414,820,806 point pairs, and every first selected word: no triple and no
+connector-born guarded-cone pair.</p>
+<div class="statrow" aria-label="Exhaustive guarded connector census results">
+  <div class="stat"><div class="v">756,512,535</div><div class="k">canonical connector occurrences classified</div></div>
+  <div class="stat"><div class="v">71</div><div class="k">minimum survivors at any realized prefix</div></div>
+  <div class="stat"><div class="v">1,750</div><div class="k">median survivors</div></div>
+  <div class="stat"><div class="v">198,431</div><div class="k">maximum survivors</div></div>
+</div>
+<p class="note">This exhaustive census is a <b>certified finite</b> result on one chronology. It says
+that chronology was never locally forced. It does not ask what happens after choosing one of the
+other survivors, so it cannot be promoted to induction.</p>
 
-<h2><span class="n">11 ·</span>Where it stands</h2>
+<h2 id="current-status"><span class="n">11 ·</span>Where it stands now</h2>
 <ul class="statuslist">
-  <li class="done"><b>Base, inheritance, induction</b> — a triple-free seed exists (certified to
-    311,738 points); enlargement freezes it safe forever; the levels chain by plain induction. <em>Proven.</em></li>
-  <li class="done"><b>No blow-up</b> — the enlarged anchors are provably ≥3 apart at every scale, so
-    crowding can never run away to a blob. Closed by an exhaustive check over all 78,999,838 stitch
-    words. <em>Proven (a loose, but real, bound).</em></li>
-  <li class="done"><b>Exact self-similarity</b> — in the right metric the enlarging matrix is exactly a
-    3× rotation, so the walk is a genuine self-similar fractal (a clean integer identity). <em>Proven.</em></li>
-  <li class="done"><b>No far-tangle</b> — a "spool" coordinate proves the thread can never drift back
-    near far-away parts of itself. <em>Proven.</em></li>
-  <li class="open"><b>Lemma R (the tight bound)</b> — that the thread is <em>uniformly</em> lean at
-    every scale (it threads any ball in about radius-many points, never piling into a blob). It is
-    measured true across the whole 311,738-point walk with a stable constant, and proving it is the sole
-    remaining step. The standard routes to it — the Open Set Condition, a better matrix, a metric
-    separation bound, a local finite-state check — are all now <em>provably closed</em> (see below); what
-    remains is genuinely open.</li>
+  <li class="done"><b>Record and inheritance</b> — a 311,738-point walk is exactly verified;
+    invertible enlargement preserves every old non-collinearity. <em>Proven / certified finite.</em></li>
+  <li class="done"><b>Consecutive guarded L5&rarr;L6 gate</b> — all 8,295 stitches and
+    414,820,806 terminal pairs pass an independent audit. The same finite two-cone invariant is
+    present at the output. <em>Certified finite.</em></li>
+  <li class="done"><b>Complete choice landscape on that path</b> — every one of 756,512,535
+    canonical word occurrences is classified; the exact floor is 71. <em>Certified finite.</em></li>
+  <li class="dead"><b>Two tempting shortcuts are closed</b> — bounded phase/position cannot encode
+    every fractional ghost contact, and the direct coefficient-9 affine merge has a proved infinite
+    family of bad triples. Neither is an infinite construction.</li>
+  <li class="open"><b>Universal reachable-state safety</b> — for every reachable prefix, every
+    newly born, imported or silently returning exact line must enter a finite promoted class or have
+    a strict escape rank; the remaining exact effects must still leave a connector whose successors
+    satisfy the same invariant. <em>Open.</em></li>
 </ul>
-<p class="sub" style="margin-top:14px">In short: <b>Erdős #193 holds — yes — modulo one geometric
-regularity lemma</b> (the walk stays uniformly lean at every scale), with every other piece proven or
-certified by exhaustive computation. A long adversarial, computer-assisted campaign has now <b>mapped the
-whole affirmative program and closed every standard route</b> to that last lemma: it does not follow from
-the Open Set Condition (which <em>provably fails</em> on the connector menu-closure), nor from swapping the
-enlarging matrix (a crystallographic impossibility, via Niven's theorem), nor from a metric separation
-bound (which is <em>exactly zero</em> on the true connector closure), nor from any local finite-state
-verification (a rigorous impossibility — the legal-carry automaton is primitive), nor from information
-theory (the cross-entropy floor is zero), nor from the standard global-analysis toolkit (Fourier decay,
-additive combinatorics, homogeneous dynamics, transversality — each collapses to the same obstruction).
-The unifying reason: collinearity is an <em>exact integer</em> condition (a triple is on a line or it is
-not), and every density, measure, and separation tool is constitutively blind to it. Honest odds: the walk
-almost certainly exists (<b>~85%</b>); a full <em>unconditional</em> proof with currently-known tools is
-<b>under 5%</b> and would need a genuinely new, global argument. (Those numbers are honest working
-estimates, not computed quantities.) The full, referee-checkable statement lives in
-<a href="https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md" style="color:hsl(var(--link))">CONDITIONAL-THEOREM.md</a>;
-the live hunt for that last lemma is on the <a href="progress.html" style="color:hsl(var(--link))">research log</a>.</p>
+<p class="sub" style="margin-top:14px">In short: the project has a long verified record and a
+strong consecutive finite gate with substantial measured slack, but <b>no unconditional solution of
+Erdős&nbsp;#193</b>. The missing quantifier is &ldquo;every reachable history,&rdquo; not merely every
+prefix along one successful history. The referee-facing ledger is in
+<a href="https://github.com/ekalvi/erdos-193/blob/main/design/GUARDED-L5-L6-TRANSITION.md" style="color:hsl(var(--link))">GUARDED-L5-L6-TRANSITION.md</a>;
+the exact census and its proof boundary are in
+<a href="https://github.com/ekalvi/erdos-193/blob/main/design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md" style="color:hsl(var(--link))">EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md</a>.</p>
 
 <footer class="sitefoot">
   <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>

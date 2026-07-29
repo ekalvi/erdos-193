@@ -51,29 +51,26 @@
     Every geometric decision is integer arithmetic that anyone can re-run.
   </p>
 
-  <section class="status" aria-label="Current proof status">
-    <b>Current status: the record is verified; an infinite walk is not proved.</b>
-    <p>The earlier claim that bounded local crowding would guarantee a legal stitch was
-    wrong: a candidate can be killed by a line through two points arbitrarily far away.
-    Since then the project has produced a large batch of exact, machine-checked results
-    &mdash; deeper record constructions, independent audits at the next scales, and a proof
-    that the relevant &ldquo;far-line&rdquo; geometry is finite &mdash; each ruling out a
-    specific shortcut or certifying one more piece. What none of them yet delivers is a
-    single finite rule that provably picks a safe next move for <em>every</em> possible
-    history. That one missing ingredient &mdash; uniform control of distant lines &mdash; is
-    the whole gap between the verified record and an infinite walk.</p>
+  <section class="status" id="current-status" aria-label="Current proof status">
+    <b>Current status: a strong consecutive finite gate is certified; an infinite walk is not proved.</b>
+    <p>The latest exact result starts from the independently audited guarded level&nbsp;5,
+    completes all 8,295 guarded level-6 stitches, and independently checks the resulting
+    28,804 points and all 414,820,806 point pairs. An exhaustive follow-up then classifies
+    all 756,512,535 canonical connector occurrences on that chronology: every realized
+    prefix has at least <b>71</b> legal guarded choices (median 1,750). That is substantial
+    finite slack, but it does not cover the alternate histories created by choosing a
+    different survivor. A separate direct affine proposal with coefficient&nbsp;9 has now
+    been refuted by a proved infinite family of collinear triples.</p>
     <div class="status-grid">
-      <div class="yes"><b>Verified</b>311,737 steps (311,738 vertices), with no repeated
-      point and no three collinear &mdash; every check is exact integer arithmetic. A number
-      of supporting finite results are proved exactly too.</div>
-      <div class="now"><b>Progress</b>Deeper walks and their independent
-      &ldquo;no-three-in-a-line&rdquo; audits are complete at the next scales, and the
-      far-line geometry is proved finite. These confirm the construction keeps working
-      further out.</div>
-      <div class="no"><b>Still missing</b>A finite rule &mdash; a &ldquo;safety
-      controller&rdquo; &mdash; that works for every reachable history and always leaves a
-      legal next move once distant lines are taken into account. Proving such a rule exists
-      (or that none can) is the open problem.</div>
+      <div class="yes"><b>Record verified</b>311,737 steps (311,738 vertices), with no
+      repeated point and no three collinear &mdash; every check uses exact integer
+      arithmetic.</div>
+      <div class="now"><b>Latest finite certificate</b>Guarded L5&rarr;L6 succeeds at all
+      8,295 stitches. The complete 756.5-million-choice census certifies <b>at least 71
+      choices</b> at every prefix &mdash; exact, not sampled or extrapolated.</div>
+      <div class="no"><b>Still missing</b>A finite safety controller that works for
+      <em>every reachable history</em>. It must track or rank newly born, imported and
+      silently returning distant lines while always preserving a legal next choice.</div>
     </div>
   </section>
 
@@ -344,13 +341,14 @@
     killed by a collision or by a secant through <em>any</em> two points already placed,
     including points far from the gap. A successful proof needs a finite, reachable safety
     state that always leaves at least one word outside this exact poison set and whose chosen
-    word leads to another safe state. The state has to remember the realized path exactly
-    nearby, while a separate ranked or contracting summary keeps distant endpoints and
-    secants from piling up. Extensive exact computation has now mapped this out: the
-    near-side geometry is proved finite, and many partial controllers have been certified on
-    real constructions. The piece still missing is that tail control &mdash; a uniform bound
-    showing distant lines can never exhaust the available words &mdash; which would turn one
-    selector into a proof that the walk continues forever.</p>
+    word leads to another safe state. The new census proves this inequality with a floor of
+    71 at every prefix of <em>one</em> certified chronology. The universal quantifier is the
+    gap: a different surviving word creates a different future state. One synchronized
+    x-line channel has a finite exact core, but unrestricted bounded fractional ghost tails
+    have infinitely many exact lattice-line incidence types. A proof must therefore exploit
+    reachable births &mdash; promoting every recurrent exact contact into a closed finite class,
+    or giving all remaining contacts a strict escape rank &mdash; while retaining whole-word
+    correlation and cursor imports.</p>
   </div>
 
   <h2>Why a local view is not enough</h2>
@@ -383,11 +381,12 @@
     can keep every small neighbourhood sparse while remote pairs quietly seal off every
     first move. The potential repair is to carry nearby geometry exactly and summarize
     distant endpoint/secant effects by birth level or scale, with a proved rank or
-    contraction that prevents an unbounded tail from accumulating. Recent exact traces
-    pin down what such a summary must track: distant joins genuinely matter, and a line that
-    looks harmless now can reappear later. So the repair needs a proved tail bound, not just
-    a larger local window &mdash; and that bound is exactly what has not yet been
-    established.</p>
+    contraction that prevents an unbounded tail from accumulating. Recent exact results
+    sharpen this further: distant joins genuinely matter, a line that looks harmless can
+    reappear later, and bounded fractional tails cannot be collapsed by phase and position
+    alone. So the repair needs a reachable birth/promotion theorem, not merely a larger
+    local window. The guarded census shows ample room on one path; proving that room survives
+    throughout a closed family of reachable paths is exactly what remains.</p>
   </div>
 
   <h2>Origin story</h2>
@@ -427,7 +426,7 @@
     proofs, exact finite computations, sampled evidence and conjectures; the exact programs and
     data are published so the important results can be rerun independently.</p>
     <p style="margin-top:8px"><b>By the numbers.</b> More than a week of work since
-    11&nbsp;July&nbsp;2026, <b>120+ commits</b>, <b>190+ code files</b>, and <b>8 construction
+    11&nbsp;July&nbsp;2026, <b>140+ commits</b>, <b>250+ code files</b>, and <b>8 construction
     rounds</b> to the 311,738-point record &mdash; plus many adversarial audits that retired
     attractive but invalid proof claims. Idea credit where it&rsquo;s due: to Amanie, and to
     whoever loaded that dishwasher.</p>
@@ -437,7 +436,7 @@
   <div class="cards">
     <a class="card" href="theorem.html">
       <b>Proof status &amp; remaining lemmas</b>
-      <p>The corrected conditional architecture: what is proved, which former reductions failed, and the exact safety-game and far-tail statements still needed.</p>
+      <p>The guarded finite gate and exhaustive census, the routes now refuted, and the universal reachable-state safety lemma still needed.</p>
     </a>
     <a class="card" href="proof-steps.html">
       <b>Background &amp; key ideas</b>
