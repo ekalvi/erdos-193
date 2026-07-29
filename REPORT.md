@@ -1158,11 +1158,28 @@ is `design/guarded-L5-to-L6-audit-summary.json`.
 
 This closes the finite consecutive-transition gate and proves that the output
 has exactly the same two-cone invariant needed to initialize guarded L7.  It
-does not prove that all reachable guarded states have successors.  An exact
-all-choice census would require 756,512,535 word occurrences; the literal
-independent implementation is resumable but too slow to complete as written,
-so no exact all-choice minimum is claimed.  See
-`design/GUARDED-L5-L6-TRANSITION.md` for the proof ledger and certificate
+does not prove that all reachable guarded states have successors.
+
+The exact all-choice follow-up is now complete.  An atomized checker preserved
+whole-word correlation while memoizing only predicates that depend on one
+candidate point or one exact interior-pair direction.  Across 32 disjoint
+sealed shards it classified all 756,512,535 canonical word occurrences at all
+8,295 realized prefixes.  The merger and independent compact summarizer
+reloaded every shard, reproduced every first winner, and found:
+
+- **minimum 71 survivors**, uniquely at construction rank 4,473 (71 of 5,257
+  words at gap 1,958, parent step 113);
+- median 1,750; maximum 198,431;
+- 136,317,832 surviving word occurrences in total;
+- merged artifact SHA-256
+  `a69e490c544f65f51bdb178b27cd92b8ad359cb01af52de96c3b9cc796031aa2`;
+- compact committed summary SHA-256
+  `b49632699f6c0c3bcad43b8282d061ffc01cdbaeb013b98d8e0d9f80eaeadb77`.
+
+This proves finite local slack at every prefix of this chronology, not
+availability after an alternate choice or on every reachable state.  See
+`design/GUARDED-L5-L6-TRANSITION.md` and
+`design/EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md` for the proof ledger and certificate
 boundary.
 
 ## Fractional backward-ghost tail (2026-07-28)

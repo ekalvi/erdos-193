@@ -149,16 +149,33 @@ transition, not a uniform `k→k+1` theorem.
 Every reachable state satisfying this guarded invariant has a guarded
 successor.  The new finite transition does not prove that universal claim.
 
-### CERTIFIED FINITE — incomplete all-choice census
+### CERTIFIED FINITE — exhaustive all-choice census
 
-The exact all-choice census has a complete domain of 756,512,535 word
-occurrences.  The literal independent implementation scanned the first 14,976
-words of stitch 0 and found 6,209 survivors before its 600-second checkpoint.
-This is an exact partial-domain statement only.  It does **not** provide the
-requested exact minimum/distribution over all stitches.  Atom-level memoization
-reproduced that prefix exactly and completed stitch 0 experimentally, but that
-optimization is not yet a committed independent certificate.  The terminal
-firstness certificate is unaffected.
+The exact atomized checker scanned all **756,512,535** canonical domain-word
+occurrences at all 8,295 realized prefixes.  All 32 disjoint sealed shards were
+reloaded by an independent compact summarizer, matched the merged record stream,
+and partitioned every occurrence by its first outcome channel.
+
+- minimum surviving connector choices: **71**, uniquely at construction rank
+  4,473 (gap 1,958, parent step 113), where 71 of 5,257 words survive;
+- median: 1,750; maximum: 198,431;
+- total surviving word occurrences: 136,317,832;
+- full merged artifact SHA-256:
+  `a69e490c544f65f51bdb178b27cd92b8ad359cb01af52de96c3b9cc796031aa2`;
+- compact committed summary:
+  `design/guarded-L5-to-L6-survivor-census-summary.json`, SHA-256
+  `b49632699f6c0c3bcad43b8282d061ffc01cdbaeb013b98d8e0d9f80eaeadb77`.
+
+Point legality, exact interior-pair line incidence, and old--new cone tests are
+memoized only by arguments on which they mathematically depend; whole-word
+correlation remains intact.  The checker separately verifies all 12,537,146
+canonical domain endpoints, injectivity of packed primitive directions, and
+equality of every first survivor with the pre-existing independent terminal
+audit.  See `EXHAUSTIVE-GUARDED-L5-L6-CENSUS.md`.
+
+This proves substantial finite local slack on this chronology.  It does not
+quantify over prefixes reached by choosing alternate survivors and is not a
+universal successor theorem.
 
 ## Frozen L6 preflight
 
@@ -185,8 +202,9 @@ firstness certificate is unaffected.
 Code hashes are printed by `self-check` and `preflight` and are frozen by the
 first code commit.  The independent auditor must be supplied the exact final
 constructor-checkpoint SHA-256; it rescans every ordinal through every winner
-and every unordered terminal point pair.  Its optional `census` mode scans all
-756,512,535 domain occurrences to obtain the exact survivor distribution.
+and every unordered terminal point pair.  The separate exact atomized census
+checker scans all 756,512,535 domain occurrences and is independently compacted by
+`summarize_guarded_l5_l6_census.py`.
 
 ## Preregistered interpretation
 
@@ -206,7 +224,7 @@ and every unordered terminal point pair.  Its optional `census` mode scans all
 certified guarded L5
   -> DONE: exact guarded L6 availability on this chronology
   -> DONE: independent firstness + terminal all-pairs audit
-  -> OPEN: exhaustive all-choice census (finite reporting obligation)
+  -> DONE: exhaustive all-choice census; finite minimum = 71
   -> optional adversarial guarded L6 -> L7 test
   -> CURRENT THEOREM GAP: universal reachable-state non-emptiness
        requires reachable-birth exclusion/promotion for fractional tails
