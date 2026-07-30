@@ -1232,3 +1232,47 @@ not every possible weighted merge.  The all-depth proof and independent
 `O(log n)` evaluator are in
 `design/affine/C9-INFINITE-COUNTEREXAMPLE.md` and
 `design/affine/c9_infinite_counterexample.py`.
+
+## First 3-adic macrocycle slice (2026-07-29)
+
+The first implementation step in
+`design/UNCONDITIONAL-INDUCTION-PLAN.md` isolates the exact fixed-policy
+`8 -> 16 -> 8` macrocycle without loading constructor artifacts.  For
+primitive line data `(g,mu)`, it checks the affine Pluecker transport and
+contact-residual identity, and proves from the Smith/adjugate arithmetic that
+`gcd(Mg)` is always one of `1,3,9`.
+
+In the 3-adic chart where `g_y` is a unit and `[g]=[x:1:z]`, inverse
+macrotransport is
+
+```text
+(x,z) -> (9x/u,(3-9z)/u),       u=-8-3z.
+```
+
+The `z` map satisfies
+
+```text
+phi(z)-phi(w)=81(z-w)/((-8-3z)(-8-3w)),
+```
+
+so it contracts 3-adic differences by `3^4`, while `x` contracts by `3^2`.
+There is one attracting projective fixed direction over `Z_3`, characterized
+by `x=0` and
+
+```text
+q(g)=3g_y^2-g_y*g_z+3g_z^2=0.
+```
+
+The homogeneous identity `q(N^2g)=81q(g)` gives, for the known latent family,
+`nu_3((g_n)_x)=2n` and `nu_3(q(g_n))=4n+1`.  Thus every fixed residue modulus
+eventually identifies all sufficiently deep latent directions; increasing a
+bounded modulus cannot supply the reveal rank.
+
+The compact census checks all 66,429 projective edges through modulus `3^5`
+and the exact latent line/moment countdown through depth 16.  The independent
+verifier reproduces payload SHA-256
+`6ef9b78dfe8760d9e152c1bf05722ff0dfff628e0e4bf7e317f832cc7daed8f6`.
+These finite checks support the displayed all-depth algebra but do not prove
+reachable secant birth.  The sharpened positive target is a policy-specific,
+level-uniform bound on simultaneous 3-adic proximity to `g_x=0` and `q(g)=0`
+for every newborn secant.

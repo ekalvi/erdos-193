@@ -2,6 +2,33 @@
 
 **Status:** research plan, not a proof and not a new finite certificate.
 
+**Implementation checkpoint 1 (2026-07-29): complete on this branch.**
+`padic_macrocycle_lift.py` now isolates the exact `8 -> 16 -> 8` affine
+Pluecker transport, proves the `t in {1,3,9}` normalization split, and emits a
+budgeted/resumable finite residue census.  Its independent verifier checks the
+committed `padic-macrocycle-lift-summary.json`: 66,429 projective state edges
+through modulus `3^5` and the latent family through depth 16.
+
+The useful outcome is algebraic, not the finite depth.  In the y-unit chart
+`[g]=[x:1:z]`, inverse macrotransport is
+
+```text
+(x,z) -> (9x/u,(3-9z)/u),       u=-8-3z,
+```
+
+and
+
+```text
+q(g)=3g_y^2-g_y*g_z+3g_z^2,     q(N^2 g)=81q(g).
+```
+
+The chart has one 3-adic attracting projective direction; `x` contracts by
+`3^2` and `z` by `3^4`.  For the known latent family,
+`nu_3((g_n)_x)=2n` and `nu_3(q(g_n))=4n+1`.  Thus a larger bounded-modulus
+state cannot encode the exact reveal countdown.  The next positive target is
+a policy-reachable birth theorem giving a uniform bound on simultaneous
+3-adic proximity to `g_x=0` and `q(g)=0`.
+
 This plan is based on `main` at `ba42159`, including the merge of PR #6 at
 `f9f6f1a`.  It targets the one universal statement that PR #6 leaves open:
 connector availability on every reachable successor history, not just on the

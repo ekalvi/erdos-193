@@ -196,6 +196,7 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/lattice_t_birth_shell_mask_experiment.py` | Exact finite external-geometric L5/induced-L6 owner-frame shell census (`lattice-T-L5-L6-birth-shell-mask-summary.json`); not chronological L6 transfer |
 | `design/exact_length3_gfp.py` | Independent forward/reverse exact GFP certificate for length 3 and for lengths 2-or-3 (`exact-length3-gfp-summary.json`) |
 | `design/nonx_latent_reentry_certificate.py` | Exact all-depth zero-mask/re-entry obstruction to the common-potential core (`nonx-latent-reentry-certificate-summary.json`) |
+| `design/padic_macrocycle_lift.py`, `design/verify_padic_macrocycle_lift.py` | Exact `8 -> 16 -> 8` affine/3-adic chart, bounded lift census, and independent verifier (`padic-macrocycle-lift-summary.json`); isolates the reachable-birth proximity target, not an unconditional tail theorem |
 | `design/FAR-SECANT-BIRTH-OPERATOR.md` | Exact birth/transport equations, zero-ghost spacing obstruction, and the still-conjectural reachable-birth envelope |
 | `design/LATENT-REENTRY-OBSTRUCTION.md` | Minimal exact carried-line state, infinite latent countdown, and reachable-birth boundary |
 | `design/GHOST-LANGUAGE-AUTOMATON.md` | Exact correlated ghost language, infinite-carry obstruction, and availability-grade birth-gap alternatives |
