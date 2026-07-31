@@ -29,6 +29,29 @@ state cannot encode the exact reveal countdown.  The next positive target is
 a policy-reachable birth theorem giving a uniform bound on simultaneous
 3-adic proximity to `g_x=0` and `q(g)=0`.
 
+**Implementation checkpoint 2 (2026-07-30): complete for the fixed latent
+orbit under the existing guard.**
+`latent_family_reachable_entry_audit.py` and its independent verifier prove
+that no member of the projective `N`-orbit of `H=(55,34,18)` can become a
+secant in any finite continuation of the canonical guarded-L5 parent that
+preserves the same two-cone birth guard.  The parent has exactly four
+`348/275` cone lineages and all are orbit-disjoint; every new orbit member
+would be rejected by that cone guard.  This removes one singular family from
+Gate D.  It does not prove successor availability, unguarded exclusion, or a
+uniform bound for other residual families, so the general reachable-birth
+target remains open.
+
+**Implementation checkpoint 3 (2026-07-31): bounded returning-line no-go.**
+The exact observed L5--L8 `x`-line trace contains 1,021 physical returning
+lines, 2,988 return episodes, and 2,980 minimized local-control types.  The
+66,429-edge latent family covers none of them; the exact type count grows
+`77, 205, 639, 2,059` by terminal level; and no implemented line rank
+decreases on every observed return.  The fixed abstract orbit is already
+excluded by the two-cone/provenance theorem under the guard.  Therefore stop
+expanding that latent family as a model for reachable returns.  The next
+state-design target is honest cursor-import birth/address provenance plus the
+remaining directions outside the frozen guarded cones.
+
 This plan is based on `main` at `ba42159`, including the merge of PR #6 at
 `f9f6f1a`.  It targets the one universal statement that PR #6 leaves open:
 connector availability on every reachable successor history, not just on the
@@ -44,6 +67,8 @@ The following distinction is load-bearing.
 | PR #6: bounded fractional-tail formula and infinite incidence types | **PROVED** | Phase plus bounded spatial position cannot be the inductive state.  Reachable births, joint endpoint ancestry, and exact-zero recurrence must be represented. |
 | PR #6: guarded L5 -> L6 transition and all-choice census | **CERTIFIED FINITE** | One chronology has 71--198,431 surviving choices per prefix.  This supplies a base case, a bottleneck, and falsification data; it supplies no universal transition. |
 | PR #6: coefficient-nine affine family | **PROVED REFUTATION** | The photographed `C=9` candidate is dead for an infinite family of indices, not just at one finite prefix. |
+| Guarded cone-core audit | **PROVED, POLICY-RELATIVE** | Every guarded `11/3` or `348/275` secant is one of 246 inherited pair lineages; both known positive-depth latent families are excluded under the guard.  Effects outside the cones and availability remain open. |
+| Observed returning-line audit, L5--L8 | **CERTIFIED FINITE / NO-GO** | The fixed 66,429-edge family covers none of 1,021 observed returning lines; 2,980 exact trace types continue growing and no implemented rank decreases universally. |
 | Photographs: four-increment dependence bounds, height-three/height-four classifications, the 118-word slab language, and the morphic census | **REPORTED / UNAUDITED** | No source, certificate, or checker for these claims is present in this checkout.  They are not premises of the plan. |
 
 The photographs contain an intermediate claim that four height-at-most-three
@@ -74,6 +99,12 @@ This is the concrete form of Requirements Q, S, E, and G in
 `FAR-SECANT-RANK-LEMMA.md`.  A guarded L6 -> L7 run is useful only as a
 counterexample generator for a proposed invariant.  Another successful single
 chronology would not advance the universal quantifier.
+
+The bounded returning-line audit retires the fixed latent macrocycle as a
+model for observed recurrence.  Apply the proved cone/provenance exclusion
+first; do not derive a universal residual basis from arbitrary 3-adic
+functions.  Any next finite controller proposal must expose how unrelated
+cursor imports acquire and retain their remote birth/address history.
 
 ## 3. The inductive lemma to prove
 

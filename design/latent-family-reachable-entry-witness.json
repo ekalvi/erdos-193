@@ -1,0 +1,565 @@
+{
+  "auditor": "OpenAI Codex",
+  "inherited_j348_core": [
+    {
+      "L6_endpoint_ids": [
+        "anchor:L6:A2592",
+        "anchor:L6:A3300"
+      ],
+      "canonical_L5_direction": [
+        165,
+        102,
+        -20
+      ],
+      "canonical_L6_direction": [
+        495,
+        60,
+        326
+      ],
+      "earlier_L5_point": [
+        -336,
+        612,
+        1005
+      ],
+      "earlier_natural_point_index": 2592,
+      "later_L5_point": [
+        -1161,
+        102,
+        1105
+      ],
+      "later_natural_point_index": 3300,
+      "orbit_recognition_L5": null,
+      "orbit_recognition_L6": null,
+      "raw_L5_chord": [
+        825,
+        510,
+        -100
+      ],
+      "raw_L6_chord": [
+        2475,
+        300,
+        1630
+      ],
+      "signed_L5_multiplier": 5,
+      "signed_L6_multiplier": 5
+    },
+    {
+      "L6_endpoint_ids": [
+        "anchor:L6:A2864",
+        "anchor:L6:A5372"
+      ],
+      "canonical_L5_direction": [
+        165,
+        82,
+        84
+      ],
+      "canonical_L6_direction": [
+        55,
+        -28,
+        18
+      ],
+      "earlier_L5_point": [
+        -648,
+        426,
+        778
+      ],
+      "earlier_natural_point_index": 2864,
+      "later_L5_point": [
+        -2133,
+        -312,
+        22
+      ],
+      "later_natural_point_index": 5372,
+      "orbit_recognition_L5": null,
+      "orbit_recognition_L6": null,
+      "raw_L5_chord": [
+        1485,
+        738,
+        756
+      ],
+      "raw_L6_chord": [
+        4455,
+        -2268,
+        1458
+      ],
+      "signed_L5_multiplier": 9,
+      "signed_L6_multiplier": 81
+    },
+    {
+      "L6_endpoint_ids": [
+        "anchor:L6:A4361",
+        "anchor:L6:A5716"
+      ],
+      "canonical_L5_direction": [
+        165,
+        84,
+        82
+      ],
+      "canonical_L6_direction": [
+        495,
+        -246,
+        170
+      ],
+      "earlier_L5_point": [
+        -1278,
+        495,
+        732
+      ],
+      "earlier_natural_point_index": 4361,
+      "later_L5_point": [
+        -2598,
+        -177,
+        76
+      ],
+      "later_natural_point_index": 5716,
+      "orbit_recognition_L5": null,
+      "orbit_recognition_L6": null,
+      "raw_L5_chord": [
+        1320,
+        672,
+        656
+      ],
+      "raw_L6_chord": [
+        3960,
+        -1968,
+        1360
+      ],
+      "signed_L5_multiplier": 8,
+      "signed_L6_multiplier": 8
+    },
+    {
+      "L6_endpoint_ids": [
+        "anchor:L6:A7306",
+        "anchor:L6:A7611"
+      ],
+      "canonical_L5_direction": [
+        165,
+        -84,
+        -82
+      ],
+      "canonical_L6_direction": [
+        495,
+        246,
+        -170
+      ],
+      "earlier_L5_point": [
+        -2781,
+        -396,
+        -351
+      ],
+      "earlier_natural_point_index": 7306,
+      "later_L5_point": [
+        -3111,
+        -228,
+        -187
+      ],
+      "later_natural_point_index": 7611,
+      "orbit_recognition_L5": null,
+      "orbit_recognition_L6": null,
+      "raw_L5_chord": [
+        330,
+        -168,
+        -164
+      ],
+      "raw_L6_chord": [
+        990,
+        492,
+        -340
+      ],
+      "signed_L5_multiplier": 2,
+      "signed_L6_multiplier": 2
+    }
+  ],
+  "payload_sha256": "51a9f175a5d643c735aaf1f9462154dcb93d7e09cffd448abe60f7ec96ccf60b",
+  "recognizer_self_witnesses": {
+    "negative_parallel_translate": {
+      "corridor_anchor": [
+        17,
+        -11,
+        5
+      ],
+      "earlier": [
+        -132084,
+        86983,
+        16014
+      ],
+      "later": [
+        -131094,
+        86331,
+        15894
+      ],
+      "recognition": null
+    },
+    "positive": {
+      "corridor_anchor": [
+        17,
+        -11,
+        5
+      ],
+      "earlier": [
+        -132085,
+        86983,
+        16014
+      ],
+      "later": [
+        -131095,
+        86331,
+        15894
+      ],
+      "recognition": {
+        "address_shell_n": 1,
+        "orbit_index": 2,
+        "phase": 8,
+        "primitive_direction": [
+          495,
+          -326,
+          -60
+        ],
+        "raw_chord": [
+          990,
+          -652,
+          -120
+        ],
+        "relative_moment": [
+          -706,
+          -1665,
+          3222
+        ],
+        "signed_chord_multiplier": 2
+      }
+    }
+  },
+  "recorded_target_line_scan": {
+    "included_address_shells": [
+      1,
+      2
+    ],
+    "rows": [
+      {
+        "address_shell_n": 1,
+        "all_translation_parallel_pair_count": 0,
+        "all_translation_parallel_pairs": [],
+        "distinct_absolute_query_lines": 51,
+        "maximum_query_line_occupancy": 0,
+        "primitive_direction": [
+          495,
+          -326,
+          -60
+        ],
+        "query_line_occupancy_histogram": {
+          "0": 51
+        },
+        "relative_moment": [
+          -706,
+          -1665,
+          3222
+        ],
+        "source_step_8_corridors": 51,
+        "translated_family_entries": []
+      },
+      {
+        "address_shell_n": 2,
+        "all_translation_parallel_pair_count": 0,
+        "all_translation_parallel_pairs": [],
+        "distinct_absolute_query_lines": 51,
+        "maximum_query_line_occupancy": 0,
+        "primitive_direction": [
+          4455,
+          2788,
+          -438
+        ],
+        "query_line_occupancy_histogram": {
+          "0": 51
+        },
+        "relative_moment": [
+          9410,
+          -14526,
+          3249
+        ],
+        "source_step_8_corridors": 51,
+        "translated_family_entries": []
+      }
+    ],
+    "source_corridor_gaps": [
+      265,
+      313,
+      362,
+      385,
+      1450,
+      1678,
+      1696,
+      1734,
+      1842,
+      2175,
+      2197,
+      2295,
+      2351,
+      2361,
+      2451,
+      2623,
+      2901,
+      3029,
+      3036,
+      3083,
+      3117,
+      3127,
+      3143,
+      3146,
+      3196,
+      3210,
+      3473,
+      3900,
+      4257,
+      4419,
+      4454,
+      4476,
+      4968,
+      4993,
+      5032,
+      5125,
+      5188,
+      5430,
+      5528,
+      5554,
+      5741,
+      5967,
+      6714,
+      7163,
+      7297,
+      7363,
+      7383,
+      7437,
+      7713,
+      7951,
+      8196
+    ],
+    "source_step": 8,
+    "spacing_cutoff": {
+      "direction_x": 40095,
+      "first_excluded_n": 3,
+      "maximum_observed_x_separation": 10943,
+      "primitive_direction": [
+        40095,
+        -20990,
+        12306
+      ],
+      "reason": "primitive x-spacing exceeds the exact final coordinate span"
+    },
+    "verdict": "EXACT FINITE: no phase-8 latent-family entry on the recorded guarded L5->L6 chronology"
+  },
+  "schema": "latent-family-reachable-entry-witness/v1",
+  "signature": "[OpenAI Codex]",
+  "theorem_checks": {
+    "all_level_policy_relative_theorem": "For every finite history descended from the canonical guarded-L5 parent in which each connector word satisfies the same two-cone birth guard, no phase-8 translated latent line L_n with n>=1, and no phase-16 intermediate, is a secant at any prefix. The only 348/275 pairs are four carried base lineages, and none lies in or can enter the projective N-orbit of H.",
+    "base_core_disjointness": [
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          102,
+          -20
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          82,
+          84
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          84,
+          82
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          -84,
+          -82
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      }
+    ],
+    "carriage_identity": "N*M=9I and F(Mg)=9F(g)",
+    "classification": "PROVED",
+    "family_cone_membership": "F(H)=0 and F(Ng)=9F(g), so every N^m H is in the 348/275 cone",
+    "guard_birth_implication": "the two-cone guarded predicate rejects every old-new and same-word new-new pair with F=0; therefore it rejects every latent-family birth before moment or corridor phase matters",
+    "guard_equation": "275*q(g)-348*g_x^2=0",
+    "orbit_checks_m0_through_m12": [
+      {
+        "cone_residual": 0,
+        "direction": [
+          55,
+          34,
+          18
+        ],
+        "orbit_index": 0,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          165,
+          20,
+          -102
+        ],
+        "orbit_index": 1,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          495,
+          -326,
+          -60
+        ],
+        "orbit_index": 2,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          1485,
+          146,
+          978
+        ],
+        "orbit_index": 3,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          4455,
+          2788,
+          -438
+        ],
+        "orbit_index": 4,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          13365,
+          -4102,
+          -8364
+        ],
+        "orbit_index": 5,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          40095,
+          -20990,
+          12306
+        ],
+        "orbit_index": 6,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          120285,
+          57908,
+          62970
+        ],
+        "orbit_index": 7,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          360855,
+          131002,
+          -173724
+        ],
+        "orbit_index": 8,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          1082565,
+          -652174,
+          -393006
+        ],
+        "orbit_index": 9,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          3247695,
+          -526844,
+          1956522
+        ],
+        "orbit_index": 10,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          9743085,
+          6396410,
+          1580532
+        ],
+        "orbit_index": 11,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          29229255,
+          -1654814,
+          -19189230
+        ],
+        "orbit_index": 12,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      }
+    ],
+    "orbit_primitivity": "the y-coordinate of N^m H is nonzero modulo 3; primes other than 3 cannot enter the content because det(N)=27 and H is primitive",
+    "proof_boundary": "This theorem is conditional on the guarded policy and canonical parent. It does not prove connector availability and does not cover globally triple-free histories that omit the two-cone guard."
+  }
+}

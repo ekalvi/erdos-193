@@ -1,0 +1,863 @@
+{
+  "abstraction_collision_witness": {
+    "classification": "PROVED",
+    "conclusion": "g_3 and g_4 have the same projective state modulo 3^5 but exact ranks 3 and 4, different moments, and different reveal times.",
+    "k": 5,
+    "members": [
+      {
+        "direction": [
+          40095,
+          -20990,
+          12306
+        ],
+        "moment": [
+          -102784,
+          -57618,
+          236610
+        ],
+        "n": 3,
+        "q": 2034356148,
+        "q_v3": 13,
+        "rank": 3,
+        "x_v3": 6
+      },
+      {
+        "direction": [
+          360855,
+          131002,
+          -173724
+        ],
+        "moment": [
+          985118,
+          -1798713,
+          689886
+        ],
+        "n": 4,
+        "q": 164782847988,
+        "q_v3": 17,
+        "rank": 4,
+        "x_v3": 8
+      }
+    ],
+    "modulus": 243,
+    "projective_state_xz_with_y_equal_1": [
+      0,
+      30
+    ]
+  },
+  "audited_head": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+  "auditor": "OpenAI Codex",
+  "candidate_frontier_replay": {
+    "available_policy_sha256": "0f4e340177e7c1aacba00ec7048b983d38ff487eed673fb088876babdf1a518e",
+    "cache_bytes": 159096,
+    "cache_sha256": "da6c8c39825719d379decc15d2c702f82c3f6fb66fa115bde87af49af4cb56a7",
+    "candidate_site_stream_sha256": "6cda4eea1d2499f796493a5ed062579bd210fe5e5e50a0d1aea373e7a8a9bf33",
+    "candidate_sites_by_phase": {
+      "16": 214,
+      "8": 214
+    },
+    "classification": "EXACT FINITE",
+    "domain_words": 31840,
+    "equal_invariant_frontier": [
+      {
+        "ghost_in_phase_8_frame": [
+          [
+            -2,
+            1
+          ],
+          [
+            -2,
+            1
+          ],
+          [
+            -2,
+            1
+          ]
+        ],
+        "phase": 8,
+        "primitive_direction_from_p": [
+          55,
+          34,
+          18
+        ],
+        "site": [
+          -2,
+          -2,
+          -2
+        ]
+      },
+      {
+        "ghost_in_phase_8_frame": [
+          [
+            -16,
+            3
+          ],
+          [
+            -31,
+            9
+          ],
+          [
+            -10,
+            3
+          ]
+        ],
+        "phase": 16,
+        "primitive_direction_from_p": [
+          165,
+          -20,
+          102
+        ],
+        "site": [
+          -4,
+          1,
+          2
+        ]
+      }
+    ],
+    "expected_policy_sha256": "e30732d2833b3c93ae2ccbbc5f37ddd3069346899c24d49fc18aabfa1a48485e",
+    "family_projective_invariant": [
+      348,
+      275
+    ],
+    "metadata_sha256": "5674283f3f05a55d7a02116e0b61257ab6c955ced1b3146cc81f522bf64c701a",
+    "policy_pin_matches": false,
+    "selected_words_present_in_exact_domains": {
+      "16": true,
+      "8": true
+    }
+  },
+  "certificate_regeneration": {
+    "classification": "EXACT FINITE",
+    "depth_16_scope": {
+      "classification": "EXACT FINITE regression",
+      "indices": "n=0 through n=16",
+      "not_induction": true,
+      "records": 17,
+      "separate_all_n_result": "the all-n family theorem is symbolic in LATENT-REENTRY-OBSTRUCTION.md and nonx_latent_reentry_certificate.py; it is not supplied by these 66,429 edges"
+    },
+    "original_explorer_sha256": "dbc011a894512bf12bf6f59c69e33303e924c524cb91ca313fefcafeab823cb2",
+    "original_payload_sha256": "6ef9b78dfe8760d9e152c1bf05722ff0dfff628e0e4bf7e317f832cc7daed8f6",
+    "per_edge_audit": {
+      "exact_line_token_transition": "NOT REPRESENTED: mu is absent",
+      "integer_primitive_normalization": "NOT REPRESENTED: normalization is projective y=1 modulo 3^k",
+      "map_domain_validity": "u=-8-3z is a unit for every state",
+      "poison_effect_transition": "NOT REPRESENTED",
+      "rank_transition": "NOT REPRESENTED: exact valuations and family index collapse",
+      "source_state_validity": "all states are valid y-unit projective residues",
+      "successor_completeness": "complete only for the deterministic inverse projective map; no construction-channel closure claim",
+      "terminal_or_promoted_classification": "NOT REPRESENTED"
+    },
+    "precisions": [
+      {
+        "contact_valuation_pair_histogram": {
+          "0,0": 7,
+          "0,1": 1,
+          "1,0": 1
+        },
+        "cycle_length_histogram": {
+          "1": 1
+        },
+        "edge_count": 9,
+        "edge_schema": "(x,z) -> (9x/u,(3-9z)/u), u=-8-3z",
+        "fixed_states_xz": [
+          [
+            0,
+            0
+          ]
+        ],
+        "image_states": 1,
+        "indegree_histogram": {
+          "0": 8,
+          "9": 1
+        },
+        "invalid_edge_domains": 0,
+        "invalid_source_states": 0,
+        "k": 1,
+        "maximum_tail_edges_to_recurrent_scc": 1,
+        "modulus": 3,
+        "outdegree_histogram": {
+          "1": 9
+        },
+        "recurrent_scc_count": 1,
+        "recurrent_scc_sizes": [
+          1
+        ],
+        "scc_count": 9,
+        "state_count": 9,
+        "state_edge_sha256": "c584e5fe7b2db633699b92cd358fd9953092af9ab84cc30b6e6aee6468399ebd",
+        "state_schema": "(x,z) representing the projective direction [x:1:z] modulo 3^k",
+        "terminal_state_count": 0
+      },
+      {
+        "contact_valuation_pair_histogram": {
+          "0,0": 63,
+          "0,1": 8,
+          "0,2": 1,
+          "1,0": 8,
+          "2,0": 1
+        },
+        "cycle_length_histogram": {
+          "1": 1
+        },
+        "edge_count": 81,
+        "edge_schema": "(x,z) -> (9x/u,(3-9z)/u), u=-8-3z",
+        "fixed_states_xz": [
+          [
+            0,
+            3
+          ]
+        ],
+        "image_states": 1,
+        "indegree_histogram": {
+          "0": 80,
+          "81": 1
+        },
+        "invalid_edge_domains": 0,
+        "invalid_source_states": 0,
+        "k": 2,
+        "maximum_tail_edges_to_recurrent_scc": 1,
+        "modulus": 9,
+        "outdegree_histogram": {
+          "1": 81
+        },
+        "recurrent_scc_count": 1,
+        "recurrent_scc_sizes": [
+          1
+        ],
+        "scc_count": 81,
+        "state_count": 81,
+        "state_edge_sha256": "4544e59f27f513f0e90099009208a3280fc6bf6414d8f7daaff92b21d20afd82",
+        "state_schema": "(x,z) representing the projective direction [x:1:z] modulo 3^k",
+        "terminal_state_count": 0
+      },
+      {
+        "contact_valuation_pair_histogram": {
+          "0,0": 567,
+          "0,1": 72,
+          "0,2": 8,
+          "0,3": 1,
+          "1,0": 72,
+          "2,0": 8,
+          "3,0": 1
+        },
+        "cycle_length_histogram": {
+          "1": 1
+        },
+        "edge_count": 729,
+        "edge_schema": "(x,z) -> (9x/u,(3-9z)/u), u=-8-3z",
+        "fixed_states_xz": [
+          [
+            0,
+            3
+          ]
+        ],
+        "image_states": 3,
+        "indegree_histogram": {
+          "0": 726,
+          "243": 3
+        },
+        "invalid_edge_domains": 0,
+        "invalid_source_states": 0,
+        "k": 3,
+        "maximum_tail_edges_to_recurrent_scc": 2,
+        "modulus": 27,
+        "outdegree_histogram": {
+          "1": 729
+        },
+        "recurrent_scc_count": 1,
+        "recurrent_scc_sizes": [
+          1
+        ],
+        "scc_count": 729,
+        "state_count": 729,
+        "state_edge_sha256": "372ab811c0c2218e8a0783cba2f6c8e1afe7a6722e40c3a3c02f8c6f4e71dff6",
+        "state_schema": "(x,z) representing the projective direction [x:1:z] modulo 3^k",
+        "terminal_state_count": 0
+      },
+      {
+        "contact_valuation_pair_histogram": {
+          "0,0": 5103,
+          "0,1": 648,
+          "0,2": 72,
+          "0,3": 8,
+          "0,4": 1,
+          "1,0": 648,
+          "2,0": 72,
+          "3,0": 8,
+          "4,0": 1
+        },
+        "cycle_length_histogram": {
+          "1": 1
+        },
+        "edge_count": 6561,
+        "edge_schema": "(x,z) -> (9x/u,(3-9z)/u), u=-8-3z",
+        "fixed_states_xz": [
+          [
+            0,
+            30
+          ]
+        ],
+        "image_states": 9,
+        "indegree_histogram": {
+          "0": 6552,
+          "729": 9
+        },
+        "invalid_edge_domains": 0,
+        "invalid_source_states": 0,
+        "k": 4,
+        "maximum_tail_edges_to_recurrent_scc": 2,
+        "modulus": 81,
+        "outdegree_histogram": {
+          "1": 6561
+        },
+        "recurrent_scc_count": 1,
+        "recurrent_scc_sizes": [
+          1
+        ],
+        "scc_count": 6561,
+        "state_count": 6561,
+        "state_edge_sha256": "1f542d114fabd15588852d240392bf9f64fce93c8f4f261a71c7b8d47f32f546",
+        "state_schema": "(x,z) representing the projective direction [x:1:z] modulo 3^k",
+        "terminal_state_count": 0
+      },
+      {
+        "contact_valuation_pair_histogram": {
+          "0,0": 45927,
+          "0,1": 5832,
+          "0,2": 648,
+          "0,3": 72,
+          "0,4": 8,
+          "0,5": 1,
+          "1,0": 5832,
+          "2,0": 648,
+          "3,0": 72,
+          "4,0": 8,
+          "5,0": 1
+        },
+        "cycle_length_histogram": {
+          "1": 1
+        },
+        "edge_count": 59049,
+        "edge_schema": "(x,z) -> (9x/u,(3-9z)/u), u=-8-3z",
+        "fixed_states_xz": [
+          [
+            0,
+            30
+          ]
+        ],
+        "image_states": 81,
+        "indegree_histogram": {
+          "0": 58968,
+          "729": 81
+        },
+        "invalid_edge_domains": 0,
+        "invalid_source_states": 0,
+        "k": 5,
+        "maximum_tail_edges_to_recurrent_scc": 3,
+        "modulus": 243,
+        "outdegree_histogram": {
+          "1": 59049
+        },
+        "recurrent_scc_count": 1,
+        "recurrent_scc_sizes": [
+          1
+        ],
+        "scc_count": 59049,
+        "state_count": 59049,
+        "state_edge_sha256": "7239e2823bdfaa6c88e7f987fef456c9ef7d6b362c019a16bb72546e4dba0b99",
+        "state_schema": "(x,z) representing the projective direction [x:1:z] modulo 3^k",
+        "terminal_state_count": 0
+      }
+    ],
+    "requested_rank_metrics": {
+      "family_inverse_orbit_rank_change": "+1 before finite-residue collapse",
+      "increasing_edges": null,
+      "maximum_path_before_termination_or_promotion": null,
+      "maximum_rank": null,
+      "minimum_countdown_slack": null,
+      "minimum_rank": null,
+      "rank_change_histogram": null,
+      "reason": "rank, terminal, and promotion fields are absent from residue states",
+      "zero_decrease_edges": null
+    },
+    "totals": {
+      "disjoint_precision_graphs": 5,
+      "edges": 66429,
+      "maximum_tail_edges_to_recurrent_residue_scc": 3,
+      "recurrent_sccs": 5,
+      "sccs": 66429,
+      "states": 66429,
+      "terminal_states": 0
+    }
+  },
+  "claim_ledger": [
+    {
+      "claim": "The exact L_n family is an all-n integer-line orbit under two fixed actions.",
+      "classification": "PROVED",
+      "id": "C1"
+    },
+    {
+      "claim": "The implemented weighted valuation formula equals n on phase-8 family members.",
+      "classification": "PROVED",
+      "id": "C2"
+    },
+    {
+      "claim": "The two-slot primitive Pluecker macrotransition sends n to n-1 for n>=1.",
+      "classification": "PROVED",
+      "id": "C3"
+    },
+    {
+      "claim": "The rank drops on the first normalized slot and is unchanged on the second.",
+      "classification": "PROVED",
+      "id": "C4"
+    },
+    {
+      "claim": "All 66,429 projective residue edges through 3^5 were independently regenerated.",
+      "classification": "EXACT FINITE",
+      "id": "C5"
+    },
+    {
+      "claim": "The 66,429 edges form an inductive line-token countdown certificate.",
+      "classification": "REFUTED",
+      "id": "C6"
+    },
+    {
+      "claim": "The committed depth-16 check is a 17-record regression only.",
+      "classification": "EXACT FINITE",
+      "id": "C7"
+    },
+    {
+      "claim": "No translated L_n member is a live secant in the complete pinned L5-L8 template scan.",
+      "classification": "EXACT FINITE",
+      "id": "C8"
+    },
+    {
+      "claim": "No translated L_n member is reachable at any level or alternate legal history.",
+      "classification": "CONJECTURED",
+      "id": "C9"
+    },
+    {
+      "claim": "Direction residue alone preserves moment, poison, terminal, rank, and whole-word behavior.",
+      "classification": "REFUTED",
+      "id": "C10"
+    },
+    {
+      "claim": "No new broad or targeted chronology measurement was performed after the stop condition.",
+      "classification": "MEASURED",
+      "id": "C11"
+    }
+  ],
+  "direction_only_poison_collision": {
+    "classification": "PROVED",
+    "conclusion": "equal direction and rank do not determine affine poison effect; the Pluecker moment is required",
+    "direction": [
+      55,
+      34,
+      18
+    ],
+    "parallel_translate": {
+      "base_point": [
+        -1,
+        -2,
+        -2
+      ],
+      "hits_reveal": false,
+      "moment": [
+        32,
+        -92,
+        76
+      ],
+      "reveal_residual": [
+        0,
+        18,
+        -34
+      ]
+    },
+    "reveal_line": {
+      "base_point": [
+        -2,
+        -2,
+        -2
+      ],
+      "hits_reveal": true,
+      "moment": [
+        32,
+        -74,
+        42
+      ]
+    }
+  },
+  "existing_targeted_reachable_evidence": {
+    "all_tested_live_secant_counts_are_zero": true,
+    "classification": "EXACT FINITE",
+    "levels": {
+      "5": {
+        "address_shells_tested": [
+          0,
+          1,
+          2
+        ],
+        "source_corridors_per_shell": 15
+      },
+      "6": {
+        "address_shells_tested": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "source_corridors_per_shell": 40
+      },
+      "7": {
+        "address_shells_tested": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "source_corridors_per_shell": 155
+      },
+      "8": {
+        "address_shells_tested": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "source_corridors_per_shell": 374
+      }
+    },
+    "method": "Exact requested-line moment hashing with stitch-time liveness and inherited endpoint birth identities; no point-pair enumeration.",
+    "scope": "complete only for requested L_n translations in pinned realized L5-L8 paths; no new guarded L5-L6 instrumentation was run after STOP CONDITION 2",
+    "source": "design/known-template-weighted-birth-probe-summary.json:146-195"
+  },
+  "family_definition": {
+    "canonicalization": "divide by gcd of all direction coordinates; choose the sign whose first nonzero coordinate is positive; apply the same sign/divisor to mu",
+    "constants": {
+      "H": [
+        55,
+        34,
+        18
+      ],
+      "N": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          0,
+          -1,
+          3
+        ],
+        [
+          0,
+          -3,
+          0
+        ]
+      ],
+      "p": [
+        [
+          -9,
+          2
+        ],
+        [
+          -39,
+          11
+        ],
+        [
+          -31,
+          11
+        ]
+      ],
+      "phase_16_selected_word": [
+        8,
+        23,
+        24
+      ],
+      "phase_8_selected_word": [
+        0,
+        1,
+        16
+      ]
+    },
+    "membership": {
+      "as_reachable_secants": "unproved underapproximation; no member is proved reachable",
+      "covered_channels": [
+        "already-born carried lines",
+        "silent n>=1 members",
+        "effectful terminal n=0"
+      ],
+      "excluded_channels": [
+        "newborn lines",
+        "cursor imports",
+        "near-far and far-far joins",
+        "alternate connector choices",
+        "owner/address changes",
+        "whole-word and occupancy correlations"
+      ],
+      "mathematical_family": "exact countable orbit under the two fixed actions"
+    },
+    "moment_normalization": "mu=p cross g, integral because g_n has a period-five orbit modulo 22 and P_NUMERATOR cross g_n is divisible by 22",
+    "phase_16_member": "for n>=1, direction d_n=N^(2n-1)H and moment nu_n=M(p-c) cross d_n after the first selected slot",
+    "phase_8_member": "for n>=0, L_n={x in Q^3:x cross g_n=mu_n}, g_n=N^(2n)H and mu_n=p cross g_n",
+    "state_variables_required_by_fixed_cycle": {
+      "current_mask": "derived from phase and exact token",
+      "cursor": "fixed to steps 8 and 16",
+      "direction": "exact canonical primitive integer g",
+      "family_index": "n>=0 at phase 8; n>=1 indexes the incoming macrocycle",
+      "moment": "exact integer Pluecker moment in the corridor-centred frame",
+      "owner_address_shell_provenance_occupancy": "not represented",
+      "phase": "8 or 16",
+      "selected_word_and_slot": "fixed to (8,[0,1,16],slot2) and (16,[8,23,24],slot0)"
+    }
+  },
+  "macrocycle_theorem": {
+    "exceptions": [
+      "n=0 is effectful terminal rather than a silent input",
+      "tokens outside this exact orbit have no proved rank law",
+      "alternate actions and imports are outside the theorem"
+    ],
+    "extra_operation": "each M carriage multiplies the raw direction, then canonical line normalization divides direction and moment by content 9; over two slots the divisor is 81. This projective normalization, not unnormalized carriage, consumes the formula.",
+    "macro_rank_law": "R(next macro-boundary)=R(current)-1 for every n>=1",
+    "mask_law": "both phases are silent for incoming n>=1; the phase-8 output remains silent when n>1 and has the singleton reveal site (-2,-2,-2) when n=1",
+    "phase_16_to_8": "the intermediate token maps with primitive divisor 9 to (g_(n-1),mu_(n-1)); R remains n-1",
+    "phase_8_to_16": "for n>=1, (g_n,mu_n) maps with primitive divisor 9 to (N^(2n-1)H, M(p-c) cross N^(2n-1)H); R drops from n to n-1",
+    "terminal": "L_0 already kills the selected phase-8 word, so the fixed legal continuation has no n=0 transition"
+  },
+  "next_lemma": {
+    "classification": "CONJECTURED",
+    "effect_if_proved": "no translated silent member can be born or imported as a reachable secant, so this family needs exclusion rather than finite promotion",
+    "name": "reachable translated-L_n exclusion",
+    "quantified_statement": "For every level ell>=0, every globally legal ordered-path prefix S at level ell, every step-8 corridor anchor r in S, every integer n>=1, and every two distinct placed endpoints a,b in S, it is not the case that canonical_primitive(b-a)=g_n and (a-r) cross g_n=p cross g_n, where g_n=N^(2n)(55,34,18) and p=(-9/2,-39/11,-31/11)."
+  },
+  "payload_sha256": "bc77d62382fd5e830025c97a5b8f9ae6aca778aab89160679c6801cb15168d64",
+  "producer": {
+    "path": "design/padic_latent_family_macrocycle_audit.py",
+    "sha256": "444898d560a56150e2a1560824e6af7933f0185581c662e2237b91f5773218fb"
+  },
+  "rank_derivation": {
+    "base": "v3(H_x)=0 and v3(q(H))=1",
+    "conclusion": "R(g_n)=n",
+    "domain": "the implementation calls exact_v3 and is defined only when g_x and q(g) are nonzero; its asserted depth law is only the displayed orbit and intermediate phases",
+    "family_valuations": "v3((g_n)_x)=2n and v3(q(g_n))=4n+1",
+    "floors": "they align the phase-8 parity (2n,4n+1) and intermediate phase-16 parity (2n-1,4n-1); they are not a general depth theorem",
+    "implemented_formula": "R(g)=min(v3(g_x)//2,(v3(q(g))-1)//4)",
+    "inverse_macro": "g_n=N^(2n)H, with x multiplied by 9 and q multiplied by 81",
+    "line_token_requirement": "R uses only g, but mu, phase, fixed control, and mask theorem are required to infer silence or reveal time",
+    "q_divisor_four": "one inverse macrocycle adds 4 to v3(q)",
+    "q_offset_one": "the seed H has v3(q(H))=1",
+    "representation": "direction-only after canonical primitive normalization; not invariant under arbitrary scaling",
+    "x_divisor_two": "one inverse macrocycle adds 2 to v3(g_x)",
+    "zero_handling": "g_x=0 or q(g)=0 raises ValueError; no infinity/promotion branch exists"
+  },
+  "schema": "padic-latent-family-macrocycle-audit/v1",
+  "signature": "[OpenAI Codex]",
+  "source_inventory": {
+    "defining_sources": [
+      {
+        "lines": "35-99,101-203",
+        "path": "design/LATENT-REENTRY-OBSTRUCTION.md",
+        "role": "line-token transition, exact all-n family, masks, scope boundary"
+      },
+      {
+        "lines": "265-339,349-500,526-659",
+        "path": "design/nonx_latent_reentry_certificate.py",
+        "role": "primary exact all-n geometric certificate and 64-depth replay",
+        "symbols": [
+          "selected_policy_cycle",
+          "candidate_sites",
+          "affine_cycle_and_frontier",
+          "arithmetic_certificate",
+          "run"
+        ]
+      },
+      {
+        "lines": "1-125",
+        "path": "design/nonx-latent-reentry-certificate-summary.json",
+        "role": "committed compact all-n certificate summary"
+      },
+      {
+        "classes": [
+          "TimeBudgetExpired"
+        ],
+        "lines": "115-121,186-228,260-395,398-481,484-583,634-756",
+        "path": "design/padic_macrocycle_lift.py",
+        "role": "bounded residue explorer plus depth-16 positive-control regression",
+        "symbols": [
+          "canonical_primitive",
+          "normalization_certificate",
+          "inverse_lift_edge",
+          "functional_graph_stats",
+          "compute_precision",
+          "contact_model_certificate",
+          "integer_line_moment",
+          "latent_positive_control",
+          "run"
+        ]
+      },
+      {
+        "lines": "95-102,151-226,229-368,371-482",
+        "path": "design/verify_padic_macrocycle_lift.py",
+        "role": "independent bounded-certificate verifier",
+        "symbols": [
+          "canonical_primitive",
+          "normalization_data",
+          "edge",
+          "graph_stats",
+          "verify_precision",
+          "latent_record_stream",
+          "verify_contact_model",
+          "verify"
+        ]
+      },
+      {
+        "lines": "1-520",
+        "path": "design/padic-macrocycle-lift-summary.json",
+        "role": "66,429-edge bounded payload and depth-16 record commitment"
+      }
+    ],
+    "finite_reachability_use": [
+      {
+        "lines": "1-31,324-338,795-969",
+        "path": "design/known_template_weighted_birth_probe.py",
+        "role": "complete requested-template scan on pinned L5-L8 paths"
+      },
+      {
+        "lines": "101-205",
+        "path": "design/known-template-weighted-birth-probe-summary.json",
+        "role": "exact finite zero-live-family result on L5-L8"
+      }
+    ],
+    "history": {
+      "family_definition": [
+        {
+          "authored_at": "2026-07-18T23:59:24-04:00",
+          "commit": "927b754d036607fe8e376cc9e7af7bbedfc66029",
+          "files": [
+            "design/FAR-SECANT-BIRTH-OPERATOR.md",
+            "design/FAR-SECANT-RANK-LEMMA.md",
+            "design/GHOST-LANGUAGE-AUTOMATON.md",
+            "design/LATENT-REENTRY-OBSTRUCTION.md",
+            "design/known_template_weighted_birth_probe.py",
+            "design/lattice_t_l5_cone_guard_audit.py",
+            "design/lattice_t_l6_cone_birth_guard.py",
+            "design/lattice_t_l6_cone_guard_audit.py",
+            "design/lattice_t_projective_spectrum_census.py",
+            "design/lattice_t_projective_spectrum_diagnostic.py",
+            "design/nonx-latent-reentry-certificate-summary.json",
+            "design/nonx_latent_reentry_certificate.py"
+          ],
+          "subject": "proof: harden ordered-path far-secant certificates"
+        },
+        {
+          "authored_at": "2026-07-19T01:04:12-04:00",
+          "commit": "ee404916326738008f2605ec93c2bb0e6884aa84",
+          "files": [
+            "design/lattice_t_l6_cone_guard_pin_report.py"
+          ],
+          "subject": "proof: freeze guarded L6 audit pins"
+        },
+        {
+          "authored_at": "2026-07-28T23:34:53-04:00",
+          "commit": "d412d39bbb387638085e9d39f9f6cfa9b1e757da",
+          "files": [
+            "design/audit_guarded_l5_to_l6.py",
+            "design/guarded_l5_l6_common.py"
+          ],
+          "subject": "proof: prepare consecutive guarded L5 to L6 gate"
+        },
+        {
+          "authored_at": "2026-07-29T23:28:20-04:00",
+          "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+          "files": [
+            "design/padic-macrocycle-lift-summary.json",
+            "design/padic_macrocycle_lift.py",
+            "design/verify_padic_macrocycle_lift.py"
+          ],
+          "subject": "proof: isolate 3-adic macrocycle lift"
+        }
+      ],
+      "macrocycle_references": [
+        {
+          "authored_at": "2026-07-18T23:59:24-04:00",
+          "commit": "927b754d036607fe8e376cc9e7af7bbedfc66029",
+          "files": [
+            "CONDITIONAL-THEOREM.md",
+            "REPORT.md",
+            "design/FAR-SECANT-BIRTH-OPERATOR.md",
+            "design/FAR-SECANT-RANK-LEMMA.md",
+            "design/nonx_latent_reentry_certificate.py",
+            "design/potential-policy-chronological-rescue-summary.json",
+            "design/potential_policy_two_stitch_matrix.py"
+          ],
+          "subject": "proof: harden ordered-path far-secant certificates"
+        },
+        {
+          "authored_at": "2026-07-29T22:36:13-04:00",
+          "commit": "bac08af86dea84956f2476acef6354d8e17050e2",
+          "files": [
+            "design/UNCONDITIONAL-INDUCTION-PLAN.md"
+          ],
+          "subject": "docs: plan unconditional inductive proof"
+        },
+        {
+          "authored_at": "2026-07-29T23:28:20-04:00",
+          "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+          "files": [
+            "README.md",
+            "REPORT.md",
+            "design/UNCONDITIONAL-INDUCTION-PLAN.md",
+            "design/padic-macrocycle-lift-summary.json",
+            "design/padic_macrocycle_lift.py",
+            "design/verify_padic_macrocycle_lift.py"
+          ],
+          "subject": "proof: isolate 3-adic macrocycle lift"
+        }
+      ]
+    },
+    "incidental_direction_uses": [
+      "design/lattice_t_projective_spectrum_census.py",
+      "design/lattice_t_projective_spectrum_diagnostic.py",
+      "design/lattice_t_l5_cone_guard_audit.py",
+      "design/lattice_t_l6_cone_birth_guard.py",
+      "design/lattice_t_l6_cone_guard_audit.py",
+      "design/lattice_t_l6_cone_guard_pin_report.py",
+      "design/audit_guarded_l5_to_l6.py",
+      "design/guarded_l5_l6_common.py"
+    ],
+    "proof_plans_and_exposition": [
+      "CONDITIONAL-THEOREM.md",
+      "README.md",
+      "REPORT.md",
+      "design/FAR-SECANT-BIRTH-OPERATOR.md",
+      "design/FAR-SECANT-RANK-LEMMA.md",
+      "design/ORDERED-PATH-SAFETY-GATE.md",
+      "design/UNCONDITIONAL-INDUCTION-PLAN.md",
+      "design/PADIC-REACHABLE-SECANT-DEPTH-AUDIT.md",
+      "design/padic_reachable_secant_depth_audit.py",
+      "design/verify_padic_reachable_secant_depth_audit.py",
+      "design/padic-reachable-secant-depth-audit-summary.json",
+      "design/padic-reachable-secant-depth-witness.json"
+    ]
+  },
+  "status": "STOP CONDITION 2",
+  "stop_condition": {
+    "classification": "PROVED",
+    "consequence": "closure, promotion, targeted chronology instrumentation, and recurrent-witness search were not started",
+    "number": 2,
+    "source_admission": "design/UNCONDITIONAL-INDUCTION-PLAN.md:5-30,350-363",
+    "statement": "the 66,429-edge result is five bounded projective residue experiments, and the depth-16 stream is a finite regression, not an inductive certificate"
+  },
+  "supported_outcome": {
+    "classification": "PROVED for the proposed certificate",
+    "code": "F",
+    "label": "INSUFFICIENT ABSTRACTION",
+    "statement": "the residue direction graph cannot be a promoted safety class; exact fixed-cycle transport needs mu and phase, while reachable closure additionally needs causal owner/address, occupancy, whole-word, birth, and import state"
+  },
+  "witness": {
+    "path": "design/padic-latent-family-macrocycle-witness.json",
+    "payload_sha256": "ee4efe3f6b6fd073a0552b56ca7a2f1a3511a4f92e3b501087f6f888466330f4"
+  }
+}

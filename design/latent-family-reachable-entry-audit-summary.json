@@ -1,0 +1,392 @@
+{
+  "alternate_history_search": {
+    "classification": "EXACT FINITE",
+    "domain_word_occurrences": 756512535,
+    "j348_guard_rejections": 245555,
+    "outcome_counts": {
+      "exact-global-legality": 212583520,
+      "guard-cone:old-new-anchor:11/3": 37899986,
+      "guard-cone:old-new-anchor:348/275": 142596,
+      "guard-cone:old-new-connector:11/3": 18487555,
+      "guard-cone:old-new-connector:348/275": 102959,
+      "guard-cone:same-word-new-new:11/3": 13018520,
+      "local-poison:occupied-yz-fibre": 25561383,
+      "local-poison:same-word-yz-fibre": 17043563,
+      "survivor": 136317832,
+      "zero-envelope-incompatible": 295354621
+    },
+    "realized_prefixes": 8295,
+    "scope": "every connector word at each of the 8,295 recorded prefixes; not successor availability after taking an alternate word",
+    "surviving_connector_choices": 136317832
+  },
+  "auditor": "OpenAI Codex",
+  "canonical_predicate": {
+    "H": [
+      55,
+      34,
+      18
+    ],
+    "P_DENOMINATOR": 22,
+    "P_NUMERATOR": [
+      -99,
+      -78,
+      -62
+    ],
+    "direction": "canonical_primitive(b-a)=N^(2n)H for the unique n>=1 forced by the exact x-coordinate",
+    "moment": "(a-r) cross g_n = (P_NUMERATOR cross g_n)/22",
+    "representative_independence": "the chord is reduced to a canonical primitive direction; the signed integer multiplier is retained separately"
+  },
+  "classifications": {
+    "alternate_words_at_recorded_prefixes": "EXACT FINITE",
+    "canonical_entry_predicate": "PROVED",
+    "guarded_all_level_orbit_exclusion": "PROVED",
+    "guarded_birth_exclusion": "PROVED",
+    "recorded_guarded_L5_to_L6": "EXACT FINITE",
+    "successor_availability": "UNPROVED",
+    "unguarded_reachable_exclusion": "UNPROVED"
+  },
+  "inherited_cone_core": {
+    "J_348_over_275_pairs": 4,
+    "classification": "EXACT FINITE",
+    "directions_L5": [
+      [
+        165,
+        102,
+        -20
+      ],
+      [
+        165,
+        82,
+        84
+      ],
+      [
+        165,
+        84,
+        82
+      ],
+      [
+        165,
+        -84,
+        -82
+      ]
+    ],
+    "directions_L6": [
+      [
+        495,
+        60,
+        326
+      ],
+      [
+        55,
+        -28,
+        18
+      ],
+      [
+        495,
+        -246,
+        170
+      ],
+      [
+        495,
+        246,
+        -170
+      ]
+    ],
+    "latent_orbit_intersections": 0
+  },
+  "payload_sha256": "4f821c5c04479fa0998a191a47e6d87cfba683797421ef2957026ff45d28496d",
+  "producer": {
+    "path": "design/latent_family_reachable_entry_audit.py",
+    "sha256": "1640af4bdf625ce93acd54344362603ce6f0990597bbbd40af7676ddf929cd7b"
+  },
+  "recorded_chronology": {
+    "all_translation_parallel_pair_count": 0,
+    "claim": "EXACT FINITE: no phase-8 latent-family entry on the recorded guarded L5->L6 chronology",
+    "connector_interiors": 20508,
+    "coordinate_extrema": {
+      "maximum": [
+        729,
+        1308,
+        3485
+      ],
+      "minimum": [
+        -10214,
+        -4206,
+        -2552
+      ],
+      "span": [
+        10943,
+        5514,
+        6037
+      ]
+    },
+    "final_points": 28804,
+    "included_address_shells": [
+      1,
+      2
+    ],
+    "initial_anchors": 8296,
+    "level": "guarded L5 -> L6",
+    "source_step_8_corridors": 51,
+    "spacing_cutoff": {
+      "direction_x": 40095,
+      "first_excluded_n": 3,
+      "maximum_observed_x_separation": 10943,
+      "primitive_direction": [
+        40095,
+        -20990,
+        12306
+      ],
+      "reason": "primitive x-spacing exceeds the exact final coordinate span"
+    },
+    "translated_entry_count": 0
+  },
+  "schema": "latent-family-reachable-entry-audit/v1",
+  "signature": "[OpenAI Codex]",
+  "source_bindings": {
+    "alternate_summary": {
+      "path": "/Users/erik/homelab/math193/design/guarded-L5-to-L6-survivor-census-summary.json",
+      "sha256": "b49632699f6c0c3bcad43b8282d061ffc01cdbaeb013b98d8e0d9f80eaeadb77"
+    },
+    "alternates": {
+      "path": "/tmp/guarded-L5-to-L6-survivor-census-v2.json",
+      "sha256": "a69e490c544f65f51bdb178b27cd92b8ad359cb01af52de96c3b9cc796031aa2"
+    },
+    "chronology": {
+      "path": "/tmp/guarded-L5-to-L6-construction-v1.json",
+      "sha256": "420950b5dc2bf01226d314e74389a4db1c3bff02429d993f3542b218f72277d9"
+    },
+    "guarded_audit": {
+      "path": "/Users/erik/homelab/math193/design/guarded-L5-to-L6-audit-summary.json",
+      "sha256": "965f8af8ed243df271a390edad23ebf9663932a61b85bc81848b8c758061fe36"
+    },
+    "parent": {
+      "path": "/tmp/guarded-L5-parent-canonical-v1.json",
+      "sha256": "86f068ad8de131e68c44710d976bb2bec9b4872a732359540ffe51f5ba4520a7"
+    }
+  },
+  "status": "proved guarded-policy latent-family exclusion",
+  "symbolic_closure": {
+    "all_level_policy_relative_theorem": "For every finite history descended from the canonical guarded-L5 parent in which each connector word satisfies the same two-cone birth guard, no phase-8 translated latent line L_n with n>=1, and no phase-16 intermediate, is a secant at any prefix. The only 348/275 pairs are four carried base lineages, and none lies in or can enter the projective N-orbit of H.",
+    "base_core_disjointness": [
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          102,
+          -20
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          82,
+          84
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          84,
+          82
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      },
+      {
+        "N_to_index_H": [
+          165,
+          20,
+          -102
+        ],
+        "direction": [
+          165,
+          -84,
+          -82
+        ],
+        "equal": false,
+        "x_forces_orbit_index": 1
+      }
+    ],
+    "carriage_identity": "N*M=9I and F(Mg)=9F(g)",
+    "classification": "PROVED",
+    "family_cone_membership": "F(H)=0 and F(Ng)=9F(g), so every N^m H is in the 348/275 cone",
+    "guard_birth_implication": "the two-cone guarded predicate rejects every old-new and same-word new-new pair with F=0; therefore it rejects every latent-family birth before moment or corridor phase matters",
+    "guard_equation": "275*q(g)-348*g_x^2=0",
+    "orbit_checks_m0_through_m12": [
+      {
+        "cone_residual": 0,
+        "direction": [
+          55,
+          34,
+          18
+        ],
+        "orbit_index": 0,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          165,
+          20,
+          -102
+        ],
+        "orbit_index": 1,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          495,
+          -326,
+          -60
+        ],
+        "orbit_index": 2,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          1485,
+          146,
+          978
+        ],
+        "orbit_index": 3,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          4455,
+          2788,
+          -438
+        ],
+        "orbit_index": 4,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          13365,
+          -4102,
+          -8364
+        ],
+        "orbit_index": 5,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          40095,
+          -20990,
+          12306
+        ],
+        "orbit_index": 6,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          120285,
+          57908,
+          62970
+        ],
+        "orbit_index": 7,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          360855,
+          131002,
+          -173724
+        ],
+        "orbit_index": 8,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          1082565,
+          -652174,
+          -393006
+        ],
+        "orbit_index": 9,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          3247695,
+          -526844,
+          1956522
+        ],
+        "orbit_index": 10,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          9743085,
+          6396410,
+          1580532
+        ],
+        "orbit_index": 11,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 2
+      },
+      {
+        "cone_residual": 0,
+        "direction": [
+          29229255,
+          -1654814,
+          -19189230
+        ],
+        "orbit_index": 12,
+        "x_equals_55_times_3_to_index": true,
+        "y_mod_3": 1
+      }
+    ],
+    "orbit_primitivity": "the y-coordinate of N^m H is nonzero modulo 3; primes other than 3 cannot enter the content because det(N)=27 and H is primitive",
+    "proof_boundary": "This theorem is conditional on the guarded policy and canonical parent. It does not prove connector availability and does not cover globally triple-free histories that omit the two-cone guard."
+  },
+  "verdict": {
+    "classification": "PROVED",
+    "code": "GUARDED_EXCLUSION_PROVED",
+    "remaining_boundary": "This theorem is conditional on the guarded policy and canonical parent. It does not prove connector availability and does not cover globally triple-free histories that omit the two-cone guard.",
+    "statement": "For every finite history descended from the canonical guarded-L5 parent in which each connector word satisfies the same two-cone birth guard, no phase-8 translated latent line L_n with n>=1, and no phase-16 intermediate, is a secant at any prefix. The only 348/275 pairs are four carried base lineages, and none lies in or can enter the projective N-orbit of H."
+  },
+  "witness": {
+    "path": "/Users/erik/homelab/math193/design/latent-family-reachable-entry-witness.json",
+    "payload_sha256": "51a9f175a5d643c735aaf1f9462154dcb93d7e09cffd448abe60f7ec96ccf60b"
+  }
+}

@@ -1,0 +1,121 @@
+{
+  "decision": "NO-GO for another 66,429-edge latent-family transition round; PIVOT to the already-proved policy-relative cone/provenance exclusion and to honest cursor-import state",
+  "decision_basis": [
+    "the 66,429-edge family covers no observed returning line",
+    "exact trace types grow 77,205,639,2059 by terminal level",
+    "all direction-valued 3-adic ranks are constant zero",
+    "all 18 carriage returns lie wholly in the noncontracting observed Bellman core",
+    "cursor imports are outside the implemented carriage rank and require exact address history",
+    "the separate cone/provenance invariant already excludes the abstract family under its guard"
+  ],
+  "payload_sha256": "d1cdeb5aff1721c11d1c685cf4fcb4a219bcbb5845909c97bd29c30bc3b85565",
+  "proof_boundary": "finite observed L5-L8 x-line data only; no all-direction return enumeration, alternate history, L9 claim, or all-level theorem",
+  "schema": "observed-returning-line-summary/v1",
+  "table_payload_sha256": "1199f4bf1c0d5dc469b5c9a8e41a707740f3de41419c031dad655b377be83e0a",
+  "ten_answers": {
+    "10_smallest_distinguishing_state": {
+      "bounded_local_history_sufficient": false,
+      "carriage": "(parent step, relative primitive Pluecker token) plus actual selected word and ordered child slot/prefix control; endpoint IDs certify coexistence but do not change the local mask",
+      "cursor_import": "source relative primitive Pluecker token, exact line birth/activation provenance, and the ordered cursor translation/phase word through return",
+      "repository_obstruction": "the existing cursor-jump audit found noncongruence even after exact jump, local/tile phases, and complete predecessor-core occupancy; remote birth/address history remains required"
+    },
+    "1_returning_lines_by_level": {
+      "carriage_terminal": {
+        "5": 0,
+        "6": 0,
+        "7": 4,
+        "8": 14
+      },
+      "cursor_import": {
+        "5": 37,
+        "6": 101,
+        "7": 315,
+        "8": 1021
+      },
+      "physical_lines_across_all_levels": 1021,
+      "union": {
+        "5": 37,
+        "6": 101,
+        "7": 315,
+        "8": 1021
+      }
+    },
+    "2_distinct_minimized_trace_types": {
+      "by_channel_and_terminal_level": {
+        "carriage": {
+          "5": 0,
+          "6": 0,
+          "7": 4,
+          "8": 14
+        },
+        "cursor_import": {
+          "5": 77,
+          "6": 205,
+          "7": 635,
+          "8": 2045
+        }
+      },
+      "by_terminal_level": {
+        "5": 77,
+        "6": 205,
+        "7": 639,
+        "8": 2059
+      },
+      "definition": "physical identity, absolute level/gap/rank, and absolute translation are removed; exact local Pluecker state, phase, effect mask, silent length, and ordered transition controls are retained",
+      "total": 2980
+    },
+    "3_existing_latent_family_coverage": "none",
+    "4_coverage_fraction_and_faithfulness": {
+      "faithful": false,
+      "fraction": "0/1021 physical lines; 0/2988 episodes; 0/2980 types",
+      "reason": "empty coverage and normalization branches 3/1 versus latent 9/9"
+    },
+    "5_smallest_witness_outside_family": {
+      "line_id": "697ca2bdf93569ed454ed0e5871ef4e84f87e7624adea604911e81a45ccec873",
+      "silent_interval_length": 1,
+      "terminal_level": 5,
+      "trace_id": "84384cd432f796d70949b3fc437461f462daff5c5c49ea7e716f6c6ca8d69914",
+      "witness_payload_sha256": "a4721044decb4be87d840d3c1f025539ad358345358b4069d2f61a4a949d8256"
+    },
+    "6_symbolic_family_clustering": {
+      "families": [
+        "x-parallel same-level cursor translation",
+        "x-parallel selected-slot carriage zeta'=B(zeta-c_perp)"
+      ],
+      "mechanism_families": 2,
+      "reason": "the two mechanisms contain 2,980 exact local control types",
+      "small_stable_exact_family_set": false
+    },
+    "7_trace_type_stabilization": {
+      "by_terminal_level": {
+        "5": 77,
+        "6": 205,
+        "7": 639,
+        "8": 2059
+      },
+      "cumulative": {
+        "5": 77,
+        "6": 282,
+        "7": 921,
+        "8": 2980
+      },
+      "verdict": "continues growing substantially through L8"
+    },
+    "8_existing_rank_decrease": {
+      "carriage_bellman_profiles": {
+        "core->core->core": 18
+      },
+      "cursor_import_bellman_applicability": "not applicable: the implemented escape inequality assumes synchronized M carriage, not unrelated cursor translation",
+      "direction_rank_profile": "raw=0, weighted=0, latent R=0 on every state because g=(1,0,0)",
+      "strict_or_fixed_block_decrease_on_every_return": false
+    },
+    "9_simple_invariant_for_g_n": {
+      "answer": "yes, policy-relative to the existing two-cone guard",
+      "family_value": 0,
+      "invariant": "F(g)=275*q(g)-348*g_x^2 and endpoint orbit provenance",
+      "observed_return_value": -348,
+      "scope": "excludes the fixed N-orbit in guard-preserving continuations; does not prove unguarded or alternate-history exclusion"
+    }
+  },
+  "witness_payload_sha256": "a4721044decb4be87d840d3c1f025539ad358345358b4069d2f61a4a949d8256"
+}

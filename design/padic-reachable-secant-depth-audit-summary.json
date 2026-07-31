@@ -1,0 +1,522 @@
+{
+  "algebra": {
+    "homogeneity": "q(3^s*g)=3^(2s)*q(g)",
+    "matrix": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -3
+      ],
+      [
+        0,
+        3,
+        -1
+      ]
+    ],
+    "q": "3*gy^2-gy*gz+3*gz^2",
+    "transport": {
+      "identity": "q(Mg)=9*q(g)",
+      "input_q_coefficients": [
+        0,
+        0,
+        0,
+        3,
+        -1,
+        3
+      ],
+      "nine_q_coefficients": [
+        0,
+        0,
+        0,
+        27,
+        -9,
+        27
+      ],
+      "q_after_M_coefficients": [
+        0,
+        0,
+        0,
+        27,
+        -9,
+        27
+      ],
+      "status": "PROVED"
+    }
+  },
+  "audited_head": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+  "auditor": "OpenAI Codex",
+  "claim_ledger": [
+    {
+      "claim": "q(Mg)=9q(g) as an integer polynomial identity.",
+      "classification": "PROVED",
+      "id": "C1"
+    },
+    {
+      "claim": "Raw min depth is independent of the chord representative.",
+      "classification": "REFUTED",
+      "id": "C2"
+    },
+    {
+      "claim": "Primitive 3-content normalization repairs projective representation dependence, but proves no return bound.",
+      "classification": "PROVED",
+      "id": "C3"
+    },
+    {
+      "claim": "The repository's rank-facing g is a canonical primitive line direction, not an exact endpoint chord.",
+      "classification": "PROVED",
+      "id": "C4"
+    },
+    {
+      "claim": "For the abstract latent family, weighted q-depth equals the exact fixed-macrocycle return countdown.",
+      "classification": "PROVED",
+      "id": "C5"
+    },
+    {
+      "claim": "Policy-reachable newborn secants have a uniform corrected first-return rank after singular promotion.",
+      "classification": "CONJECTURED",
+      "id": "C6"
+    },
+    {
+      "claim": "Birth-normalized residual valuations alone strictly decrease under pure carriage; they are exactly constant.",
+      "classification": "REFUTED",
+      "id": "C7"
+    },
+    {
+      "claim": "The committed macrocycle certificate covers 66,429 residue edges through 3^5 and latent depth 16.",
+      "classification": "EXACT FINITE",
+      "id": "C8"
+    },
+    {
+      "claim": "The guarded L5 -> L6 cone result is one fixed chronology, not a universal reachable-history transition.",
+      "classification": "EXACT FINITE",
+      "id": "C9"
+    },
+    {
+      "claim": "A bounded scalar rank by itself implies bounded simultaneous multiplicity or a finite safety state.",
+      "classification": "REFUTED",
+      "id": "C10"
+    },
+    {
+      "claim": "No measurement is used as proof in this stop report; deeper L5/L6 rank-lifetime correlations were intentionally not run.",
+      "classification": "MEASURED",
+      "id": "C11"
+    }
+  ],
+  "corrected_theorem": {
+    "classification": "PROVED",
+    "statement": "Let g_n=N^(2n)(55,34,18), represented canonically primitive. Then v3((g_n)_x)=2n, v3(q(g_n))=4n+1, and the fixed primitive M^2 line transition sends g_n to g_(n-1).  Hence the repository latent scalar depth equals n on this family.  This theorem is about abstract integer lattice lines, not reachable secants."
+  },
+  "execution_protocol": {
+    "checkpoint_schema": "padic-reachable-secant-depth-checkpoint/v1",
+    "signpost_prefix": "[OpenAI Codex][3-adic secant audit]",
+    "supports_estimate": true,
+    "supports_resume": true,
+    "supports_time_bounded_pause": true
+  },
+  "four_required_answers": {
+    "what_is_g": "In the repository proposal, g is the canonical primitive affine-line direction in a Pluecker token (g,mu).  Cone guards may evaluate the homogeneous polynomial on a raw endpoint difference.  The proposed birth-normalized exact chord is a different, new object.",
+    "what_scale_can_be_factored": "Arbitrary scalar representation may be removed canonically by primitive normalization.  Genealogical M-scale may be removed only from exact joint endpoint provenance proving common carriage.  Maximal algebraic pullback is not a substitute for that provenance.",
+    "when_is_secant_born": "Repository-backed canonical birth is insertion of the later endpoint; all old-new and same-word new-new lines are injected then.  A cursor import is exposure, not birth; deep-deep lines are not reborn.",
+    "why_rank_decreases_or_promotes": "No general proof exists.  The fixed latent family counts down only after canonical primitive normalization of one macrocycle.  Birth-normalized exact-chord valuations are constant, and no finite promoted closure for all reachable silent SCCs has been proved."
+  },
+  "payload_sha256": "ef01f0937873e3da322e50ab1ffdf70fa268563d26134ede105ef6d37424d6b8",
+  "remaining_lemmas": [
+    "Canonical joint-endpoint provenance and inherited-scale lemma.",
+    "Exact correlated contact-residual transition for every legal stitch and cursor move.",
+    "Uniform reachable-newborn residual bound for every birth channel.",
+    "Strict decrease, bounded-block decrease, or finite promotion for every reachable silent SCC.",
+    "Finite promoted occupancy and multiplicity closure under births and imports.",
+    "Whole-word correlated poison-mask safety fixed point with positive availability."
+  ],
+  "representation_verdict": {
+    "canonical_repository_direction": "canonical primitive direction",
+    "genealogical_pullback": "For pure exact carriage M^k g_birth, M^(-k)g_current=g_birth; therefore any scalar of that pullback is constant.",
+    "incidence_state": "Exact future incidence requires at least primitive direction g, Pluecker moment mu, correlated cursor/phase, and joint endpoint provenance; direction valuations alone are insufficient.",
+    "projective_repair": "Subtract c=min_i v3(g_i) from v3(gx) and 2c from v3(q), equivalently use the 3-primitive direction.  This repairs only arbitrary scalar representation, not the lifetime theorem.",
+    "raw_rank": "REFUTED"
+  },
+  "schema": "padic-reachable-secant-depth-audit/v1",
+  "source_audit": {
+    "exact_raw_min_formula_occurrences": [],
+    "explicit_q_files": [
+      "REPORT.md",
+      "design/FAR-SECANT-BIRTH-OPERATOR.md",
+      "design/FAR-SECANT-RANK-LEMMA.md",
+      "design/GHOST-LANGUAGE-AUTOMATON.md",
+      "design/GUARDED-L5-L6-TRANSITION.md",
+      "design/LATENT-REENTRY-OBSTRUCTION.md",
+      "design/ORDERED-PATH-SAFETY-GATE.md",
+      "design/UNCONDITIONAL-INDUCTION-PLAN.md",
+      "design/guarded_l5_l6_common.py",
+      "design/guarded_l5_to_l6.py",
+      "design/lattice-T-projective-spectrum-census-summary.json",
+      "design/lattice_t_l5_cone_guard_audit.py",
+      "design/lattice_t_l6_cone_birth_guard.py",
+      "design/lattice_t_l6_cone_guard_audit.py",
+      "design/lattice_t_l6_cone_guard_pin_report.py",
+      "design/lattice_t_projective_spectrum_census.py",
+      "design/lattice_t_projective_spectrum_diagnostic.py",
+      "design/lattice_t_role_first_holonomy_reachability.py",
+      "design/lattice_t_role_first_l5_range_merge.py",
+      "design/lattice_t_short_return_holonomy.py",
+      "design/nonx-cycle-invariant-certificate-summary.json",
+      "design/nonx-latent-reentry-certificate-summary.json",
+      "design/nonx_cycle_invariant_certificate.py",
+      "design/nonx_latent_reentry_certificate.py",
+      "design/padic-macrocycle-lift-summary.json",
+      "design/padic_macrocycle_lift.py",
+      "design/verify_padic_macrocycle_lift.py",
+      "viz/proof-steps.html"
+    ],
+    "history": {
+      "explicit_q": [
+        {
+          "authored_at": "2026-07-18T23:59:24-04:00",
+          "commit": "927b754d036607fe8e376cc9e7af7bbedfc66029",
+          "files": [
+            "REPORT.md",
+            "design/FAR-SECANT-BIRTH-OPERATOR.md",
+            "design/FAR-SECANT-RANK-LEMMA.md",
+            "design/GHOST-LANGUAGE-AUTOMATON.md",
+            "design/LATENT-REENTRY-OBSTRUCTION.md",
+            "design/ORDERED-PATH-SAFETY-GATE.md",
+            "design/lattice-T-projective-spectrum-census-summary.json",
+            "design/lattice_t_l5_cone_guard_audit.py",
+            "design/lattice_t_l6_cone_birth_guard.py",
+            "design/lattice_t_l6_cone_guard_audit.py",
+            "design/lattice_t_projective_spectrum_census.py",
+            "design/lattice_t_projective_spectrum_diagnostic.py",
+            "design/lattice_t_role_first_holonomy_reachability.py",
+            "design/lattice_t_short_return_holonomy.py",
+            "design/nonx-cycle-invariant-certificate-summary.json",
+            "design/nonx-latent-reentry-certificate-summary.json",
+            "design/nonx_cycle_invariant_certificate.py",
+            "design/nonx_latent_reentry_certificate.py"
+          ],
+          "subject": "proof: harden ordered-path far-secant certificates"
+        },
+        {
+          "authored_at": "2026-07-19T01:04:12-04:00",
+          "commit": "ee404916326738008f2605ec93c2bb0e6884aa84",
+          "files": [
+            "design/lattice_t_l6_cone_guard_pin_report.py"
+          ],
+          "subject": "proof: freeze guarded L6 audit pins"
+        },
+        {
+          "authored_at": "2026-07-19T05:18:35-04:00",
+          "commit": "681c851690376d4be70cb23f4ecc5d914c6eafc3",
+          "files": [
+            "design/lattice_t_role_first_l5_range_merge.py"
+          ],
+          "subject": "proof: seal finite audits and ghost-depth checkpoint"
+        },
+        {
+          "authored_at": "2026-07-28T23:34:53-04:00",
+          "commit": "d412d39bbb387638085e9d39f9f6cfa9b1e757da",
+          "files": [
+            "design/GUARDED-L5-L6-TRANSITION.md",
+            "design/guarded_l5_l6_common.py",
+            "design/guarded_l5_to_l6.py"
+          ],
+          "subject": "proof: prepare consecutive guarded L5 to L6 gate"
+        },
+        {
+          "authored_at": "2026-07-29T14:13:45-04:00",
+          "commit": "94ab4a9eda85ad918f451a7d9e10953b276cf086",
+          "files": [
+            "viz/proof-steps.html"
+          ],
+          "subject": "site: reflect guarded census and current proof gap"
+        },
+        {
+          "authored_at": "2026-07-29T23:28:20-04:00",
+          "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+          "files": [
+            "REPORT.md",
+            "design/UNCONDITIONAL-INDUCTION-PLAN.md",
+            "design/padic-macrocycle-lift-summary.json",
+            "design/padic_macrocycle_lift.py",
+            "design/verify_padic_macrocycle_lift.py"
+          ],
+          "subject": "proof: isolate 3-adic macrocycle lift"
+        }
+      ],
+      "invariant_metric": [
+        {
+          "authored_at": "2026-07-15T18:49:53-04:00",
+          "commit": "00fb71108a0c886d74af72965e599737c99f1e96",
+          "files": [
+            "PROOF-SKELETON.md",
+            "design/lemma/dim/fractal-round.json",
+            "design/lemma/dim/route1_affinity.py"
+          ],
+          "subject": "Fractal-dimension round: NOT a dunk (STUCK, p0.15) but real machinery \u2014 bounded distortion PROVEN (invariant PD form) + anisotropic contraction PROVEN (phi=0.353<1, fixes the 20/9 divergence). Residue = per-shell charge kappa_j, measured not proven. NEW PATH: finite check on kappa_j via local-config automaton + transfer-operator fixed point. design/lemma/dim/."
+        },
+        {
+          "authored_at": "2026-07-16T05:44:45-04:00",
+          "commit": "65c6f7d678b98823fa8158df26ba8f726ba1a722",
+          "files": [
+            "CONDITIONAL-THEOREM.md"
+          ],
+          "subject": "TIER-1 DELIVERABLE: CONDITIONAL-THEOREM.md \u2014 referee-checkable statement that Erdos #193 holds YES modulo a single geometric regularity lemma (Lemma R: Ahlfors d-regularity of the walk-curve), with L1/L2/L5 proven, L3 a finite check given R, and the full machinery (exact recursion, bounded distortion, anisotropic contraction, anchor separation, deep-tail collapse, spool transience, qualitative no-blow-up over 79M words) proven around it. Reproducibility table + honest status."
+        },
+        {
+          "authored_at": "2026-07-16T06:01:35-04:00",
+          "commit": "4aa09ebdbd70847e75fd5dd9001a737df4cf8604",
+          "files": [
+            "CONDITIONAL-THEOREM.md",
+            "PROOF-SKELETON.md",
+            "design/lemma/ahlfors/VERDICT.json",
+            "design/lemma/ahlfors/ahlfors-round.json",
+            "design/lemma/ahlfors/route3-qmetric-CONCLUSION.json",
+            "design/lemma/ahlfors/route3_qmetric.py"
+          ],
+          "subject": "AHLFORS/MAULDIN-WILLIAMS round: residue REDUCED TO THE OPEN SET CONDITION (a named standard condition). PROVEN: exact Q-metric self-similarity M\u1d40QM=9Q (M=3\u00b7O), so MW(1988)+Schief(1994) gives Lemma R under OSC, all hypotheses proven but OSC. OSC measured (bounded covering mult 4/5/4, identical L6/L7) not proven; needs menu-closure graph. p 0.13. CONDITIONAL-THEOREM.md upgraded: Lemma R = the OSC. Frontier documented (7 rounds)."
+        },
+        {
+          "authored_at": "2026-07-16T09:35:48-04:00",
+          "commit": "829cd0d37e487593830a12f471432c55083fb107",
+          "files": [
+            "design/osc/closure_multiplicity.py"
+          ],
+          "subject": "New page: The map (viz/map.html) \u2014 the trilemma triangle (dimension 1 / triple-free / finite menu, pick two), with the empty impossible apex, edge-witnesses (moment curve, straight line, our walk), comparison table, and the 'why this is the whole problem' framing. Linked in nav on all pages."
+        },
+        {
+          "authored_at": "2026-07-16T20:25:38-04:00",
+          "commit": "10427954c2a51abc0c46b6b69741bf9e3514d6b8",
+          "files": [
+            "CONDITIONAL-THEOREM.md"
+          ],
+          "subject": "Re-scope Lemma R to arc-incidence; close OSC/matrix/entropy routes honestly"
+        },
+        {
+          "authored_at": "2026-07-17T14:57:14-04:00",
+          "commit": "ef064878e7e011de3cc9af7b7548e11ddd982f26",
+          "files": [
+            "erdos-193-conditional-resolution.md"
+          ],
+          "subject": "Add the Tier-1 write-up: conditional resolution + map of the obstruction"
+        },
+        {
+          "authored_at": "2026-07-17T16:00:20-04:00",
+          "commit": "e2e10625ff8013382ee3e25a359d874bcbb7b848",
+          "files": [
+            "design/arch_sep/arch_omega_reconcile.py",
+            "design/arch_sep/clearance-L7.log",
+            "design/arch_sep/clearance-L8.log",
+            "design/arch_sep/geometric_clearance.py",
+            "design/mprime/forcing_and_walk.py",
+            "design/osc/dg_closure_uniform.py",
+            "design/osc/neighbor_type_automaton.py",
+            "design/osc/nuniform_covering_bound.py",
+            "design/osc/tight_worstcase.py",
+            "design/osc_decide/SUMMARY.json",
+            "design/osc_decide/carry_automaton.py",
+            "design/osc_decide/lineB_min_sep.py",
+            "design/osc_decide/touch_overlap.py",
+            "design/osc_decide/v3_closer.py",
+            "design/tight/bound2_crosslevel.py",
+            "design/tight/bound2_induction.py",
+            "lineA_grouped_scales.py",
+            "lineA_margins.py"
+          ],
+          "subject": "Commit investigation artifacts backing the write-up; gitignore .pkl caches"
+        },
+        {
+          "authored_at": "2026-07-18T08:13:08-04:00",
+          "commit": "1c7768ef6430e01161f15f4ea75d1a86e6c7a73b",
+          "files": [
+            "CONDITIONAL-THEOREM.md"
+          ],
+          "subject": "Add ordered-path safety certificates"
+        },
+        {
+          "authored_at": "2026-07-18T17:39:07-04:00",
+          "commit": "f5709a7e4ad776a2e99ec22d224db5624c1dc3aa",
+          "files": [
+            "REPORT.md",
+            "design/FAR-SECANT-RANK-LEMMA.md"
+          ],
+          "subject": "Add ordered-path far-secant certificates"
+        },
+        {
+          "authored_at": "2026-07-18T23:59:24-04:00",
+          "commit": "927b754d036607fe8e376cc9e7af7bbedfc66029",
+          "files": [
+            "design/FAR-SECANT-BIRTH-OPERATOR.md",
+            "design/GHOST-LANGUAGE-AUTOMATON.md"
+          ],
+          "subject": "proof: harden ordered-path far-secant certificates"
+        }
+      ],
+      "latent_depth": [
+        {
+          "authored_at": "2026-07-29T23:28:20-04:00",
+          "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+          "files": [
+            "design/padic-macrocycle-lift-summary.json",
+            "design/padic_macrocycle_lift.py",
+            "design/verify_padic_macrocycle_lift.py"
+          ],
+          "subject": "proof: isolate 3-adic macrocycle lift"
+        }
+      ]
+    },
+    "invariant_metric_ancestor_files": [
+      "CONDITIONAL-THEOREM.md",
+      "PROOF-SKELETON.md",
+      "REPORT.md",
+      "design/FAR-SECANT-BIRTH-OPERATOR.md",
+      "design/FAR-SECANT-RANK-LEMMA.md",
+      "design/GHOST-LANGUAGE-AUTOMATON.md",
+      "design/arch_sep/arch_omega_reconcile.py",
+      "design/arch_sep/clearance-L7.log",
+      "design/arch_sep/clearance-L8.log",
+      "design/arch_sep/geometric_clearance.py",
+      "design/lemma/ahlfors/VERDICT.json",
+      "design/lemma/ahlfors/ahlfors-round.json",
+      "design/lemma/ahlfors/route3-qmetric-CONCLUSION.json",
+      "design/lemma/ahlfors/route3_qmetric.py",
+      "design/lemma/dim/fractal-round.json",
+      "design/lemma/dim/route1_affinity.py",
+      "design/mprime/forcing_and_walk.py",
+      "design/osc/closure_multiplicity.py",
+      "design/osc/dg_closure_uniform.py",
+      "design/osc/neighbor_type_automaton.py",
+      "design/osc/nuniform_covering_bound.py",
+      "design/osc/tight_worstcase.py",
+      "design/osc_decide/SUMMARY.json",
+      "design/osc_decide/carry_automaton.py",
+      "design/osc_decide/lineB_min_sep.py",
+      "design/osc_decide/touch_overlap.py",
+      "design/osc_decide/v3_closer.py",
+      "design/tight/bound2_crosslevel.py",
+      "design/tight/bound2_induction.py",
+      "erdos-193-conditional-resolution.md",
+      "lineA_grouped_scales.py",
+      "lineA_margins.py"
+    ],
+    "latent_depth_files": [
+      "design/padic-macrocycle-lift-summary.json",
+      "design/padic_macrocycle_lift.py",
+      "design/verify_padic_macrocycle_lift.py"
+    ],
+    "origin_conclusion": "The full invariant form x^2+2q(y,z) predates the secant use.  Projective J=q/r^2 and cone guards were introduced later; the only scalar min-depth was introduced with the fixed latent-family positive control.  No raw min(v3(gx),v3(q(g))) theorem occurs.",
+    "rank_candidate_history": [
+      {
+        "authored_at": "2026-07-29T23:28:20-04:00",
+        "change": "+",
+        "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+        "context": "        x_valuation = exact_v3(direction[0])\n        q_valuation = exact_v3(q_value)\n        padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)\n        record = {\n            \"n\": n,",
+        "path": "design/padic_macrocycle_lift.py",
+        "subject": "proof: isolate 3-adic macrocycle lift",
+        "text": "padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)"
+      },
+      {
+        "authored_at": "2026-07-29T23:28:20-04:00",
+        "change": "+",
+        "commit": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+        "context": "        x_valuation = exact_v3(direction[0])\n        q_valuation = exact_v3(q_value)\n        padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)\n        record = {\n            \"n\": n,",
+        "path": "design/verify_padic_macrocycle_lift.py",
+        "subject": "proof: isolate 3-adic macrocycle lift",
+        "text": "padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)"
+      }
+    ],
+    "rank_candidate_occurrences": [
+      {
+        "context": "        x_valuation = exact_v3(direction[0])\n        q_valuation = exact_v3(q_value)\n        padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)\n        record = {\n            \"n\": n,",
+        "line": 509,
+        "path": "design/padic_macrocycle_lift.py",
+        "text": "padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)"
+      },
+      {
+        "context": "        x_valuation = exact_v3(direction[0])\n        q_valuation = exact_v3(q_value)\n        padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)\n        record = {\n            \"n\": n,",
+        "line": 321,
+        "path": "design/verify_padic_macrocycle_lift.py",
+        "text": "padic_depth = min(x_valuation // 2, (q_valuation - 1) // 4)"
+      }
+    ],
+    "semantic_groups": {
+      "abstract_carried_line_obstructions": {
+        "domain": "integer lattice lines and fixed-policy carried/silent-returning families; reachability as a secant of two placed points is not proved",
+        "files": [
+          "design/LATENT-REENTRY-OBSTRUCTION.md",
+          "design/nonx-cycle-invariant-certificate-summary.json",
+          "design/nonx-latent-reentry-certificate-summary.json",
+          "design/nonx_cycle_invariant_certificate.py",
+          "design/nonx_latent_reentry_certificate.py"
+        ],
+        "representation": "canonical primitive affine-line direction g together with the Pluecker moment; g_n is not an exact endpoint difference"
+      },
+      "abstract_holonomy_or_reveal_descriptors": {
+        "domain": "finite affine holonomy and role-first diagnostics; physical secant birth, global legality, or repeatability is explicitly not proved",
+        "files": [
+          "design/lattice_t_role_first_holonomy_reachability.py",
+          "design/lattice_t_role_first_l5_range_merge.py",
+          "design/lattice_t_short_return_holonomy.py"
+        ],
+        "representation": "canonical primitive rational reveal/contact direction derived from a fixed point or pulled-back candidate; not generally an endpoint chord"
+      },
+      "guarded_finite_endpoint_chords": {
+        "domain": "fixed finite guarded L5/L6 point-pair, old-new, and same-word new-new scans; not an all-history birth theorem",
+        "files": [
+          "design/GUARDED-L5-L6-TRANSITION.md",
+          "design/guarded_l5_l6_common.py",
+          "design/guarded_l5_to_l6.py",
+          "design/lattice-T-projective-spectrum-census-summary.json",
+          "design/lattice_t_l5_cone_guard_audit.py",
+          "design/lattice_t_l6_cone_birth_guard.py",
+          "design/lattice_t_l6_cone_guard_audit.py",
+          "design/lattice_t_l6_cone_guard_pin_report.py",
+          "design/lattice_t_projective_spectrum_census.py",
+          "design/lattice_t_projective_spectrum_diagnostic.py"
+        ],
+        "representation": "q is evaluated on the exact endpoint difference because the cone equation is homogeneous; canonical primitive direction and moment are stored when a line key is needed"
+      },
+      "latent_depth_positive_control": {
+        "domain": "one fixed abstract latent line family; exact algebra for all n and finite regression through n=16, but no reachable secant birth",
+        "files": [
+          "design/padic-macrocycle-lift-summary.json",
+          "design/padic_macrocycle_lift.py",
+          "design/verify_padic_macrocycle_lift.py"
+        ],
+        "representation": "canonical primitive g_n=N^(2n)H in the y-unit projective chart; the scalar depth is min(v3(g_x)//2,(v3(q(g))-1)//4)"
+      },
+      "mixed_expository_summaries": {
+        "domain": "expository summary only; no additional theorem",
+        "files": [
+          "REPORT.md",
+          "viz/proof-steps.html"
+        ],
+        "representation": "inherits the distinct representations of the cited sources"
+      },
+      "primitive_pluecker_operator_and_plan": {
+        "domain": "exact general line-token operators plus an explicitly open proposal for policy-reachable newborns, carried lines, and cursor imports",
+        "files": [
+          "design/FAR-SECANT-BIRTH-OPERATOR.md",
+          "design/FAR-SECANT-RANK-LEMMA.md",
+          "design/GHOST-LANGUAGE-AUTOMATON.md",
+          "design/ORDERED-PATH-SAFETY-GATE.md",
+          "design/UNCONDITIONAL-INDUCTION-PLAN.md"
+        ],
+        "representation": "canonical primitive direction g and exact Pluecker moment mu; unnormalized pairs are retained only during symbolic transport"
+      }
+    }
+  },
+  "status": "STOP CONDITION 6: the universal reachable-secant scalar rank is not repository-backed and has no incidence-lifetime transition lemma",
+  "stop_condition": {
+    "classification": "PROVED",
+    "number": 6,
+    "trigger": "q is repository-backed, but min(v3(gx),v3(q(g))) is not the repository rank.  The only equivalent scalar is a fixed-family positive control, explicitly outside reachable-secant scope."
+  },
+  "witness": {
+    "path": "design/padic-reachable-secant-depth-witness.json",
+    "payload_sha256": "69465942289d18ec0108729d98be73674792c7af30f5dbd1a245fdc9dec99edb"
+  }
+}
