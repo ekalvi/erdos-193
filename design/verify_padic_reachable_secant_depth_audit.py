@@ -125,9 +125,9 @@ def grep_files(revision: str, pattern: str):
     return sorted(set(paths))
 
 
-def history_records(pattern: str):
+def history_records(pattern: str, revision: str):
     commits = git(
-        "log", "--all", "--reverse", "--format=%H", "-G" + pattern
+        "log", revision, "--reverse", "--format=%H", "-G" + pattern
     ).splitlines()
     records = []
     for commit in commits:
@@ -179,9 +179,9 @@ def rank_candidate_occurrences(revision: str):
     return records
 
 
-def historical_rank_candidate_occurrences():
+def historical_rank_candidate_occurrences(revision: str):
     commits = git(
-        "log", "--all", "--reverse", "--format=%H", "-G" + RANK_EDIT_PATTERN
+        "log", revision, "--reverse", "--format=%H", "-G" + RANK_EDIT_PATTERN
     ).splitlines()
     records = []
     seen = set()
@@ -328,9 +328,9 @@ def verify_source_audit(summary):
         if audit[key] != value:
             raise AssertionError(f"source inventory mismatch: {key}")
     expected_history = {
-        "invariant_metric": history_records(METRIC_Q_PATTERN),
-        "explicit_q": history_records(EXPLICIT_Q_PATTERN),
-        "latent_depth": history_records(DEPTH_PATTERN),
+        "invariant_metric": history_records(METRIC_Q_PATTERN, revision),
+        "explicit_q": history_records(EXPLICIT_Q_PATTERN, revision),
+        "latent_depth": history_records(DEPTH_PATTERN, revision),
     }
     if audit["history"] != expected_history:
         raise AssertionError("history inventory mismatch")
@@ -355,7 +355,7 @@ def verify_source_audit(summary):
     for record in occurrences:
         if "min(x_valuation // 2, (q_valuation - 1) // 4)" not in record["text"]:
             raise AssertionError("rank occurrence is not the weighted latent formula")
-    rank_history = historical_rank_candidate_occurrences()
+    rank_history = historical_rank_candidate_occurrences(revision)
     if audit["rank_candidate_history"] != rank_history:
         raise AssertionError("historical scalar rank occurrence inventory mismatch")
     raw_occurrences = exact_raw_rank_occurrences(rank_history)

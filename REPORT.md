@@ -1271,7 +1271,7 @@ bounded modulus cannot supply the reveal rank.
 The compact census checks all 66,429 projective edges through modulus `3^5`
 and the exact latent line/moment countdown through depth 16.  The independent
 verifier reproduces payload SHA-256
-`6ef9b78dfe8760d9e152c1bf05722ff0dfff628e0e4bf7e317f832cc7daed8f6`.
+`7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829`.
 These finite checks support the displayed all-depth algebra but do not prove
 reachable secant birth.  The sharpened positive target is a policy-specific,
 level-uniform bound on simultaneous 3-adic proximity to `g_x=0` and `q(g)=0`
@@ -1450,3 +1450,42 @@ and 2,980 exact trace types.  Final payload SHA-256 values are
 (witnesses), and
 `d1cdeb5aff1721c11d1c685cf4fcb4a219bcbb5845909c97bd29c30bc3b85565`
 (summary).
+
+## Macrocycle runner review hardening (2026-08-05)
+
+The three open runtime review findings on
+`design/padic_macrocycle_lift.py` are repaired without changing the
+mathematical census or its proof boundary.
+
+- Checkpoint schema 2 persists the active precision's exact next `x` row and
+  a compressed, SHA-256-committed stream of every completed state edge.
+  Atomic periodic, time-budget, `SIGINT`, and `SIGTERM` checkpoints resume
+  without recomputing completed transition rows.
+- `--log` writes an append-only, timestamped, fsync-backed JSONL record of
+  parameters, code/config identity, start or resume state, resource settings,
+  progress, throughput, ETA, checkpoints, completion, and errors.  Logs and
+  checkpoints remain separate from the proof artifact.
+- Throughput now divides cumulative work completed during the current
+  invocation by the matching invocation elapsed time.  The same rate drives
+  ETA across precision boundaries; resetting per-precision progress no longer
+  corrupts it.
+
+`design/test_padic_macrocycle_runtime.py` deterministically pauses inside
+precision 1, advances the retained frontier from row 1 to row 2 on a second
+bounded resume, completes from that checkpoint, and compares the result with
+an uninterrupted run.  It also validates durable event coverage, timestamps,
+resource identity, and the work/time rate equation.
+
+The regression result was:
+
+```json
+{"completed_state_edges":90,"durable_log_records":23,"first_active_next_x":1,"progress_records":12,"resumed_matches_fresh":true,"second_active_next_x":2,"status":"verified"}
+```
+
+The full 66,429-edge artifact was regenerated and independently verified with
+explorer SHA-256
+`75c0871047e5bebc16cba189c8fc542e5c5ed961db641bde86a3b738caf186f9`,
+file SHA-256
+`b2973804365f82dc81b2b95891eed69da8515bebc1b0ace27da3c5a90864e16c`,
+and payload SHA-256
+`7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829`.

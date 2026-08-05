@@ -181,7 +181,7 @@
   },
   "explorer": {
     "logical_path": "design/padic_macrocycle_lift.py",
-    "sha256": "dbc011a894512bf12bf6f59c69e33303e924c524cb91ca313fefcafeab823cb2"
+    "sha256": "75c0871047e5bebc16cba189c8fc542e5c5ed961db641bde86a3b738caf186f9"
   },
   "finite_modulus_warning": "The exact y-unit chart has a unique 3-adic attracting direction: x contracts by 3^2 and z contracts by 3^4.  At every fixed precision, the inverse latent orbit therefore reaches one fixed projective residue. Bounded residue state cannot encode the unbounded exact reveal countdown; a positive proof must bound how closely reachable newborn secants approach the simultaneous 3-adic locus g_x=0 and q(g)=0.",
   "latent_positive_control": {
@@ -254,7 +254,7 @@
     "primitive_residue_classes": 702,
     "residue_modulus": 9
   },
-  "payload_sha256": "6ef9b78dfe8760d9e152c1bf05722ff0dfff628e0e4bf7e317f832cc7daed8f6",
+  "payload_sha256": "7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829",
   "precisions": [
     {
       "contact_valuation_pair_histogram": {

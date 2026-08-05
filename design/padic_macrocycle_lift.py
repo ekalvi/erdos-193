@@ -10,23 +10,37 @@ unconditional result for Erdos #193.
 from __future__ import annotations
 
 import argparse
+import base64
 from collections import Counter, deque
+from datetime import datetime, timezone
 from fractions import Fraction
 import hashlib
 import json
 import math
 import os
 from pathlib import Path
+import signal
 import struct
 import sys
 import tempfile
 import time
+import zlib
 
 
 SCHEMA_VERSION = 1
+CHECKPOINT_SCHEMA_VERSION = 2
 DEFAULT_OUTPUT = Path("/tmp/padic-macrocycle-lift-summary.json")
 DEFAULT_CHECKPOINT = Path("/tmp/padic-macrocycle-lift-checkpoint.json")
+DEFAULT_LOG = Path("/tmp/padic-macrocycle-lift-run.jsonl")
 DEFAULT_STATE_BUDGET = 1_000_000
+PRECISION_RECORD = struct.Struct(">7I")
+THREAD_ENVIRONMENT_VARIABLES = (
+    "OMP_NUM_THREADS",
+    "OPENBLAS_NUM_THREADS",
+    "MKL_NUM_THREADS",
+    "NUMEXPR_NUM_THREADS",
+    "VECLIB_MAXIMUM_THREADS",
+)
 
 M = (
     (3, 0, 0),
@@ -47,7 +61,11 @@ PHASE_16_DIRECTION = (165, -20, 102)
 
 
 class TimeBudgetExpired(RuntimeError):
-    """The current precision was discarded at a deterministic boundary."""
+    """Pause at a row boundary while retaining the current precision frontier."""
+
+    def __init__(self, frontier):
+        super().__init__("run paused at a checkpoint boundary")
+        self.frontier = frontier
 
 
 def add(left, right):
@@ -159,6 +177,104 @@ def atomic_json_dump(payload, path):
         handle.flush()
         os.fsync(handle.fileno())
     os.replace(temporary, path)
+
+
+def utc_timestamp():
+    return datetime.now(timezone.utc).isoformat(
+        timespec="milliseconds"
+    ).replace("+00:00", "Z")
+
+
+class DurableRunLog:
+    """Append-only, fsync-backed JSONL observability for one invocation."""
+
+    def __init__(self, path):
+        self.path = Path(path)
+        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.run_id = f"{utc_timestamp()}-pid{os.getpid()}"
+
+    def write(self, event, **fields):
+        record = {
+            "timestamp": utc_timestamp(),
+            "run_id": self.run_id,
+            "event": event,
+            **fields,
+        }
+        encoded = json.dumps(record, sort_keys=True, separators=(",", ":"))
+        with self.path.open("a", encoding="utf-8") as handle:
+            handle.write(encoded)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        return record
+
+
+def precision_frontier(k, modulus, next_x, record_stream):
+    raw = bytes(record_stream)
+    expected_records = next_x * modulus
+    if len(raw) != expected_records * PRECISION_RECORD.size:
+        raise AssertionError("precision frontier stream length drift")
+    compressed = zlib.compress(raw, level=6)
+    return {
+        "k": k,
+        "modulus": modulus,
+        "next_x": next_x,
+        "completed_state_edges": expected_records,
+        "record_struct": ">7I",
+        "record_stream_encoding": "zlib+base64",
+        "record_stream_sha256": hashlib.sha256(raw).hexdigest(),
+        "record_stream_zlib_base64": base64.b64encode(compressed).decode("ascii"),
+    }
+
+
+def restore_precision_frontier(k, modulus, frontier):
+    if frontier["k"] != k or frontier["modulus"] != modulus:
+        raise RuntimeError("active precision identity mismatch")
+    next_x = frontier["next_x"]
+    if not isinstance(next_x, int) or not 0 <= next_x <= modulus:
+        raise RuntimeError("active precision row frontier is malformed")
+    if frontier.get("record_struct") != ">7I" or (
+        frontier.get("record_stream_encoding") != "zlib+base64"
+    ):
+        raise RuntimeError("active precision stream encoding is unsupported")
+    try:
+        compressed = base64.b64decode(
+            frontier["record_stream_zlib_base64"], validate=True
+        )
+        raw = zlib.decompress(compressed)
+    except (KeyError, ValueError, zlib.error) as error:
+        raise RuntimeError("active precision stream is corrupt") from error
+    expected_records = next_x * modulus
+    if (
+        frontier.get("completed_state_edges") != expected_records
+        or len(raw) != expected_records * PRECISION_RECORD.size
+        or hashlib.sha256(raw).hexdigest()
+        != frontier.get("record_stream_sha256")
+    ):
+        raise RuntimeError("active precision stream commitment mismatch")
+
+    edges = [0] * (modulus * modulus)
+    valuation_histogram = Counter()
+    phase_8_hits = 0
+    phase_16_hits = 0
+    for index, values in enumerate(PRECISION_RECORD.iter_unpack(raw)):
+        record_k, x, z, next_x_value, next_z, value_8, value_16 = values
+        expected_x, expected_z = divmod(index, modulus)
+        if record_k != k or (x, z) != (expected_x, expected_z):
+            raise RuntimeError("active precision stream order mismatch")
+        edges[index] = next_x_value * modulus + next_z
+        valuation_histogram[(value_8, value_16)] += 1
+        phase_8_hits += value_8 == k
+        phase_16_hits += value_16 == k
+    return {
+        "next_x": next_x,
+        "edges": edges,
+        "valuation_histogram": valuation_histogram,
+        "phase_8_hits": phase_8_hits,
+        "phase_16_hits": phase_16_hits,
+        "record_stream": bytearray(raw),
+        "digest": hashlib.sha256(raw),
+    }
 
 
 def estimate(max_k, state_budget):
@@ -347,30 +463,58 @@ def latent_collapse_record(k, modulus, edges):
     }
 
 
-def compute_precision(k, stop_requested, progress):
+def compute_precision(
+    k,
+    frontier,
+    stop_requested,
+    checkpoint_requested,
+    checkpoint,
+    progress,
+):
     modulus = 3**k
     state_count = modulus * modulus
-    edges = [0] * state_count
-    valuation_histogram = Counter()
-    digest = hashlib.sha256()
-    phase_8_hits = 0
-    phase_16_hits = 0
+    if frontier is None:
+        next_x = 0
+        edges = [0] * state_count
+        valuation_histogram = Counter()
+        digest = hashlib.sha256()
+        record_stream = bytearray()
+        phase_8_hits = 0
+        phase_16_hits = 0
+    else:
+        restored = restore_precision_frontier(k, modulus, frontier)
+        next_x = restored["next_x"]
+        edges = restored["edges"]
+        valuation_histogram = restored["valuation_histogram"]
+        digest = restored["digest"]
+        record_stream = restored["record_stream"]
+        phase_8_hits = restored["phase_8_hits"]
+        phase_16_hits = restored["phase_16_hits"]
 
-    for x in range(modulus):
+    for x in range(next_x, modulus):
         for z in range(modulus):
-            next_x, next_z = inverse_lift_edge(x, z, modulus)
+            next_x_value, next_z = inverse_lift_edge(x, z, modulus)
             index = x * modulus + z
-            edges[index] = next_x * modulus + next_z
+            edges[index] = next_x_value * modulus + next_z
             projective = (x, 1, z)
             value_8 = contact_valuation(H, projective, k)
             value_16 = contact_valuation(PHASE_16_DIRECTION, projective, k)
             valuation_histogram[(value_8, value_16)] += 1
             phase_8_hits += value_8 == k
             phase_16_hits += value_16 == k
-            digest.update(struct.pack(">7I", k, x, z, next_x, next_z, value_8, value_16))
+            packed = PRECISION_RECORD.pack(
+                k, x, z, next_x_value, next_z, value_8, value_16
+            )
+            digest.update(packed)
+            record_stream.extend(packed)
         progress(modulus)
-        if stop_requested():
-            raise TimeBudgetExpired
+        next_x = x + 1
+        if next_x < modulus and stop_requested():
+            raise TimeBudgetExpired(
+                precision_frontier(k, modulus, next_x, record_stream)
+            )
+        if next_x < modulus and checkpoint_requested():
+            checkpoint(precision_frontier(k, modulus, next_x, record_stream))
 
     if phase_8_hits != 1 or phase_16_hits != 1:
         raise AssertionError("projective contact class count drift", k)
@@ -595,7 +739,8 @@ def constants_payload():
 
 def checkpoint_fingerprint(max_k, latent_depth, source_sha256):
     return stable_hash({
-        "schema_version": SCHEMA_VERSION,
+        "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
+        "output_schema_version": SCHEMA_VERSION,
         "max_k": max_k,
         "latent_depth": latent_depth,
         "source_sha256": source_sha256,
@@ -606,94 +751,271 @@ def checkpoint_fingerprint(max_k, latent_depth, source_sha256):
 def load_checkpoint(path, fingerprint):
     path = Path(path)
     if not path.exists():
-        return []
+        return [], None
     with path.open() as handle:
         checkpoint = json.load(handle)
     if checkpoint.get("fingerprint") != fingerprint:
         raise RuntimeError("checkpoint fingerprint mismatch")
+    if checkpoint.get("checkpoint_schema_version") != CHECKPOINT_SCHEMA_VERSION:
+        raise RuntimeError("checkpoint schema version mismatch")
     completed = checkpoint.get("completed_precisions")
     if not isinstance(completed, list):
         raise RuntimeError("checkpoint completed-precision payload is malformed")
-    if [record.get("k") for record in completed] != list(range(1, len(completed) + 1)):
+    if [record.get("k") for record in completed] != list(
+        range(1, len(completed) + 1)
+    ):
         raise RuntimeError("checkpoint precision frontier is not contiguous")
-    return completed
+    active = checkpoint.get("active_precision")
+    if active is not None:
+        if not isinstance(active, dict) or active.get("k") != len(completed) + 1:
+            raise RuntimeError("checkpoint active precision is malformed")
+        restore_precision_frontier(active["k"], 3 ** active["k"], active)
+    return completed, active
 
 
-def write_checkpoint(path, fingerprint, max_k, completed, status):
+def write_checkpoint(
+    path,
+    fingerprint,
+    max_k,
+    completed,
+    active_precision,
+    status,
+):
+    active_work = (
+        0
+        if active_precision is None
+        else active_precision["completed_state_edges"]
+    )
     atomic_json_dump({
-        "schema_version": SCHEMA_VERSION,
+        "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
         "fingerprint": fingerprint,
         "max_k": max_k,
         "status": status,
-        "next_precision": len(completed) + 1,
-        "completed_state_edges": sum(record["state_count"] for record in completed),
+        "next_precision": (
+            len(completed) + 1
+            if active_precision is None
+            else active_precision["k"]
+        ),
+        "completed_state_edges": (
+            sum(record["state_count"] for record in completed) + active_work
+        ),
         "completed_precisions": completed,
+        "active_precision": active_precision,
     }, path)
 
 
-def run(args):
-    source_path = Path(__file__)
-    source_sha256 = file_sha256(source_path)
+def run_impl(args, logger, source_sha256, stop_state):
     estimate_record = estimate(args.max_k, args.state_budget)
     if not estimate_record["within_budget"]:
         raise RuntimeError(
             "state budget exceeded: "
-            f"precision {args.max_k} needs {estimate_record['maximum_single_precision_states']} "
-            f"states, budget is {args.state_budget}; run estimate and raise the budget explicitly"
+            f"precision {args.max_k} needs "
+            f"{estimate_record['maximum_single_precision_states']} "
+            f"states, budget is {args.state_budget}; run estimate and raise "
+            "the budget explicitly"
         )
 
-    fingerprint = checkpoint_fingerprint(args.max_k, args.latent_depth, source_sha256)
-    completed = load_checkpoint(args.checkpoint, fingerprint) if args.resume else []
+    fingerprint = checkpoint_fingerprint(
+        args.max_k, args.latent_depth, source_sha256
+    )
+    if args.resume:
+        completed, active_precision = load_checkpoint(
+            args.checkpoint, fingerprint
+        )
+    else:
+        completed, active_precision = [], None
     if not args.resume and Path(args.checkpoint).exists():
-        raise RuntimeError("checkpoint exists; pass --resume or choose a new checkpoint path")
+        raise RuntimeError(
+            "checkpoint exists; pass --resume or choose a new checkpoint path"
+        )
 
     total = estimate_record["total_state_edges"]
-    completed_work = sum(record["state_count"] for record in completed)
+    resumed_work = (
+        sum(record["state_count"] for record in completed)
+        + (
+            0
+            if active_precision is None
+            else active_precision["completed_state_edges"]
+        )
+    )
+    logger.write(
+        "resume_state",
+        mode="resume" if args.resume else "fresh",
+        fingerprint=fingerprint,
+        completed_precisions=len(completed),
+        active_precision=(
+            None if active_precision is None else active_precision["k"]
+        ),
+        active_next_x=(
+            None if active_precision is None else active_precision["next_x"]
+        ),
+        completed_state_edges=resumed_work,
+        total_state_edges=total,
+        checkpoint=str(args.checkpoint),
+    )
+
     started = time.monotonic()
     last_report = started
+    last_checkpoint = started
+    invocation_work = 0
     precision_progress = 0
 
     def report(increment):
-        nonlocal precision_progress, last_report
+        nonlocal invocation_work, precision_progress, last_report
+        invocation_work += increment
         precision_progress += increment
         now = time.monotonic()
-        if args.progress_seconds > 0 and now - last_report >= args.progress_seconds:
-            done = completed_work + precision_progress
+        if (
+            args.progress_seconds > 0
+            and now - last_report >= args.progress_seconds
+        ):
+            done = resumed_work + invocation_work
             elapsed = max(now - started, 1e-9)
-            rate = precision_progress / elapsed
+            rate = invocation_work / elapsed
             eta = (total - done) / rate if rate else None
-            print(json.dumps({
-                "status": "running",
-                "done": done,
-                "total": total,
-                "rate_states_per_second": round(rate, 1),
-                "eta_seconds": None if eta is None else round(eta, 1),
-                "checkpoint": str(args.checkpoint),
-            }, sort_keys=True), file=sys.stderr, flush=True)
+            record = logger.write(
+                "progress",
+                status="running",
+                done=done,
+                total=total,
+                invocation_work=invocation_work,
+                invocation_elapsed_seconds=round(elapsed, 6),
+                precision_progress=precision_progress,
+                rate_states_per_second=round(rate, 1),
+                eta_seconds=None if eta is None else round(eta, 1),
+                checkpoint=str(args.checkpoint),
+            )
+            print(
+                json.dumps(record, sort_keys=True),
+                file=sys.stderr,
+                flush=True,
+            )
             last_report = now
 
     def stop_requested():
-        return args.max_seconds > 0 and time.monotonic() - started >= args.max_seconds
+        return (
+            stop_state["signal"] is not None
+            or (
+                args.max_seconds > 0
+                and time.monotonic() - started >= args.max_seconds
+            )
+        )
 
-    for k in range(len(completed) + 1, args.max_k + 1):
+    def checkpoint_requested():
+        return (
+            args.checkpoint_seconds > 0
+            and time.monotonic() - last_checkpoint
+            >= args.checkpoint_seconds
+        )
+
+    def save_periodic_checkpoint(frontier):
+        nonlocal last_checkpoint
+        write_checkpoint(
+            args.checkpoint,
+            fingerprint,
+            args.max_k,
+            completed,
+            frontier,
+            "running",
+        )
+        logger.write(
+            "checkpoint",
+            reason="periodic",
+            checkpoint=str(args.checkpoint),
+            completed_precisions=len(completed),
+            active_precision=frontier["k"],
+            active_next_x=frontier["next_x"],
+            completed_state_edges=(
+                sum(record["state_count"] for record in completed)
+                + frontier["completed_state_edges"]
+            ),
+            total_state_edges=total,
+        )
+        last_checkpoint = time.monotonic()
+
+    start_k = (
+        active_precision["k"]
+        if active_precision is not None
+        else len(completed) + 1
+    )
+    for k in range(start_k, args.max_k + 1):
+        frontier = (
+            active_precision
+            if active_precision is not None and active_precision["k"] == k
+            else None
+        )
         precision_progress = 0
         precision_started = time.monotonic()
         try:
-            record = compute_precision(k, stop_requested, report)
-        except TimeBudgetExpired:
-            write_checkpoint(args.checkpoint, fingerprint, args.max_k, completed, "paused")
-            print(json.dumps({
-                "status": "paused",
-                "next_precision": k,
-                "completed_precisions": len(completed),
-                "checkpoint": str(args.checkpoint),
-            }, sort_keys=True))
+            record = compute_precision(
+                k,
+                frontier,
+                stop_requested,
+                checkpoint_requested,
+                save_periodic_checkpoint,
+                report,
+            )
+        except TimeBudgetExpired as error:
+            active_precision = error.frontier
+            write_checkpoint(
+                args.checkpoint,
+                fingerprint,
+                args.max_k,
+                completed,
+                active_precision,
+                "paused",
+            )
+            done = (
+                sum(record["state_count"] for record in completed)
+                + active_precision["completed_state_edges"]
+            )
+            pause_reason = (
+                f"signal:{stop_state['signal']}"
+                if stop_state["signal"] is not None
+                else "time_budget"
+            )
+            event = logger.write(
+                "paused",
+                status="paused",
+                reason=pause_reason,
+                next_precision=k,
+                active_next_x=active_precision["next_x"],
+                completed_precisions=len(completed),
+                completed_state_edges=done,
+                total_state_edges=total,
+                elapsed_seconds=round(time.monotonic() - started, 6),
+                checkpoint=str(args.checkpoint),
+            )
+            print(json.dumps(event, sort_keys=True))
             return None
-        record["elapsed_seconds_observed"] = round(time.monotonic() - precision_started, 6)
+        record["elapsed_seconds_observed"] = round(
+            time.monotonic() - precision_started, 6
+        )
         completed.append(record)
-        completed_work += record["state_count"]
-        write_checkpoint(args.checkpoint, fingerprint, args.max_k, completed, "running")
+        active_precision = None
+        write_checkpoint(
+            args.checkpoint,
+            fingerprint,
+            args.max_k,
+            completed,
+            None,
+            "running",
+        )
+        logger.write(
+            "precision_complete",
+            k=k,
+            state_edges=record["state_count"],
+            completed_precisions=len(completed),
+            completed_state_edges=sum(
+                item["state_count"] for item in completed
+            ),
+            total_state_edges=total,
+            elapsed_seconds=record["elapsed_seconds_observed"],
+            checkpoint=str(args.checkpoint),
+        )
+        last_checkpoint = time.monotonic()
 
+    source_path = Path(__file__)
     if file_sha256(source_path) != source_sha256:
         raise RuntimeError("explorer changed during run")
 
@@ -729,7 +1051,11 @@ def run(args):
         "normalization": normalization_certificate(),
         "contact_model": contact_model_certificate(),
         "precisions": [
-            {key: value for key, value in record.items() if key != "elapsed_seconds_observed"}
+            {
+                key: value
+                for key, value in record.items()
+                if key != "elapsed_seconds_observed"
+            }
             for record in completed
         ],
         "latent_positive_control": latent_positive_control(args.latent_depth),
@@ -745,15 +1071,89 @@ def run(args):
     payload = dict(mathematical_payload)
     payload["payload_sha256"] = stable_hash(mathematical_payload)
     atomic_json_dump(payload, args.output)
-    write_checkpoint(args.checkpoint, fingerprint, args.max_k, completed, "complete")
-    print(json.dumps({
-        "status": "complete",
-        "output": str(args.output),
-        "payload_sha256": payload["payload_sha256"],
-        "precisions": len(completed),
-        "total_state_edges": total,
-    }, sort_keys=True))
+    write_checkpoint(
+        args.checkpoint,
+        fingerprint,
+        args.max_k,
+        completed,
+        None,
+        "complete",
+    )
+    event = logger.write(
+        "complete",
+        status="complete",
+        output=str(args.output),
+        output_file_sha256=file_sha256(args.output),
+        payload_sha256=payload["payload_sha256"],
+        precisions=len(completed),
+        total_state_edges=total,
+        elapsed_seconds=round(time.monotonic() - started, 6),
+        checkpoint=str(args.checkpoint),
+    )
+    print(json.dumps(event, sort_keys=True))
     return payload
+
+
+def run(args):
+    wrapper_started = time.monotonic()
+    source_sha256 = file_sha256(Path(__file__))
+    logger = DurableRunLog(args.log)
+    stop_state = {"signal": None}
+    previous_handlers = {}
+
+    def request_stop(signum, _frame):
+        stop_state["signal"] = signal.Signals(signum).name
+
+    for signum in (signal.SIGINT, signal.SIGTERM):
+        previous_handlers[signum] = signal.getsignal(signum)
+        signal.signal(signum, request_stop)
+
+    start_event = logger.write(
+        "start",
+        status="starting",
+        mode="resume" if args.resume else "fresh",
+        parameters={
+            "max_k": args.max_k,
+            "latent_depth": args.latent_depth,
+            "state_budget": args.state_budget,
+            "max_seconds": args.max_seconds,
+            "progress_seconds": args.progress_seconds,
+            "checkpoint_seconds": args.checkpoint_seconds,
+        },
+        code_identity={
+            "logical_path": "design/padic_macrocycle_lift.py",
+            "sha256": source_sha256,
+            "output_schema_version": SCHEMA_VERSION,
+            "checkpoint_schema_version": CHECKPOINT_SCHEMA_VERSION,
+        },
+        paths={
+            "checkpoint": str(args.checkpoint),
+            "output": str(args.output),
+            "log": str(args.log),
+        },
+        resource_settings={
+            name: os.environ.get(name)
+            for name in THREAD_ENVIRONMENT_VARIABLES
+        },
+    )
+    print(json.dumps(start_event, sort_keys=True), file=sys.stderr, flush=True)
+    try:
+        return run_impl(args, logger, source_sha256, stop_state)
+    except BaseException as error:
+        logger.write(
+            "error",
+            status="error",
+            error_type=type(error).__name__,
+            error_message=str(error),
+            checkpoint=str(args.checkpoint),
+            elapsed_since_start_seconds=round(
+                time.monotonic() - wrapper_started, 6
+            ),
+        )
+        raise
+    finally:
+        for signum, handler in previous_handlers.items():
+            signal.signal(signum, handler)
 
 
 def parse_args():
@@ -764,15 +1164,42 @@ def parse_args():
     estimate_parser.add_argument("--max-k", type=int, default=5)
     estimate_parser.add_argument("--state-budget", type=int, default=DEFAULT_STATE_BUDGET)
 
-    run_parser = subparsers.add_parser("run")
+    run_parser = subparsers.add_parser(
+        "run",
+        description=(
+            "Run the bounded certificate with atomic resumable checkpoints and "
+            "a durable append-only JSONL run log."
+        ),
+    )
     run_parser.add_argument("--max-k", type=int, default=5)
     run_parser.add_argument("--latent-depth", type=int, default=16)
     run_parser.add_argument("--state-budget", type=int, default=DEFAULT_STATE_BUDGET)
     run_parser.add_argument("--max-seconds", type=float, default=300.0)
     run_parser.add_argument("--progress-seconds", type=float, default=5.0)
-    run_parser.add_argument("--checkpoint", type=Path, default=DEFAULT_CHECKPOINT)
+    run_parser.add_argument(
+        "--checkpoint-seconds",
+        type=float,
+        default=30.0,
+        help="atomically persist an active precision at this interval; zero disables periodic writes",
+    )
+    run_parser.add_argument(
+        "--checkpoint",
+        type=Path,
+        default=DEFAULT_CHECKPOINT,
+        help="atomic checkpoint containing completed precisions and the active row frontier",
+    )
     run_parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
-    run_parser.add_argument("--resume", action="store_true")
+    run_parser.add_argument(
+        "--log",
+        type=Path,
+        default=DEFAULT_LOG,
+        help="append-only timestamped JSONL run log, separate from proof output",
+    )
+    run_parser.add_argument(
+        "--resume",
+        action="store_true",
+        help="validate and continue the completed and active precision frontier",
+    )
     return parser.parse_args()
 
 

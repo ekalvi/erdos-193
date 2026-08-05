@@ -170,9 +170,9 @@ def git(*arguments):
     return result.stdout
 
 
-def history_records(pattern):
+def history_records(pattern, revision):
     commits = git(
-        "log", "--all", "--reverse", "--format=%H", "-G" + pattern
+        "log", revision, "--reverse", "--format=%H", "-G" + pattern
     ).splitlines()
     records = []
     for commit in commits:
@@ -603,12 +603,15 @@ def verify_source_boundaries(summary):
         for phrase in phrases:
             if phrase not in text:
                 raise AssertionError("source boundary phrase missing", path, phrase)
+    audited_head = summary["audited_head"]
     expected_history = {
         "family_definition": history_records(
-            r"55, ?34, ?18|g_n=N|L_n=\\{x|latent_padic_depth"
+            r"55, ?34, ?18|g_n=N|L_n=\{x|latent_padic_depth",
+            audited_head,
         ),
         "macrocycle_references": history_records(
-            r"66,429|latent family|latent re-entry|padic_macrocycle_lift|padic-macrocycle-lift"
+            r"66,429|latent family|latent re-entry|padic_macrocycle_lift|padic-macrocycle-lift",
+            audited_head,
         ),
     }
     if summary["source_inventory"]["history"] != expected_history:
