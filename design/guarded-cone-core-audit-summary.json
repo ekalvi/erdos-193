@@ -1,0 +1,122 @@
+{
+  "auditor": "OpenAI Codex",
+  "canonical_parent": {
+    "cone_pair_counts": {
+      "11/3": 242,
+      "348/275": 4
+    },
+    "direction_multiplicity_histograms": {
+      "11/3": {
+        "1": 16,
+        "12": 1,
+        "13": 1,
+        "16": 2,
+        "2": 4,
+        "21": 1,
+        "22": 1,
+        "29": 1,
+        "3": 3,
+        "33": 1,
+        "4": 1,
+        "5": 2,
+        "7": 1,
+        "8": 1,
+        "9": 2
+      },
+      "348/275": {
+        "1": 4
+      }
+    },
+    "points": 8296,
+    "total_cone_pair_lineages": 246,
+    "unique_direction_counts": {
+      "11/3": 38,
+      "348/275": 4
+    },
+    "unordered_pairs_scanned": 34407660
+  },
+  "classifications": {
+    "all_level_guarded_cone_lineage_freeze": "PROVED",
+    "canonical_parent_cone_core": "EXACT FINITE",
+    "depth_zero_fixed_11_exceptions": "EXACT FINITE",
+    "directions_outside_guarded_cones": "UNPROVED",
+    "finite_effect_state_for_core": "UNPROVED",
+    "fixed_11_positive_depth_exclusion": "PROVED",
+    "fixed_348_positive_depth_exclusion": "PROVED",
+    "universal_guarded_successor_availability": "UNPROVED"
+  },
+  "known_latent_families": [
+    {
+      "cone": "348/275",
+      "depth_zero_pair_count": 0,
+      "inherited_orbit_pair_count": 0,
+      "name": "fixed_348_macrocycle",
+      "policy_relative_conclusion": "No positive-index member can occur in any guarded continuation. A future member would either be a forbidden new cone birth or the carriage of a base direction at a still larger inverse-orbit index.",
+      "positive_orbit_index_pair_count": 0,
+      "same_phase_directions": "N^(2n)*(55,34,18)",
+      "seed": [
+        55,
+        34,
+        18
+      ],
+      "source": "phase-8/phase-16 latent 8 -> 16 -> 8 family"
+    },
+    {
+      "cone": "11/3",
+      "depth_zero_pair_count": 3,
+      "inherited_orbit_pair_count": 3,
+      "name": "fixed_11_degenerate_cycle",
+      "policy_relative_conclusion": "No positive-index member can occur in any guarded continuation. A future member would either be a forbidden new cone birth or the carriage of a base direction at a still larger inverse-orbit index.",
+      "positive_orbit_index_pair_count": 0,
+      "same_phase_directions": "N^(2n)*(3,-1,3)",
+      "seed": [
+        3,
+        -1,
+        3
+      ],
+      "source": "step-1 two-edge degenerate-cycle family"
+    }
+  ],
+  "payload_sha256": "e1a17eb3dcb86a6a9b49cb6772d87c9b1ebb536d39521736009b89874e08279d",
+  "producer": {
+    "path": "design/guarded_cone_core_audit.py",
+    "sha256": "192aca702e353ee340be5984c6d7bf366870dcd80b228bd19169c485e45030c6"
+  },
+  "proof_boundary": {
+    "not_a_finite_effect_automaton": true,
+    "not_an_availability_certificate": true,
+    "not_an_exhaustive_recurrence_classification": true,
+    "statement": "Finite endpoint-pair lineage identity does not yet encode every centred Pluecker moment, corridor import, current poison effect, or direction outside the two guarded cones. Connector availability remains open."
+  },
+  "schema": "guarded-cone-core-audit/v1",
+  "signature": "[OpenAI Codex]",
+  "source_bindings": {
+    "guarded_audit": {
+      "path": "/Users/erik/homelab/math193/design/guarded-L5-to-L6-audit-summary.json",
+      "sha256": "965f8af8ed243df271a390edad23ebf9663932a61b85bc81848b8c758061fe36",
+      "terminal_payload_sha256": "9ccfe9b49cf545596f74d8934b762f35b6b71f88b6ab7d0ea03397b7e78af5ae"
+    },
+    "parent": {
+      "path": "/private/tmp/guarded-L5-parent-canonical-v1.json",
+      "payload_sha256": "70a4ab65bc766b056cadb9a28699bb94667da8692dbf91575c0bae702fb6c258",
+      "sha256": "86f068ad8de131e68c44710d976bb2bec9b4872a732359540ffe51f5ba4520a7"
+    }
+  },
+  "status": "proved guarded two-cone lineage freeze and known latent-orbit closure",
+  "theorem": {
+    "classification": "PROVED",
+    "guarded_lineage_freeze": "For every finite history descended from the canonical guarded-L5 parent in which every connector word satisfies the same two-cone birth guard, every 11/3 or 348/275 secant is the image under a common power of M of exactly one of the 246 inherited parent pairs.",
+    "known_family_corollary": "No positive inverse-orbit-index member of either explicit delayed-return family can be a secant in such a history. The 348/275 family has no inherited member. The 11/3 family has exactly three inherited index-zero pairs and no positive-index member; those three endpoint-pair lineages are the complete promoted exceptions for that fixed family.",
+    "proof": [
+      "M is injective and preserves both cone predicates, so inherited anchor-anchor pairs carry bijectively.",
+      "The guarded insertion predicate rejects every old-new and same-word new-new pair in either cone.",
+      "Every physical pair is either inherited anchor-anchor or is tested once when its later connector endpoint is inserted.",
+      "If M^k*d is projectively N^m*h, then d is projectively N^(m+k)*h because N*M=9I; the complete base-orbit scan therefore proves the family corollary."
+    ]
+  },
+  "verdict": "GUARDED_CONE_CORE_PROVED",
+  "witness": {
+    "path": "/Users/erik/homelab/math193/design/guarded-cone-core-witness.json",
+    "payload_sha256": "9fb624fc36f457173d64cdea8852d42f3a90c9ac9528411d4d57e30a3ffaf4c2"
+  }
+}

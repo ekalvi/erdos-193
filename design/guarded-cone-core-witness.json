@@ -1,0 +1,10944 @@
+{
+  "auditor": "OpenAI Codex",
+  "core_records": [
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 98,
+      "earlier_point": [
+        45,
+        162,
+        12
+      ],
+      "later_index": 108,
+      "later_point": [
+        27,
+        180,
+        6
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        198,
+        -9,
+        -621
+      ],
+      "pair_id": "L5:A98:A108",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 178,
+      "earlier_point": [
+        36,
+        279,
+        -36
+      ],
+      "later_index": 184,
+      "later_point": [
+        27,
+        288,
+        -39
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        171,
+        -144,
+        -945
+      ],
+      "pair_id": "L5:A178:A184",
+      "raw_chord": [
+        -9,
+        9,
+        -3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 251,
+      "earlier_point": [
+        -21,
+        369,
+        45
+      ],
+      "later_index": 262,
+      "later_point": [
+        -30,
+        378,
+        42
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        504,
+        156,
+        -1044
+      ],
+      "pair_id": "L5:A251:A262",
+      "raw_chord": [
+        -9,
+        9,
+        -3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -729,
+        -675,
+        342
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 172,
+      "earlier_point": [
+        45,
+        267,
+        -37
+      ],
+      "later_index": 395,
+      "later_point": [
+        -198,
+        456,
+        188
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7452,
+        126,
+        -8154
+      ],
+      "pair_id": "L5:A172:A395",
+      "raw_chord": [
+        -243,
+        189,
+        225
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -459,
+        -510,
+        -17
+      ],
+      "carried_signed_multiplier": -17,
+      "cone": "11/3",
+      "earlier_index": 281,
+      "earlier_point": [
+        -57,
+        408,
+        31
+      ],
+      "later_index": 402,
+      "later_point": [
+        -210,
+        459,
+        201
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3987,
+        -291,
+        -3501
+      ],
+      "pair_id": "L5:A281:A402",
+      "raw_chord": [
+        -153,
+        51,
+        170
+      ],
+      "signed_multiplier": -17
+    },
+    {
+      "canonical_direction": [
+        117,
+        -15,
+        -131
+      ],
+      "carried_canonical_direction": [
+        351,
+        393,
+        86
+      ],
+      "carried_raw_chord": [
+        -351,
+        -393,
+        -86
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 346,
+      "earlier_point": [
+        -132,
+        468,
+        114
+      ],
+      "later_index": 434,
+      "later_point": [
+        -249,
+        483,
+        245
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -59598,
+        -3954,
+        -52776
+      ],
+      "pair_id": "L5:A346:A434",
+      "raw_chord": [
+        -117,
+        15,
+        131
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -567,
+        -630,
+        -21
+      ],
+      "carried_signed_multiplier": -21,
+      "cone": "11/3",
+      "earlier_index": 290,
+      "earlier_point": [
+        -72,
+        426,
+        25
+      ],
+      "later_index": 441,
+      "later_point": [
+        -261,
+        489,
+        235
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4185,
+        -495,
+        -3618
+      ],
+      "pair_id": "L5:A290:A441",
+      "raw_chord": [
+        -189,
+        63,
+        210
+      ],
+      "signed_multiplier": -21
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 510,
+      "earlier_point": [
+        -222,
+        492,
+        143
+      ],
+      "later_index": 521,
+      "later_point": [
+        -204,
+        486,
+        123
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4491,
+        -933,
+        -3762
+      ],
+      "pair_id": "L5:A510:A521",
+      "raw_chord": [
+        18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_canonical_direction": [
+        729,
+        294,
+        -703
+      ],
+      "carried_raw_chord": [
+        -729,
+        -294,
+        703
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 150,
+      "earlier_point": [
+        81,
+        246,
+        -8
+      ],
+      "later_index": 550,
+      "later_point": [
+        -162,
+        513,
+        90
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -26244,
+        5994,
+        -81405
+      ],
+      "pair_id": "L5:A150:A550",
+      "raw_chord": [
+        -243,
+        267,
+        98
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        27,
+        30,
+        1
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 580,
+      "earlier_point": [
+        -168,
+        549,
+        63
+      ],
+      "later_index": 590,
+      "later_point": [
+        -159,
+        546,
+        53
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5301,
+        -1113,
+        -4437
+      ],
+      "pair_id": "L5:A580:A590",
+      "raw_chord": [
+        9,
+        -3,
+        -10
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 629,
+      "earlier_point": [
+        -108,
+        549,
+        -6
+      ],
+      "later_index": 636,
+      "later_point": [
+        -99,
+        540,
+        -12
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1116,
+        -234,
+        -1323
+      ],
+      "pair_id": "L5:A629:A636",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        153,
+        15,
+        -166
+      ],
+      "carried_canonical_direction": [
+        459,
+        498,
+        211
+      ],
+      "carried_raw_chord": [
+        459,
+        498,
+        211
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 510,
+      "earlier_point": [
+        -222,
+        492,
+        143
+      ],
+      "later_index": 655,
+      "later_point": [
+        -69,
+        507,
+        -23
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -83817,
+        -14973,
+        -78606
+      ],
+      "pair_id": "L5:A510:A655",
+      "raw_chord": [
+        153,
+        15,
+        -166
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_canonical_direction": [
+        243,
+        267,
+        98
+      ],
+      "carried_raw_chord": [
+        486,
+        534,
+        196
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 513,
+      "earlier_point": [
+        -216,
+        495,
+        138
+      ],
+      "later_index": 665,
+      "later_point": [
+        -54,
+        501,
+        -40
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -44469,
+        -8046,
+        -40743
+      ],
+      "pair_id": "L5:A513:A665",
+      "raw_chord": [
+        162,
+        6,
+        -178
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 717,
+      "earlier_point": [
+        0,
+        477,
+        -126
+      ],
+      "later_index": 727,
+      "later_point": [
+        -18,
+        495,
+        -132
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        99,
+        -378,
+        -1431
+      ],
+      "pair_id": "L5:A717:A727",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -162,
+        -150,
+        76
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 738,
+      "earlier_point": [
+        -36,
+        513,
+        -126
+      ],
+      "later_index": 785,
+      "later_point": [
+        -90,
+        555,
+        -76
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -15471,
+        -4302,
+        -13095
+      ],
+      "pair_id": "L5:A738:A785",
+      "raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 879,
+      "earlier_point": [
+        -60,
+        699,
+        -7
+      ],
+      "later_index": 884,
+      "later_point": [
+        -51,
+        708,
+        -10
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -678,
+        -81,
+        -2277
+      ],
+      "pair_id": "L5:A879:A884",
+      "raw_chord": [
+        9,
+        9,
+        -3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1057,
+      "earlier_point": [
+        -99,
+        996,
+        -31
+      ],
+      "later_index": 1062,
+      "later_point": [
+        -90,
+        1005,
+        -34
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -903,
+        -192,
+        -3285
+      ],
+      "pair_id": "L5:A1057:A1062",
+      "raw_chord": [
+        9,
+        9,
+        -3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 1065,
+      "earlier_point": [
+        -90,
+        1011,
+        -38
+      ],
+      "later_index": 1075,
+      "later_point": [
+        -72,
+        1029,
+        -44
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -897,
+        -204,
+        -3303
+      ],
+      "pair_id": "L5:A1065:A1075",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        27,
+        -18,
+        21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1098,
+      "earlier_point": [
+        -39,
+        1059,
+        -31
+      ],
+      "later_index": 1105,
+      "later_point": [
+        -30,
+        1068,
+        -25
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2211,
+        -15,
+        -3294
+      ],
+      "pair_id": "L5:A1098:A1105",
+      "raw_chord": [
+        9,
+        9,
+        6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        243,
+        -9,
+        267
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1054,
+      "earlier_point": [
+        -102,
+        990,
+        -33
+      ],
+      "later_index": 1111,
+      "later_point": [
+        -21,
+        1080,
+        -30
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1980,
+        -789,
+        -29790
+      ],
+      "pair_id": "L5:A1054:A1111",
+      "raw_chord": [
+        81,
+        90,
+        3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        27,
+        -18,
+        21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1117,
+      "earlier_point": [
+        -12,
+        1092,
+        -38
+      ],
+      "later_index": 1123,
+      "later_point": [
+        -3,
+        1101,
+        -32
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2298,
+        -90,
+        -3312
+      ],
+      "pair_id": "L5:A1117:A1123",
+      "raw_chord": [
+        9,
+        9,
+        6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        1,
+        -3
+      ],
+      "carried_canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_raw_chord": [
+        81,
+        81,
+        54
+      ],
+      "carried_signed_multiplier": 27,
+      "cone": "11/3",
+      "earlier_index": 1134,
+      "earlier_point": [
+        12,
+        1098,
+        -51
+      ],
+      "later_index": 1153,
+      "later_point": [
+        39,
+        1107,
+        -78
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3243,
+        -117,
+        -3282
+      ],
+      "pair_id": "L5:A1134:A1153",
+      "raw_chord": [
+        27,
+        9,
+        -27
+      ],
+      "signed_multiplier": 9
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 1153,
+      "earlier_point": [
+        39,
+        1107,
+        -78
+      ],
+      "later_index": 1167,
+      "later_point": [
+        57,
+        1119,
+        -92
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7281,
+        -429,
+        -9729
+      ],
+      "pair_id": "L5:A1153:A1167",
+      "raw_chord": [
+        18,
+        12,
+        -14
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 1170,
+      "earlier_point": [
+        51,
+        1122,
+        -97
+      ],
+      "later_index": 1181,
+      "later_point": [
+        33,
+        1116,
+        -117
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        11511,
+        -1383,
+        -9945
+      ],
+      "pair_id": "L5:A1170:A1181",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1289,
+      "earlier_point": [
+        54,
+        1017,
+        -282
+      ],
+      "later_index": 1296,
+      "later_point": [
+        63,
+        1008,
+        -288
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2880,
+        -738,
+        -3213
+      ],
+      "pair_id": "L5:A1289:A1296",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        243,
+        162,
+        -189
+      ],
+      "carried_signed_multiplier": 27,
+      "cone": "11/3",
+      "earlier_index": 1241,
+      "earlier_point": [
+        -9,
+        1077,
+        -226
+      ],
+      "later_index": 1302,
+      "later_point": [
+        72,
+        996,
+        -280
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2832,
+        -696,
+        -3204
+      ],
+      "pair_id": "L5:A1241:A1302",
+      "raw_chord": [
+        81,
+        -81,
+        -54
+      ],
+      "signed_multiplier": 27
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        162,
+        6,
+        -178
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 1278,
+      "earlier_point": [
+        36,
+        1032,
+        -268
+      ],
+      "later_index": 1316,
+      "later_point": [
+        90,
+        972,
+        -270
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -9072,
+        -7200,
+        -28944
+      ],
+      "pair_id": "L5:A1278:A1316",
+      "raw_chord": [
+        54,
+        -60,
+        -2
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        81,
+        3,
+        -89
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 1364,
+      "earlier_point": [
+        111,
+        879,
+        -253
+      ],
+      "later_index": 1380,
+      "later_point": [
+        138,
+        849,
+        -254
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -8469,
+        -6720,
+        -27063
+      ],
+      "pair_id": "L5:A1364:A1380",
+      "raw_chord": [
+        27,
+        -30,
+        -1
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        243,
+        -114,
+        -263
+      ],
+      "carried_canonical_direction": [
+        729,
+        789,
+        -79
+      ],
+      "carried_raw_chord": [
+        729,
+        789,
+        -79
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 1019,
+      "earlier_point": [
+        -105,
+        924,
+        -22
+      ],
+      "later_index": 1420,
+      "later_point": [
+        138,
+        810,
+        -285
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -245520,
+        -32961,
+        -212562
+      ],
+      "pair_id": "L5:A1019:A1420",
+      "raw_chord": [
+        243,
+        -114,
+        -263
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 1445,
+      "earlier_point": [
+        105,
+        783,
+        -327
+      ],
+      "later_index": 1451,
+      "later_point": [
+        96,
+        774,
+        -324
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        198,
+        -876,
+        -2034
+      ],
+      "pair_id": "L5:A1445:A1451",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -243,
+        162,
+        -189
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 1404,
+      "earlier_point": [
+        153,
+        825,
+        -256
+      ],
+      "later_index": 1467,
+      "later_point": [
+        72,
+        744,
+        -310
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2418,
+        -1074,
+        -2016
+      ],
+      "pair_id": "L5:A1404:A1467",
+      "raw_chord": [
+        -81,
+        -81,
+        -54
+      ],
+      "signed_multiplier": -27
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 1460,
+      "earlier_point": [
+        84,
+        756,
+        -315
+      ],
+      "later_index": 1476,
+      "later_point": [
+        57,
+        729,
+        -306
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        189,
+        -861,
+        -2016
+      ],
+      "pair_id": "L5:A1460:A1476",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 1482,
+      "earlier_point": [
+        48,
+        729,
+        -303
+      ],
+      "later_index": 1498,
+      "later_point": [
+        21,
+        702,
+        -294
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        180,
+        -861,
+        -2043
+      ],
+      "pair_id": "L5:A1482:A1498",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 1511,
+      "earlier_point": [
+        0,
+        690,
+        -301
+      ],
+      "later_index": 1516,
+      "later_point": [
+        9,
+        681,
+        -307
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2283,
+        -903,
+        -2070
+      ],
+      "pair_id": "L5:A1511:A1516",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        51,
+        57,
+        14
+      ],
+      "carried_canonical_direction": [
+        153,
+        -42,
+        157
+      ],
+      "carried_raw_chord": [
+        -459,
+        126,
+        -471
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 1401,
+      "earlier_point": [
+        150,
+        822,
+        -251
+      ],
+      "later_index": 1531,
+      "later_point": [
+        -3,
+        651,
+        -293
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        25815,
+        -14901,
+        -33372
+      ],
+      "pair_id": "L5:A1401:A1531",
+      "raw_chord": [
+        -153,
+        -171,
+        -42
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 1571,
+      "earlier_point": [
+        9,
+        600,
+        -262
+      ],
+      "later_index": 1581,
+      "later_point": [
+        27,
+        582,
+        -256
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -186,
+        -795,
+        -1827
+      ],
+      "pair_id": "L5:A1571:A1581",
+      "raw_chord": [
+        18,
+        -18,
+        6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        243,
+        114,
+        263
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 633,
+      "earlier_point": [
+        -105,
+        546,
+        -13
+      ],
+      "later_index": 1696,
+      "later_point": [
+        -24,
+        621,
+        -51
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -19773,
+        -5043,
+        -52101
+      ],
+      "pair_id": "L5:A633:A1696",
+      "raw_chord": [
+        81,
+        75,
+        -38
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        243,
+        114,
+        263
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 629,
+      "earlier_point": [
+        -108,
+        549,
+        -6
+      ],
+      "later_index": 1700,
+      "later_point": [
+        -27,
+        624,
+        -44
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -20412,
+        -4590,
+        -52569
+      ],
+      "pair_id": "L5:A629:A1700",
+      "raw_chord": [
+        81,
+        75,
+        -38
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        297,
+        99,
+        330
+      ],
+      "carried_signed_multiplier": 33,
+      "cone": "11/3",
+      "earlier_index": 587,
+      "earlier_point": [
+        -162,
+        552,
+        52
+      ],
+      "later_index": 1734,
+      "later_point": [
+        -63,
+        651,
+        19
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -708,
+        -6,
+        -2142
+      ],
+      "pair_id": "L5:A587:A1734",
+      "raw_chord": [
+        99,
+        99,
+        -33
+      ],
+      "signed_multiplier": 33
+    },
+    {
+      "canonical_direction": [
+        117,
+        114,
+        83
+      ],
+      "carried_canonical_direction": [
+        351,
+        -249,
+        259
+      ],
+      "carried_raw_chord": [
+        351,
+        -249,
+        259
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 565,
+      "earlier_point": [
+        -174,
+        528,
+        74
+      ],
+      "later_index": 1821,
+      "later_point": [
+        -57,
+        642,
+        157
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        35388,
+        23100,
+        -81612
+      ],
+      "pair_id": "L5:A565:A1821",
+      "raw_chord": [
+        117,
+        114,
+        83
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        99,
+        105,
+        53
+      ],
+      "carried_canonical_direction": [
+        297,
+        -159,
+        262
+      ],
+      "carried_raw_chord": [
+        594,
+        -318,
+        524
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 369,
+      "earlier_point": [
+        -165,
+        447,
+        143
+      ],
+      "later_index": 1902,
+      "later_point": [
+        33,
+        657,
+        249
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        8676,
+        22902,
+        -61578
+      ],
+      "pair_id": "L5:A369:A1902",
+      "raw_chord": [
+        198,
+        210,
+        106
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 1922,
+      "earlier_point": [
+        63,
+        630,
+        237
+      ],
+      "later_index": 1932,
+      "later_point": [
+        81,
+        612,
+        243
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1341,
+        648,
+        -2079
+      ],
+      "pair_id": "L5:A1922:A1932",
+      "raw_chord": [
+        18,
+        -18,
+        6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        108,
+        -120,
+        -4
+      ],
+      "carried_signed_multiplier": 4,
+      "cone": "11/3",
+      "earlier_index": 1960,
+      "earlier_point": [
+        111,
+        603,
+        285
+      ],
+      "later_index": 1984,
+      "later_point": [
+        147,
+        615,
+        325
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5175,
+        1455,
+        -5094
+      ],
+      "pair_id": "L5:A1960:A1984",
+      "raw_chord": [
+        36,
+        12,
+        40
+      ],
+      "signed_multiplier": 4
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        243,
+        -270,
+        -9
+      ],
+      "carried_signed_multiplier": 9,
+      "cone": "11/3",
+      "earlier_index": 1944,
+      "earlier_point": [
+        81,
+        591,
+        260
+      ],
+      "later_index": 1998,
+      "later_point": [
+        162,
+        618,
+        350
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5130,
+        1530,
+        -5076
+      ],
+      "pair_id": "L5:A1944:A1998",
+      "raw_chord": [
+        81,
+        27,
+        90
+      ],
+      "signed_multiplier": 9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2052,
+      "earlier_point": [
+        225,
+        636,
+        437
+      ],
+      "later_index": 2081,
+      "later_point": [
+        216,
+        627,
+        440
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1947,
+        1536,
+        -1233
+      ],
+      "pair_id": "L5:A2052:A2081",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        117,
+        15,
+        131
+      ],
+      "carried_canonical_direction": [
+        351,
+        -393,
+        -86
+      ],
+      "carried_raw_chord": [
+        1053,
+        -1179,
+        -258
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 580,
+      "earlier_point": [
+        -168,
+        549,
+        63
+      ],
+      "later_index": 2106,
+      "later_point": [
+        183,
+        594,
+        456
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        70974,
+        29379,
+        -66753
+      ],
+      "pair_id": "L5:A580:A2106",
+      "raw_chord": [
+        351,
+        45,
+        393
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 2110,
+      "earlier_point": [
+        177,
+        600,
+        464
+      ],
+      "later_index": 2127,
+      "later_point": [
+        150,
+        621,
+        489
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5256,
+        16953,
+        -19917
+      ],
+      "pair_id": "L5:A2110:A2127",
+      "raw_chord": [
+        -27,
+        21,
+        25
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -243,
+        -225,
+        114
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2114,
+      "earlier_point": [
+        171,
+        603,
+        471
+      ],
+      "later_index": 2169,
+      "later_point": [
+        90,
+        666,
+        546
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5184,
+        16992,
+        -19872
+      ],
+      "pair_id": "L5:A2114:A2169",
+      "raw_chord": [
+        -81,
+        63,
+        75
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -216,
+        -240,
+        -8
+      ],
+      "carried_signed_multiplier": -8,
+      "cone": "11/3",
+      "earlier_index": 2130,
+      "earlier_point": [
+        144,
+        627,
+        488
+      ],
+      "later_index": 2188,
+      "later_point": [
+        72,
+        651,
+        568
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4806,
+        5832,
+        -6075
+      ],
+      "pair_id": "L5:A2130:A2188",
+      "raw_chord": [
+        -72,
+        24,
+        80
+      ],
+      "signed_multiplier": -8
+    },
+    {
+      "canonical_direction": [
+        153,
+        15,
+        -166
+      ],
+      "carried_canonical_direction": [
+        459,
+        498,
+        211
+      ],
+      "carried_raw_chord": [
+        -459,
+        -498,
+        -211
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 2045,
+      "earlier_point": [
+        213,
+        636,
+        425
+      ],
+      "later_index": 2210,
+      "later_point": [
+        60,
+        621,
+        591
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -111951,
+        100383,
+        -94113
+      ],
+      "pair_id": "L5:A2045:A2210",
+      "raw_chord": [
+        -153,
+        -15,
+        166
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 2268,
+      "earlier_point": [
+        18,
+        513,
+        618
+      ],
+      "later_index": 2278,
+      "later_point": [
+        0,
+        495,
+        624
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2367,
+        1872,
+        -1485
+      ],
+      "pair_id": "L5:A2268:A2278",
+      "raw_chord": [
+        -18,
+        -18,
+        6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 2348,
+      "earlier_point": [
+        -30,
+        450,
+        729
+      ],
+      "later_index": 2357,
+      "later_point": [
+        -39,
+        453,
+        739
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2313,
+        6261,
+        -3960
+      ],
+      "pair_id": "L5:A2348:A2357",
+      "raw_chord": [
+        -9,
+        3,
+        10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -54,
+        -60,
+        -2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 2369,
+      "earlier_point": [
+        -57,
+        456,
+        758
+      ],
+      "later_index": 2380,
+      "later_point": [
+        -75,
+        462,
+        778
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2286,
+        6252,
+        -3933
+      ],
+      "pair_id": "L5:A2369:A2380",
+      "raw_chord": [
+        -18,
+        6,
+        20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -189,
+        -210,
+        -7
+      ],
+      "carried_signed_multiplier": -7,
+      "cone": "11/3",
+      "earlier_index": 2421,
+      "earlier_point": [
+        -87,
+        507,
+        850
+      ],
+      "later_index": 2467,
+      "later_point": [
+        -150,
+        528,
+        920
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2520,
+        6780,
+        -4302
+      ],
+      "pair_id": "L5:A2421:A2467",
+      "raw_chord": [
+        -63,
+        21,
+        70
+      ],
+      "signed_multiplier": -7
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -270,
+        -300,
+        -10
+      ],
+      "carried_signed_multiplier": -10,
+      "cone": "11/3",
+      "earlier_index": 2425,
+      "earlier_point": [
+        -93,
+        513,
+        858
+      ],
+      "later_index": 2493,
+      "later_point": [
+        -183,
+        543,
+        958
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2556,
+        6792,
+        -4338
+      ],
+      "pair_id": "L5:A2425:A2493",
+      "raw_chord": [
+        -90,
+        30,
+        100
+      ],
+      "signed_multiplier": -10
+    },
+    {
+      "canonical_direction": [
+        39,
+        -15,
+        -43
+      ],
+      "carried_canonical_direction": [
+        117,
+        129,
+        -2
+      ],
+      "carried_raw_chord": [
+        -351,
+        -387,
+        6
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2413,
+      "earlier_point": [
+        -78,
+        501,
+        836
+      ],
+      "later_index": 2500,
+      "later_point": [
+        -195,
+        546,
+        965
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -9003,
+        29250,
+        -18369
+      ],
+      "pair_id": "L5:A2413:A2500",
+      "raw_chord": [
+        -117,
+        45,
+        129
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 2512,
+      "earlier_point": [
+        -207,
+        528,
+        983
+      ],
+      "later_index": 2522,
+      "later_point": [
+        -225,
+        510,
+        989
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3477,
+        2742,
+        -2205
+      ],
+      "pair_id": "L5:A2512:A2522",
+      "raw_chord": [
+        -18,
+        -18,
+        6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -648,
+        -720,
+        -24
+      ],
+      "carried_signed_multiplier": -24,
+      "cone": "11/3",
+      "earlier_index": 2361,
+      "earlier_point": [
+        -45,
+        459,
+        747
+      ],
+      "later_index": 2543,
+      "later_point": [
+        -261,
+        531,
+        987
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2349,
+        6273,
+        -3996
+      ],
+      "pair_id": "L5:A2361:A2543",
+      "raw_chord": [
+        -216,
+        72,
+        240
+      ],
+      "signed_multiplier": -24
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        -81,
+        -3,
+        89
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 2534,
+      "earlier_point": [
+        -246,
+        513,
+        993
+      ],
+      "later_index": 2551,
+      "later_point": [
+        -273,
+        543,
+        994
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        29277,
+        26565,
+        -6471
+      ],
+      "pair_id": "L5:A2534:A2551",
+      "raw_chord": [
+        -27,
+        30,
+        1
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_canonical_direction": [
+        243,
+        267,
+        98
+      ],
+      "carried_raw_chord": [
+        -1458,
+        -1602,
+        -588
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 2102,
+      "earlier_point": [
+        189,
+        591,
+        449
+      ],
+      "later_index": 2567,
+      "later_point": [
+        -297,
+        573,
+        983
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -53946,
+        53190,
+        -47304
+      ],
+      "pair_id": "L5:A2102:A2567",
+      "raw_chord": [
+        -486,
+        -18,
+        534
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        153,
+        15,
+        -166
+      ],
+      "carried_canonical_direction": [
+        459,
+        498,
+        211
+      ],
+      "carried_raw_chord": [
+        -1377,
+        -1494,
+        -633
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2147,
+      "earlier_point": [
+        126,
+        651,
+        505
+      ],
+      "later_index": 2589,
+      "later_point": [
+        -333,
+        606,
+        1003
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -115641,
+        98181,
+        -97713
+      ],
+      "pair_id": "L5:A2147:A2589",
+      "raw_chord": [
+        -459,
+        -45,
+        498
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        -27,
+        -18,
+        21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2586,
+      "earlier_point": [
+        -327,
+        603,
+        999
+      ],
+      "later_index": 2592,
+      "later_point": [
+        -336,
+        612,
+        1005
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1791,
+        2343,
+        -828
+      ],
+      "pair_id": "L5:A2586:A2592",
+      "raw_chord": [
+        -9,
+        9,
+        6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -1,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_raw_chord": [
+        -81,
+        81,
+        54
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 2592,
+      "earlier_point": [
+        -336,
+        612,
+        1005
+      ],
+      "later_index": 2609,
+      "later_point": [
+        -363,
+        621,
+        978
+      ],
+      "orbit_matches": [
+        {
+          "family": "fixed_11_degenerate_cycle",
+          "orbit_index": 0
+        }
+      ],
+      "origin_moment": [
+        2841,
+        4023,
+        -1500
+      ],
+      "pair_id": "L5:A2592:A2609",
+      "raw_chord": [
+        -27,
+        9,
+        -27
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 2653,
+      "earlier_point": [
+        -417,
+        624,
+        961
+      ],
+      "later_index": 2666,
+      "later_point": [
+        -435,
+        636,
+        947
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        10134,
+        11568,
+        -3114
+      ],
+      "pair_id": "L5:A2653:A2666",
+      "raw_chord": [
+        -18,
+        12,
+        -14
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -108,
+        120,
+        4
+      ],
+      "carried_signed_multiplier": -4,
+      "cone": "11/3",
+      "earlier_index": 2707,
+      "earlier_point": [
+        -483,
+        606,
+        880
+      ],
+      "later_index": 2729,
+      "later_point": [
+        -519,
+        594,
+        840
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        3420,
+        12750,
+        -6903
+      ],
+      "pair_id": "L5:A2707:A2729",
+      "raw_chord": [
+        -36,
+        -12,
+        -40
+      ],
+      "signed_multiplier": -4
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -81,
+        63,
+        75
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2749,
+      "earlier_point": [
+        -540,
+        570,
+        802
+      ],
+      "later_index": 2767,
+      "later_point": [
+        -567,
+        588,
+        781
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        8802,
+        10998,
+        -1890
+      ],
+      "pair_id": "L5:A2749:A2767",
+      "raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2850,
+      "earlier_point": [
+        -624,
+        453,
+        769
+      ],
+      "later_index": 2855,
+      "later_point": [
+        -633,
+        444,
+        772
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2760,
+        1683,
+        -3231
+      ],
+      "pair_id": "L5:A2850:A2855",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -2079,
+        -2310,
+        -77
+      ],
+      "carried_signed_multiplier": -77,
+      "cone": "11/3",
+      "earlier_index": 119,
+      "earlier_point": [
+        45,
+        195,
+        8
+      ],
+      "later_index": 2864,
+      "later_point": [
+        -648,
+        426,
+        778
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1926,
+        522,
+        -1890
+      ],
+      "pair_id": "L5:A119:A2864",
+      "raw_chord": [
+        -693,
+        231,
+        770
+      ],
+      "signed_multiplier": -77
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 2844,
+      "earlier_point": [
+        -621,
+        453,
+        769
+      ],
+      "later_index": 2864,
+      "later_point": [
+        -648,
+        426,
+        778
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2760,
+        1686,
+        -3222
+      ],
+      "pair_id": "L5:A2844:A2864",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -2079,
+        -2310,
+        -77
+      ],
+      "carried_signed_multiplier": -77,
+      "cone": "11/3",
+      "earlier_index": 115,
+      "earlier_point": [
+        39,
+        189,
+        12
+      ],
+      "later_index": 2867,
+      "later_point": [
+        -654,
+        420,
+        782
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1854,
+        498,
+        -1818
+      ],
+      "pair_id": "L5:A115:A2867",
+      "raw_chord": [
+        -693,
+        231,
+        770
+      ],
+      "signed_multiplier": -77
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -324,
+        12,
+        -356
+      ],
+      "carried_signed_multiplier": -4,
+      "cone": "11/3",
+      "earlier_index": 2813,
+      "earlier_point": [
+        -585,
+        507,
+        781
+      ],
+      "later_index": 2897,
+      "later_point": [
+        -693,
+        387,
+        777
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -22923,
+        21672,
+        -31239
+      ],
+      "pair_id": "L5:A2813:A2897",
+      "raw_chord": [
+        -108,
+        -120,
+        -4
+      ],
+      "signed_multiplier": -4
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 2874,
+      "earlier_point": [
+        -663,
+        417,
+        793
+      ],
+      "later_index": 2901,
+      "later_point": [
+        -699,
+        381,
+        769
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1545,
+        3705,
+        -3240
+      ],
+      "pair_id": "L5:A2874:A2901",
+      "raw_chord": [
+        -36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -81,
+        54,
+        -63
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 2886,
+      "earlier_point": [
+        -678,
+        399,
+        796
+      ],
+      "later_index": 2907,
+      "later_point": [
+        -705,
+        372,
+        778
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1590,
+        3744,
+        -3231
+      ],
+      "pair_id": "L5:A2886:A2907",
+      "raw_chord": [
+        -27,
+        -27,
+        -18
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -486,
+        18,
+        -534
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 2789,
+      "earlier_point": [
+        -549,
+        546,
+        785
+      ],
+      "later_index": 2910,
+      "later_point": [
+        -711,
+        366,
+        779
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -23004,
+        21744,
+        -31212
+      ],
+      "pair_id": "L5:A2789:A2910",
+      "raw_chord": [
+        -162,
+        -180,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -405,
+        15,
+        -445
+      ],
+      "carried_signed_multiplier": -5,
+      "cone": "11/3",
+      "earlier_index": 2809,
+      "earlier_point": [
+        -579,
+        510,
+        788
+      ],
+      "later_index": 2914,
+      "later_point": [
+        -714,
+        360,
+        783
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -23130,
+        21855,
+        -31140
+      ],
+      "pair_id": "L5:A2809:A2914",
+      "raw_chord": [
+        -135,
+        -150,
+        -5
+      ],
+      "signed_multiplier": -5
+    },
+    {
+      "canonical_direction": [
+        243,
+        -114,
+        -263
+      ],
+      "carried_canonical_direction": [
+        729,
+        789,
+        -79
+      ],
+      "carried_raw_chord": [
+        -2187,
+        -2367,
+        237
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 0,
+      "earlier_point": [
+        0,
+        0,
+        0
+      ],
+      "later_index": 2924,
+      "later_point": [
+        -729,
+        342,
+        789
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        0,
+        0,
+        0
+      ],
+      "pair_id": "L5:A0:A2924",
+      "raw_chord": [
+        -729,
+        342,
+        789
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -486,
+        18,
+        -534
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 2801,
+      "earlier_point": [
+        -567,
+        522,
+        795
+      ],
+      "later_index": 2924,
+      "later_point": [
+        -729,
+        342,
+        789
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -23328,
+        22032,
+        -31104
+      ],
+      "pair_id": "L5:A2801:A2924",
+      "raw_chord": [
+        -162,
+        -180,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        99,
+        105,
+        53
+      ],
+      "carried_canonical_direction": [
+        297,
+        -159,
+        262
+      ],
+      "carried_raw_chord": [
+        -891,
+        477,
+        -786
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2669,
+      "earlier_point": [
+        -441,
+        639,
+        942
+      ],
+      "later_index": 2934,
+      "later_point": [
+        -738,
+        324,
+        783
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -65043,
+        116631,
+        -109566
+      ],
+      "pair_id": "L5:A2669:A2934",
+      "raw_chord": [
+        -297,
+        -315,
+        -159
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -243,
+        9,
+        -267
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2870,
+      "earlier_point": [
+        -657,
+        414,
+        786
+      ],
+      "later_index": 2934,
+      "later_point": [
+        -738,
+        324,
+        783
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -23166,
+        21879,
+        -30888
+      ],
+      "pair_id": "L5:A2870:A2934",
+      "raw_chord": [
+        -81,
+        -90,
+        -3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -162,
+        6,
+        -178
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 2967,
+      "earlier_point": [
+        -765,
+        267,
+        800
+      ],
+      "later_index": 3013,
+      "later_point": [
+        -819,
+        207,
+        798
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -23733,
+        22365,
+        -30159
+      ],
+      "pair_id": "L5:A2967:A3013",
+      "raw_chord": [
+        -54,
+        -60,
+        -2
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        39,
+        42,
+        -5
+      ],
+      "carried_canonical_direction": [
+        117,
+        15,
+        131
+      ],
+      "carried_raw_chord": [
+        -351,
+        -45,
+        -393
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 2950,
+      "earlier_point": [
+        -738,
+        297,
+        798
+      ],
+      "later_index": 3036,
+      "later_point": [
+        -855,
+        171,
+        813
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -35001,
+        27432,
+        -42579
+      ],
+      "pair_id": "L5:A2950:A3036",
+      "raw_chord": [
+        -117,
+        -126,
+        15
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        39,
+        15,
+        -38
+      ],
+      "carried_canonical_direction": [
+        117,
+        114,
+        83
+      ],
+      "carried_raw_chord": [
+        -2106,
+        -2052,
+        -1494
+      ],
+      "carried_signed_multiplier": -18,
+      "cone": "11/3",
+      "earlier_index": 369,
+      "earlier_point": [
+        -165,
+        447,
+        143
+      ],
+      "later_index": 3046,
+      "later_point": [
+        -867,
+        177,
+        827
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -19131,
+        -693,
+        -19908
+      ],
+      "pair_id": "L5:A369:A3046",
+      "raw_chord": [
+        -702,
+        -270,
+        684
+      ],
+      "signed_multiplier": -18
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -486,
+        -378,
+        -450
+      ],
+      "carried_signed_multiplier": -18,
+      "cone": "11/3",
+      "earlier_index": 2937,
+      "earlier_point": [
+        -735,
+        321,
+        788
+      ],
+      "later_index": 3099,
+      "later_point": [
+        -897,
+        213,
+        914
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -6975,
+        1947,
+        -7299
+      ],
+      "pair_id": "L5:A2937:A3099",
+      "raw_chord": [
+        -162,
+        -108,
+        126
+      ],
+      "signed_multiplier": -18
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -567,
+        -441,
+        -525
+      ],
+      "carried_signed_multiplier": -21,
+      "cone": "11/3",
+      "earlier_index": 2921,
+      "earlier_point": [
+        -726,
+        348,
+        785
+      ],
+      "later_index": 3110,
+      "later_point": [
+        -915,
+        222,
+        932
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7146,
+        1983,
+        -7488
+      ],
+      "pair_id": "L5:A2921:A3110",
+      "raw_chord": [
+        -189,
+        -126,
+        147
+      ],
+      "signed_multiplier": -21
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3103,
+      "earlier_point": [
+        -903,
+        213,
+        920
+      ],
+      "later_index": 3119,
+      "later_point": [
+        -930,
+        234,
+        945
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        13995,
+        2265,
+        13212
+      ],
+      "pair_id": "L5:A3103:A3119",
+      "raw_chord": [
+        -27,
+        21,
+        25
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3117,
+      "earlier_point": [
+        -927,
+        234,
+        942
+      ],
+      "later_index": 3123,
+      "later_point": [
+        -936,
+        237,
+        952
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        486,
+        -792,
+        675
+      ],
+      "pair_id": "L5:A3117:A3123",
+      "raw_chord": [
+        -9,
+        3,
+        10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -243,
+        -270,
+        -9
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 3083,
+      "earlier_point": [
+        -882,
+        195,
+        884
+      ],
+      "later_index": 3145,
+      "later_point": [
+        -963,
+        222,
+        974
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        702,
+        -864,
+        891
+      ],
+      "pair_id": "L5:A3083:A3145",
+      "raw_chord": [
+        -81,
+        27,
+        90
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 3145,
+      "earlier_point": [
+        -963,
+        222,
+        974
+      ],
+      "later_index": 3152,
+      "later_point": [
+        -972,
+        213,
+        968
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2478,
+        4848,
+        -3555
+      ],
+      "pair_id": "L5:A3145:A3152",
+      "raw_chord": [
+        -9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_canonical_direction": [
+        243,
+        267,
+        98
+      ],
+      "carried_raw_chord": [
+        -486,
+        -534,
+        -196
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 3026,
+      "earlier_point": [
+        -837,
+        186,
+        800
+      ],
+      "later_index": 3173,
+      "later_point": [
+        -999,
+        180,
+        978
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -18954,
+        -9693,
+        -17577
+      ],
+      "pair_id": "L5:A3026:A3173",
+      "raw_chord": [
+        -162,
+        -6,
+        178
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        1,
+        -3
+      ],
+      "carried_canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_raw_chord": [
+        -81,
+        -81,
+        -54
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 3169,
+      "earlier_point": [
+        -993,
+        186,
+        974
+      ],
+      "later_index": 3188,
+      "later_point": [
+        -1020,
+        177,
+        1001
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1532,
+        -57,
+        -1551
+      ],
+      "pair_id": "L5:A3169:A3188",
+      "raw_chord": [
+        -27,
+        -9,
+        27
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3192,
+      "earlier_point": [
+        -1020,
+        180,
+        1008
+      ],
+      "later_index": 3198,
+      "later_point": [
+        -1029,
+        183,
+        1018
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1224,
+        -1128,
+        1440
+      ],
+      "pair_id": "L5:A3192:A3198",
+      "raw_chord": [
+        -9,
+        3,
+        10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 3261,
+      "earlier_point": [
+        -1101,
+        150,
+        1073
+      ],
+      "later_index": 3268,
+      "later_point": [
+        -1110,
+        141,
+        1067
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2919,
+        5421,
+        -3753
+      ],
+      "pair_id": "L5:A3261:A3268",
+      "raw_chord": [
+        -9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 3264,
+      "earlier_point": [
+        -1107,
+        144,
+        1074
+      ],
+      "later_index": 3271,
+      "later_point": [
+        -1116,
+        135,
+        1068
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2934,
+        5436,
+        -3753
+      ],
+      "pair_id": "L5:A3264:A3271",
+      "raw_chord": [
+        -9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        -243,
+        -114,
+        -263
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3210,
+      "earlier_point": [
+        -1044,
+        198,
+        1038
+      ],
+      "later_index": 3277,
+      "later_point": [
+        -1125,
+        123,
+        1076
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -85374,
+        44406,
+        -94338
+      ],
+      "pair_id": "L5:A3210:A3277",
+      "raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        165,
+        102,
+        -20
+      ],
+      "carried_canonical_direction": [
+        495,
+        60,
+        326
+      ],
+      "carried_raw_chord": [
+        -2475,
+        -300,
+        -1630
+      ],
+      "carried_signed_multiplier": -5,
+      "cone": "348/275",
+      "earlier_index": 2592,
+      "earlier_point": [
+        -336,
+        612,
+        1005
+      ],
+      "later_index": 3300,
+      "later_point": [
+        -1161,
+        102,
+        1105
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -114750,
+        159105,
+        -135252
+      ],
+      "pair_id": "L5:A2592:A3300",
+      "raw_chord": [
+        -825,
+        -510,
+        100
+      ],
+      "signed_multiplier": -5
+    },
+    {
+      "canonical_direction": [
+        3,
+        1,
+        -3
+      ],
+      "carried_canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_raw_chord": [
+        -81,
+        -81,
+        -54
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 3283,
+      "earlier_point": [
+        -1134,
+        111,
+        1078
+      ],
+      "later_index": 3300,
+      "later_point": [
+        -1161,
+        102,
+        1105
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1411,
+        -168,
+        -1467
+      ],
+      "pair_id": "L5:A3283:A3300",
+      "raw_chord": [
+        -27,
+        -9,
+        27
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        -243,
+        -114,
+        -263
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3268,
+      "earlier_point": [
+        -1110,
+        141,
+        1067
+      ],
+      "later_index": 3320,
+      "later_point": [
+        -1191,
+        66,
+        1105
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -85383,
+        44247,
+        -94671
+      ],
+      "pair_id": "L5:A3268:A3320",
+      "raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        -243,
+        -114,
+        -263
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3274,
+      "earlier_point": [
+        -1119,
+        129,
+        1072
+      ],
+      "later_index": 3326,
+      "later_point": [
+        -1200,
+        54,
+        1110
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -85302,
+        44310,
+        -94374
+      ],
+      "pair_id": "L5:A3274:A3326",
+      "raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -189,
+        -63,
+        -210
+      ],
+      "carried_signed_multiplier": -21,
+      "cone": "11/3",
+      "earlier_index": 3294,
+      "earlier_point": [
+        -1149,
+        105,
+        1094
+      ],
+      "later_index": 3333,
+      "later_point": [
+        -1212,
+        42,
+        1115
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3387,
+        2133,
+        -3762
+      ],
+      "pair_id": "L5:A3294:A3333",
+      "raw_chord": [
+        -63,
+        -63,
+        21
+      ],
+      "signed_multiplier": -21
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -810,
+        -630,
+        -750
+      ],
+      "carried_signed_multiplier": -30,
+      "cone": "11/3",
+      "earlier_index": 3117,
+      "earlier_point": [
+        -927,
+        234,
+        942
+      ],
+      "later_index": 3354,
+      "later_point": [
+        -1197,
+        54,
+        1152
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7290,
+        1989,
+        -7668
+      ],
+      "pair_id": "L5:A3117:A3354",
+      "raw_chord": [
+        -270,
+        -180,
+        210
+      ],
+      "signed_multiplier": -30
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -1458,
+        -1134,
+        -1350
+      ],
+      "carried_signed_multiplier": -54,
+      "cone": "11/3",
+      "earlier_index": 2907,
+      "earlier_point": [
+        -705,
+        372,
+        778
+      ],
+      "later_index": 3357,
+      "later_point": [
+        -1191,
+        48,
+        1156
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7272,
+        2067,
+        -7578
+      ],
+      "pair_id": "L5:A2907:A3357",
+      "raw_chord": [
+        -486,
+        -324,
+        378
+      ],
+      "signed_multiplier": -54
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 3352,
+      "earlier_point": [
+        -1200,
+        54,
+        1149
+      ],
+      "later_index": 3357,
+      "later_point": [
+        -1191,
+        48,
+        1156
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7272,
+        18741,
+        6714
+      ],
+      "pair_id": "L5:A3352:A3357",
+      "raw_chord": [
+        9,
+        -6,
+        7
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        297,
+        159,
+        -262
+      ],
+      "carried_canonical_direction": [
+        891,
+        786,
+        739
+      ],
+      "carried_raw_chord": [
+        -891,
+        -786,
+        -739
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 3091,
+      "earlier_point": [
+        -888,
+        204,
+        899
+      ],
+      "later_index": 3360,
+      "later_point": [
+        -1185,
+        45,
+        1161
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -196389,
+        34347,
+        -201780
+      ],
+      "pair_id": "L5:A3091:A3360",
+      "raw_chord": [
+        -297,
+        -159,
+        262
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        162,
+        -180,
+        -6
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 3386,
+      "earlier_point": [
+        -1161,
+        54,
+        1206
+      ],
+      "later_index": 3423,
+      "later_point": [
+        -1107,
+        72,
+        1266
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3078,
+        22464,
+        -3969
+      ],
+      "pair_id": "L5:A3386:A3423",
+      "raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 3608,
+      "earlier_point": [
+        -927,
+        243,
+        1362
+      ],
+      "later_index": 3618,
+      "later_point": [
+        -909,
+        261,
+        1356
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4329,
+        3159,
+        -3510
+      ],
+      "pair_id": "L5:A3608:A3618",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 3630,
+      "earlier_point": [
+        -891,
+        273,
+        1378
+      ],
+      "later_index": 3641,
+      "later_point": [
+        -873,
+        291,
+        1372
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4407,
+        3243,
+        -3492
+      ],
+      "pair_id": "L5:A3630:A3641",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -1458,
+        -1134,
+        -1350
+      ],
+      "carried_signed_multiplier": -54,
+      "cone": "11/3",
+      "earlier_index": 2624,
+      "earlier_point": [
+        -387,
+        621,
+        990
+      ],
+      "later_index": 3644,
+      "later_point": [
+        -873,
+        297,
+        1368
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -10287,
+        6201,
+        -7911
+      ],
+      "pair_id": "L5:A2624:A3644",
+      "raw_chord": [
+        -486,
+        -324,
+        378
+      ],
+      "signed_multiplier": -54
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        162,
+        -6,
+        178
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 3605,
+      "earlier_point": [
+        -927,
+        237,
+        1366
+      ],
+      "later_index": 3644,
+      "later_point": [
+        -873,
+        297,
+        1368
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -40743,
+        37809,
+        -34209
+      ],
+      "pair_id": "L5:A3605:A3644",
+      "raw_chord": [
+        54,
+        60,
+        2
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        486,
+        -18,
+        534
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 3547,
+      "earlier_point": [
+        -999,
+        150,
+        1382
+      ],
+      "later_index": 3668,
+      "later_point": [
+        -837,
+        330,
+        1388
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -41310,
+        38313,
+        -34020
+      ],
+      "pair_id": "L5:A3547:A3668",
+      "raw_chord": [
+        162,
+        180,
+        6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        261,
+        285,
+        113
+      ],
+      "carried_canonical_direction": [
+        783,
+        -339,
+        742
+      ],
+      "carried_raw_chord": [
+        783,
+        -339,
+        742
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 3429,
+      "earlier_point": [
+        -1104,
+        81,
+        1275
+      ],
+      "later_index": 3687,
+      "later_point": [
+        -843,
+        366,
+        1388
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -354222,
+        457527,
+        -335781
+      ],
+      "pair_id": "L5:A3429:A3687",
+      "raw_chord": [
+        261,
+        285,
+        113
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 3729,
+      "earlier_point": [
+        -801,
+        444,
+        1366
+      ],
+      "later_index": 3739,
+      "later_point": [
+        -783,
+        462,
+        1360
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4542,
+        3297,
+        -3735
+      ],
+      "pair_id": "L5:A3729:A3739",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        81,
+        -3,
+        89
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 3727,
+      "earlier_point": [
+        -801,
+        441,
+        1362
+      ],
+      "later_index": 3745,
+      "later_point": [
+        -774,
+        471,
+        1363
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -40419,
+        37575,
+        -35937
+      ],
+      "pair_id": "L5:A3727:A3745",
+      "raw_chord": [
+        27,
+        30,
+        1
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 3926,
+      "earlier_point": [
+        -867,
+        696,
+        1255
+      ],
+      "later_index": 3939,
+      "later_point": [
+        -885,
+        690,
+        1235
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        3195,
+        19965,
+        -8865
+      ],
+      "pair_id": "L5:A3926:A3939",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_raw_chord": [
+        -729,
+        801,
+        294
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 3876,
+      "earlier_point": [
+        -810,
+        687,
+        1315
+      ],
+      "later_index": 4068,
+      "later_point": [
+        -1053,
+        696,
+        1048
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        65088,
+        178605,
+        -53217
+      ],
+      "pair_id": "L5:A3876:A4068",
+      "raw_chord": [
+        -243,
+        9,
+        -267
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_raw_chord": [
+        -729,
+        801,
+        294
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 3879,
+      "earlier_point": [
+        -810,
+        693,
+        1311
+      ],
+      "later_index": 4071,
+      "later_point": [
+        -1053,
+        702,
+        1044
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        65610,
+        178281,
+        -53703
+      ],
+      "pair_id": "L5:A3879:A4071",
+      "raw_chord": [
+        -243,
+        9,
+        -267
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -81,
+        27,
+        90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 4056,
+      "earlier_point": [
+        -1029,
+        681,
+        1061
+      ],
+      "later_index": 4075,
+      "later_point": [
+        -1056,
+        708,
+        1052
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        3864,
+        4212,
+        1044
+      ],
+      "pair_id": "L5:A4056:A4075",
+      "raw_chord": [
+        -27,
+        27,
+        -9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        33,
+        -6,
+        -37
+      ],
+      "carried_canonical_direction": [
+        99,
+        111,
+        19
+      ],
+      "carried_raw_chord": [
+        -2970,
+        -3330,
+        -570
+      ],
+      "carried_signed_multiplier": -30,
+      "cone": "11/3",
+      "earlier_index": 797,
+      "earlier_point": [
+        -108,
+        567,
+        -54
+      ],
+      "later_index": 4102,
+      "later_point": [
+        -1098,
+        747,
+        1056
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -21303,
+        -5778,
+        -18063
+      ],
+      "pair_id": "L5:A797:A4102",
+      "raw_chord": [
+        -990,
+        180,
+        1110
+      ],
+      "signed_multiplier": -30
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4099,
+      "earlier_point": [
+        -1092,
+        741,
+        1060
+      ],
+      "later_index": 4112,
+      "later_point": [
+        -1110,
+        753,
+        1046
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        11547,
+        17184,
+        -117
+      ],
+      "pair_id": "L5:A4099:A4112",
+      "raw_chord": [
+        -18,
+        12,
+        -14
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -27,
+        30,
+        1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 4116,
+      "earlier_point": [
+        -1110,
+        750,
+        1039
+      ],
+      "later_index": 4122,
+      "later_point": [
+        -1119,
+        747,
+        1029
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        4383,
+        20451,
+        -10080
+      ],
+      "pair_id": "L5:A4116:A4122",
+      "raw_chord": [
+        -9,
+        -3,
+        -10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_raw_chord": [
+        -486,
+        534,
+        196
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4053,
+      "earlier_point": [
+        -1023,
+        675,
+        1059
+      ],
+      "later_index": 4206,
+      "later_point": [
+        -1185,
+        681,
+        881
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        63252,
+        176826,
+        -51606
+      ],
+      "pair_id": "L5:A4053:A4206",
+      "raw_chord": [
+        -162,
+        6,
+        -178
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 4364,
+      "earlier_point": [
+        -1278,
+        489,
+        736
+      ],
+      "later_index": 4374,
+      "later_point": [
+        -1260,
+        471,
+        742
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2697,
+        3486,
+        2367
+      ],
+      "pair_id": "L5:A4364:A4374",
+      "raw_chord": [
+        18,
+        -18,
+        6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 4410,
+      "earlier_point": [
+        -1251,
+        411,
+        728
+      ],
+      "later_index": 4421,
+      "later_point": [
+        -1269,
+        393,
+        734
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2595,
+        933,
+        -4986
+      ],
+      "pair_id": "L5:A4410:A4421",
+      "raw_chord": [
+        -18,
+        -18,
+        6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 4436,
+      "earlier_point": [
+        -1287,
+        375,
+        716
+      ],
+      "later_index": 4446,
+      "later_point": [
+        -1305,
+        357,
+        722
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2523,
+        861,
+        -4986
+      ],
+      "pair_id": "L5:A4436:A4446",
+      "raw_chord": [
+        -18,
+        -18,
+        6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 4439,
+      "earlier_point": [
+        -1293,
+        369,
+        717
+      ],
+      "later_index": 4455,
+      "later_point": [
+        -1320,
+        342,
+        726
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2520,
+        858,
+        -4986
+      ],
+      "pair_id": "L5:A4439:A4455",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 4479,
+      "earlier_point": [
+        -1341,
+        306,
+        723
+      ],
+      "later_index": 4499,
+      "later_point": [
+        -1368,
+        279,
+        732
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2475,
+        828,
+        -4941
+      ],
+      "pair_id": "L5:A4479:A4499",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -27,
+        -21,
+        -25
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 4493,
+      "earlier_point": [
+        -1359,
+        285,
+        725
+      ],
+      "later_index": 4499,
+      "later_point": [
+        -1368,
+        279,
+        732
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -6345,
+        -2988,
+        -10719
+      ],
+      "pair_id": "L5:A4493:A4499",
+      "raw_chord": [
+        -9,
+        -6,
+        7
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -81,
+        -63,
+        -75
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4486,
+      "earlier_point": [
+        -1347,
+        294,
+        716
+      ],
+      "later_index": 4502,
+      "later_point": [
+        -1374,
+        276,
+        737
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -6354,
+        -2985,
+        -10728
+      ],
+      "pair_id": "L5:A4486:A4502",
+      "raw_chord": [
+        -27,
+        -18,
+        21
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        81,
+        3,
+        -89
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 4527,
+      "earlier_point": [
+        -1344,
+        231,
+        746
+      ],
+      "later_index": 4547,
+      "later_point": [
+        -1317,
+        201,
+        745
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        22149,
+        18798,
+        34083
+      ],
+      "pair_id": "L5:A4527:A4547",
+      "raw_chord": [
+        27,
+        -30,
+        -1
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 4540,
+      "earlier_point": [
+        -1326,
+        210,
+        751
+      ],
+      "later_index": 4547,
+      "later_point": [
+        -1317,
+        201,
+        745
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1833,
+        -399,
+        3348
+      ],
+      "pair_id": "L5:A4540:A4547",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 4579,
+      "earlier_point": [
+        -1296,
+        156,
+        718
+      ],
+      "later_index": 4584,
+      "later_point": [
+        -1287,
+        147,
+        712
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1842,
+        -438,
+        3420
+      ],
+      "pair_id": "L5:A4579:A4584",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 4617,
+      "earlier_point": [
+        -1248,
+        84,
+        727
+      ],
+      "later_index": 4624,
+      "later_point": [
+        -1239,
+        75,
+        730
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2265,
+        3429,
+        3492
+      ],
+      "pair_id": "L5:A4617:A4624",
+      "raw_chord": [
+        9,
+        -9,
+        3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4729,
+      "earlier_point": [
+        -1317,
+        -60,
+        661
+      ],
+      "later_index": 4736,
+      "later_point": [
+        -1326,
+        -69,
+        655
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2103,
+        4617,
+        -3771
+      ],
+      "pair_id": "L5:A4729:A4736",
+      "raw_chord": [
+        -9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        2,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_raw_chord": [
+        -324,
+        324,
+        -108
+      ],
+      "carried_signed_multiplier": -108,
+      "cone": "11/3",
+      "earlier_index": 4682,
+      "earlier_point": [
+        -1257,
+        -33,
+        745
+      ],
+      "later_index": 4763,
+      "later_point": [
+        -1365,
+        -105,
+        637
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1589,
+        6006,
+        -2415
+      ],
+      "pair_id": "L5:A4682:A4763",
+      "raw_chord": [
+        -108,
+        -72,
+        -108
+      ],
+      "signed_multiplier": -36
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4763,
+      "earlier_point": [
+        -1365,
+        -105,
+        637
+      ],
+      "later_index": 4769,
+      "later_point": [
+        -1374,
+        -114,
+        640
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1806,
+        546,
+        -3780
+      ],
+      "pair_id": "L5:A4763:A4769",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -243,
+        162,
+        -189
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 4710,
+      "earlier_point": [
+        -1296,
+        -39,
+        698
+      ],
+      "later_index": 4772,
+      "later_point": [
+        -1377,
+        -120,
+        644
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2172,
+        4686,
+        -3771
+      ],
+      "pair_id": "L5:A4710:A4772",
+      "raw_chord": [
+        -81,
+        -81,
+        -54
+      ],
+      "signed_multiplier": -27
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4766,
+      "earlier_point": [
+        -1368,
+        -111,
+        641
+      ],
+      "later_index": 4772,
+      "later_point": [
+        -1377,
+        -120,
+        644
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1812,
+        555,
+        -3771
+      ],
+      "pair_id": "L5:A4766:A4772",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -81,
+        90,
+        3
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4769,
+      "earlier_point": [
+        -1374,
+        -114,
+        640
+      ],
+      "later_index": 4797,
+      "later_point": [
+        -1401,
+        -123,
+        610
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3060,
+        19500,
+        -3096
+      ],
+      "pair_id": "L5:A4769:A4797",
+      "raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4800,
+      "earlier_point": [
+        -1407,
+        -117,
+        606
+      ],
+      "later_index": 4812,
+      "later_point": [
+        -1425,
+        -123,
+        586
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2988,
+        19524,
+        -3168
+      ],
+      "pair_id": "L5:A4800:A4812",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -189,
+        210,
+        7
+      ],
+      "carried_signed_multiplier": -7,
+      "cone": "11/3",
+      "earlier_index": 4785,
+      "earlier_point": [
+        -1383,
+        -111,
+        623
+      ],
+      "later_index": 4831,
+      "later_point": [
+        -1446,
+        -132,
+        553
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2979,
+        19437,
+        -3150
+      ],
+      "pair_id": "L5:A4785:A4831",
+      "raw_chord": [
+        -63,
+        -21,
+        -70
+      ],
+      "signed_multiplier": -7
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -243,
+        270,
+        9
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 4781,
+      "earlier_point": [
+        -1377,
+        -105,
+        631
+      ],
+      "later_index": 4838,
+      "later_point": [
+        -1458,
+        -132,
+        541
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2943,
+        19449,
+        -3186
+      ],
+      "pair_id": "L5:A4781:A4838",
+      "raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        39,
+        15,
+        43
+      ],
+      "carried_canonical_direction": [
+        117,
+        -129,
+        2
+      ],
+      "carried_raw_chord": [
+        -351,
+        387,
+        -6
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4751,
+      "earlier_point": [
+        -1347,
+        -90,
+        657
+      ],
+      "later_index": 4845,
+      "later_point": [
+        -1464,
+        -135,
+        528
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -13725,
+        83544,
+        -16695
+      ],
+      "pair_id": "L5:A4751:A4845",
+      "raw_chord": [
+        -117,
+        -45,
+        -129
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        39,
+        15,
+        43
+      ],
+      "carried_canonical_direction": [
+        117,
+        -129,
+        2
+      ],
+      "carried_raw_chord": [
+        -351,
+        387,
+        -6
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4755,
+      "earlier_point": [
+        -1353,
+        -96,
+        649
+      ],
+      "later_index": 4849,
+      "later_point": [
+        -1470,
+        -141,
+        520
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -13863,
+        83490,
+        -16551
+      ],
+      "pair_id": "L5:A4755:A4849",
+      "raw_chord": [
+        -117,
+        -45,
+        -129
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -27,
+        30,
+        1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 4874,
+      "earlier_point": [
+        -1485,
+        -135,
+        495
+      ],
+      "later_index": 4880,
+      "later_point": [
+        -1494,
+        -138,
+        485
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2835,
+        19305,
+        -3240
+      ],
+      "pair_id": "L5:A4874:A4880",
+      "raw_chord": [
+        -9,
+        -3,
+        -10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4871,
+      "earlier_point": [
+        -1485,
+        -141,
+        493
+      ],
+      "later_index": 4887,
+      "later_point": [
+        -1503,
+        -147,
+        473
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2889,
+        19287,
+        -3186
+      ],
+      "pair_id": "L5:A4871:A4887",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 4942,
+      "earlier_point": [
+        -1569,
+        -183,
+        395
+      ],
+      "later_index": 4966,
+      "later_point": [
+        -1605,
+        -219,
+        371
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1551,
+        4323,
+        -4158
+      ],
+      "pair_id": "L5:A4942:A4966",
+      "raw_chord": [
+        -36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 4966,
+      "earlier_point": [
+        -1605,
+        -219,
+        371
+      ],
+      "later_index": 4972,
+      "later_point": [
+        -1614,
+        -228,
+        374
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -894,
+        -492,
+        -4158
+      ],
+      "pair_id": "L5:A4966:A4972",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -162,
+        6,
+        -178
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4953,
+      "earlier_point": [
+        -1587,
+        -198,
+        381
+      ],
+      "later_index": 4990,
+      "later_point": [
+        -1641,
+        -258,
+        379
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -11628,
+        11874,
+        -42264
+      ],
+      "pair_id": "L5:A4953:A4990",
+      "raw_chord": [
+        -54,
+        -60,
+        -2
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_canonical_direction": [
+        81,
+        -75,
+        38
+      ],
+      "carried_raw_chord": [
+        -162,
+        150,
+        -76
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 4990,
+      "earlier_point": [
+        -1641,
+        -258,
+        379
+      ],
+      "later_index": 5039,
+      "later_point": [
+        -1695,
+        -300,
+        329
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -14409,
+        51258,
+        -27495
+      ],
+      "pair_id": "L5:A4990:A5039",
+      "raw_chord": [
+        -54,
+        -42,
+        -50
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 5045,
+      "earlier_point": [
+        -1707,
+        -300,
+        326
+      ],
+      "later_index": 5063,
+      "later_point": [
+        -1734,
+        -279,
+        351
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        14346,
+        -33873,
+        43947
+      ],
+      "pair_id": "L5:A5045:A5063",
+      "raw_chord": [
+        -27,
+        21,
+        25
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        -27,
+        -18,
+        21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 5063,
+      "earlier_point": [
+        -1734,
+        -279,
+        351
+      ],
+      "later_index": 5071,
+      "later_point": [
+        -1743,
+        -270,
+        357
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1611,
+        -2415,
+        6039
+      ],
+      "pair_id": "L5:A5063:A5071",
+      "raw_chord": [
+        -9,
+        9,
+        6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 5149,
+      "earlier_point": [
+        -1845,
+        -273,
+        281
+      ],
+      "later_index": 5159,
+      "later_point": [
+        -1863,
+        -255,
+        275
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        570,
+        2688,
+        6354
+      ],
+      "pair_id": "L5:A5149:A5159",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 5146,
+      "earlier_point": [
+        -1845,
+        -279,
+        285
+      ],
+      "later_index": 5162,
+      "later_point": [
+        -1863,
+        -261,
+        279
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        576,
+        2700,
+        6372
+      ],
+      "pair_id": "L5:A5146:A5162",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 5162,
+      "earlier_point": [
+        -1863,
+        -261,
+        279
+      ],
+      "later_index": 5172,
+      "later_point": [
+        -1881,
+        -279,
+        285
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -576,
+        -1026,
+        -4806
+      ],
+      "pair_id": "L5:A5162:A5172",
+      "raw_chord": [
+        -18,
+        -18,
+        6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 5162,
+      "earlier_point": [
+        -1863,
+        -261,
+        279
+      ],
+      "later_index": 5188,
+      "later_point": [
+        -1899,
+        -297,
+        255
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1359,
+        4563,
+        -4806
+      ],
+      "pair_id": "L5:A5162:A5188",
+      "raw_chord": [
+        -36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        2,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_raw_chord": [
+        -3321,
+        3321,
+        -1107
+      ],
+      "carried_signed_multiplier": -1107,
+      "cone": "11/3",
+      "earlier_index": 3720,
+      "earlier_point": [
+        -813,
+        429,
+        1367
+      ],
+      "later_index": 5200,
+      "later_point": [
+        -1920,
+        -309,
+        260
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1447,
+        6540,
+        -2913
+      ],
+      "pair_id": "L5:A3720:A5200",
+      "raw_chord": [
+        -1107,
+        -738,
+        -1107
+      ],
+      "signed_multiplier": -369
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5214,
+      "earlier_point": [
+        -1929,
+        -303,
+        244
+      ],
+      "later_index": 5227,
+      "later_point": [
+        -1947,
+        -309,
+        224
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3762,
+        21486,
+        -3060
+      ],
+      "pair_id": "L5:A5214:A5227",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        165,
+        82,
+        84
+      ],
+      "carried_canonical_direction": [
+        55,
+        -28,
+        18
+      ],
+      "carried_raw_chord": [
+        -4455,
+        2268,
+        -1458
+      ],
+      "carried_signed_multiplier": -81,
+      "cone": "348/275",
+      "earlier_index": 2864,
+      "earlier_point": [
+        -648,
+        426,
+        778
+      ],
+      "later_index": 5372,
+      "later_point": [
+        -2133,
+        -312,
+        22
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -28012,
+        182802,
+        -123426
+      ],
+      "pair_id": "L5:A2864:A5372",
+      "raw_chord": [
+        -1485,
+        -738,
+        -756
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_raw_chord": [
+        -486,
+        534,
+        196
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5243,
+      "earlier_point": [
+        -1971,
+        -318,
+        200
+      ],
+      "later_index": 5372,
+      "later_point": [
+        -2133,
+        -312,
+        22
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -27702,
+        191619,
+        31671
+      ],
+      "pair_id": "L5:A5243:A5372",
+      "raw_chord": [
+        -162,
+        6,
+        -178
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -162,
+        180,
+        6
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 5333,
+      "earlier_point": [
+        -2079,
+        -294,
+        82
+      ],
+      "later_index": 5372,
+      "later_point": [
+        -2133,
+        -312,
+        22
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3186,
+        21528,
+        -3591
+      ],
+      "pair_id": "L5:A5333:A5372",
+      "raw_chord": [
+        -54,
+        -18,
+        -60
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_canonical_direction": [
+        243,
+        -267,
+        -98
+      ],
+      "carried_raw_chord": [
+        -729,
+        801,
+        294
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 5197,
+      "earlier_point": [
+        -1917,
+        -312,
+        265
+      ],
+      "later_index": 5392,
+      "later_point": [
+        -2160,
+        -303,
+        -2
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -26973,
+        192078,
+        31023
+      ],
+      "pair_id": "L5:A5197:A5392",
+      "raw_chord": [
+        -243,
+        9,
+        -267
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        2,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_raw_chord": [
+        -4212,
+        4212,
+        -1404
+      ],
+      "carried_signed_multiplier": -1404,
+      "cone": "11/3",
+      "earlier_index": 3832,
+      "earlier_point": [
+        -789,
+        621,
+        1356
+      ],
+      "later_index": 5420,
+      "later_point": [
+        -2193,
+        -315,
+        -48
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -849,
+        6435,
+        -3441
+      ],
+      "pair_id": "L5:A3832:A5420",
+      "raw_chord": [
+        -1404,
+        -936,
+        -1404
+      ],
+      "signed_multiplier": -468
+    },
+    {
+      "canonical_direction": [
+        27,
+        1,
+        30
+      ],
+      "carried_canonical_direction": [
+        9,
+        -10,
+        -3
+      ],
+      "carried_raw_chord": [
+        -729,
+        810,
+        243
+      ],
+      "carried_signed_multiplier": -81,
+      "cone": "11/3",
+      "earlier_index": 5235,
+      "earlier_point": [
+        -1959,
+        -309,
+        215
+      ],
+      "later_index": 5430,
+      "later_point": [
+        -2202,
+        -318,
+        -55
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -9485,
+        64575,
+        6384
+      ],
+      "pair_id": "L5:A5235:A5430",
+      "raw_chord": [
+        -243,
+        -9,
+        -270
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -324,
+        360,
+        12
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 5382,
+      "earlier_point": [
+        -2151,
+        -309,
+        14
+      ],
+      "later_index": 5472,
+      "later_point": [
+        -2259,
+        -345,
+        -106
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3132,
+        21636,
+        -3672
+      ],
+      "pair_id": "L5:A5382:A5472",
+      "raw_chord": [
+        -108,
+        -36,
+        -120
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 5469,
+      "earlier_point": [
+        -2253,
+        -348,
+        -107
+      ],
+      "later_index": 5475,
+      "later_point": [
+        -2262,
+        -339,
+        -110
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -669,
+        1932,
+        7803
+      ],
+      "pair_id": "L5:A5469:A5475",
+      "raw_chord": [
+        -9,
+        9,
+        -3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -1,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_raw_chord": [
+        -81,
+        81,
+        54
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 5481,
+      "earlier_point": [
+        -2274,
+        -327,
+        -112
+      ],
+      "later_index": 5498,
+      "later_point": [
+        -2301,
+        -318,
+        -139
+      ],
+      "orbit_matches": [
+        {
+          "family": "fixed_11_degenerate_cycle",
+          "orbit_index": 0
+        }
+      ],
+      "origin_moment": [
+        -1093,
+        6486,
+        3255
+      ],
+      "pair_id": "L5:A5481:A5498",
+      "raw_chord": [
+        -27,
+        9,
+        -27
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5491,
+      "earlier_point": [
+        -2289,
+        -318,
+        -127
+      ],
+      "later_index": 5502,
+      "later_point": [
+        -2307,
+        -324,
+        -147
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2799,
+        21747,
+        -4005
+      ],
+      "pair_id": "L5:A5491:A5502",
+      "raw_chord": [
+        -18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -3402,
+        3780,
+        126
+      ],
+      "carried_signed_multiplier": -126,
+      "cone": "11/3",
+      "earlier_index": 3323,
+      "earlier_point": [
+        -1197,
+        60,
+        1109
+      ],
+      "later_index": 5516,
+      "later_point": [
+        -2331,
+        -318,
+        -151
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2727,
+        21951,
+        -4131
+      ],
+      "pair_id": "L5:A3323:A5516",
+      "raw_chord": [
+        -1134,
+        -378,
+        -1260
+      ],
+      "signed_multiplier": -126
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -81,
+        -75,
+        38
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 5549,
+      "earlier_point": [
+        -2379,
+        -318,
+        -121
+      ],
+      "later_index": 5570,
+      "later_point": [
+        -2406,
+        -297,
+        -96
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5409,
+        -62742,
+        58545
+      ],
+      "pair_id": "L5:A5549:A5570",
+      "raw_chord": [
+        -27,
+        21,
+        25
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 5583,
+      "earlier_point": [
+        -2421,
+        -273,
+        -97
+      ],
+      "later_index": 5594,
+      "later_point": [
+        -2439,
+        -255,
+        -103
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -564,
+        2130,
+        8082
+      ],
+      "pair_id": "L5:A5583:A5594",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 5597,
+      "earlier_point": [
+        -2445,
+        -249,
+        -98
+      ],
+      "later_index": 5603,
+      "later_point": [
+        -2454,
+        -240,
+        -101
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -543,
+        2151,
+        8082
+      ],
+      "pair_id": "L5:A5597:A5603",
+      "raw_chord": [
+        -9,
+        9,
+        -3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -54,
+        -60,
+        -2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5671,
+      "earlier_point": [
+        -2541,
+        -174,
+        8
+      ],
+      "later_index": 5685,
+      "later_point": [
+        -2559,
+        -168,
+        28
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1764,
+        -25338,
+        9189
+      ],
+      "pair_id": "L5:A5671:A5685",
+      "raw_chord": [
+        -18,
+        6,
+        20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        165,
+        84,
+        82
+      ],
+      "carried_canonical_direction": [
+        495,
+        -246,
+        170
+      ],
+      "carried_raw_chord": [
+        -3960,
+        1968,
+        -1360
+      ],
+      "carried_signed_multiplier": -8,
+      "cone": "348/275",
+      "earlier_index": 4361,
+      "earlier_point": [
+        -1278,
+        495,
+        732
+      ],
+      "later_index": 5716,
+      "later_point": [
+        -2598,
+        -177,
+        76
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -20898,
+        225576,
+        -189027
+      ],
+      "pair_id": "L5:A4361:A5716",
+      "raw_chord": [
+        -1320,
+        -672,
+        -656
+      ],
+      "signed_multiplier": -8
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -54,
+        -60,
+        -2
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5710,
+      "earlier_point": [
+        -2592,
+        -177,
+        67
+      ],
+      "later_index": 5727,
+      "later_point": [
+        -2610,
+        -171,
+        87
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1971,
+        -25317,
+        9369
+      ],
+      "pair_id": "L5:A5710:A5727",
+      "raw_chord": [
+        -18,
+        6,
+        20
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 5760,
+      "earlier_point": [
+        -2652,
+        -174,
+        125
+      ],
+      "later_index": 5766,
+      "later_point": [
+        -2661,
+        -171,
+        135
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2115,
+        -25395,
+        9522
+      ],
+      "pair_id": "L5:A5760:A5766",
+      "raw_chord": [
+        -9,
+        3,
+        10
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        135,
+        -45,
+        -150
+      ],
+      "carried_signed_multiplier": 15,
+      "cone": "11/3",
+      "earlier_index": 5766,
+      "earlier_point": [
+        -2661,
+        -171,
+        135
+      ],
+      "later_index": 5821,
+      "later_point": [
+        -2616,
+        -216,
+        150
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        234,
+        3066,
+        8496
+      ],
+      "pair_id": "L5:A5766:A5821",
+      "raw_chord": [
+        45,
+        -45,
+        15
+      ],
+      "signed_multiplier": 15
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": 12,
+      "cone": "11/3",
+      "earlier_index": 5799,
+      "earlier_point": [
+        -2649,
+        -186,
+        172
+      ],
+      "later_index": 5824,
+      "later_point": [
+        -2613,
+        -222,
+        148
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        888,
+        -4782,
+        8505
+      ],
+      "pair_id": "L5:A5799:A5824",
+      "raw_chord": [
+        36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": 12
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        -648,
+        -720,
+        -24
+      ],
+      "carried_signed_multiplier": -24,
+      "cone": "11/3",
+      "earlier_index": 5567,
+      "earlier_point": [
+        -2403,
+        -300,
+        -91
+      ],
+      "later_index": 5827,
+      "later_point": [
+        -2619,
+        -228,
+        149
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2727,
+        -24849,
+        9909
+      ],
+      "pair_id": "L5:A5567:A5827",
+      "raw_chord": [
+        -216,
+        72,
+        240
+      ],
+      "signed_multiplier": -24
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 5837,
+      "earlier_point": [
+        -2601,
+        -246,
+        143
+      ],
+      "later_index": 5843,
+      "later_point": [
+        -2610,
+        -255,
+        146
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -183,
+        -2172,
+        -7065
+      ],
+      "pair_id": "L5:A5837:A5843",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        81,
+        3,
+        -89
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 5865,
+      "earlier_point": [
+        -2622,
+        -297,
+        156
+      ],
+      "later_index": 5881,
+      "later_point": [
+        -2595,
+        -327,
+        155
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        4977,
+        1590,
+        86679
+      ],
+      "pair_id": "L5:A5865:A5881",
+      "raw_chord": [
+        27,
+        -30,
+        -1
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": 12,
+      "cone": "11/3",
+      "earlier_index": 6095,
+      "earlier_point": [
+        -2592,
+        -630,
+        153
+      ],
+      "later_index": 6122,
+      "later_point": [
+        -2556,
+        -666,
+        129
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1719,
+        -4725,
+        9666
+      ],
+      "pair_id": "L5:A6095:A6122",
+      "raw_chord": [
+        36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": 12
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6133,
+      "earlier_point": [
+        -2538,
+        -684,
+        123
+      ],
+      "later_index": 6138,
+      "later_point": [
+        -2529,
+        -693,
+        126
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -315,
+        2907,
+        9666
+      ],
+      "pair_id": "L5:A6133:A6138",
+      "raw_chord": [
+        9,
+        -9,
+        3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        243,
+        267,
+        98
+      ],
+      "carried_canonical_direction": [
+        729,
+        -294,
+        703
+      ],
+      "carried_raw_chord": [
+        -1458,
+        588,
+        -1406
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 5168,
+      "earlier_point": [
+        -1875,
+        -273,
+        284
+      ],
+      "later_index": 6254,
+      "later_point": [
+        -2361,
+        -807,
+        88
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -102582,
+        252762,
+        -434286
+      ],
+      "pair_id": "L5:A5168:A6254",
+      "raw_chord": [
+        -486,
+        -534,
+        -196
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6247,
+      "earlier_point": [
+        -2370,
+        -816,
+        91
+      ],
+      "later_index": 6254,
+      "later_point": [
+        -2361,
+        -807,
+        88
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        543,
+        -2097,
+        -4662
+      ],
+      "pair_id": "L5:A6247:A6254",
+      "raw_chord": [
+        9,
+        9,
+        -3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        459,
+        498,
+        211
+      ],
+      "carried_canonical_direction": [
+        1377,
+        -633,
+        1283
+      ],
+      "carried_raw_chord": [
+        -1377,
+        633,
+        -1283
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 5172,
+      "earlier_point": [
+        -1881,
+        -279,
+        285
+      ],
+      "later_index": 6269,
+      "later_point": [
+        -2340,
+        -777,
+        74
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -200799,
+        527706,
+        -808677
+      ],
+      "pair_id": "L5:A5172:A6269",
+      "raw_chord": [
+        -459,
+        -498,
+        -211
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        99,
+        -111,
+        -19
+      ],
+      "carried_canonical_direction": [
+        297,
+        57,
+        -314
+      ],
+      "carried_raw_chord": [
+        891,
+        171,
+        -942
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 5952,
+      "earlier_point": [
+        -2613,
+        -414,
+        120
+      ],
+      "later_index": 6287,
+      "later_point": [
+        -2316,
+        -747,
+        63
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        21186,
+        -37767,
+        331029
+      ],
+      "pair_id": "L5:A5952:A6287",
+      "raw_chord": [
+        297,
+        -333,
+        -57
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        27,
+        30,
+        1
+      ],
+      "carried_signed_multiplier": 1,
+      "cone": "11/3",
+      "earlier_index": 6300,
+      "earlier_point": [
+        -2295,
+        -750,
+        47
+      ],
+      "later_index": 6306,
+      "later_point": [
+        -2286,
+        -753,
+        37
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7641,
+        -22527,
+        13635
+      ],
+      "pair_id": "L5:A6300:A6306",
+      "raw_chord": [
+        9,
+        -3,
+        -10
+      ],
+      "signed_multiplier": 1
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        81,
+        63,
+        75
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6304,
+      "earlier_point": [
+        -2289,
+        -750,
+        41
+      ],
+      "later_index": 6321,
+      "later_point": [
+        -2262,
+        -732,
+        20
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5004,
+        -15654,
+        -6984
+      ],
+      "pair_id": "L5:A6304:A6321",
+      "raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        108,
+        84,
+        100
+      ],
+      "carried_signed_multiplier": 4,
+      "cone": "11/3",
+      "earlier_index": 6300,
+      "earlier_point": [
+        -2295,
+        -750,
+        47
+      ],
+      "later_index": 6324,
+      "later_point": [
+        -2259,
+        -726,
+        19
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        4968,
+        -15642,
+        -7020
+      ],
+      "pair_id": "L5:A6300:A6324",
+      "raw_chord": [
+        36,
+        24,
+        -28
+      ],
+      "signed_multiplier": 4
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        324,
+        252,
+        300
+      ],
+      "carried_signed_multiplier": 12,
+      "cone": "11/3",
+      "earlier_index": 6257,
+      "earlier_point": [
+        -2358,
+        -801,
+        84
+      ],
+      "later_index": 6334,
+      "later_point": [
+        -2250,
+        -729,
+        0
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5103,
+        -15750,
+        -6939
+      ],
+      "pair_id": "L5:A6257:A6334",
+      "raw_chord": [
+        108,
+        72,
+        -84
+      ],
+      "signed_multiplier": 12
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        162,
+        54,
+        180
+      ],
+      "carried_signed_multiplier": 18,
+      "cone": "11/3",
+      "earlier_index": 6355,
+      "earlier_point": [
+        -2220,
+        -738,
+        -36
+      ],
+      "later_index": 6393,
+      "later_point": [
+        -2166,
+        -684,
+        -54
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        846,
+        -2328,
+        -4446
+      ],
+      "pair_id": "L5:A6355:A6393",
+      "raw_chord": [
+        54,
+        54,
+        -18
+      ],
+      "signed_multiplier": 18
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 6387,
+      "earlier_point": [
+        -2172,
+        -696,
+        -49
+      ],
+      "later_index": 6401,
+      "later_point": [
+        -2154,
+        -684,
+        -63
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        5166,
+        -15645,
+        -6768
+      ],
+      "pair_id": "L5:A6387:A6401",
+      "raw_chord": [
+        18,
+        12,
+        -14
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6444,
+      "earlier_point": [
+        -2106,
+        -708,
+        -137
+      ],
+      "later_index": 6450,
+      "later_point": [
+        -2097,
+        -717,
+        -143
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1005,
+        -4623,
+        8442
+      ],
+      "pair_id": "L5:A6444:A6450",
+      "raw_chord": [
+        9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        243,
+        270,
+        9
+      ],
+      "carried_signed_multiplier": 9,
+      "cone": "11/3",
+      "earlier_index": 6387,
+      "earlier_point": [
+        -2172,
+        -696,
+        -49
+      ],
+      "later_index": 6453,
+      "later_point": [
+        -2091,
+        -723,
+        -139
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        6813,
+        -22161,
+        12780
+      ],
+      "pair_id": "L5:A6387:A6453",
+      "raw_chord": [
+        81,
+        -27,
+        -90
+      ],
+      "signed_multiplier": 9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_raw_chord": [
+        54,
+        60,
+        2
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 6496,
+      "earlier_point": [
+        -2037,
+        -771,
+        -173
+      ],
+      "later_index": 6507,
+      "later_point": [
+        -2019,
+        -777,
+        -193
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7191,
+        -21927,
+        13050
+      ],
+      "pair_id": "L5:A6496:A6507",
+      "raw_chord": [
+        18,
+        -6,
+        -20
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": 2,
+      "cone": "11/3",
+      "earlier_index": 6546,
+      "earlier_point": [
+        -1986,
+        -816,
+        -260
+      ],
+      "later_index": 6558,
+      "later_point": [
+        -1968,
+        -804,
+        -274
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7272,
+        -16242,
+        -4572
+      ],
+      "pair_id": "L5:A6546:A6558",
+      "raw_chord": [
+        18,
+        12,
+        -14
+      ],
+      "signed_multiplier": 2
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 6552,
+      "earlier_point": [
+        -1980,
+        -816,
+        -269
+      ],
+      "later_index": 6562,
+      "later_point": [
+        -1962,
+        -798,
+        -275
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1623,
+        -2787,
+        -3492
+      ],
+      "pair_id": "L5:A6552:A6562",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    },
+    {
+      "canonical_direction": [
+        39,
+        -15,
+        -43
+      ],
+      "carried_canonical_direction": [
+        117,
+        129,
+        -2
+      ],
+      "carried_raw_chord": [
+        351,
+        387,
+        -6
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6471,
+      "earlier_point": [
+        -2067,
+        -750,
+        -157
+      ],
+      "later_index": 6569,
+      "later_point": [
+        -1950,
+        -795,
+        -286
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        29895,
+        -95004,
+        60255
+      ],
+      "pair_id": "L5:A6471:A6569",
+      "raw_chord": [
+        117,
+        -45,
+        -129
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        81,
+        63,
+        75
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 6539,
+      "earlier_point": [
+        -1989,
+        -807,
+        -251
+      ],
+      "later_index": 6586,
+      "later_point": [
+        -1962,
+        -789,
+        -272
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7155,
+        -16182,
+        -4671
+      ],
+      "pair_id": "L5:A6539:A6586",
+      "raw_chord": [
+        27,
+        18,
+        -21
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 6653,
+      "earlier_point": [
+        -2040,
+        -792,
+        -309
+      ],
+      "later_index": 6667,
+      "later_point": [
+        -2058,
+        -780,
+        -323
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7398,
+        11499,
+        19368
+      ],
+      "pair_id": "L5:A6653:A6667",
+      "raw_chord": [
+        -18,
+        12,
+        -14
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -108,
+        36,
+        120
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 6653,
+      "earlier_point": [
+        -2040,
+        -792,
+        -309
+      ],
+      "later_index": 6679,
+      "later_point": [
+        -2076,
+        -756,
+        -321
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1719,
+        1113,
+        8496
+      ],
+      "pair_id": "L5:A6653:A6679",
+      "raw_chord": [
+        -36,
+        36,
+        -12
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -297,
+        231,
+        275
+      ],
+      "carried_signed_multiplier": -11,
+      "cone": "11/3",
+      "earlier_index": 6542,
+      "earlier_point": [
+        -1989,
+        -813,
+        -253
+      ],
+      "later_index": 6686,
+      "later_point": [
+        -2088,
+        -747,
+        -330
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7209,
+        11646,
+        19251
+      ],
+      "pair_id": "L5:A6542:A6686",
+      "raw_chord": [
+        -99,
+        66,
+        -77
+      ],
+      "signed_multiplier": -11
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 6694,
+      "earlier_point": [
+        -2100,
+        -756,
+        -345
+      ],
+      "later_index": 6707,
+      "later_point": [
+        -2118,
+        -744,
+        -359
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -7362,
+        11595,
+        19404
+      ],
+      "pair_id": "L5:A6694:A6707",
+      "raw_chord": [
+        -18,
+        12,
+        -14
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -108,
+        36,
+        120
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 6722,
+      "earlier_point": [
+        -2142,
+        -732,
+        -343
+      ],
+      "later_index": 6757,
+      "later_point": [
+        -2178,
+        -696,
+        -355
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1761,
+        1113,
+        8622
+      ],
+      "pair_id": "L5:A6722:A6757",
+      "raw_chord": [
+        -36,
+        36,
+        -12
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -189,
+        63,
+        210
+      ],
+      "carried_signed_multiplier": -21,
+      "cone": "11/3",
+      "earlier_index": 6718,
+      "earlier_point": [
+        -2136,
+        -738,
+        -351
+      ],
+      "later_index": 6769,
+      "later_point": [
+        -2199,
+        -675,
+        -372
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1791,
+        1083,
+        8622
+      ],
+      "pair_id": "L5:A6718:A6769",
+      "raw_chord": [
+        -63,
+        63,
+        -21
+      ],
+      "signed_multiplier": -21
+    },
+    {
+      "canonical_direction": [
+        81,
+        -75,
+        38
+      ],
+      "carried_canonical_direction": [
+        243,
+        -114,
+        -263
+      ],
+      "carried_raw_chord": [
+        -243,
+        114,
+        263
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 6722,
+      "earlier_point": [
+        -2142,
+        -732,
+        -343
+      ],
+      "later_index": 6781,
+      "later_point": [
+        -2223,
+        -657,
+        -381
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -53541,
+        53613,
+        219942
+      ],
+      "pair_id": "L5:A6722:A6781",
+      "raw_chord": [
+        -81,
+        75,
+        -38
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -405,
+        135,
+        450
+      ],
+      "carried_signed_multiplier": -45,
+      "cone": "11/3",
+      "earlier_index": 6714,
+      "earlier_point": [
+        -2130,
+        -738,
+        -357
+      ],
+      "later_index": 6815,
+      "later_point": [
+        -2265,
+        -603,
+        -402
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1809,
+        1059,
+        8604
+      ],
+      "pair_id": "L5:A6714:A6815",
+      "raw_chord": [
+        -135,
+        135,
+        -45
+      ],
+      "signed_multiplier": -45
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 6884,
+      "earlier_point": [
+        -2322,
+        -486,
+        -420
+      ],
+      "later_index": 6894,
+      "later_point": [
+        -2340,
+        -468,
+        -426
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1746,
+        1062,
+        8424
+      ],
+      "pair_id": "L5:A6884:A6894",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -2916,
+        3240,
+        108
+      ],
+      "carried_signed_multiplier": -108,
+      "cone": "11/3",
+      "earlier_index": 4772,
+      "earlier_point": [
+        -1377,
+        -120,
+        644
+      ],
+      "later_index": 6906,
+      "later_point": [
+        -2349,
+        -444,
+        -436
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3132,
+        19566,
+        -3051
+      ],
+      "pair_id": "L5:A4772:A6906",
+      "raw_chord": [
+        -972,
+        -324,
+        -1080
+      ],
+      "signed_multiplier": -108
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 6921,
+      "earlier_point": [
+        -2367,
+        -426,
+        -418
+      ],
+      "later_index": 6931,
+      "later_point": [
+        -2385,
+        -408,
+        -424
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1680,
+        1113,
+        8379
+      ],
+      "pair_id": "L5:A6921:A6931",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_raw_chord": [
+        -108,
+        -72,
+        84
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 6921,
+      "earlier_point": [
+        -2367,
+        -426,
+        -418
+      ],
+      "later_index": 6947,
+      "later_point": [
+        -2403,
+        -390,
+        -394
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -402,
+        -5988,
+        8379
+      ],
+      "pair_id": "L5:A6921:A6947",
+      "raw_chord": [
+        -36,
+        36,
+        24
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -1350,
+        450,
+        1500
+      ],
+      "carried_signed_multiplier": -150,
+      "cone": "11/3",
+      "earlier_index": 6596,
+      "earlier_point": [
+        -1980,
+        -774,
+        -258
+      ],
+      "later_index": 6982,
+      "later_point": [
+        -2430,
+        -324,
+        -408
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1548,
+        1206,
+        8262
+      ],
+      "pair_id": "L5:A6596:A6982",
+      "raw_chord": [
+        -450,
+        450,
+        -150
+      ],
+      "signed_multiplier": -150
+    },
+    {
+      "canonical_direction": [
+        3,
+        -1,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        -2
+      ],
+      "carried_raw_chord": [
+        -81,
+        81,
+        54
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 7055,
+      "earlier_point": [
+        -2475,
+        -255,
+        -316
+      ],
+      "later_index": 7072,
+      "later_point": [
+        -2502,
+        -246,
+        -343
+      ],
+      "orbit_matches": [
+        {
+          "family": "fixed_11_degenerate_cycle",
+          "orbit_index": 0
+        }
+      ],
+      "origin_moment": [
+        -1081,
+        6477,
+        3240
+      ],
+      "pair_id": "L5:A7055:A7072",
+      "raw_chord": [
+        -27,
+        9,
+        -27
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -297,
+        99,
+        330
+      ],
+      "carried_signed_multiplier": -33,
+      "cone": "11/3",
+      "earlier_index": 7049,
+      "earlier_point": [
+        -2466,
+        -267,
+        -314
+      ],
+      "later_index": 7116,
+      "later_point": [
+        -2565,
+        -168,
+        -347
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1209,
+        1524,
+        8199
+      ],
+      "pair_id": "L5:A7049:A7116",
+      "raw_chord": [
+        -99,
+        99,
+        -33
+      ],
+      "signed_multiplier": -33
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        -405,
+        -15,
+        445
+      ],
+      "carried_signed_multiplier": -5,
+      "cone": "11/3",
+      "earlier_index": 7012,
+      "earlier_point": [
+        -2430,
+        -312,
+        -356
+      ],
+      "later_index": 7119,
+      "later_point": [
+        -2565,
+        -162,
+        -351
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -10368,
+        -12042,
+        81324
+      ],
+      "pair_id": "L5:A7012:A7119",
+      "raw_chord": [
+        -135,
+        150,
+        5
+      ],
+      "signed_multiplier": -5
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -243,
+        81,
+        270
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 7061,
+      "earlier_point": [
+        -2484,
+        -243,
+        -324
+      ],
+      "later_index": 7119,
+      "later_point": [
+        -2565,
+        -162,
+        -351
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -1215,
+        1512,
+        8181
+      ],
+      "pair_id": "L5:A7061:A7119",
+      "raw_chord": [
+        -81,
+        81,
+        -27
+      ],
+      "signed_multiplier": -27
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -810,
+        630,
+        750
+      ],
+      "carried_signed_multiplier": -30,
+      "cone": "11/3",
+      "earlier_index": 5506,
+      "earlier_point": [
+        -2313,
+        -327,
+        -154
+      ],
+      "later_index": 7131,
+      "later_point": [
+        -2583,
+        -147,
+        -364
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -3213,
+        14805,
+        16821
+      ],
+      "pair_id": "L5:A5506:A7131",
+      "raw_chord": [
+        -270,
+        180,
+        -210
+      ],
+      "signed_multiplier": -30
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -81,
+        54,
+        -63
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 7166,
+      "earlier_point": [
+        -2604,
+        -174,
+        -376
+      ],
+      "later_index": 7183,
+      "later_point": [
+        -2631,
+        -201,
+        -394
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        780,
+        4080,
+        -7290
+      ],
+      "pair_id": "L5:A7166:A7183",
+      "raw_chord": [
+        -27,
+        -27,
+        -18
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -108,
+        72,
+        -84
+      ],
+      "carried_signed_multiplier": -12,
+      "cone": "11/3",
+      "earlier_index": 7169,
+      "earlier_point": [
+        -2607,
+        -180,
+        -378
+      ],
+      "later_index": 7194,
+      "later_point": [
+        -2643,
+        -216,
+        -402
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        774,
+        4080,
+        -7281
+      ],
+      "pair_id": "L5:A7169:A7194",
+      "raw_chord": [
+        -36,
+        -36,
+        -24
+      ],
+      "signed_multiplier": -12
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        -27,
+        18,
+        -21
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 7191,
+      "earlier_point": [
+        -2640,
+        -210,
+        -397
+      ],
+      "later_index": 7197,
+      "later_point": [
+        -2649,
+        -219,
+        -403
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        771,
+        4089,
+        -7290
+      ],
+      "pair_id": "L5:A7191:A7197",
+      "raw_chord": [
+        -9,
+        -9,
+        -6
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -729,
+        810,
+        27
+      ],
+      "carried_signed_multiplier": -27,
+      "cone": "11/3",
+      "earlier_index": 5606,
+      "earlier_point": [
+        -2457,
+        -234,
+        -105
+      ],
+      "later_index": 7245,
+      "later_point": [
+        -2700,
+        -315,
+        -375
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -2025,
+        23625,
+        -5265
+      ],
+      "pair_id": "L5:A5606:A7245",
+      "raw_chord": [
+        -243,
+        -81,
+        -270
+      ],
+      "signed_multiplier": -27
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -81,
+        -27,
+        -90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 7253,
+      "earlier_point": [
+        -2700,
+        -327,
+        -391
+      ],
+      "later_index": 7274,
+      "later_point": [
+        -2727,
+        -354,
+        -382
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1500,
+        -3873,
+        -7119
+      ],
+      "pair_id": "L5:A7253:A7274",
+      "raw_chord": [
+        -27,
+        -27,
+        9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -27,
+        -9,
+        -30
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 7288,
+      "earlier_point": [
+        -2751,
+        -375,
+        -365
+      ],
+      "later_index": 7294,
+      "later_point": [
+        -2760,
+        -384,
+        -362
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1470,
+        -3846,
+        -7128
+      ],
+      "pair_id": "L5:A7288:A7294",
+      "raw_chord": [
+        -9,
+        -9,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        -324,
+        -108,
+        -360
+      ],
+      "carried_signed_multiplier": -36,
+      "cone": "11/3",
+      "earlier_index": 7242,
+      "earlier_point": [
+        -2694,
+        -309,
+        -370
+      ],
+      "later_index": 7321,
+      "later_point": [
+        -2802,
+        -417,
+        -334
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1419,
+        -3804,
+        -7155
+      ],
+      "pair_id": "L5:A7242:A7321",
+      "raw_chord": [
+        -108,
+        -108,
+        36
+      ],
+      "signed_multiplier": -36
+    },
+    {
+      "canonical_direction": [
+        3,
+        1,
+        -3
+      ],
+      "carried_canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_raw_chord": [
+        -162,
+        -162,
+        -108
+      ],
+      "carried_signed_multiplier": -54,
+      "cone": "11/3",
+      "earlier_index": 7303,
+      "earlier_point": [
+        -2775,
+        -390,
+        -355
+      ],
+      "later_index": 7341,
+      "later_point": [
+        -2829,
+        -408,
+        -301
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1525,
+        -9390,
+        -1605
+      ],
+      "pair_id": "L5:A7303:A7341",
+      "raw_chord": [
+        -54,
+        -18,
+        54
+      ],
+      "signed_multiplier": -18
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        -729,
+        -342,
+        -789
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 7163,
+      "earlier_point": [
+        -2601,
+        -171,
+        -381
+      ],
+      "later_index": 7360,
+      "later_point": [
+        -2844,
+        -396,
+        -267
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        35073,
+        -129699,
+        -181224
+      ],
+      "pair_id": "L5:A7163:A7360",
+      "raw_chord": [
+        -243,
+        -225,
+        114
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_canonical_direction": [
+        243,
+        114,
+        263
+      ],
+      "carried_raw_chord": [
+        -729,
+        -342,
+        -789
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 7175,
+      "earlier_point": [
+        -2619,
+        -192,
+        -379
+      ],
+      "later_index": 7373,
+      "later_point": [
+        -2862,
+        -417,
+        -265
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        35721,
+        -130221,
+        -180873
+      ],
+      "pair_id": "L5:A7175:A7373",
+      "raw_chord": [
+        -243,
+        -225,
+        114
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -81,
+        3,
+        -89
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 7360,
+      "earlier_point": [
+        -2844,
+        -396,
+        -267
+      ],
+      "later_index": 7378,
+      "later_point": [
+        -2871,
+        -426,
+        -268
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7614,
+        -4365,
+        -74628
+      ],
+      "pair_id": "L5:A7360:A7378",
+      "raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        27,
+        30,
+        1
+      ],
+      "carried_canonical_direction": [
+        81,
+        -3,
+        89
+      ],
+      "carried_raw_chord": [
+        -81,
+        3,
+        -89
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 7373,
+      "earlier_point": [
+        -2862,
+        -417,
+        -265
+      ],
+      "later_index": 7390,
+      "later_point": [
+        -2889,
+        -447,
+        -266
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        7533,
+        -4293,
+        -74601
+      ],
+      "pair_id": "L5:A7373:A7390",
+      "raw_chord": [
+        -27,
+        -30,
+        -1
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -648,
+        -504,
+        -600
+      ],
+      "carried_signed_multiplier": -24,
+      "cone": "11/3",
+      "earlier_index": 7256,
+      "earlier_point": [
+        -2700,
+        -327,
+        -397
+      ],
+      "later_index": 7424,
+      "later_point": [
+        -2916,
+        -471,
+        -229
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        4671,
+        -22473,
+        -13257
+      ],
+      "pair_id": "L5:A7256:A7424",
+      "raw_chord": [
+        -216,
+        -144,
+        168
+      ],
+      "signed_multiplier": -24
+    },
+    {
+      "canonical_direction": [
+        9,
+        6,
+        -7
+      ],
+      "carried_canonical_direction": [
+        27,
+        21,
+        25
+      ],
+      "carried_raw_chord": [
+        -297,
+        -231,
+        -275
+      ],
+      "carried_signed_multiplier": -11,
+      "cone": "11/3",
+      "earlier_index": 7345,
+      "earlier_point": [
+        -2829,
+        -405,
+        -294
+      ],
+      "later_index": 7431,
+      "later_point": [
+        -2928,
+        -471,
+        -217
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        4599,
+        -22449,
+        -13329
+      ],
+      "pair_id": "L5:A7345:A7431",
+      "raw_chord": [
+        -99,
+        -66,
+        77
+      ],
+      "signed_multiplier": -11
+    },
+    {
+      "canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_raw_chord": [
+        -1053,
+        1170,
+        39
+      ],
+      "carried_signed_multiplier": -39,
+      "cone": "11/3",
+      "earlier_index": 5902,
+      "earlier_point": [
+        -2589,
+        -366,
+        178
+      ],
+      "later_index": 7437,
+      "later_point": [
+        -2940,
+        -483,
+        -212
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -4194,
+        27492,
+        -4473
+      ],
+      "pair_id": "L5:A5902:A7437",
+      "raw_chord": [
+        -351,
+        -117,
+        -390
+      ],
+      "signed_multiplier": -39
+    },
+    {
+      "canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_canonical_direction": [
+        81,
+        75,
+        -38
+      ],
+      "carried_raw_chord": [
+        -162,
+        -150,
+        76
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "11/3",
+      "earlier_index": 7416,
+      "earlier_point": [
+        -2913,
+        -483,
+        -245
+      ],
+      "later_index": 7475,
+      "later_point": [
+        -2967,
+        -441,
+        -195
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        6930,
+        -79440,
+        74214
+      ],
+      "pair_id": "L5:A7416:A7475",
+      "raw_chord": [
+        -54,
+        42,
+        50
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        -243,
+        -9,
+        267
+      ],
+      "carried_signed_multiplier": -3,
+      "cone": "11/3",
+      "earlier_index": 7490,
+      "earlier_point": [
+        -2964,
+        -414,
+        -195
+      ],
+      "later_index": 7547,
+      "later_point": [
+        -3045,
+        -324,
+        -192
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5436,
+        -8229,
+        100098
+      ],
+      "pair_id": "L5:A7490:A7547",
+      "raw_chord": [
+        -81,
+        90,
+        3
+      ],
+      "signed_multiplier": -3
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        -81,
+        -3,
+        89
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 7529,
+      "earlier_point": [
+        -3024,
+        -354,
+        -190
+      ],
+      "later_index": 7550,
+      "later_point": [
+        -3051,
+        -324,
+        -189
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5346,
+        -8154,
+        100278
+      ],
+      "pair_id": "L5:A7529:A7550",
+      "raw_chord": [
+        -27,
+        30,
+        1
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        165,
+        -84,
+        -82
+      ],
+      "carried_canonical_direction": [
+        495,
+        246,
+        -170
+      ],
+      "carried_raw_chord": [
+        -990,
+        -492,
+        340
+      ],
+      "carried_signed_multiplier": -2,
+      "cone": "348/275",
+      "earlier_index": 7306,
+      "earlier_point": [
+        -2781,
+        -396,
+        -351
+      ],
+      "later_index": 7611,
+      "later_point": [
+        -3111,
+        -228,
+        -187
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        2988,
+        -285957,
+        298944
+      ],
+      "pair_id": "L5:A7306:A7611",
+      "raw_chord": [
+        -330,
+        168,
+        164
+      ],
+      "signed_multiplier": -2
+    },
+    {
+      "canonical_direction": [
+        27,
+        -30,
+        -1
+      ],
+      "carried_canonical_direction": [
+        81,
+        3,
+        -89
+      ],
+      "carried_raw_chord": [
+        -81,
+        -3,
+        89
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 7669,
+      "earlier_point": [
+        -3183,
+        -144,
+        -195
+      ],
+      "later_index": 7685,
+      "later_point": [
+        -3210,
+        -114,
+        -194
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -5706,
+        -8448,
+        99378
+      ],
+      "pair_id": "L5:A7669:A7685",
+      "raw_chord": [
+        -27,
+        30,
+        1
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 7703,
+      "earlier_point": [
+        -3204,
+        -78,
+        -212
+      ],
+      "later_index": 7713,
+      "later_point": [
+        -3222,
+        -60,
+        -218
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -714,
+        2568,
+        9846
+      ],
+      "pair_id": "L5:A7703:A7713",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 7807,
+      "earlier_point": [
+        -3339,
+        63,
+        -156
+      ],
+      "later_index": 7817,
+      "later_point": [
+        -3357,
+        81,
+        -162
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -405,
+        2871,
+        9828
+      ],
+      "pair_id": "L5:A7807:A7817",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -81,
+        27,
+        90
+      ],
+      "carried_signed_multiplier": -9,
+      "cone": "11/3",
+      "earlier_index": 7805,
+      "earlier_point": [
+        -3339,
+        60,
+        -160
+      ],
+      "later_index": 7823,
+      "later_point": [
+        -3366,
+        87,
+        -169
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -420,
+        2859,
+        9837
+      ],
+      "pair_id": "L5:A7805:A7823",
+      "raw_chord": [
+        -27,
+        27,
+        -9
+      ],
+      "signed_multiplier": -9
+    },
+    {
+      "canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_canonical_direction": [
+        27,
+        -21,
+        -25
+      ],
+      "carried_raw_chord": [
+        -27,
+        21,
+        25
+      ],
+      "carried_signed_multiplier": -1,
+      "cone": "11/3",
+      "earlier_index": 7817,
+      "earlier_point": [
+        -3357,
+        81,
+        -162
+      ],
+      "later_index": 7823,
+      "later_point": [
+        -3366,
+        87,
+        -169
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -405,
+        22041,
+        19413
+      ],
+      "pair_id": "L5:A7817:A7823",
+      "raw_chord": [
+        -9,
+        6,
+        -7
+      ],
+      "signed_multiplier": -1
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        2
+      ],
+      "carried_canonical_direction": [
+        9,
+        -6,
+        7
+      ],
+      "carried_raw_chord": [
+        27,
+        -18,
+        21
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 7887,
+      "earlier_point": [
+        -3372,
+        192,
+        -176
+      ],
+      "later_index": 7895,
+      "later_point": [
+        -3363,
+        201,
+        -170
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        912,
+        6216,
+        -10692
+      ],
+      "pair_id": "L5:A7887:A7895",
+      "raw_chord": [
+        9,
+        9,
+        6
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        2,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_raw_chord": [
+        81,
+        -81,
+        27
+      ],
+      "carried_signed_multiplier": 27,
+      "cone": "11/3",
+      "earlier_index": 7927,
+      "earlier_point": [
+        -3318,
+        249,
+        -166
+      ],
+      "later_index": 7945,
+      "later_point": [
+        -3291,
+        267,
+        -139
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1079,
+        9456,
+        -7383
+      ],
+      "pair_id": "L5:A7927:A7945",
+      "raw_chord": [
+        27,
+        18,
+        27
+      ],
+      "signed_multiplier": 9
+    },
+    {
+      "canonical_direction": [
+        3,
+        2,
+        3
+      ],
+      "carried_canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_raw_chord": [
+        324,
+        -324,
+        108
+      ],
+      "carried_signed_multiplier": 108,
+      "cone": "11/3",
+      "earlier_index": 7905,
+      "earlier_point": [
+        -3348,
+        219,
+        -179
+      ],
+      "later_index": 7986,
+      "later_point": [
+        -3240,
+        291,
+        -71
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        1015,
+        9507,
+        -7353
+      ],
+      "pair_id": "L5:A7905:A7986",
+      "raw_chord": [
+        108,
+        72,
+        108
+      ],
+      "signed_multiplier": 36
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        27,
+        9,
+        30
+      ],
+      "carried_signed_multiplier": 3,
+      "cone": "11/3",
+      "earlier_index": 8094,
+      "earlier_point": [
+        -3258,
+        456,
+        -55
+      ],
+      "later_index": 8100,
+      "later_point": [
+        -3249,
+        465,
+        -58
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -291,
+        -3423,
+        -11142
+      ],
+      "pair_id": "L5:A8094:A8100",
+      "raw_chord": [
+        9,
+        9,
+        -3
+      ],
+      "signed_multiplier": 3
+    },
+    {
+      "canonical_direction": [
+        3,
+        -3,
+        1
+      ],
+      "carried_canonical_direction": [
+        9,
+        -3,
+        -10
+      ],
+      "carried_raw_chord": [
+        -54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": -6,
+      "cone": "11/3",
+      "earlier_index": 8115,
+      "earlier_point": [
+        -3240,
+        495,
+        -51
+      ],
+      "later_index": 8125,
+      "later_point": [
+        -3258,
+        513,
+        -57
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        342,
+        3087,
+        8235
+      ],
+      "pair_id": "L5:A8115:A8125",
+      "raw_chord": [
+        -18,
+        18,
+        -6
+      ],
+      "signed_multiplier": -6
+    },
+    {
+      "canonical_direction": [
+        3,
+        3,
+        -1
+      ],
+      "carried_canonical_direction": [
+        9,
+        3,
+        10
+      ],
+      "carried_raw_chord": [
+        54,
+        18,
+        60
+      ],
+      "carried_signed_multiplier": 6,
+      "cone": "11/3",
+      "earlier_index": 8236,
+      "earlier_point": [
+        -3168,
+        690,
+        -46
+      ],
+      "later_index": 8247,
+      "later_point": [
+        -3150,
+        708,
+        -52
+      ],
+      "orbit_matches": [],
+      "origin_moment": [
+        -552,
+        -3306,
+        -11574
+      ],
+      "pair_id": "L5:A8236:A8247",
+      "raw_chord": [
+        18,
+        18,
+        -6
+      ],
+      "signed_multiplier": 6
+    }
+  ],
+  "family_records": [
+    {
+      "cone": "348/275",
+      "depth_zero_pair_count": 0,
+      "inherited_orbit_pair_count": 0,
+      "matches": [],
+      "name": "fixed_348_macrocycle",
+      "policy_relative_conclusion": "No positive-index member can occur in any guarded continuation. A future member would either be a forbidden new cone birth or the carriage of a base direction at a still larger inverse-orbit index.",
+      "positive_orbit_index_pair_count": 0,
+      "same_phase_directions": "N^(2n)*(55,34,18)",
+      "seed": [
+        55,
+        34,
+        18
+      ],
+      "source": "phase-8/phase-16 latent 8 -> 16 -> 8 family"
+    },
+    {
+      "cone": "11/3",
+      "depth_zero_pair_count": 3,
+      "inherited_orbit_pair_count": 3,
+      "matches": [
+        {
+          "canonical_direction": [
+            3,
+            -1,
+            3
+          ],
+          "orbit_index": 0,
+          "origin_moment": [
+            2841,
+            4023,
+            -1500
+          ],
+          "pair_id": "L5:A2592:A2609"
+        },
+        {
+          "canonical_direction": [
+            3,
+            -1,
+            3
+          ],
+          "orbit_index": 0,
+          "origin_moment": [
+            -1093,
+            6486,
+            3255
+          ],
+          "pair_id": "L5:A5481:A5498"
+        },
+        {
+          "canonical_direction": [
+            3,
+            -1,
+            3
+          ],
+          "orbit_index": 0,
+          "origin_moment": [
+            -1081,
+            6477,
+            3240
+          ],
+          "pair_id": "L5:A7055:A7072"
+        }
+      ],
+      "name": "fixed_11_degenerate_cycle",
+      "policy_relative_conclusion": "No positive-index member can occur in any guarded continuation. A future member would either be a forbidden new cone birth or the carriage of a base direction at a still larger inverse-orbit index.",
+      "positive_orbit_index_pair_count": 0,
+      "same_phase_directions": "N^(2n)*(3,-1,3)",
+      "seed": [
+        3,
+        -1,
+        3
+      ],
+      "source": "step-1 two-edge degenerate-cycle family"
+    }
+  ],
+  "payload_sha256": "9fb624fc36f457173d64cdea8852d42f3a90c9ac9528411d4d57e30a3ffaf4c2",
+  "schema": "guarded-cone-core-witness/v1",
+  "signature": "[OpenAI Codex]",
+  "source_bindings": {
+    "guarded_audit": {
+      "path": "/Users/erik/homelab/math193/design/guarded-L5-to-L6-audit-summary.json",
+      "sha256": "965f8af8ed243df271a390edad23ebf9663932a61b85bc81848b8c758061fe36",
+      "terminal_payload_sha256": "9ccfe9b49cf545596f74d8934b762f35b6b71f88b6ab7d0ea03397b7e78af5ae"
+    },
+    "parent": {
+      "path": "/private/tmp/guarded-L5-parent-canonical-v1.json",
+      "payload_sha256": "70a4ab65bc766b056cadb9a28699bb94667da8692dbf91575c0bae702fb6c258",
+      "sha256": "86f068ad8de131e68c44710d976bb2bec9b4872a732359540ffe51f5ba4520a7"
+    }
+  },
+  "symbolic_identities": {
+    "M_times_N": "9I",
+    "N_times_M": "9I",
+    "cone_invariance": "F_j(Mg)=9F_j(g) and F_j(Ng)=9F_j(g)",
+    "orbit_primitivity": "each seed has y nonzero modulo 3; N sends y to -y modulo 3, and det(N)=27 makes N invertible modulo every prime other than 3",
+    "q_M_g": "9*q(g)",
+    "q_N_g": "9*q(g)"
+  }
+}

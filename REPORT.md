@@ -1232,3 +1232,260 @@ not every possible weighted merge.  The all-depth proof and independent
 `O(log n)` evaluator are in
 `design/affine/C9-INFINITE-COUNTEREXAMPLE.md` and
 `design/affine/c9_infinite_counterexample.py`.
+
+## First 3-adic macrocycle slice (2026-07-29)
+
+The first implementation step in
+`design/UNCONDITIONAL-INDUCTION-PLAN.md` isolates the exact fixed-policy
+`8 -> 16 -> 8` macrocycle without loading constructor artifacts.  For
+primitive line data `(g,mu)`, it checks the affine Pluecker transport and
+contact-residual identity, and proves from the Smith/adjugate arithmetic that
+`gcd(Mg)` is always one of `1,3,9`.
+
+In the 3-adic chart where `g_y` is a unit and `[g]=[x:1:z]`, inverse
+macrotransport is
+
+```text
+(x,z) -> (9x/u,(3-9z)/u),       u=-8-3z.
+```
+
+The `z` map satisfies
+
+```text
+phi(z)-phi(w)=81(z-w)/((-8-3z)(-8-3w)),
+```
+
+so it contracts 3-adic differences by `3^4`, while `x` contracts by `3^2`.
+There is one attracting projective fixed direction over `Z_3`, characterized
+by `x=0` and
+
+```text
+q(g)=3g_y^2-g_y*g_z+3g_z^2=0.
+```
+
+The homogeneous identity `q(N^2g)=81q(g)` gives, for the known latent family,
+`nu_3((g_n)_x)=2n` and `nu_3(q(g_n))=4n+1`.  Thus every fixed residue modulus
+eventually identifies all sufficiently deep latent directions; increasing a
+bounded modulus cannot supply the reveal rank.
+
+The compact census checks all 66,429 projective edges through modulus `3^5`
+and the exact latent line/moment countdown through depth 16.  The independent
+verifier reproduces payload SHA-256
+`7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829`.
+These finite checks support the displayed all-depth algebra but do not prove
+reachable secant birth.  The sharpened positive target is a policy-specific,
+level-uniform bound on simultaneous 3-adic proximity to `g_x=0` and `q(g)=0`
+for every newborn secant.
+
+## Focused audit of the latent-family macrocycle (2026-07-30)
+
+The hostile follow-up audit is
+`design/PADIC-LATENT-FAMILY-MACROCYCLE-AUDIT.md`, with deterministic producer
+and independent verifier
+`design/padic_latent_family_macrocycle_audit.py` and
+`design/verify_padic_latent_family_macrocycle_audit.py`.
+
+**PROVED:** For the one fixed affine family
+`g_n=N^(2n)(55,34,18)`, the implemented scalar
+
+```text
+R(g)=min(v3(g_x)//2,(v3(q(g))-1)//4)
+```
+
+equals `n`, and the pinned `8 -> 16 -> 8` macrocycle maps `L_n` to
+`L_(n-1)`.  Its first primitive-normalized edge changes `R` by `-1`; its
+second changes `R` by `0`.
+
+**EXACT FINITE:** The focused auditor independently regenerated all 66,429
+projective direction edges through `3^5`, replayed the two exact 214-site
+candidate frontiers, and the verifier reproduced summary payload SHA-256
+`bc77d62382fd5e830025c97a5b8f9ae6aca778aab89160679c6801cb15168d64`.
+
+**REFUTED:** The 66,429 edges are not an inductive line-token countdown
+certificate. They are five disjoint-precision graphs on `[x:1:z]` and omit
+the Plücker moment, exact primitive representative, phase/action, poison
+effect, terminal/promotion data, births, imports, occupancy, owner, and
+whole-word correlation. At modulus `243`, `g_3` and `g_4` occupy the same
+projective state but have reveal countdowns three and four. Parallel lines
+with direction `(55,34,18)` also have different reveal effects.
+
+The requested stop protocol therefore fired at **STOP CONDITION 2** before
+new construction-orbit or alternate-history work. The only supported
+coverage verdict is **F. INSUFFICIENT ABSTRACTION**. The precise next lemma
+is a level-uniform reachable-birth exclusion for every translated `L_n`;
+that statement remains **CONJECTURED**.
+
+Focused audit and artifacts signed by **[OpenAI Codex]**.
+
+## Guarded latent-family reachable-entry exclusion (2026-07-30)
+
+After the focused macrocycle audit stopped, a separately authorized
+next-lemma audit tested whether that one latent orbit can enter histories
+continuing the existing two-cone guard.  Its producer and independent
+verifier are:
+
+- `design/latent_family_reachable_entry_audit.py`;
+- `design/verify_latent_family_reachable_entry_audit.py`.
+
+Let `F(g)=275*q(g)-348*g_x^2`.  **PROVED:** `F(H)=0`,
+`F(Mg)=9F(g)`, `F(Ng)=9F(g)`, and `NM=9I`.  Thus every member of
+the projective `N`-orbit of `H=(55,34,18)` lies in the guarded
+`348/275` cone.
+
+**PROVED, POLICY-RELATIVE:** For every finite continuation of the canonical
+guarded-L5 parent in which every connector word satisfies the same two-cone
+birth guard, no translated phase-8 latent line `L_n` with `n>=1`, and no
+phase-16 intermediate, is a secant at any prefix.  The canonical parent has
+exactly four `348/275` pairs; all four are carried base lineages disjoint from
+the `N`-orbit.  Every possible new orbit member is rejected at birth by the
+same cone guard, while `NM=9I` prevents carriage from moving a disjoint
+projective lineage into the orbit.
+
+**EXACT FINITE:** The recorded L5 -> L6 scan found zero entries among
+`28,804` final points and `51` requested corridor translations.  The
+alternate-domain census classified all `756,512,535` word occurrences at
+the `8,295` recorded prefixes, including `136,317,832` survivors and
+`245,555` rejections by the `348/275` guard.  That census does not assert
+successor availability after an alternate word is selected.
+
+The independent verifier reproduced verdict `GUARDED_EXCLUSION_PROVED` and
+payload SHA-256 values
+`4f821c5c04479fa0998a191a47e6d87cfba683797421ef2957026ff45d28496d`
+(summary) and
+`51a9f175a5d643c735aaf1f9462154dcb93d7e09cffd448abe60f7ec96ccf60b`
+(witness).
+
+**UNPROVED:** availability for every guarded continuation, exclusion without
+the two-cone guard, and closure of the remaining contact state.  Therefore
+this discharges the fixed-family entry branch but is not an unconditional
+proof of Erdos #193.
+
+Follow-up audit and artifacts signed by **[OpenAI Codex]**.
+
+## Guarded two-cone lineage core (2026-07-30)
+
+`design/guarded_cone_core_audit.py` and its independent verifier strengthen
+the fixed-family entry result to the complete two-cone lineage statement.
+
+**PROVED, POLICY-RELATIVE:** In every finite history descended from the
+canonical guarded-L5 parent that preserves the same two-cone insertion guard,
+every `11/3` or `348/275` secant is the common `M`-image of exactly one of the
+246 inherited parent-pair lineages.  The base contains 242 `11/3` pairs in 38
+directions and four `348/275` pairs in four directions.  Injectivity and cone
+invariance carry inherited pairs bijectively; every old--new or same-word
+new--new pair is tested and rejected when its later endpoint is inserted.
+
+The two explicit delayed-return families are therefore closed under this
+guard.  The `348/275` family has no inherited member.  The `11/3` family has
+exactly three inherited depth-zero pairs and no positive-depth member; those
+three lineages are the complete promoted exceptions for that fixed family.
+
+**UNPROVED:** a finite effect state for the 246-lineage core, directions
+outside the two cones, and universal guarded successor availability.  The
+result freezes guarded cone genealogy; it does not close the global poison
+state.
+
+The summary and witness payload SHA-256 values are
+`e1a17eb3dcb86a6a9b49cb6772d87c9b1ebb536d39521736009b89874e08279d`
+and
+`9fb624fc36f457173d64cdea8852d42f3a90c9ac9528411d4d57e30a3ffaf4c2`.
+
+## Observed returning-line go/no-go experiment (2026-07-31)
+
+The bounded decision experiment is
+`design/OBSERVED-RETURNING-LINE-EXPERIMENT.md`; its producer, independent
+verifier, complete machine table, and minimized witnesses are:
+
+- `design/observed_returning_line_experiment.py`;
+- `design/verify_observed_returning_line_experiment.py`;
+- `design/observed-returning-line-table.json`;
+- `design/observed-returning-line-witnesses.json`.
+
+It enumerates only returns already present in the exact realized L5--L8
+`x`-parallel old--old--new secant trace.  A return is an effect, one or more
+exact zero-effect states, then another effect.  Same-line carriage through
+selected child slots and unrelated same-level cursor import are separate.
+This is finite observed-path evidence, not an arbitrary-direction,
+alternate-history, L9, or all-level census.
+
+**EXACT FINITE:** The terminal-level returning-line counts are
+`37, 101, 315, 1,021` for cursor import and `0, 0, 4, 14` for carriage.
+There are 1,021 distinct physical returning lines and 2,988 episodes.  After
+removing physical identity, absolute level/gap/rank, and absolute translation
+while retaining exact local Pluecker state, phase, effect mask, silent length,
+and ordered controls, the new-type counts are `77, 205, 639, 2,059` by level,
+or 2,980 cumulative exact types through L8.
+
+**REFUTED AS THE OBSERVED RETURN MODEL:** The existing 66,429-edge latent
+family covers `0/1,021` physical lines, `0/2,988` episodes, and `0/2,980`
+types.  Its normalization branch is also different: observed cursor imports
+use primitive divisor 1, observed `M` carriage uses divisor 3 per edge, and
+the latent macrocycle uses divisors 9 and 9.
+
+**NO DECREASING IMPLEMENTED RANK:** Every observed return direction is
+`g=(1,0,0)`, so raw, weighted-projective, and latent 3-adic depths are all
+zero and `F(g)=-348`.  All 18 carriage returns have observed Bellman profile
+`core -> core -> core`; that escape inequality does not apply to unrelated
+cursor translation.  No implemented line rank decreases on every return,
+including over the observed two-edge carriage block.
+
+The fixed abstract family is nevertheless excluded under the existing guard:
+its directions have `F=0`, whereas every observed return has `F=-348`, and
+the guarded cone/endpoint-provenance theorem blocks new or inherited orbit
+entry.  This is the one positive branch, but it is an exclusion lemma rather
+than evidence for another residue-family transition round.
+
+**DECISION:** **NO-GO/PIVOT** for another major 66,429-edge latent-family
+round.  Reuse the guarded cone/provenance exclusion, and represent honest
+cursor-import birth/address history before proposing another finite promoted
+state.  Silent cursor intervals range from 1 to 87,567 positions and the
+exact trace-type count continues growing through L8, so no bounded local
+history is supported by this sample.
+
+The independent verifier reproduced 1,021 returning lines, 2,988 episodes,
+and 2,980 exact trace types.  Final payload SHA-256 values are
+`1199f4bf1c0d5dc469b5c9a8e41a707740f3de41419c031dad655b377be83e0a`
+(table),
+`a4721044decb4be87d840d3c1f025539ad358345358b4069d2f61a4a949d8256`
+(witnesses), and
+`d1cdeb5aff1721c11d1c685cf4fcb4a219bcbb5845909c97bd29c30bc3b85565`
+(summary).
+
+## Macrocycle runner review hardening (2026-08-05)
+
+The three open runtime review findings on
+`design/padic_macrocycle_lift.py` are repaired without changing the
+mathematical census or its proof boundary.
+
+- Checkpoint schema 2 persists the active precision's exact next `x` row and
+  a compressed, SHA-256-committed stream of every completed state edge.
+  Atomic periodic, time-budget, `SIGINT`, and `SIGTERM` checkpoints resume
+  without recomputing completed transition rows.
+- `--log` writes an append-only, timestamped, fsync-backed JSONL record of
+  parameters, code/config identity, start or resume state, resource settings,
+  progress, throughput, ETA, checkpoints, completion, and errors.  Logs and
+  checkpoints remain separate from the proof artifact.
+- Throughput now divides cumulative work completed during the current
+  invocation by the matching invocation elapsed time.  The same rate drives
+  ETA across precision boundaries; resetting per-precision progress no longer
+  corrupts it.
+
+`design/test_padic_macrocycle_runtime.py` deterministically pauses inside
+precision 1, advances the retained frontier from row 1 to row 2 on a second
+bounded resume, completes from that checkpoint, and compares the result with
+an uninterrupted run.  It also validates durable event coverage, timestamps,
+resource identity, and the work/time rate equation.
+
+The regression result was:
+
+```json
+{"completed_state_edges":90,"durable_log_records":23,"first_active_next_x":1,"progress_records":12,"resumed_matches_fresh":true,"second_active_next_x":2,"status":"verified"}
+```
+
+The full 66,429-edge artifact was regenerated and independently verified with
+explorer SHA-256
+`75c0871047e5bebc16cba189c8fc542e5c5ed961db641bde86a3b738caf186f9`,
+file SHA-256
+`b2973804365f82dc81b2b95891eed69da8515bebc1b0ace27da3c5a90864e16c`,
+and payload SHA-256
+`7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829`.

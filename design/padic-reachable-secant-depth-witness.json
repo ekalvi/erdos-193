@@ -1,0 +1,329 @@
+{
+  "audited_head": "de57e6761d3abf8ce916d8b3383ab58fe71f4b75",
+  "auditor": "OpenAI Codex",
+  "birth_normalized_carriage": {
+    "conclusion": "For g_k=M^k g_0, subtracting (k,2k) recovers the birth valuations exactly and is constant, not a strict countdown.",
+    "records": [
+      {
+        "exact_chord": [
+          1,
+          1,
+          0
+        ],
+        "inherited_scales": 0,
+        "primitive_direction": [
+          1,
+          1,
+          0
+        ],
+        "residual_q": 1,
+        "residual_x": 0,
+        "v3_q": 1,
+        "v3_x": 0
+      },
+      {
+        "exact_chord": [
+          3,
+          0,
+          3
+        ],
+        "inherited_scales": 1,
+        "primitive_direction": [
+          1,
+          0,
+          1
+        ],
+        "residual_q": 1,
+        "residual_x": 0,
+        "v3_q": 3,
+        "v3_x": 1
+      },
+      {
+        "exact_chord": [
+          9,
+          -9,
+          -3
+        ],
+        "inherited_scales": 2,
+        "primitive_direction": [
+          3,
+          -3,
+          -1
+        ],
+        "residual_q": 1,
+        "residual_x": 0,
+        "v3_q": 5,
+        "v3_x": 2
+      },
+      {
+        "exact_chord": [
+          27,
+          9,
+          -24
+        ],
+        "inherited_scales": 3,
+        "primitive_direction": [
+          9,
+          3,
+          -8
+        ],
+        "residual_q": 1,
+        "residual_x": 0,
+        "v3_q": 7,
+        "v3_x": 3
+      }
+    ],
+    "status": "PROVED"
+  },
+  "genealogical_vs_algebraic": {
+    "M_inverse_chord": [
+      [
+        1,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "M_inverse_squared_chord": [
+      [
+        1,
+        3
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "endpoints": [
+      [
+        0,
+        0,
+        0
+      ],
+      [
+        3,
+        0,
+        0
+      ]
+    ],
+    "exact_chord": [
+      3,
+      0,
+      0
+    ],
+    "maximal_algebraic_depth": 1,
+    "scope": "abstract integer endpoints with stipulated unrelated provenance; not claimed reachable in the guarded construction",
+    "stipulated_genealogical_depth": 0
+  },
+  "latent_positive_control": {
+    "conclusion": "The repository scalar depth equals n and the canonical primitive line counts down under the fixed M^2 macrocycle.  The sources explicitly do not prove birth from two reachable endpoints.",
+    "reachable_secant": false,
+    "records": [
+      {
+        "direction": [
+          55,
+          34,
+          18
+        ],
+        "forward_M_squared_content": null,
+        "forward_primitive_direction": null,
+        "latent_padic_depth": 0,
+        "n": 0,
+        "v3_q": 1,
+        "v3_x": 0
+      },
+      {
+        "direction": [
+          495,
+          -326,
+          -60
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          55,
+          34,
+          18
+        ],
+        "latent_padic_depth": 1,
+        "n": 1,
+        "v3_q": 5,
+        "v3_x": 2
+      },
+      {
+        "direction": [
+          4455,
+          2788,
+          -438
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          495,
+          -326,
+          -60
+        ],
+        "latent_padic_depth": 2,
+        "n": 2,
+        "v3_q": 9,
+        "v3_x": 4
+      },
+      {
+        "direction": [
+          40095,
+          -20990,
+          12306
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          4455,
+          2788,
+          -438
+        ],
+        "latent_padic_depth": 3,
+        "n": 3,
+        "v3_q": 13,
+        "v3_x": 6
+      },
+      {
+        "direction": [
+          360855,
+          131002,
+          -173724
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          40095,
+          -20990,
+          12306
+        ],
+        "latent_padic_depth": 4,
+        "n": 4,
+        "v3_q": 17,
+        "v3_x": 8
+      },
+      {
+        "direction": [
+          3247695,
+          -526844,
+          1956522
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          360855,
+          131002,
+          -173724
+        ],
+        "latent_padic_depth": 5,
+        "n": 5,
+        "v3_q": 21,
+        "v3_x": 10
+      },
+      {
+        "direction": [
+          29229255,
+          -1654814,
+          -19189230
+        ],
+        "forward_M_squared_content": 81,
+        "forward_primitive_direction": [
+          3247695,
+          -526844,
+          1956522
+        ],
+        "latent_padic_depth": 6,
+        "n": 6,
+        "v3_q": 25,
+        "v3_x": 12
+      }
+    ],
+    "status": "PROVED"
+  },
+  "payload_sha256": "69465942289d18ec0108729d98be73674792c7af30f5dbd1a245fdc9dec99edb",
+  "raw_representation_dependence": {
+    "conclusion": "Both raw min(v3(gx),v3(q(g))) and min(v3(gx),floor(v3(q(g))/2)) change under g -> 3g.",
+    "same_geometric_line_representatives": [
+      {
+        "primitive": [
+          1,
+          1,
+          0
+        ],
+        "q": 3,
+        "raw_min_depth": 0,
+        "scale_exponent": 0,
+        "v3_q": 1,
+        "v3_x": 0,
+        "vector": [
+          1,
+          1,
+          0
+        ],
+        "weighted_projective_candidate": 0
+      },
+      {
+        "primitive": [
+          1,
+          1,
+          0
+        ],
+        "q": 27,
+        "raw_min_depth": 1,
+        "scale_exponent": 1,
+        "v3_q": 3,
+        "v3_x": 1,
+        "vector": [
+          3,
+          3,
+          0
+        ],
+        "weighted_projective_candidate": 1
+      },
+      {
+        "primitive": [
+          1,
+          1,
+          0
+        ],
+        "q": 243,
+        "raw_min_depth": 2,
+        "scale_exponent": 2,
+        "v3_q": 5,
+        "v3_x": 2,
+        "vector": [
+          9,
+          9,
+          0
+        ],
+        "weighted_projective_candidate": 2
+      }
+    ],
+    "status": "REFUTED"
+  },
+  "schema": "padic-reachable-secant-depth-witness/v1",
+  "x_parallel_terminology": {
+    "conclusion": "Over integer directions q=0 is the x-parallel channel; gx=0 is the lateral plane, not the x-parallel channel.",
+    "gx_zero_example": [
+      0,
+      1,
+      0
+    ],
+    "gx_zero_example_q": 3,
+    "status": "PROVED",
+    "x_parallel_direction": [
+      1,
+      0,
+      0
+    ],
+    "x_parallel_gx": 1,
+    "x_parallel_q": 0
+  }
+}

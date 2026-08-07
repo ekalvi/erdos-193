@@ -1,0 +1,520 @@
+{
+  "constants": {
+    "H": [
+      55,
+      34,
+      18
+    ],
+    "M": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        -3
+      ],
+      [
+        0,
+        3,
+        -1
+      ]
+    ],
+    "N": [
+      [
+        3,
+        0,
+        0
+      ],
+      [
+        0,
+        -1,
+        3
+      ],
+      [
+        0,
+        -3,
+        0
+      ]
+    ],
+    "N_squared": [
+      [
+        9,
+        0,
+        0
+      ],
+      [
+        0,
+        -8,
+        -3
+      ],
+      [
+        0,
+        3,
+        -9
+      ]
+    ],
+    "phase_16_direction": [
+      165,
+      -20,
+      102
+    ]
+  },
+  "contact_model": {
+    "contact_residual": "R_x(g,mu)=x cross g-mu",
+    "line_equation": "x cross g = mu, with primitive canonical g and g dot mu = 0",
+    "macro_map": {
+      "A": [
+        [
+          9,
+          0,
+          0
+        ],
+        [
+          0,
+          -9,
+          3
+        ],
+        [
+          0,
+          -3,
+          -8
+        ]
+      ],
+      "b": [
+        36,
+        -27,
+        -36
+      ],
+      "control_c": [
+        -4,
+        -4,
+        -3
+      ],
+      "definition": "F(x)=M^2(x-c)=A x+b",
+      "fixed_point_denominator": 22,
+      "fixed_point_numerator": [
+        -99,
+        -78,
+        -62
+      ]
+    },
+    "padic_inverse_direction_chart": {
+      "contraction": "v3(x')=v3(x)+2 and v3(phi(z)-phi(w))=v3(z-w)+4",
+      "difference_identity": "phi(z)-phi(w)=81(z-w)/((-8-3z)(-8-3w))",
+      "domain": "g_y is a 3-adic unit; normalize [g]=[x:1:z]",
+      "fixed_point": "(0,z_*) with 3z_*^2-z_*+3=0 and z_*=0 mod 3; Hensel uniqueness follows because 6z_*-1 is a unit",
+      "homogeneous_polynomial": "q(g)=3g_y^2-g_y*g_z+3g_z^2",
+      "homogeneous_transport": "q(N^2 g)=81q(g)",
+      "map": "(x,z) maps to (9x/u,(3-9z)/u), where u=-8-3z is a unit",
+      "reachable_birth_target": "bound simultaneous 3-adic proximity to g_x=0 and q(g)=0 for every policy-reachable newborn secant"
+    },
+    "phase_8_reveal": [
+      -2,
+      -2,
+      -2
+    ],
+    "phase_8_reveal_pullback": [
+      [
+        -38,
+        9
+      ],
+      [
+        -302,
+        81
+      ],
+      [
+        -77,
+        27
+      ]
+    ],
+    "phase_contact_directions_from_fixed_point": {
+      "16": [
+        165,
+        -20,
+        102
+      ],
+      "8": [
+        55,
+        34,
+        18
+      ]
+    },
+    "residual_identity": "R_(F(x))(A g,cof(A)mu+b cross A g)=cof(A)R_x(g,mu)",
+    "unnormalized_line_transport": "(g,mu) maps to (A g, cof(A) mu + b cross (A g))"
+  },
+  "estimate": {
+    "max_k": 5,
+    "maximum_single_precision_states": 59049,
+    "precisions": [
+      {
+        "k": 1,
+        "modulus": 3,
+        "states": 9
+      },
+      {
+        "k": 2,
+        "modulus": 9,
+        "states": 81
+      },
+      {
+        "k": 3,
+        "modulus": 27,
+        "states": 729
+      },
+      {
+        "k": 4,
+        "modulus": 81,
+        "states": 6561
+      },
+      {
+        "k": 5,
+        "modulus": 243,
+        "states": 59049
+      }
+    ],
+    "state_budget": 1000000,
+    "total_state_edges": 66429,
+    "within_budget": true
+  },
+  "explorer": {
+    "logical_path": "design/padic_macrocycle_lift.py",
+    "sha256": "75c0871047e5bebc16cba189c8fc542e5c5ed961db641bde86a3b738caf186f9"
+  },
+  "finite_modulus_warning": "The exact y-unit chart has a unique 3-adic attracting direction: x contracts by 3^2 and z contracts by 3^4.  At every fixed precision, the inverse latent orbit therefore reaches one fixed projective residue. Bounded residue state cannot encode the unbounded exact reveal countdown; a positive proof must bound how closely reachable newborn secants approach the simultaneous 3-adic locus g_x=0 and q(g)=0.",
+  "latent_positive_control": {
+    "checks": [
+      "g_n=N^(2n)h remains primitive and has an integral affine moment",
+      "each forward macrocycle uses t=9 twice and maps L_n to L_(n-1)",
+      "only L_0 hits the phase-8 reveal direction in this finite regression",
+      "the phase-16 equal-J direction is never parallel to a checked g_n"
+    ],
+    "depth": 16,
+    "first_record": {
+      "direction": [
+        55,
+        34,
+        18
+      ],
+      "direction_x_v3": 0,
+      "latent_padic_depth": 0,
+      "lateral_q": 3828,
+      "lateral_q_v3": 1,
+      "moment": [
+        32,
+        -74,
+        42
+      ],
+      "n": 0,
+      "phase_16_direction_hit": false,
+      "phase_16_residual_min_v3_capped_64": 0,
+      "phase_8_hit": true,
+      "phase_8_residual_min_v3_capped_64": 64
+    },
+    "last_record": {
+      "direction": [
+        101916110386851255,
+        19416530398078906,
+        66598941635027940
+      ],
+      "direction_x_v3": 32,
+      "latent_padic_depth": 16,
+      "lateral_q": 13144141664079737791270246313767668,
+      "lateral_q_v3": 65,
+      "moment": [
+        -181404207402331234,
+        12477108085590375,
+        273964550034753918
+      ],
+      "n": 16,
+      "phase_16_direction_hit": false,
+      "phase_16_residual_min_v3_capped_64": 1,
+      "phase_8_hit": false,
+      "phase_8_residual_min_v3_capped_64": 0
+    },
+    "proof_boundary": "The depth is regression coverage.  The all-n latent-family theorem is proved separately in LATENT-REENTRY-OBSTRUCTION.md.",
+    "record_count": 17,
+    "record_stream_sha256": "57e9fbbcee431cb8cd6087b9a550537a5cd9c6e2ae7305b9376cd5108a83d0ec"
+  },
+  "normalization": {
+    "all_integer_proof": "For primitive g, gcd(Mg) divides det(M)=27 by the adjugate identity. Divisibility by 27 would force 9|g_x, 9|g_z, and 3|g_y, contradicting primitivity; the residue formula distinguishes 1,3,9.",
+    "assignment_sha256": "a203aa0ef86fdfed6095c9d512023d549822eb1d97af27780e07b95b3a0b4b6c",
+    "branch_counts": {
+      "1": 486,
+      "3": 198,
+      "9": 18
+    },
+    "branch_formula": {
+      "t=1": "z is nonzero modulo 3",
+      "t=3": "z=0 modulo 3 and the t=9 condition fails",
+      "t=9": "x=0 modulo 3 and z=3y modulo 9"
+    },
+    "primitive_residue_classes": 702,
+    "residue_modulus": 9
+  },
+  "payload_sha256": "7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829",
+  "precisions": [
+    {
+      "contact_valuation_pair_histogram": {
+        "0,0": 7,
+        "0,1": 1,
+        "1,0": 1
+      },
+      "cycle_length_histogram": {
+        "1": 1
+      },
+      "edge_count": 9,
+      "edge_formula": "[g] maps to [N^2 g], normalized to y=1",
+      "image_states": 1,
+      "indegree_histogram": {
+        "0": 8,
+        "9": 1
+      },
+      "k": 1,
+      "latent_orbit": {
+        "collapse_depth": 1,
+        "fixed_state_xz_with_y_equal_1": [
+          0,
+          0
+        ],
+        "states_through_collapse": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            0
+          ]
+        ]
+      },
+      "modulus": 3,
+      "phase_16_projective_contact_classes": 1,
+      "phase_8_projective_contact_classes": 1,
+      "state_count": 9,
+      "state_edge_sha256": "c584e5fe7b2db633699b92cd358fd9953092af9ab84cc30b6e6aee6468399ebd",
+      "state_order": "x major, then z, representing [x:1:z] modulo 3^k"
+    },
+    {
+      "contact_valuation_pair_histogram": {
+        "0,0": 63,
+        "0,1": 8,
+        "0,2": 1,
+        "1,0": 8,
+        "2,0": 1
+      },
+      "cycle_length_histogram": {
+        "1": 1
+      },
+      "edge_count": 81,
+      "edge_formula": "[g] maps to [N^2 g], normalized to y=1",
+      "image_states": 1,
+      "indegree_histogram": {
+        "0": 80,
+        "81": 1
+      },
+      "k": 2,
+      "latent_orbit": {
+        "collapse_depth": 1,
+        "fixed_state_xz_with_y_equal_1": [
+          0,
+          3
+        ],
+        "states_through_collapse": [
+          [
+            4,
+            0
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "modulus": 9,
+      "phase_16_projective_contact_classes": 1,
+      "phase_8_projective_contact_classes": 1,
+      "state_count": 81,
+      "state_edge_sha256": "4544e59f27f513f0e90099009208a3280fc6bf6414d8f7daaff92b21d20afd82",
+      "state_order": "x major, then z, representing [x:1:z] modulo 3^k"
+    },
+    {
+      "contact_valuation_pair_histogram": {
+        "0,0": 567,
+        "0,1": 72,
+        "0,2": 8,
+        "0,3": 1,
+        "1,0": 72,
+        "2,0": 8,
+        "3,0": 1
+      },
+      "cycle_length_histogram": {
+        "1": 1
+      },
+      "edge_count": 729,
+      "edge_formula": "[g] maps to [N^2 g], normalized to y=1",
+      "image_states": 3,
+      "indegree_histogram": {
+        "0": 726,
+        "243": 3
+      },
+      "k": 3,
+      "latent_orbit": {
+        "collapse_depth": 2,
+        "fixed_state_xz_with_y_equal_1": [
+          0,
+          3
+        ],
+        "states_through_collapse": [
+          [
+            4,
+            18
+          ],
+          [
+            9,
+            3
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "modulus": 27,
+      "phase_16_projective_contact_classes": 1,
+      "phase_8_projective_contact_classes": 1,
+      "state_count": 729,
+      "state_edge_sha256": "372ab811c0c2218e8a0783cba2f6c8e1afe7a6722e40c3a3c02f8c6f4e71dff6",
+      "state_order": "x major, then z, representing [x:1:z] modulo 3^k"
+    },
+    {
+      "contact_valuation_pair_histogram": {
+        "0,0": 5103,
+        "0,1": 648,
+        "0,2": 72,
+        "0,3": 8,
+        "0,4": 1,
+        "1,0": 648,
+        "2,0": 72,
+        "3,0": 8,
+        "4,0": 1
+      },
+      "cycle_length_histogram": {
+        "1": 1
+      },
+      "edge_count": 6561,
+      "edge_formula": "[g] maps to [N^2 g], normalized to y=1",
+      "image_states": 9,
+      "indegree_histogram": {
+        "0": 6552,
+        "729": 9
+      },
+      "k": 4,
+      "latent_orbit": {
+        "collapse_depth": 2,
+        "fixed_state_xz_with_y_equal_1": [
+          0,
+          30
+        ],
+        "states_through_collapse": [
+          [
+            4,
+            72
+          ],
+          [
+            36,
+            30
+          ],
+          [
+            0,
+            30
+          ]
+        ]
+      },
+      "modulus": 81,
+      "phase_16_projective_contact_classes": 1,
+      "phase_8_projective_contact_classes": 1,
+      "state_count": 6561,
+      "state_edge_sha256": "1f542d114fabd15588852d240392bf9f64fce93c8f4f261a71c7b8d47f32f546",
+      "state_order": "x major, then z, representing [x:1:z] modulo 3^k"
+    },
+    {
+      "contact_valuation_pair_histogram": {
+        "0,0": 45927,
+        "0,1": 5832,
+        "0,2": 648,
+        "0,3": 72,
+        "0,4": 8,
+        "0,5": 1,
+        "1,0": 5832,
+        "2,0": 648,
+        "3,0": 72,
+        "4,0": 8,
+        "5,0": 1
+      },
+      "cycle_length_histogram": {
+        "1": 1
+      },
+      "edge_count": 59049,
+      "edge_formula": "[g] maps to [N^2 g], normalized to y=1",
+      "image_states": 81,
+      "indegree_histogram": {
+        "0": 58968,
+        "729": 81
+      },
+      "k": 5,
+      "latent_orbit": {
+        "collapse_depth": 3,
+        "fixed_state_xz_with_y_equal_1": [
+          0,
+          30
+        ],
+        "states_through_collapse": [
+          [
+            166,
+            72
+          ],
+          [
+            117,
+            30
+          ],
+          [
+            81,
+            30
+          ],
+          [
+            0,
+            30
+          ]
+        ]
+      },
+      "modulus": 243,
+      "phase_16_projective_contact_classes": 1,
+      "phase_8_projective_contact_classes": 1,
+      "state_count": 59049,
+      "state_edge_sha256": "7239e2823bdfaa6c88e7f987fef456c9ef7d6b362c019a16bb72546e4dba0b99",
+      "state_order": "x major, then z, representing [x:1:z] modulo 3^k"
+    }
+  ],
+  "proof_boundary": {
+    "certified_finite": [
+      "all [x:1:z] residue states through modulus 3^5",
+      "the latent-family arithmetic regression through depth 16"
+    ],
+    "not_proved": [
+      "birth of a latent line from a reachable legal endpoint pair",
+      "finite index of the reachable contact language",
+      "a universal connector survivor or all-level induction"
+    ],
+    "proved_by_exact_algebra": [
+      "primitive normalization has only t=1,3,9 branches",
+      "the displayed affine Pluecker and contact-residual transport identities",
+      "the y-unit inverse chart contracts by 3^2 and 3^4 toward its unique 3-adic projective fixed point",
+      "q(N^2 g)=81q(g), giving v3(g_n,x)=2n and v3(q(g_n))=4n+1 for the latent family"
+    ]
+  },
+  "schema_version": 1,
+  "status": "exact bounded 3-adic residue exploration for one fixed macrocycle; not a reachable-birth theorem or unconditional proof"
+}
