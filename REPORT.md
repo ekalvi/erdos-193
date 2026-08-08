@@ -1489,3 +1489,43 @@ file SHA-256
 `b2973804365f82dc81b2b95891eed69da8515bebc1b0ace27da3c5a90864e16c`,
 and payload SHA-256
 `7bb2ebb30dac9725534637cbf94837cd191f09e17707703d0605337b41001829`.
+
+## Cardinality-matched spherical and hybrid menu gate (2026-08-07)
+
+A controlled exact comparison replaced the 124-vector cube by the 120
+primitive vectors on `x^2+y^2+z^2=74`, while holding fixed the
+parity-compatible scale-three matrix, Level-0 length four, seed 193, routing
+budgets, and verifier.  Both variants completed Level 3:
+
+```text
+cube:   4 -> 12 -> 41 -> 145
+sphere: 4 -> 17 -> 64 -> 240
+```
+
+The pure sphere reduced Level-3 parallel-secant collision probability from
+`3.965e-5` to `3.898e-6`, but required 1,476,734 versus 12,309 total DFS nodes,
+had cumulative growth dimension `1.2423` versus `1.0894`, and had normalized
+Level-3 `Q`-crowding 23 versus 16.  It is not a proof-friendly replacement.
+
+A pre-outcome angular screen then selected one 24-move layer from four fixed
+candidates.  The full shell `x^2+y^2+z^2=11` improved sampled covering radius
+from 17.594 to 13.938 degrees.  The resulting 148-move cube-plus-shell hybrid
+has exact connector closure through length five and completed
+
+```text
+4 -> 13 -> 55 -> 186.
+```
+
+It failed every numerical gate: Level-3 routing cost was `41.85x` the cube per
+gap (required at most `2x`), growth dimension was `1.1649` (required at most
+`1.12`), normalized crowding was 17 (required at most 16), and parallel-secant
+probability improved only to `0.452x` the cube (required at most one third).
+The initial length-four closure proposal was discarded before constructing the
+hybrid because the cube control itself needs length five.
+
+**DECISION:** retire the tested pure-sphere and statically selected hybrid
+routes.  Directional deconcentration is real but too expensive in prescribed
+displacement routing; return to the reachable far-secant/birth-address problem
+unless a theorem changes this tradeoff.  Exact scripts, words, hashes, and
+claim boundaries are in `design/SPHERICAL-MENU-COMPARISON.md` and
+`design/HYBRID-SPHERICAL-MENU-GATE.md`.
