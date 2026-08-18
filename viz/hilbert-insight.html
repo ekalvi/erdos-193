@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<script src="access-gate.js?v=bfdb43ae-nav1"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<title>Hilbert insight — erdos-193</title>
+<meta name="description" content="An interactive explanation of a Hilbert-walk and 2-adic research insight under exact evaluation for Erdős Problem 193.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css?v=6">
+<style>
+  .insight{margin:18px 0 22px;padding:15px 17px;border:1px solid hsl(38 70% 58%/.55);
+    border-left:4px solid hsl(38 92% 50%);border-radius:var(--radius);background:hsl(38 92% 50%/.08);
+    font-size:14px;color:hsl(var(--muted-fg))}
+  .insight b{color:hsl(var(--foreground))}
+  .proofgrid{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,.85fr);gap:14px;align-items:stretch}
+  #hilbertStage{position:relative;min-width:0;height:590px;border:1px solid hsl(var(--border));
+    border-radius:var(--radius);overflow:hidden;background:#04060d}
+  #hilbertStage canvas{display:block}
+  #hilbertStage:fullscreen{height:100vh;border:0;border-radius:0}
+  .hud{position:absolute;left:12px;top:12px;display:flex;gap:7px;flex-wrap:wrap;z-index:2}
+  .hud button,.storynav button,.pairbtn{font:inherit;font-size:13px;padding:6px 11px;border-radius:8px;
+    border:1px solid rgba(148,163,184,.32);background:rgba(4,6,13,.78);color:#dbeafe;cursor:pointer}
+  .hud button.primary,.storynav button.primary,.pairbtn.cur{background:#2563eb;border-color:#3b82f6;color:#fff}
+  .hud button:hover,.storynav button:hover,.pairbtn:hover{border-color:#60a5fa}
+  .hud button:disabled{opacity:.38;cursor:default}
+  #sceneLabel{position:absolute;left:13px;bottom:12px;right:13px;z-index:2;display:flex;
+    justify-content:space-between;gap:12px;pointer-events:none;color:#cbd5e1;font-size:12px}
+  #sceneLabel span{background:rgba(4,6,13,.68);padding:4px 8px;border-radius:7px}
+  .story{border:1px solid hsl(var(--border));border-radius:var(--radius);background:hsl(var(--card));
+    padding:19px;display:flex;min-height:590px;flex-direction:column}
+  .story .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.09em;font-weight:600;
+    color:hsl(var(--link));margin-bottom:7px}
+  .story h2{font-size:21px;line-height:1.2;letter-spacing:-.015em;margin:0 0 12px}
+  #storyBody{font-size:15px;color:hsl(var(--muted-fg));line-height:1.55}
+  #storyBody p{margin:0 0 12px}
+  #storyBody b{color:hsl(var(--foreground))}
+  .takeaway{margin:15px 0 0;padding:11px 12px;border-radius:8px;background:hsl(var(--accent));
+    color:hsl(var(--foreground));font-size:14px;line-height:1.45}
+  .storynav{display:flex;gap:8px;margin-top:auto;padding-top:18px}
+  .storynav button{background:hsl(var(--background));color:hsl(var(--foreground));border-color:hsl(var(--border));flex:1}
+  .storynav button:disabled{opacity:.38;cursor:default}
+  .storynav button.primary{background:hsl(var(--link));border-color:hsl(var(--link));color:white}
+  .steprail{display:grid;grid-template-columns:repeat(6,1fr);gap:7px;margin:12px 0 0}
+  .steprail button{font:inherit;border:1px solid hsl(var(--border));border-radius:8px;background:hsl(var(--card));
+    color:hsl(var(--muted-fg));padding:8px 5px;font-size:12px;cursor:pointer;line-height:1.2}
+  .steprail button b{display:block;font-size:14px;color:hsl(var(--foreground));margin-bottom:2px}
+  .steprail button.cur{border-color:hsl(var(--link));background:hsl(var(--accent));color:hsl(var(--foreground))}
+  .colourkey{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}
+  .colourkey span{padding:6px 8px;border-radius:7px;background:hsl(var(--accent));font-size:12px;color:hsl(var(--foreground))}
+  .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+  .address{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin:10px 0}
+  .address code{font-size:16px;font-weight:600;padding:5px 8px}
+  .address .arrow{color:hsl(var(--muted-fg))}
+  .pairchoices{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0 10px}
+  .pairbtn{background:hsl(var(--background));color:hsl(var(--foreground));border-color:hsl(var(--border))}
+  .micro{border:1px solid hsl(var(--border));border-radius:8px;padding:10px 11px;background:hsl(var(--background));
+    font-size:13px;line-height:1.5}
+  .micro .formula{display:block;margin-top:6px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    color:hsl(var(--foreground));font-weight:600}
+  .factors{display:grid;gap:6px;margin:10px 0}
+  .factors div{display:flex;justify-content:space-between;gap:8px;border:1px solid hsl(var(--border));
+    border-radius:7px;padding:7px 9px;background:hsl(var(--background))}
+  .factors code{white-space:nowrap}
+  .factors .bad{color:hsl(var(--tl-dead));font-weight:600}
+  .blocks{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;margin:10px 0;
+    display:grid;grid-template-columns:1fr 1fr;gap:5px;text-align:center}
+  .blocks span{border:1px solid hsl(var(--border));border-radius:7px;padding:8px 4px;background:hsl(var(--background))}
+  .blocks b{display:block;color:hsl(var(--link));font-family:"Outfit",sans-serif;font-size:11px}
+  .mental{margin-top:34px}
+  .mental h2,.spine h2,.audit h2{font-size:19px;margin:0 0 11px}
+  .mentalgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .mentalgrid div{border:1px solid hsl(var(--border));border-radius:var(--radius);padding:14px;background:hsl(var(--card));font-size:14px;color:hsl(var(--muted-fg))}
+  .mentalgrid b{display:block;color:hsl(var(--foreground));margin-bottom:5px}
+  .spine,.audit{margin-top:30px}
+  .proofspine{counter-reset:spine;display:grid;gap:9px;margin:0;padding:0;list-style:none}
+  .proofspine li{counter-increment:spine;position:relative;padding:11px 13px 11px 46px;border:1px solid hsl(var(--border));
+    border-radius:var(--radius);background:hsl(var(--card));font-size:14px;color:hsl(var(--muted-fg))}
+  .proofspine li::before{content:counter(spine);position:absolute;left:13px;top:11px;width:23px;height:23px;
+    border-radius:50%;display:grid;place-items:center;background:hsl(var(--link));color:#fff;font-size:12px;font-weight:700}
+  .proofspine b{color:hsl(var(--foreground))}
+  .audit{padding:15px 17px;border:1px solid hsl(var(--border));border-radius:var(--radius);background:hsl(var(--accent));
+    color:hsl(var(--muted-fg));font-size:14px}
+  .audit p{margin:0}
+  @media(max-width:800px){
+    .proofgrid{grid-template-columns:1fr}.story{min-height:0}.steprail{grid-template-columns:repeat(3,1fr)}
+    #hilbertStage{height:500px}.mentalgrid{grid-template-columns:1fr}
+  }
+  @media(max-width:480px){#hilbertStage{height:430px}.steprail{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap wide">
+  <header class="site">
+    <div class="brand"><a href="/">erdos-193<span>.q5m.io</span></a></div>
+    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">Proof status</a><a href="hilbert-insight.html" class="cur">Hilbert insight</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+  </header>
+
+  <h1>A Hilbert–2-adic insight, from maze to obstruction</h1>
+  <p class="sub">An intuitive tour of a Hilbert-curve mechanism under evaluation. Move through the six scenes, drag the 3D view to orbit, and use the pair microscope to inspect the exact arithmetic rule on which the mechanism depends.</p>
+
+  <div class="insight"><b>Status: research insight under exact evaluation.</b> This mechanism is separate from the repository&rsquo;s amplification programme. Its Hilbert-state identity passed an initial exact-table check, and a 400,000-point finite prefix is undergoing an independent exhaustive audit. This page explains the insight; it does not assert a theorem or a solution to Erdős&nbsp;193.</div>
+
+  <div class="proofgrid">
+    <div id="hilbertStage" aria-label="Interactive 3D Hilbert mechanism visualization">
+      <div class="hud">
+        <button id="play" class="primary">Play tour</button>
+        <button id="stagePrevious">Previous step</button>
+        <button id="stageNext">Next step</button>
+        <button id="orbit">Pause orbit</button>
+        <button id="fullscreen">Fullscreen</button>
+      </div>
+      <div id="sceneLabel"><span id="sceneName">The maze</span><span>drag to orbit · scroll to zoom</span></div>
+    </div>
+    <aside class="story" aria-live="polite">
+      <div class="eyebrow" id="storyStep"></div>
+      <h2 id="storyTitle"></h2>
+      <div id="storyBody"></div>
+      <div class="storynav">
+        <button id="previous">Previous</button>
+        <button id="next" class="primary">Next</button>
+      </div>
+    </aside>
+  </div>
+
+  <div class="steprail" id="steprail" aria-label="Visualization steps"></div>
+
+  <section class="mental">
+    <h2>Hold this three-part mental model</h2>
+    <div class="mentalgrid">
+      <div><b>The address</b>A base-4 number tells the Hilbert robot which nested quarter-square to enter at every scale.</div>
+      <div><b>The badge</b>Two parity bits remember the final orientation of those nested, rotated maps. Equal badges let two addresses be rewound in sync.</div>
+      <div><b>The clock</b>Time is used as height. A straight line would make its three gaps integer multiples <i>a</i>, <i>b</i>, and <i>a+b</i> of one direction.</div>
+    </div>
+  </section>
+
+  <section class="spine">
+    <h2>The mechanism in one breath</h2>
+    <ol class="proofspine">
+      <li><b>Hilbert gives small steps.</b> The planar robot moves one square at a time; lifting time into height keeps a finite four-step menu before filtering.</li>
+      <li><b>The colour synchronizes two addresses.</b> Same-coloured base-4 indices finish in the same Hilbert orientation state.</li>
+      <li><b>The first different digit measures scale exactly.</b> One planar factor of two corresponds to two time factors of two, plus one bit determined only by direction.</li>
+      <li><b>A line cannot satisfy that rule three times.</b> Its pair lengths are <i>a</i>, <i>b</i>, and <i>a+b</i>; the rule would give all three the same number of factors of two, which is impossible.</li>
+      <li><b>The chosen colour returns frequently.</b> Every aligned 16-index block contains it, so retained jumps are at most 31 old steps and the new menu remains finite.</li>
+    </ol>
+  </section>
+
+  <section class="audit">
+    <h2>Where an adversarial review should push</h2>
+    <p>The elementary <i>a,b,a+b</i> contradiction is the attractive part of the insight. The load-bearing unresolved point is the all-length Hilbert digit lemma shown in scene&nbsp;4: equal colour must synchronize the reverse orientation state for every address length and indexing convention. Before this can become a proof route, the exact four-state Hilbert table and that lemma need a complete argument. The running finite audit tests the recorded prefix independently but cannot establish the infinite statement.</p>
+  </section>
+
+  <footer class="sitefoot">
+    <span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span>
+    <span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span>
+  </footer>
+</div>
+
+<script async src="https://cdn.jsdelivr.net/npm/es-module-shims@1.10.0/dist/es-module-shims.js"></script>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+</script>
+<script type="module">
+window.addEventListener('error', event => {
+  const label = document.getElementById('sceneName');
+  if (label) label.textContent = 'Visualization failed: ' + (event.message || 'unknown error');
+});
+
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+const nextState = [4,0,0,12, 0,4,4,8, 12,8,8,4, 8,12,12,0];
+const digitX = [0,1,1,0, 0,0,1,1, 1,0,0,1, 1,1,0,0];
+const digitY = [0,0,1,1, 0,1,1,0, 1,1,0,0, 1,0,0,1];
+
+function digits4(n){
+  if (n === 0) return [0];
+  const out = [];
+  while (n){ out.push(n & 3); n = Math.floor(n / 4); }
+  return out;
+}
+function hilbertXY(n){
+  const digits = digits4(n), last = digits.length - 1;
+  let state = (last & 1) ? 4 : 0;
+  const xb = new Array(digits.length).fill(0), yb = new Array(digits.length).fill(0);
+  for (let i = last; i >= 0; i--){
+    const index = state + digits[i];
+    xb[i] = digitX[index]; yb[i] = digitY[index]; state = nextState[index];
+  }
+  let x = 0, y = 0;
+  for (let i = 0; i < digits.length; i++){ x += xb[i] * 2**i; y += yb[i] * 2**i; }
+  return [x,y];
+}
+function colour(n){
+  let first = 0, second = 0;
+  for (const digit of digits4(n)){
+    if (digit === 1 || digit === 2) first ^= 1;
+    else if (digit === 3) second ^= 1;
+  }
+  return first * 2 + second;
+}
+function base4(n, width = 0){ return n.toString(4).padStart(width, '0'); }
+
+const COUNT = 256;
+const planar = Array.from({length:COUNT}, (_,n) => hilbertXY(n));
+const retained = Array.from({length:COUNT}, (_,n) => n).filter(n => colour(n) === 0);
+const PALETTE = [0x4ade80, 0x60a5fa, 0xf472b6, 0xfbbf24];
+const LIFT = 0.055;
+
+const stage = document.getElementById('hilbertStage');
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x04060d);
+const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+stage.appendChild(renderer.domElement);
+const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableDamping = true;
+controls.autoRotate = true;
+controls.autoRotateSpeed = 0.75;
+
+const grid = new THREE.GridHelper(24, 24, 0x334155, 0x172033);
+grid.position.y = -0.03;
+scene.add(grid);
+const dynamic = new THREE.Group();
+scene.add(dynamic);
+
+const dotCanvas = document.createElement('canvas');
+dotCanvas.width = dotCanvas.height = 64;
+{
+  const context = dotCanvas.getContext('2d');
+  const gradient = context.createRadialGradient(32,32,2,32,32,29);
+  gradient.addColorStop(0, '#ffffff'); gradient.addColorStop(.24, '#ffffff'); gradient.addColorStop(1, 'rgba(255,255,255,0)');
+  context.fillStyle = gradient; context.fillRect(0,0,64,64);
+}
+const dotTexture = new THREE.CanvasTexture(dotCanvas);
+
+function disposeTree(object){
+  object.traverse(child => {
+    if (child.geometry) child.geometry.dispose();
+    if (child.material){
+      const materials = Array.isArray(child.material) ? child.material : [child.material];
+      for (const material of materials){
+        if (material.map && material.map !== dotTexture) material.map.dispose();
+        material.dispose();
+      }
+    }
+  });
+}
+function clearDynamic(){
+  while (dynamic.children.length){
+    const child = dynamic.children[0];
+    dynamic.remove(child);
+    disposeTree(child);
+  }
+}
+function pointsObject(points, colours, size = .32, opacity = 1){
+  const positions = new Float32Array(points.length * 3), values = new Float32Array(points.length * 3);
+  points.forEach((point,index) => {
+    positions.set(point,index*3);
+    const colourValue = new THREE.Color(Array.isArray(colours) ? colours[index] : colours);
+    values.set([colourValue.r,colourValue.g,colourValue.b],index*3);
+  });
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  geometry.setAttribute('color',new THREE.BufferAttribute(values,3));
+  return new THREE.Points(geometry,new THREE.PointsMaterial({vertexColors:true,size,sizeAttenuation:true,
+    map:dotTexture,alphaTest:.08,transparent:true,opacity,depthWrite:false}));
+}
+function lineObject(points, colour = 0x64748b, opacity = .75, dashed = false){
+  const geometry = new THREE.BufferGeometry().setFromPoints(points.map(point => new THREE.Vector3(...point)));
+  const material = dashed
+    ? new THREE.LineDashedMaterial({color:colour,transparent:true,opacity,dashSize:.35,gapSize:.22})
+    : new THREE.LineBasicMaterial({color:colour,transparent:true,opacity});
+  const line = new THREE.Line(geometry,material);
+  if (dashed) line.computeLineDistances();
+  return line;
+}
+function textSprite(text, position, colour = '#dbeafe', width = 2.6){
+  const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 128;
+  const context = canvas.getContext('2d');
+  context.font = '600 54px Outfit, sans-serif'; context.fillStyle = colour; context.textAlign = 'center';
+  context.fillText(text,256,82);
+  const sprite = new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(canvas),transparent:true,depthWrite:false}));
+  sprite.position.set(...position); sprite.scale.set(width,width/4,1); return sprite;
+}
+function boxWorld(n, lift = LIFT, count = COUNT){
+  const side = Math.sqrt(count);
+  return [planar[n][0]-(side-1)/2, n*lift, planar[n][1]-(side-1)/2];
+}
+function smallWorld(n){
+  const [x,y] = planar[n]; return [x-1.5,n*.30,y-1.5];
+}
+function fit(points, close = 2.25){
+  const box = new THREE.Box3();
+  for (const point of points) box.expandByPoint(new THREE.Vector3(...point));
+  const centre = box.getCenter(new THREE.Vector3()), sphere = box.getBoundingSphere(new THREE.Sphere());
+  const radius = Math.max(2.2,sphere.radius);
+  controls.target.copy(centre);
+  camera.position.copy(centre).add(new THREE.Vector3(radius*1.18,radius*.82,radius*close));
+  camera.near = Math.max(.02,radius/100); camera.far = Math.max(100,radius*25); camera.updateProjectionMatrix();
+}
+function resize(){
+  const width = stage.clientWidth, height = stage.clientHeight;
+  renderer.setSize(width,height); camera.aspect = width/height; camera.updateProjectionMatrix();
+}
+addEventListener('resize',resize);
+
+const stories = [
+  {
+    rail:'Maze', scene:'1. A base-4 maze', title:'Every stop has a recursive address',
+    body:`<p>A Hilbert walk visits a square grid one unit step at a time. It repeatedly divides a square into four quarters, so the step number written in <b>base 4</b> is an address: every digit chooses the next nested quarter.</p><div class="address"><code>1 2 3<sub>4</sub></code><span class="arrow">means</span><span>quarter 1, then 2, then 3</span></div><div class="takeaway">The maze supplies two things we need later: small moves and a precise link between one base-4 time scale and one binary map scale.</div>`
+  },
+  {
+    rail:'Staircase', scene:'2. Time becomes height', title:'Raise the robot one floor per step',
+    body:`<p>Replace the planar stop <i>H(n)=(x,y)</i> by the 3D point <b>(x,y,n)</b>. The robot now climbs while following the maze.</p><p>Its four original moves are <code>(&plusmn;1,0,1)</code> and <code>(0,&plusmn;1,1)</code>, so the finite-step requirement is easy.</p><p>The red points show the remaining problem: steps 3, 4 and 5 really do lie on one line.</p><div class="takeaway">The staircase solves bounded movement, but not yet three-in-a-line.</div>`
+  },
+  {
+    rail:'Badge', scene:'3. Keep one orientation badge', title:'Four colours synchronize the rotated maps',
+    body:`<p>Hilbert&rsquo;s nested quarters can be rotated or flipped. The two digit-parity questions act as a four-colour <b>orientation badge</b>:</p><div class="colourkey"><span><i class="dot" style="background:#4ade80"></i>even / even — keep</span><span><i class="dot" style="background:#60a5fa"></i>even / odd</span><span><i class="dot" style="background:#f472b6"></i>odd / even</span><span><i class="dot" style="background:#fbbf24"></i>odd / odd</span></div><p>Keeping green is not random thinning. Two green addresses finish with their tiny maps held in the same orientation.</p><div class="takeaway">Equal badges let us rewind two addresses from the right-hand end in the same coordinate frame.</div>`
+  },
+  {
+    rail:'Rewind', scene:'4. The first different digit', title:'One mismatch reveals the exact power of two',
+    body:`<p>Start at the least-significant end of two same-badge base-4 addresses. Skip matching digits. At the first mismatch, Hilbert&rsquo;s Gray-code order says either <b>one</b> coordinate bit changes or <b>both</b> do.</p><div class="pairchoices"><button class="pairbtn cur" data-pair="5">One coordinate changes</button><button class="pairbtn" data-pair="6">Both coordinates change</button></div><div id="pairReadout" class="micro"></div><div class="takeaway">Exact rule: time twos = 2 &times; common horizontal twos + a bit fixed by the primitive direction.</div>`
+  },
+  {
+    rail:'No line', scene:'5. The impossible straight line', title:'A line would demand the same answer three times',
+    body:`<p>If three kept lattice points lay on a line, their consecutive gaps would be <i>a</i> and <i>b</i> copies of one primitive direction; the whole gap would be <i>a+b</i> copies.</p><p>Because the direction is fixed, the Hilbert rule would force <i>a</i>, <i>b</i>, and <i>a+b</i> to contain the same number of factors of two.</p><div class="factors"><div><span><i>a</i></span><code>6 = 2 &times; 3</code></div><div><span><i>b</i></span><code>10 = 2 &times; 5</code></div><div class="bad"><span><i>a+b</i></span><code>16 = 2<sup>4</sup></code></div></div><div class="takeaway">Two equally even numbers always add to something more even. The required triple is impossible.</div>`
+  },
+  {
+    rail:'Menu', scene:'6. Filtering keeps bounded jumps', title:'Sixteen makes the colour recur; thirty-one bounds the wait',
+    body:`<p>Two base-4 digits have <b>4<sup>2</sup>=16</b> possibilities, enough to realize all four badges. Every aligned 16-index block therefore contains a green stop.</p><div class="blocks"><span><b>one aligned block</b>16q &hellip; 16q+15</span><span><b>the next block</b>16q+16 &hellip; 16q+31</span></div><p>In the pessimistic case, the next kept point is at most 31 old steps away. Hence <code>|&Delta;x|,|&Delta;y|&le;31</code> and <code>1&le;&Delta;z&le;31</code>.</p><div class="takeaway">All new jumps lie in one finite integer box. That is the required fixed finite menu.</div>`
+  }
+];
+
+let current = 0, pairChoice = 5, playing = false, playTimer = null, sceneToken = 0;
+
+function renderMaze(){
+  const points = planar.map(([x,y]) => [x-7.5,0,y-7.5]);
+  dynamic.add(lineObject(points,0x64748b,.85));
+  dynamic.add(pointsObject(points,0x93c5fd,.28,.9));
+  fit(points,1.5);
+  grid.visible = true;
+}
+function renderStaircase(token){
+  const start = planar.map(([x,y]) => [x-7.5,0,y-7.5]);
+  const finish = Array.from({length:COUNT},(_,n) => boxWorld(n));
+  const line = lineObject(start,0x64748b,.7), points = pointsObject(start,0x93c5fd,.27,.86);
+  dynamic.add(line,points);
+  const triple = [3,4,5].map(n => boxWorld(n));
+  dynamic.add(lineObject(triple,0xef4444,1));
+  dynamic.add(pointsObject(triple,0xef4444,.64,1));
+  for (const n of [3,4,5]) dynamic.add(textSprite(String(n),[...boxWorld(n).slice(0,2),boxWorld(n)[2]+.72],'#fecaca',1.2));
+  fit(finish,1.8); grid.visible = true;
+  const pointPosition = points.geometry.attributes.position, linePosition = line.geometry.attributes.position;
+  const started = performance.now();
+  (function rise(){
+    if (token !== sceneToken) return;
+    const t = Math.min(1,(performance.now()-started)/1200), eased = 1-(1-t)**3;
+    for (let i=0;i<COUNT;i++){
+      pointPosition.array[i*3+1] = finish[i][1]*eased;
+      linePosition.array[i*3+1] = finish[i][1]*eased;
+    }
+    pointPosition.needsUpdate = true; linePosition.needsUpdate = true;
+    if (t<1) requestAnimationFrame(rise);
+  })();
+}
+function renderBadge(){
+  const all = Array.from({length:COUNT},(_,n) => boxWorld(n));
+  const colours = Array.from({length:COUNT},(_,n) => PALETTE[colour(n)]);
+  const kept = retained.map(n => boxWorld(n));
+  dynamic.add(lineObject(all,0x475569,.25));
+  dynamic.add(pointsObject(all,colours,.28,.82));
+  dynamic.add(lineObject(kept,0x4ade80,.92));
+  dynamic.add(pointsObject(kept,0x4ade80,.42,1));
+  fit(all,1.8); grid.visible = true;
+}
+function updatePairReadout(){
+  const readout = document.getElementById('pairReadout');
+  if (!readout) return;
+  const both = pairChoice === 6;
+  readout.innerHTML = both
+    ? `<b>0 and 6:</b> <code>00<sub>4</sub></code> versus <code>12<sub>4</sub></code>. The low digits differ by 2, so both map bits change.<br>&Delta;(x,y,n) = (1,3,6). <span class="formula">v₂(6) = 1 = 2&middot;v₂(gcd(1,3)) + 1</span>`
+    : `<b>0 and 5:</b> <code>00<sub>4</sub></code> versus <code>11<sub>4</sub></code>. The low digits differ oddly, so one map bit changes.<br>&Delta;(x,y,n) = (0,3,5). <span class="formula">v₂(5) = 0 = 2&middot;v₂(gcd(0,3)) + 0</span>`;
+  document.querySelectorAll('.pairbtn').forEach(button => button.classList.toggle('cur',Number(button.dataset.pair)===pairChoice));
+}
+function renderPair(){
+  const sample = Array.from({length:16},(_,n) => smallWorld(n));
+  const keptSample = Array.from({length:16},(_,n) => n).filter(n => colour(n)===0);
+  dynamic.add(lineObject(sample,0x475569,.25));
+  dynamic.add(pointsObject(sample,0x475569,.25,.35));
+  dynamic.add(pointsObject(keptSample.map(n=>smallWorld(n)),0x4ade80,.42,1));
+  const pair = [0,pairChoice].map(n => smallWorld(n));
+  dynamic.add(lineObject(pair,0xf8fafc,1,true));
+  dynamic.add(pointsObject(pair,0xffffff,.7,1));
+  dynamic.add(textSprite('0 = 00 base 4',[pair[0][0],pair[0][1]+.7,pair[0][2]],'#dbeafe',2.3));
+  dynamic.add(textSprite(`${pairChoice} = ${base4(pairChoice,2)} base 4`,[pair[1][0],pair[1][1]+.7,pair[1][2]],'#dbeafe',2.7));
+  fit(sample.concat(pair),2.0); grid.visible = true; updatePairReadout();
+}
+function renderLineContradiction(){
+  const A = [-7,-2,-3], unit = [1,.48,.31];
+  const B = A.map((value,index)=>value+6*unit[index]);
+  const C = B.map((value,index)=>value+10*unit[index]);
+  dynamic.add(lineObject([A,B],0x60a5fa,1));
+  dynamic.add(lineObject([B,C],0x4ade80,1));
+  dynamic.add(lineObject([A,C],0xfbbf24,.55,true));
+  dynamic.add(pointsObject([A,B,C],[0x60a5fa,0xffffff,0x4ade80],.72,1));
+  dynamic.add(textSprite('A', [A[0],A[1]+1,A[2]],'#bfdbfe',2.2));
+  dynamic.add(textSprite('B', [B[0],B[1]+1,B[2]],'#f8fafc',2.2));
+  dynamic.add(textSprite('C', [C[0],C[1]+1,C[2]],'#bbf7d0',2.2));
+  const AB = A.map((value,index)=>(value+B[index])/2), BC = B.map((value,index)=>(value+C[index])/2);
+  dynamic.add(textSprite('a = 6', [AB[0],AB[1]-.9,AB[2]],'#93c5fd',3.4));
+  dynamic.add(textSprite('b = 10', [BC[0],BC[1]-.9,BC[2]],'#86efac',3.6));
+  dynamic.add(textSprite('a + b = 16', [(A[0]+C[0])/2,(A[1]+C[1])/2+1.55,(A[2]+C[2])/2],'#fde68a',5.1));
+  fit([A,B,C],1.8); grid.visible = false;
+}
+function renderMenu(){
+  const all = Array.from({length:COUNT},(_,n) => boxWorld(n));
+  const kept = retained.map(n => boxWorld(n));
+  dynamic.add(lineObject(all,0x334155,.18));
+  dynamic.add(pointsObject(all,0x334155,.2,.22));
+  dynamic.add(lineObject(kept,0x4ade80,.95));
+  dynamic.add(pointsObject(kept,0x4ade80,.42,1));
+  const gaps = retained.slice(1).map((n,index)=>[n-retained[index],retained[index],n]);
+  const largest = gaps.reduce((best,item)=>item[0]>best[0]?item:best,gaps[0]);
+  const ends = [boxWorld(largest[1]),boxWorld(largest[2])];
+  dynamic.add(lineObject(ends,0xfbbf24,1,true));
+  dynamic.add(textSprite(`sample gap = ${largest[0]}`,[
+    (ends[0][0]+ends[1][0])/2,(ends[0][1]+ends[1][1])/2+.8,(ends[0][2]+ends[1][2])/2
+  ],'#fde68a',2.7));
+  fit(all,1.8); grid.visible = true;
+}
+
+function renderScene(){
+  sceneToken += 1; const token = sceneToken;
+  clearDynamic();
+  if (current===0) renderMaze();
+  else if (current===1) renderStaircase(token);
+  else if (current===2) renderBadge();
+  else if (current===3) renderPair();
+  else if (current===4) renderLineContradiction();
+  else renderMenu();
+}
+function bindPairButtons(){
+  document.querySelectorAll('.pairbtn').forEach(button => button.onclick = () => {
+    pairChoice = Number(button.dataset.pair); renderScene();
+  });
+}
+function updateStory(){
+  const story = stories[current];
+  document.getElementById('storyStep').textContent = `Step ${current+1} of ${stories.length}`;
+  document.getElementById('storyTitle').textContent = story.title;
+  document.getElementById('storyBody').innerHTML = story.body;
+  document.getElementById('sceneName').textContent = story.scene;
+  document.getElementById('previous').disabled = current===0;
+  document.getElementById('next').textContent = current===stories.length-1 ? 'Restart' : 'Next';
+  document.getElementById('stagePrevious').disabled = current===0;
+  document.getElementById('stageNext').textContent = current===stories.length-1 ? 'Restart tour' : 'Next step';
+  document.querySelectorAll('#steprail button').forEach((button,index)=>button.classList.toggle('cur',index===current));
+  if (current===3){ bindPairButtons(); updatePairReadout(); }
+}
+function setStep(step){
+  current = Math.max(0,Math.min(stories.length-1,step)); updateStory(); renderScene();
+}
+function stopPlaying(){
+  playing = false; clearTimeout(playTimer); document.getElementById('play').textContent = 'Play tour';
+}
+function scheduleNext(){
+  if (!playing) return;
+  playTimer = setTimeout(() => {
+    if (current === stories.length-1){ stopPlaying(); return; }
+    setStep(current+1); scheduleNext();
+  },4300);
+}
+
+{
+  const rail = document.getElementById('steprail');
+  stories.forEach((story,index) => {
+    const button = document.createElement('button');
+    button.innerHTML = `<b>${index+1}</b>${story.rail}`;
+    button.onclick = () => { stopPlaying(); setStep(index); };
+    rail.appendChild(button);
+  });
+}
+function goPrevious(){ stopPlaying(); setStep(current-1); }
+function goNext(){ stopPlaying(); setStep(current===stories.length-1?0:current+1); }
+document.getElementById('previous').onclick = goPrevious;
+document.getElementById('stagePrevious').onclick = goPrevious;
+document.getElementById('next').onclick = goNext;
+document.getElementById('stageNext').onclick = goNext;
+document.getElementById('play').onclick = () => {
+  if (playing){ stopPlaying(); return; }
+  if (current===stories.length-1) setStep(0);
+  playing = true; document.getElementById('play').textContent = 'Pause tour'; scheduleNext();
+};
+document.getElementById('orbit').onclick = event => {
+  controls.autoRotate = !controls.autoRotate; event.currentTarget.textContent = controls.autoRotate ? 'Pause orbit' : 'Resume orbit';
+};
+document.getElementById('fullscreen').onclick = () => {
+  if (document.fullscreenElement) document.exitFullscreen(); else stage.requestFullscreen();
+};
+document.addEventListener('fullscreenchange',()=>{
+  document.getElementById('fullscreen').textContent = document.fullscreenElement ? 'Exit fullscreen' : 'Fullscreen';
+  setTimeout(resize,60);
+});
+
+resize(); setStep(0);
+(function animate(){
+  requestAnimationFrame(animate); controls.update(); renderer.render(scene,camera);
+})();
+</script>
+</body>
+</html>

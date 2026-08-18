@@ -2,6 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
+<meta name="referrer" content="no-referrer">
+<script src="access-gate.js?v=bfdb43ae-nav1"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <title>3D — erdos-193</title>
@@ -28,6 +31,24 @@
     border:1px solid hsl(var(--border));background:hsl(var(--background));
     color:hsl(var(--muted-fg));cursor:pointer}
   #lvls button.cur{background:hsl(var(--link));border-color:hsl(var(--link));color:#fff}
+  .datasetbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 12px}
+  .datasetbar button{font:inherit;font-size:14px;padding:7px 12px;border-radius:8px;
+    border:1px solid hsl(var(--border));background:hsl(var(--card));color:hsl(var(--muted-fg));cursor:pointer}
+  .datasetbar button.cur{background:hsl(var(--link));border-color:hsl(var(--link));color:#fff}
+  #recordStatus{font-size:13px;color:hsl(var(--muted-fg));margin-left:auto}
+  #recordStatus.pending{color:hsl(38 92% 45%)}
+  #recordStatus.passed{color:hsl(142 60% 38%)}
+  #menuPanel{margin-top:16px;padding:16px 18px;border:1px solid hsl(var(--border));
+    border-radius:var(--radius);background:hsl(var(--card))}
+  #menuPanel[hidden]{display:none}
+  #menuPanel h2{margin:0 0 6px;font-size:18px}
+  #menuPanel p{margin:0;color:hsl(var(--muted-fg));font-size:14px}
+  #menuVectors{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:7px;margin-top:13px}
+  .menuvector{display:flex;align-items:center;gap:7px;padding:7px 9px;border-radius:8px;
+    background:hsl(var(--background));font:13px ui-monospace,SFMono-Regular,Menlo,monospace}
+  .menuvector .sw{width:10px;height:10px;border-radius:50%;flex:0 0 auto}
+  .menuvector b{font-weight:600;color:hsl(var(--muted-fg));min-width:52px}
   #stage3d:fullscreen{height:100vh;border:none;border-radius:0}
   #stage3d:fullscreen canvas{height:100vh}
 </style>
@@ -36,14 +57,20 @@
 <div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.io</span></a></div>
-    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">Proof status</a><a href="walk3d.html" class="cur">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html">Proof status</a><a href="hilbert-insight.html">Hilbert insight</a><a href="walk3d.html" class="cur">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
   </header>
 
-  <h1>The construction, in 3D</h1>
-  <p class="sub">The proof orbit's actual coordinates. Press <b>play round</b> to watch one
-  generation: every point flies to its enlarged-and-twisted position (blue anchors — safe by
-  inheritance), then the green stitch points are born to reconnect them. Drag to orbit,
-  scroll to zoom. All 8 levels of the proof’s construction orbit (311,738 verified points), staged in the real solar system at true scale — <b>1 grid unit = 1 Earth radius</b> (6,371 km), so each hop is 1–3½ Earth radii. The Moon sits 60 units out; the Sun is 109 units wide, 23,481 away. The finale spans ≈4.2 AU — past the asteroid belt, nearly to Jupiter.</p>
+  <h1>Walk records and a fixed menu, in 3D</h1>
+  <p class="sub">Compare the verified 311,738-point imbrication walk with the
+  400,000-point Hilbert insight prefix, or inspect the Hilbert construction&rsquo;s exact
+  16-vector move menu. Walk modes render visited vertices only: no connecting segments,
+  interpolated locations, stars, or reference geometry.</p>
+  <div class="datasetbar">
+    <button id="orbitRecord" class="cur">Scale-and-rotate · 311,738 verified</button>
+    <button id="hilbertRecord">Hilbert insight · 400,000</button>
+    <button id="hilbertMenu">Hilbert fixed menu · 16</button>
+    <span id="recordStatus">Scale-and-rotate record: exact verification passed</span>
+  </div>
 
   <div id="stage3d">
     <div class="hud">
@@ -51,16 +78,24 @@
       <button id="step">⏭ step</button>
       <span id="lvls"></span>
       
-      <button id="spin">🌀 orbit</button>
+      <button id="spin" aria-pressed="true">pause rotation</button>
       <button id="fs" title="fullscreen">⛶</button>
     </div>
     <span id="lvl">level 0</span>
     <div id="status"></div>
   </div>
   <div class="legendrow">
-    <span><span class="sw" style="background:#3987e5"></span>anchors — enlarged images of the previous level (inherited safe)</span>
-    <span><span class="sw" style="background:#1baf7a"></span>stitches — newborn points, exactly checked</span>
+    <span id="legendA"><span class="sw" style="background:#3987e5"></span>inherited walk vertices</span>
+    <span id="legendB"><span class="sw" style="background:#1baf7a"></span>newly inserted walk vertices</span>
   </div>
+  <section id="menuPanel" hidden>
+    <h2>Hilbert fixed move menu</h2>
+    <p>Each entry is an allowed retained-to-retained jump in mathematical
+      coordinates <b>(&Delta;x, &Delta;y, &Delta;t)</b>. The 3D plot places
+      &Delta;t vertically and without compression. Each coloured dot is a vector
+      endpoint measured from the grey origin; no rays or walk edges are drawn.</p>
+    <div id="menuVectors" aria-label="Exact Hilbert move vectors"></div>
+  </section>
 
   <footer class="sitefoot">
     <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
@@ -109,8 +144,8 @@ function resize(){
 addEventListener('resize', resize);
 
 const BLUE = new THREE.Color(0x3987e5), GREEN = new THREE.Color(0x1baf7a);
-const walkColor = new THREE.Color(0x5a6a85);
-const skelColor = new THREE.Color(0x8a97ad);
+const MENU_LOW = new THREE.Color(0x2dd4bf), MENU_HIGH = new THREE.Color(0xa78bfa);
+const ORIGIN = new THREE.Color(0x94a3b8);
 const dotCanvas = document.createElement('canvas');
 dotCanvas.width = dotCanvas.height = 64;
 { const c = dotCanvas.getContext('2d');
@@ -118,15 +153,41 @@ dotCanvas.width = dotCanvas.height = 64;
 const dotTex = new THREE.CanvasTexture(dotCanvas);
 const DOT = 1.0;  // world units — points shrink as the structure grows   // constant SCREEN size at every level
 
-let level = 0, animating = false, spin = true;
-{ // ?level=N deep link (also used by automated render checks)
-  const q = parseInt(new URLSearchParams(location.search).get('level'));
+let level = 0, animating = false, spin = true, mode = 'orbit';
+let hilbertManifestCache = null, hilbertCache = null, datasetToken = 0;
+const query = new URLSearchParams(location.search);
+const initialView = query.get('walk');
+{
+  const q = parseInt(query.get('level'));
   if (!isNaN(q)) level = Math.max(0, Math.min(DATA.levels.length - 1, q));
 }
-const layers = { pts:null, line:null, skelPts:null, skelLine:null };
+const layers = { pts:null, anchors:null };
+function setSpin(enabled){
+  spin = enabled;
+  const button = document.getElementById('spin');
+  button.textContent = spin ? 'pause rotation' : 'rotate view';
+  button.setAttribute('aria-pressed', String(spin));
+}
+
+
+function setScenePresentation(nextMode){
+  const orbit = nextMode === 'orbit';
+  for (const id of ['play','step','lvls'])
+    document.getElementById(id).hidden = !orbit;
+  document.getElementById('menuPanel').hidden = nextMode !== 'menu';
+}
+function setDatasetButton(activeId){
+  for (const id of ['orbitRecord','hilbertRecord','hilbertMenu'])
+    document.getElementById(id).classList.toggle('cur', id === activeId);
+}
 
 function clearLayer(k){
-  if (layers[k]){ scene.remove(layers[k]); layers[k].geometry.dispose(); layers[k] = null; }
+  if (!layers[k]) return;
+  scene.remove(layers[k]);
+  layers[k].geometry.dispose();
+  const materials = Array.isArray(layers[k].material) ? layers[k].material : [layers[k].material];
+  for (const material of materials) material.dispose();
+  layers[k] = null;
 }
 function clearAll(){ for (const k in layers) clearLayer(k); }
 
@@ -144,18 +205,65 @@ function mkPoints(points, colorFor){
   return new THREE.Points(g, new THREE.PointsMaterial({vertexColors:true, size:DOT,
     sizeAttenuation:true, map:dotTex, alphaTest:0.5, transparent:true}));
 }
-function mkLine(points, color, dashed, scaleHint){
-  const pos = new Float32Array(points.length*3);
-  for (let i=0;i<points.length;i++) pos.set(points[i], i*3);
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
-  const mat = dashed
-    ? new THREE.LineDashedMaterial({color, transparent:true, opacity:0.7,
-        dashSize: scaleHint*0.02, gapSize: scaleHint*0.015})
-    : new THREE.LineBasicMaterial({color, transparent:true, opacity:0.55});
-  const l = new THREE.Line(g, mat);
-  if (dashed) l.computeLineDistances();
-  return l;
+
+function mkPackedPoints(positions, size){
+  const count = positions.length/3;
+  const colours = new Float32Array(positions.length);
+  const start = new THREE.Color(0x2dd4bf), finish = new THREE.Color(0xa78bfa);
+  for (let rank=0;rank<count;rank++){
+    const t = rank/(count-1);
+    colours[3*rank] = start.r + t*(finish.r-start.r);
+    colours[3*rank+1] = start.g + t*(finish.g-start.g);
+    colours[3*rank+2] = start.b + t*(finish.b-start.b);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colours,3));
+  return new THREE.Points(geometry, new THREE.PointsMaterial({
+    vertexColors:true, size, sizeAttenuation:false, map:dotTex,
+    alphaTest:0.2, transparent:true, opacity:0.75, depthWrite:false
+  }));
+}
+function mkMenuPoints(points, colorFor){
+  const positions = new Float32Array(points.length*3);
+  const colours = new Float32Array(points.length*3);
+  for (let index=0;index<points.length;index++){
+    positions.set(points[index], index*3);
+    const colour = colorFor(index);
+    colours.set([colour.r,colour.g,colour.b], index*3);
+  }
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions,3));
+  geometry.setAttribute('color', new THREE.BufferAttribute(colours,3));
+  return new THREE.Points(geometry, new THREE.PointsMaterial({
+    vertexColors:true, size:11, sizeAttenuation:false, map:dotTex,
+    alphaTest:0.5, transparent:true
+  }));
+}
+function menuColour(height, minimum, maximum){
+  const t = maximum === minimum ? 0 : (height-minimum)/(maximum-minimum);
+  return MENU_LOW.clone().lerp(MENU_HIGH,t);
+}
+function renderMenuList(menu, minimum, maximum){
+  const list = document.getElementById('menuVectors');
+  list.replaceChildren(...menu.map((vector,index) => {
+    const item = document.createElement('span');
+    item.className = 'menuvector';
+    const swatch = document.createElement('span');
+    swatch.className = 'sw';
+    swatch.style.background = '#' + menuColour(vector[2],minimum,maximum).getHexString();
+    const code = document.createElement('b');
+    code.textContent = `code ${index}`;
+    item.append(swatch,code,document.createTextNode(`(${vector.join(', ')})`));
+    return item;
+  }));
+}
+function boundsCorners(minimum, maximum){
+  const corners = [];
+  for (const x of [minimum[0], maximum[0]])
+    for (const y of [minimum[1], maximum[1]])
+      for (const z of [minimum[2], maximum[2]]) corners.push([x,y,z]);
+  return corners;
 }
 
 function bounds(points){
@@ -167,16 +275,15 @@ function bounds(points){
     r = Math.max(r, Math.hypot(p[0]-c[0], p[1]-c[1], p[2]-c[2]));
   return {c, r};
 }
-const SUN_V = new THREE.Vector3(-23481, 0, 0);
 function pose(points){
   const {c, r} = bounds(points);
   const d = r * 2.3;
   const ct = new THREE.Vector3(c[0], c[1], c[2]);
-  const away = ct.clone().sub(SUN_V).normalize();   // from Sun through walk
+  const away = new THREE.Vector3(1, 0.65, 1).normalize();
   const up = new THREE.Vector3(0, 1, 0);
   const side = new THREE.Vector3().crossVectors(away, up).normalize();
   const p = ct.clone()
-    .add(away.multiplyScalar(d * 0.9))              // stand behind walk, Sun beyond
+    .add(away.multiplyScalar(d * 0.9))
     .add(up.clone().multiplyScalar(d * 0.35))
     .add(side.multiplyScalar(d * 0.25));
   return {t: ct, p, r};
@@ -210,23 +317,183 @@ function anchorSetFor(k){
 }
 
 function spanText(points){
-  const {r} = bounds(points);
-  const km = r*2*6371;
-  if (km < 1e6) return Math.round(km/1000)*1000 + ' km';
-  if (km < 5e7) return (km/1e6).toFixed(1) + ' million km';
-  return (km/149.6e6).toFixed(2) + ' AU';
+  const minimum = [Infinity,Infinity,Infinity], maximum = [-Infinity,-Infinity,-Infinity];
+  for (const point of points)
+    for (let coordinate=0;coordinate<3;coordinate++){
+      minimum[coordinate] = Math.min(minimum[coordinate], point[coordinate]);
+      maximum[coordinate] = Math.max(maximum[coordinate], point[coordinate]);
+    }
+  return maximum.map((value,coordinate) =>
+    Math.round(value-minimum[coordinate]).toLocaleString()).join(' × ') + ' lattice units';
 }
 
+function setRecordStatus(text, state=''){
+  const status = document.getElementById('recordStatus');
+  status.textContent = text;
+  status.className = state;
+}
+function setLegend(first, firstColor, second, secondColor){
+  document.getElementById('legendA').innerHTML =
+    `<span class="sw" style="background:${firstColor}"></span>${first}`;
+  document.getElementById('legendB').innerHTML =
+    `<span class="sw" style="background:${secondColor}"></span>${second}`;
+}
 function show(k){
-  level = k; clearAll();
+  datasetToken += 1;
+  mode = 'orbit';
+  setScenePresentation(mode);
+  level = k;
+  clearAll();
   const pts = LV[k].points, aset = anchorSetFor(k);
   layers.pts = mkPoints(pts, i => (!aset || aset.has(i)) ? BLUE : GREEN);
-  layers.line = mkLine(pts, walkColor, false);
-  scene.add(layers.pts, layers.line);
+  scene.add(layers.pts);
   fit(pts);
   document.getElementById('lvl').textContent = `level ${k} — ${pts.length} points — spans ${spanText(pts)}`;
+  document.getElementById('status').textContent = '';
   document.getElementById('play').disabled = false;
-  document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===k));
+  document.getElementById('step').disabled = false;
+  document.querySelectorAll('#lvls button').forEach((button,index)=>{
+    button.disabled = false;
+    button.classList.toggle('cur', index===k);
+  });
+  setDatasetButton('orbitRecord');
+  setRecordStatus('Scale-and-rotate record: exact verification passed', 'passed');
+  setLegend(
+    'inherited walk vertices', '#3987e5',
+    'newly inserted walk vertices', '#1baf7a');
+}
+async function loadHilbertManifest(){
+  if (hilbertManifestCache) return hilbertManifestCache;
+  const response = await fetch('hilbert-193-400000-manifest.json?v=1');
+  if (!response.ok) throw new Error('Hilbert record manifest failed to load');
+  const manifest = await response.json();
+  if (!Array.isArray(manifest.menu) || manifest.menu.length !== manifest.menu_size ||
+      manifest.menu.some(vector => !Array.isArray(vector) || vector.length !== 3 ||
+        vector.some(value => !Number.isInteger(value))))
+    throw new Error('Hilbert menu is malformed');
+  hilbertManifestCache = manifest;
+  return manifest;
+}
+async function loadHilbertRecord(){
+  if (hilbertCache) return hilbertCache;
+  const [manifest, stepResponse] = await Promise.all([
+    loadHilbertManifest(),
+    fetch('hilbert-193-400000.steps.bin?v=1')
+  ]);
+  if (!stepResponse.ok) throw new Error('Hilbert record artifact failed to load');
+  const steps = new Uint8Array(await stepResponse.arrayBuffer());
+  if (steps.length !== manifest.step_count || manifest.vertex_count !== steps.length + 1)
+    throw new Error('Hilbert record size does not match its manifest');
+  const menu = manifest.menu;
+  const timeDisplayDivisor = 1024;
+  const positions = new Float32Array(manifest.vertex_count * 3);
+  const minimum = [Infinity,Infinity,Infinity], maximum = [-Infinity,-Infinity,-Infinity];
+  let [x,y,height] = manifest.first_vertex;
+  function put(rank){
+    const displayed = [x,height/timeDisplayDivisor,y];
+    positions.set(displayed, rank*3);
+    for (let coordinate=0;coordinate<3;coordinate++){
+      minimum[coordinate] = Math.min(minimum[coordinate], displayed[coordinate]);
+      maximum[coordinate] = Math.max(maximum[coordinate], displayed[coordinate]);
+    }
+  }
+  put(0);
+  for (let rank=1;rank<manifest.vertex_count;rank++){
+    const code = steps[rank-1];
+    if (code >= menu.length) throw new Error(`Hilbert menu code ${code} is out of range`);
+    x += menu[code][0]; y += menu[code][1]; height += menu[code][2];
+    put(rank);
+  }
+  if (x !== manifest.last_vertex[0] || y !== manifest.last_vertex[1] || height !== manifest.last_vertex[2])
+    throw new Error('Hilbert reconstructed endpoint does not match its manifest');
+  hilbertCache = {
+    manifest,
+    positions,
+    corners:boundsCorners(minimum,maximum),
+    timeDisplayDivisor
+  };
+  return hilbertCache;
+}
+async function loadHilbertStatus(){
+  try{
+    const response = await fetch(`hilbert-193-400000-status.json?t=${Date.now()}`);
+    return response.ok ? await response.json() : null;
+  }catch(_error){
+    return null;
+  }
+}
+async function showHilbert(){
+  const token = ++datasetToken;
+  mode = 'hilbert';
+  setSpin(false);
+  setScenePresentation(mode);
+  clearAll();
+  setDatasetButton('hilbertRecord');
+  document.querySelectorAll('#lvls button').forEach(button=>button.classList.remove('cur'));
+  document.getElementById('status').textContent = 'loading exact Hilbert witness…';
+  setRecordStatus('Hilbert record: loading witness and verification status', 'pending');
+  try{
+    const [record, verification] = await Promise.all([loadHilbertRecord(), loadHilbertStatus()]);
+    if (token !== datasetToken || mode !== 'hilbert') return;
+    layers.pts = mkPackedPoints(record.positions, 1.4);
+    scene.add(layers.pts);
+    fit(record.corners);
+    const manifest = record.manifest;
+    document.getElementById('lvl').textContent =
+      `${manifest.vertex_count.toLocaleString()} points · spatial 1:1 · time-height ÷${record.timeDisplayDivisor.toLocaleString()}`;
+    document.getElementById('status').textContent = '';
+    const state = verification && verification.status;
+    if (state === 'exhaustive-passed')
+      setRecordStatus('Hilbert: exact all-pairs audit passed', 'passed');
+    else if (state === 'exhaustive-running')
+      setRecordStatus(`Hilbert: structural pass · ${verification.workers}-worker exact audit running`, 'pending');
+    else if (state === 'exhaustive-interrupted')
+      setRecordStatus('Hilbert: structural pass · exact audit checkpointed', 'pending');
+    else
+      setRecordStatus('Hilbert: structural pass · exact audit pending', 'pending');
+    setLegend(
+      'earlier retained walk vertices', '#2dd4bf',
+      'later retained walk vertices — no edges rendered', '#a78bfa');
+  }catch(error){
+    if (token !== datasetToken) return;
+    document.getElementById('status').textContent = 'failed to load Hilbert record';
+    setRecordStatus(`Hilbert record unavailable: ${error.message}`, 'pending');
+  }
+}
+async function showHilbertMenu(){
+  const token = ++datasetToken;
+  mode = 'menu';
+  setSpin(true);
+  setScenePresentation(mode);
+  clearAll();
+  setDatasetButton('hilbertMenu');
+  document.querySelectorAll('#lvls button').forEach(button=>button.classList.remove('cur'));
+  document.getElementById('status').textContent = 'loading exact fixed menu…';
+  setRecordStatus('Hilbert fixed menu: loading witness manifest', 'pending');
+  try{
+    const manifest = await loadHilbertManifest();
+    if (token !== datasetToken || mode !== 'menu') return;
+    const menu = manifest.menu;
+    const heights = menu.map(vector => vector[2]);
+    const minimum = Math.min(...heights), maximum = Math.max(...heights);
+    const points = [[0,0,0], ...menu.map(([dx,dy,dt]) => [dx,dt,dy])];
+    layers.pts = mkMenuPoints(points, index =>
+      index === 0 ? ORIGIN : menuColour(menu[index-1][2],minimum,maximum));
+    scene.add(layers.pts);
+    fit(points);
+    renderMenuList(menu,minimum,maximum);
+    document.getElementById('lvl').textContent =
+      `${menu.length} menu endpoints · plot coordinates (Δx, Δt, Δy) · Δt vertical`;
+    document.getElementById('status').textContent = '';
+    setRecordStatus(`Hilbert fixed menu: ${menu.length} exact jump vectors from the witness manifest`);
+    setLegend(
+      'allowed vector endpoints — colour follows Δt', '#2dd4bf',
+      'grey origin reference — not a move', '#94a3b8');
+  }catch(error){
+    if (token !== datasetToken) return;
+    document.getElementById('status').textContent = 'failed to load Hilbert fixed menu';
+    setRecordStatus(`Hilbert menu unavailable: ${error.message}`, 'pending');
+  }
 }
 
 function tween(ms, fn){
@@ -241,73 +508,38 @@ function tween(ms, fn){
 }
 
 async function playRound(){
-  if (animating || level >= LV.length-1) return;
+  if (mode !== 'orbit' || animating || level >= LV.length-1) return;
   animating = true;
   const status = document.getElementById('status');
-  const M = DATA.M;
-  const A = LV[level].points;
-  const target = A.map(p => [
-    M[0][0]*p[0]+M[0][1]*p[1]+M[0][2]*p[2],
-    M[1][0]*p[0]+M[1][1]*p[1]+M[1][2]*p[2],
-    M[2][0]*p[0]+M[2][1]*p[1]+M[2][2]*p[2]]);
+  const current = LV[level].points;
+  const next = LV[level+1];
+  const points = next.points;
+  const inherited = anchorSetFor(level+1);
+  const anchors = points.filter((_point,index) => inherited.has(index));
 
-  // phase 1: morph the whole level (points + line) to enlarged positions
-  status.textContent = 'enlarging ×3 + twisting…';
+  status.textContent = 'showing inherited walk vertices…';
   clearAll();
-  layers.pts = mkPoints(A, () => BLUE);
-  layers.line = mkLine(A, skelColor, false);
-  scene.add(layers.pts, layers.line);
-  const camMove = fitSmooth(target.concat(A), 1700);
-  const pg = layers.pts.geometry.attributes.position;
-  const lg = layers.line.geometry.attributes.position;
-  await tween(1700, t => {
-    const e = t<0.5 ? 2*t*t : 1-((-2*t+2)**2)/2;
-    for (let i=0;i<A.length;i++)
-      for (let d=0; d<3; d++){
-        const v = A[i][d] + (target[i][d]-A[i][d])*e;
-        pg.array[i*3+d] = v; lg.array[i*3+d] = v;
-      }
-    pg.needsUpdate = true; lg.needsUpdate = true;
-  });
-  await camMove;
+  layers.anchors = mkPoints(anchors, () => BLUE);
+  scene.add(layers.anchors);
+  await fitSmooth(current.concat(anchors), 900);
 
-  // phase 2: solid line becomes the dashed SKELETON (kept visible throughout)
-  const {r} = bounds(target);
-  clearLayer('line');
-  layers.skelLine = mkLine(target, skelColor, true, r);
-  layers.skelPts = layers.pts; layers.pts = null;   // blue anchors persist
-  scene.add(layers.skelLine);
-
-  // phase 3: stitches drawn in along the skeleton, walk order
-  status.textContent = 'stitching along the skeleton…';
-  const B = LV[level+1], pts = B.points, aset = anchorSetFor(level+1);
-  const total = pts.length;
-  layers.pts = mkPoints(pts, i => aset.has(i) ? BLUE : GREEN);
-  layers.line = mkLine(pts, walkColor, false);
-  layers.pts.geometry.setDrawRange(0, 2);
-  layers.line.geometry.setDrawRange(0, 2);
-  scene.add(layers.pts, layers.line);
-  const stitchMs = 2400 + total/8;
-  await tween(stitchMs, t => {
-    const want = Math.max(2, Math.ceil(t*total));
-    layers.pts.geometry.setDrawRange(0, want);
-    layers.line.geometry.setDrawRange(0, want);
+  status.textContent = 'revealing exactly checked walk vertices…';
+  clearLayer('anchors');
+  layers.pts = mkPoints(points, index => inherited.has(index) ? BLUE : GREEN);
+  layers.pts.geometry.setDrawRange(0, 1);
+  scene.add(layers.pts);
+  const revealMs = 2400 + points.length/8;
+  await tween(revealMs, t => {
+    layers.pts.geometry.setDrawRange(0, Math.max(1, Math.ceil(t*points.length)));
   });
   layers.pts.geometry.setDrawRange(0, Infinity);
-  layers.line.geometry.setDrawRange(0, Infinity);
 
-  // settle: fade skeleton out, standard view of the new level
-  await tween(500, t => { layers.skelLine.material.opacity = 0.7*(1-t);
-                          if (layers.skelPts) layers.skelPts.material.opacity = 1-t; });
   level += 1;
-  clearAll();
-  const npts = LV[level].points, naset = anchorSetFor(level);
-  layers.pts = mkPoints(npts, i => (!naset || naset.has(i)) ? BLUE : GREEN);
-  layers.line = mkLine(npts, walkColor, false);
-  scene.add(layers.pts, layers.line);
-  document.getElementById('lvl').textContent = `level ${level} — ${npts.length} points — spans ${spanText(npts)}`;
-  document.querySelectorAll('#lvls button').forEach((b,i)=>b.classList.toggle('cur', i===level));
-  await fitSmooth(npts, 1000);
+  document.getElementById('lvl').textContent =
+    `level ${level} — ${points.length} points — spans ${spanText(points)}`;
+  document.querySelectorAll('#lvls button').forEach((button,index) =>
+    button.classList.toggle('cur', index===level));
+  await fitSmooth(points, 1000);
   status.textContent = '';
   animating = false;
 }
@@ -315,6 +547,7 @@ async function playRound(){
 let playing = false;
 async function playAll(){
   const btn = document.getElementById('play');
+  if (mode !== 'orbit') return;
   if (playing){ playing = false; btn.textContent = '▶ play';
     if (animating) document.getElementById('status').textContent = 'pausing after this round…';
     return; }
@@ -327,6 +560,15 @@ async function playAll(){
 }
 document.getElementById('play').onclick = playAll;
 document.getElementById('step').onclick = () => { if (!animating && !playing) playRound(); };
+document.getElementById('orbitRecord').onclick = () => {
+  if (!animating && !playing) show(level);
+};
+document.getElementById('hilbertRecord').onclick = () => {
+  if (!animating && !playing) showHilbert();
+};
+document.getElementById('hilbertMenu').onclick = () => {
+  if (!animating && !playing) showHilbertMenu();
+};
 document.getElementById('fs').onclick = () => {
   if (document.fullscreenElement) document.exitFullscreen();
   else stage.requestFullscreen();
@@ -341,112 +583,18 @@ document.addEventListener('fullscreenchange', () => setTimeout(resize, 60));
   }
 }
 
-document.getElementById('spin').onclick = () => spin = !spin;
+document.getElementById('spin').onclick = () => setSpin(!spin);
 
-{ // ——— the solar system, to scale: 1 grid unit = 1 Earth radius (6,371 km) ———
-  const KM = 1/6371;  // 1 grid unit = 1 Earth radius
-  const SUN = new THREE.Vector3(-23481, 0, 0);   // 1 AU = 23,481 Earth radii
-  function body(radiusKm, color, pos, emissive=false){
-    const m = new THREE.Mesh(
-      new THREE.SphereGeometry(radiusKm*KM, 48, 24),
-      new THREE.MeshBasicMaterial({color}));
-    m.position.copy(pos); scene.add(m); return m;
-  }
-  window.__labels = window.__labels || [];
-  function label(text, pos, w, hideBeyond){
-    const cv = document.createElement('canvas'); cv.width = 512; cv.height = 128;
-    const c = cv.getContext('2d');
-    c.font = '600 64px Outfit, sans-serif'; c.fillStyle = 'rgba(190,205,230,0.85)';
-    c.textAlign = 'center'; c.fillText(text, 256, 84);
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({
-      map: new THREE.CanvasTexture(cv), transparent: true, depthWrite: false}));
-    sp.position.copy(pos); sp.scale.set(w, w/4, 1); scene.add(sp);
-    sp.userData.hideBeyond = hideBeyond || Infinity;
-    window.__labels.push(sp);
-  }
-  const markTexCache = {};
-  function marker(pos, color, sc){
-    const key = color;
-    if (!markTexCache[key]){
-      const cv = document.createElement('canvas'); cv.width = cv.height = 64;
-      const c = cv.getContext('2d');
-      const g = c.createRadialGradient(32,32,2,32,32,30);
-      g.addColorStop(0, '#ffffff'); g.addColorStop(0.25, '#' + color.toString(16).padStart(6,'0'));
-      g.addColorStop(1, 'rgba(0,0,0,0)');
-      c.fillStyle = g; c.fillRect(0,0,64,64);
-      markTexCache[key] = new THREE.CanvasTexture(cv);
-    }
-    const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: markTexCache[key],
-      transparent: true, depthWrite: false, sizeAttenuation: false}));
-    sp.position.copy(pos); sp.scale.set(sc, sc, 1); scene.add(sp);
-  }
-  function orbit(rKm){
-    const pts = [];
-    for (let i = 0; i <= 256; i++){
-      const a = i/256 * Math.PI * 2;
-      pts.push(new THREE.Vector3(SUN.x + rKm*KM*Math.cos(a), 0, SUN.z + rKm*KM*Math.sin(a)));
-    }
-    const l = new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
-      new THREE.LineBasicMaterial({color: 0x4a5f85, transparent:true, opacity:0.85}));
-    scene.add(l);
-  }
-  // Earth at the walk's origin (surface touches the first footprint), Moon to scale
-  body(6371, 0x4d9de0, new THREE.Vector3(0, -1.2, 0));  // radius exactly 1 unit
-  marker(new THREE.Vector3(0, -1.2, 0), 0x4d9de0, 0.018);
-  label('Earth', new THREE.Vector3(0, 6.5, 0), 9, 16000);
-  body(1737, 0x9aa3ad, new THREE.Vector3(48, 8, -35));  // 60 Earth radii away
-  marker(new THREE.Vector3(48, 8, -35), 0x9aa3ad, 0.014);
-  label('Moon', new THREE.Vector3(48, 14, -35), 8, 2200);
-  // the Sun, 1 AU away, radius to scale
-  const sun = body(696340, 0xffd27a, SUN);
-  marker(SUN, 0xffc75e, 0.045);
-  label('Sun', new THREE.Vector3(SUN.x, 700, SUN.z), 2600);
-  // planets: true radii, true orbital distances (phases chosen for the view)
-  const P = [
-    ['Mercury', 2440, 57.9e6, 0.35, 0xb8a68f, 60],
-    ['Venus', 6052, 108.2e6, -0.26, 0xe8c78a, 90],
-    ['Mars', 3390, 227.9e6, 0.09, 0xd97b57, 120],
-    ['Jupiter', 69911, 778.5e6, -0.5, 0xd9b28a, 500],
-    ['Saturn', 58232, 1433.5e6, 0.8, 0xe3cf9e, 700],
-    ['Uranus', 25362, 2872.5e6, 2.2, 0x9fd4dd, 900],
-    ['Neptune', 24622, 4495.1e6, 3.6, 0x6f8fd9, 1100],
-  ];
-  for (const [name, rKm, orbKm, phase, color, lw] of P){
-    orbit(orbKm);
-    const pos = new THREE.Vector3(SUN.x + orbKm*KM*Math.cos(phase), 0, SUN.z + orbKm*KM*Math.sin(phase));
-    body(rKm, color, pos);
-    marker(pos, color, 0.02);
-    label(name, pos.clone().add(new THREE.Vector3(0, lw/3.2, 0)), lw);
-  }
-  orbit(149.6e6);  // Earth's own orbit ring, passing through the origin
-  // starfield: two layers — ambient depth, deliberately quieter than the walk
-  function stars(count, size, opacity, color){
-    const sp = new Float32Array(count*3);
-    for (let i = 0; i < count; i++){
-      const v = new THREE.Vector3().randomDirection().multiplyScalar(2.6e5 + Math.random()*1e5);
-      sp.set([v.x, v.y, v.z], i*3);
-    }
-    const sg = new THREE.BufferGeometry();
-    sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
-    scene.add(new THREE.Points(sg, new THREE.PointsMaterial({color,
-      size: size*devicePixelRatio, sizeAttenuation: false, transparent: true, opacity,
-      depthWrite: false})));
-  }
-  stars(1900, 1.15, 0.4, 0x8f9cb8);   // faint dust
-  stars(320, 1.9, 0.65, 0xb9c4da);    // a few brighter accents
-}
+setSpin(spin);
 controls.autoRotate = true; controls.autoRotateSpeed = 0.8;
-resize(); show(level);
+resize();
+if (initialView === 'menu') showHilbertMenu();
+else if (initialView === 'hilbert') showHilbert();
+else show(level);
 (function loop(){
   requestAnimationFrame(loop);
   controls.autoRotate = spin;
   controls.update();
-  if (window.__labels) for (const sp of window.__labels){
-    const d = camera.position.distanceTo(sp.position);
-    sp.visible = d < sp.userData.hideBeyond;
-    const w = d * 0.15;
-    sp.scale.set(w, w/4, 1);
-  }
   renderer.render(scene, camera);
 })();
 </script>

@@ -3,3 +3,4 @@ __pycache__/
 .checkpoint-*
 *.pkl
 g_sigma.bin
+.site-challenge-key
