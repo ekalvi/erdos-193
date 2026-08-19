@@ -2,9 +2,9 @@
 
 **Can an infinite walk on the integer grid, with steps from a fixed finite menu, avoid
 ever placing three of its points on a common straight line?**
-That is [Erdős Problem #193](https://www.erdosproblems.com/193) (Gerver–Ramsey, open
-since 1979). This repository is a computational attack on it: a construction that builds
-record walks, and a certificate programme working toward a proof that they can run forever.
+That is [Erdős Problem #193](https://www.erdosproblems.com/193), posed by
+Gerver and Ramsey and open since 1979. This repository now contains a
+kernel-checked unconditional construction; external mathematical review is pending.
 
 🌐 **Visual introduction:** [erdos-193.q5m.io](https://erdos-193.q5m.io) — the proof
 strategy in six diagrams, and an interactive demo with real coordinates.
@@ -13,6 +13,7 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 
 | Result | Status |
 |---|---|
+| **Terminal-steered Hilbert lift** | **unconditional affirmative construction, kernel-checked in Lean:** an infinite `P : ℕ → ℤ³`, a fixed finite step set, and no collinear ordered triple; axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`; 500,000-step prefix independently reconstructed with exactly 16 realized vectors |
 | **311,737-step walk, no 3 collinear** (124-move menu) | verified (parallel) + SHA-256 c8cc3728…, `gate2-193-L8.txt` (level 8, proof-orbit constructor) |
 | Affine laboratory `P_n=(W_n,W_{2n},W_{5n})` in ℤ⁹ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim and projection to ℤ³ both open |
 | Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | **refuted:** exact bad triple `(191649,191677,191685)` extends to the proved infinite family `i_(k+1)=2401i_k+74000`, offsets `(0,28,36)` |
