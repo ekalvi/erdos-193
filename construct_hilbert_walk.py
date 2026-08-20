@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 """Construct the terminal-steered Hilbert lift used by Hilbert193.Construction.
 
-The output contains one JSON object per vertex.  Generation is resumable through
-an append-only .part file and an atomic checkpoint.  On completion the .part
-file is atomically renamed to --output.
+The output contains one JSON object per vertex. Generation is resumable through
+an append-only .part file and an atomic checkpoint. On completion the .part
+file is atomically renamed to --output. Restarting from a completed checkpoint
+validates and reuses the final artifact without rewriting it.
 """
 from __future__ import annotations
 
@@ -85,6 +86,40 @@ def log(path: Path, text: str) -> None:
         f.flush()
 
 
+def sha256_file(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as artifact:
+        for chunk in iter(lambda: artifact.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def validate_completed_output(path: Path, meta: dict, expected_digest: str | None) -> str:
+    if not path.exists():
+        raise SystemExit("completed checkpoint exists but final artifact is missing")
+    digest = hashlib.sha256()
+    lines = 0
+    try:
+        with path.open("rb") as artifact:
+            for block, line in enumerate(artifact):
+                digest.update(line)
+                x, y, z = selected(block)
+                expected = {"i": block, "x": x, "y": y, "z": z}
+                if json.loads(line) != expected:
+                    raise SystemExit(f"final artifact mismatch at line {block + 1}")
+                lines = block + 1
+    except (json.JSONDecodeError, UnicodeDecodeError) as error:
+        raise SystemExit(f"invalid final artifact: {error}") from error
+    if lines != meta["vertices"]:
+        raise SystemExit(f"final artifact has {lines} lines; expected {meta['vertices']}")
+    actual_digest = digest.hexdigest()
+    if expected_digest is not None and actual_digest != expected_digest:
+        raise SystemExit(
+            f"final artifact digest {actual_digest} does not match checkpoint {expected_digest}"
+        )
+    return actual_digest
+
+
 def main() -> int:
     global STOP
     p = argparse.ArgumentParser(description=__doc__)
@@ -107,14 +142,47 @@ def main() -> int:
         state = json.loads(args.checkpoint.read_text())
         if state.get("metadata") != meta:
             raise SystemExit("checkpoint metadata mismatch; pass --fresh")
-        if not part.exists() and state["next"] != 0:
+        next_block = state.get("next")
+        if not isinstance(next_block, int) or not 0 <= next_block <= meta["vertices"]:
+            raise SystemExit("checkpoint has invalid next offset")
+        if state.get("complete"):
+            if part.exists():
+                raise SystemExit("completed checkpoint still has a partial artifact; pass --fresh")
+            if next_block != meta["vertices"]:
+                raise SystemExit("completed checkpoint has an incomplete next offset")
+            expected_digest = state.get("sha256")
+            if not isinstance(expected_digest, str):
+                raise SystemExit("completed checkpoint has no artifact digest")
+            digest = validate_completed_output(args.output, meta, expected_digest)
+            log(args.log, f"reuse validated output={args.output} sha256={digest}")
+            print(
+                f"REUSED {args.steps} steps; {args.steps+1} validated vertices; "
+                f"sha256={digest}"
+            )
+            return 0
+        if args.output.exists():
+            if next_block == meta["vertices"] and not part.exists():
+                digest = validate_completed_output(args.output, meta, None)
+                state.update({"complete": True, "sha256": digest, "recovered": True})
+                atomic_json(args.checkpoint, state)
+                log(args.log, f"recovered completed output={args.output} sha256={digest}")
+                print(
+                    f"RECOVERED {args.steps} steps; {args.steps+1} validated vertices; "
+                    f"sha256={digest}"
+                )
+                return 0
+            raise SystemExit("final artifact exists for an incomplete checkpoint; pass --fresh")
+        if not part.exists() and next_block != 0:
             raise SystemExit("checkpoint exists but partial artifact is missing")
-        with part.open("rb") as f:
-            lines = sum(1 for _ in f)
-        if lines != state["next"]:
-            raise SystemExit(f"partial artifact has {lines} lines; checkpoint expects {state['next']}")
-    elif part.exists():
-        raise SystemExit("partial artifact exists without checkpoint; pass --fresh")
+        if part.exists():
+            with part.open("rb") as artifact:
+                lines = sum(1 for _ in artifact)
+            if lines != next_block:
+                raise SystemExit(
+                    f"partial artifact has {lines} lines; checkpoint expects {next_block}"
+                )
+    elif part.exists() or args.output.exists():
+        raise SystemExit("artifact exists without checkpoint; pass --fresh")
 
     def stop(signum, _frame):
         global STOP
@@ -123,8 +191,12 @@ def main() -> int:
     signal.signal(signal.SIGINT, stop)
     signal.signal(signal.SIGTERM, stop)
 
+    resume_start = state["next"]
     start = time.monotonic()
-    log(args.log, f"start/resume metadata={meta} next={state['next']} chunk={args.chunk} workers=1")
+    log(
+        args.log,
+        f"start/resume metadata={meta} next={resume_start} chunk={args.chunk} workers=1",
+    )
     part.parent.mkdir(parents=True, exist_ok=True)
     with part.open("a", buffering=1024 * 1024) as out:
         while state["next"] <= args.steps:
@@ -137,13 +209,19 @@ def main() -> int:
             state["next"] = end
             atomic_json(args.checkpoint, state)
             elapsed = time.monotonic() - start
-            rate = (end / elapsed) if elapsed else 0.0
+            run_completed = end - resume_start
+            rate = (run_completed / elapsed) if elapsed else 0.0
             remaining = (args.steps + 1 - end) / rate if rate else 0.0
-            log(args.log, f"completed={end}/{args.steps+1} rate={rate:.0f}/s elapsed={elapsed:.2f}s eta={remaining:.2f}s checkpoint={args.checkpoint}")
+            log(
+                args.log,
+                f"completed={end}/{args.steps+1} run_completed={run_completed} "
+                f"rate={rate:.0f}/s elapsed={elapsed:.2f}s eta={remaining:.2f}s "
+                f"checkpoint={args.checkpoint}",
+            )
             if STOP:
                 return 130
     os.replace(part, args.output)
-    digest = hashlib.sha256(args.output.read_bytes()).hexdigest()
+    digest = sha256_file(args.output)
     elapsed = time.monotonic() - start
     state.update({"complete": True, "sha256": digest, "elapsed_seconds": elapsed})
     atomic_json(args.checkpoint, state)

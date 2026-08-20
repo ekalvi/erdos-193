@@ -1,0 +1,30 @@
+name: Lean proof
+
+on:
+  push:
+    paths:
+      - "formal/Hilbert193/**"
+      - ".github/workflows/lean.yml"
+  pull_request:
+    paths:
+      - "formal/Hilbert193/**"
+      - ".github/workflows/lean.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - name: Build formal proof
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/Hilbert193
+          auto-config: false
+          build: true
+      - name: Report theorem axioms
+        working-directory: formal/Hilbert193
+        run: lake env lean Hilbert193/AxiomAudit.lean
