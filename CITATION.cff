@@ -6,7 +6,7 @@ authors:
   - family-names: Kalviainen
     given-names: Erik
 repository-code: "https://github.com/ekalvi/erdos-193"
-url: "https://erdos.q5m.ai"
+url: "https://erdos-193.q5m.ai"
 version: 1.0.0
 date-released: 2026-08-19
 keywords:
@@ -22,4 +22,4 @@ preferred-citation:
     - family-names: Kalviainen
       given-names: Erik
   year: 2026
-  url: "https://erdos.q5m.ai/hilbert-proof.pdf"
+  url: "https://erdos-193.q5m.ai/hilbert-proof.pdf"

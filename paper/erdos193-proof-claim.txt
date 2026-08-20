@@ -4,7 +4,7 @@ Claim: The answer is no. There is a finite set S⊂Z^3 and an infinite S-walk wi
 
 Paper: A finite-step lattice walk in Z^3 with no three collinear vertices
 Author: Erik Kalviainen
-Public PDF after merge: https://erdos.q5m.ai/hilbert-proof.pdf
+Public PDF after merge: https://erdos-193.q5m.ai/hilbert-proof.pdf
 Source and Lean formalization: https://github.com/ekalvi/erdos-193
 Formal theorem: formal/Hilbert193/Hilbert193/Continuity.lean, theorem Hilbert193.erdos193_unconditional
 
