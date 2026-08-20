@@ -33,12 +33,13 @@
 <div class="formula">'Hilbert193.erdos193_unconditional' depends on axioms:<br><span class="accent">[propext, Classical.choice, Quot.sound]</span></div>
 <p>These are standard foundations used by Lean and Mathlib. The theorem uses no repository-specific axiom, no <code>sorry</code>, and no <code>native_decide</code> trust shortcut.</p>
 
-<h2>Independent finite replay</h2>
-<div class="grid-2">
-  <div class="card"><span class="num">ARTIFACT</span><strong>500,000 steps</strong><p><code>hilbert-193-500k.jsonl</code> contains 500,001 exact integer vertices.</p></div>
-  <div class="card"><span class="num">DIGEST</span><strong>6f8fdf59…143d63</strong><p>The verifier hashes the input, recomputes every coordinate, checks every step, and confirms all 16 observed vectors.</p></div>
+<h2>Independent finite checks</h2>
+<div class="grid-3">
+  <div class="card"><span class="num">ARTIFACT</span><strong>500,000 steps</strong><p><code>hilbert-193-500k.jsonl</code> contains 500,001 exact integer vertices with digest <code>6f8fdf59…143d63</code>.</p></div>
+  <div class="card"><span class="num">RECONSTRUCTION</span><strong>Every coordinate</strong><p>One verifier rebuilds the selector, coordinates, steps, and all 16 realized vectors without importing the constructor.</p></div>
+  <div class="card"><span class="num">EXHAUSTIVE SCAN</span><strong>125,000,250,000 pairs</strong><p>A second verifier checks every primitive direction from every vertex to its predecessors. None repeats, so no three recorded vertices are collinear.</p></div>
 </div>
-<p>The finite replay tests agreement between independent implementations. It is not used to discharge any all-index proposition in Lean.</p>
+<p>These finite checks validate the recorded example and independent implementations. They are not used to discharge any all-index proposition in Lean.</p>
 
 <h2>Review boundary</h2>
 <p>A machine-checked proof can still formalize the wrong statement. The remaining human review questions are therefore concrete:</p>

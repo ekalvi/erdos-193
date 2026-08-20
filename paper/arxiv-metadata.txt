@@ -1,7 +1,7 @@
 Title: A finite-step lattice walk in Z^3 with no three collinear vertices
 Authors: Erik Kalviainen
 Primary category: math.CO (Combinatorics)
-Comments: 7 pages, 2 tables. Includes a Lean 4 formalization and independent finite reconstruction code.
+Comments: 7 pages, 2 tables. Includes a Lean 4 formalization, independent finite reconstruction, and an exhaustive 500,000-step no-three-in-line check.
 Report number: None
 Journal reference: None
 DOI: None

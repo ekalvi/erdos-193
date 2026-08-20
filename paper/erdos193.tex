@@ -396,15 +396,25 @@ python3 verify_hilbert_construction.py hilbert-193-500k.jsonl \
   --steps 500000 --fresh
 \end{verbatim}
 It reconstructs $500{,}001$ vertices and checks the defining selector,
-coordinates, fixed-menu condition, and no-three-in-line condition for the
-recorded finite artifact.  The artifact SHA-256 is
+coordinates, and fixed-menu condition for the recorded finite artifact.  It
+does not enumerate triples.  A separate exact direction-hash scan is run by
+\begin{verbatim}
+clang++ -O3 -std=c++17 -pthread verify_hilbert_exhaustive.cpp \
+  -o verify_hilbert_exhaustive
+./verify_hilbert_exhaustive hilbert-193-500k.jsonl
+\end{verbatim}
+For each vertex, this scan reduces the vectors to all earlier vertices to
+canonical primitive integer directions.  A repeated direction is equivalent
+to a collinear triple.  The completed four-worker run checked all
+$125{,}000{,}250{,}000$ pairs in $6299.67$ seconds and found no repetition.
+The artifact SHA-256 is
 \begin{center}
 \texttt{6f8fdf59b7ecef5533b8a65265d80df9}\\
 \texttt{61f67a955dabaf9d5bb973d7ae143d63}.
 \end{center}
-Concatenating the two lines gives the digest.  These computations are implementation
-checks and finite evidence; the infinite theorem rests on the arguments above
-and their Lean formalization.
+Concatenating the two lines gives the digest.  These computations are
+implementation checks and finite evidence; the infinite theorem rests on the
+arguments above and their Lean formalization.
 
 The Lean predicate packages collinearity as the two integer cross-multiplication
 equalities forced by the strictly increasing third coordinate.  This is the

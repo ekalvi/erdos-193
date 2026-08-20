@@ -6,3 +6,6 @@ g_sigma.bin
 paper/*.aux
 paper/*.log
 paper/*.out
+verify_hilbert_exhaustive
+logs/hilbert-193-500k.exhaustive.ckpt
+logs/hilbert-193-500k.exhaustive.log

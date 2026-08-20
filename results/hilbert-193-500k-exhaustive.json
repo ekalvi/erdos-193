@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "verified",
+  "completed_utc": "2026-08-20T03:25:51Z",
+  "artifact": {
+    "path": "hilbert-193-500k.jsonl",
+    "sha256": "6f8fdf59b7ecef5533b8a65265d80df961f67a955dabaf9d5bb973d7ae143d63",
+    "vertices": 500001
+  },
+  "verification": {
+    "algorithm": "For each vertex k, hash the canonical primitive integer directions to every earlier vertex; a duplicate is equivalent to a collinear triple (i,j,k).",
+    "pairs_checked": 125000250000,
+    "workers": 4,
+    "no_repeated_vertex": true,
+    "no_three_collinear": true,
+    "elapsed_seconds": 6299.671402
+  },
+  "checker": {
+    "source": "verify_hilbert_exhaustive.cpp",
+    "source_sha256": "8d059940114f9fe11150623218f9431025e7e5d27e39353daca782b89ade89da",
+    "build": "clang++ -O3 -std=c++17 -pthread verify_hilbert_exhaustive.cpp -o verify_hilbert_exhaustive",
+    "command": "./verify_hilbert_exhaustive hilbert-193-500k.jsonl"
+  }
+}

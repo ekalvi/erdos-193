@@ -13,7 +13,7 @@ strategy in six diagrams, and an interactive demo with real coordinates.
 
 | Result | Status |
 |---|---|
-| **Terminal-steered Hilbert lift** | **unconditional counterexample construction, kernel-checked in Lean:** an infinite `P : ℕ → ℤ³`, a fixed finite step set, and no collinear ordered triple; axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`; 500,000-step prefix independently reconstructed with exactly 16 realized vectors |
+| **Terminal-steered Hilbert lift** | **unconditional counterexample construction, kernel-checked in Lean:** an infinite `P : ℕ → ℤ³`, a fixed finite step set, and no collinear ordered triple; axiom audit reports only `propext`, `Classical.choice`, and `Quot.sound`; 500,000-step prefix independently reconstructed and exhaustively checked across all 125,000,250,000 earlier-point directions, with exactly 16 realized vectors |
 | **311,737-step walk, no 3 collinear** (124-move menu) | verified (parallel) + SHA-256 c8cc3728…, `gate2-193-L8.txt` (level 8, proof-orbit constructor) |
 | Affine laboratory `P_n=(W_n,W_{2n},W_{5n})` in ℤ⁹ | finite menu ≤378 proved; exact exhaustive prefix of 30,001 vertices has no collinear triple; infinite claim and projection to ℤ³ both open |
 | Direct affine merge `R_n=W_n+9W_{2n}+81W_{5n}` in ℤ³ | **refuted:** exact bad triple `(191649,191677,191685)` extends to the proved infinite family `i_(k+1)=2401i_k+74000`, offsets `(0,28,36)` |
@@ -214,6 +214,7 @@ nice -n 15 python3 -B design/affine/c9_modular_gate.py --staged --mod243-depth 7
 | `design/WEAK-ABELIAN-LIFT.md` | Exact word lift, literature check, and the dimension-three projection obstruction |
 | `design/affine/` | Higher-dimensional affine laboratory, historical prefix/modular checks, and the proved infinite `C=9` counterexample family (`C9-INFINITE-COUNTEREXAMPLE.md`) |
 | `results/`, `collar_multiplicity4.json`, `wsw_sameword.pkl` | Data artifacts (large binaries are local-only, rebuildable) |
+| `verify_hilbert_construction.py`, `verify_hilbert_exhaustive.cpp` | Independent reconstruction plus resumable four-core exact no-three-in-line scan of the 500,000-step artifact (`results/hilbert-193-500k-exhaustive.json`) |
 | `paper/erdos193.tex` | arXiv-ready proof manuscript source |
 | `paper/arxiv-metadata.txt`, `paper/erdos193-proof-claim.txt` | reviewed submission copy for arXiv and erdosproblems.com |
 | `formal/Hilbert193/` | Lean 4 formalization, pinned dependencies, CI, and axiom audit |

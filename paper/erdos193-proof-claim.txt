@@ -14,7 +14,7 @@ Define a nested infinite discrete Hilbert path H:N→N^2. For two Hilbert indice
 Verification status:
 - The infinite construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
 - The axiom audit reports only propext, Classical.choice, and Quot.sound.
-- An independent 500,000-step reconstruction is included as finite implementation evidence; it is not a premise of the proof.
+- The 500,000-step artifact is independently reconstructed, then exhaustively checked for repeated primitive directions across all 125,000,250,000 earlier-point pairs; neither finite check is a premise of the proof.
 - External mathematical review is pending.
 
 Submission action after review:
