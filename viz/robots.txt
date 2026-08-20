@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://erdos.q5m.ai/sitemap.xml
+Sitemap: https://erdos-193.q5m.ai/sitemap.xml
