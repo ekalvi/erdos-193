@@ -1,110 +1,57 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
-<title>Proof status — erdos-193</title>
-<meta name="description" content="The current proof status for Erdős Problem #193 — exact finite certificates, refuted routes, and the universal lemma still open.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="site.css?v=6">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<style>
-  .banner{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;justify-content:space-between;
-    background:hsl(var(--card));border:1px solid hsl(var(--border));border-radius:12px;padding:12px 16px;margin:0 0 26px;font-size:13.5px}
-  .banner .lbl{color:hsl(var(--muted-fg))}
-  .banner a.src{color:hsl(var(--link));font-weight:600;white-space:nowrap}
-  .pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 10px;border-radius:999px;
-    background:hsl(217 91% 55%/.12);color:hsl(217 91% 42%);vertical-align:3px;margin-left:6px}
-  .doc{max-width:80ch;font-size:15.5px;line-height:1.62}
-  .doc h1{font-size:26px;margin:4px 0 14px}
-  .doc h2{font-size:20px;font-weight:600;margin:34px 0 8px;padding-bottom:6px;border-bottom:1px solid hsl(var(--border))}
-  .doc h3{font-size:16px;font-weight:600;margin:22px 0 6px}
-  .doc p{margin:11px 0}
-  .doc ul,.doc ol{margin:11px 0;padding-left:22px}
-  .doc li{margin:5px 0}
-  .doc strong{font-weight:600}
-  .doc code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.88em;background:hsl(var(--accent));padding:1px 5px;border-radius:5px}
-  .doc pre{background:hsl(var(--accent));padding:12px 14px;border-radius:8px;overflow-x:auto}
-  .doc pre code{background:none;padding:0}
-  .doc blockquote{margin:14px 0;padding:10px 18px;border-left:3px solid hsl(var(--link));background:hsl(217 91% 55%/.05);border-radius:0 8px 8px 0}
-  .doc blockquote p{margin:4px 0}
-  .doc table{width:100%;border-collapse:collapse;margin:16px 0;font-size:13.5px}
-  .doc th,.doc td{text-align:left;padding:8px 12px;border-bottom:1px solid hsl(var(--border));vertical-align:top}
-  .doc th{font-weight:600;color:hsl(var(--muted-fg));font-size:12px;text-transform:uppercase;letter-spacing:.03em}
-  .doc a{color:hsl(var(--link))}
-  .doc hr{border:0;border-top:1px solid hsl(var(--border));margin:28px 0}
-</style>
-</head>
-<body>
-<div class="wrap">
-  <header class="site"><div class="brand"><a href="/" style="color:inherit;text-decoration:none">erdos-193<span>.q5m.io</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html">Background</a><a href="theorem.html" class="cur">Proof status</a><a href="walk3d.html">3D</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.svg"><title>Formal proof ledger — Erdős Problem 193</title>
+<meta name="description" content="The Lean statement, proof dependency chain, axiom audit, and verification boundary for the Hilbert lift.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css?v=hilbert2"></head>
+<body><div class="wrap narrow">
+<header class="site"><div class="brand"><a href="index.html">erdos<span>.q5m.ai</span></a></div><nav class="site"><a href="index.html">Home</a><a href="proof-steps.html">The idea</a><a class="cur" href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<main class="article">
+<span class="eyebrow">Unconditional AI-assisted proof</span>
+<h1>What Lean checked</h1>
+<p class="lede">The repository contains a complete counterexample construction for <a href="https://www.erdosproblems.com/193">Erdős Problem 193</a>, giving a negative answer to its “must every walk?” question. Lean checked the infinite construction—not only the 500,000-step example. External mathematical review is still pending.</p>
+<div class="status-band"><span class="status-dot"></span><div><b>Why this matters</b><p>Ordinary testing can only check a finite number of robot steps. Lean checks the general argument for every future step and every possible group of three footprints. Its small trusted core rejects a proof if even one required logical step is missing.</p></div></div>
 
-  <h1 style="margin-bottom:8px">Proof status <span class="pill" id="pill">open gap</span></h1>
-  <p class="sub">The current referee-facing statement, rendered <b>live</b> from the repository.
-  The 311,738-point record remains exact finite evidence. The newest consecutive guarded
-  L5&rarr;L6 certificate checks 8,295 stitches, 28,804 points and 414,820,806 terminal pairs;
-  its exhaustive 756,512,535-choice census has exact floor 71 on that chronology. This is a
-  major finite gate, not induction. The document below separates such certificates from the
-  universal reachable-state birth/promotion lemma still needed for an infinite walk.</p>
+<h2>Exact theorem shape</h2>
+<div class="formula">∃ (S : Set Point3) (P : ℕ → Point3),<br>&nbsp; S.Finite ∧<br>&nbsp; (∀ n, displacement (P n) (P (n+1)) ∈ S) ∧<br>&nbsp; (∀ i&lt;j&lt;k, ¬ OrderedCollinear (P i) (P j) (P k))</div>
+<p><code>Point3</code> has three integer coordinates. Because the third coordinate of <code>P</code> is strictly increasing, the ordered formulation covers every triple of distinct vertices after sorting by index.</p>
 
-  <div class="banner">
-    <span class="lbl">Source: <code>CONDITIONAL-THEOREM.md</code> — pinned to deployed checkpoint <code>f9f6f1a</code></span>
-    <a class="src" id="ghlink" href="https://github.com/ekalvi/erdos-193/blob/main/CONDITIONAL-THEOREM.md">View &amp; verify on GitHub →</a>
-  </div>
-
-  <div class="doc" id="doc"><p class="mut">Loading the current theorem live from GitHub…</p></div>
-
-  <footer class="sitefoot">
-    <span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span>
-    <span class="right">
-      <a href="https://www.q5m.ai"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="1"/><path d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5Z"/><path d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5Z"/></svg><em>q5m</em></a>
-      <a href="https://github.com/ekalvi/erdos-193"><svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg><em>GitHub</em></a>
-    </span>
-  </footer>
+<h2>Dependency chain</h2>
+<div class="proof-list">
+  <div class="proof-item"><span class="check">A</span><div><strong>Transducer</strong><p><code>Transducer.lean</code> defines base-4 digits, square orientations, emitted coordinate bits, forward states, and exact inverse transitions.</p></div></div>
+  <div class="proof-item"><span class="check">B</span><div><strong>Valuation</strong><p><code>Valuation.lean</code> defines the planar pair valuation and proves its integer-scaling law.</p></div></div>
+  <div class="proof-item"><span class="check">C</span><div><strong>Pair law</strong><p><code>PairLaw.lean</code> proves the equal- and unequal-length terminal-state pair identities for arbitrary words.</p></div></div>
+  <div class="proof-item"><span class="check">D</span><div><strong>Infinite selector and no-three theorem</strong><p><code>Construction.lean</code> defines even padding, terminal steering, bounded index gaps, the selected lift, and the collinearity contradiction.</p></div></div>
+  <div class="proof-item"><span class="check">E</span><div><strong>Continuity and finite menu</strong><p><code>Continuity.lean</code> proves discrete Hilbert adjacency, coordinate-model equivalence, the universal planar bound, and finite-step membership.</p></div></div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
-<script>
-// Pin the rendered ledger to the same immutable checkpoint as this deployment. This avoids
-// branch-tip CDN races where GitHub Raw briefly serves the previous main-branch document.
-const STATUS_REF = 'f9f6f1a45f2b88b288094cd5b0f6477686f07372';
-const RAW = `https://raw.githubusercontent.com/ekalvi/erdos-193/${STATUS_REF}/CONDITIONAL-THEOREM.md`;
-const BLOB = `https://github.com/ekalvi/erdos-193/blob/${STATUS_REF}/CONDITIONAL-THEOREM.md`;
-document.getElementById('ghlink').href = BLOB;
+<h2>The fixed step set</h2>
+<p>The theorem uses the explicit finite superset</p>
+<div class="formula">S = { (dx,dy,dz) ∈ ℤ³ : −28≤dx,dy≤28 and 4≤dz≤28 }.</div>
+<p>The proof does not assume that this is the smallest menu. It is a simple finite box containing every consecutive displacement. The generated 500,000-step prefix realizes exactly 16 distinct vectors.</p>
 
-function renderDoc(md){
-  const parse = (window.marked && (marked.parse || marked)) || (x => x.replace(/</g,'&lt;'));
-  const doc = document.getElementById('doc');
-  doc.innerHTML = parse(md);
-  // the .md carries its own H1 title; hide it so it doesn't duplicate the page header,
-  // and flip the "conditional/unconditional" pill from the doc's own wording.
-  const h1 = doc.querySelector('h1');
-  if (h1){
-    if (/unconditional/i.test(h1.textContent)) document.getElementById('pill').textContent = 'unconditional';
-    h1.style.display = 'none';
-  }
-  if (window.renderMathInElement){
-    renderMathInElement(doc, {delimiters:[
-      {left:'$$',right:'$$',display:true},
-      {left:'$',right:'$',display:false},
-      {left:'\\(',right:'\\)',display:false},
-      {left:'\\[',right:'\\]',display:true}
-    ], throwOnError:false});
-  }
-}
+<h2>Axiom audit</h2>
+<div class="formula">'Hilbert193.erdos193_unconditional' depends on axioms:<br><span class="accent">[propext, Classical.choice, Quot.sound]</span></div>
+<p>These are standard foundations used by Lean and Mathlib. The theorem uses no repository-specific axiom, no <code>sorry</code>, and no <code>native_decide</code> trust shortcut.</p>
 
-fetch(RAW + '?t=' + Date.now(), {cache:'no-store'})
-  .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.text(); })
-  .then(renderDoc)
-  .catch(err => {
-    document.getElementById('doc').innerHTML =
-      '<p>Couldn’t load the live document (' + err + '). Read it directly on ' +
-      '<a href="' + BLOB + '">GitHub</a>.</p>';
-  });
-</script>
-</body>
-</html>
+<h2>Independent finite checks</h2>
+<div class="grid-3">
+  <div class="card"><span class="num">ARTIFACT</span><strong>500,000 steps</strong><p><code>hilbert-193-500k.jsonl</code> contains 500,001 exact integer vertices with digest <code>6f8fdf59…143d63</code>.</p></div>
+  <div class="card"><span class="num">RECONSTRUCTION</span><strong>Every coordinate</strong><p>One verifier rebuilds the selector, coordinates, steps, and all 16 realized vectors without importing the constructor.</p></div>
+  <div class="card"><span class="num">EXHAUSTIVE SCAN</span><strong>125,000,250,000 pairs</strong><p>A second verifier checks every primitive direction from every vertex to its predecessors. None repeats, so no three recorded vertices are collinear.</p></div>
+</div>
+<p>These finite checks validate the recorded example and independent implementations. They are not used to discharge any all-index proposition in Lean.</p>
+
+<h2>Review boundary</h2>
+<p>A machine-checked proof can still formalize the wrong statement. The remaining human review questions are therefore concrete:</p>
+<ol>
+  <li>Does <code>OrderedCollinear</code>, together with strictly increasing height, match ordinary collinearity for every triple of distinct vertices?</li>
+  <li>Does the nested-even transducer equal the intended standard discrete Hilbert indexing?</li>
+  <li>Does the finite-menu theorem exactly match the fixed-finite-step requirement in the Gerver–Ramsey problem?</li>
+  <li>Are the source definitions free of an accidental narrowed domain?</li>
+</ol>
+<p>The construction gives a negative answer to the original question, supported by the formal bridge lemmas and independent replay. External mathematical review is still pending.</p>
+
+<div class="actions"><a class="button primary" href="hilbert-proof.pdf">Proof PDF</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/paper/erdos193.tex">TeX source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean">Final theorem source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/AxiomAudit.lean">Axiom audit</a><a class="button" href="proof-steps.html">Plain-language idea</a></div>
+</main>
+<footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+</div></body></html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hilbert state colors — Problem #193</title>
+<meta name="description" content="Explore Hilbert base-4 addresses, terminal orientation states, bounded steering representatives, and the exact pair law.">
+<link rel="stylesheet" href="site.css?v=hilbert2">
+<style>
+  .controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0}
+  .controls button{font:inherit;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
+  .controls button.active{outline:2px solid var(--ink);outline-offset:2px}
+  .controls label{display:inline-flex;gap:7px;align-items:center;color:var(--muted);cursor:pointer}
+  .palette{display:grid;grid-template-columns:repeat(4,minmax(110px,1fr));gap:8px;margin:12px 0 18px}
+  .key{border:1px solid var(--line);border-radius:10px;padding:9px 10px;background:var(--surface);cursor:pointer;display:flex;align-items:center;gap:9px;text-align:left;color:var(--ink);font:inherit}
+  .key.active{outline:2px solid currentColor;outline-offset:2px}
+  .swatch{width:18px;height:18px;border-radius:5px;flex:0 0 auto;box-shadow:inset 0 0 0 1px #0003}
+  .swatch.route{display:grid;place-items:center;color:#fff;font-size:15px;font-weight:700;text-shadow:0 1px 2px #0008}
+  .key small{display:block;color:var(--muted);font-size:11px}
+  .layout{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:16px;align-items:start}
+  .stage{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;aspect-ratio:1}
+  canvas{display:block;width:100%;height:100%;cursor:crosshair}
+  .panel{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:14px;min-height:220px}
+  .panel h2{font-size:15px;margin:0 0 10px}
+  .panel dl{display:grid;grid-template-columns:auto 1fr;gap:6px 9px;margin:0;font-size:13px}
+  .panel dt{color:var(--muted)}.panel dd{margin:0;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+  .digits{display:flex;gap:4px;flex-wrap:wrap;margin-top:9px}
+  .digit{display:inline-grid;place-items:center;width:25px;height:25px;border-radius:6px;color:white;font-weight:700;text-shadow:0 1px 2px #0008}
+  .statrow{display:flex;gap:10px;flex-wrap:wrap;margin:12px 0}
+  .stat{min-width:116px;padding:9px 11px;background:var(--surface-2);border-radius:9px}.stat b{display:block;font-size:19px}.stat span{font-size:11px;color:var(--muted)}
+  .equation{padding:11px 13px;border-radius:9px;background:var(--surface-2);font-size:13px;margin-top:12px;line-height:1.55}
+  .ok{color:var(--green);font-weight:650}.muted{color:var(--muted)}.note{max-width:82ch;color:var(--muted);font-size:14px}
+  @media(max-width:760px){.layout{grid-template-columns:1fr}.palette{grid-template-columns:repeat(2,1fr)}.panel{min-height:0}}
+</style>
+</head>
+<body>
+<div class="wrap wide">
+<header class="site"><div class="brand"><a href="index.html">erdos<span>.q5m.ai</span></a></div><nav class="site"><a href="index.html">Home</a><a href="proof-steps.html">The idea</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html" class="cur">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+
+<span class="eyebrow">The robot’s landing rule</span><h1>Why the robot lands on only one color</h1>
+<p class="sub">A Hilbert curve is made from smaller copies of itself, each turned or flipped. A square’s color tells you the direction in which the path would cross that tiny copy: right, up, down, or left. The robot keeps only the blue, right-facing kind. White rings show one possible set of robot landings.</p>
+
+<h2>Every square has an address</h2>
+<div class="palette" id="digitPalette"></div>
+<p class="note">Imagine zooming into the big square again and again. At each zoom level, one of four address digits tells you which smaller square to enter. The colored address strip in the inspector records those choices.</p>
+
+<div class="controls">
+  <span class="muted">Order:</span>
+  <button data-order="2">2 · 4×4</button>
+  <button data-order="4" class="active">4 · 16×16</button>
+  <button data-order="6">6 · 64×64</button>
+  <label><input id="pathToggle" type="checkbox" checked> path</label>
+  <label><input id="repToggle" type="checkbox" checked> steering representatives</label>
+  <button id="clearPair">clear pair</button>
+</div>
+
+<h2>How a square gets its color</h2>
+<p class="note">Start with the whole Hilbert square facing right. Read a cell’s base-4 address from left to right. Each digit chooses one quarter of the current square; the Hilbert rule turns or flips the path inside that quarter. After the final digit, the path’s entry-to-exit direction sets the color. There is no score or guess involved: the same address always produces the same color.</p>
+<div class="palette" id="statePalette"></div>
+<div class="statrow" id="stats"></div>
+
+<div class="layout">
+  <div class="stage"><canvas id="canvas" width="900" height="900" aria-label="Hilbert grid colored by terminal orientation state"></canvas></div>
+  <aside class="panel" id="panel">
+    <h2>Point inspector</h2>
+    <p class="muted">Hover a cell for its index and base-4 address. Click two cells to compare their displacement.</p>
+  </aside>
+</div>
+
+<div class="equation">
+  <b>What to try.</b> Hover over the grid to see a square’s path number and address. Click one blue square, then another blue square. The panel compares them and checks the binary fingerprint used by the proof.
+  White rings mark the robot’s chosen blue stops. Following the Hilbert path, there are always only 4–28 ordinary squares between one ring and the next.
+</div>
+<p class="note" style="margin-top:16px"><b>Technical detail, if you want it:</b> for two squares with the same color, the first binary scale at which their floor positions differ exactly matches the power of two in the difference between their path numbers. The proof writes this as <code>V(H(n)−H(m)) = ν₂(n−m)</code>. That matching fingerprint is what ultimately prevents three robot landings from lining up.</p>
+
+<footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+</div>
+<script>
+const DIGIT_COLORS=['#0072B2','#E69F00','#009E73','#CC79A7'];
+const STATE_COLORS={I:'#56B4E9',S:'#E69F00',T:'#009E73',C:'#CC79A7'};
+const STATE_DESC={I:'left → right',S:'bottom → top',T:'top → bottom',C:'right → left'};
+const STATE_ARROW={I:'→',S:'↑',T:'↓',C:'←'};
+const STATE_COLOR_NAME={I:'blue',S:'orange',T:'green',C:'purple'};
+const CHILD=[[0,0],[0,1],[1,1],[1,0]];
+// State = [swap, xor-x, xor-y]. Only I,S,T,C are terminal-accessible, but all eight occur in the exact table.
+const STATES={I:[0,0,0],X:[0,1,0],Y:[0,0,1],C:[0,1,1],S:[1,0,0],R:[1,1,0],L:[1,0,1],T:[1,1,1]};
+const NAMES=Object.keys(STATES), INDEX=Object.fromEntries(NAMES.map((n,i)=>[n,i]));
+const REF=['S','I','I','T'];
+let order=4, focus=null, points=[], byCell=new Map(), picked=[], hover=null;
+const canvas=document.getElementById('canvas'), ctx=canvas.getContext('2d'), panel=document.getElementById('panel');
+
+function act(name,[x,y]){const [s,bx,by]=STATES[name];return [(s?y:x)^bx,(s?x:y)^by]}
+function compose(g,h){for(const k of NAMES){let ok=true;for(const p of CHILD){const a=act(k,p),b=act(g,act(h,p));if(a[0]!==b[0]||a[1]!==b[1])ok=false}if(ok)return k}throw Error('state closure')}
+function transduce(n,length=order){let state='I',x=0,y=0,address=[];for(let pos=length-1;pos>=0;pos--){const q=Math.floor(n/4**pos)%4;address.push(q);const [ox,oy]=act(state,CHILD[q]);x=2*x+ox;y=2*y+oy;state=compose(state,REF[q])}return {n,x,y,state,address}}
+function evenLength(n){let raw=1,p=4;while(n>=p){raw++;p*=4}return raw+(raw%2)}
+function terminal(n){return transduce(n,evenLength(n)).state}
+function representative(a){const suffix={I:5,S:1,T:13,C:3};return 16*a+suffix[terminal(a)]}
+function v2(n){if(n===0)return Infinity;n=Math.abs(n);let v=0;while(n%2===0){n/=2;v++}return v}
+function value(dx,dy){const vx=v2(dx),vy=v2(dy),p=Math.min(vx,vy);return 2*p+(vx===vy?1:0)}
+function base4(address){return address.join('')+'₄'}
+function digitStrip(address){return '<div class="digits">'+address.map(q=>`<span class="digit" style="background:${DIGIT_COLORS[q]}">${q}</span>`).join('')+'</div>'}
+
+function buildPalettes(){
+  document.getElementById('digitPalette').innerHTML=DIGIT_COLORS.map((c,q)=>`<div class="key"><span class="swatch" style="background:${c}"></span><div><b>digit ${q}</b><small>child ${q}</small></div></div>`).join('');
+  const holder=document.getElementById('statePalette');
+  holder.innerHTML=Object.keys(STATE_COLORS).map(s=>`<button class="key" data-state="${s}" style="color:${STATE_COLORS[s]}"><span class="swatch route" style="background:${STATE_COLORS[s]}">${STATE_ARROW[s]}</span><div><b>${STATE_COLOR_NAME[s]} · state ${s}</b><small>${STATE_DESC[s]}</small></div></button>`).join('');
+  holder.querySelectorAll('button').forEach(b=>b.onclick=()=>{focus=focus===b.dataset.state?null:b.dataset.state;render()});
+}
+function rebuild(){
+  points=[];byCell.clear();const total=4**order;
+  for(let n=0;n<total;n++){const p=transduce(n);points.push(p);byCell.set(p.x+','+p.y,p)}
+  picked=[];hover=null;render();
+}
+function render(){
+  const side=2**order, size=canvas.width, cell=size/side;
+  ctx.clearRect(0,0,size,size);ctx.fillStyle='#10141d';ctx.fillRect(0,0,size,size);
+  for(const p of points){ctx.globalAlpha=focus&&p.state!==focus?.17:1;ctx.fillStyle=STATE_COLORS[p.state];ctx.fillRect(p.x*cell,size-(p.y+1)*cell,Math.ceil(cell+.2),Math.ceil(cell+.2))}
+  ctx.globalAlpha=1;
+  if(document.getElementById('pathToggle').checked){ctx.beginPath();points.forEach((p,i)=>{const x=(p.x+.5)*cell,y=size-(p.y+.5)*cell;i?ctx.lineTo(x,y):ctx.moveTo(x,y)});ctx.strokeStyle=order===6?'#ffffff24':'#ffffff55';ctx.lineWidth=Math.max(1,cell*.08);ctx.stroke()}
+  if(document.getElementById('repToggle').checked){ctx.strokeStyle='#fff';ctx.lineWidth=Math.max(1.5,cell*.12);for(let a=0;;a++){const n=representative(a);if(n>=points.length)break;const p=points[n];ctx.beginPath();ctx.arc((p.x+.5)*cell,size-(p.y+.5)*cell,Math.max(2,cell*.31),0,Math.PI*2);ctx.stroke()}}
+  for(const [i,p] of picked.entries()){ctx.strokeStyle=i?'#ffdf6e':'#fff';ctx.lineWidth=Math.max(2,cell*.18);ctx.strokeRect(p.x*cell+1,size-(p.y+1)*cell+1,Math.max(2,cell-2),Math.max(2,cell-2))}
+  if(picked.length===2){ctx.beginPath();ctx.moveTo((picked[0].x+.5)*cell,size-(picked[0].y+.5)*cell);ctx.lineTo((picked[1].x+.5)*cell,size-(picked[1].y+.5)*cell);ctx.strokeStyle='#fff';ctx.lineWidth=2;ctx.stroke()}
+  document.querySelectorAll('#statePalette button').forEach(b=>b.classList.toggle('active',b.dataset.state===focus));
+  updateStats();updatePanel();
+}
+function updateStats(){const counts={I:0,S:0,T:0,C:0};points.forEach(p=>counts[p.state]++);const iPoints=points.filter(p=>p.state==='I');let maxGap=0;for(let i=1;i<iPoints.length;i++)maxGap=Math.max(maxGap,iPoints[i].n-iPoints[i-1].n);document.getElementById('stats').innerHTML=`<div class="stat"><b>${points.length.toLocaleString()}</b><span>Hilbert points</span></div><div class="stat"><b>${counts.I.toLocaleString()}</b><span>blue state-I points</span></div><div class="stat"><b>${maxGap}</b><span>largest internal I gap</span></div><div class="stat"><b>${order}</b><span>base-4 address digits</span></div>`}
+function pointDetails(p,title='Point'){return `<h2>${title}</h2><dl><dt>index</dt><dd>${p.n}</dd><dt>address</dt><dd>${base4(p.address)}</dd><dt>position</dt><dd>(${p.x}, ${p.y})</dd><dt>color</dt><dd><span style="color:${STATE_COLORS[p.state]};font-weight:700">${STATE_COLOR_NAME[p.state]} ${STATE_ARROW[p.state]}</span></dd></dl><div class="equation">Why this color: reading address <b>${base4(p.address)}</b> chooses nested quarters and turns the local Hilbert path. Its final direction is <b>${STATE_DESC[p.state]}</b>, which is state ${p.state}.</div>${digitStrip(p.address)}`}
+function updatePanel(){
+  if(picked.length===2){const [a,b]=picked[0].n<picked[1].n?picked:[picked[1],picked[0]],dx=b.x-a.x,dy=b.y-a.y,gap=b.n-a.n,same=a.state===b.state,V=value(dx,dy),vg=v2(gap);panel.innerHTML=`<h2>Pair inspector</h2><dl><dt>indices</dt><dd>${a.n} → ${b.n}</dd><dt>states</dt><dd><span style="color:${STATE_COLORS[a.state]}">${a.state}</span> → <span style="color:${STATE_COLORS[b.state]}">${b.state}</span></dd><dt>displacement</dt><dd>(${dx}, ${dy})</dd><dt>index gap</dt><dd>${gap}</dd><dt>V(displacement)</dt><dd>${V}</dd><dt>ν₂(gap)</dt><dd>${vg}</dd></dl><div class="equation">${same&&V===vg?'<span class="ok">Exact match.</span> Same terminal color, so the pair law applies.':same?'Mismatch — implementation error.':'Different colors: the same-state pair law makes no claim.'}</div>`;return}
+  const p=picked[0]||hover;if(p){panel.innerHTML=pointDetails(p,picked.length?'Selected point':'Hovered point');return}
+  panel.innerHTML='<h2>Point inspector</h2><p class="muted">Hover a cell for its index and base-4 address. Click two cells to compare their displacement.</p>';
+}
+function eventPoint(e){const r=canvas.getBoundingClientRect(),side=2**order,x=Math.max(0,Math.min(side-1,Math.floor((e.clientX-r.left)/r.width*side))),y=Math.max(0,Math.min(side-1,side-1-Math.floor((e.clientY-r.top)/r.height*side)));return byCell.get(x+','+y)}
+canvas.onmousemove=e=>{hover=eventPoint(e);updatePanel()};canvas.onmouseleave=()=>{hover=null;updatePanel()};canvas.onclick=e=>{const p=eventPoint(e);if(!p)return;if(picked.length===2)picked=[];picked.push(p);render()};
+document.querySelectorAll('[data-order]').forEach(b=>b.onclick=()=>{order=Number(b.dataset.order);document.querySelectorAll('[data-order]').forEach(x=>x.classList.toggle('active',x===b));rebuild()});
+document.getElementById('pathToggle').onchange=render;document.getElementById('repToggle').onchange=render;document.getElementById('clearPair').onclick=()=>{picked=[];render()};
+buildPalettes();rebuild();
+</script>
+</body>
+</html>
