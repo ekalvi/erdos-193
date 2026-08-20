@@ -1,0 +1,466 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage[margin=1in]{geometry}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Ftwo}{\mathbb F_2}
+\newcommand{\vTwo}{\nu_2}
+\newcommand{\abs}[1]{\lvert#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\bits}{\{0,1\}^2}
+
+\title{A finite-step lattice walk in $\Z^3$ with no three collinear vertices}
+\author{Erik Kalviainen}
+\date{August 19, 2026}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give an explicit negative answer to Erd\H{o}s Problem~193.  We define a nested
+infinite discrete Hilbert path $H\colon\N\to\N^2$, select one terminal-steered
+index from every block of sixteen indices, and lift each selected point by its
+index.  The resulting sequence in $\Z^3$ has successive steps in one fixed
+finite set and has no three collinear vertices.  The obstruction to
+collinearity is a two-adic pair invariant: for indices with the same terminal
+orientation, a valuation of the planar chord equals the ordinary two-adic
+valuation of the index gap.  Applying this identity to the two adjacent chords
+and their sum rules out a collinear triple.  The complete construction has
+also been formalized in Lean~4 against Mathlib; the formal theorem uses no
+additional axioms.
+\end{abstract}
+
+\section{Introduction}
+
+Let $S\subseteq\Z^3$ be finite.  An infinite $S$-walk is a sequence
+$(P_a)_{a\geq 0}$ in $\Z^3$ such that $P_{a+1}-P_a\in S$ for every $a$.
+Erd\H{o}s Problem~193 asks whether every such walk must contain three
+collinear points \cite{Bloom193,GerverRamsey1979}.  Gerver and Ramsey proved
+the corresponding assertion in dimension two and proved a bounded-collinearity
+result in dimension three \cite{GerverRamsey1979}.
+
+Our answer to the stated three-dimensional question is negative.
+
+\begin{theorem}[Main theorem]\label{thm:main}
+There are a finite set $S\subseteq\Z^3$ and an infinite sequence
+$P\colon\N\to\Z^3$ such that
+\[
+  P_{a+1}-P_a\in S\qquad(a\in\N),
+\]
+and no three distinct terms of $P$ are collinear.
+\end{theorem}
+
+The construction uses the discrete Hilbert path, but the space-filling
+property is not the decisive ingredient.  What matters is the finite-state
+recursion at the least significant base-$4$ digit.  A terminal orientation
+state supplies a pairwise two-adic invariant.  A two-digit steering rule then
+selects a syndetic subsequence on which that invariant applies to every pair.
+Lifting the planar path by its Hilbert index turns collinearity into a scaling
+relation between two planar chords; the pair invariant makes that relation
+impossible.
+
+Section~\ref{sec:hilbert} fixes the infinite Hilbert indexing.  Section~\ref{sec:pair}
+proves the pair law.  Section~\ref{sec:triple} excludes triples, and
+Section~\ref{sec:steer} gives the bounded-gap selector and finite step menu.
+Section~\ref{sec:formal} records the formal and computational verification.
+
+\section{A nested discrete Hilbert path}\label{sec:hilbert}
+
+\subsection{The finite-state transducer}
+
+Write a square symmetry as a map on $\bits$.  We use the eight symmetries
+\[
+\begin{array}{c|c@{\qquad}c|c}
+ I&(x,y)&X&(1-x,y)\\
+ Y&(x,1-y)&C&(1-x,1-y)\\
+ S&(y,x)&R&(1-y,x)\\
+ L&(y,1-x)&T&(1-y,1-x).
+\end{array}
+\]
+Let
+\[
+ c_0=(0,0),\quad c_1=(0,1),\quad c_2=(1,1),\quad c_3=(1,0)
+\]
+be the four child positions in traversal order, and set
+\[
+ r_0=S,\qquad r_1=I,\qquad r_2=I,\qquad r_3=T.
+\]
+When the incoming state is $g$ and the next digit is $q\in\{0,1,2,3\}$,
+the transducer emits $g(c_q)$ and changes state to $g\circ r_q$.
+The complete table, with entries ``emitted bits / next state'', is
+\begin{center}
+\small
+\begin{tabular}{c@{\quad}cccc}
+\toprule
+state & $0$ & $1$ & $2$ & $3$\\
+\midrule
+$I$ & $00/S$ & $01/I$ & $11/I$ & $10/T$\\
+$X$ & $10/R$ & $11/X$ & $01/X$ & $00/L$\\
+$Y$ & $01/L$ & $00/Y$ & $10/Y$ & $11/R$\\
+$C$ & $11/T$ & $10/C$ & $00/C$ & $01/S$\\
+$S$ & $00/I$ & $10/S$ & $11/S$ & $01/C$\\
+$R$ & $10/X$ & $00/R$ & $01/R$ & $11/Y$\\
+$L$ & $01/Y$ & $11/L$ & $10/L$ & $00/X$\\
+$T$ & $11/C$ & $01/T$ & $00/T$ & $10/I$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+For a length-$\ell$ base-$4$ word
+$w=q_{\ell-1}\cdots q_1q_0$, read from most significant to least significant,
+starting in state $I$.  If the emitted pairs, indexed by their binary place,
+are $(x_j,y_j)$ for $0\leq j<\ell$, define
+\begin{equation}\label{eq:Hilbert-finite}
+ H_\ell(w)=
+ \left(\sum_{j=0}^{\ell-1}x_j2^j,\;
+       \sum_{j=0}^{\ell-1}y_j2^j\right).
+\end{equation}
+Thus order one traverses
+$(0,0),(0,1),(1,1),(1,0)$.  The recursion above is the standard discrete
+Hilbert recursion \cite{Hilbert1891,Sagan1994}.
+
+\begin{lemma}[Finite-order Hilbert properties]\label{lem:finite-hilbert}
+For every $\ell\geq 0$, the map from length-$\ell$ base-$4$ words to
+$\{0,\ldots,2^\ell-1\}^2$ given by \eqref{eq:Hilbert-finite} is a bijection.
+Words representing consecutive integers map to lattice neighbors.
+Furthermore, prepending two zero digits does not change the represented point.
+\end{lemma}
+
+\begin{proof}
+The first two assertions follow by induction on $\ell$.  At the inductive
+step the four first digits place rotated or reflected copies of the
+order-$\ell$ path in the four quadrants.  The endpoint identities for
+$r_0=S,r_1=r_2=I,r_3=T$ show that consecutive copies meet along one lattice
+edge.  These are exactly the four cases in the displayed transition table.
+For the last assertion, the first zero emits $00$ and changes $I$ to $S$;
+the second emits $00$ and changes $S$ back to $I$.  The remaining word is
+therefore evaluated in its original state and at its original binary places.
+\end{proof}
+
+For $n\in\N$, write $n$ in base $4$ and prepend zero digits to any sufficiently
+large even length.  Lemma~\ref{lem:finite-hilbert} makes the following
+definition independent of that length.
+
+\begin{definition}\label{def:H}
+The nested discrete Hilbert path $H\colon\N\to\N^2$ is the finite-order point
+of the even-padded base-$4$ word for $n$.
+\end{definition}
+
+The map $H$ is injective, and
+\begin{equation}\label{eq:unit-step}
+  \norm{H(n+1)-H(n)}_1=1\qquad(n\in\N).
+\end{equation}
+
+\subsection{Terminal states}
+
+Only digits $0$ and $3$ alter the orientation state.  The two transformations
+$S$ and $T$ are commuting involutions and $ST=C$.  Hence the reachable
+terminal states form the Klein four-group
+\[
+ K=\{I,S,T,C\}\cong\Ftwo^2.
+\]
+For a finite word $w$, let $N_0(w)$ and $N_3(w)$ count its zero and three
+digits.  Its terminal state is
+\begin{equation}\label{eq:sigma-word}
+ \sigma(w)=S^{N_0(w)\bmod 2}T^{N_3(w)\bmod 2}.
+\end{equation}
+Two leading zero digits preserve this state, so even padding defines
+$\sigma(n)\in K$ for every $n\in\N$.
+
+For later use, observe that every fixed-digit transition $g\mapsto g\circ r_q$
+is invertible.  More strongly, knowing the outgoing state $h$ and digit $q$
+recovers the incoming state as $h\circ r_q$, since every $r_q$ is an
+involution.  The emitted bit pair can then be recovered as
+\begin{equation}\label{eq:backward-emission}
+ (h\circ r_q)(c_q)=h(c_q),
+\end{equation}
+because $r_q$ fixes its child corner $c_q$.  This backward-emission identity
+is the mechanism behind the pair law.
+
+\section{The two-adic pair law}\label{sec:pair}
+
+Put $\vTwo(0)=\infty$.  For a nonzero vector $u=(u_x,u_y)\in\Z^2$, define
+\begin{align}
+ p(u)&=\min\{\vTwo(u_x),\vTwo(u_y)\},\\
+ \epsilon(u)&=
+ \begin{cases}
+ 1,&\vTwo(u_x)=\vTwo(u_y),\\
+ 0,&\vTwo(u_x)\neq\vTwo(u_y),
+ \end{cases}\\
+ V(u)&=2p(u)+\epsilon(u).\label{eq:V}
+\end{align}
+
+\begin{lemma}[Scaling]\label{lem:scaling}
+For $u\neq 0$ and every positive integer $k$,
+\[
+ V(ku)=V(u)+2\vTwo(k).
+\]
+\end{lemma}
+
+\begin{proof}
+Multiplication by $k$ adds $\vTwo(k)$ to each finite coordinate valuation.
+It therefore adds $\vTwo(k)$ to $p(u)$ and leaves the equality bit
+$\epsilon(u)$ unchanged.
+\end{proof}
+
+\begin{lemma}[First mismatch]\label{lem:mismatch}
+Let two even-padded base-$4$ words have the same terminal state, and let $j$
+be their first differing digit position counted from the low end.  Their
+Hilbert coordinates agree below binary place $j$.  At place $j$, exactly one
+coordinate bit differs when the two base-$4$ digits have odd difference, and
+both coordinate bits differ when their difference is $2$ modulo $4$.
+\end{lemma}
+
+\begin{proof}
+The words agree below position $j$.  Starting from their equal terminal
+states, invert the common low suffix.  The outgoing state immediately after
+position $j$ is therefore one common state $h$.  Formula
+\eqref{eq:backward-emission} says that the two bits emitted at the mismatch
+are $h(c_d)$ and $h(c_e)$, where $d\neq e$ are the two digits.  The four child
+corners form a cyclic Gray code: $c_d$ and $c_e$ differ in exactly one
+coordinate when $d-e$ is odd, and in both coordinates when
+$d-e\equiv 2\pmod 4$.  Every square symmetry preserves these two alternatives.
+The common lower suffix begins in the same state and reads the same digits,
+so all lower emitted bits agree.
+\end{proof}
+
+\begin{theorem}[Same-terminal-state pair law]\label{thm:pair-law}
+If $m\neq n$ and $\sigma(m)=\sigma(n)$, then
+\begin{equation}\label{eq:pair-law}
+ V\bigl(H(n)-H(m)\bigr)=\vTwo(n-m),
+\end{equation}
+where the right side means $\vTwo(\abs{n-m})$ if $m>n$.
+\end{theorem}
+
+\begin{proof}
+By symmetry assume $m<n$.  Pad both base-$4$ words to one common even length,
+and let $j$ be their first differing position from the low end.  Write their
+digits there as $a_j$ and $b_j$.  Then
+\[
+ n-m=4^jK,\qquad K\equiv b_j-a_j\pmod 4.
+\]
+If $b_j-a_j$ is odd, then $\vTwo(n-m)=2j$.  By
+Lemma~\ref{lem:mismatch}, exactly one coordinate of $H(n)-H(m)$ has its first
+nonzero binary digit at position $j$; the other has larger valuation.  Higher
+binary places contribute multiples of $2^{j+1}$ and cannot alter this fact.
+Thus $p=j$, $\epsilon=0$, and $V=2j$.
+
+If $b_j-a_j\equiv2\pmod4$, then $\vTwo(n-m)=2j+1$.
+Both coordinate differences have their first nonzero binary digit at position
+$j$, so $p=j$, $\epsilon=1$, and $V=2j+1$.  These cases exhaust unequal
+base-$4$ digits.
+\end{proof}
+
+\section{Excluding collinear triples}\label{sec:triple}
+
+\begin{theorem}[A terminal class is triple-free]\label{thm:terminal-class}
+Fix $s\in K$.  The lifted set
+\[
+ \mathcal L_s=\{(H(n),n)\in\Z^3:\sigma(n)=s\}
+\]
+contains no three collinear points.
+\end{theorem}
+
+\begin{proof}
+Suppose for contradiction that $a<b<c$ have terminal state $s$ and that their
+lifts are collinear.  Set
+\[
+ A=b-a,\quad B=c-b,\quad X=H(b)-H(a),\quad Y=H(c)-H(b).
+\]
+Equality of the lifted chord slopes gives
+\begin{equation}\label{eq:scaled-chords}
+ BX=AY.
+\end{equation}
+Write $A=gr$, $B=gs$, where $g=\gcd(A,B)$ and $\gcd(r,s)=1$.
+Equation~\eqref{eq:scaled-chords} and coprimality imply that there is a nonzero
+$W\in\Z^2$ with
+\[
+ X=rW,\qquad Y=sW.
+\]
+Let $\gamma=\vTwo(g)$, $\alpha=\vTwo(r)$, and $\beta=\vTwo(s)$.
+Theorem~\ref{thm:pair-law} and Lemma~\ref{lem:scaling}, first for $(a,b)$ and
+then for $(b,c)$, give
+\begin{align*}
+ \gamma+\alpha&=V(X)=V(W)+2\alpha,\\
+ \gamma+\beta&=V(Y)=V(W)+2\beta.
+\end{align*}
+Hence $\alpha=\beta$.  Since $r$ and $s$ are coprime, both valuations are zero,
+and consequently $V(W)=\gamma$.
+
+Now use the endpoint pair $(a,c)$.  Its planar chord is
+$X+Y=(r+s)W$ and its index gap is $g(r+s)$.  With
+$\delta=\vTwo(r+s)$, the pair law and scaling law yield
+\[
+ \gamma+\delta=V((r+s)W)=V(W)+2\delta=\gamma+2\delta.
+\]
+Thus $\delta=0$.  But $r$ and $s$ are both odd, so $r+s$ is even and
+$\delta\geq1$, a contradiction.
+\end{proof}
+
+The use of all three pair laws---for gaps $A$, $B$, and $A+B$---is essential.
+A pairwise direction restriction alone would not rule out every triple.
+
+\section{A bounded-gap selector and the walk}\label{sec:steer}
+
+For a block index $a\geq0$, choose a correction $\rho(\sigma(a))$ by
+\[
+\begin{array}{c|cccc}
+\toprule
+q&I&S&T&C\\
+\midrule
+\rho(q)&5=11_4&1=01_4&13=31_4&3=03_4\\
+\bottomrule
+\end{array}
+\]
+and define
+\begin{equation}\label{eq:selected-index}
+ n_a=16a+\rho(\sigma(a)).
+\end{equation}
+The two low base-$4$ digits of $n_a$ have terminal contribution
+$\sigma(a)^{-1}=\sigma(a)$, so
+\begin{equation}\label{eq:selected-state}
+ \sigma(n_a)=I.
+\end{equation}
+Moreover, $\rho$ takes values in $\{1,3,5,13\}$, and therefore
+\begin{equation}\label{eq:gaps}
+ 4\leq n_{a+1}-n_a\leq28.
+\end{equation}
+
+Define
+\begin{equation}\label{eq:walk}
+ P_a=(H(n_a),n_a)\in\Z^3.
+\end{equation}
+By Theorem~\ref{thm:terminal-class}, no three distinct $P_a$ are collinear.
+By the unit-step property \eqref{eq:unit-step} and the triangle inequality,
+\[
+ \norm{H(n_{a+1})-H(n_a)}_1\leq n_{a+1}-n_a\leq28.
+\]
+Thus every successive displacement belongs to the fixed finite set
+\begin{equation}\label{eq:menu}
+ S=\{(d_x,d_y,d_z)\in\Z^3:
+       \abs{d_x}+\abs{d_y}\leq28,\ 4\leq d_z\leq28\}.
+\end{equation}
+The $z$-coordinate is strictly increasing, so the sequence is infinite and
+has no repeated vertices.  Equations \eqref{eq:walk} and \eqref{eq:menu}
+prove Theorem~\ref{thm:main}.
+
+\begin{remark}
+The displayed set $S$ is a convenient finite superset of the realized step
+vectors, not a minimal menu.  The independently reconstructed first
+$500{,}000$ steps realize $16$ distinct vectors.
+\end{remark}
+
+\section{Formalization and reproducibility}\label{sec:formal}
+
+The repository \cite{Repository} contains a Lean~4 formalization in
+\path{formal/Hilbert193}.  It uses Lean~4.33.0 and the corresponding pinned
+Mathlib revision.  The final theorem is
+\path{Hilbert193.erdos193_unconditional} in
+\path{Hilbert193/Continuity.lean}.  It constructs:
+\begin{enumerate}[nosep]
+\item a finite set of integer three-dimensional step vectors;
+\item an explicit sequence $\N\to\Z^3$ whose successive displacements lie in
+      that set; and
+\item a proof that every ordered triple of distinct indices fails the exact
+      integer collinearity equations.
+\end{enumerate}
+The axiom audit in \texttt{Hilbert193/AxiomAudit.lean} reports only
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, the
+standard axioms used by Mathlib.  No theorem in the construction depends on a
+finite computation.
+
+From the repository root, the formal proof is checked by
+\begin{verbatim}
+cd formal/Hilbert193
+lake build
+lake env lean Hilbert193/AxiomAudit.lean
+\end{verbatim}
+The independent finite reconstruction is checked by
+\begin{verbatim}
+python3 verify_hilbert_construction.py hilbert-193-500k.jsonl \
+  --steps 500000 --fresh
+\end{verbatim}
+It reconstructs $500{,}001$ vertices and checks the defining selector,
+coordinates, fixed-menu condition, and no-three-in-line condition for the
+recorded finite artifact.  The artifact SHA-256 is
+\begin{center}
+\texttt{6f8fdf59b7ecef5533b8a65265d80df9}\\
+\texttt{61f67a955dabaf9d5bb973d7ae143d63}.
+\end{center}
+Concatenating the two lines gives the digest.  These computations are implementation
+checks and finite evidence; the infinite theorem rests on the arguments above
+and their Lean formalization.
+
+The Lean predicate packages collinearity as the two integer cross-multiplication
+equalities forced by the strictly increasing third coordinate.  This is the
+constructive, denominator-free form of ordinary affine collinearity in
+$\mathbb Q^3$ for the ordered points in this walk.
+
+\section*{Acknowledgments and disclosure}
+
+The author used OpenAI GPT-5.6 for proof exploration, Lean code drafting,
+computational verification tooling, visualization, and manuscript preparation.
+The author directed the work, checked the generated artifacts, and takes
+responsibility for every claim.  The proof is kernel-checked, but at the date
+of this preprint it has not yet completed external mathematical peer review.
+
+\begin{thebibliography}{9}
+
+\bibitem{Bloom193}
+T.~F. Bloom,
+\newblock Erd\H{o}s Problem \#193,
+\newblock \url{https://www.erdosproblems.com/193}, accessed August 19, 2026.
+
+\bibitem{GerverRamsey1979}
+J.~L. Gerver and L.~T. Ramsey,
+\newblock On certain sequences of lattice points,
+\newblock \emph{Pacific Journal of Mathematics} \textbf{83} (1979), no.~2,
+357--363.
+\newblock \url{https://doi.org/10.2140/pjm.1979.83.357}.
+
+\bibitem{Hilbert1891}
+D.~Hilbert,
+\newblock \"Uber die stetige Abbildung einer Linie auf ein Fl\"achenst\"uck,
+\newblock \emph{Mathematische Annalen} \textbf{38} (1891), 459--460.
+
+\bibitem{Lean4}
+L.~de Moura and S.~Ullrich,
+\newblock The Lean 4 theorem prover and programming language,
+\newblock in \emph{Automated Deduction---CADE 28}, Lecture Notes in Computer
+Science 12699, Springer, 2021, 625--635.
+
+\bibitem{Mathlib}
+The Mathlib Community,
+\newblock The Lean mathematical library,
+\newblock in \emph{Proceedings of the 9th ACM SIGPLAN International Conference
+on Certified Programs and Proofs}, 2020, 367--381.
+
+\bibitem{Repository}
+E.~Kalviainen,
+\newblock Erd\H{o}s 193: terminal-steered Hilbert lift, source code and formal
+proof,
+\newblock \url{https://github.com/ekalvi/erdos-193}, 2026.
+
+\bibitem{Sagan1994}
+H.~Sagan,
+\newblock \emph{Space-Filling Curves},
+\newblock Springer, 1994.
+
+\end{thebibliography}
+
+\end{document}
