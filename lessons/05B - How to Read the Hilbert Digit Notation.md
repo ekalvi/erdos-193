@@ -265,12 +265,108 @@ $$
 
 This is a particularly clean example because digit 1 leaves the orientation unchanged.
 
-Read the base-4 digits from left to right, most significant first:
+Before calculating, separate two questions that the compact table can blur together.
 
-| Step | Position | Input digit | Current orientation | Emitted pair |
+#### Why does digit 1 emit $(0,1)$?
+
+The pair $(0,1)$ is not yet the final coordinate $(0,1)$. At one scale, it is the **address of one child square**:
+
+- the first bit 0 says “use the left half in x”;
+- the second bit 1 says “use the upper half in y.”
+
+Draw the four child squares in the basic orientation:
+
+|  | Left half: x-bit 0 | Right half: x-bit 1 |
+|---:|---:|---:|
+| Upper half: y-bit 1 | digit 1: $(0,1)$ | digit 2: $(1,1)$ |
+| Lower half: y-bit 0 | digit 0: $(0,0)$ | digit 3: $(1,0)$ |
+
+The Hilbert path visits those children in the U-shaped order
+
+$$
+0\longrightarrow1\longrightarrow2\longrightarrow3.
+$$
+
+Therefore digit 1 means “the upper-left child,” whose low/high address is $(0,1)$. That geometric address—not ordinary binary counting—is the source of the table entry.
+
+#### Why do both digits in $11_4$ emit $(0,1)$?
+
+The two 1s make the same local choice at **different scales**:
+
+1. the first 1 chooses the upper-left $2\times2$ child of the whole $4\times4$ square;
+2. the second 1 chooses the upper-left cell inside that chosen child.
+
+This is a nested address:
+
+```text
+whole 4×4 square
+└── upper-left 2×2 child        first digit 1 → (x₁,y₁) = (0,1)
+    └── upper-left unit cell    second digit 1 → (x₀,y₀) = (0,1)
+```
+
+The orientation remains basic after digit 1. Therefore the second lookup uses exactly the same table as the first:
+
+$$
+\text{same digit 1}+\text{same basic orientation}
+\quad\Longrightarrow\quad
+\text{same emitted pair }(0,1).
+$$
+
+The pairs have equal values but different place values:
+
+- $(x_1,y_1)=(0,1)$ supplies the $2^1$ bits;
+- $(x_0,y_0)=(0,1)$ supplies the $2^0$ bits.
+
+This is like the repeated digit in decimal 11: both written digits are 1, but the left one contributes 10 while the right one contributes 1.
+
+The order-two Hilbert grid makes the nested choice visible. Each cell below contains its decimal Hilbert index:
+
+|  | $x=0$ | $x=1$ | $x=2$ | $x=3$ |
 |---:|---:|---:|---:|---:|
-| 1 | $k=1$ | $q_1=1$ | basic | $(x_1,y_1)=(0,1)$ |
-| 2 | $k=0$ | $q_0=1$ | basic | $(x_0,y_0)=(0,1)$ |
+| $y=3$ | **5** | 6 | 9 | 10 |
+| $y=2$ | 4 | 7 | 8 | 11 |
+| $y=1$ | 3 | 2 | 13 | 12 |
+| $y=0$ | 0 | 1 | 14 | 15 |
+
+The first digit 1 selects the upper-left block containing indices 4, 5, 6, and 7. The second digit 1 selects index 5’s upper-left cell within that block. Thus the nested address lands at $(x,y)=(0,3)$.
+
+#### What does “orientation remains basic” mean here?
+
+Orientation describes how the little U-shaped path inside the chosen child is rotated or reflected relative to the parent square. It is not an extra coordinate and not merely the direction in which a walker is facing.
+
+Look at the upper-left block in the grid:
+
+$$
+4:(0,2)
+\longrightarrow
+5:(0,3)
+\longrightarrow
+6:(1,3)
+\longrightarrow
+7:(1,2).
+$$
+
+That is the same basic U as the original digit table:
+
+$$
+(0,0)\longrightarrow(0,1)\longrightarrow(1,1)\longrightarrow(1,0),
+$$
+
+only translated upward by 2. No rotation or reflection is needed. This is why choosing child 1 leaves the orientation basic.
+
+That unchanged orientation is also what makes the connections work:
+
+- index 3 at $(0,1)$ is adjacent to the block’s entrance, index 4 at $(0,2)$;
+- the block’s exit, index 7 at $(1,2)$, is adjacent to index 8 at $(2,2)$.
+
+Other children sometimes need a rotated or reflected internal U so these entrance and exit cells remain adjacent. The orientation state records that transformation. No such transformation occurs during either digit of $11_4$.
+
+Now read the base-4 digits from left to right, most significant first:
+
+| Step | Position | Input digit | Incoming orientation | Emitted pair | Outgoing orientation |
+|---:|---:|---:|---:|---:|---:|
+| 1 | $k=1$ | $q_1=1$ | basic | $(x_1,y_1)=(0,1)$ | basic |
+| 2 | $k=0$ | $q_0=1$ | basic | $(x_0,y_0)=(0,1)$ | basic |
 
 Now collect the x-bits by position:
 
