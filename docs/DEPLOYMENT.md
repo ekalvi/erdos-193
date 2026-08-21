@@ -8,12 +8,13 @@ activation/rollback, reboot recovery, and Docker ingress enforcement.
 
 ## Placement and routes
 
-Current origin retained for route rollback (verified 2026-08-21):
+Retired origin (verified 2026-08-21):
 
 - host: `q5m-dev`;
-- checkout: `/Users/erik/code/erdos-193`;
-- process: PM2 `math193-viz`;
-- command: Python `http.server` serving `viz/` on `0.0.0.0:8193`.
+- retained checkout: `/Users/erik/code/erdos-193`;
+- former process: PM2 `math193-viz`, Python `http.server` on port `8193`;
+- retirement result: process deleted, saved PM2 startup state updated, and the
+  old port stopped after explicit approval. The checkout and logs were retained.
 
 Current placement (verified 2026-08-21):
 
@@ -31,9 +32,10 @@ explicit operator request after cutover. Their remaining Cloudflare DNS cleanup,
 the proposed `erdos.q5m.ai` hostname, certificate/canonical changes, and redirect
 decision remain owned by issue #12.
 
-The old PM2 origin remains healthy but is no longer selected by NPM. Keep it as
-the explicit stabilization rollback target until retirement is separately
-approved.
+The old PM2 origin was retained through cutover, public reversal, reboot proof,
+and stabilization, then retired after explicit approval. Local image/state
+rollback on `q5m-n02` is now the application rollback path; the old Mac is no
+longer a live origin.
 
 ## Verified acceptance evidence
 
@@ -60,7 +62,10 @@ Additional checks completed 2026-08-21:
   marker `404`) and returned to `10.1.1.31`, where exact-release proof passed;
 - `main` now requires the hosted `Container contract` check, up-to-date pull
   request branches, conversation resolution, and no force-push/deletion; the
-  `production` Environment admits only `main`.
+  `production` Environment admits only `main`;
+- after operator approval, PM2 `math193-viz` was removed from the running and
+  saved process lists on `q5m-dev`; port `8193` stopped while the canonical
+  public exact release and all documented paths continued to pass.
 
 Every later trusted `main` push deploys and reports its own exact merge commit,
 so use `q5m-app status erdos-193` and the public `/.q5m-release` response for
@@ -126,8 +131,8 @@ rollback, provided both health gates pass.
 
 ## Cutover and reversal
 
-Keep PM2 `math193-viz` and its checkout unchanged until replacement, public
-reversal, and the agreed stabilization gate pass.
+The completed migration used this sequence while PM2 `math193-viz` remained
+available for controlled reversal:
 
 1. Record the old NPM origin and both public response baselines.
 2. Deploy exact `main` to `q5m-n02`; verify `q5m-app status` and that
@@ -144,11 +149,13 @@ reversal, and the agreed stabilization gate pass.
    and `sitemap.xml` over the canonical public hostname.
 6. Reverse NPM to `q5m-dev:8193` once and repeat the baseline. Then return it to
    `q5m-n02:8193` and repeat the replacement checks.
-7. Keep the old PM2 origin during stabilization. Removing it is a separate
-   approved retirement action.
+7. Keep the old PM2 origin during stabilization. Remove it only after explicit
+   approval and a final exact-release/public baseline.
 
-If replacement checks fail, route NPM back to `q5m-dev:8193`; do not repair a
-public failure by deleting release state or the old checkout.
+That old-origin reversal path was retired on 2026-08-21. For a current
+application failure, use the recorded local `q5m-app rollback erdos-193` state;
+do not point NPM at the stopped Mac or repair a failure by deleting release
+state.
 
 ## Failed candidate and reboot tests
 
@@ -180,14 +187,23 @@ for a move from `q5m-n02` to `q5m-n01`.
 
 ## Retirement
 
-Only after route reversal and stabilization are accepted:
+The old Mac origin was retired on 2026-08-21 after route reversal,
+stabilization, and explicit approval:
 
-1. remove the old PM2 `math193-viz` startup entry while retaining the checkout
-   for the agreed rollback period;
-2. for a node runner removal, use `sudo q5m-runner remove erdos-193-n02` and an
-   expiring GitHub removal token;
-3. for app removal, disable `q5m-app@erdos-193`, remove its ingress declaration,
-   and reload the q5m Docker firewall as documented in homelab
-   `node/HOSTING.md`;
-4. treat deletion of retained releases/images as a separate irreversible
-   cleanup requiring explicit approval.
+```sh
+pm2 delete math193-viz
+pm2 save
+```
+
+Post-retirement verification found no running or saved `math193-viz`, no
+listener on old port `8193`, an intact `/Users/erik/code/erdos-193` checkout,
+and unchanged canonical exact-release/public health.
+
+Future removal of the active node placement remains a separate operation:
+
+1. remove runner `erdos-193-n02` with `sudo q5m-runner remove` and an expiring
+   GitHub removal token;
+2. disable `q5m-app@erdos-193`, remove its ingress declaration, and reload the
+   q5m Docker firewall as documented in homelab `node/HOSTING.md`;
+3. treat deletion of retained releases/images, the old checkout, or logs as a
+   separate irreversible cleanup requiring explicit approval.
