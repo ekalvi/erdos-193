@@ -188,7 +188,153 @@ So, for example, in the basic orientation:
 - reading digit 2 outputs x-bit 1 and y-bit 1;
 - reading digit 3 outputs x-bit 1 and y-bit 0.
 
-A rotated or reflected recursive square may change which pair is output. That orientation machinery comes later. The foundational point is that one input digit always produces exactly two output bits: one destined for $x$ and one for $y$.
+A rotated or reflected recursive square may change which pair is output. The foundational point is that one input digit always produces exactly two output bits: one destined for $x$ and one for $y$.
+
+### Where does the basic table come from?
+
+Start with a $2\times2$ square. Its four cells can be labeled by whether they lie in the low or high half of each coordinate:
+
+```text
+          x-bit
+          0       1
+
+y-bit 1  (0,1) → (1,1)
+          ↑         ↓
+y-bit 0  (0,0)   (1,0)
+```
+
+The arrows give the basic U-shaped Hilbert traversal:
+
+$$
+(0,0)\longrightarrow(0,1)\longrightarrow(1,1)\longrightarrow(1,0).
+$$
+
+Now number the visited cells in that order:
+
+| Visit number | Cell bits |
+|---:|---:|
+| $0$ | $(0,0)$ |
+| $1$ | $(0,1)$ |
+| $2$ | $(1,1)$ |
+| $3$ | $(1,0)$ |
+
+That is exactly the basic digit-to-bit-pair table.
+
+The order is chosen because every consecutive pair shares an edge:
+
+- 0 to 1 changes only the y-bit;
+- 1 to 2 changes only the x-bit;
+- 2 to 3 changes only the y-bit.
+
+This is the smallest Hilbert path.
+
+### In what sense is this decoding rule “true”?
+
+The table is part of the **definition** of the particular discrete Hilbert path used in the proof. It is not a numerical law that must be deduced from unrelated assumptions.
+
+The geometric Hilbert construction says:
+
+1. split the current square into four equal child squares;
+2. visit those children in the U-shaped order above;
+3. inside each child, repeat the same four-child construction at the next smaller scale;
+4. rotate or reflect child copies when necessary so the exit of one copy touches the entrance of the next.
+
+The decoder is the coordinate bookkeeping for that geometric recipe:
+
+- the base-4 digit says which of the four children is visited;
+- the emitted bit pair says which x-half and y-half contain that child;
+- the orientation state says how the basic U has been rotated or reflected at the current scale.
+
+After defining $H$ by these rules, one proves—by induction on the number of digits—that:
+
+- every cell in the finite square appears exactly once;
+- consecutive indices map to neighboring grid cells;
+- adding the permitted leading-zero padding does not change the point.
+
+Those facts are also checked by the Lean formalization. Thus the table defines the path, while the finite-order Hilbert lemmas prove that the recursively decoded object really has the required Hilbert-path behavior.
+
+Different books may rotate, reflect, or reverse the entire starting convention. Those versions look different in coordinates but are equivalent for the geometry. This proof fixes the displayed convention and uses it consistently.
+
+### Decode a real point from the final construction
+
+The first index retained by the selector is
+
+$$
+n_0=5=11_4.
+$$
+
+This is a particularly clean example because digit 1 leaves the orientation unchanged.
+
+Read the base-4 digits from left to right, most significant first:
+
+| Step | Position | Input digit | Current orientation | Emitted pair |
+|---:|---:|---:|---:|---:|
+| 1 | $k=1$ | $q_1=1$ | basic | $(x_1,y_1)=(0,1)$ |
+| 2 | $k=0$ | $q_0=1$ | basic | $(x_0,y_0)=(0,1)$ |
+
+Now collect the x-bits by position:
+
+$$
+x_1x_0=00_2,
+\qquad
+x=0\cdot2^1+0\cdot2^0=0.
+$$
+
+Collect the y-bits:
+
+$$
+y_1y_0=11_2,
+\qquad
+y=1\cdot2^1+1\cdot2^0=3.
+$$
+
+Therefore
+
+$$
+H(5)=(0,3).
+$$
+
+The final three-dimensional construction then uses the index itself as height:
+
+$$
+P_0=(H(5),5)=(0,3,5).
+$$
+
+This is not a toy point; it is the first selected vertex of the actual walk.
+
+### See the neighboring real indices
+
+The four indices from $4$ through $7$ share the first base-4 digit 1:
+
+| Decimal index | Base-4 index | Hilbert point |
+|---:|---:|---:|
+| $4$ | $10_4$ | $(0,2)$ |
+| $5$ | $11_4$ | $(0,3)$ |
+| $6$ | $12_4$ | $(1,3)$ |
+| $7$ | $13_4$ | $(1,2)$ |
+
+They trace a real U-shaped $2\times2$ piece:
+
+```text
+(0,3) → (1,3)       indices 5 → 6
+  ↑         ↓
+(0,2)   (1,2)       indices 4   7
+```
+
+For example, decode $6=12_4$:
+
+- at $k=1$, digit 1 emits $(x_1,y_1)=(0,1)$;
+- at $k=0$, digit 2 emits $(x_0,y_0)=(1,1)$;
+- therefore $x_1x_0=01_2=1$ and $y_1y_0=11_2=3$;
+- hence $H(6)=(1,3)$.
+
+This small block shows the table doing exactly what the geometric Hilbert rule requires: four consecutive indices visit four neighboring cells in a U.
+
+### Where orientation enters
+
+The simple indices $10_4$ through $13_4$ remain in the basic orientation while their output bits are produced. Other prefixes place the same U-shaped pattern into a child square that must be rotated or reflected to connect with its neighbors.
+
+In those cases, the decoder still reads one base-4 digit and emits one x-bit and one y-bit. The state merely transforms the basic pair before emitting it. The later same-terminal-state argument is designed so two compared indices apply one common transformation at their first mismatch.
 
 ---
 
