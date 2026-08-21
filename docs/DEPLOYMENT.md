@@ -17,7 +17,7 @@ Current origin retained for route rollback (verified 2026-08-21):
 
 Target placement:
 
-- node: `q5m-n02.localdomain`;
+- node: `q5m-n02.localdomain` (current NPM-reachable address `10.1.1.31`);
 - app: `erdos-193`;
 - repository-scoped runner: `erdos-193-n02`;
 - runner label: `erdos-193-deploy`;
@@ -33,11 +33,13 @@ cutover.
 
 ## Release path
 
-`.github/workflows/deploy-production.yml` runs only for trusted `main` pushes or
-manual dispatches whose selected ref is exactly `main`. It has read-only
+`.github/workflows/deploy-production.yml` validates image build/runtime on a
+GitHub-hosted runner for pull requests, trusted `main` pushes, and manual
+dispatches. Its deployment job can target the self-hosted runner only for a
+push or dispatch whose ref is exactly `main`. The workflow has read-only
 repository permissions, production concurrency, a protected Environment hook,
-and a repository/branch/event guard. It never runs on pull-request-family
-events. Pull-request validation remains GitHub-hosted.
+and a repository/branch/event guard. Pull-request code never reaches the
+self-hosted runner.
 
 The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials
 and runs:
@@ -94,10 +96,12 @@ reversal, and the agreed stabilization gate pass.
 1. Record the old NPM origin and both public response baselines.
 2. Deploy exact `main` to `q5m-n02`; verify `q5m-app status` and that
    `/.q5m-release` equals the full release.
-3. From NPM, verify `http://q5m-n02.localdomain:8193/healthz` and representative
-   site assets. From an ordinary LAN client, verify direct port `8193` is
+3. From NPM, verify `http://10.1.1.31:8193/healthz` and representative site
+   assets. The NPM container does not currently resolve `.localdomain`, so use
+   the recorded current placement address rather than silently assuming node
+   DNS works there. From an ordinary LAN client, verify direct port `8193` is
    blocked.
-4. Change only the NPM origin to `q5m-n02.localdomain:8193`; do not change DNS,
+4. Change only the NPM origin to `10.1.1.31:8193`; do not change DNS,
    hostnames, certificate, or canonical content in this step.
 5. Verify `/`, `proof-steps.html`, `theorem.html`, `walk3d.html`,
    `hilbert-colors.html`, `progress.html`, `hilbert-proof.pdf`, `robots.txt`,

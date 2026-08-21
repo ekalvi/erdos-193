@@ -1,13 +1,14 @@
 name: Deploy production
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
     paths:
       - "viz/**"
       - "q5m/**"
       - ".github/workflows/deploy-production.yml"
+  push:
+    branches:
+      - main
   workflow_dispatch:
 
 permissions:
@@ -18,7 +19,46 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  validate:
+    name: Container contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Build and probe the hardened image
+        shell: bash
+        run: |
+          set -euo pipefail
+          image="q5m/erdos-193:$GITHUB_SHA"
+          docker build \
+            --file q5m/Dockerfile \
+            --build-arg "Q5M_RELEASE=$GITHUB_SHA" \
+            --tag "$image" \
+            .
+          container=$(docker run --detach \
+            --network none \
+            --read-only \
+            --user 1000:1000 \
+            --cap-drop ALL \
+            --security-opt no-new-privileges \
+            --tmpfs /tmp:rw,nosuid,nodev,noexec,size=32m \
+            "$image")
+          trap 'docker rm --force "$container" >/dev/null' EXIT
+          for attempt in {1..20}; do
+            if docker exec "$container" /usr/local/bin/erdos-193-health; then
+              break
+            fi
+            sleep 0.5
+          done
+          docker exec "$container" /usr/local/bin/erdos-193-health
+          test "$(docker exec "$container" /usr/bin/wget -q -O - \
+            http://127.0.0.1:8193/.q5m-release)" = "$GITHUB_SHA"
+
   deploy:
+    needs: validate
     if: >-
       github.repository == 'ekalvi/erdos-193' &&
       github.ref == 'refs/heads/main' &&
