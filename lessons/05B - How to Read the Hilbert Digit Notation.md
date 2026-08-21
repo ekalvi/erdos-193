@@ -336,6 +336,128 @@ The simple indices $10_4$ through $13_4$ remain in the basic orientation while t
 
 In those cases, the decoder still reads one base-4 digit and emits one x-bit and one y-bit. The state merely transforms the basic pair before emitting it. The later same-terminal-state argument is designed so two compared indices apply one common transformation at their first mismatch.
 
+### Decode $H(80)$ from start to finish
+
+This is the larger example used in Lesson 05’s pair-law discussion.
+
+First convert the decimal index 80 to base 4:
+
+$$
+80=1\cdot4^3+1\cdot4^2+0\cdot4^1+0\cdot4^0
+=64+16.
+$$
+
+Therefore
+
+$$
+80=1100_4.
+$$
+
+Label the digits by position:
+
+| Position | $k=3$ | $k=2$ | $k=1$ | $k=0$ |
+|---:|---:|---:|---:|---:|
+| Digit $q_k$ | $1$ | $1$ | $0$ | $0$ |
+
+The decoder reads from the most significant position $k=3$ toward the least significant position $k=0$.
+
+For this trace, only two orientation names appear:
+
+- $I$: the basic orientation; do not transform the child bits;
+- $S$: swap the x-bit and y-bit.
+
+The complete decoding trace is:
+
+| Position | Input digit | Incoming orientation | Basic child pair | Emitted pair $(x_k,y_k)$ | Outgoing orientation |
+|---:|---:|---:|---:|---:|---:|
+| $k=3$ | $1$ | $I$ | $(0,1)$ | $(0,1)$ | $I$ |
+| $k=2$ | $1$ | $I$ | $(0,1)$ | $(0,1)$ | $I$ |
+| $k=1$ | $0$ | $I$ | $(0,0)$ | $(0,0)$ | $S$ |
+| $k=0$ | $0$ | $S$ | $(0,0)$ | $(0,0)$ | $I$ |
+
+Read the table one row at a time:
+
+1. At $k=3$, digit 1 emits $(x_3,y_3)=(0,1)$ and leaves the orientation at $I$.
+2. At $k=2$, digit 1 again emits $(x_2,y_2)=(0,1)$ and leaves the orientation at $I$.
+3. At $k=1$, digit 0 emits $(x_1,y_1)=(0,0)$ and changes the orientation from $I$ to the swap state $S$.
+4. At $k=0$, digit 0 is read in state $S$. Swapping $(0,0)$ still gives $(0,0)$, so $(x_0,y_0)=(0,0)$. A second digit 0 cancels the first swap and returns the final orientation to $I$.
+
+Now collect the emitted x-bits in position order:
+
+$$
+x_3x_2x_1x_0=0000_2.
+$$
+
+Hence
+
+$$
+x=0\cdot2^3+0\cdot2^2+0\cdot2^1+0\cdot2^0=0.
+$$
+
+Collect the y-bits:
+
+$$
+y_3y_2y_1y_0=1100_2.
+$$
+
+Hence
+
+$$
+y=1\cdot2^3+1\cdot2^2+0\cdot2^1+0\cdot2^0
+=8+4
+=12.
+$$
+
+Therefore
+
+$$
+\boxed{H(80)=(0,12)}.
+$$
+
+The final orientation is $I$. Index $0=0000_4$ also finishes in state $I$ and gives
+
+$$
+H(0)=(0,0).
+$$
+
+Thus this concrete pair has:
+
+$$
+H(80)-H(0)=(0,12)
+$$
+
+and index gap 80. The later pair-law calculation checks that both fingerprints equal 4:
+
+$$
+V(0,12)=4,
+\qquad
+\nu_2(80)=4.
+$$
+
+#### Companion example: $H(96)$
+
+The second concrete pair in Lesson 05 uses
+
+$$
+96=1200_4.
+$$
+
+Its trace differs from $1100_4$ only at position $k=2$: digit 2 emits $(1,1)$ instead of digit 1 emitting $(0,1)$. The resulting coordinate bits are
+
+$$
+x_3x_2x_1x_0=0100_2=4,
+\qquad
+y_3y_2y_1y_0=1100_2=12.
+$$
+
+Therefore
+
+$$
+H(96)=(4,12).
+$$
+
+This one changed digit switches the reduced planar chord from $(0,3)$ to $(1,3)$ after division by 4—the one-odd-versus-both-odd distinction used by the vector fingerprint.
+
 ---
 
 ## Why can one base-4 digit correspond to two bits?
