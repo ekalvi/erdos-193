@@ -211,6 +211,9 @@ Thus the parity of the mismatching base-4 digits determines whether the valuatio
 
 ## What the same mismatch says about the planar chord
 
+> [!note] Need notation background?
+> If $k$, $q_k$, $\in$, $\{0,1\}^2$, “emits,” or the summation signs are unfamiliar, read [Lesson 05B — How to Read the Hilbert Digit Notation](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md) before continuing.
+
 This is the less obvious half of the pair law. We need to connect digits of the **index** to divisibility of the two **coordinate differences**.
 
 ### One base-4 digit emits two coordinate bits

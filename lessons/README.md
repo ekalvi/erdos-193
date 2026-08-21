@@ -21,6 +21,8 @@ The repository’s construction is unconditional and formalized in Lean 4. Exter
 
 If the place-value step in Lesson 05 feels compressed, pause for [Why matching final digits forces divisibility](05A%20-%20Why%20Matching%20Final%20Digits%20Forces%20Divisibility.md), then return to Lesson 05.
 
+If the digit-to-coordinate notation in Lesson 05 is unfamiliar, pause for [How to read the Hilbert digit notation](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md). It defines $k$, $q_k$, $\in$, $\{0,1\}^2$, emitted bits, and the coordinate sums from first principles.
+
 ## Authoritative proof sources
 
 - [Proof manuscript](../paper/erdos193.pdf)
