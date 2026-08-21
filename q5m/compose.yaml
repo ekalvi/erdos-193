@@ -1,0 +1,43 @@
+services:
+  site:
+    image: q5m/erdos-193:${Q5M_RELEASE:?set the exact full release commit}
+    build:
+      context: ${Q5M_RELEASE_DIR:?set the immutable release directory}
+      dockerfile: q5m/Dockerfile
+      args:
+        Q5M_RELEASE: ${Q5M_RELEASE}
+    init: true
+    restart: "no"
+    user: "1000:1000"
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - target: 8193
+        published: "8193"
+        host_ip: 0.0.0.0
+        protocol: tcp
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,noexec,size=32m,mode=1777
+    healthcheck:
+      test: [CMD, /usr/local/bin/erdos-193-health]
+      interval: 10s
+      timeout: 3s
+      retries: 6
+      start_period: 5s
+    stop_grace_period: 10s
+    mem_limit: 128m
+    mem_reservation: 16m
+    cpus: 0.5
+    pids_limit: 128
+    logging:
+      driver: local
+      options:
+        max-size: 10m
+        max-file: "5"
+        compress: "true"
+    labels:
+      io.q5m.app: ${Q5M_APP}
+      io.q5m.release: "${Q5M_RELEASE}"
