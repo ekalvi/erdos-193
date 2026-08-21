@@ -8,7 +8,7 @@ COPY viz/ /usr/share/nginx/html/
 RUN test "${#Q5M_RELEASE}" -eq 40 \
     && case "$Q5M_RELEASE" in *[!0-9a-f]*) exit 1 ;; *) : ;; esac \
     && printf '%s\n' "$Q5M_RELEASE" > /usr/share/nginx/html/.q5m-release \
-    && chmod -R a-w /etc/nginx/nginx.conf /usr/local/bin/erdos-193-health /usr/share/nginx/html
+    && chmod -R a+rX,a-w /etc/nginx/nginx.conf /usr/local/bin/erdos-193-health /usr/share/nginx/html
 USER 1000:1000
 
 EXPOSE 8193

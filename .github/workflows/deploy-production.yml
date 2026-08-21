@@ -2,10 +2,6 @@ name: Deploy production
 
 on:
   pull_request:
-    paths:
-      - "viz/**"
-      - "q5m/**"
-      - ".github/workflows/deploy-production.yml"
   push:
     branches:
       - main
