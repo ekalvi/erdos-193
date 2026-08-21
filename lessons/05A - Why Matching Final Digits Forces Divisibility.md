@@ -83,10 +83,19 @@ More explicitly:
 | $2$ | $4^2=16$ |
 | $3$ | $4^3=64$ |
 
+> [!warning] Digit positions start at zero
+> A three-digit base-4 number has positions $2,1,0$, so its leftmost digit multiplies $4^2=16$. The value $4^3=64$ belongs to position 3, which first appears in a four-digit number such as $1000_4$.
+
 For example,
 
 $$
 103_4=1\cdot16+0\cdot4+3\cdot1=19.
+$$
+
+Likewise,
+
+$$
+203_4=2\cdot16+0\cdot4+3\cdot1=35.
 $$
 
 The subscript 4 says to interpret the digits using powers of 4 rather than powers of 10.
