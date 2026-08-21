@@ -211,34 +211,239 @@ Thus the parity of the mismatching base-4 digits determines whether the valuatio
 
 ## What the same mismatch says about the planar chord
 
-Each base-4 digit position produces one binary bit position in each Hilbert coordinate.
+This is the less obvious half of the pair law. We need to connect digits of the **index** to divisibility of the two **coordinate differences**.
 
-Because the lowest $j$ index digits agree, the planar coordinates agree in all binary positions below $j$. Consequently both coordinate differences are divisible by $2^j$.
+### One base-4 digit emits two coordinate bits
 
-At binary position $j$, use the child-corner table:
+Write the Hilbert point as
 
-### Odd digit difference
+$$
+H(n)=(x(n),y(n)).
+$$
 
-Exactly one coordinate bit differs. After removing the common factor $2^j$:
+At every base-4 position $k$, the Hilbert rule reads one index digit $q_k\in\{0,1,2,3\}$ and emits a pair of bits
 
-- exactly one coordinate difference is odd;
-- the other remains even.
+$$
+(x_k,y_k)\in\{0,1\}^2.
+$$
 
-Therefore
+The first emitted bit becomes binary position $k$ of the $x$-coordinate, and the second becomes binary position $k$ of the $y$-coordinate:
+
+$$
+x(n)=\sum_k x_k2^k,
+\qquad
+y(n)=\sum_k y_k2^k.
+$$
+
+So one base-4 index position does **not** become two binary positions in one coordinate. It becomes:
+
+> one binary bit of $x$ and one binary bit of $y$, both at the same position.
+
+In the basic orientation, the digit-to-bit-pair table is
+
+| Base-4 digit | Emitted coordinate bits |
+|---:|---:|
+| $0$ | $(0,0)$ |
+| $1$ | $(0,1)$ |
+| $2$ | $(1,1)$ |
+| $3$ | $(1,0)$ |
+
+Rotated or reflected Hilbert copies may swap or complement these bits, but they preserve whether two emitted pairs differ in one coordinate or both.
+
+### Why matching index digits give matching coordinate bits here
+
+This implication uses both hypotheses:
+
+1. the lowest $j$ base-4 digits of $m$ and $n$ agree;
+2. $m$ and $n$ have the same terminal state.
+
+The terminal state is the orientation memory of the Hilbert decoder. Starting from one common terminal state, mentally rewind the two identical low-digit suffixes in parallel. At every position below $j$, both indices encounter:
+
+- the same orientation;
+- the same base-4 digit;
+- therefore the same emitted pair of coordinate bits.
+
+Thus the lowest $j$ binary bits of $x(m)$ and $x(n)$ agree, and the lowest $j$ binary bits of $y(m)$ and $y(n)$ agree.
+
+> [!important]
+> Matching low index digits by themselves are not the whole reason. The same-terminal-state condition aligns the decoder orientations so those matching digits emit matching coordinate bits.
+
+### Matching low binary bits force coordinate divisibility
+
+This is the binary version of the place-value cancellation in Lesson 05A.
+
+If two $x$-coordinates share their lowest $j$ binary bits, call the common low-bit value $L_x$. We can write
+
+$$
+x(m)=2^jA_x+L_x,
+\qquad
+x(n)=2^jB_x+L_x.
+$$
+
+Subtracting cancels the shared low bits:
+
+$$
+x(n)-x(m)=2^j(B_x-A_x).
+$$
+
+Therefore $x(n)-x(m)$ is divisible by $2^j$. The identical argument for $y$ gives
+
+$$
+y(n)-y(m)=2^j(B_y-A_y).
+$$
+
+Consequently the planar chord
+
+$$
+H(n)-H(m)
+$$
+
+has both coordinates divisible by $2^j$.
+
+This establishes only a **common minimum** of $j$ factors. The first mismatch tells us whether exactly one coordinate stops being divisible there or both do.
+
+### What happens at binary position $j$
+
+At position $j$, the two base-4 digits are different. Because the indices have aligned orientation, compare their two child-corner bit pairs through one common square symmetry.
+
+#### Odd digit difference: one coordinate bit changes
+
+If the base-4 digits differ by 1 or 3, their emitted pairs differ in exactly one coordinate.
+
+For the coordinate whose bit changes at position $j$:
+
+- all lower bits agree, giving a factor $2^j$;
+- the bit at position $j$ differs, so no further factor of 2 is possible.
+
+That coordinate difference has valuation exactly $j$.
+
+The other coordinate’s bit at position $j$ still agrees, so its difference remains divisible by $2^{j+1}$. Its valuation is greater than $j$ (or infinite if that coordinate difference is zero).
+
+Therefore the two coordinate valuations have:
+
+$$
+\min\{\nu_2(\Delta x),\nu_2(\Delta y)\}=j
+$$
+
+but are unequal. By the definition of the vector fingerprint,
 
 $$
 V(H(n)-H(m))=2j.
 $$
 
-### Digit difference equal to 2 modulo 4
+#### Digit difference 2: both coordinate bits change
 
-Both coordinate bits differ. After removing the common factor $2^j$, both coordinate differences are odd. Therefore
+If the base-4 digits differ by 2, their emitted pairs differ in both coordinates.
+
+For both coordinates:
+
+- all lower bits agree, giving a factor $2^j$;
+- the bit at position $j$ differs, preventing another factor of 2.
+
+Thus
+
+$$
+\nu_2(\Delta x)=\nu_2(\Delta y)=j.
+$$
+
+The minimum is again $j$, but now the coordinate valuations are equal. Therefore
 
 $$
 V(H(n)-H(m))=2j+1.
 $$
 
-Higher binary positions contribute multiples of $2^{j+1}$, so they cannot change whether the bit at position $j$ is odd or even after division by $2^j$.
+Higher binary positions contribute multiples of $2^{j+1}$. They cannot change whether the difference at position $j$, after division by $2^j$, is odd or even.
+
+### Two concrete same-state examples
+
+These examples use actual points of the Hilbert path. All three displayed indices have the same terminal state.
+
+#### Odd mismatch at $j=2$
+
+Take
+
+$$
+m=0=0000_4,
+\qquad
+n=80=1100_4.
+$$
+
+The two low base-4 digits $00$ agree. The first mismatch is at position $2$, where the digits are $0$ and $1$, an odd difference.
+
+The Hilbert points are
+
+$$
+H(0)=(0,0),
+\qquad
+H(80)=(0,12).
+$$
+
+Hence the planar chord is
+
+$$
+H(80)-H(0)=(0,12)=4(0,3).
+$$
+
+After removing $2^j=2^2=4$, exactly one coordinate is odd. Therefore
+
+$$
+V(0,12)=2j=4.
+$$
+
+The index gap agrees:
+
+$$
+80=16\cdot5=2^4\cdot5,
+\qquad
+\nu_2(80)=4.
+$$
+
+#### Difference-2 mismatch at $j=2$
+
+Now take
+
+$$
+m=0=0000_4,
+\qquad
+n=96=1200_4.
+$$
+
+Again the two low digits $00$ agree, but the first mismatching digits are now $0$ and $2$.
+
+The Hilbert points are
+
+$$
+H(0)=(0,0),
+\qquad
+H(96)=(4,12).
+$$
+
+The planar chord is
+
+$$
+H(96)-H(0)=(4,12)=4(1,3).
+$$
+
+After removing $2^j=4$, both coordinates are odd. Therefore
+
+$$
+V(4,12)=2j+1=5.
+$$
+
+The index gap again agrees:
+
+$$
+96=32\cdot3=2^5\cdot3,
+\qquad
+\nu_2(96)=5.
+$$
+
+The two examples isolate the entire mechanism:
+
+| Mismatch at position $j=2$ | Reduced chord after dividing by $2^j$ | Fingerprint | Index-gap valuation |
+|---|---:|---:|---:|
+| digits $0$ and $1$ | $(0,3)$: exactly one odd | $4$ | $4$ |
+| digits $0$ and $2$ | $(1,3)$: both odd | $5$ | $5$ |
 
 ---
 
