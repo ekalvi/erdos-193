@@ -1,0 +1,48 @@
+name: Deploy production
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "viz/**"
+      - "q5m/**"
+      - ".github/workflows/deploy-production.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: erdos-193-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    if: >-
+      github.repository == 'ekalvi/erdos-193' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    environment: production
+    runs-on: [self-hosted, Linux, X64, erdos-193-deploy]
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact trusted release
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Verify trusted workflow context
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = "ekalvi/erdos-193"
+          test "$GITHUB_REF" = "refs/heads/main"
+          test "$GITHUB_EVENT_NAME" = "push" -o "$GITHUB_EVENT_NAME" = "workflow_dispatch"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Deploy and health-gate the exact commit
+        shell: bash
+        run: q5m-app deploy-checkout erdos-193 "$GITHUB_WORKSPACE" "$GITHUB_SHA"
+      - name: Report exact active release
+        if: always()
+        shell: bash
+        run: q5m-app status erdos-193
