@@ -9,6 +9,35 @@ The letters do not name the offsets. They name four possible **orientation state
 
 The number assigned to each letter is a two-digit base-4 suffix whose orientation effect cancels that state and returns the selected index to state $I$.
 
+> [!info] Why does the picture keep only blue?
+> The picture contains **16 squares but only four terminal states**. The 16 squares are the 16 possible two-digit base-4 suffixes:
+> $$
+> 00_4,01_4,\ldots,33_4.
+> $$
+> Several different squares can have the same state, so the colors repeat. Blue is merely the visualization's color for state $I$.
+>
+> The pair law and the no-three-collinear theorem work for **any one fixed terminal state**. We could target $S$, $T$, or $C$ instead and obtain a different valid walk. State $I$ is chosen because it is the identity orientation, so “cancel the incoming state and return to the standard orientation” gives the cleanest correction table. The color blue itself has no mathematical significance.
+>
+> What we may not do without another argument is freely mix colors. The pair law applies when the two indices being compared have the same terminal state. Keeping one fixed color ensures that it applies to every pair of retained points.
+
+## Why select only one square from each 16-index block?
+
+The six blue squares visible in the order-2 picture are not six different states. They are six different indices that happen to finish in the same state.
+
+The construction needs an explicit infinite sequence with bounded successive gaps. Its simple rule is:
+
+> Divide the indices into blocks of 16 and choose one suffix in each block that cancels that block's incoming state.
+
+For an incoming state $I$, the displayed correction table chooses offset 5. For incoming states $S$, $T$, and $C$, it chooses offsets 1, 13, and 3 respectively. Whichever position is activated, the complete selected index finishes in state $I$.
+
+The other same-state squares are not defective; this particular selector simply does not need them. Keeping one representative per block makes the sequence and the bound
+
+$$
+4\le n_{a+1}-n_a\le28
+$$
+
+immediate. One could instead enumerate every index in one fixed terminal class: the pair and triple arguments would still apply, and adding extra same-state indices could only shorten the gaps. The repository's formal construction uses one representative per block because it is the cleanest explicit choice.
+
 ---
 
 ## What the letters mean
