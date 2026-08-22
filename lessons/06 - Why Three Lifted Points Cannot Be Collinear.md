@@ -107,6 +107,15 @@ $$
 
 where $r$ and $s$ are coprime. In ordinary language, $g$ is everything the two gaps share, while $r$ and $s$ are what remains after that common part is removed.
 
+> [!info] What does “coprime” mean?
+> Two positive integers are **coprime** when their greatest common divisor is 1:
+> $$
+> \gcd(r,s)=1.
+> $$
+> Equivalently, they share no positive integer factor larger than 1. For example, 8 and 15 are coprime because their only shared positive factor is 1. Neither number needs to be prime: 8 is not prime.
+>
+> Here $r$ and $s$ must be coprime because we already removed the entire greatest common factor $g$ from $A$ and $B$. If $r$ and $s$ still shared a factor, then $g$ would not have been the greatest common divisor.
+
 Substitute into the collinearity equation:
 
 $$
