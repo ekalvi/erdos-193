@@ -718,4 +718,80 @@ The same statement without compressed notation is:
 4. In ordinary language, what does it mean for the Hilbert rule to “emit $(x_k,y_k)$ at position $k$”?
 5. Why does the formula for $x(n)$ contain powers of 2 rather than powers of 4?
 
+### Checkpoint feedback
+
+#### 1. Reading the subscripts
+
+Correct:
+
+$$
+q_0=3,\qquad q_1=2,\qquad q_2=1.
+$$
+
+The subscript counts positions from the right, starting at 0.
+
+#### 2. Listing $\{0,1\}^2$
+
+One typo: the final pair must be $(1,1)$, not $(1,2)$:
+
+$$
+\{0,1\}^2
+=
+\{(0,0),(0,1),(1,0),(1,1)\}.
+$$
+
+Each slot is chosen from $\{0,1\}$, so neither slot can contain 2.
+
+#### 3. Reassembling the x-coordinate
+
+Correct:
+
+$$
+x
+=
+1\cdot2^2+0\cdot2^1+1\cdot2^0
+=
+1\cdot4+0\cdot2+1\cdot1
+=5.
+$$
+
+Equivalently, the bits form $101_2$, whose decimal value is 5.
+
+#### 4. What “emit” means
+
+The central explanation is correct. Two precision fixes:
+
+- $n$ is the ordinary nonnegative integer serving as the Hilbert index; $q_k$ is its base-4 digit at position $k$.
+- The basic U-shaped table gives the emitted pair only in the basic orientation. In general, the current orientation may rotate or reflect that child-square address before producing $(x_k,y_k)$.
+
+Thus the precise statement is:
+
+> At position $k$, the Hilbert decoder reads the base-4 digit $q_k$, interprets its child-square address using the current orientation, and emits one bit $x_k$ for binary position $k$ of x and one bit $y_k$ for binary position $k$ of y.
+
+The Gray-code-like order
+
+$$
+(0,0),(0,1),(1,1),(1,0)
+$$
+
+is what makes consecutive child choices follow the U rather than ordinary binary counting order.
+
+#### 5. Why powers of 2 appear
+
+The information-packing idea is right, but the direct place-value answer is:
+
+> Once the decoder has separated the output into $x_k$ and $y_k$, each coordinate consists of bits. Bits use binary place values $2^k$, not base-4 place values $4^k$.
+
+One base-4 digit has four possibilities. One pair of bits also has four possibilities:
+
+$$
+4=2\cdot2.
+$$
+
+Therefore one base-4 digit carries exactly enough information to supply one x-bit and one y-bit. It does not contain twice as much information as the pair; it contains the same information, redistributed between the two coordinates.
+
+### Short version to remember
+
+> Write the Hilbert index $n$ in base 4. At every position $k$, its digit $q_k$ chooses one of four child squares. The current orientation turns that choice into two bits, $(x_k,y_k)$—one for x and one for y. Assemble all the x-bits and y-bits using binary place values $2^k$. In the basic orientation, the child addresses follow the U-shaped order $(0,0),(0,1),(1,1),(1,0)$.
+
 After these symbols feel routine, return to [the paused section of Lesson 05](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md#one-base-4-digit-emits-two-coordinate-bits).
