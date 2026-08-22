@@ -687,3 +687,23 @@ The concrete example $0000_4$ versus $0320_4$ shows the failure:
 - different orientations make both actual emitted pairs equal to $(0,0)$.
 
 Therefore the raw digit difference no longer predicts whether one or both coordinate bits differ.
+
+---
+
+## Continue with the pair law
+
+Return to [05 — Why the Hilbert Pair Law Is True: The statement we need to understand](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md#the-statement-we-need-to-understand).
+
+Restart at that heading rather than at the middle of the previously paused calculation. The prerequisites developed in Notes 05B–05D now have to be assembled into one argument.
+
+Track the first mismatch from the right at position $j$ on two parallel sides:
+
+| Index-gap side | Hilbert-coordinate side |
+|---|---|
+| matching low base-4 digits contribute a factor $4^j$ | matching low emitted bits make both coordinate differences divisible by $2^j$ |
+| odd mismatch gives valuation $2j$ | odd mismatch changes exactly one coordinate bit |
+| mismatch by 2 gives valuation $2j+1$ | mismatch by 2 changes both coordinate bits |
+
+The same-terminal-state rewind is the bridge that puts both mismatching digits into one common orientation on the coordinate side.
+
+Once those three rows feel like one argument rather than separate facts, answer the checkpoint at the end of Note 05.
