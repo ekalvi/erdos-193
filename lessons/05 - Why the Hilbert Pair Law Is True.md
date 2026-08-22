@@ -585,6 +585,23 @@ Your central idea is correct. The complete bridge has three parts:
 
 Rewind undoes digit-dependent state changes; it does not literally remove coordinate bits.
 
-Before continuing, restate answers 2 and 5 in one sentence each.
+## Repair cleared
 
-Once this connection feels non-magical, the next lesson can use it to exclude a collinear triple.
+Your restatement of answer 2 is correct with two notation refinements:
+
+- call the common coordinate valuation $p$, reserving $j$ for a base-4 mismatch position;
+- $p$ may be zero, not only positive.
+
+Thus equal coordinate valuations force
+
+$$
+V(u)=2p+1,
+$$
+
+which is odd, but they do not determine one particular odd value.
+
+Your restatement of answer 5 is correct: the terminal state is the leftover orientation memory after the decoder has processed the complete base-4 index. Two different points can finish with the same memory.
+
+The pair-law prerequisite is now clear enough to continue.
+
+**Next:** [06 - Why Three Lifted Points Cannot Be Collinear](06%20-%20Why%20Three%20Lifted%20Points%20Cannot%20Be%20Collinear.md)

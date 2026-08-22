@@ -6,7 +6,7 @@ The lessons favor mental models, worked examples, and active-recall checkpoints 
 
 ## Scope and status
 
-These notes are a pedagogical companion to the [proof manuscript](../paper/erdos193.pdf), not a replacement for it. The current sequence develops the problem statement, the trace-select-lift construction, bounded-gap selection, two-adic vector fingerprints, and the same-terminal-state Hilbert pair law. The manuscript contains the complete no-three-collinear argument and the remaining formal details.
+These notes are a pedagogical companion to the [proof manuscript](../paper/erdos193.pdf), not a replacement for it. The current sequence develops the problem statement, the trace-select-lift construction, bounded-gap selection, two-adic vector fingerprints, the same-terminal-state Hilbert pair law, and the contradiction excluding collinear triples. The manuscript contains the remaining formal details.
 
 The repository’s construction is unconditional and formalized in Lean 4. External mathematical review and community acceptance are still pending.
 
@@ -18,6 +18,7 @@ The repository’s construction is unconditional and formalized in Lean 4. Exter
 4. [Why the orientation states choose those offsets](03A%20-%20Why%20I%2C%20S%2C%20T%2C%20and%20C%20Choose%20Those%20Offsets.md) — an optional deeper explanation of the two-digit base-4 steering suffixes.
 5. [Powers of two as a fingerprint](04%20-%20Powers%20of%20Two%20as%20a%20Fingerprint.md) — ordinary two-adic valuation, the custom planar-vector invariant, and its scaling law.
 6. [Why the Hilbert pair law is true](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md) — how the first base-4 mismatch controls both the index-gap valuation and planar-chord fingerprint.
+7. [Why three lifted points cannot be collinear](06%20-%20Why%20Three%20Lifted%20Points%20Cannot%20Be%20Collinear.md) — how collinearity, the pair law, and the fingerprint scaling law force an impossible odd-plus-odd parity conclusion.
 
 If the place-value step in Lesson 05 feels compressed, pause for [Why matching final digits forces divisibility](05A%20-%20Why%20Matching%20Final%20Digits%20Forces%20Divisibility.md), then return to Lesson 05.
 
