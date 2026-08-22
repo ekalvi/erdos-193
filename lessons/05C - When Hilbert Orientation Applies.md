@@ -376,6 +376,102 @@ This is why the orientation carried forward differs according to the digit that 
 
 It does **not** differ because the position happens to be called $k=3$, $k=2$, or $k=1$. It differs because digits 0, 1, 2, and 3 enter four different quarters whose internal routes point in different directions.
 
+### Which orientation rules are fixed, and which are calculated?
+
+This distinction prevents the recursion from feeling circular.
+
+#### Fixed once: the standard Hilbert template
+
+For one basic U, the four digits have two pieces of stored information:
+
+| Digit $q$ | Quarter address $c_q$ | Turn of the smaller U, called $r_q$ |
+|---:|---:|---:|
+| 0 | $(0,0)$ | $S$: swap x and y |
+| 1 | $(0,1)$ | $I$: leave the U basic |
+| 2 | $(1,1)$ | $I$: leave the U basic |
+| 3 | $(1,0)$ | $T$: turn it as in the lower-right picture |
+
+These four relative turns
+
+$$
+r_0=S,\qquad r_1=I,\qquad r_2=I,\qquad r_3=T
+$$
+
+are the fixed recursion template used by this proof.
+
+They are not consequences of the numerical values 0, 1, 2, and 3. They are the geometric arrangement chosen so four smaller U routes connect into one larger U with the required outer entrance and exit.
+
+Other authors could rotate or reflect the entire construction and obtain an equivalent Hilbert convention. Once this proof fixes the displayed convention, however, it uses the same four relative turns at every scale.
+
+#### Why the upper-left quarter remains basic
+
+The lower-left quarter ends at
+
+$$
+3:(0,1).
+$$
+
+Therefore the upper-left quarter begins directly above it at
+
+$$
+4:(0,2).
+$$
+
+A basic U translated into that quarter gives
+
+$$
+4:(0,2)
+\to
+5:(0,3)
+\to
+6:(1,3)
+\to
+7:(1,2).
+$$
+
+Its entrance connects to index 3, and its exit at $(1,2)$ connects horizontally to index 8 at $(2,2)$ in the upper-right quarter. No rotation or reflection is needed. That is why digit 1 has relative turn $I$.
+
+The upper-right quarter uses the same basic arrangement:
+
+$$
+8:(2,2)
+\to
+9:(2,3)
+\to
+10:(3,3)
+\to
+11:(3,2).
+$$
+
+This connects index 7 to index 8 and leaves index 11 directly above the required entrance to the lower-right quarter.
+
+#### Calculated repeatedly: the accumulated orientation
+
+At a particular digit, let $g$ be every turn already inherited from digits to the left.
+
+The current digit $q$ looks up its two fixed template entries:
+
+- its basic quarter address $c_q$;
+- its relative local turn $r_q$.
+
+The decoder then performs the only two runtime calculations:
+
+$$
+\text{pair recorded now}=g(c_q),
+$$
+
+$$
+\text{orientation carried onward}=g\circ r_q.
+$$
+
+In words:
+
+1. view the current quarter address through all turns inherited so far;
+2. add the chosen quarter’s fixed local turn to that inherited orientation;
+3. carry the combined result to the next digit.
+
+So the table $r_0=S,r_1=I,r_2=I,r_3=T$ is the fixed rule. Composition with the orientation already present is the recursive bookkeeping.
+
 ---
 
 ## What happens before and after reading one digit
@@ -664,3 +760,91 @@ The next note explains why matching terminal states let two decodings be aligned
 4. Why do both digits of $11_4$ emit $(0,1)$?
 5. For $30_4$, why does the second digit 0 select local pair $(1,1)$ rather than $(0,0)$?
 6. What is the difference between incoming and outgoing orientation without using either technical word?
+
+### Checkpoint feedback
+
+#### 1. Child square
+
+Correct. A child square is one of the four equal quarters obtained by dividing the current square grid region. Each of those quarters can itself be divided into four smaller quarters at the next recursive level.
+
+#### 2. Reading $1100_4$
+
+You gave the digit values in the correct left-to-right order:
+
+$$
+1,1,0,0.
+$$
+
+The question asked for their **position labels**. The complete answer is:
+
+| Position read | 3 | 2 | 1 | 0 |
+|---:|---:|---:|---:|---:|
+| Digit found there | 1 | 1 | 0 | 0 |
+
+Thus positions are read
+
+$$
+3\to2\to1\to0.
+$$
+
+#### 3. What uses the orientation carried out of position 2?
+
+Position 1 uses it next.
+
+Position 1 is simply the next digit on the right:
+
+```text
+position 2 ── carries orientation ──> position 1
+```
+
+That is the entire meaning of “the outgoing orientation at position 2 becomes the incoming orientation at position 1.”
+
+#### 4. Why both 1s emit $(0,1)$
+
+Your Gray-code explanation is correct. Replace “for some reason” with the connection reason:
+
+- digit 1 has basic address $(0,1)$;
+- the upper-left quarter’s untranslated basic U enters next to index 3;
+- it exits next to index 8;
+- therefore its relative turn is $I$, meaning no rotation or reflection.
+
+The first 1 is interpreted through the basic orientation and leaves the orientation basic. The second 1 is consequently interpreted through that same basic orientation.
+
+#### 5. Why the 0 in $30_4$ produces $(1,1)$
+
+Correct. More precisely:
+
+1. the first digit 3 selects the lower-right quarter and carries its turned orientation $T$;
+2. the second digit 0 has basic local address $(0,0)$;
+3. the inherited $T$ maps that address to $(1,1)$.
+
+Thus
+
+$$
+T(0,0)=(1,1).
+$$
+
+#### 6. Incoming versus outgoing
+
+Your explanation is substantially correct:
+
+> The orientation already carried in tells the decoder how to interpret the current local address. The orientation carried out includes the chosen quarter’s own relative turn and is passed to the next smaller quarter.
+
+The rules you were missing are the fixed template:
+
+| Current digit | Relative turn added |
+|---:|---:|
+| 0 | $S$ |
+| 1 | $I$ |
+| 2 | $I$ |
+| 3 | $T$ |
+
+If $g$ is the orientation carried in and the current digit is $q$, then:
+
+$$
+\text{current output}=g(c_q),
+\qquad
+\text{next orientation}=g\circ r_q.
+$$
+
+The geometry determines the fixed relative-turn table once. The decoder then reuses that table and composes turns mechanically at every deeper level.
