@@ -213,116 +213,173 @@ Matching terminal states lets the proof solve that difficulty by running the sha
 
 ---
 
-## The rewind idea
+## Rewind means undoing known state toggles
 
-For one fixed digit, the orientation transition can be undone. If you know:
+The word **rewind** sounds more sophisticated than the operation.
 
-- the outgoing state;
-- the digit that was read;
+The terminal state remembers two on/off orientation switches:
 
-then you can recover the incoming state.
+- reading digit 0 toggles $S$;
+- reading digit 3 toggles $T$;
+- digits 1 and 2 toggle nothing.
 
-Now suppose $m$ and $n$ have:
-
-1. the same terminal state;
-2. the same digits below position $j$.
-
-Start at their equal terminal states and undo the shared low digits one at a time:
-
-```text
-same terminal state
-        ↑ undo the same q₀ in both words
-same preceding state
-        ↑ undo the same q₁ in both words
-same preceding state
-        ↑ continue through the shared suffix
-same state immediately after position j
-```
-
-Because every undo operation starts with equal states and uses the same digit, equality is preserved at every step.
-
-Therefore the two decoders have one common orientation immediately **after** their mismatching digits at position $j$. Call that common orientation $h$.
-
-This is exactly the alignment the proof needs.
-
----
-
-## Why “immediately after” is enough
-
-At first, one might expect the two **incoming** states at the mismatch to be equal. They need not be, because the two mismatching digits can impose different refinements.
-
-The Hilbert transitions have a special property: each digit’s refinement fixes that digit’s own child corner. As a result, if $h$ is the outgoing state after a digit $q$, the pair emitted at that digit can be recovered as
+Both toggles undo themselves:
 
 $$
-h(c_q).
-$$
-
-Thus, at the mismatch, the two emitted pairs are
-
-$$
-h(c_d)
-\qquad\text{and}\qquad
-h(c_e),
-$$
-
-where $d$ and $e$ are the two different digits.
-
-The important point is that **one common symmetry $h$ acts on both child corners**.
-
-A square symmetry may swap or reflect the coordinates, but it preserves whether two corners differ in:
-
-- exactly one coordinate; or
-- both coordinates.
-
-That is the one-bit-versus-two-bit distinction needed by the pair law.
-
----
-
-## Worked rewind: indices 0 and 80
-
-Use a common four-digit length:
-
-$$
-0=0000_4,
+S\circ S=I,
 \qquad
+T\circ T=I.
+$$
+
+Therefore, if we know the digit that was just read, we undo its state change by applying the same toggle again:
+
+| Digit being undone | Forward effect | Backward undo |
+|---:|---:|---:|
+| 0 | add $S$ | add $S$ again |
+| 1 | no change | no change |
+| 2 | no change | no change |
+| 3 | add $T$ | add $T$ again |
+
+For example, suppose digit 0 changed an earlier state $S$ into the outgoing state $I$:
+
+$$
+S\circ S=I.
+$$
+
+If we know the outgoing state is $I$ and the digit was 0, apply $S$ once more:
+
+$$
+I\circ S=S.
+$$
+
+That recovers the earlier state.
+
+The only logical rule needed for rewinding two words is:
+
+> Equal outgoing states, undone through the same known digit, produce equal preceding states.
+
+---
+
+## Put every state of $0000_4$ and $1100_4$ on one line
+
+Compare
+
+$$
+0=0000_4
+\qquad\text{and}\qquad
 80=1100_4.
 $$
 
-Their terminal states are both $I$. From the right, their digits are:
+Their digits and forward state histories are:
 
-| Position | $k=3$ | $k=2$ | $k=1$ | $k=0$ |
+| Word | Start | After position 3 | After position 2 | After position 1 | After position 0 |
+|---:|---:|---:|---:|---:|---:|
+| $0000_4$ | $I$ | $S$ | $I$ | $S$ | $I$ |
+| $1100_4$ | $I$ | $I$ | $I$ | $S$ | $I$ |
+
+The last column is the terminal state. Both words finish in $I$.
+
+Reading from the right, positions 0 and 1 contain the same suffix digits:
+
+```text
+0000
+  └─┴─ common suffix 00
+
+1100
+  └─┴─ common suffix 00
+```
+
+Their first mismatch from the right is at position 2:
+
+| Position | 3 | 2 | 1 | 0 |
 |---:|---:|---:|---:|---:|
-| $0$ | 0 | 0 | 0 | 0 |
-| $80$ | 1 | 1 | 0 | 0 |
+| $0000_4$ | 0 | **0** | 0 | 0 |
+| $1100_4$ | 1 | **1** | 0 | 0 |
 | Comparison from right | may differ | first mismatch | same | same |
 
-Their shared low suffix is $00_4$, and the first mismatch from the right is at $j=2$.
+The forward table already reveals an important fact: although the states differ after position 3, they have become equal immediately after the mismatching digits at position 2. Both are $I$ there.
 
-Start from their common terminal state $I$:
+The rewind argument is how the proof discovers that equality from information at the right-hand end.
 
-1. Undo the common digit 0 at $k=0$. Both states rewind from $I$ to $S$.
-2. Undo the common digit 0 at $k=1$. Both states rewind from $S$ to $I$.
+---
 
-Therefore the common state immediately after the mismatch at $k=2$ is
+## Rewind the common suffix one digit at a time
+
+Begin at the right-hand end:
+
+```text
+terminal state of 0000 = I
+terminal state of 1100 = I
+```
+
+### Undo the common digit 0 at position 0
+
+Both words end in $I$, and both read digit 0 at position 0. Undo a 0 by toggling $S$:
+
+$$
+I\circ S=S.
+$$
+
+Therefore both states immediately before position 0—equivalently, immediately after position 1—were $S$.
+
+### Undo the common digit 0 at position 1
+
+Both recovered states are $S$, and both words again read digit 0. Toggle $S$ again:
+
+$$
+S\circ S=I.
+$$
+
+Therefore both states immediately before position 1—equivalently, immediately after position 2—were $I$.
+
+We have now removed the entire common suffix $00_4$. We arrive at one common state immediately after the first mismatch:
 
 $$
 h=I.
 $$
 
-At the mismatch:
+Nothing mysterious occurred:
 
-- index 0 has digit 0, with child corner $c_0=(0,0)$;
-- index 80 has digit 1, with child corner $c_1=(0,1)$.
+```text
+same terminal I
+    ↑ undo the same final 0
+same state S
+    ↑ undo the same preceding 0
+same state I immediately after the mismatch
+```
 
-Apply the same recovered symmetry $h=I$:
+---
+
+## What happens at the mismatch
+
+At position 2:
+
+- $0000_4$ has digit 0;
+- $1100_4$ has digit 1.
+
+Their incoming states at that position are not equal:
+
+- the first word enters digit 0 in state $S$;
+- the second word enters digit 1 in state $I$.
+
+Process each digit:
+
+| Word | Incoming state | Mismatch digit | Pair emitted | Outgoing state |
+|---:|---:|---:|---:|---:|
+| $0000_4$ | $S$ | 0 | $S(0,0)=(0,0)$ | $I$ |
+| $1100_4$ | $I$ | 1 | $I(0,1)=(0,1)$ | $I$ |
+
+The two emitted pairs are
 
 $$
-h(c_0)=(0,0),
-\qquad
-h(c_1)=(0,1).
+(0,0)
+\qquad\text{and}\qquad
+(0,1).
 $$
 
-These pairs differ in exactly one coordinate. That is the odd-digit-difference case of the pair law.
+They differ in exactly one coordinate bit: the y-bit.
+
+This answers checkpoint question 5.
 
 The complete points are
 
@@ -333,6 +390,35 @@ H(80)=(0,12).
 $$
 
 Their planar chord is $(0,12)$, whose reduced parity pattern likewise has exactly one odd coordinate.
+
+---
+
+## Why one common outgoing state is enough in general
+
+The example used common outgoing state $h=I$. In another pair, the recovered state $h$ could be $S$, $T$, or $C$.
+
+The Hilbert transition has one specially designed property: each digit’s local turn leaves that digit’s chosen corner fixed. Consequently, once we know the outgoing state $h$ after a digit $q$, that digit’s emitted pair can be recovered as
+
+$$
+h(c_q).
+$$
+
+So if the mismatching digits are $d$ and $e$, their two emitted pairs are
+
+$$
+h(c_d)
+\qquad\text{and}\qquad
+h(c_e).
+$$
+
+The same transformation $h$ acts on both basic child corners.
+
+Every square transformation $I,S,T,$ or $C$ preserves whether two corners differ in:
+
+- exactly one coordinate; or
+- both coordinates.
+
+That is why equal terminal states plus a shared low suffix recover the Gray-code one-bit-versus-two-bit comparison at the mismatch.
 
 ---
 
@@ -375,11 +461,94 @@ After removing their common factor 4, the planar chord becomes $(1,3)$, whose tw
 
 ---
 
-## What could fail without matching terminal states?
+## What actually fails when terminal states differ?
 
-The two words could still share the same low suffix, but the backward process would begin from two different final orientations.
+Use an example that still has a common low suffix:
 
-Undoing identical digits from different states does not make those states equal. At the mismatch, the two corners might then be viewed through different symmetries:
+$$
+0=0000_4,
+\qquad
+56=0320_4.
+$$
+
+Their final digit at position 0 is the same:
+
+```text
+0000
+   └─ common suffix 0
+
+0320
+   └─ common suffix 0
+```
+
+Their first mismatch from the right is at position 1:
+
+- $0000_4$ has digit 0;
+- $0320_4$ has digit 2.
+
+Those digits differ by 2. In one common orientation, their basic corners $(0,0)$ and $(1,1)$ would differ in both coordinate bits.
+
+But the terminal states are different:
+
+$$
+\sigma(0000_4)=I,
+\qquad
+\sigma(0320_4)=T.
+$$
+
+Try to rewind the common final digit 0:
+
+- undoing 0 from terminal state $I$ recovers $S$;
+- undoing 0 from terminal state $T$ recovers $C$.
+
+The recovered states remain different:
+
+$$
+S\neq C.
+$$
+
+Therefore there is no one common orientation after the mismatch.
+
+At the mismatch itself, the actual decoding is:
+
+| Word | Incoming state | Mismatch digit | Pair emitted | Outgoing state |
+|---:|---:|---:|---:|---:|
+| $0000_4$ | $I$ | 0 | $I(0,0)=(0,0)$ | $S$ |
+| $0320_4$ | $C$ | 2 | $C(1,1)=(0,0)$ | $C$ |
+
+The mismatching digits 0 and 2 would normally indicate that both coordinate bits differ. Here the two different orientations make the emitted pairs identical:
+
+$$
+(0,0)
+\qquad\text{versus}\qquad
+(0,0).
+$$
+
+That is the exact failure: without a common orientation, the Gray-code relationship between the two digit values no longer predicts the relationship between the two emitted pairs.
+
+The failure propagates to the complete pair-law quantities:
+
+$$
+H(0)=(0,0),
+\qquad
+H(56)=(1,5).
+$$
+
+For their planar chord $(1,5)$,
+
+$$
+V(1,5)=1,
+$$
+
+while
+
+$$
+\nu_2(56)=3.
+$$
+
+They are unequal, as expected because the same-terminal-state hypothesis is absent.
+
+In general, different terminal states make the backward process begin from different final orientations. Undoing identical suffix digits preserves that difference instead of creating equality. At the mismatch, the two corners are then viewed through two potentially different transformations:
 
 $$
 h_m(c_d)
@@ -387,11 +556,11 @@ h_m(c_d)
 h_n(c_e).
 $$
 
-With $h_m\neq h_n$, the proof no longer has one common transformation preserving the Gray-code comparison between $c_d$ and $c_e$.
+With $h_m\neq h_n$, there is no common transformation preserving the one-coordinate-versus-both-coordinate comparison.
 
-So equal terminal state does not say that the points are equal, nearby, or similarly oriented everywhere. It gives one precise capability:
+So equal terminal state gives one precise capability:
 
-> The common low suffix can be rewound in lockstep until both mismatching child corners are viewed through one common square symmetry.
+> The common low suffix can be rewound in lockstep until both mismatching child corners are viewed through one common square transformation.
 
 ---
 
@@ -434,3 +603,62 @@ A short version suitable for recall is:
 4. Why do equal terminal states plus a common low suffix let us recover one common state after the first mismatch?
 5. For $0000_4$ versus $1100_4$, do the mismatching digits 0 and 1 produce a difference in one coordinate bit or both?
 6. What exact part of the comparison can fail when the terminal states are different?
+
+### Checkpoint feedback
+
+#### 1. What terminal state is
+
+Correct: it is leftover decoder memory. If another finer digit were appended on the right, this state would become that digit’s incoming orientation.
+
+One refinement: commutativity is not what makes the state terminal. The state is terminal simply because the word ends. The fact that $S$ and $T$ commute explains why the leftover state can be summarized using only the parity of the number of 0s and 3s.
+
+#### 2. Which digits change it
+
+Correct:
+
+- digit 0 contributes $S$;
+- digit 3 contributes $T$;
+- digits 1 and 2 contribute $I$ and leave the state unchanged.
+
+#### 3. Odd number of 0s and odd number of 3s
+
+Correct:
+
+$$
+S\circ T=C.
+$$
+
+One uncancelled $S$ and one uncancelled $T$ combine into $C$.
+
+#### 4. Why the rewind recovers one common state
+
+Each known digit transition is reversible:
+
+- undo 0 by applying $S$ again;
+- undo 1 or 2 by doing nothing;
+- undo 3 by applying $T$ again.
+
+Start from equal terminal states. The two words have the same low suffix, so at each backward step they undo the same digit. Equal states subjected to the same undo operation remain equal. Repeating through the entire suffix yields one common state immediately after the first mismatch.
+
+#### 5. $0000_4$ versus $1100_4$
+
+The mismatching digits are 0 and 1. Their emitted pairs are
+
+$$
+(0,0)
+\qquad\text{and}\qquad
+(0,1).
+$$
+
+Exactly one coordinate bit differs: the y-bit.
+
+#### 6. What fails with different terminal states
+
+The rewind starts from different states. Undoing the same suffix digits does not make them equal, so the two mismatching corners can be interpreted through different orientations.
+
+The concrete example $0000_4$ versus $0320_4$ shows the failure:
+
+- mismatch digits 0 and 2 should differ in both bits under one common orientation;
+- different orientations make both actual emitted pairs equal to $(0,0)$.
+
+Therefore the raw digit difference no longer predicts whether one or both coordinate bits differ.
