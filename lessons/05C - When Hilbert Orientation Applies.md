@@ -1,187 +1,334 @@
-# Erdős 193 — When Hilbert Orientation Applies
+# Erdős 193 — How Orientation Changes While Decoding
 
 **Previous:** [05B — How to Read the Hilbert Digit Notation](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md)
 
-**Return afterward to:** [the real-point decoding in Lesson 05B](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md#decode-a-real-point-from-the-final-construction)
+**Next:** [05D — What the Hilbert Terminal State Remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md)
 
-**Later use:** [05 — Why the Hilbert Pair Law Is True](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md)
+**Return afterward to:** [05 — Why the Hilbert Pair Law Is True](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md)
 
-## The short answer
+## What this note must explain
 
-At every base-4 digit, the decoder performs **two separate jobs**:
+The words “square,” “child,” “incoming orientation,” “outgoing orientation,” and “position $k-1$” are not useful until there is a picture underneath them.
 
-1. **Incoming orientation acts now.** It tells the decoder how to transform the selected child-square address into the emitted pair $(x_k,y_k)$.
-2. **Outgoing orientation acts on the next row.** It becomes the incoming orientation when the decoder reads the next digit to the right.
+This note builds that picture first.
 
-Thus an outgoing orientation does **not** alter the pair emitted on its own row. It controls how the decoder interprets the smaller square entered on that row.
+The main idea is:
 
-If a row processes position $k$, its outgoing orientation is passed to position $k-1$:
+> A base-4 digit tells us which quarter of a grid region to enter. Inside that quarter is a smaller copy of the U-shaped Hilbert route. Sometimes that smaller U must be turned or reflected so all four quarters connect into one continuous path. Its arrangement is the orientation passed to the next digit.
+
+---
+
+## Start with one digit and four grid cells
+
+With one base-4 digit, there are four possible indices:
+
+$$
+0,
+1,
+2,
+3.
+$$
+
+Place four unit grid cells in a $2\times2$ block. The basic Hilbert route visits them in a U:
 
 ```text
-position k                              position k−1
-
-incoming orientation ─┐
-                      ├─ emit (xₖ,yₖ)
-input digit qₖ ───────┘
-                      └─ outgoing orientation ──────> incoming orientation
+1 ───> 2
+↑       │
+│       ↓
+0       3
 ```
 
-At the leftmost digit, the incoming orientation is always the basic orientation $I$. After the rightmost digit, the outgoing orientation is the **terminal state**.
+Give each cell a two-bit address:
 
----
+- first bit: left half 0 or right half 1;
+- second bit: lower half 0 or upper half 1.
 
-## First separate $k$ from $q_k$
-
-These symbols perform different jobs:
-
-- $k$ is a **position number**;
-- $q_k$ is the **base-4 digit stored at that position**.
-
-For example, if
-
-$$
-n=1100_4,
-$$
-
-then
-
-$$
-q_3=1,
-\qquad q_2=1,
-\qquad q_1=0,
-\qquad q_0=0.
-$$
-
-The orientation rule does not change merely because the position is $k=3$ rather than $k=1$. The relevant input is the digit value $q_k$.
-
-A digit 0 triggers the same relative orientation change wherever it appears. Likewise for digits 1, 2, and 3.
-
-There is one qualification: the **name of the resulting outgoing state** depends on both the incoming state and the digit. The digit determines which relative rotation or reflection is added to the orientation already present.
-
----
-
-## The two pieces of information attached to a digit
-
-In the basic orientation, digit $q$ first identifies a child square:
-
-| Digit $q$ | Basic child address $c_q$ | Location |
-|---:|---:|---:|
-| 0 | $(0,0)$ | lower left |
-| 1 | $(0,1)$ | upper left |
-| 2 | $(1,1)$ | upper right |
-| 3 | $(1,0)$ | lower right |
-
-That address answers:
-
-> Which child square did we enter?
-
-But the decoder also needs to know:
-
-> How is the smaller U-shaped path oriented inside that child?
-
-For this Hilbert convention, the child’s internal refinement is:
-
-| Digit $q$ | Child address | Orientation of the U inside that child |
-|---:|---:|---:|
-| 0 | $(0,0)$ | $S$: swap x and y |
-| 1 | $(0,1)$ | $I$: leave it unchanged |
-| 2 | $(1,1)$ | $I$: leave it unchanged |
-| 3 | $(1,0)$ | $T$: reflect across the other diagonal |
-
-The transformations used here are
-
-$$
-I(x,y)=(x,y),
-$$
-
-$$
-S(x,y)=(y,x),
-$$
-
-and
-
-$$
-T(x,y)=(1-y,1-x).
-$$
-
-The child address controls the bit pair emitted **at the current scale**. The child’s internal orientation controls how later digits are decoded **inside that child**.
-
-That separation is the key idea.
-
----
-
-## Why the internal orientation differs by digit
-
-The four large child squares must connect into one continuous path. Their internal copies of the U cannot all point the same way.
-
-At order two, examine each $2\times2$ child using coordinates relative to that child’s lower-left corner.
-
-| First digit | Relative path inside its child | Internal orientation |
-|---:|---:|---:|
-| 0 | $(0,0)\to(1,0)\to(1,1)\to(0,1)$ | $S$ |
-| 1 | $(0,0)\to(0,1)\to(1,1)\to(1,0)$ | $I$ |
-| 2 | $(0,0)\to(0,1)\to(1,1)\to(1,0)$ | $I$ |
-| 3 | $(1,1)\to(0,1)\to(0,0)\to(1,0)$ | $T$ |
-
-Children 1 and 2 use the basic U unchanged. The first and last children are reoriented so that:
-
-- the entire path starts at the required outer corner;
-- the exit from each child touches the entrance to the next child;
-- the entire path ends at the required outer corner.
-
-Therefore the digit value $q_k$ determines the relative refinement:
-
-$$
-r_0=S,
-\qquad r_1=I,
-\qquad r_2=I,
-\qquad r_3=T.
-$$
-
-This is not a numerical property of the digits 0, 1, 2, and 3. It is geometric bookkeeping for the four differently placed recursive copies of the Hilbert path.
-
----
-
-## The exact rule for one row
-
-Suppose the row reads digit $q_k$ with incoming orientation $g$.
-
-### Job 1: emit the current coordinate bits
-
-Take the basic child address $c_{q_k}$ and apply the **incoming** orientation:
-
-$$
-(x_k,y_k)=g(c_{q_k}).
-$$
-
-### Job 2: prepare to decode inside that child
-
-Take the child’s relative refinement $r_{q_k}$ and combine it with the incoming orientation:
-
-$$
-\text{outgoing orientation}=g\circ r_{q_k}.
-$$
-
-Read $g\circ r_{q_k}$ as:
-
-> First orient the little path as required inside this child, then view that little path through the orientation already applied to its parent.
-
-The outgoing orientation is passed unchanged into the next row. It becomes that row’s incoming orientation.
-
-In pseudocode:
+That gives:
 
 ```text
-state = basic orientation I
+                    x-bit
+                  0         1
+              ┌─────────┬─────────┐
+y-bit 1       │ digit 1 │ digit 2 │
+              │  (0,1)  │  (1,1)  │
+              ├─────────┼─────────┤
+y-bit 0       │ digit 0 │ digit 3 │
+              │  (0,0)  │  (1,0)  │
+              └─────────┴─────────┘
+```
 
-for each base-4 digit qₖ, from left to right:
-    child_address = basic address of qₖ
-    (xₖ,yₖ) = state applied to child_address
-    state = state combined with the internal orientation for qₖ
+This is the basic digit table:
+
+| Digit | Two-bit address |
+|---:|---:|
+| 0 | $(0,0)$ |
+| 1 | $(0,1)$ |
+| 2 | $(1,1)$ |
+| 3 | $(1,0)$ |
+
+At this one-digit scale, there is no smaller digit left to decode. Orientation has not yet created a complication.
+
+---
+
+## What “square” means here
+
+In this discussion, a **square** is only a square block of grid cells.
+
+Examples:
+
+- a $2\times2$ block has four cells;
+- a $4\times4$ block has sixteen cells;
+- an $8\times8$ block has sixty-four cells.
+
+We are not assuming any advanced geometry about squares. We are simply grouping grid cells into square-shaped regions.
+
+Every time the Hilbert construction grows one level, it puts four copies of the previous grid into a larger square:
+
+```text
+four 1×1 cells make one 2×2 block
+four 2×2 blocks make one 4×4 block
+four 4×4 blocks make one 8×8 block
+and so on
 ```
 
 ---
 
-## Example 1: why both rows of $H(5)$ use the basic orientation
+## What “child square” means
+
+Take a $4\times4$ grid and divide it into four equal $2\times2$ quarters:
+
+```text
+┌───────────┬───────────┐
+│           │           │
+│ upper     │ upper     │
+│ left      │ right     │
+│           │           │
+├───────────┼───────────┤
+│           │           │
+│ lower     │ lower     │
+│ left      │ right     │
+│           │           │
+└───────────┴───────────┘
+```
+
+A mathematician may call each quarter a **child square** of the larger square.
+
+There is no new kind of object hiding behind the word “child.” It means only:
+
+> one of the four smaller equal quarters inside the region currently being examined.
+
+This note will usually say **quarter** rather than child square.
+
+---
+
+## What two base-4 digits do
+
+A two-digit base-4 number selects one cell in a $4\times4$ grid.
+
+The digits are read from left to right:
+
+1. the first digit selects one $2\times2$ quarter of the whole $4\times4$ grid;
+2. the second digit selects one unit cell inside that chosen quarter.
+
+For example:
+
+$$
+11_4
+$$
+
+means:
+
+1. first digit 1: enter the upper-left quarter;
+2. second digit 1: inside that quarter, enter its upper-left cell.
+
+It is a nested address:
+
+```text
+whole 4×4 grid
+└── upper-left 2×2 quarter       first digit 1
+    └── upper-left unit cell     second digit 1
+```
+
+If every smaller U pointed the same way, decoding would end here. But those four U-shaped routes must join into one continuous route through all sixteen cells.
+
+That need to connect them is where orientation enters.
+
+---
+
+## Build the real $4\times4$ Hilbert route
+
+Here is the actual order-two Hilbert grid. Each cell contains the index that visits it:
+
+|  | $x=0$ | $x=1$ | $x=2$ | $x=3$ |
+|---:|---:|---:|---:|---:|
+| $y=3$ | 5 | 6 | 9 | 10 |
+| $y=2$ | 4 | 7 | 8 | 11 |
+| $y=1$ | 3 | 2 | 13 | 12 |
+| $y=0$ | 0 | 1 | 14 | 15 |
+
+The complete route is
+
+$$
+0\to1\to2\to\cdots\to15.
+$$
+
+Now look at the four $2\times2$ quarters separately.
+
+### Lower-left quarter: indices 0 through 3
+
+```text
+3 <─── 2
+      ↑
+0 ───> 1
+```
+
+The route goes right, then up, then left.
+
+### Upper-left quarter: indices 4 through 7
+
+```text
+5 ───> 6
+↑       │
+│       ↓
+4       7
+```
+
+This is the basic U: up, then right, then down.
+
+### Upper-right quarter: indices 8 through 11
+
+```text
+9 ───> 10
+↑        │
+│        ↓
+8        11
+```
+
+This also uses the basic U.
+
+### Lower-right quarter: indices 12 through 15
+
+```text
+13 <─── 12
+│
+↓
+14 ───> 15
+```
+
+The route goes left, then down, then right.
+
+The smaller routes point in different directions, but their endpoints touch:
+
+- index 3 touches index 4;
+- index 7 touches index 8;
+- index 11 touches index 12.
+
+That is how they form one continuous route.
+
+---
+
+## Orientation in ordinary language
+
+**Orientation** means:
+
+> Which way does the smaller U point inside the quarter we entered?
+
+For the four quarters of the basic $4\times4$ route:
+
+| First digit | Quarter entered | Arrangement of its smaller U |
+|---:|---:|---:|
+| 0 | lower left | turned so it goes right–up–left |
+| 1 | upper left | basic U: up–right–down |
+| 2 | upper right | basic U: up–right–down |
+| 3 | lower right | turned so it goes left–down–right |
+
+This is why the orientation carried forward differs according to the digit that was read.
+
+It does **not** differ because the position happens to be called $k=3$, $k=2$, or $k=1$. It differs because digits 0, 1, 2, and 3 enter four different quarters whose internal routes point in different directions.
+
+---
+
+## What happens before and after reading one digit
+
+Forget the words incoming and outgoing for a moment.
+
+Before reading a digit, the decoder already knows which way the U points in the region currently being examined. That arrangement was determined by earlier digits to the left.
+
+When it reads the current digit, it does two things:
+
+1. it uses the current arrangement to locate the requested quarter and records one x-bit and one y-bit;
+2. it remembers which way the smaller U points inside that quarter, because the next digit will be interpreted inside it.
+
+In plain language:
+
+```text
+orientation carried from earlier digits
+                 +
+            current digit
+                 │
+                 ├──> record the current x-bit and y-bit
+                 │
+                 └──> carry the smaller U's orientation to the next digit
+```
+
+Only now attach the technical names:
+
+- **incoming orientation** = the orientation available before reading the current digit;
+- **outgoing orientation** = the orientation carried forward after entering the chosen quarter.
+
+Thus:
+
+> Incoming means “use this now.” Outgoing means “give this to the next digit.”
+
+The outgoing orientation does not go backward and alter bits already recorded.
+
+---
+
+## Why the next position is called $k-1$
+
+Positions are numbered from the right, starting at 0.
+
+For
+
+$$
+1100_4,
+$$
+
+write the position above each digit:
+
+| Position | 3 | 2 | 1 | 0 |
+|---:|---:|---:|---:|---:|
+| Digit | 1 | 1 | 0 | 0 |
+
+The decoder reads from left to right:
+
+$$
+3\to2\to1\to0.
+$$
+
+Therefore:
+
+- after position 3, the next digit is at position 2;
+- after position 2, the next digit is at position 1;
+- after position 1, the next digit is at position 0.
+
+In general, the position immediately to the right of position $k$ is called $k-1$.
+
+So the statement
+
+> the orientation leaving position $k$ is used at position $k-1$
+
+means only:
+
+> carry the orientation to the next digit on the right.
+
+It does not mean that we subtract 1 from the digit. It does not mean that the path moves backward. The expression $k-1$ is just the label of the next digit position.
+
+This note will prefer “the next digit on the right” unless the position number matters.
+
+---
+
+## Example 1: why both 1s in $H(5)$ emit $(0,1)$
 
 Write
 
@@ -189,35 +336,50 @@ $$
 5=11_4.
 $$
 
-Start in state $I$.
+### First digit 1
 
-| Position | Digit | Incoming | Emitted now | Relative refinement | Outgoing |
-|---:|---:|---:|---:|---:|---:|
-| $k=1$ | 1 | $I$ | $I(c_1)=I(0,1)=(0,1)$ | $r_1=I$ | $I$ |
-| $k=0$ | 1 | $I$ | $I(c_1)=I(0,1)=(0,1)$ | $r_1=I$ | $I$ |
+We start with the basic U.
 
-On the first row, digit 1 chooses the upper-left child and says that its inner U remains basic. Therefore the outgoing orientation is $I$.
-
-That outgoing $I$ becomes the incoming orientation on the second row. The second digit is also 1, so the same lookup occurs again.
-
-This is why both rows emit $(0,1)$:
+Digit 1 selects the upper-left quarter, whose address is
 
 $$
-\text{same digit}+
-\text{same incoming orientation}
-=
-\text{same emitted pair}.
+(0,1).
 $$
 
-The two pairs occupy different binary positions, producing
+So the first recorded pair is
 
 $$
-x_1x_0=00_2,
+(x_1,y_1)=(0,1).
+$$
+
+The $4\times4$ picture shows that the U inside the upper-left quarter is still the basic U. Therefore we carry the basic orientation to the next digit.
+
+### Second digit 1
+
+We are now inside the upper-left quarter, and its U still has the basic orientation.
+
+Digit 1 again means “choose the upper-left part,” so the second recorded pair is also
+
+$$
+(x_0,y_0)=(0,1).
+$$
+
+The repeated output has a simple cause:
+
+```text
+first digit:   digit 1 interpreted through the basic U → (0,1)
+second digit:  digit 1 interpreted through the basic U → (0,1)
+```
+
+The pairs have the same values but occupy different binary positions:
+
+$$
+x_1x_0=00_2=0,
 \qquad
-y_1y_0=11_2,
+y_1y_0=11_2=3.
 $$
 
-and hence
+Therefore
 
 $$
 H(5)=(0,3).
@@ -225,54 +387,7 @@ $$
 
 ---
 
-## Example 2: exactly when the swap in $H(80)$ applies
-
-Write
-
-$$
-80=1100_4.
-$$
-
-The orientation handoff is:
-
-| Position | Digit | Incoming | Emitted now | Outgoing |
-|---:|---:|---:|---:|---:|
-| $k=3$ | 1 | $I$ | $(0,1)$ | $I$ |
-| $k=2$ | 1 | $I$ | $(0,1)$ | $I$ |
-| $k=1$ | 0 | $I$ | $(0,0)$ | $S$ |
-| $k=0$ | 0 | $S$ | $S(0,0)=(0,0)$ | $I$ |
-
-Focus on the last two rows.
-
-At $k=1$, the incoming state is $I$, so digit 0 emits
-
-$$
-I(c_0)=I(0,0)=(0,0).
-$$
-
-Digit 0 also says that the U inside that selected child must be swapped. Therefore the row’s outgoing state becomes $S$.
-
-That $S$ does not modify $(x_1,y_1)$ retroactively. It becomes the incoming state at $k=0$.
-
-At $k=0$, the next digit 0 has basic child address $(0,0)$. Apply the incoming swap:
-
-$$
-S(0,0)=(0,0).
-$$
-
-The swap is active, but swapping two zeros produces the same visible pair. This is why $H(80)$ is not the best example for **seeing** the output change.
-
-The second digit 0 adds another swap. Two swaps cancel:
-
-$$
-S\circ S=I.
-$$
-
-Therefore the terminal state is $I$.
-
----
-
-## Example 3: an orientation that visibly changes an emitted pair
+## Example 2: orientation visibly changes a later digit
 
 Use
 
@@ -280,46 +395,48 @@ $$
 12=30_4.
 $$
 
-Start in state $I$.
+### First digit 3
 
-### First row: digit 3 at position 1
-
-The basic address of digit 3 is
+We begin with the basic U. Digit 3 selects the lower-right quarter, so the first pair is its whole-grid address:
 
 $$
-c_3=(1,0).
+(x_1,y_1)=(1,0).
 $$
 
-The incoming orientation is $I$, so
+Now look again at the lower-right quarter of the real $4\times4$ route:
+
+```text
+13 <─── 12
+│
+↓
+14 ───> 15
+```
+
+Its route does not begin at the lower-left local cell. It begins at the **upper-right** local cell, index 12.
+
+That turned arrangement is what gets carried to the second digit.
+
+### Second digit 0
+
+Digit 0 means “take the first location in the local four-cell route.”
+
+In the basic U, the first location is the lower-left cell, with local address $(0,0)$.
+
+But inside this turned lower-right quarter, the first location is the upper-right local cell, with address
 
 $$
-(x_1,y_1)=I(1,0)=(1,0).
+(1,1).
 $$
 
-Digit 3 places the internal U in orientation $T$. Therefore the outgoing orientation is $T$.
-
-### Second row: digit 0 at position 0
-
-The outgoing $T$ from the previous row is now the incoming orientation.
-
-Digit 0’s basic child address is
+Therefore the second pair is
 
 $$
-c_0=(0,0).
+(x_0,y_0)=(1,1),
 $$
 
-This time the decoder must apply $T$ before emitting:
+not $(0,0)$.
 
-$$
-(x_0,y_0)
-=T(0,0)
-=(1-0,1-0)
-=(1,1).
-$$
-
-Without the orientation, digit 0 would have emitted $(0,0)$. The incoming $T$ visibly changes it to $(1,1)$.
-
-The coordinate bits are therefore
+Now assemble the coordinate bits:
 
 $$
 x_1x_0=11_2=3,
@@ -333,31 +450,87 @@ $$
 \boxed{H(12)=(3,1)}.
 $$
 
-This is the cleanest illustration of when incoming orientation applies: the transformation inherited from an earlier digit changes the interpretation of a later digit.
+This is orientation doing visible work:
+
+> The first digit enters a quarter whose smaller U is turned. The second digit is interpreted through that turned U.
+
+The formal name for this particular turned arrangement is $T$, but the name is less important than the picture.
 
 ---
 
-## What happens after the final digit?
+## Example 3: why the orientation change in $H(80)$ is hard to see
 
-The outgoing orientation after position $k=0$ has no more coordinate digit to transform. It is retained as the **terminal state** of the index.
+Write
 
-Thus the terminal state does not change the coordinate already constructed. It records the net orientation left after the complete recursive descent.
+$$
+80=1100_4.
+$$
 
-The selector later chooses indices with a common terminal state. That common state is what lets the pair-law comparison align the two decoders at their first mismatching digit.
+Read the digits from left to right:
 
-For now, remember only:
+| Position | Digit | Orientation used now | Pair recorded | Orientation carried to next digit |
+|---:|---:|---:|---:|---:|
+| 3 | 1 | basic | $(0,1)$ | basic |
+| 2 | 1 | basic | $(0,1)$ | basic |
+| 1 | 0 | basic | $(0,0)$ | swapped |
+| 0 | 0 | swapped | $(0,0)$ | basic |
 
-> Incoming orientation affects this row’s output. Outgoing orientation becomes next row’s input. The output after the last row is the terminal state.
+At position 1, digit 0 selects a quarter whose internal U is swapped. That swapped arrangement is carried to the final digit.
+
+At position 0, the swap is genuinely active. But the basic pair for digit 0 is $(0,0)$, and swapping its two entries still gives
+
+$$
+(0,0).
+$$
+
+So the orientation changes internally without visibly changing that emitted pair.
+
+This is why $H(80)$ is useful for the later pair law but poor as the first example of orientation. The $H(12)$ example makes the effect visible.
+
+---
+
+## Translation dictionary
+
+| Technical phrase | Plain-language meaning |
+|---|---|
+| current square | the square grid region selected so far |
+| child square | one of its four equal quarters |
+| orientation | which way the smaller U points in that region |
+| incoming orientation | the U arrangement used for the digit being read now |
+| outgoing orientation | the U arrangement carried to the next digit on the right |
+| position $k$ | the address of one digit, counted from the right starting at 0 |
+| position $k-1$ | the next digit position on the right |
+| terminal state | the orientation left over after the final digit |
+
+---
+
+## What you do not need yet
+
+You do not yet need to memorize:
+
+- all eight square symmetries;
+- a full orientation multiplication table;
+- formulas for composing transformations;
+- the selector’s two-digit steering suffixes.
+
+For the pair-law lesson, the conceptual requirements are only:
+
+1. earlier digits determine how a later local U is arranged;
+2. that arrangement can change which bit pair a later digit emits;
+3. the orientation left after the final digit is retained as the terminal state.
+
+The next note explains why matching terminal states let two decodings be aligned.
 
 > [!next] Continue with terminal states
-> [05D — What the Hilbert Terminal State Remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md) explains the four possible final states, how to read them from a base-4 word, and why matching final states let the pair-law proof rewind a common low suffix.
+> Read [05D — What the Hilbert Terminal State Remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md) after the picture in this note feels stable.
 
 ---
 
 ## Tiny checkpoint
 
-1. Which orientation transforms the emitted pair on the current row: incoming or outgoing?
-2. If the outgoing orientation at position $k=2$ is $S$, what is the incoming orientation at position $k=1$?
-3. Is the relative refinement chosen by the position number $k$, or by the digit value $q_k$?
-4. In the $H(80)$ trace, why does the incoming $S$ at $k=0$ still emit $(0,0)$?
-5. In the $H(12)$ trace, why does digit 0 emit $(1,1)$ rather than its basic pair $(0,0)$?
+1. In this lesson, what does “child square” mean in ordinary language?
+2. For $1100_4$, in what order are positions 3, 2, 1, and 0 read?
+3. If an orientation is carried out of position 2, which digit position uses it next?
+4. Why do both digits of $11_4$ emit $(0,1)$?
+5. For $30_4$, why does the second digit 0 select local pair $(1,1)$ rather than $(0,0)$?
+6. What is the difference between incoming and outgoing orientation without using either technical word?

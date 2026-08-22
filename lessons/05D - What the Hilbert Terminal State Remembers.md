@@ -1,6 +1,6 @@
 # Erdős 193 — What the Hilbert Terminal State Remembers
 
-**Previous:** [05C — When Hilbert Orientation Applies](05C%20-%20When%20Hilbert%20Orientation%20Applies.md)
+**Previous:** [05C — How Orientation Changes While Decoding](05C%20-%20When%20Hilbert%20Orientation%20Applies.md)
 
 **Return afterward to:** [05 — Why the Hilbert Pair Law Is True](05%20-%20Why%20the%20Hilbert%20Pair%20Law%20Is%20True.md)
 

@@ -258,7 +258,7 @@ Different books may rotate, reflect, or reverse the entire starting convention. 
 ### Decode a real point from the final construction
 
 > [!tip] Incoming versus outgoing orientation
-> If it is unclear when an orientation acts, pause for [05C — When Hilbert Orientation Applies](05C%20-%20When%20Hilbert%20Orientation%20Applies.md). It explains which state emits the current pair, which state passes to the next digit, why the transition depends on $q_k$ rather than $k$, and a worked example where orientation visibly changes the output.
+> If it is unclear what square is being divided, what a “child” is, or when an orientation acts, pause for [05C — How Orientation Changes While Decoding](05C%20-%20When%20Hilbert%20Orientation%20Applies.md). It builds the real $4\times4$ grid first, then defines incoming orientation, outgoing orientation, and why the next digit position is called $k-1$.
 
 The first index retained by the selector is
 

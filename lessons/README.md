@@ -23,7 +23,7 @@ If the place-value step in Lesson 05 feels compressed, pause for [Why matching f
 
 If the digit-to-coordinate notation in Lesson 05 is unfamiliar, pause for [How to read the Hilbert digit notation](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md). It defines $k$, $q_k$, $\in$, $\{0,1\}^2$, emitted bits, and the coordinate sums from first principles.
 
-If incoming and outgoing orientation states are unclear, continue with [When Hilbert orientation applies](05C%20-%20When%20Hilbert%20Orientation%20Applies.md). It separates the state that transforms the current digit from the state passed to the next digit and gives a worked example where orientation visibly changes an emitted pair.
+If the square-within-a-square picture or orientation handoff is unclear, continue with [How orientation changes while decoding](05C%20-%20When%20Hilbert%20Orientation%20Applies.md). It constructs the actual $4\times4$ route, defines a “child square” as one ordinary quarter of the grid, and explains why an orientation carried from position $k$ is used by the next digit at position $k-1$.
 
 Before using the same-terminal-state hypothesis in Lesson 05, read [What the Hilbert terminal state remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md). It explains the four reachable states, their digit-parity meaning, and why equal terminal states permit the backward-rewind comparison at the first mismatch.
 
