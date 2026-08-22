@@ -217,7 +217,137 @@ This also uses the basic U.
 
 The route goes left, then down, then right.
 
-The smaller routes point in different directions, but their endpoints touch:
+### Why the lower-right quarter has exactly that order
+
+First clarify **order two**:
+
+- order one uses one base-4 digit and a $2\times2$ grid;
+- order two uses two base-4 digits and a $4\times4$ grid;
+- “order” names the number of nested grid levels, not a special direction of travel.
+
+Now derive the lower-right route rather than assuming it.
+
+#### Base-4 bookkeeping fixes the index order
+
+Every two-digit base-4 index whose first digit is 3 belongs to the lower-right quarter:
+
+| Full base-4 index | Decimal index | Second digit |
+|---:|---:|---:|
+| $30_4$ | 12 | 0 |
+| $31_4$ | 13 | 1 |
+| $32_4$ | 14 | 2 |
+| $33_4$ | 15 | 3 |
+
+The first digit 3 chooses the large quarter. The second digit still runs through the local visit numbers 0, 1, 2, and 3.
+
+Therefore the lower-right quarter must contain the indices in this order:
+
+$$
+12\to13\to14\to15.
+$$
+
+The recursion does not rearrange the index numbers. It changes **which local cell receives each suffix digit**.
+
+#### Connectivity fixes where index 12 must begin
+
+The preceding upper-right quarter ends at
+
+$$
+11:(3,2).
+$$
+
+Successive Hilbert points must share one grid edge. The only cell inside the lower-right quarter that touches $(3,2)$ is the cell directly below it:
+
+$$
+12:(3,1).
+$$
+
+Thus index 12 is forced to be the upper-right cell of its $2\times2$ quarter.
+
+#### The endpoint fixes where index 15 must finish
+
+The order-two route is being built as a larger version of the same basic U. To remain usable as one recursive copy at the next level, it must preserve the basic U’s outer endpoints: begin at the whole grid’s lower-left corner and finish at its lower-right corner. Therefore
+
+$$
+15:(3,0).
+$$
+
+Once 12 starts at the upper-right local cell and 15 must finish at the lower-right local cell, there is only one edge-connected way to visit the other two cells exactly once:
+
+```text
+13 <─── 12
+│
+↓
+14 ───> 15
+```
+
+So the order is forced:
+
+$$
+(3,1)\to(2,1)\to(2,0)\to(3,0).
+$$
+
+It is not an arbitrary convention added after the rest of the path was drawn.
+
+### How the recursion records this turn
+
+Inside an unturned $2\times2$ U, the suffix digits have the local addresses
+
+| Suffix digit | Basic local address |
+|---:|---:|
+| 0 | $(0,0)$ |
+| 1 | $(0,1)$ |
+| 2 | $(1,1)$ |
+| 3 | $(1,0)$ |
+
+For the lower-right quarter, the decoder carries a transformation called $T$:
+
+$$
+T(x,y)=(1-y,1-x).
+$$
+
+Apply $T$ to each basic local address:
+
+| Full index | Suffix | Basic local address | Address after $T$ | Whole-grid coordinate |
+|---:|---:|---:|---:|---:|
+| $30_4=12$ | 0 | $(0,0)$ | $(1,1)$ | $(3,1)$ |
+| $31_4=13$ | 1 | $(0,1)$ | $(0,1)$ | $(2,1)$ |
+| $32_4=14$ | 2 | $(1,1)$ | $(0,0)$ | $(2,0)$ |
+| $33_4=15$ | 3 | $(1,0)$ | $(1,0)$ | $(3,0)$ |
+
+The “address after $T$” is measured inside the lower-right $2\times2$ quarter. That quarter begins at whole-grid coordinate $(2,0)$, so converting a local address to a whole-grid coordinate adds 2 to its x-coordinate.
+
+This table is the bookkeeping behind the drawing:
+
+```text
+suffix digit:       0       1       2       3
+full index:        12      13      14      15
+local cell:       (1,1)   (0,1)   (0,0)   (1,0)
+```
+
+### How the same bookkeeping continues at deeper levels
+
+Suppose the index has more digits after the initial 3.
+
+1. The first digit 3 selects the lower-right quarter.
+2. The decoder records that this quarter’s smaller route has orientation $T$.
+3. The next digit is interpreted through $T$, just as suffix digit 0 became local cell $(1,1)$ above.
+4. That next digit selects an even smaller quarter, which has its own turn relative to the already-turned region.
+5. The decoder combines the old turn with the new local turn and carries the result to the following digit.
+
+In compact notation, if the orientation already being carried is $g$ and digit $q$ has local turn $r_q$, then the orientation carried onward is
+
+$$
+g\circ r_q.
+$$
+
+This formula means:
+
+> Arrange the small route as required inside the chosen quarter, then view that arrangement through every turn already inherited from earlier digits.
+
+The state letter is therefore a bookkeeping shortcut. Instead of redrawing an increasingly tiny U after every digit, the decoder stores the combined turn and applies it to the next local address.
+
+The four quarter routes point in different directions, but their endpoints touch:
 
 - index 3 touches index 4;
 - index 7 touches index 8;
