@@ -526,4 +526,65 @@ This is a theorem about **all** same-state pairs, not a pattern inferred from fi
 5. Explain “same terminal state” without naming any of the states or transformations.
 6. In one or two sentences, why do the two sides of the pair law agree?
 
+
+## Checkpoint feedback
+
+Answers 1, 3, and 4 are correct:
+
+$$
+V(6,12)=2,\qquad V(6,10)=3,
+$$
+
+and a mismatch at $j=2$ gives either
+
+$$
+2j=4
+$$
+
+for an odd digit difference, or
+
+$$
+2j+1=5
+$$
+
+for a digit difference of 2 modulo 4. In each case the index-gap valuation and chord fingerprint have the same value.
+
+### Repair to answer 2
+
+Equal coordinate valuations do **not** allow either reduced parity pattern. If
+
+$$
+\nu_2(u_x)=\nu_2(u_y)=p,
+$$
+
+then dividing both coordinates by $2^p$ makes **both** coordinates odd. Thus equality of the two valuations forces the fingerprint to be odd:
+
+$$
+V(u)=2p+1.
+$$
+
+It does not force one particular numerical fingerprint because $p$ could be 0, 1, 2, and so on.
+
+### Repair to answer 5
+
+Your answer describes how the final state is calculated. The requested ordinary-language meaning is:
+
+> Two indices have the same terminal state when, after all their base-4 digits have been decoded, the decoder is carrying the same leftover orientation memory.
+
+That common leftover memory is useful because a shared final string of digits can then be undone in lockstep. Immediately after that shared suffix has been removed, both mismatching digits are viewed through one common orientation.
+
+Commutativity helps calculate the terminal state from the whole digit word. **Invertibility** is the property used by the backward-rewind argument.
+
+### Refinement to answer 6
+
+Your central idea is correct. The complete bridge has three parts:
+
+1. the first mismatch from the right is at the same position $j$ on both sides;
+2. the same digit difference selects the same $2j$-versus-$2j+1$ branch;
+3. equal terminal states plus the common low suffix ensure that the two mismatching digits are interpreted through one common orientation.
+
+Rewind undoes digit-dependent state changes; it does not literally remove coordinate bits.
+
+Before continuing, restate answers 2 and 5 in one sentence each.
+
 Once this connection feels non-magical, the next lesson can use it to exclude a collinear triple.
