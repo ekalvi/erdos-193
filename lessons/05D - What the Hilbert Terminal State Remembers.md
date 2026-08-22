@@ -165,31 +165,47 @@ Digits 1 and 2 do not alter either result.
 
 ---
 
-## Why leading-zero padding does not change the state
+## Why the permitted leading-zero padding does not change the state
 
-The construction may prepend two zero digits so all words have a suitable common even length.
+The parity restriction matters:
 
-Each zero contributes $S$. Two new zeros contribute
+> One extra leading zero generally changes the orientation. Two extra leading zeros cancel.
 
-$$
-S\circ S=I.
-$$
-
-Therefore padding $00_4$ onto the left changes neither the point nor the terminal state.
-
-For example, index 0 may be represented as either
+Each zero contributes $S$. Therefore
 
 $$
-00_4
+0\quad\text{contributes}\quad S,
 $$
 
-or, when compared with a four-digit index, as
+while
 
 $$
-0000_4.
+00\quad\text{contributes}\quad S\circ S=I.
 $$
 
-Both versions finish in state $I$.
+The construction defines $H(n)$ using a base-4 word of **even length**. If a longer representation is needed, it adds zeros while keeping the total length even. Any two allowed even lengths differ by an even number, so one allowed representation is obtained from another by prepending pairs $00_4$.
+
+For example, compare three finite decodings of the integer 5:
+
+| Written word | Length | Allowed by the even-length definition of $H(5)$? | Decoder point | Terminal state |
+|---:|---:|---:|---:|---:|
+| $11_4$ | 2 | yes | $(0,3)$ | $I$ |
+| $011_4$ | 3 | no | $(3,0)$ | $S$ |
+| $0011_4$ | 4 | yes | $(0,3)$ | $I$ |
+
+The single added zero in $011_4$ changes both the finite decoder point and the terminal state. The second added zero in $0011_4$ cancels that swap and restores the original decoding.
+
+Thus the allowed representations
+
+$$
+11_4,\qquad0011_4,\qquad000011_4,\qquad\ldots
+$$
+
+all give the same point and terminal state. They differ by pairs of leading zeros.
+
+For a base-4 word whose ordinary length is odd, the smallest allowed representation does begin with one zero so that its total length becomes even. Every other allowed representation then adds two more zeros at a time. The terminal state $\sigma(n)$ is defined from these even-padded words, not from an arbitrary number of leading zeros.
+
+When two indices are compared, both are padded to one common even length. This makes their coordinates and terminal states compatible.
 
 ---
 
