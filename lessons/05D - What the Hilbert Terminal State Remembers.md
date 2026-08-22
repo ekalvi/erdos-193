@@ -50,6 +50,30 @@ state remaining after q₀ = terminal state σ(n)
 
 The terminal state does not modify the completed coordinate $H(n)$. It records the net orientation accumulated during the descent through all the nested child squares.
 
+### Your “one more recursion” interpretation
+
+Yes: for a finite base-4 word $w$, the state after its final digit is terminal only because the word has ended.
+
+If we extend that recursive address by appending one finer-scale digit $d$ on the **right**,
+
+$$
+w\longrightarrow wd,
+$$
+
+then the old terminal state $\sigma(w)$ becomes the incoming orientation used to decode $d$:
+
+```text
+decode every digit of w
+        ↓
+state σ(w): terminal because w stops here
+        ↓ append a new finer digit d
+the same state σ(w): incoming orientation for d
+```
+
+Appending $d$ creates a longer recursive address and therefore a different finite Hilbert index. It is not merely another spelling of the old index.
+
+Do not confuse this with the construction’s permitted even padding. Prepending $00_4$ on the **left** processes those zeros before $w$; their two swaps cancel, so the represented point and terminal state remain unchanged. Left padding does not place a new digit after the old terminal state.
+
 ---
 
 ## Only digits 0 and 3 change the state
