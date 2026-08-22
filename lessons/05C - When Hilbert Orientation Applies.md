@@ -472,6 +472,132 @@ In words:
 
 So the table $r_0=S,r_1=I,r_2=I,r_3=T$ is the fixed rule. Composition with the orientation already present is the recursive bookkeeping.
 
+### What $I$, $S$, $T$, and $C$ actually do
+
+Each state is a function that takes one local address $(x,y)$ and returns the address after a turn or reflection.
+
+| State | Transformation | Plain meaning |
+|---:|---:|---|
+| $I$ | $I(x,y)=(x,y)$ | identity: change nothing |
+| $S$ | $S(x,y)=(y,x)$ | swap x and y; reflect across the main diagonal |
+| $T$ | $T(x,y)=(1-y,1-x)$ | reflect across the other diagonal |
+| $C$ | $C(x,y)=(1-x,1-y)$ | complement both bits; rotate by 180 degrees |
+
+The following diagrams show where local suffix digits 0, 1, 2, and 3 land under each state.
+
+#### $I$: the basic U
+
+```text
+1 ───> 2
+↑       │
+│       ↓
+0       3
+```
+
+Its address sequence is
+
+$$
+(0,0)\to(0,1)\to(1,1)\to(1,0).
+$$
+
+#### $S$: swap x and y
+
+```text
+3 <─── 2
+        ↑
+0 ───> 1
+```
+
+Its address sequence is
+
+$$
+(0,0)\to(1,0)\to(1,1)\to(0,1).
+$$
+
+This is the arrangement used inside the lower-left quarter.
+
+#### $T$: the lower-right turn
+
+```text
+1 <─── 0
+│
+↓
+2 ───> 3
+```
+
+Its address sequence is
+
+$$
+(1,1)\to(0,1)\to(0,0)\to(1,0).
+$$
+
+This is the arrangement used inside the lower-right quarter.
+
+#### $C$: complement both bits
+
+```text
+3       0
+↑       │
+│       ↓
+2 <─── 1
+```
+
+Its address sequence is
+
+$$
+(1,1)\to(1,0)\to(0,0)\to(0,1).
+$$
+
+It is the basic U turned by 180 degrees.
+
+### Why $C$ appears even though no digit directly adds it
+
+The fixed per-digit turns are only
+
+$$
+0\mapsto S,
+\qquad
+1\mapsto I,
+\qquad
+2\mapsto I,
+\qquad
+3\mapsto T.
+$$
+
+But the orientation state accumulates turns from several digits. Combining $S$ and $T$ produces $C$:
+
+$$
+S\circ T=T\circ S=C.
+$$
+
+For example, decode
+
+$$
+12=30_4.
+$$
+
+Start in state $I$:
+
+1. digit 3 adds $T$, so the carried orientation becomes $T$;
+2. digit 0 then adds $S$, so the final carried orientation becomes
+
+$$
+T\circ S=C.
+$$
+
+This can be checked directly:
+
+$$
+(T\circ S)(x,y)
+=T(y,x)
+=(1-x,1-y)
+=C(x,y).
+$$
+
+That is the $C$ you saw in the $H(12)$ trace. It was the **outgoing state after the final digit**, so it was the terminal state. It did not alter a further emitted pair because no digit remained.
+
+Thus $C$ is not a fourth kind of digit contribution. It is a combined orientation created by turns inherited from more than one recursive level.
+
 ---
 
 ## What happens before and after reading one digit
