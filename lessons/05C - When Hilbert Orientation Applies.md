@@ -349,6 +349,9 @@ For now, remember only:
 
 > Incoming orientation affects this row’s output. Outgoing orientation becomes next row’s input. The output after the last row is the terminal state.
 
+> [!next] Continue with terminal states
+> [05D — What the Hilbert Terminal State Remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md) explains the four possible final states, how to read them from a base-4 word, and why matching final states let the pair-law proof rewind a common low suffix.
+
 ---
 
 ## Tiny checkpoint

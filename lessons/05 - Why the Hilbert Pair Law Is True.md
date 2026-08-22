@@ -82,6 +82,9 @@ That information loss is intentional. The proof needs one feature that behaves p
 
 ## The statement we need to understand
 
+> [!tip] Terminal-state prerequisite
+> If “same terminal state” is still only a phrase, read [05D — What the Hilbert Terminal State Remembers](05D%20-%20What%20the%20Hilbert%20Terminal%20State%20Remembers.md) before continuing. It explains the final orientation memory and the backward-rewind argument used below.
+
 For two different Hilbert indices $m$ and $n$ with the same terminal state, the pair law says
 
 $$
