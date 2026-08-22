@@ -226,6 +226,50 @@ $$
 
 which produce the safe gap bound from 4 to 28 derived in [Note 03](03%20-%20Why%20the%20Gaps%20Are%204%20to%2028.md). Different valid representatives could produce different numerical gap bounds; the proof only requires some fixed finite bound.
 
+### All valid two-digit choices
+
+The complete candidate table makes the convention visible:
+
+| Required suffix contribution | Valid base-4 suffixes | Decimal offsets |
+|---:|---:|---:|
+| $I$ | $00_4,11_4,12_4,21_4,22_4,33_4$ | $0,5,6,9,10,15$ |
+| $S$ | $01_4,02_4,10_4,20_4$ | $1,2,4,8$ |
+| $T$ | $13_4,23_4,31_4,32_4$ | $7,11,13,14$ |
+| $C$ | $03_4,30_4$ | $3,12$ |
+
+Thus $I\mapsto5$, $S\mapsto1$, $T\mapsto13$, and $C\mapsto3$ is **not forced**.
+
+The manuscript chooses an especially transparent spelling of each state:
+
+- $11_4$: two neutral digits contribute $I$;
+- $01_4$: digit 0 contributes $S$, then digit 1 contributes nothing;
+- $31_4$: digit 3 contributes $T$, then digit 1 contributes nothing;
+- $03_4$: digits 0 and 3 contribute $ST=C$.
+
+These are easy representatives to derive directly from the generator rules. They are a convention, not an optimization claim. Replacing them by another fixed choice from each row would give the same final-state cancellation, with possibly different finite gap bounds.
+
+### Why the first rings are at indices 5 and 17
+
+For block $a=0$, the incoming state is $I$, so the table selects offset 5:
+
+$$
+n_0=16\cdot0+5=5.
+$$
+
+For block $a=1$, the incoming state is $S$, so the table selects offset 1:
+
+$$
+n_1=16\cdot1+1=17.
+$$
+
+Their difference is
+
+$$
+n_1-n_0=17-5=16+1-5=12.
+$$
+
+That 12 is the **index gap between two blocks**, not either square's offset within its own block. It lies inside the allowed range $4\le12\le28$. There are 11 indices strictly between 5 and 17, while the Hilbert path takes 12 unit steps from index 5 to index 17.
+
 ---
 
 ## One-sentence takeaway

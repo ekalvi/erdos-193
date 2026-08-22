@@ -38,7 +38,7 @@
 <header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html">The idea</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html" class="cur">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
 <span class="eyebrow">The robot’s landing rule</span><h1>Why the robot lands on only one color</h1>
-<p class="sub">A Hilbert curve is made from smaller copies of itself, each turned or flipped. A square’s color tells you the direction in which the path would cross that tiny copy: right, up, down, or left. The robot keeps only the blue, right-facing kind. White rings show one possible set of robot landings.</p>
+<p class="sub">A Hilbert curve is made from smaller copies of itself, each turned or flipped. A square’s color tells you the direction in which the path would cross that tiny copy: right, up, down, or left. The proof could target any one fixed color; this page follows the formal construction and uses blue for the identity state. White rings show its one-per-16-index-block steering representatives.</p>
 
 <h2>Every square has an address</h2>
 <div class="palette" id="digitPalette"></div>
@@ -69,7 +69,7 @@
 
 <div class="equation">
   <b>What to try.</b> Hover over the grid to see a square’s path number and address. Click one blue square, then another blue square. The panel compares them and checks the binary fingerprint used by the proof.
-  White rings mark the robot’s chosen blue stops. Following the Hilbert path, there are always only 4–28 ordinary squares between one ring and the next.
+  White rings mark the formal selector’s chosen blue stops. Successive ring indices differ by 4–28. A difference of <i>d</i> means <i>d</i> Hilbert unit steps and <i>d</i>−1 indices strictly between the rings.
 </div>
 <p class="note" style="margin-top:16px"><b>Technical detail, if you want it:</b> for two squares with the same color, the first binary scale at which their floor positions differ exactly matches the power of two in the difference between their path numbers. The proof writes this as <code>V(H(n)−H(m)) = ν₂(n−m)</code>. That matching fingerprint is what ultimately prevents three robot landings from lining up.</p>
 
