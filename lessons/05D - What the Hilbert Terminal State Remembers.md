@@ -213,6 +213,15 @@ Matching terminal states lets the proof solve that difficulty by running the sha
 
 ---
 
+> [!important] How important is rewind?
+> Rewind is **load-bearing but local**. You do not need it to define the Hilbert path, decode $H(n)$, or understand the trace-select-lift construction at a high level. It is essential to this proof of the Hilbert pair law: it converts “same terminal state” plus “same low suffix” into “same orientation immediately after the first mismatch.”
+>
+> You do not need to memorize the state tables. Retain one implication:
+>
+> $$\text{same terminal state}+\text{same final digits}\Longrightarrow\text{same state after undoing those digits}.$$
+>
+> A different proof could hide this in a complete transition-table calculation, but it would still need the same invertibility fact in another form.
+
 ## Rewind means undoing known state toggles
 
 The word **rewind** sounds more sophisticated than the operation.
