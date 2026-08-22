@@ -12,43 +12,39 @@ $$
 \nu_2(40)=3,\qquad \nu_2(18)=1,\qquad \nu_2(7)=0.
 $$
 
-Your reasoning about the two vector examples was also pointed in the right direction, but the final arithmetic used the common power instead of its exponent.
-
-For
+Your retry uses the right distinction. There is one arithmetic transcription error:
 
 $$
-u=(6,12),
+\frac{(6,12)}{2}=(3,6),
 $$
 
-the largest common power is $2^1=2$, so $p=1$. After dividing by 2, exactly one coordinate is odd. Therefore
+not $(3,4)$. Exactly one coordinate of $(3,6)$ is odd, so
 
 $$
-V(6,12)=2p=2\cdot1=2.
+V(6,12)=2.
 $$
 
-For
+For the second vector,
 
 $$
-u=(6,10),
+\frac{(6,10)}{2}=(3,5).
 $$
 
-we again have $p=1$, but after dividing by 2 both coordinates are odd. Therefore
+Both reduced coordinates are odd, so
 
 $$
-V(6,10)=2p+1=2\cdot1+1=3.
+V(6,10)=3.
 $$
 
-The key distinction is:
-
-- $2^p$ is the common power of two;
-- $p$ is the number of factors of two;
-- the fingerprint formula uses $p$, not $2^p$.
+Your conclusion was therefore correct: the two vectors have the same common exponent $p=1$, but different reduced parity patterns.
 
 You correctly computed the scaling example:
 
 $$
 V(u)=3\quad\Longrightarrow\quad V(4u)=3+2\nu_2(4)=7.
 $$
+
+Your ordinary-language pair-law statement is also correct. More precisely, for two same-terminal-state Hilbert indices, the fingerprint of their **planar displacement** equals the 2-adic valuation of their **index gap**.
 
 ---
 
