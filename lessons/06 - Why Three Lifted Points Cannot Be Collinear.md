@@ -555,3 +555,24 @@ Two contextual premises should also appear when this is written as a standalone 
 
 > [!question] Final compression exercise
 > Give the proof in five to seven sentences of ordinary language, using no displayed equations. Preserve these four links: collinearity produces one common vector; the adjacent pair laws make $r,s$ odd; the endpoint pair law makes $r+s$ odd; odd plus odd is even.
+
+### Your plain-language proof
+
+> [!success] Passed with minor notation repairs
+> You retained every load-bearing implication. The only mathematical slip was reversing the scale factors in the third bullet: with $A=gr$ and $B=gs$, the construction gives $X=rW$ and $Y=sW$.
+
+Here is your proof with its structure preserved and four wording corrections applied:
+
+1. Assume that three distinct points of the selected lifted walk are collinear. Their indices $a<b<c$ have the same terminal state, so the Hilbert pair law applies to the three pairs $(a,b)$, $(b,c)$, and $(a,c)$; their index gaps are also their height changes.
+2. Remove the greatest common factor $g$ from the two adjacent index gaps, writing them as $gr$ and $gs$. The remaining positive integers $r$ and $s$ are coprime, so in particular they cannot both be even.
+3. Collinearity makes the two adjacent planar chords proportional to their height changes. After cancelling $g$, coprimality lets us express the chords as $X=rW$ and $Y=sW$ for one common nonzero integer vector $W$.
+4. Applying the pair law and fingerprint scaling rule to the two adjacent pairs shows that the 2-adic valuations of $r$ and $s$ are equal. Since $r$ and $s$ are coprime, those valuations must both be zero, so $r$ and $s$ are odd; the same equations also show that $V(W)=\nu_2(g)$.
+5. The endpoint index gap is $g(r+s)$ and its planar chord is $(r+s)W$. Applying the pair law there, together with $V(W)=\nu_2(g)$, forces $\nu_2(r+s)=0$, so $r+s$ must be odd.
+6. But the sum of two odd integers is even. This contradiction disproves the original collinearity assumption, so no three distinct points of the selected lifted walk are collinear.
+
+The wording changes are:
+
+- **greatest common factor**, not “common denominator”;
+- three **pairs**, not three permutations;
+- $X=rW$ and $Y=sW$, not the reversed assignment;
+- no three distinct points of the **selected lifted walk**, rather than every possible Hilbert lift.
