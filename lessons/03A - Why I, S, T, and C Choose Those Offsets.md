@@ -55,6 +55,34 @@ The four terminal states that can arise are transformations of a coordinate pair
 
 The letters are compact names for these transformations. $I$ is standard notation for “identity.” $S$ is naturally remembered as “swap,” and $C$ as “complement.” The letter $T$ is simply the manuscript’s label for the fourth transformation; the definition $(1-y,1-x)$ is what matters.
 
+### Where the four arrows come from
+
+The basic U-shaped Hilbert piece enters at its lower-left corner and exits at its lower-right corner. Using local coordinates, write
+
+$$
+e=(0,0)
+\qquad\text{and}\qquad
+x=(1,0).
+$$
+
+Thus the basic piece runs left to right. A state transforms the **entire** piece, including both endpoints. Apply each transformation to $e$ and $x$:
+
+| State | Transformed entry | Transformed exit | Direction |
+|---:|---:|---:|---:|
+| $I$ | $I(0,0)=(0,0)$ | $I(1,0)=(1,0)$ | left $\to$ right |
+| $S$ | $S(0,0)=(0,0)$ | $S(1,0)=(0,1)$ | bottom $\to$ top |
+| $T$ | $T(0,0)=(1,1)$ | $T(1,0)=(1,0)$ | top $\to$ bottom |
+| $C$ | $C(0,0)=(1,1)$ | $C(1,0)=(0,1)$ | right $\to$ left |
+
+So the arrows are not extra definitions. They are a visual summary of where each transformed copy's entrance and exit land:
+
+```text
+I: (0,0) ───> (1,0)    left  → right
+S: (0,0) ───> (0,1)    bottom → top
+T: (1,1) ───> (1,0)    top    → bottom
+C: (1,1) ───> (0,1)    right  → left
+```
+
 These four transformations form a tiny closed system:
 
 $$
