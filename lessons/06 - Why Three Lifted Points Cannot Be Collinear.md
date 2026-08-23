@@ -433,3 +433,68 @@ Collinearity tries to make the index gap and planar chord scale together. The pa
 4. How do the first two pair-law equations force both $r$ and $s$ to be odd?
 5. Why does the endpoint pair force $r+s$ to be odd?
 6. Give the contradiction in three sentences without looking back.
+
+### Feedback on your checkpoint attempt
+
+1. **Correct.** $A=b-a$ and $B=c-b$ are the two index gaps. Because index is used as height, they are also the two height changes. $X=H(b)-H(a)$ and $Y=H(c)-H(b)$ are the corresponding **planar** Hilbert chords. Keep “planar chord” distinct from the full three-dimensional displacements $(X,A)$ and $(Y,B)$.
+
+2. **Correct idea.** Collinearity says that the two full displacements have the same planar change per unit height:
+   $$
+   \frac{X}{A}=\frac{Y}{B}.
+   $$
+   Multiplying by $AB$ gives
+   $$
+   BX=AY.
+   $$
+
+3. **Partly remembered.** Writing
+   $$
+   A=gr,\qquad B=gs,\qquad g=\gcd(A,B)
+   $$
+   reduces the ratio of the gaps to lowest terms. This has two uses:
+   - immediately, $\gcd(r,s)=1$ lets Euclid’s lemma construct the integer vector $W$ with $X=rW$ and $Y=sW$;
+   - later, if $\nu_2(r)=\nu_2(s)$, coprimality forces that common valuation to be zero.
+
+4. **Conclusion remembered; derivation needs repair.** Define
+   $$
+   \gamma=\nu_2(g),\qquad
+   \alpha=\nu_2(r),\qquad
+   \beta=\nu_2(s),\qquad
+   w=V(W).
+   $$
+   The pair law applied to $(a,b)$ compares the gap $gr$ with the chord $rW$:
+   $$
+   \gamma+\alpha=w+2\alpha,
+   $$
+   so
+   $$
+   w=\gamma-\alpha.
+   $$
+   Applied to $(b,c)$, it similarly gives
+   $$
+   w=\gamma-\beta.
+   $$
+   Hence $\alpha=\beta$. Because $r$ and $s$ are coprime, they cannot both have a factor of 2, so
+   $$
+   \alpha=\beta=0.
+   $$
+   That is exactly why $r$ and $s$ are odd.
+
+5. **Conclusion partly remembered; here is the missing mechanism.** Let
+   $$
+   \delta=\nu_2(r+s).
+   $$
+   From the adjacent pairs we already know $\alpha=\beta=0$, which also gives $w=\gamma$. For the endpoint pair $(a,c)$:
+   - its index gap is $g(r+s)$, with valuation $\gamma+\delta$;
+   - its planar chord is $(r+s)W$, with fingerprint $w+2\delta=\gamma+2\delta$.
+
+   The pair law equates those quantities:
+   $$
+   \gamma+\delta=\gamma+2\delta.
+   $$
+   Therefore $\delta=0$, which means $r+s$ is odd.
+
+6. **Correct.** Under the collinearity assumption, the adjacent pairs force $r$ and $s$ to be odd. The endpoint pair forces $r+s$ to be odd. But two odd integers have an even sum, so the assumption is impossible.
+
+> [!question] Retry before moving on
+> Without looking above, restate answers 3, 4, and 5. In answer 4, include why $\alpha=\beta$ becomes $\alpha=\beta=0$. In answer 5, include the two expressions $\gamma+\delta$ and $\gamma+2\delta$.
