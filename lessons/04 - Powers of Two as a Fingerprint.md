@@ -300,6 +300,52 @@ In words:
 
 The index gap does not determine the entire planar chord. It determines this particular fingerprint exactly.
 
+## What is standard—and what this proof introduces
+
+The ingredients come from different layers.
+
+### Established background
+
+- The ordinary 2-adic valuation $\nu_2(n)$ is classical mathematics.
+- Its rules, such as
+  $$
+  \nu_2(ab)=\nu_2(a)+\nu_2(b),
+  $$
+  are standard.
+- The discrete Hilbert recursion and its four-child Gray-code order are also established constructions. The manuscript cites Hilbert and Sagan for that background.
+
+### Purpose-built for this proof
+
+The scalar vector fingerprint
+
+$$
+V(u)=2p(u)+\epsilon(u)
+$$
+
+is introduced in this manuscript. It packages two familiar pieces of 2-adic information:
+
+1. the largest common power-of-two exponent $p(u)$ in the two coordinates;
+2. one bit $\epsilon(u)$ recording whether the reduced coordinates are both odd or only one is odd.
+
+So the raw ingredients are standard, while this exact packaging is a custom invariant designed for the proof. The coefficient 2 is chosen so that multiplying both vector coordinates by $k$ changes the fingerprint by
+
+$$
+2\nu_2(k),
+$$
+
+whereas multiplying one integer gap by $k$ changes its valuation by only $\nu_2(k)$. That deliberate mismatch is what later contradicts collinearity.
+
+The same-terminal-state Hilbert pair law is the substantial proof-specific theorem:
+
+$$
+V\bigl(H(n)-H(m)\bigr)=\nu_2(|n-m|).
+$$
+
+It is not a generic law of arbitrary planar vectors, nor a standard fact about every Hilbert-curve convention. It is proved here for this nested discrete Hilbert indexing by combining the first base-4 mismatch, the Gray-code child corners, and the shared terminal-state rewind.
+
+> [!warning] What “new” can safely mean
+> The fingerprint definition and pair-law proof are new components of this repository and manuscript: they are introduced and proved here rather than cited from an earlier source. The Lean formalization checks that the theorem follows from the definitions; it does **not** establish historical priority or worldwide literature novelty. The manuscript has not completed external mathematical peer review, so the safe claim is **proof-specific work introduced here**, not yet **certified as never previously discovered in any equivalent form**.
+
 ---
 
 ## Three concrete interpretations
