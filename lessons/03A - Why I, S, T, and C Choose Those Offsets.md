@@ -30,6 +30,11 @@ The construction needs an explicit infinite sequence with bounded successive gap
 
 For an incoming state $I$, the displayed correction table chooses offset 5. For incoming states $S$, $T$, and $C$, it chooses offsets 1, 13, and 3 respectively. Whichever position is activated, the complete selected index finishes in state $I$.
 
+> [!warning] It does not search for the first blue square
+> The selector does not scan a block from left to right and stop when it encounters state $I$. It evaluates the block prefix's state once, then uses the fixed correction table.
+>
+> For example, when the incoming state is $I$, offset 0 would also finish in $I$, but the formal table deliberately chooses the canonical representative at offset 5. When the incoming state is $T$, offset 7 would work, but the table chooses offset 13. A white ring therefore means **the table's chosen representative**, not **the earliest blue square**.
+
 The other same-state squares are not defective; this particular selector simply does not need them. Keeping one representative per block makes the sequence and the bound
 
 $$

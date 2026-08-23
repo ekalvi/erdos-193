@@ -58,6 +58,7 @@
 <p class="note">Start with the whole Hilbert square facing right. Read a cell’s base-4 address from left to right. Each digit chooses one quarter of the current square; the Hilbert rule turns or flips the path inside that quarter. After the final digit, the path’s entry-to-exit direction sets the color. There is no score or guess involved: the same address always produces the same color.</p>
 <div class="palette" id="statePalette"></div>
 <div class="equation"><b>Where the arrows come from.</b> The basic U enters at <code>(0,0)</code> and exits at <code>(1,0)</code>, so it points left → right. Apply each state transformation to both endpoints: <code>I: (0,0)→(1,0)</code>, <code>S: (0,0)→(0,1)</code>, <code>T: (1,1)→(1,0)</code>, and <code>C: (1,1)→(0,1)</code>. Those transformed entry-to-exit pairs give the four displayed directions.</div>
+<div class="equation"><b>How a white ring is chosen.</b> The selector does not search for the first blue square. For each 16-index block, it computes the prefix state and uses the fixed lookup <code>I→5, S→1, T→13, C→3</code>. The resulting suffix cancels the prefix state, so the chosen representative is blue. Other blue squares in the block are valid but unused.</div>
 <div class="statrow" id="stats"></div>
 
 <div class="layout">
