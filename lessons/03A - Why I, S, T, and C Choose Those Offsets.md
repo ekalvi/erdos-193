@@ -88,6 +88,24 @@ Each base-4 digit changes the Hilbert orientation as follows:
 | $2$ | $I$ |
 | $3$ | $T$ |
 
+### The four digits on the basic U
+
+In the basic orientation, the four child choices occur along this U-shaped route:
+
+```text
+1 · I ─────────> 2 · I
+  ↑                 ↓
+0 · S             3 · T
+```
+
+The numbers $0,1,2,3$ are the base-4 child digits, read in Hilbert traversal order. The adjacent letters are the **orientation contribution of choosing that digit**:
+
+- digit 0 contributes $S$;
+- digits 1 and 2 contribute $I$, meaning no orientation change;
+- digit 3 contributes $T$.
+
+These letters are not four new positions, and they are not necessarily the final colors of a complete multi-digit index. They describe what one digit adds to the orientation memory inherited from all earlier digits.
+
 Starting from $I$, the recursion therefore builds terminal states only by combining $S$ and $T$. Because $S$ and $T$ commute and each cancels itself, the only possible results are
 
 $$
@@ -130,6 +148,17 @@ because $5=11_4$.
 
 Thus choosing an offset is equivalent to appending a two-digit base-4 suffix.
 
+> [!important] Why must the offset steer the state?
+> The prefix $a$ has already left the decoder in some state $g$. Choosing an offset $r_a$ appends two actual base-4 digits whose combined contribution we can call $h$. The completed index then has terminal state
+> $$
+> \sigma(16a+r_a)=g\cdot h.
+> $$
+> We need every selected index to finish in the chosen state $I$, so the suffix must satisfy
+> $$
+> g\cdot h=I.
+> $$
+> Thus $h=g^{-1}$. In this four-state system every state is its own inverse, so $h=g$. An arbitrary offset would not enforce this equation and would mix terminal states, preventing uniform use of the pair law.
+
 ---
 
 ## The cancellation table
@@ -150,6 +179,23 @@ The proof uses this table:
 | $S$ | $01_4$ | $S$ | $1$ | $S\cdot S=I$ |
 | $T$ | $31_4$ | $T$ | $13$ | $T\cdot T=I$ |
 | $C$ | $03_4$ | $ST=C$ | $3$ | $C\cdot C=I$ |
+
+> [!tip] The finite-state-controller analogy
+> You can read the correction table like a tiny program:
+>
+> **input:** the prefix's current state $g$
+>
+> **output:** one two-digit suffix, encoded as the integer offset $r_a$
+>
+> **guarantee:** the completed index has state $I$
+>
+> In symbols,
+> $$
+> g\longmapsto r_a
+> \quad\text{such that}\quad
+> \sigma(16a+r_a)=I.
+> $$
+> This is programming-like shorthand, but its purpose is not runtime efficiency. It is a finite lookup table that serves as an explicit mathematical witness: it constructs one valid next index in every block while proving the same-state and bounded-gap properties.
 
 Here is how to read two examples.
 
