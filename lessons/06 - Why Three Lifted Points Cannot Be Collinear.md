@@ -498,3 +498,60 @@ Collinearity tries to make the index gap and planar chord scale together. The pa
 
 > [!question] Retry before moving on
 > Without looking above, restate answers 3, 4, and 5. In answer 4, include why $\alpha=\beta$ becomes $\alpha=\beta=0$. In answer 5, include the two expressions $\gamma+\delta$ and $\gamma+2\delta$.
+
+### Whiteboard reconstruction assessment
+
+> [!success] Checkpoint cleared
+> Your whiteboard reconstruction recovered the complete proof architecture: collinearity, reduced gap ratio, the common integer vector, two adjacent pair laws, the endpoint pair law, and the odd-plus-odd contradiction. The earlier gaps in answers 3–5 are now repaired.
+
+The board correctly reconstructed:
+
+1. $A=b-a$, $B=c-b$, $X=H(b)-H(a)$, and $Y=H(c)-H(b)$;
+2. collinearity gives $X/A=Y/B$, hence $BX=AY$;
+3. $A=gr$ and $B=gs$ with coprime $r,s$;
+4. $sX=rY$, followed by $X=rW$ and $Y=sW$;
+5. the adjacent equations
+   $$
+   w=\gamma-\alpha,
+   \qquad
+   w=\gamma-\beta;
+   $$
+6. $\alpha=\beta=0$, hence $r,s$ are odd and $w=\gamma$;
+7. the endpoint comparison forcing $\delta=\nu_2(r+s)=0$;
+8. the contradiction that $r+s$ is both odd and even.
+
+There is one local algebra correction. From
+
+$$
+\gamma+\delta=w+2\delta,
+$$
+
+the rearranged equation is
+
+$$
+\boxed{w=\gamma-\delta,}
+$$
+
+not $w=\gamma-2\delta$. Equivalently, subtract $\delta$ from both sides first:
+
+$$
+\gamma=w+\delta.
+$$
+
+Since the adjacent pairs already gave $w=\gamma$, either corrected form yields
+
+$$
+\delta=0.
+$$
+
+Two contextual premises should also appear when this is written as a standalone proof:
+
+- $a,b,c$ are **selected indices with one common terminal state**, which is why the pair law applies to all three pairs $(a,b)$, $(b,c)$, and $(a,c)$;
+- $V$ accepts planar vectors, so write its scaling rule as
+  $$
+  V(kU)=V(U)+2\nu_2(k)
+  $$
+  for a nonzero planar vector $U$, rather than using $A$, which already denotes an integer index gap.
+
+> [!question] Final compression exercise
+> Give the proof in five to seven sentences of ordinary language, using no displayed equations. Preserve these four links: collinearity produces one common vector; the adjacent pair laws make $r,s$ odd; the endpoint pair law makes $r+s$ odd; odd plus odd is even.
