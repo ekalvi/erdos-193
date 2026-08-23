@@ -128,21 +128,98 @@ $$
 sX=rY.
 $$
 
-Because $r$ and $s$ are coprime, this forces the two integer chords to be integer multiples of one common nonzero planar vector $W$:
+Now we will construct the common vector $W$ rather than jump directly to it.
+
+Write the two planar chords in coordinates:
 
 $$
-X=rW,\qquad Y=sW.
+X=(X_x,X_y),\qquad Y=(Y_x,Y_y).
 $$
 
-Why is $W$ still an integer vector? Coordinate by coordinate,
+The vector equation
 
 $$
-sX_i=rY_i.
+sX=rY
 $$
 
-Since $r$ shares no factor with $s$, every factor of $r$ must divide $X_i$. Thus $r$ divides both coordinates of $X$, and $W=X/r$ has integer coordinates. The equation then gives $Y=sW$.
+means that both coordinate equations hold:
 
-At this point collinearity has reduced the picture to one direction $W$ with two integer scale factors $r$ and $s$.
+$$
+sX_x=rY_x,
+\qquad
+sX_y=rY_y.
+$$
+
+The first equation says that $r$ divides $sX_x$. Because $\gcd(r,s)=1$, Euclid’s lemma says that $r$ must divide $X_x$. The same argument applied to the second equation says that $r$ must also divide $X_y$.
+
+> [!info] The divisibility fact being used
+> If $\gcd(r,s)=1$ and $r$ divides $sz$, then $r$ divides $z$. Any prime factor supplied by $r$ cannot be supplied by $s$, so it must already occur in $z$.
+
+Therefore both fractions below are integers:
+
+$$
+W_x=\frac{X_x}{r},
+\qquad
+W_y=\frac{X_y}{r}.
+$$
+
+Define
+
+$$
+W=(W_x,W_y).
+$$
+
+This definition immediately gives
+
+$$
+X=rW.
+$$
+
+Now substitute that back into $sX=rY$:
+
+$$
+s(rW)=rY.
+$$
+
+Cancel the positive integer $r$:
+
+$$
+sW=Y.
+$$
+
+Thus we have proved, rather than assumed,
+
+$$
+\boxed{X=rW,\qquad Y=sW.}
+$$
+
+The vector $W$ is nonzero because $X$ is nonzero and $X=rW$. Geometrically, $W$ is the common integer direction singled out after the coprime scale factors $r$ and $s$ have been separated from the two chords. It need not be a primitive vector; its coordinates may still share a factor.
+
+For example, if $r=3$, $s=5$, and
+
+$$
+5X=3Y,
+$$
+
+then 3 must divide both coordinates of $X$. If
+
+$$
+X=(6,-3),
+$$
+
+we define
+
+$$
+W=X/3=(2,-1),
+$$
+
+and the equation forces
+
+$$
+Y=5W=(10,-5).
+$$
+
+At this point collinearity has reduced the picture to one nonzero integer direction $W$ with two integer scale factors $r$ and $s$.
 
 ---
 
