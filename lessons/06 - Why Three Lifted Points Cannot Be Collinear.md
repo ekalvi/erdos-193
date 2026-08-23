@@ -277,6 +277,25 @@ $$
 
 That says $r+s$ is odd.
 
+> [!info] Why does the endpoint pair law force oddness?
+> It does not assume that $r+s$ is odd. It derives oddness from the unequal way scalar factors enter the two invariants.
+>
+> If $r+s$ contains $\delta$ factors of 2, multiplying the **integer index gap** by $r+s$ increases its valuation by $\delta$:
+> $$
+> \gamma\longmapsto\gamma+\delta.
+> $$
+> But multiplying the **planar vector** $W$ by $r+s$ inserts those $\delta$ factors into both coordinates, so its fingerprint increases by $2\delta$:
+> $$
+> \gamma\longmapsto\gamma+2\delta.
+> $$
+> The endpoint pair law demands that these two results be equal. Their difference is $\delta$, so equality is possible only when $\delta=0$. Since
+> $$
+> \delta=\nu_2(r+s),
+> $$
+> this means $r+s$ has no factor of 2—that is, $r+s$ is odd.
+>
+> For the smallest contrary case, suppose $r+s$ had exactly one factor of 2. The index side would become $\gamma+1$, while the vector side would become $\gamma+2$. They could not satisfy the pair law.
+
 But the adjacent pairs already forced both $r$ and $s$ to be odd. The sum of two odd integers is even, so
 
 $$
