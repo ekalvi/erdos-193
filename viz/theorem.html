@@ -2,14 +2,15 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="icon" href="favicon.svg"><title>Formal proof ledger — Erdős Problem 193</title>
 <meta name="description" content="The Lean statement, proof dependency chain, axiom audit, and verification boundary for the Hilbert lift.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css?v=hilbert2"></head>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css?v=learn1"></head>
 <body><div class="wrap narrow">
-<header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html">The idea</a><a class="cur" href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof-steps.html">Overview</a><a href="learn.html">Learn</a><a class="cur" href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 <main class="article">
-<span class="eyebrow">Unconditional AI-assisted proof</span>
-<h1>What Lean checked</h1>
-<p class="lede">The repository contains a complete counterexample construction for <a href="https://www.erdosproblems.com/193">Erdős Problem 193</a>, giving a negative answer to its “must every walk?” question. Lean checked the infinite construction—not only the 500,000-step example. External mathematical review is still pending.</p>
-<div class="status-band"><span class="status-dot"></span><div><b>Why this matters</b><p>Ordinary testing can only check a finite number of robot steps. Lean checks the general argument for every future step and every possible group of three footprints. Its small trusted core rejects a proof if even one required logical step is missing.</p></div></div>
+<span class="eyebrow">The formal ledger, not the starting lesson</span>
+<h1>What Lean checked—and what still needs human review</h1>
+<p class="lede">The repository contains an explicit infinite counterexample construction for <a href="https://www.erdosproblems.com/193">Erdős Problem 193</a>. Lean checks the construction for every natural-number position, rather than extrapolating from the 500,000-step artifact. External mathematical review and community acceptance remain pending.</p>
+<div class="status-band"><span class="status-dot"></span><div><b>Why formalization matters here</b><p>The word “forever” is the load-bearing part of the problem. A finite program run cannot reach it. Lean checks that the general selector, pair law, collinearity contradiction, and finite-step conclusion follow from the definitions.</p></div></div>
+<div class="voice-note"><b>If the theorem statement feels like a wall of symbols</b><p>That was my experience too. Read the <a href="learn.html">guided proof</a> first; it introduces the lattice, finite step menu, terminal state, vector fingerprint, and pair law before returning to this ledger.</p></div>
 
 <h2>Exact theorem shape</h2>
 <div class="formula">∃ (S : Set Point3) (P : ℕ → Point3),<br>&nbsp; S.Finite ∧<br>&nbsp; (∀ n, displacement (P n) (P (n+1)) ∈ S) ∧<br>&nbsp; (∀ i&lt;j&lt;k, ¬ OrderedCollinear (P i) (P j) (P k))</div>
@@ -51,7 +52,7 @@
 </ol>
 <p>The construction gives a negative answer to the original question, supported by the formal bridge lemmas and independent replay. External mathematical review is still pending.</p>
 
-<div class="actions"><a class="button primary" href="hilbert-proof.pdf">Proof PDF</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/paper/erdos193.tex">TeX source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean">Final theorem source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/AxiomAudit.lean">Axiom audit</a><a class="button" href="proof-steps.html">Plain-language idea</a></div>
+<div class="actions"><a class="button primary" href="learn.html">Guided proof</a><a class="button" href="hilbert-proof.pdf">Proof PDF</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/paper/erdos193.tex">TeX source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean">Final theorem source</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/AxiomAudit.lean">Axiom audit</a><a class="button" href="proof-steps.html">Visual overview</a></div>
 </main>
-<footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+<footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div></body></html>

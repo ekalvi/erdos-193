@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hilbert state colors — Problem #193</title>
 <meta name="description" content="Explore Hilbert base-4 addresses, terminal orientation states, bounded steering representatives, and the exact pair law.">
-<link rel="stylesheet" href="site.css?v=hilbert2">
+<link rel="stylesheet" href="site.css?v=learn1">
 <style>
   .controls{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin:14px 0}
   .controls button{font:inherit;padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer}
@@ -35,14 +35,15 @@
 </head>
 <body>
 <div class="wrap wide">
-<header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html">The idea</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html" class="cur">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
+<header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof-steps.html">Overview</a><a href="learn.html">Learn</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html" class="cur">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
 
-<span class="eyebrow">The robot’s landing rule</span><h1>Why the robot lands on only one color</h1>
-<p class="sub">A Hilbert curve is made from smaller copies of itself, each turned or flipped. A square’s color tells you the direction in which the path would cross that tiny copy: right, up, down, or left. The proof could target any one fixed color; this page follows the formal construction and uses blue for the identity state. White rings show its one-per-16-index-block steering representatives.</p>
+<span class="eyebrow">The selector made visible</span><h1>Four states, sixteen suffixes, one chosen index per block</h1>
+<p class="sub">A Hilbert route is made from smaller copies of itself, each turned or reflected. The four colors visualize the route’s four possible terminal orientation states: right, up, down, and left. The proof may target any one state; the formal construction chooses identity state <i>I</i>, shown in blue.</p>
+<div class="voice-note"><b>The distinction that mattered for me</b><p>The 16 cells in a 4×4 block are not 16 states, and every blue cell is not selected. A fixed state-to-offset lookup chooses one representative from each block. White rings show those representatives.</p></div>
 
-<h2>Every square has an address</h2>
+<h2>Every cell has a base-4 address</h2>
 <div class="palette" id="digitPalette"></div>
-<p class="note">Imagine zooming into the big square again and again. At each zoom level, one of four address digits tells you which smaller square to enter. The colored address strip in the inspector records those choices.</p>
+<p class="note">Imagine zooming into the large square repeatedly. At each scale, one of four address digits chooses the next quarter. The address strip in the inspector records those nested choices. If that notation is unfamiliar, the <a href="learn.html#pair-law">guided pair-law lesson</a> introduces it before using it.</p>
 
 <div class="controls">
   <span class="muted">Order:</span>
@@ -54,11 +55,11 @@
   <button id="clearPair">clear pair</button>
 </div>
 
-<h2>How a square gets its color</h2>
-<p class="note">Start with the whole Hilbert square facing right. Read a cell’s base-4 address from left to right. Each digit chooses one quarter of the current square; the Hilbert rule turns or flips the path inside that quarter. After the final digit, the path’s entry-to-exit direction sets the color. There is no score or guess involved: the same address always produces the same color.</p>
+<h2>How an address produces a terminal state</h2>
+<p class="note">Start with the whole Hilbert square facing right. Read a cell’s base-4 address from left to right. Each digit chooses one quarter and updates the orientation carried into the next scale. After the final digit, the leftover orientation is the terminal state. The color is only this page’s label for that state; there is no score or search.</p>
 <div class="palette" id="statePalette"></div>
 <div class="equation"><b>Where the arrows come from.</b> The basic U enters at <code>(0,0)</code> and exits at <code>(1,0)</code>, so it points left → right. Apply each state transformation to both endpoints: <code>I: (0,0)→(1,0)</code>, <code>S: (0,0)→(0,1)</code>, <code>T: (1,1)→(1,0)</code>, and <code>C: (1,1)→(0,1)</code>. Those transformed entry-to-exit pairs give the four displayed directions.</div>
-<div class="equation"><b>How a white ring is chosen.</b> The selector does not search for the first blue square. For each 16-index block, it computes the prefix state and uses the fixed lookup <code>I→5, S→1, T→13, C→3</code>. The resulting suffix cancels the prefix state, so the chosen representative is blue. Other blue squares in the block are valid but unused.</div>
+<div class="equation"><b>How a white ring is chosen.</b> The selector does not search for the first blue cell. For each 16-index block, it computes the prefix state and uses the fixed lookup <code>I→5, S→1, T→13, C→3</code>. The chosen two-digit suffix has the same state contribution as the prefix; because each state is self-inverse, the two cancel and the completed index ends in state <code>I</code>. Other blue cells in the block are valid but unused.</div>
 <div class="statrow" id="stats"></div>
 
 <div class="layout">
@@ -73,9 +74,9 @@
   <b>What to try.</b> Hover over the grid to see a square’s path number and address. Click one blue square, then another blue square. The panel compares them and checks the binary fingerprint used by the proof.
   White rings mark the formal selector’s chosen blue stops. Successive ring indices differ by 4–28. A difference of <i>d</i> means <i>d</i> Hilbert unit steps and <i>d</i>−1 indices strictly between the rings.
 </div>
-<p class="note" style="margin-top:16px"><b>Technical detail, if you want it:</b> for two squares with the same color, the first binary scale at which their floor positions differ exactly matches the power of two in the difference between their path numbers. The proof writes this as <code>V(H(n)−H(m)) = ν₂(n−m)</code>. That matching fingerprint is what ultimately prevents three robot landings from lining up.</p>
+<p class="note" style="margin-top:16px"><b>The proof connection:</b> for two cells with the same terminal state, the first binary scale at which their planar positions differ exactly matches the power of two in the difference between their path indices. The proof writes this as <code>V(H(n)−H(m)) = ν₂(n−m)</code>. This is the same-terminal-state pair law used in the <a href="learn.html#contradiction">collinearity contradiction</a>.</p>
 
-<footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+<footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
 <script>
 const DIGIT_COLORS=['#0072B2','#E69F00','#009E73','#CC79A7'];
