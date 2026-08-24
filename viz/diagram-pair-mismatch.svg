@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="260" viewBox="0 0 760 260" role="img" aria-labelledby="title description">
+  <title id="title">Forward mismatch alignment and backward suffix rewind</title>
+  <desc id="description">Two different incoming states process mismatch digits d and e and meet at one common outgoing state h. A common low suffix leads from h to the shared terminal state g. A backward arrow rewinds that suffix from g to h without changing emitted bits.</desc>
+  <defs>
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#56b4e9"/>
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#8bd3b0"/>
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10Z" fill="#c58cf4"/>
+    </marker>
+  </defs>
+  <rect width="760" height="260" fill="#04060d"/>
+  <text x="28" y="27" fill="#8191aa" font-family="Outfit, ui-sans-serif, sans-serif" font-size="12" font-weight="700" letter-spacing="1.2">FORWARD DECODING</text>
+
+  <g font-family="Outfit, ui-sans-serif, sans-serif">
+    <rect x="28" y="51" width="178" height="59" rx="9" fill="#08111f" stroke="#30415c"/>
+    <text x="117" y="75" fill="#8191aa" font-size="11" text-anchor="middle">incoming state</text>
+    <text x="117" y="97" fill="#eef5ff" font-family="Georgia, serif" font-size="19" font-style="italic" text-anchor="middle">h ∘ r<tspan baseline-shift="sub" font-size="12">d</tspan></text>
+
+    <rect x="28" y="143" width="178" height="59" rx="9" fill="#08111f" stroke="#30415c"/>
+    <text x="117" y="167" fill="#8191aa" font-size="11" text-anchor="middle">incoming state</text>
+    <text x="117" y="189" fill="#eef5ff" font-family="Georgia, serif" font-size="19" font-style="italic" text-anchor="middle">h ∘ r<tspan baseline-shift="sub" font-size="12">e</tspan></text>
+
+    <rect x="320" y="96" width="166" height="67" rx="10" fill="#0d1b2d" stroke="#56b4e9" stroke-width="1.5"/>
+    <text x="403" y="120" fill="#9bb1cc" font-size="11" text-anchor="middle">common outgoing state</text>
+    <text x="403" y="148" fill="#eef5ff" font-family="Georgia, serif" font-size="25" font-style="italic" font-weight="700" text-anchor="middle">h</text>
+
+    <rect x="604" y="96" width="128" height="67" rx="10" fill="#08111f" stroke="#30415c"/>
+    <text x="668" y="120" fill="#8191aa" font-size="11" text-anchor="middle">common terminal</text>
+    <text x="668" y="148" fill="#eef5ff" font-family="Georgia, serif" font-size="25" font-style="italic" font-weight="700" text-anchor="middle">g</text>
+
+    <path d="M206 80L320 113" fill="none" stroke="#56b4e9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    <text x="259" y="68" fill="#9ddcff" font-size="11" text-anchor="middle">digit d · emit h(c<tspan baseline-shift="sub" font-size="8">d</tspan><tspan baseline-shift="baseline">)</tspan></text>
+
+    <path d="M206 173L320 147" fill="none" stroke="#56b4e9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+    <text x="260" y="193" fill="#9ddcff" font-size="11" text-anchor="middle">digit e · emit h(c<tspan baseline-shift="sub" font-size="8">e</tspan><tspan baseline-shift="baseline">)</tspan></text>
+
+    <path d="M486 129H604" fill="none" stroke="#8bd3b0" stroke-width="2" marker-end="url(#arrowGreen)"/>
+    <text x="545" y="111" fill="#b5ead2" font-size="10" text-anchor="middle">same low suffix</text>
+
+    <path d="M668 170C645 229 457 232 405 170" fill="none" stroke="#c58cf4" stroke-width="2" marker-end="url(#arrowPurple)"/>
+    <text x="542" y="226" fill="#d9adfa" font-size="11" font-weight="700" letter-spacing=".7" text-anchor="middle">REWIND SUFFIX · STATE ONLY</text>
+    <text x="542" y="244" fill="#8191aa" font-size="10" text-anchor="middle">the emitted coordinate bits remain fixed</text>
+  </g>
+</svg>

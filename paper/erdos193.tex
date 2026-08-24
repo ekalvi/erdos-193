@@ -4,6 +4,9 @@
 \usepackage{microtype}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage[margin=1in]{geometry}
@@ -27,7 +30,7 @@
 
 \title{A finite-step lattice walk in $\Z^3$ with no three collinear vertices}
 \author{Erik Kalviainen}
-\date{August 19, 2026}
+\date{August 24, 2026}
 \begin{document}
 \maketitle
 
@@ -38,8 +41,8 @@ index from every block of sixteen indices, and lift each selected point by its
 index.  The resulting sequence in $\Z^3$ has successive steps in one fixed
 finite set and has no three collinear vertices.  The obstruction to
 collinearity is a two-adic pair invariant: for indices with the same terminal
-orientation, a valuation of the planar chord equals the ordinary two-adic
-valuation of the index gap.  Applying this identity to the two adjacent chords
+quadrant transformation, a valuation of the planar chord equals the ordinary
+two-adic valuation of the index gap.  Applying this identity to the two adjacent chords
 and their sum rules out a collinear triple.  The complete construction has
 also been formalized in Lean~4 against Mathlib; the formal theorem uses no
 additional axioms.
@@ -66,135 +69,202 @@ and no three distinct terms of $P$ are collinear.
 \end{theorem}
 
 The construction uses the discrete Hilbert path, but the space-filling
-property is not the decisive ingredient.  What matters is the finite-state
-recursion at the least significant base-$4$ digit.  A terminal orientation
-state supplies a pairwise two-adic invariant.  A two-digit steering rule then
-selects a syndetic subsequence on which that invariant applies to every pair.
-Lifting the planar path by its Hilbert index turns collinearity into a scaling
-relation between two planar chords; the pair invariant makes that relation
-impossible.
+property is not the decisive ingredient.  What matters is its finite-state
+quadrant recursion.  After the path $H$ and terminal state $\sigma$ are
+defined, the conceptual engine is:
+\begin{center}
+\fbox{\parbox{.9\linewidth}{
+\textbf{Same-state engine.}  Put $Q(n)=(H(n),n)$.  On every set of indices
+$E\subseteq\N$ for which $\sigma$ is constant, the lifted set
+$\{Q(n):n\in E\}$ contains no three collinear points.}}
+\end{center}
 
-Section~\ref{sec:hilbert} fixes the infinite Hilbert indexing.  Section~\ref{sec:pair}
-proves the pair law.  Section~\ref{sec:triple} excludes triples, and
-Section~\ref{sec:steer} gives the bounded-gap selector and finite step menu.
-Section~\ref{sec:formal} records the formal and computational verification.
+The proof then has three visibly separate tasks:
+\begin{enumerate}[nosep]
+\item prove the same-terminal-state pair law for $H$;
+\item construct an infinite bounded-gap set on which $\sigma$ is constant;
+\item prove the abstract same-state engine and apply it to that set.
+\end{enumerate}
+Section~\ref{sec:hilbert} supplies the Hilbert decoder and its finite-state
+properties.  Section~\ref{sec:pair} proves the pair law, the conceptual core.
+Section~\ref{sec:selector} carries out the selector engineering.
+Section~\ref{sec:triple} proves and invokes the same-state engine, and
+Section~\ref{sec:steer} turns the bounded gaps into a finite step menu.
+Section~\ref{sec:formal} is verification and evidence, not an additional
+premise of the proof.
 
 \section{A nested discrete Hilbert path}\label{sec:hilbert}
 
-\subsection{The finite-state transducer}
+\subsection{A four-state decoder}
 
-Write a square symmetry as a map on $\bits$.  We use the eight symmetries
+On a bit pair $(x,y)\in\bits$, define the four square transformations
 \[
-\begin{array}{c|c@{\qquad}c|c}
- I&(x,y)&X&(1-x,y)\\
- Y&(x,1-y)&C&(1-x,1-y)\\
- S&(y,x)&R&(1-y,x)\\
- L&(y,1-x)&T&(1-y,1-x).
-\end{array}
+\begin{aligned}
+ I(x,y)&=(x,y),&
+ S(x,y)&=(y,x),\\
+ T(x,y)&=(1-y,1-x),&
+ C(x,y)&=(1-x,1-y).
+\end{aligned}
 \]
+The transformations $S$ and $T$ are commuting involutions, with
+$S\circ T=T\circ S=C$.
+Here $f\circ g$ denotes function composition:
+$(f\circ g)(z)=f(g(z))$, so the right-hand transformation acts first.  Thus
+\[
+ K=\{I,S,T,C\}\cong\Ftwo^2
+\]
+is closed under composition.  These are exactly the states reached by the
+decoder below.
+
 Let
 \[
  c_0=(0,0),\quad c_1=(0,1),\quad c_2=(1,1),\quad c_3=(1,0)
 \]
-be the four child positions in traversal order, and set
+be the four child positions in the basic U-shaped traversal, and set
 \[
  r_0=S,\qquad r_1=I,\qquad r_2=I,\qquad r_3=T.
 \]
-When the incoming state is $g$ and the next digit is $q\in\{0,1,2,3\}$,
-the transducer emits $g(c_q)$ and changes state to $g\circ r_q$.
-The complete table, with entries ``emitted bits / next state'', is
-\begin{center}
-\small
-\begin{tabular}{c@{\quad}cccc}
-\toprule
-state & $0$ & $1$ & $2$ & $3$\\
-\midrule
-$I$ & $00/S$ & $01/I$ & $11/I$ & $10/T$\\
-$X$ & $10/R$ & $11/X$ & $01/X$ & $00/L$\\
-$Y$ & $01/L$ & $00/Y$ & $10/Y$ & $11/R$\\
-$C$ & $11/T$ & $10/C$ & $00/C$ & $01/S$\\
-$S$ & $00/I$ & $10/S$ & $11/S$ & $01/C$\\
-$R$ & $10/X$ & $00/R$ & $01/R$ & $11/Y$\\
-$L$ & $01/Y$ & $11/L$ & $10/L$ & $00/X$\\
-$T$ & $11/C$ & $01/T$ & $00/T$ & $10/I$\\
-\bottomrule
-\end{tabular}
-\end{center}
-
 For a length-$\ell$ base-$4$ word
-$w=q_{\ell-1}\cdots q_1q_0$, read from most significant to least significant,
-starting in state $I$.  If the emitted pairs, indexed by their binary place,
-are $(x_j,y_j)$ for $0\leq j<\ell$, define
+$w=q_{\ell-1}\cdots q_1q_0$, read the digits from most significant to least
+significant, starting in state $I$.  If the current state is $g$, digit $q_j$
+emits one pair of coordinate bits and then updates the state by
+\[
+ (x_j,y_j)=g(c_{q_j}),\qquad g\longleftarrow g\circ r_{q_j}.
+\]
+The emitted pair at digit position $j$ is used at binary place $j$:
 \begin{equation}\label{eq:Hilbert-finite}
  H_\ell(w)=
  \left(\sum_{j=0}^{\ell-1}x_j2^j,\;
        \sum_{j=0}^{\ell-1}y_j2^j\right).
 \end{equation}
-Thus order one traverses
-$(0,0),(0,1),(1,1),(1,0)$.  The recursion above is the standard discrete
-Hilbert recursion \cite{Hilbert1891,Sagan1994}.
+The reading direction and the place values point in opposite directions:
+the decoder processes $q_{\ell-1},q_{\ell-2},\ldots,q_0$ in that order, while
+$q_j$ writes the coordinate bits at binary place $j$.  Accordingly, for two
+words ``the first mismatch from the low end'' means the least $j\geq0$ for
+which their digits $q_j$ differ.
+The state left after the final digit is the terminal state $\sigma(w)$.  It
+is the accumulated quadrant transformation, not a point or an additional
+coordinate.
+
+\subsection{Hilbert properties and terminal states}
 
 \begin{lemma}[Finite-order Hilbert properties]\label{lem:finite-hilbert}
-For every $\ell\geq 0$, the map from length-$\ell$ base-$4$ words to
+For every $\ell\geq0$, the map from length-$\ell$ base-$4$ words to
 $\{0,\ldots,2^\ell-1\}^2$ given by \eqref{eq:Hilbert-finite} is a bijection.
-Words representing consecutive integers map to lattice neighbors.
-Furthermore, prepending two zero digits does not change the represented point.
+Words representing consecutive integers map to lattice neighbors.  Moreover,
+for every length-$\ell$ word $w$,
+\[
+ H_{\ell+2}(00w)=H_\ell(w)
+ \quad\text{and}\quad
+ \sigma(00w)=\sigma(w).
+\]
 \end{lemma}
 
 \begin{proof}
-The first two assertions follow by induction on $\ell$.  At the inductive
-step the four first digits place rotated or reflected copies of the
-order-$\ell$ path in the four quadrants.  The endpoint identities for
-$r_0=S,r_1=r_2=I,r_3=T$ show that consecutive copies meet along one lattice
-edge.  These are exactly the four cases in the displayed transition table.
-For the last assertion, the first zero emits $00$ and changes $I$ to $S$;
-the second emits $00$ and changes $S$ back to $I$.  The remaining word is
-therefore evaluated in its original state and at its original binary places.
+First observe that the decoder respects its current state.  Suppose a suffix
+is decoded from state $g$ instead of $I$.  If the $I$-started state at some
+later digit is $h$, the other state is $g\circ h$: both update on the right by
+the same $r_q$.  The emitted pair is correspondingly
+$(g\circ h)(c_q)=g(h(c_q))$.  Thus the entire suffix route decoded from $g$ is
+the bitwise $g$-transform of the route decoded from $I$.
+
+Induct on $\ell$, recording simultaneously that the order-$\ell$ route starts
+at $(0,0)$ and ends at $(2^\ell-1,0)$.  The claim is immediate for $\ell=0$.
+Put $N=2^\ell$.  At order $\ell+1$, the first digit places four transformed
+copies of the order-$\ell$ route in four disjoint $N$-by-$N$ quadrants.
+Bitwise $S$ sends $(x,y)$ to $(y,x)$, while bitwise $T$ sends it to
+$(N-1-y,N-1-x)$.  The four copies therefore have start--end pairs
+\[
+\begin{aligned}
+ (0,0)&\longrightarrow(0,N-1),\\
+ (0,N)&\longrightarrow(N-1,N),\\
+ (N,N)&\longrightarrow(2N-1,N),\\
+ (2N-1,N-1)&\longrightarrow(2N-1,0).
+\end{aligned}
+\]
+The maps $S$ and $T$ only swap or reflect square coordinates, so they preserve
+unit $\ell^1$-adjacency inside each transformed copy.  The three junction
+displacements are $(0,1)$, $(1,0)$, and $(0,-1)$; they give adjacency between
+copies.  The four disjoint quadrants give bijectivity, and the displayed
+endpoints complete the simultaneous induction.
+
+Finally, the first leading zero emits $(0,0)$ and changes the state from $I$
+to $S$.  The second emits $S(c_0)=(0,0)$ and changes the state back to $I$.
+The remaining word is therefore decoded in its original state and at its
+original binary places, proving both padding identities.
 \end{proof}
 
 For $n\in\N$, write $n$ in base $4$ and prepend zero digits to any sufficiently
-large even length.  Lemma~\ref{lem:finite-hilbert} makes the following
-definition independent of that length.
+large even length.  Lemma~\ref{lem:finite-hilbert} makes both parts of the
+following definition independent of the chosen length.
 
 \begin{definition}\label{def:H}
-The nested discrete Hilbert path $H\colon\N\to\N^2$ is the finite-order point
-of the even-padded base-$4$ word for $n$.
+The nested discrete Hilbert path $H\colon\N\to\N^2$ sends $n$ to the
+finite-order point of its even-padded base-$4$ word.  Its terminal state
+$\sigma(n)\in K$ is the transformation left by the same decoding.
 \end{definition}
 
-The map $H$ is injective, and
+To see the infinite claims explicitly, take $m\neq n$ and choose one even
+length large enough for both padded base-$4$ words.  The words are distinct,
+so finite-order bijectivity gives distinct points; the padding identity
+identifies those points with $H(m)$ and $H(n)$.  Thus $H$ is injective.
+Likewise, represent $n$ and $n+1$ at one common even length.  Finite-order
+adjacency, including across a base-$4$ carry, gives
 \begin{equation}\label{eq:unit-step}
-  \norm{H(n+1)-H(n)}_1=1\qquad(n\in\N).
+ \norm{H(n+1)-H(n)}_1=1\qquad(n\in\N).
 \end{equation}
 
-\subsection{Terminal states}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=.42cm,y=.42cm]
+ \draw[step=1,very thin,black!14] (-.35,-.35) grid (7.35,7.35);
+ \draw[blue!70!black,line width=1.15pt,line cap=round,line join=round]
+  (0,0)--(0,1)--(1,1)--(1,0)--(2,0)--(3,0)--(3,1)--(2,1)
+  --(2,2)--(3,2)--(3,3)--(2,3)--(1,3)--(1,2)--(0,2)--(0,3)
+  --(0,4)--(1,4)--(1,5)--(0,5)--(0,6)--(0,7)--(1,7)--(1,6)
+  --(2,6)--(2,7)--(3,7)--(3,6)--(3,5)--(2,5)--(2,4)--(3,4)
+  --(4,4)--(5,4)--(5,5)--(4,5)--(4,6)--(4,7)--(5,7)--(5,6)
+  --(6,6)--(6,7)--(7,7)--(7,6)--(7,5)--(6,5)--(6,4)--(7,4)
+  --(7,3)--(7,2)--(6,2)--(6,3)--(5,3)--(4,3)--(4,2)--(5,2)
+  --(5,1)--(4,1)--(4,0)--(5,0)--(6,0)--(6,1)--(7,1)--(7,0);
+ \fill[green!55!black] (0,0) circle (2.3pt)
+  node[below left,font=\small] {$n=0$};
+ \fill[orange!85!black] (7,0) circle (2.3pt)
+  node[below right,font=\small] {$63$};
+\end{tikzpicture}
+\caption{The order-three Hilbert route.  Each segment is one planar lattice
+step; the same four-copy rule produces every higher order.}
+\label{fig:hilbert-trace}
+\end{figure}
 
-Only digits $0$ and $3$ alter the orientation state.  The two transformations
-$S$ and $T$ are commuting involutions and $ST=C$.  Hence the reachable
-terminal states form the Klein four-group
-\[
- K=\{I,S,T,C\}\cong\Ftwo^2.
-\]
-For a finite word $w$, let $N_0(w)$ and $N_3(w)$ count its zero and three
-digits.  Its terminal state is
+Only digits $0$ and $3$ alter the state.  Since $S$ and $T$ commute and each
+undoes itself, for every finite word $w$,
 \begin{equation}\label{eq:sigma-word}
- \sigma(w)=S^{N_0(w)\bmod 2}T^{N_3(w)\bmod 2}.
+ \sigma(w)=S^{N_0(w)\bmod2}T^{N_3(w)\bmod2},
 \end{equation}
-Two leading zero digits preserve this state, so even padding defines
-$\sigma(n)\in K$ for every $n\in\N$.
+where $N_0(w)$ and $N_3(w)$ count its zero and three digits.  Thus the
+terminal state remembers precisely the parities of those two counts.
 
-For later use, observe that every fixed-digit transition $g\mapsto g\circ r_q$
-is invertible.  More strongly, knowing the outgoing state $h$ and digit $q$
-recovers the incoming state as $h\circ r_q$, since every $r_q$ is an
-involution.  The emitted bit pair can then be recovered as
+For later use, every transition $g\mapsto g\circ r_q$ is invertible.  If $h$
+is the outgoing state after digit $q$, then the incoming state was
+$h\circ r_q$, because $r_q$ is an involution.  Moreover $r_q(c_q)=c_q$, so
+the emitted pair can be recovered backwards as
 \begin{equation}\label{eq:backward-emission}
- (h\circ r_q)(c_q)=h(c_q),
+ (h\circ r_q)(c_q)=h\bigl(r_q(c_q)\bigr)=h(c_q).
 \end{equation}
-because $r_q$ fixes its child corner $c_q$.  This backward-emission identity
-is the mechanism behind the pair law.
+This is the mechanism behind the pair law.
+
 
 \section{The two-adic pair law}\label{sec:pair}
 
-Put $\vTwo(0)=\infty$.  For a nonzero vector $u=(u_x,u_y)\in\Z^2$, define
+For a nonzero planar chord $u$, remove its largest common power of two.
+The quantity $V(u)$ records twice that binary scale, plus one exactly when
+both remaining coordinates are odd.  Equivalently, it distinguishes the two
+possible first appearances of the chord: one coordinate becomes nonzero at
+that scale, or both do.
+
+Formally, put $\vTwo(0)=\infty$.  For
+$u=(u_x,u_y)\in\Z^2\setminus\{0\}$, define
 \begin{align}
  p(u)&=\min\{\vTwo(u_x),\vTwo(u_y)\},\\
  \epsilon(u)&=
@@ -206,7 +276,7 @@ Put $\vTwo(0)=\infty$.  For a nonzero vector $u=(u_x,u_y)\in\Z^2$, define
 \end{align}
 
 \begin{lemma}[Scaling]\label{lem:scaling}
-For $u\neq 0$ and every positive integer $k$,
+For $u\neq0$ and every positive integer $k$,
 \[
  V(ku)=V(u)+2\vTwo(k).
 \]
@@ -217,146 +287,303 @@ Multiplication by $k$ adds $\vTwo(k)$ to each finite coordinate valuation.
 It therefore adds $\vTwo(k)$ to $p(u)$ and leaves the equality bit
 $\epsilon(u)$ unchanged.
 \end{proof}
+The factor $2$ has a concrete meaning.  Multiplication by $2$ shifts both
+coordinate bit streams one place, while $V$ reserves the two consecutive
+values $2j$ and $2j+1$ for the one-coordinate and two-coordinate appearances
+at scale $j$.  A shift of one scale must therefore add two to $V$.
 
 \begin{lemma}[First mismatch]\label{lem:mismatch}
-Let two even-padded base-$4$ words have the same terminal state, and let $j$
-be their first differing digit position counted from the low end.  Their
-Hilbert coordinates agree below binary place $j$.  At place $j$, exactly one
-coordinate bit differs when the two base-$4$ digits have odd difference, and
-both coordinate bits differ when their difference is $2$ modulo $4$.
+Let $q_{\ell-1}\cdots q_0$ and $q'_{\ell-1}\cdots q'_0$ be equally long,
+even-padded base-$4$ words with the same terminal state, and let
+\[
+ j=\min\{k\geq0:q_k\neq q'_k\}.
+\]
+Thus positions $0,\ldots,j-1$ form their common low suffix.  Their Hilbert
+coordinates agree below binary place $j$.  At place $j$, exactly one
+coordinate bit differs when $q_j-q'_j$ is odd, and both coordinate bits
+differ when $q_j-q'_j\equiv2\pmod4$.
 \end{lemma}
 
 \begin{proof}
-The words agree below position $j$.  Starting from their equal terminal
-states, invert the common low suffix.  The outgoing state immediately after
-position $j$ is therefore one common state $h$.  Formula
-\eqref{eq:backward-emission} says that the two bits emitted at the mismatch
-are $h(c_d)$ and $h(c_e)$, where $d\neq e$ are the two digits.  The four child
-corners form a cyclic Gray code: $c_d$ and $c_e$ differ in exactly one
-coordinate when $d-e$ is odd, and in both coordinates when
-$d-e\equiv 2\pmod 4$.  Every square symmetry preserves these two alternatives.
-The common lower suffix begins in the same state and reads the same digits,
-so all lower emitted bits agree.
+The words have one common low-digit suffix.  Start from their equal terminal
+states and undo that suffix in lockstep.  Invertibility of every transition
+shows that immediately after the mismatching digit both decoders have one
+common state $h$.
+
+Let the mismatching digits be $d\neq e$.  Their incoming states were
+$h\circ r_d$ and $h\circ r_e$.  By
+\eqref{eq:backward-emission}, the emitted pairs at the mismatch are
+$h(c_d)$ and $h(c_e)$.  The corners $c_0,c_1,c_2,c_3$ form a cyclic Gray
+code: $c_d$ and $c_e$ differ in exactly one coordinate when $d-e$ is odd,
+and in both coordinates when $d-e\equiv2\pmod4$.  Every $h\in K$ only swaps
+coordinates and complements coordinate bits.  It therefore permutes which
+coordinates differ but preserves whether the number of differing coordinates
+is one or two.  Starting from the common state $h$, the identical lower suffix
+also emits identical bits below place $j$.
 \end{proof}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+  >=Latex,
+  statebox/.style={draw,rounded corners,align=center,minimum width=2.45cm,
+                   minimum height=.8cm,font=\small}
+]
+ \node[statebox] (ind) at (0,1.05) {incoming state\\$h\circ r_d$};
+ \node[statebox] (ine) at (0,-1.05) {incoming state\\$h\circ r_e$};
+ \node[statebox,draw=blue!65!black] (h) at (5,0)
+       {common outgoing\\state $h$};
+ \node[statebox] (g) at (10,0) {common terminal\\state $g$};
+ \draw[-{Latex},blue!65!black] (ind.east) --
+   node[midway,above,sloped,font=\scriptsize]
+        {digit $d$; emit $h(c_d)$} (h.north west);
+ \draw[-{Latex},blue!65!black] (ine.east) --
+   node[midway,below,sloped,font=\scriptsize]
+        {digit $e$; emit $h(c_e)$} (h.south west);
+ \draw[-{Latex},green!45!black] (h.east) --
+   node[midway,above,font=\scriptsize]
+        {same suffix} (g.west);
+ \draw[-{Latex},purple!70!black]
+   (g.south) .. controls (8.8,-1.25) and (6.2,-1.25) ..
+   node[midway,below,font=\scriptsize]{rewind the suffix} (h.south);
+\end{tikzpicture}
+\caption{The first-mismatch alignment.  Forward decoding sends the two
+possibly different incoming states through digits $d$ and $e$ to one common
+outgoing state $h$.  Equal terminal states let the shared low suffix be
+rewound from $g$ back to $h$; rewinding changes state, not emitted bits.}
+\label{fig:first-mismatch}
+\end{figure}
 
 \begin{theorem}[Same-terminal-state pair law]\label{thm:pair-law}
 If $m\neq n$ and $\sigma(m)=\sigma(n)$, then
 \begin{equation}\label{eq:pair-law}
- V\bigl(H(n)-H(m)\bigr)=\vTwo(n-m),
+ V\bigl(H(n)-H(m)\bigr)=\vTwo(\abs{n-m}).
 \end{equation}
-where the right side means $\vTwo(\abs{n-m})$ if $m>n$.
 \end{theorem}
 
 \begin{proof}
 By symmetry assume $m<n$.  Pad both base-$4$ words to one common even length,
-and let $j$ be their first differing position from the low end.  Write their
-digits there as $a_j$ and $b_j$.  Then
+writing the digits of $m$ as $q_{\ell-1}\cdots q_0$ and those of $n$ as
+$q'_{\ell-1}\cdots q'_0$.  Let $j$ be their first differing position from
+the low end, and put $d=q_j$ and $e=q'_j$.  Then $d\neq e$ and
 \[
- n-m=4^jK,\qquad K\equiv b_j-a_j\pmod 4.
+ n-m=4^jM,\qquad M\equiv e-d\pmod4.
 \]
-If $b_j-a_j$ is odd, then $\vTwo(n-m)=2j$.  By
-Lemma~\ref{lem:mismatch}, exactly one coordinate of $H(n)-H(m)$ has its first
-nonzero binary digit at position $j$; the other has larger valuation.  Higher
-binary places contribute multiples of $2^{j+1}$ and cannot alter this fact.
-Thus $p=j$, $\epsilon=0$, and $V=2j$.
+If $e-d$ is odd, then $\vTwo(n-m)=2j$.  By
+Lemma~\ref{lem:mismatch}, exactly one coordinate of $H(n)-H(m)$ has differing
+bits at position $j$; in that coordinate the difference has the form
+\[
+ \pm2^j+2^{j+1}L=2^j(\pm1+2L)
+\]
+for some integer $L$.  The bracket is odd, so higher binary places cannot
+cancel the mismatch or add another factor of two.  The other coordinate has
+larger valuation.  Thus $p=j$, $\epsilon=0$, and $V=2j$.
 
-If $b_j-a_j\equiv2\pmod4$, then $\vTwo(n-m)=2j+1$.
-Both coordinate differences have their first nonzero binary digit at position
-$j$, so $p=j$, $\epsilon=1$, and $V=2j+1$.  These cases exhaust unequal
+If $e-d\equiv2\pmod4$, then $\vTwo(n-m)=2j+1$.  The same odd-bracket
+calculation applies to both coordinate differences, so both have valuation
+$j$.  Hence $p=j$, $\epsilon=1$, and $V=2j+1$.  These cases exhaust unequal
 base-$4$ digits.
 \end{proof}
 
+\section{A bounded-gap same-state selector}\label{sec:selector}
+
+For a block index $a\geq0$, choose a two-digit suffix according to the state
+left by $a$:
+\[
+\begin{array}{c|c|c|c}
+\toprule
+\text{state after prefix }a&\text{chosen base-$4$ suffix}&\rho(g)&
+  \text{full state chain}\\
+\midrule
+I&11_4&5&I\circ I\circ I=I\\
+S&01_4&1&I\circ S\circ S=I\\
+T&31_4&13&I\circ T\circ T=I\\
+C&03_4&3&I\circ C\circ C=I\\
+\bottomrule
+\end{array}
+\]
+The leading $I$ in the last column is the initial decoder state.  The middle
+factor is the net transformation contributed by the prefix $a$, and the last
+factor is the net transformation contributed by the chosen suffix when
+measured separately from $I$.  For example, the $S$ row records the complete
+path $I\circ S\circ S=I$.  Define
+\begin{equation}\label{eq:selected-index}
+ n_a=16a+\rho(\sigma(a)).
+\end{equation}
+Multiplication by $16$ appends two base-$4$ digits.  If the prefix contributes
+$g=\sigma(a)$, the chosen suffix contributes a second copy of $g$.  Starting
+from $I$, the completed word therefore has the full state chain
+\begin{equation}\label{eq:selected-state}
+ \sigma(n_a)=I\circ g\circ g=I,
+\end{equation}
+because every element of $K$ is its own inverse.  Hence all selected indices
+have one common terminal state.
+
+There is one selected index in every block of sixteen.  Since
+$\rho(K)=\{1,3,5,13\}$,
+\begin{equation}\label{eq:gaps}
+\begin{aligned}
+ n_{a+1}-n_a
+ &=16+\rho(\sigma(a+1))-\rho(\sigma(a)),\\
+ 4&\leq n_{a+1}-n_a\leq28.
+\end{aligned}
+\end{equation}
+In particular, $(n_a)$ is strictly increasing and infinite.  Lift the
+selected planar points by using the selected index as height:
+\begin{equation}\label{eq:walk}
+ P_a=(H(n_a),n_a)\in\Z^3.
+\end{equation}
+The bounded gaps will give a finite step menu in Section~\ref{sec:steer}.
+This selector is an engineering step: bounded gaps are needed for the finite
+menu, while the no-collinearity argument below uses only the shared terminal
+state.
 \section{Excluding collinear triples}\label{sec:triple}
 
-\begin{theorem}[A terminal class is triple-free]\label{thm:terminal-class}
-Fix $s\in K$.  The lifted set
-\[
- \mathcal L_s=\{(H(n),n)\in\Z^3:\sigma(n)=s\}
-\]
-contains no three collinear points.
+\begin{theorem}[Same-state lift theorem]
+\label{thm:same-state-triple-free}
+Let $E\subseteq\N$ and suppose that $\sigma$ is constant on $E$.  Put
+$Q(n)=(H(n),n)$.  Then $\{Q(n):n\in E\}$ contains no three collinear points.
 \end{theorem}
 
 \begin{proof}
-Suppose for contradiction that $a<b<c$ have terminal state $s$ and that their
-lifts are collinear.  Set
+Suppose for contradiction that $a<b<c$ are elements of $E$ for which
+$Q(a),Q(b),Q(c)$ are collinear.  Their terminal states agree by hypothesis,
+so the pair law applies to all three pairs.  Write the adjacent height gaps
+and planar chords as
 \[
- A=b-a,\quad B=c-b,\quad X=H(b)-H(a),\quad Y=H(c)-H(b).
+\begin{aligned}
+ A&=b-a,& B&=c-b,\\
+ X&=H(b)-H(a),& Y&=H(c)-H(b).
+\end{aligned}
 \]
-Equality of the lifted chord slopes gives
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=.95cm,y=.95cm,>=Stealth]
+ \fill[black!3] (-.8,-.1)--(1.4,-.9)--(6.8,-.1)--(4.6,.7)--cycle;
+ \draw[black!28] (-.8,-.1)--(1.4,-.9)--(6.8,-.1)--(4.6,.7)--cycle;
+ \draw[black!13] (.3,-.5)--(5.7,.3) (2.0,-.65)--(6.0,-.05)
+  (1.0,.15)--(3.2,-.55) (3.1,.45)--(5.3,-.25);
+ \coordinate (Ha) at (0,0);
+ \coordinate (Hb) at (3,.15);
+ \coordinate (Hc) at (6,0);
+ \coordinate (Qa) at (0,1);
+ \coordinate (Qb) at (3,2.2);
+ \coordinate (Qc) at (6,3.4);
+ \draw[black!55,densely dashed] (Ha)--(Qa) (Hb)--(Qb) (Hc)--(Qc);
+ \draw[black!65,densely dotted,line width=.8pt] (-.25,.9)--(6.25,3.5);
+ \draw[->,black,line width=1.5pt,shorten <=3pt,shorten >=5pt]
+  (Qa)--node[midway,above left,font=\small] {$(X,A)$}(Qb);
+ \draw[->,black,densely dashed,line width=1.5pt,shorten <=3pt,shorten >=5pt]
+  (Qb)--node[midway,above left,font=\small] {$(Y,B)$}(Qc);
+ \filldraw[fill=white,draw=black,line width=.8pt]
+  (Qa) circle (2.5pt) (Qb) circle (2.5pt) (Qc) circle (2.5pt);
+ \filldraw[fill=white,draw=black!60]
+  (Ha) circle (1.7pt) (Hb) circle (1.7pt) (Hc) circle (1.7pt);
+ \node[above left,font=\small] at (Qa) {$Q(a)$};
+ \node[above left,font=\small] at (Qb) {$Q(b)$};
+ \node[above right,font=\small] at (Qc) {$Q(c)$};
+ \node[below,font=\small] at (Ha) {$H(a)$};
+ \node[below,font=\small] at (Hb) {$H(b)$};
+ \node[below,font=\small] at (Hc) {$H(c)$};
+ \node[right,font=\scriptsize] at (0,.48) {height $a$};
+ \node[right,font=\scriptsize] at (3,1.08) {height $b$};
+ \node[right,font=\scriptsize] at (6,1.65) {height $c$};
+\end{tikzpicture}
+\caption{The contradiction setup, with $Q(n)=(H(n),n)$.  The solid arrow
+labeled $(X,A)$ and the dashed arrow labeled $(Y,B)$ are the directed adjacent
+displacements.  The dotted guide through $Q(a),Q(b),Q(c)$ marks the temporary
+collinearity assumption.}
+\label{fig:collinearity}
+\end{figure}
+
+The full displacements are $(X,A)$ and $(Y,B)$.  The three lifted points are
+collinear over $\mathbb R$ exactly when these displacements are proportional.
+Because their last coordinates satisfy $A,B>0$, the proportionality factor is
+forced to be $B/A$.  Clearing denominators gives the equivalent
+coordinatewise equation
 \begin{equation}\label{eq:scaled-chords}
  BX=AY.
 \end{equation}
-Write $A=gr$, $B=gs$, where $g=\gcd(A,B)$ and $\gcd(r,s)=1$.
-Equation~\eqref{eq:scaled-chords} and coprimality imply that there is a nonzero
-$W\in\Z^2$ with
+Write
 \[
+ A=gr,\qquad B=gs,\qquad
+ g=\gcd(A,B),\qquad \gcd(r,s)=1.
+\]
+After cancelling $g$, equation~\eqref{eq:scaled-chords} becomes
+$sX=rY$.  For each coordinate $i$, the relation $sX_i=rY_i$ and
+$\gcd(r,s)=1$ imply $r\mid X_i$.  Hence $W=X/r$ is an integer vector.
+Substitution into $sX=rY$ then gives $Y=sW$, so
+\begin{equation}\label{eq:common-vector}
  X=rW,\qquad Y=sW.
-\]
-Let $\gamma=\vTwo(g)$, $\alpha=\vTwo(r)$, and $\beta=\vTwo(s)$.
-Theorem~\ref{thm:pair-law} and Lemma~\ref{lem:scaling}, first for $(a,b)$ and
-then for $(b,c)$, give
-\begin{align*}
- \gamma+\alpha&=V(X)=V(W)+2\alpha,\\
- \gamma+\beta&=V(Y)=V(W)+2\beta.
-\end{align*}
-Hence $\alpha=\beta$.  Since $r$ and $s$ are coprime, both valuations are zero,
-and consequently $V(W)=\gamma$.
+\end{equation}
+Injectivity of $H$ gives $X\neq0$, hence $W\neq0$.
 
-Now use the endpoint pair $(a,c)$.  Its planar chord is
-$X+Y=(r+s)W$ and its index gap is $g(r+s)$.  With
-$\delta=\vTwo(r+s)$, the pair law and scaling law yield
+Apply the pair law and scaling lemma first to $(a,b)$ and then to $(b,c)$:
+\begin{align*}
+ \vTwo(g)+\vTwo(r)
+  &=V(X)=V(W)+2\vTwo(r),\\
+ \vTwo(g)+\vTwo(s)
+  &=V(Y)=V(W)+2\vTwo(s).
+\end{align*}
+Hence $\vTwo(r)=\vTwo(s)$.  Since $r$ and $s$ are coprime, both valuations
+are zero.  Thus $r$ and $s$ are odd, and the same equations give
 \[
- \gamma+\delta=V((r+s)W)=V(W)+2\delta=\gamma+2\delta.
+ V(W)=\vTwo(g).
 \]
-Thus $\delta=0$.  But $r$ and $s$ are both odd, so $r+s$ is even and
-$\delta\geq1$, a contradiction.
+
+Now use the endpoint pair $(a,c)$.  Its index gap and planar chord are
+\[
+ c-a=g(r+s),\qquad H(c)-H(a)=(r+s)W.
+\]
+Put $t=\vTwo(r+s)$.  The pair law and scaling lemma give
+\[
+ \vTwo(g)+t
+ =V((r+s)W)
+ =V(W)+2t
+ =\vTwo(g)+2t.
+\]
+Therefore $t=0$, so the endpoint pair forces $r+s$ to be odd.  But the two
+adjacent pairs forced both $r$ and $s$ to be odd, whose sum is even.  This is
+a contradiction.
+\end{proof}
+
+\begin{corollary}[The selected lift is triple-free]
+\label{thm:selected-triple-free}
+The sequence $(P_a)_{a\geq0}$ defined by \eqref{eq:walk} contains no three
+collinear terms.
+\end{corollary}
+
+\begin{proof}
+The indices $n_a$ are strictly increasing, satisfy $\sigma(n_a)=I$, and obey
+$P_a=Q(n_a)$.  Apply Theorem~\ref{thm:same-state-triple-free} to
+$E=\{n_a:a\in\N\}$.
 \end{proof}
 
 The use of all three pair laws---for gaps $A$, $B$, and $A+B$---is essential.
 A pairwise direction restriction alone would not rule out every triple.
 
-\section{A bounded-gap selector and the walk}\label{sec:steer}
+\section{The finite step menu}\label{sec:steer}
 
-For a block index $a\geq0$, choose a correction $\rho(\sigma(a))$ by
+The third-coordinate difference of one successive step is
 \[
-\begin{array}{c|cccc}
-\toprule
-q&I&S&T&C\\
-\midrule
-\rho(q)&5=11_4&1=01_4&13=31_4&3=03_4\\
-\bottomrule
-\end{array}
+ d_z=n_{a+1}-n_a,\qquad 4\leq d_z\leq28.
 \]
-and define
-\begin{equation}\label{eq:selected-index}
- n_a=16a+\rho(\sigma(a)).
-\end{equation}
-The two low base-$4$ digits of $n_a$ have terminal contribution
-$\sigma(a)^{-1}=\sigma(a)$, so
-\begin{equation}\label{eq:selected-state}
- \sigma(n_a)=I.
-\end{equation}
-Moreover, $\rho$ takes values in $\{1,3,5,13\}$, and therefore
-\begin{equation}\label{eq:gaps}
- 4\leq n_{a+1}-n_a\leq28.
-\end{equation}
-
-Define
-\begin{equation}\label{eq:walk}
- P_a=(H(n_a),n_a)\in\Z^3.
-\end{equation}
-By Theorem~\ref{thm:terminal-class}, no three distinct $P_a$ are collinear.
-By the unit-step property \eqref{eq:unit-step} and the triangle inequality,
+The Hilbert path takes one planar lattice step per unit increase of its index.
+Therefore \eqref{eq:unit-step} and the triangle inequality give the sharper
+path-length bound
 \[
- \norm{H(n_{a+1})-H(n_a)}_1\leq n_{a+1}-n_a\leq28.
+ \abs{d_x}+\abs{d_y}
+ =\norm{H(n_{a+1})-H(n_a)}_1
+ \leq n_{a+1}-n_a=d_z.
 \]
-Thus every successive displacement belongs to the fixed finite set
+Hence every successive displacement belongs to the fixed finite set
 \begin{equation}\label{eq:menu}
  S=\{(d_x,d_y,d_z)\in\Z^3:
-       \abs{d_x}+\abs{d_y}\leq28,\ 4\leq d_z\leq28\}.
+       4\leq d_z\leq28,\ \abs{d_x}+\abs{d_y}\leq d_z\}.
 \end{equation}
-The $z$-coordinate is strictly increasing, so the sequence is infinite and
-has no repeated vertices.  Equations \eqref{eq:walk} and \eqref{eq:menu}
+The strictly increasing third coordinate makes $(P_a)$ infinite with no
+repeated terms, and Corollary~\ref{thm:selected-triple-free} excludes three
+collinear terms.  Equations \eqref{eq:walk} and \eqref{eq:menu} therefore
 prove Theorem~\ref{thm:main}.
 
 \begin{remark}
@@ -365,7 +592,14 @@ vectors, not a minimal menu.  The independently reconstructed first
 $500{,}000$ steps realize $16$ distinct vectors.
 \end{remark}
 
-\section{Formalization and reproducibility}\label{sec:formal}
+\section{Verification and evidence}\label{sec:formal}
+
+\noindent\textbf{Proof boundary.}
+The proof of Theorem~\ref{thm:main} ends above.  Nothing in this section is an
+additional premise; it records formal verification, implementation checks,
+and the status of external claims.
+
+\subsection{Lean formalization}
 
 The repository \cite{Repository} contains a Lean~4 formalization in
 \path{formal/Hilbert193}.  It uses Lean~4.33.0 and the corresponding pinned
@@ -379,17 +613,23 @@ Mathlib revision.  The final theorem is
 \item a proof that every ordered triple of distinct indices fails the exact
       integer collinearity equations.
 \end{enumerate}
+The Lean predicate packages collinearity as the two integer
+cross-multiplication equalities forced by the strictly increasing third
+coordinate.  As shown in the proof above, this is the denominator-free form
+of ordinary real affine collinearity for the ordered points in this walk.
+
 The axiom audit in \texttt{Hilbert193/AxiomAudit.lean} reports only
 \texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}, the
 standard axioms used by Mathlib.  No theorem in the construction depends on a
-finite computation.
-
-From the repository root, the formal proof is checked by
+finite computation.  From the repository root, the formal proof is checked by
 \begin{verbatim}
 cd formal/Hilbert193
 lake build
 lake env lean Hilbert193/AxiomAudit.lean
 \end{verbatim}
+
+\subsection{Finite implementation checks}
+
 The independent finite reconstruction is checked by
 \begin{verbatim}
 python3 verify_hilbert_construction.py hilbert-193-500k.jsonl \
@@ -412,14 +652,16 @@ The artifact SHA-256 is
 \texttt{6f8fdf59b7ecef5533b8a65265d80df9}\\
 \texttt{61f67a955dabaf9d5bb973d7ae143d63}.
 \end{center}
-Concatenating the two lines gives the digest.  These computations are
-implementation checks and finite evidence; the infinite theorem rests on the
-arguments above and their Lean formalization.
+Concatenating the two lines gives the digest.
 
-The Lean predicate packages collinearity as the two integer cross-multiplication
-equalities forced by the strictly increasing third coordinate.  This is the
-constructive, denominator-free form of ordinary affine collinearity in
-$\mathbb Q^3$ for the ordered points in this walk.
+\subsection{Logical and historical status}
+
+The theorem above is unconditional.  The Lean development checks the formal
+statement; the finite reconstruction and exhaustive scan check an
+implementation and a finite prefix only.  Neither computation proves the
+infinite theorem.  Novelty, priority, and correspondence with the intended
+reading of Erd\H{o}s Problem~193 remain subject to external mathematical
+review and community acceptance.
 
 \section*{Acknowledgments and disclosure}
 

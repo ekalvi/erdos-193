@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/learn.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=learn1">
+  <link rel="stylesheet" href="site.css?v=learn3">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -22,7 +22,7 @@
 <div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof-steps.html">Overview</a><a class="cur" href="learn.html">Learn</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a class="cur" href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
   </header>
 
   <main>
@@ -32,7 +32,7 @@
       <p class="lede">This guide assumes comfort with ordinary arithmetic and coordinates, but not Hilbert curves, base 4, two-adic valuation, or formal proof. It follows the order in which the argument became explainable from memory.</p>
       <div class="voice-note success"><b>The goal</b><p>By the end, you should be able to explain why the adjacent pair laws force two coprime scale factors to be odd, why the endpoint pair law forces their sum to be odd, and why that rules out three collinear lifted points.</p></div>
       <div class="voice-note warning"><b>Proof status</b><p>The construction is unconditional and formalized in Lean. These lessons are a pedagogical companion, not the authoritative proof artifact. External mathematical review and community acceptance remain pending.</p></div>
-      <div class="route-actions"><a class="button" href="proof-steps.html">Visual overview first</a><a class="button" href="hilbert-proof.pdf">Proof manuscript</a><a class="button" href="theorem.html">Formal proof ledger</a></div>
+      <div class="route-actions"><a class="button" href="hilbert-proof.pdf?v=20260824-3">Proof manuscript</a><a class="button" href="proof.html">Standalone proof</a></div>
     </section>
 
     <div class="learning-route">
@@ -83,6 +83,20 @@
           <div class="math-block">\[
             P_a=\bigl(H(n_a),\,n_a\bigr)\in\mathbb Z^3.
           \]</div>
+          <div class="construction-diagrams" aria-label="Trace, select, and lift diagrams">
+            <figure class="diagram-card">
+              <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
+              <figcaption><b>Trace</b><span>Follow one adjacent route through the planar lattice.</span></figcaption>
+            </figure>
+            <figure class="diagram-card">
+              <img src="diagram-select.svg" width="300" height="210" loading="lazy" decoding="async" alt="Same-state Hilbert points selected from consecutive blocks.">
+              <figcaption><b>Select</b><span>Keep one controlled same-state index from each block.</span></figcaption>
+            </figure>
+            <figure class="diagram-card">
+              <img src="diagram-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="Selected Hilbert points lifted to heights equal to their indices.">
+              <figcaption><b>Lift</b><span>Use each retained index as the point’s height.</span></figcaption>
+            </figure>
+          </div>
           <p>The height is literal, not decorative. If two selected indices differ by \(d\), then their lifted points differ in height by exactly \(d\).</p>
           <p>The selector must supply two guarantees:</p>
           <ul>
@@ -196,6 +210,97 @@
           <div class="math-block">\[
             \boxed{V\bigl(H(n)-H(m)\bigr)=\nu_2(|n-m|).}
           \]</div>
+          <figure class="pair-law-player" id="pairLawPlayer" data-step="0" tabindex="0" aria-labelledby="pairLawPlayerTitle" aria-describedby="pairLawPlayerCaption">
+            <div class="pair-law-player-head">
+              <div>
+                <span class="eyebrow">Controlled walkthrough</span>
+                <h3 id="pairLawPlayerTitle">Watch one base-4 mismatch become a planar fingerprint</h3>
+              </div>
+              <span class="pair-law-state-chip">same final state <b>I</b></span>
+            </div>
+            <div class="pair-law-facts" aria-label="Facts shared by all animation steps">
+              <span><b>Three indices</b> \(0,\ 80,\ 96\)</span>
+              <span><b>First mismatch</b> \(j=2\)</span>
+              <span><b>Common suffix</b> \(00_4\)</span>
+            </div>
+            <div class="pair-law-stage">
+              <div class="pair-law-bit-legend" data-reveal="1">
+                <span><i class="pair-law-x-bit"></i>first emitted bit becomes \(x_k\)</span>
+                <span><i class="pair-law-y-bit"></i>second emitted bit becomes \(y_k\)</span>
+              </div>
+              <div class="pair-law-word-grid" role="table" aria-label="Base-4 digits and emitted coordinate-bit pairs">
+                <div class="pair-law-place-row" role="row">
+                  <span role="columnheader">index</span>
+                  <span role="columnheader">\(k=3\)</span>
+                  <span class="pair-law-mismatch-heading" role="columnheader">\(k=2\)<small>first mismatch</small></span>
+                  <span class="pair-law-suffix-heading" role="columnheader">\(k=1\)<small>common suffix</small></span>
+                  <span class="pair-law-suffix-heading" role="columnheader">\(k=0\)<small>common suffix</small></span>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>A</b><span>\(0=0000_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>B</b><span>\(80=1100_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>C</b><span>\(96=1200_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>2</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 1 and y bit 1"><i class="pair-law-x">1</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+              </div>
+              <div class="pair-law-rewind" data-reveal="5">
+                <div class="pair-law-rewind-heading"><b>Rewind the common suffix</b><span>state moves backward; emitted bits above stay put</span></div>
+                <div class="pair-law-rewind-track" aria-label="Forward state path I through S to terminal I, rewound from right to left">
+                  <span class="pair-law-state-node" data-active-steps="6"><small>after mismatch</small><b>I</b></span>
+                  <span class="pair-law-state-edge" data-active-steps="6"><small>digit 0 at \(k=1\)</small><b>→</b></span>
+                  <span class="pair-law-state-node" data-active-steps="5 6"><small>after \(k=1\)</small><b>S</b></span>
+                  <span class="pair-law-state-edge" data-active-steps="5"><small>digit 0 at \(k=0\)</small><b>→</b></span>
+                  <span class="pair-law-state-node" data-active-steps="5"><small>terminal</small><b>I</b></span>
+                </div>
+                <div class="pair-law-rewind-direction"><span>backward rewind</span><b>←</b></div>
+              </div>
+              <div class="pair-law-rails" data-reveal="7" aria-label="Emitted pairs unzipped into coordinate bits">
+                <div><b>A</b><span><i class="pair-law-x">x</i> \(0000_2=0\)</span><span><i class="pair-law-y">y</i> \(0000_2=0\)</span><strong>\(H(0)=(0,0)\)</strong></div>
+                <div><b>B</b><span><i class="pair-law-x">x</i> \(0000_2=0\)</span><span><i class="pair-law-y">y</i> \(1100_2=12\)</span><strong>\(H(80)=(0,12)\)</strong></div>
+                <div><b>C</b><span><i class="pair-law-x">x</i> \(0100_2=4\)</span><span><i class="pair-law-y">y</i> \(1100_2=12\)</span><strong>\(H(96)=(4,12)\)</strong></div>
+              </div>
+              <div class="pair-law-outcomes">
+                <div class="pair-law-outcome one-rail" data-reveal="8">
+                  <span>A versus B</span>
+                  <b>One reduced coordinate is odd</b>
+                  <p>\(80=2^4\cdot5\), while \(H(80)-H(0)=4(0,3)\).</p>
+                  <strong>\(\nu_2(80)=V(0,12)=4=2j\)</strong>
+                </div>
+                <div class="pair-law-outcome two-rails" data-reveal="9">
+                  <span>A versus C</span>
+                  <b>Both reduced coordinates are odd</b>
+                  <p>\(96=2^5\cdot3\), while \(H(96)-H(0)=4(1,3)\).</p>
+                  <strong>\(\nu_2(96)=V(4,12)=5=2j+1\)</strong>
+                </div>
+              </div>
+            </div>
+            <div class="pair-law-controls" aria-label="Pair-law animation controls">
+              <button class="button pair-law-back" id="pairLawBack" type="button">Back</button>
+              <div class="pair-law-step-status" aria-live="polite">
+                <span id="pairLawStepCount">Step 1 of 10</span>
+                <strong id="pairLawStepLabel">Set up three same-state indices with one shared suffix.</strong>
+                <div class="pair-law-step-meter" id="pairLawStepMeter" role="progressbar" aria-label="Walkthrough progress" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1"><i></i></div>
+              </div>
+              <button class="button primary pair-law-next" id="pairLawNext" type="button">Next</button>
+            </div>
+            <noscript><p class="pair-law-noscript">JavaScript is off, so every stage is shown together as a static diagram.</p></noscript>
+            <figcaption id="pairLawPlayerCaption">Use Back and Next—or the left and right arrow keys while the diagram is focused. Forward steps emit bits; backward steps rewind state only.</figcaption>
+          </figure>
           <p>Read both base-4 indices from the right until reaching their first different digit. Suppose that mismatch occurs at position \(j\). The final \(j\) base-4 digits match, so their difference contains a factor \(4^j=2^{2j}\).</p>
           <div class="math-block">\[
             n-m=4^j\times(\text{remaining integer}).
@@ -231,6 +336,10 @@
           <div class="math-block">\[
             X=H(b)-H(a),\qquad Y=H(c)-H(b).
           \]</div>
+          <figure class="collinearity-figure proof-collinearity">
+            <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three selected lifts on a supposed line, with directed green and orange adjacent displacement vectors.">
+            <figcaption>The green vector is \((X,A)\) and the orange vector is \((Y,B)\). If the three points really shared the red line, these two directed displacements would have the same planar change per unit height.</figcaption>
+          </figure>
           <h3>Collinearity produces one common integer vector</h3>
           <p>The full 3D displacements are \((X,A)\) and \((Y,B)\). Collinearity gives equal planar change per unit height, hence</p>
           <div class="math-block">\[
@@ -305,9 +414,9 @@
             <div class="concept"><b>Finite artifact</b><p>Records 500,001 exact vertices and 16 realized displacement vectors as reproducible implementation evidence.</p></div>
             <div class="concept"><b>Exhaustive finite scan</b><p>Checks all 125,000,250,000 earlier-point directions in that prefix; it does not prove the infinite theorem.</p></div>
           </div>
-          <p>The repository’s claim is an unconditional construction, not a result conditional on a conjecture or a large computation. The remaining uncertainty is external assessment: a formal proof can faithfully prove definitions that reviewers later judge not to match the intended problem. That is why the <a href="theorem.html">proof ledger</a> states the review boundary explicitly.</p>
+          <p>The repository’s claim is an unconditional construction, not a result conditional on a conjecture or a large computation. The remaining uncertainty is external assessment: a formal proof can faithfully prove definitions that reviewers later judge not to match the intended problem. The <a href="proof.html">proof page</a> therefore links the formal theorem and records that review status.</p>
           <div class="voice-note success"><b>What you should now be able to summarize</b><p>The Hilbert route supplies planar adjacency; terminal-state steering supplies a bounded same-state subsequence; lifting turns index into height; the pair law synchronizes index and planar binary scales; and the unequal scaling coefficients make a collinear triple impossible.</p></div>
-          <div class="route-actions"><a class="button primary" href="theorem.html">Open the formal proof ledger</a><a class="button" href="hilbert-proof.pdf">Read the manuscript</a><a class="button" href="walk3d.html">Inspect the finite artifact</a><a class="button" href="hilbert-colors.html">Inspect terminal states</a></div>
+          <div class="route-actions"><a class="button primary" href="proof.html">Open the proof</a><a class="button" href="hilbert-proof.pdf?v=20260824-3">Read the manuscript</a><a class="button" href="walk3d.html">Inspect the finite artifact</a><a class="button" href="hilbert-colors.html">Inspect terminal states</a></div>
           <p class="inline-status">Pedagogical guide only. Authoritative sources: the proof manuscript and the Lean project in the repository. External mathematical review and community acceptance are pending.</p>
         </section>
       </div>
@@ -316,5 +425,95 @@
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
+<script>
+(() => {
+  const root = document.getElementById('pairLawPlayer');
+  if (!root) return;
+  const back = document.getElementById('pairLawBack');
+  const next = document.getElementById('pairLawNext');
+  const count = document.getElementById('pairLawStepCount');
+  const label = document.getElementById('pairLawStepLabel');
+  const meter = document.getElementById('pairLawStepMeter');
+  const labels = [
+    'Set up three same-state indices with one shared suffix.',
+    'Forward: read k=3. Each base-4 digit emits one x-bit and one y-bit.',
+    'Forward: k=2 is the first mismatch from the right. A to B changes one bit; A to C changes both.',
+    'Forward: read the shared digit at k=1. Every word emits 00.',
+    'Forward: read the shared digit at k=0. Every word emits 00 and finishes in state I.',
+    'Backward: undo k=0 from terminal I. Every decoder returns to S; no emitted bit moves.',
+    'Backward: undo k=1. Every decoder returns to I, the common state immediately after the mismatch.',
+    'Unzip the emitted pairs. First bits form x; second bits form y.',
+    'Compare A with B. One reduced coordinate is odd, so both fingerprints equal 4 = 2j.',
+    'Compare A with C. Both reduced coordinates are odd, so both fingerprints equal 5 = 2j + 1.'
+  ];
+  const reveals = [...root.querySelectorAll('[data-reveal]')];
+  const digitCells = [...root.querySelectorAll('.pair-law-cell[data-k]')];
+  const rewindParts = [...root.querySelectorAll('[data-active-steps]')];
+  let step = 0;
+
+  const render = () => {
+    root.dataset.step = String(step);
+    root.classList.toggle('has-mismatch', step >= 2);
+    reveals.forEach(element => {
+      const visible = step >= Number(element.dataset.reveal);
+      element.classList.toggle('is-visible', visible);
+      element.setAttribute('aria-hidden', String(!visible));
+    });
+
+    let activeK = null;
+    let rewinding = false;
+    if (step >= 1 && step <= 4) activeK = 4 - step;
+    if (step === 5) {
+      activeK = 0;
+      rewinding = true;
+    }
+    if (step === 6) {
+      activeK = 1;
+      rewinding = true;
+    }
+    digitCells.forEach(cell => {
+      const active = Number(cell.dataset.k) === activeK;
+      cell.classList.toggle('is-active', active);
+      cell.classList.toggle('is-reverse', active && rewinding);
+    });
+    rewindParts.forEach(element => {
+      const active = element.dataset.activeSteps.split(/\s+/).includes(String(step));
+      element.classList.toggle('is-active', active);
+    });
+
+    count.textContent = `Step ${step + 1} of ${labels.length}`;
+    label.textContent = labels[step];
+    meter.setAttribute('aria-valuenow', String(step + 1));
+    meter.setAttribute('aria-valuetext', labels[step]);
+    meter.firstElementChild.style.width = `${((step + 1) / labels.length) * 100}%`;
+    back.disabled = step === 0;
+    next.disabled = step === labels.length - 1;
+  };
+
+  const move = delta => {
+    const destination = Math.max(0, Math.min(labels.length - 1, step + delta));
+    if (destination === step) return;
+    step = destination;
+    render();
+  };
+
+  back.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  root.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      move(-1);
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(1);
+    }
+  });
+
+  root.classList.add('is-enhanced');
+  render();
+})();
+</script>
 </body>
 </html>

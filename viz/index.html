@@ -4,12 +4,19 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>Learn the Hilbert construction for Erdős Problem 193</title>
-  <meta name="description" content="A learner-first guide to an unconditional, Lean-checked Hilbert construction for Erdős Problem 193.">
+  <title>Erdős Problem 193: an infinite walk with no three collinear points</title>
+  <meta name="description" content="An explicit infinite walk in Z³ with a finite step menu and no three collinear vertices, with a visual guide and Lean-checked proof.">
   <link rel="canonical" href="https://erdos-193.q5m.ai/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=learn1">
+  <link rel="stylesheet" href="site.css?v=home12">
+  <script>
+    window.MathJax={
+      tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
 <div class="wrap wide">
@@ -17,9 +24,8 @@
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
     <nav class="site" aria-label="Main navigation">
       <a class="cur" href="/">Home</a>
-      <a href="proof-steps.html">Overview</a>
       <a href="learn.html">Learn</a>
-      <a href="theorem.html">Proof</a>
+      <a href="proof.html">Proof</a>
       <a href="walk3d.html">3D</a>
       <a href="hilbert-colors.html">State map</a>
       <a href="progress.html">Progress<span class="dot"></span></a>
@@ -31,15 +37,13 @@
     <section class="hero">
       <div class="hero-grid">
         <div>
-          <span class="eyebrow" style="color:hsl(var(--tl-ok))">A learner-first guide to an unconditional, Lean-checked construction</span>
-          <h1>Can a finitely instructed robot avoid every straight line forever? Yes.</h1>
-          <p class="lede"><a href="https://www.erdosproblems.com/193"><b>Erdős Problem 193</b></a> asks whether every infinite walk on the 3D integer grid, using only finitely many step types, must eventually visit three points on one line. This construction gives a counterexample.</p>
-          <p>I came to the problem as an engineer and math hobbyist. The finished formulas were not a useful starting point for me: I first needed to know what every object was doing, why the walk must be infinite, and why a large computation could never settle “forever.” This site now explains the proof in that order.</p>
+          <span class="eyebrow" style="color:hsl(var(--tl-ok))">Erdős Problem 193</span>
+          <h1>Can a robot walk forever with a finite menu of moves—and never visit three points on one line? Yes.</h1>
+          <p class="lede"><a href="https://www.erdosproblems.com/193"><b>Erdős Problem 193</b></a> asks whether every such walk on the 3D integer grid must eventually contain three collinear points. This construction gives an explicit counterexample.</p>
           <div class="actions">
-            <a class="button primary" href="learn.html">Learn the proof step by step</a>
-            <a class="button" href="proof-steps.html">See the visual overview</a>
-            <a class="button" href="walk3d.html">Explore 500,000 steps</a>
-            <a class="button" href="https://www.erdosproblems.com/193">Read the original problem</a>
+            <a class="button primary" href="proof.html">Read the proof</a>
+            <a class="button" href="learn.html">Learn the proof</a>
+            <a class="button" href="walk3d.html">Explore the walk in 3D</a>
           </div>
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
@@ -51,90 +55,571 @@
     </section>
 
     <div class="stats" aria-label="Construction facts">
-      <div class="stat"><b>Forever</b><span>the theorem is infinite, not a simulation</span></div>
-      <div class="stat"><b>4–28</b><span>successive selected index gaps</span></div>
-      <div class="stat"><b>16</b><span>realized step vectors in the finite prefix</span></div>
-      <div class="stat"><b>125 billion</b><span>finite earlier-point directions checked</span></div>
+      <div class="stat"><b>Infinite</b><span>the sequence never stops</span></div>
+      <div class="stat"><b>4–28</b><span>gaps between selected indices</span></div>
+      <div class="stat"><b>Finite</b><span>menu of 3D steps</span></div>
+      <div class="stat"><b>No three</b><span>visited points on one line</span></div>
     </div>
 
-    <section class="section">
-      <span class="eyebrow">The sentence I can now say from memory</span>
-      <h2>Trace a Hilbert route, select regularly spaced same-state checkpoints, then lift each checkpoint by using its route index as height.</h2>
-      <p class="sub">Bounded gaps give a finite menu of 3D steps. A two-adic law shared by every selected pair then turns the assumption of three collinear points into the impossible claim that the sum of two odd numbers is odd.</p>
-      <div class="flow story-flow">
-        <div class="node"><b>1. Trace</b><p>Use the discrete Hilbert path as an infinite route through the 2D grid.</p></div>
-        <div class="node"><b>2. Select</b><p>Keep one index from each 16-index block, always with one terminal orientation state.</p></div>
-        <div class="node"><b>3. Lift</b><p>Turn a selected planar point H(n) into the 3D point (H(n), n).</p></div>
-        <div class="node"><b>4. Bound</b><p>Successive selected indices differ by 4 through 28, so only finitely many 3D steps are possible.</p></div>
-        <div class="node"><b>5. Fingerprint</b><p>Measure a planar chord by the common powers of two in its coordinates and one parity bit.</p></div>
-        <div class="node"><b>6. Contradict</b><p>The adjacent pairs make two coprime scale factors odd; the endpoint pair says their sum is odd.</p></div>
+    <section class="section proof-part">
+      <div class="part-heading">
+        <span class="part-number">1</span>
+        <div><span class="eyebrow">Build the walk</span><h2>Trace. Select. Lift.</h2></div>
       </div>
-    </section>
-
-    <section class="section">
-      <span class="eyebrow">Where I got stuck</span>
-      <h2>The proof becomes much easier when four similar-sounding ideas are kept separate.</h2>
-      <div class="concept-grid">
-        <div class="concept"><b>Finite menu is not a finite walk</b><p>The robot walks forever. Only the collection of allowed displacement vectors must be finite.</p></div>
-        <div class="concept"><b>Select before lift</b><p>We do not lift every Hilbert point and hope. We first choose a controlled subsequence, then use each selected index as height.</p></div>
-        <div class="concept"><b>Sixteen suffixes are not sixteen states</b><p>A two-digit base-4 suffix has 16 possibilities, but the Hilbert decoder carries only four terminal orientation states.</p></div>
-        <div class="concept"><b>The selector does not search for blue</b><p>Each block uses one fixed state-to-offset lookup. The chosen suffix cancels the incoming state and guarantees the target state.</p></div>
-        <div class="concept"><b>The fingerprint is deliberately incomplete</b><p>It forgets length and direction. It retains exactly the binary scale and parity pattern needed by the pair law.</p></div>
-        <div class="concept"><b>Lean and finite checks do different jobs</b><p>The 500,000-step artifact tests an implementation. The Lean theorem checks the general infinite argument.</p></div>
-      </div>
-      <a href="learn.html">Follow these ideas in the order that made them click →</a>
-    </section>
-
-    <section class="section">
-      <div class="grid-2">
-        <div>
-          <span class="eyebrow">Why the robot keeps walking</span>
-          <h2>One selected point appears in every 16-index block.</h2>
-          <p>The selector chooses one of four offsets—1, 3, 5, or 13—according to the block’s incoming terminal state. Consecutive chosen indices are therefore 4 through 28 Hilbert steps apart.</p>
-          <p>Hilbert neighbors touch on the floor. A bounded number of floor steps plus a bounded height change places every realized 3D move inside one fixed finite box.</p>
-          <a href="hilbert-colors.html">Inspect the fixed selector on the state map →</a>
+      <p>Let \(H(n)\) be the point reached at index \(n\) on an infinite discrete <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a>. The same recursive rule builds routes on larger and larger 2D grids:</p>
+      <figure class="growth-figure hilbert-growth">
+        <div class="hilbert-growth-stage">
+          <div class="hilbert-growth-hud">
+            <span class="hilbert-growth-kicker" aria-hidden="true"><i></i> Recursive step</span>
+            <strong id="hilbertGrowthScale">2 × 2 → 4 × 4</strong>
+            <button id="hilbertGrowthToggle" type="button" aria-pressed="false" aria-label="Pause Hilbert curve animation">Pause</button>
+          </div>
+          <svg id="hilbertGrowth" viewBox="0 0 760 430" role="img" aria-labelledby="growthTitle growthDescription">
+            <title id="growthTitle">A Hilbert route recursively becoming four turned or reflected copies</title>
+            <desc id="growthDescription">The animation repeatedly transforms a Hilbert route into four smaller copies, adds three connecting steps, and produces the next route on a grid twice as wide. In traversal order, the lower-left, upper-left, upper-right, and lower-right copies use transformations S, I, I, and T.</desc>
+            <rect width="760" height="430" fill="#04060d"/>
+            <g id="hilbertGridLow" class="hilbert-growth-grid"></g>
+            <g id="hilbertGridHigh" class="hilbert-growth-grid"></g>
+            <rect class="hilbert-growth-frame" x="185" y="20" width="390" height="390" rx="7"/>
+            <g class="hilbert-growth-side" aria-hidden="true">
+              <text x="94" y="186">ONE ROUTE</text>
+              <text x="94" y="207">COPIED ×4</text>
+              <path d="M135 219H170"/>
+              <text x="666" y="186">TURN</text>
+              <text x="666" y="207">+ CONNECT</text>
+              <path d="M590 219H625"/>
+            </g>
+            <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path id="hilbertBaseLow" class="hilbert-growth-line"/>
+              <path id="hilbertBaseHigh" class="hilbert-growth-line"/>
+              <g id="hilbertCopies" class="hilbert-growth-copies">
+                <path/><path/><path/><path/>
+              </g>
+              <g id="hilbertJoins" class="hilbert-growth-joins">
+                <line/><line/><line/>
+              </g>
+            </g>
+            <circle id="hilbertGrowthStart" class="hilbert-growth-endpoint start" r="5"/>
+            <circle id="hilbertGrowthEnd" class="hilbert-growth-endpoint end" r="5"/>
+            <g id="hilbertOrientations" class="hilbert-growth-orientations" aria-hidden="true">
+              <g transform="translate(282.5 312.5)"><circle r="18"/><text>S</text></g>
+              <g transform="translate(282.5 117.5)"><circle r="18"/><text>I</text></g>
+              <g transform="translate(477.5 117.5)"><circle r="18"/><text>I</text></g>
+              <g transform="translate(477.5 312.5)"><circle r="18"/><text>T</text></g>
+            </g>
+          </svg>
+          <div class="hilbert-growth-legend" aria-hidden="true">
+            <span class="copy-key"><i></i><i></i><i></i><i></i>four recursive copies</span>
+            <span class="join-key"><i></i>three one-cell joins</span>
+            <span id="hilbertGrowthAction">copy ×4 · turn or reflect · connect</span>
+          </div>
         </div>
-        <div>
-          <span class="eyebrow">Why three points never line up</span>
-          <h2>The same first digit mismatch controls two different objects.</h2>
-          <p>For two selected indices, the first differing base-4 digit determines both the power of two in their index gap and a fingerprint of their planar chord. This is the Hilbert pair law.</p>
-          <p>On a supposed straight line, integer gaps scale once while both planar coordinates scale together. Their binary fingerprints cannot satisfy all three pair laws.</p>
-          <a href="learn.html#contradiction">Read the odd-plus-odd contradiction →</a>
+        <figcaption><b>Watch the recursive step.</b> One route becomes four smaller turned or reflected copies; three one-cell joins make the next Hilbert route. The animation runs backward and repeats because the same rule works at every scale.</figcaption>
+      </figure>
+      <figure class="terminal-state-figure" aria-labelledby="terminalStateTitle">
+        <div class="terminal-state-stage">
+          <div class="terminal-state-header">
+            <div>
+              <span class="eyebrow">Orientation memory</span>
+              <h3 id="terminalStateTitle">The last transformed U is the terminal state.</h3>
+            </div>
+            <button id="terminalStateToggle" type="button" aria-pressed="false" aria-label="Pause terminal-state animation">Pause</button>
+          </div>
+          <div class="terminal-state-grid" role="group" aria-label="Four terminal-state orientations">
+            <button class="terminal-state-card is-active" type="button" data-state="I" data-label="unchanged" data-rule="(x,y) → (x,y)" aria-pressed="true" aria-label="I: unchanged; x y maps to x y">
+              <span class="terminal-state-card-heading"><strong>I</strong><small>unchanged</small></span>
+              <svg viewBox="0 0 120 112" aria-hidden="true">
+                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
+                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
+                <path class="terminal-state-route" pathLength="1" d="M30 86L30 30L90 30L90 86"/>
+                <circle class="terminal-state-start" cx="30" cy="86" r="4"/>
+                <circle class="terminal-state-end" cx="90" cy="86" r="4"/>
+              </svg>
+            </button>
+            <button class="terminal-state-card" type="button" data-state="S" data-label="swap coordinates" data-rule="(x,y) → (y,x)" aria-pressed="false" aria-label="S: swap coordinates; x y maps to y x">
+              <span class="terminal-state-card-heading"><strong>S</strong><small>swap</small></span>
+              <svg viewBox="0 0 120 112" aria-hidden="true">
+                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
+                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
+                <path class="terminal-state-route" pathLength="1" d="M30 86L90 86L90 30L30 30"/>
+                <circle class="terminal-state-start" cx="30" cy="86" r="4"/>
+                <circle class="terminal-state-end" cx="30" cy="30" r="4"/>
+              </svg>
+            </button>
+            <button class="terminal-state-card" type="button" data-state="T" data-label="swap and reflect" data-rule="(x,y) → (1−y,1−x)" aria-pressed="false" aria-label="T: swap and reflect; x y maps to one minus y, one minus x">
+              <span class="terminal-state-card-heading"><strong>T</strong><small>swap + reflect</small></span>
+              <svg viewBox="0 0 120 112" aria-hidden="true">
+                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
+                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
+                <path class="terminal-state-route" pathLength="1" d="M90 30L30 30L30 86L90 86"/>
+                <circle class="terminal-state-start" cx="90" cy="30" r="4"/>
+                <circle class="terminal-state-end" cx="90" cy="86" r="4"/>
+              </svg>
+            </button>
+            <button class="terminal-state-card" type="button" data-state="C" data-label="half-turn" data-rule="(x,y) → (1−x,1−y)" aria-pressed="false" aria-label="C: half-turn; x y maps to one minus x, one minus y">
+              <span class="terminal-state-card-heading"><strong>C</strong><small>half-turn</small></span>
+              <svg viewBox="0 0 120 112" aria-hidden="true">
+                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
+                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
+                <path class="terminal-state-route" pathLength="1" d="M90 30L90 86L30 86L30 30"/>
+                <circle class="terminal-state-start" cx="90" cy="30" r="4"/>
+                <circle class="terminal-state-end" cx="30" cy="30" r="4"/>
+              </svg>
+            </button>
+          </div>
+          <div class="terminal-state-readout">
+            <span><small>Active transformation</small><b id="terminalStateName">I · unchanged</b></span>
+            <code id="terminalStateRule">(x,y) → (x,y)</code>
+            <a href="hilbert-colors.html">Open the full state map</a>
+          </div>
+        </div>
+        <figcaption>Each digit may leave, turn, or reflect the smaller route. The final highlighted orientation is the terminal state.</figcaption>
+      </figure>
+      <p>The selector keeps one index per 16-index block and chooses its final two digits so every selected point has the same type—the terminal state \(I\) in our construction. Because their types match, the <strong>Hilbert pair law</strong> can relate the height displacement between any two selected lifts to their planar vector displacement. Each selected index then becomes its height:</p>
+      <div class="math-block compact-math">\[P_a=\bigl(H(n_a),n_a\bigr)\in\mathbb Z^3.\]</div>
+      <div class="construction-diagrams" aria-label="Trace, select, and lift diagrams">
+        <figure class="diagram-card">
+          <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
+          <figcaption><b>Trace</b><span>The Hilbert path visits neighboring floor points in a fixed order.</span></figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <img src="diagram-select.svg" width="300" height="210" loading="lazy" decoding="async" alt="Four same-state Hilbert points selected from consecutive blocks at indices 5, 17, 33, and 51.">
+          <figcaption><b>Select</b><span>Keep one same-state point from each 16-index block.</span></figcaption>
+        </figure>
+        <figure class="diagram-card">
+          <img src="diagram-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="The four selected Hilbert points lifted to heights equal to their indices.">
+          <figcaption><b>Lift</b><span>The selected index becomes height, turning index gaps into vertical displacement. Height is exaggerated here for clarity.</span></figcaption>
+        </figure>
+      </div>
+      <p>One selected point per block makes the walk infinite. Successive selected indices differ by 4 to 28, which bounds both the floor displacement and the height displacement. The walk therefore uses only finitely many 3D steps.</p>
+    </section>
+
+    <section class="section proof-part">
+      <div class="part-heading">
+        <span class="part-number">2</span>
+        <div><span class="eyebrow">Prove the key identity</span><h2>The Hilbert pair law connects floor displacement to height.</h2></div>
+      </div>
+      <p>All selected indices finish in the same Hilbert state. For any two of them, \(m&lt;n\), the planar displacement is \(H(n)-H(m)\), while the height displacement is exactly \(n-m\). The pair law equates a fingerprint of the floor vector with the <a href="https://en.wikipedia.org/wiki/P-adic_valuation">2-adic valuation</a> of the height gap:</p>
+      <div class="math-block pair-law">
+        \[
+        V\bigl(H(n)-H(m)\bigr)=\nu_2(n-m).
+        \]
+      </div>
+      <p>Here \(\nu_2(k)\) counts the factors of 2 in a nonzero integer \(k\). For a nonzero planar vector \(u=(u_x,u_y)\), let \(p(u)\) be the lower coordinate valuation and let \(\epsilon(u)\) record whether the two valuations tie:</p>
+      <div class="math-block compact-math">
+        \[
+        \begin{aligned}
+        p(u)&amp;=\min\{\nu_2(u_x),\nu_2(u_y)\},\\
+        \epsilon(u)&amp;=
+        \begin{cases}
+        1,&amp;\nu_2(u_x)=\nu_2(u_y),\\
+        0,&amp;\text{otherwise},
+        \end{cases}\\
+        V(u)&amp;=2p(u)+\epsilon(u),\qquad \nu_2(0)=\infty.
+        \end{aligned}
+        \]
+      </div>
+      <p>The first base-4 digit where \(m\) and \(n\) differ determines both sides of the pair law. Scaling a planar vector by \(k\) adds \(2\nu_2(k)\) to \(V\), while scaling the height gap by \(k\) adds only \(\nu_2(k)\) to its valuation. That factor of two is what breaks a supposed straight line. <a href="learn.html#pair-law">See the pair-law derivation.</a></p>
+    </section>
+
+    <section class="section proof-part contradiction-section">
+      <div class="part-heading">
+        <span class="part-number">3</span>
+        <div><span class="eyebrow">Rule out a line</span><h2>Assume three selected points are collinear.</h2></div>
+      </div>
+      <div class="collinearity-layout">
+        <figure class="collinearity-figure">
+          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three lifted Hilbert points on a supposed line. The solid arrow labeled X comma A and dashed arrow labeled Y comma B are their adjacent displacement vectors.">
+          <figcaption>The lift rule makes each Hilbert index the vertical coordinate: \(Q(a)=(H(a),a)\), and likewise for \(b,c\). The dotted guide through those three points is the temporary collinearity assumption.</figcaption>
+        </figure>
+        <div class="collinearity-copy">
+          <p>The lift rule makes the three heights \(a&lt;b&lt;c\). Write the adjacent height gaps and floor displacements as</p>
+          <div class="math-block compact-math">
+            \[
+            \begin{gathered}
+            A=b-a,\qquad B=c-b,\\
+            X=H(b)-H(a),\\
+            Y=H(c)-H(b).
+            \end{gathered}
+            \]
+          </div>
+          <p>Collinearity makes the two 3D chords proportional. Comparing their height coordinates and clearing the ratio gives</p>
+          <div class="math-block compact-math">\[BX=AY.\]</div>
+          <p>Write \(A=gr\) and \(B=gs\), with \(r\) and \(s\) coprime. Integer divisibility then gives one planar vector \(W\) with \(X=rW\) and \(Y=sW\).</p>
         </div>
       </div>
-    </section>
-
-    <section class="section">
-      <span class="eyebrow">Proof, computation, and review</span>
-      <h2>“Checked for a long time” and “proved forever” are not interchangeable.</h2>
-      <p>The saved artifact contains 500,001 exact vertices, and an independent exhaustive check found no collinear triple in that finite prefix. Those results are valuable implementation evidence, but no finite prefix proves an infinite statement.</p>
-      <p>The Lean development instead checks a theorem covering every natural-number position and every ordered triple of distinct selected vertices. It builds without unfinished placeholders or project-specific axioms.</p>
-      <div class="voice-note warning"><b>The remaining boundary</b><p>A kernel-checked formal proof can still encode an unintended statement. External mathematical review and community acceptance are pending, so the repository exposes the manuscript, definitions, axiom audit, artifacts, and failed routes for inspection.</p></div>
-      <div class="actions"><a class="button primary" href="theorem.html">See exactly what Lean checked</a><a class="button" href="hilbert-proof.pdf">Read the proof PDF</a></div>
-    </section>
-
-    <section class="section">
-      <span class="eyebrow">How this work was developed</span>
-      <h2>Human-steered, AI-assisted mathematics—and a record of the questions that changed the proof.</h2>
-      <p><a href="https://github.com/ekalvi"><b>Erik Kalviainen</b></a> used Paseo, <a href="https://github.com/can1357/oh-my-pi">Oh My Pi</a>, and GPT-5.6 as a research stack. Erik chose the problem, challenged unclear claims, requested exact counterexamples, and kept redirecting the work toward an unconditional proof and formal verification. GPT-5.6 performed much of the algebra, coding, adversarial testing, writing, and Lean development.</p>
-      <p>The first idea—lifting every Hilbert point—fails at indices 3, 4, and 5. That failure was not hidden; it forced the eventual selector. The guided proof preserves similar moments of confusion because they expose which distinctions actually carry the argument.</p>
-      <a href="progress.html">See the successful route and failed turns →</a>
-    </section>
-
-    <section class="section">
-      <h2>Choose your route</h2>
-      <div class="cards">
-        <a class="card" href="learn.html"><b>Guided proof lessons</b><p>Build the argument in seven stages, with rendered mathematics, checkpoints, and optional background detours.</p></a>
-        <a class="card" href="proof-steps.html"><b>Visual overview</b><p>See the trace-select-lift construction and its proof jobs before opening the technical details.</p></a>
-        <a class="card" href="walk3d.html"><b>3D walk and step menu</b><p>Orbit the exact finite artifact and inspect its 16 realized displacement vectors.</p></a>
-        <a class="card" href="hilbert-colors.html"><b>Hilbert state map</b><p>Inspect terminal orientations, canonical one-per-block representatives, and the pair fingerprint.</p></a>
-        <a class="card" href="theorem.html"><b>Formal proof ledger</b><p>Read the exact theorem shape, dependency chain, axiom audit, and review boundary.</p></a>
+      <h3 class="application-title">Apply the Hilbert pair law to all three pairs</h3>
+      <p>The indices \(a,b,c\) have the same terminal state, so Part 2 applies to each pair. Using \(V(kW)=V(W)+2\nu_2(k)\) gives:</p>
+      <div class="pair-applications" aria-label="Three applications of the Hilbert pair law">
+        <article class="pair-application">
+          <b>1. Adjacent pair \((a,b)\)</b>
+          <div class="application-equation">
+            \[
+            \begin{aligned}
+            V(X)&amp;=\nu_2(A),\\
+            V(rW)&amp;=\nu_2(gr),\\
+            V(W)+\nu_2(r)&amp;=\nu_2(g).
+            \end{aligned}
+            \]
+          </div>
+        </article>
+        <article class="pair-application">
+          <b>2. Adjacent pair \((b,c)\)</b>
+          <div class="application-equation">
+            \[
+            \begin{aligned}
+            V(Y)&amp;=\nu_2(B),\\
+            V(sW)&amp;=\nu_2(gs),\\
+            V(W)+\nu_2(s)&amp;=\nu_2(g).
+            \end{aligned}
+            \]
+          </div>
+        </article>
+        <article class="pair-application">
+          <b>3. Endpoint pair \((a,c)\)</b>
+          <div class="application-equation">
+            \[
+            \begin{aligned}
+            V(X+Y)&amp;=\nu_2(A+B),\\
+            V((r+s)W)&amp;=\nu_2(g(r+s)),\\
+            V(W)+\nu_2(r+s)&amp;=\nu_2(g).
+            \end{aligned}
+            \]
+          </div>
+        </article>
       </div>
+      <div class="pair-deductions">
+        <p><b>Compare the adjacent pairs.</b> Their last equations give \(\nu_2(r)=\nu_2(s)\). Since \(r\) and \(s\) are coprime, both valuations are zero: \(r\) and \(s\) are odd. Substituting back also gives \(V(W)=\nu_2(g)\).</p>
+        <p><b>Now use the endpoint pair.</b> Its last equation and \(V(W)=\nu_2(g)\) give \(\nu_2(r+s)=0\). The endpoint pair therefore says \(r+s\) is odd.</p>
+      </div>
+      <div class="contradiction-result">
+        <span class="eyebrow">Contradiction</span>
+        <h3>\(r+s\) would have to be both even and odd.</h3>
+        <p>The adjacent pairs make \(r\) and \(s\) odd, so their sum is even. The endpoint pair makes the same sum odd. Therefore the three selected lifts cannot be collinear.</p>
+      </div>
+      <p class="contradiction-link"><a href="learn.html#contradiction">Read the complete contradiction.</a></p>
     </section>
+
+    <p class="inline-status"><b>Proof status:</b> the construction is unconditional and formalized in Lean. External mathematical review is still pending. <a href="proof.html">See the exact theorem and review boundary.</a></p>
   </main>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
+<script>
+(()=>{
+  const svg=document.getElementById('hilbertGrowth');
+  const scaleLabel=document.getElementById('hilbertGrowthScale');
+  const actionLabel=document.getElementById('hilbertGrowthAction');
+  const toggle=document.getElementById('hilbertGrowthToggle');
+  if(!svg||!scaleLabel||!actionLabel||!toggle)return;
+
+  const NS='http://www.w3.org/2000/svg';
+  const left=185,top=20,size=390;
+  const baseLow=document.getElementById('hilbertBaseLow');
+  const baseHigh=document.getElementById('hilbertBaseHigh');
+  const gridLow=document.getElementById('hilbertGridLow');
+  const gridHigh=document.getElementById('hilbertGridHigh');
+  const copies=[...document.querySelectorAll('#hilbertCopies path')];
+  const joins=[...document.querySelectorAll('#hilbertJoins line')];
+  const startPoint=document.getElementById('hilbertGrowthStart');
+  const endPoint=document.getElementById('hilbertGrowthEnd');
+  const orientationLabels=document.getElementById('hilbertOrientations');
+
+  function hilbertPoints(order){
+    const dimension=2**order;
+    const points=new Array(dimension*dimension);
+    for(let distance=0;distance<points.length;distance++){
+      let index=distance,x=0,y=0;
+      for(let scale=1;scale<dimension;scale*=2){
+        const rx=1&(index>>1),ry=1&(index^rx);
+        if(ry===0){
+          if(rx===1){x=scale-1-x;y=scale-1-y}
+          const swap=x;x=y;y=swap
+        }
+        x+=scale*rx;y+=scale*ry;index>>=2
+      }
+      points[distance]=[
+        left+(x+.5)*size/dimension,
+        top+size-(y+.5)*size/dimension
+      ]
+    }
+    return points
+  }
+
+  const pointSets=Array.from({length:7},(_,order)=>order?hilbertPoints(order):null);
+  const pathData=pointSets.map(points=>points?points.map((point,index)=>`${index?'L':'M'}${point[0]} ${point[1]}`).join(''):'');
+  const clamp=value=>Math.max(0,Math.min(1,value));
+  const smooth=(from,to,value)=>{
+    const t=clamp((value-from)/(to-from));
+    return t*t*(3-2*t)
+  };
+  const mix=(from,to,amount)=>from+(to-from)*amount;
+  const coordinate=value=>Math.round(value*10)/10;
+
+  function stagedPoint(from,placed,to,moveAmount,turnAmount){
+    return [
+      coordinate(mix(mix(from[0],placed[0],moveAmount),to[0],turnAmount)),
+      coordinate(mix(mix(from[1],placed[1],moveAmount),to[1],turnAmount))
+    ]
+  }
+
+  function morphPath(from,placed,to,moveAmount,turnAmount){
+    let data='';
+    for(let index=0;index<from.length;index++){
+      const point=stagedPoint(from[index],placed[index],to[index],moveAmount,turnAmount);
+      data+=`${index?'L':'M'}${point[0]} ${point[1]}`
+    }
+    return data
+  }
+
+  function buildGrid(group,dimension){
+    const fragment=document.createDocumentFragment();
+    for(let index=1;index<dimension;index++){
+      const offset=index*size/dimension;
+      const vertical=document.createElementNS(NS,'line');
+      vertical.setAttribute('x1',left+offset);
+      vertical.setAttribute('y1',top);
+      vertical.setAttribute('x2',left+offset);
+      vertical.setAttribute('y2',top+size);
+      const horizontal=document.createElementNS(NS,'line');
+      horizontal.setAttribute('x1',left);
+      horizontal.setAttribute('y1',top+offset);
+      horizontal.setAttribute('x2',left+size);
+      horizontal.setAttribute('y2',top+offset);
+      fragment.append(vertical,horizontal)
+    }
+    group.replaceChildren(fragment)
+  }
+
+  let preparedOrder=0,transition;
+  function prepare(order){
+    if(order===preparedOrder)return;
+    const low=pointSets[order],high=pointSets[order+1],count=low.length;
+    const children=Array.from({length:4},(_,child)=>high.slice(child*count,(child+1)*count));
+    const quadrants=[[0,1],[0,0],[1,0],[1,1]];
+    const placed=quadrants.map(([column,row])=>low.map(point=>[
+      left+column*size/2+(point[0]-left)/2,
+      top+row*size/2+(point[1]-top)/2
+    ]));
+    transition={low,children,placed};
+    baseLow.setAttribute('d',pathData[order]);
+    baseHigh.setAttribute('d',pathData[order+1]);
+    buildGrid(gridLow,2**order);
+    buildGrid(gridHigh,2**(order+1));
+    preparedOrder=order
+  }
+
+  let labelKey='';
+  function renderTransition(order,progress,direction){
+    prepare(order);
+    const moveAmount=smooth(.05,.43,progress);
+    const turnAmount=smooth(.45,.68,progress);
+    const lowOpacity=1-smooth(.02,.2,progress);
+    const highOpacity=smooth(.91,.99,progress);
+    const copyOpacity=Math.min(smooth(.02,.2,progress),1-smooth(.91,.99,progress));
+    const {low,children,placed}=transition;
+    const last=low.length-1;
+
+    baseLow.style.opacity=lowOpacity;
+    baseHigh.style.opacity=highOpacity;
+    gridLow.style.opacity=.52*(1-smooth(.18,.7,progress));
+    gridHigh.style.opacity=.52*smooth(.3,.82,progress);
+    orientationLabels.style.opacity=smooth(.28,.52,progress);
+
+    for(let child=0;child<4;child++){
+      copies[child].style.opacity=copyOpacity;
+      if(copyOpacity>.002)copies[child].setAttribute('d',morphPath(low,placed[child],children[child],moveAmount,turnAmount))
+    }
+    for(let join=0;join<3;join++){
+      const from=stagedPoint(low[last],placed[join][last],children[join][last],moveAmount,turnAmount);
+      const to=stagedPoint(low[0],placed[join+1][0],children[join+1][0],moveAmount,turnAmount);
+      const reveal=smooth(.69+join*.035,.78+join*.035,progress);
+      joins[join].style.opacity=Math.min(copyOpacity,smooth(.69+join*.035,.715+join*.035,progress));
+      joins[join].setAttribute('x1',from[0]);
+      joins[join].setAttribute('y1',from[1]);
+      joins[join].setAttribute('x2',coordinate(mix(from[0],to[0],reveal)));
+      joins[join].setAttribute('y2',coordinate(mix(from[1],to[1],reveal)))
+    }
+
+    const start=stagedPoint(low[0],placed[0][0],children[0][0],moveAmount,turnAmount);
+    const end=stagedPoint(low[last],placed[3][last],children[3][last],moveAmount,turnAmount);
+    startPoint.setAttribute('cx',start[0]);
+    startPoint.setAttribute('cy',start[1]);
+    endPoint.setAttribute('cx',end[0]);
+    endPoint.setAttribute('cy',end[1]);
+
+    const lowDimension=2**order,highDimension=2**(order+1);
+    const nextLabelKey=`${order}:${direction}`;
+    if(labelKey!==nextLabelKey){
+      const from=direction>0?lowDimension:highDimension;
+      const to=direction>0?highDimension:lowDimension;
+      scaleLabel.textContent=`${from} × ${from} → ${to} × ${to}`;
+      actionLabel.textContent=direction>0
+        ?'copy ×4 · turn or reflect · connect'
+        :'the same recursive step · shown backward';
+      labelKey=nextLabelKey
+    }
+    svg.dataset.from=String(direction>0?lowDimension:highDimension);
+    svg.dataset.to=String(direction>0?highDimension:lowDimension);
+    svg.dataset.progress=progress.toFixed(3)
+  }
+
+  const transitionTime=1900;
+  const largestOrder=pointSets.length-2;
+  const timeline=[
+    ...Array.from({length:largestOrder},(_,index)=>({
+      order:index+1,
+      direction:1,
+      hold:index===largestOrder-1?850:350
+    })),
+    ...Array.from({length:largestOrder},(_,index)=>({
+      order:largestOrder-index,
+      direction:-1,
+      hold:index===largestOrder-1?850:350
+    }))
+  ];
+  const duration=timeline.reduce((sum,step)=>sum+transitionTime+step.hold,0);
+
+  function renderAt(time){
+    let remaining=time%duration;
+    for(const step of timeline){
+      const stepTime=transitionTime+step.hold;
+      if(remaining<stepTime){
+        const phase=Math.min(1,remaining/transitionTime);
+        renderTransition(step.order,step.direction>0?phase:1-phase,step.direction);
+        return
+      }
+      remaining-=stepTime
+    }
+  }
+
+  const compact=matchMedia('(max-width:600px)');
+  const setViewBox=()=>svg.setAttribute('viewBox',compact.matches?'165 0 430 430':'0 0 760 430');
+  compact.addEventListener('change',setViewBox);
+  setViewBox();
+
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let elapsed=reduced
+    ?timeline.slice(0,largestOrder-1).reduce((sum,step)=>sum+transitionTime+step.hold,0)+transitionTime
+    :0;
+  let running=!reduced,visible=false,frame=0,lastTick=0,lastPaint=0;
+
+  function updateToggle(){
+    toggle.textContent=running?'Pause':'Play';
+    toggle.setAttribute('aria-pressed',String(!running));
+    toggle.setAttribute('aria-label',`${running?'Pause':'Play'} Hilbert curve animation`);
+    svg.dataset.running=String(running)
+  }
+  function stopFrame(){
+    if(frame)cancelAnimationFrame(frame);
+    frame=0;lastTick=0
+  }
+  function requestFrame(){
+    if(running&&visible&&!document.hidden&&!frame){
+      lastTick=0;lastPaint=0;frame=requestAnimationFrame(tick)
+    }
+  }
+  function tick(now){
+    frame=0;
+    if(!running||!visible||document.hidden){lastTick=0;return}
+    if(lastTick)elapsed=(elapsed+Math.min(now-lastTick,80))%duration;
+    lastTick=now;
+    if(!lastPaint||now-lastPaint>=32){renderAt(elapsed);lastPaint=now}
+    frame=requestAnimationFrame(tick)
+  }
+
+  toggle.addEventListener('click',()=>{
+    running=!running;
+    updateToggle();
+    if(running){visible=true;requestFrame()}else stopFrame()
+  });
+  new IntersectionObserver(([entry])=>{
+    visible=entry.isIntersecting;
+    if(visible)requestFrame();else stopFrame()
+  },{rootMargin:'140px'}).observe(svg);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stopFrame();else requestFrame()
+  });
+
+  renderAt(elapsed);
+  if(reduced){
+    const largestDimension=2**(largestOrder+1);
+    scaleLabel.textContent=`${largestDimension} × ${largestDimension} Hilbert route`;
+    actionLabel.textContent='motion paused · the same rule continues'
+  }
+  updateToggle()
+})();
+</script>
+<script>
+(()=>{
+  const figure=document.querySelector('.terminal-state-figure');
+  const cards=[...document.querySelectorAll('.terminal-state-card')];
+  const name=document.getElementById('terminalStateName');
+  const rule=document.getElementById('terminalStateRule');
+  const toggle=document.getElementById('terminalStateToggle');
+  if(!figure||!cards.length||!name||!rule||!toggle)return;
+
+  const states=cards.map(card=>({
+    state:card.dataset.state,
+    label:card.dataset.label,
+    rule:card.dataset.rule
+  }));
+  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let index=0,running=!reduced,visible=false,timer=0;
+
+  function render(next){
+    index=(next+states.length)%states.length;
+    cards.forEach((card,cardIndex)=>{
+      const active=cardIndex===index;
+      card.classList.toggle('is-active',active);
+      card.setAttribute('aria-pressed',String(active))
+    });
+    const active=states[index];
+    name.textContent=`${active.state} · ${active.label}`;
+    rule.textContent=active.rule;
+    figure.dataset.state=active.state
+  }
+  function stop(){
+    if(timer)clearTimeout(timer);
+    timer=0
+  }
+  function schedule(){
+    stop();
+    if(running&&visible&&!document.hidden){
+      timer=setTimeout(()=>{
+        render(index+1);
+        schedule()
+      },2200)
+    }
+  }
+  function updateToggle(){
+    toggle.textContent=running?'Pause':'Play';
+    toggle.setAttribute('aria-pressed',String(!running));
+    toggle.setAttribute('aria-label',`${running?'Pause':'Play'} terminal-state animation`);
+    figure.dataset.running=String(running)
+  }
+
+  cards.forEach((card,cardIndex)=>card.addEventListener('click',()=>{
+    render(cardIndex);
+    schedule()
+  }));
+  toggle.addEventListener('click',()=>{
+    running=!running;
+    updateToggle();
+    schedule()
+  });
+  new IntersectionObserver(([entry])=>{
+    visible=entry.isIntersecting;
+    if(visible)schedule();else stop()
+  },{rootMargin:'120px'}).observe(figure);
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stop();else schedule()
+  });
+
+  render(0);
+  updateToggle()
+})();
+</script>
 <script>
 (async()=>{
   const c=document.getElementById('heroCanvas'),x=c.getContext('2d');let pts=[];

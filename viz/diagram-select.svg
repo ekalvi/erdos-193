@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 210" role="img" aria-labelledby="title desc">
+  <title id="title">Same-state points selected from consecutive blocks</title>
+  <desc id="desc">Four highlighted Hilbert points at indices 5, 17, 33, and 51 are retained from four consecutive blocks.</desc>
+  <rect width="300" height="210" fill="#04060d"/>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#23324a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="70" y="25" width="160" height="160" fill="url(#grid)"/>
+  <polyline points="80,175 80,155 100,155 100,175 120,175 140,175 140,155 120,155 120,135 140,135 140,115 120,115 100,115 100,135 80,135 80,115 80,95 100,95 100,75 80,75 80,55 80,35 100,35 100,55 120,55 120,35 140,35 140,55 140,75 120,75 120,95 140,95 160,95 180,95 180,75 160,75 160,55 160,35 180,35 180,55 200,55 200,35 220,35 220,55 220,75 200,75 200,95 220,95 220,115 220,135 200,135 200,115 180,115 160,115 160,135 180,135 180,155 160,155 160,175 180,175 200,175 200,155 220,155 220,175" fill="none" stroke="#42536e" stroke-width="2" opacity=".7"/>
+  <polyline points="140,175 100,95 180,95 200,115" fill="none" stroke="#e6a93a" stroke-width="3" stroke-linejoin="round"/>
+  <g fill="#3987e5" stroke="#fff" stroke-width="2">
+    <circle cx="140" cy="175" r="7"/><circle cx="100" cy="95" r="7"/><circle cx="180" cy="95" r="7"/><circle cx="200" cy="115" r="7"/>
+  </g>
+  <g fill="#d9e4f5" font-family="ui-sans-serif, sans-serif" font-size="11">
+    <text x="145" y="194">n=5</text><text x="72" y="86">17</text><text x="184" y="84">33</text><text x="209" y="130">51</text>
+  </g>
+</svg>
