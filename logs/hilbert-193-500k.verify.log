@@ -42,3 +42,25 @@
 2026-08-19T18:16:46.266435+00:00 completed=475000/500001 rate=87923/s elapsed=5.40s eta=0.28s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
 2026-08-19T18:16:46.547312+00:00 completed=500000/500001 rate=87977/s elapsed=5.68s eta=0.00s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
 2026-08-19T18:16:46.552917+00:00 complete vertices=500001 menu=16 sha256=6f8fdf59b7ecef5533b8a65265d80df961f67a955dabaf9d5bb973d7ae143d63 elapsed=5.68s
+2026-08-24T04:55:12.209416+00:00 start/resume metadata={'version': 1, 'steps': 500000, 'artifact': 'hilbert-193-500k.jsonl', 'sha256': '6f8fdf59b7ecef5533b8a65265d80df961f67a955dabaf9d5bb973d7ae143d63'} next=0 workers=1
+2026-08-24T04:55:12.472253+00:00 completed=25000/500001 rate=95126/s elapsed=0.26s eta=4.99s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:12.741250+00:00 completed=50000/500001 rate=93996/s elapsed=0.53s eta=4.79s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:13.009732+00:00 completed=75000/500001 rate=93702/s elapsed=0.80s eta=4.54s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:13.296301+00:00 completed=100000/500001 rate=91998/s elapsed=1.09s eta=4.35s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:13.582962+00:00 completed=125000/500001 rate=90999/s elapsed=1.37s eta=4.12s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:13.867472+00:00 completed=150000/500001 rate=90462/s elapsed=1.66s eta=3.87s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:14.154371+00:00 completed=175000/500001 rate=89972/s elapsed=1.95s eta=3.61s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:14.439382+00:00 completed=200000/500001 rate=89684/s elapsed=2.23s eta=3.35s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:14.733848+00:00 completed=225000/500001 rate=89126/s elapsed=2.52s eta=3.09s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:15.029392+00:00 completed=250000/500001 rate=88651/s elapsed=2.82s eta=2.82s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:15.316962+00:00 completed=275000/500001 rate=88492/s elapsed=3.11s eta=2.54s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:15.602684+00:00 completed=300000/500001 rate=88408/s elapsed=3.39s eta=2.26s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:15.888176+00:00 completed=325000/500001 rate=88343/s elapsed=3.68s eta=1.98s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:16.182411+00:00 completed=350000/500001 rate=88093/s elapsed=3.97s eta=1.70s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:16.462693+00:00 completed=375000/500001 rate=88167/s elapsed=4.25s eta=1.42s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:16.749725+00:00 completed=400000/500001 rate=88099/s elapsed=4.54s eta=1.14s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:17.040296+00:00 completed=425000/500001 rate=87975/s elapsed=4.83s eta=0.85s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:17.349869+00:00 completed=450000/500001 rate=87540/s elapsed=5.14s eta=0.57s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:17.645090+00:00 completed=475000/500001 rate=87386/s elapsed=5.44s eta=0.29s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:17.930080+00:00 completed=500000/500001 rate=87402/s elapsed=5.72s eta=0.00s checkpoint=logs/hilbert-193-500k.verify.ckpt.json
+2026-08-24T04:55:17.935652+00:00 complete vertices=500001 menu=16 sha256=6f8fdf59b7ecef5533b8a65265d80df961f67a955dabaf9d5bb973d7ae143d63 elapsed=5.72s

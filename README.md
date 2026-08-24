@@ -7,6 +7,7 @@ There are a finite set $S \subseteq \mathbb Z^3$ and an infinite sequence $P : \
 The construction is unconditional and formalized in Lean 4. External mathematical review and community acceptance are still pending.
 
 - **Visual explanation:** [erdos-193.q5m.ai](https://erdos-193.q5m.ai)
+- **Guided lessons:** [`lessons/README.md`](lessons/README.md)
 - **Production deployment:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - **Proof manuscript:** [`paper/erdos193.pdf`](paper/erdos193.pdf)
 - **Lean theorem:** `Hilbert193.erdos193_unconditional`

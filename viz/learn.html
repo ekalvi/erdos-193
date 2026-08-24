@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="favicon.svg">
+  <title>Learn the proof of Erdős Problem 193</title>
+  <meta name="description" content="A seven-part, learner-first guide to the terminal-steered Hilbert lift, with rendered mathematics and checkpoints.">
+  <link rel="canonical" href="https://erdos-193.q5m.ai/learn.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=learn3">
+  <script>
+    window.MathJax={
+      tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+<div class="wrap wide">
+  <header class="site">
+    <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a class="cur" href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+  </header>
+
+  <main>
+    <section class="lesson-intro">
+      <span class="eyebrow">A cleaned, learner-tested route through the proof</span>
+      <h1>Understand the Hilbert construction one load-bearing idea at a time</h1>
+      <p class="lede">This guide assumes comfort with ordinary arithmetic and coordinates, but not Hilbert curves, base 4, two-adic valuation, or formal proof. It follows the order in which the argument became explainable from memory.</p>
+      <div class="voice-note success"><b>The goal</b><p>By the end, you should be able to explain why the adjacent pair laws force two coprime scale factors to be odd, why the endpoint pair law forces their sum to be odd, and why that rules out three collinear lifted points.</p></div>
+      <div class="voice-note warning"><b>Proof status</b><p>The construction is unconditional and formalized in Lean. These lessons are a pedagogical companion, not the authoritative proof artifact. External mathematical review and community acceptance remain pending.</p></div>
+      <div class="route-actions"><a class="button" href="hilbert-proof.pdf?v=20260824-3">Proof manuscript</a><a class="button" href="proof.html">Standalone proof</a></div>
+    </section>
+
+    <div class="learning-route">
+      <aside class="lesson-toc">
+        <strong>Learning route</strong>
+        <nav aria-label="Lesson sections">
+          <a href="#problem">0. Decode the problem</a>
+          <a href="#architecture">1. Trace, select, lift</a>
+          <a href="#selector">2. Bound the gaps</a>
+          <a href="#states">3. Steer terminal state</a>
+          <a href="#fingerprint">4. Build the fingerprint</a>
+          <a href="#pair-law">5. Prove the pair law</a>
+          <a href="#contradiction">6. Exclude a line</a>
+          <a href="#verification">7. Separate evidence</a>
+        </nav>
+      </aside>
+
+      <div class="lesson-content">
+        <section class="lesson-section" id="problem">
+          <span class="eyebrow">Start with the quantifiers, not the Hilbert curve</span>
+          <h2><span class="lesson-number">0</span>What the problem actually asks</h2>
+          <p class="mental-model">Can a walker move forever among integer points in 3D, reuse only finitely many kinds of step, and still avoid every collinear triple?</p>
+          <p>A lattice point is an integer-coordinate location such as \((4,-2,7)\). A step vector records the change from one visited point to the next. The walker may visit infinitely many points; only the menu of allowed step vectors must be finite.</p>
+          <div class="math-block">\[
+            P_{n+1}-P_n\in S,
+            \qquad S\subset\mathbb Z^3\text{ finite}.
+          \]</div>
+          <p>The original question asks whether <strong>every</strong> such infinite walk must contain three distinct collinear vertices. To answer “no,” one explicit infinite counterexample is enough.</p>
+          <div class="concept-grid">
+            <div class="concept"><b>Infinite walk</b><p>The sequence has a point for every natural-number time.</p></div>
+            <div class="concept"><b>Finite menu</b><p>The same finite set of displacement vectors is reused forever.</p></div>
+            <div class="concept"><b>Three distinct points</b><p>Repeating one location does not count as a collinear triple.</p></div>
+            <div class="concept"><b>Negative answer</b><p>Construct one valid walk that avoids all such triples.</p></div>
+          </div>
+          <div class="voice-note"><b>The first distinction I needed</b><p>“Finite step set” does not mean the robot stays in a finite region or eventually stops. A finite alphabet can produce an infinite sentence; a finite move menu can produce an infinite walk.</p></div>
+          <details class="checkpoint"><summary>Checkpoint: can you state the target?</summary><div><p>Explain, without formulas, what must be finite, what must be infinite, and what one counterexample must avoid.</p><div class="answer"><strong>Answer.</strong> The menu of possible step vectors must be finite; the walk itself must continue forever; and no three distinct visited points may lie on one line.</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="architecture">
+          <span class="eyebrow">Give every component one job</span>
+          <h2><span class="lesson-number">1</span>Trace, select, and lift</h2>
+          <p>Let \(H(n)\in\mathbb Z^2\) be the planar point reached at index \(n\) along a nested discrete Hilbert path. Consecutive Hilbert indices reach neighboring grid points.</p>
+          <div class="proof-chain">
+            <div class="proof-link"><span>1</span><p><strong>Trace.</strong> Build the infinite planar route \(H(0),H(1),H(2),\ldots\).</p></div>
+            <div class="proof-link"><span>2</span><p><strong>Select.</strong> Keep a controlled increasing sequence of Hilbert indices \(n_0,n_1,n_2,\ldots\).</p></div>
+            <div class="proof-link"><span>3</span><p><strong>Lift.</strong> Make the selected index the third coordinate.</p></div>
+          </div>
+          <div class="math-block">\[
+            P_a=\bigl(H(n_a),\,n_a\bigr)\in\mathbb Z^3.
+          \]</div>
+          <div class="construction-diagrams" aria-label="Trace, select, and lift diagrams">
+            <figure class="diagram-card">
+              <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
+              <figcaption><b>Trace</b><span>Follow one adjacent route through the planar lattice.</span></figcaption>
+            </figure>
+            <figure class="diagram-card">
+              <img src="diagram-select.svg" width="300" height="210" loading="lazy" decoding="async" alt="Same-state Hilbert points selected from consecutive blocks.">
+              <figcaption><b>Select</b><span>Keep one controlled same-state index from each block.</span></figcaption>
+            </figure>
+            <figure class="diagram-card">
+              <img src="diagram-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="Selected Hilbert points lifted to heights equal to their indices.">
+              <figcaption><b>Lift</b><span>Use each retained index as the point’s height.</span></figcaption>
+            </figure>
+          </div>
+          <p>The height is literal, not decorative. If two selected indices differ by \(d\), then their lifted points differ in height by exactly \(d\).</p>
+          <p>The selector must supply two guarantees:</p>
+          <ul>
+            <li><strong>bounded gaps</strong>, so successive 3D steps come from a finite menu;</li>
+            <li><strong>one common terminal state</strong>, so the same pair law applies to every pair of selected indices.</li>
+          </ul>
+          <div class="voice-note warning"><b>A tempting order that caused confusion</b><p>Lifting every Hilbert point first produces an appealing staircase, but it fails: lifted indices 3, 4, and 5 are collinear. The actual construction traces, selects, and then lifts.</p></div>
+          <details class="checkpoint"><summary>Checkpoint: which component does which job?</summary><div><ol><li>What does the Hilbert route provide?</li><li>What two properties must the selector provide?</li><li>Why use the selected index as height?</li></ol><div class="answer"><strong>Answer.</strong> The Hilbert route provides an adjacent planar trace; the selector provides bounded gaps and a shared terminal state; the lift turns index differences into exact height differences.</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="selector">
+          <span class="eyebrow">One representative, not four choices kept at once</span>
+          <h2><span class="lesson-number">2</span>Why the selected gaps are 4 through 28</h2>
+          <p>Split the Hilbert indices into aligned blocks of sixteen:</p>
+          <div class="math-block">\[
+            \{16a,16a+1,\ldots,16a+15\}.
+          \]</div>
+          <p>From each block, keep exactly one index. The block’s incoming terminal state chooses one offset from the fixed table:</p>
+          <div class="math-block">\[
+            \rho(I)=5,\qquad \rho(S)=1,\qquad \rho(T)=13,\qquad \rho(C)=3.
+          \]</div>
+          <p>The selected index has the form</p>
+          <div class="math-block">\[
+            n_a=16a+\rho\bigl(\sigma(a)\bigr).
+          \]</div>
+          <p>The symbols \(1,3,5,13\) are candidate offsets. They do not mean that four points are retained from every block.</p>
+          <p>Between consecutive blocks, the selected gap is</p>
+          <div class="math-block">\[
+            n_{a+1}-n_a=16+\rho\bigl(\sigma(a+1)\bigr)-\rho\bigl(\sigma(a)\bigr).
+          \]</div>
+          <p>The smallest possible value is \(16+1-13=4\), and the largest is \(16+13-1=28\). Thus</p>
+          <div class="math-block">\[
+            4\le n_{a+1}-n_a\le 28.
+          \]</div>
+          <h3>Why this gives a finite 3D step menu</h3>
+          <p>A gap of at most 28 means the Hilbert route takes at most 28 planar unit steps between selected points, so each planar coordinate changes by at most 28 in absolute value. The lift’s height change is the same index gap. Every successive displacement therefore lies in the finite box</p>
+          <div class="math-block">\[
+            -28\le dx,dy\le 28,
+            \qquad 4\le dz\le 28.
+          \]</div>
+          <div class="voice-note"><b>Two off-by-one traps</b><p>An index difference of 12 means 12 Hilbert unit steps and 11 indices strictly between the endpoints. Also, “4 through 28” describes index and height gaps—not the Euclidean lengths of the 3D arrows.</p></div>
+          <details class="checkpoint"><summary>Checkpoint: recover one real gap</summary><div><p>The first two canonical selected indices are 5 and 17. What is their gap, and how many indices lie strictly between them?</p><div class="answer"><strong>Answer.</strong> Their gap is \(17-5=12\), and 11 indices lie strictly between them.</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="states">
+          <span class="eyebrow">The finite-state steering mechanism</span>
+          <h2><span class="lesson-number">3</span>What terminal state remembers</h2>
+          <p>Each recursive Hilbert square is entered and exited in one of four orientations. The proof names the resulting transformations \(I,S,T,C\). On the state map they are drawn as right, up, down, and left.</p>
+          <p>A terminal state is not another position. It is the orientation left in the decoder after the final base-4 digit has been processed.</p>
+          <div class="concept-grid">
+            <div class="concept"><b>Four states</b><p>The decoder’s possible leftover orientations: I, S, T, and C.</p></div>
+            <div class="concept"><b>Sixteen suffixes</b><p>The possible two-digit base-4 endings from \(00_4\) through \(33_4\).</p></div>
+          </div>
+          <p>The canonical suffix table is:</p>
+          <div class="math-block">\[
+            \begin{array}{c|c|c|c}
+            \text{incoming state}&\text{suffix}&\text{decimal offset}&\text{final state}\\ \hline
+            I&11_4&5&I\\
+            S&01_4&1&I\\
+            T&31_4&13&I\\
+            C&03_4&3&I
+            \end{array}
+          \]</div>
+          <p>Each state is its own inverse. The chosen suffix contributes the same transformation as the incoming state, so applying both cancels the orientation and leaves state \(I\).</p>
+          <div class="voice-note warning"><b>The selector is a lookup, not a search</b><p>It computes the block-prefix state once and applies the fixed table. A white ring on the state map means “the table’s canonical representative,” not “the first blue cell encountered.” Other same-state cells may be valid but unused.</p></div>
+          <h3>Why equal terminal states matter later</h3>
+          <p>When two base-4 words finish in the same state and share a low suffix, the proof can undo that common suffix from right to left. Both words reach their first mismatch in one common orientation. That makes the two mismatch digits geometrically comparable.</p>
+          <details class="checkpoint"><summary>Checkpoint: states versus suffixes</summary><div><ol><li>Why are there 16 two-digit suffixes but only four states?</li><li>What does the suffix lookup guarantee?</li></ol><div class="answer"><strong>Answer.</strong> Two base-4 digits have \(4^2=16\) possible values, while their orientation effects collapse to four transformations. The lookup chooses one suffix whose effect cancels the incoming state, so every selected index finishes in state \(I\).</div></div></details>
+          <div class="route-actions"><a class="button" href="hilbert-colors.html">Use the interactive state map</a></div>
+        </section>
+
+        <section class="lesson-section" id="fingerprint">
+          <span class="eyebrow">Standard powers of two, packaged for this proof</span>
+          <h2><span class="lesson-number">4</span>Build a fingerprint for a planar vector</h2>
+          <p>For a nonzero integer \(n\), the two-adic valuation \(\nu_2(n)\) counts how many factors of 2 divide it. For example, \(40=2^3\cdot5\), so \(\nu_2(40)=3\).</p>
+          <div class="math-block">\[
+            \nu_2(ab)=\nu_2(a)+\nu_2(b).
+          \]</div>
+          <p>Now take a nonzero planar vector \(u=(u_x,u_y)\). Define the common binary scale</p>
+          <div class="math-block">\[
+            p(u)=\min\{\nu_2(u_x),\nu_2(u_y)\}.
+          \]</div>
+          <p>After removing that common power of two, either exactly one coordinate is odd or both are odd. Record that with one bit:</p>
+          <div class="math-block">\[
+            \epsilon(u)=
+            \begin{cases}
+            1,&\nu_2(u_x)=\nu_2(u_y),\\
+            0,&\nu_2(u_x)\ne\nu_2(u_y).
+            \end{cases}
+          \]</div>
+          <p>The proof’s vector fingerprint is</p>
+          <div class="math-block">\[
+            V(u)=2p(u)+\epsilon(u).
+          \]</div>
+          <p>For \(u=(6,12)\), the coordinate valuations are 1 and 2, so \(p=1\), \(\epsilon=0\), and \(V(u)=2\). For \(u=(6,10)\), both valuations are 1, so \(V(u)=3\).</p>
+          <div class="voice-note"><b>What the fingerprint deliberately forgets</b><p>It does not identify the vector, its length, direction, signs, or odd coordinate values. It keeps only the common binary scale and whether one or both reduced coordinates are odd.</p></div>
+          <h3>The scaling law</h3>
+          <p>Multiplying a planar vector by a positive integer \(k\) adds \(\nu_2(k)\) to both coordinate valuations. Therefore</p>
+          <div class="math-block">\[
+            V(ku)=V(u)+2\nu_2(k).
+          \]</div>
+          <p>The coefficient 2 is the lever used later: an integer gap scaled by \(k\) gains \(\nu_2(k)\), while the planar-vector fingerprint gains \(2\nu_2(k)\).</p>
+          <div class="voice-note warning"><b>What is standard and what is proof-specific</b><p>The ordinary valuation and Hilbert recursion are established mathematics. This exact scalar fingerprint is a purpose-built packaging introduced in the manuscript. The same-terminal-state pair law below is the substantive proof-specific theorem. Lean checks correctness, not historical priority; external review of novelty is pending.</p></div>
+          <details class="checkpoint"><summary>Checkpoint: scale one fingerprint</summary><div><p>If \(V(u)=3\) and \(k=4\), what is \(V(ku)\)?</p><div class="answer"><strong>Answer.</strong> Since \(\nu_2(4)=2\), the fingerprint increases by 4, giving \(V(4u)=7\).</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="pair-law">
+          <span class="eyebrow">One first mismatch controls both sides</span>
+          <h2><span class="lesson-number">5</span>Why the Hilbert pair law is true</h2>
+          <p>For two different indices \(m,n\) with the same terminal state, the theorem says</p>
+          <div class="math-block">\[
+            \boxed{V\bigl(H(n)-H(m)\bigr)=\nu_2(|n-m|).}
+          \]</div>
+          <figure class="pair-law-player" id="pairLawPlayer" data-step="0" tabindex="0" aria-labelledby="pairLawPlayerTitle" aria-describedby="pairLawPlayerCaption">
+            <div class="pair-law-player-head">
+              <div>
+                <span class="eyebrow">Controlled walkthrough</span>
+                <h3 id="pairLawPlayerTitle">Watch one base-4 mismatch become a planar fingerprint</h3>
+              </div>
+              <span class="pair-law-state-chip">same final state <b>I</b></span>
+            </div>
+            <div class="pair-law-facts" aria-label="Facts shared by all animation steps">
+              <span><b>Three indices</b> \(0,\ 80,\ 96\)</span>
+              <span><b>First mismatch</b> \(j=2\)</span>
+              <span><b>Common suffix</b> \(00_4\)</span>
+            </div>
+            <div class="pair-law-stage">
+              <div class="pair-law-bit-legend" data-reveal="1">
+                <span><i class="pair-law-x-bit"></i>first emitted bit becomes \(x_k\)</span>
+                <span><i class="pair-law-y-bit"></i>second emitted bit becomes \(y_k\)</span>
+              </div>
+              <div class="pair-law-word-grid" role="table" aria-label="Base-4 digits and emitted coordinate-bit pairs">
+                <div class="pair-law-place-row" role="row">
+                  <span role="columnheader">index</span>
+                  <span role="columnheader">\(k=3\)</span>
+                  <span class="pair-law-mismatch-heading" role="columnheader">\(k=2\)<small>first mismatch</small></span>
+                  <span class="pair-law-suffix-heading" role="columnheader">\(k=1\)<small>common suffix</small></span>
+                  <span class="pair-law-suffix-heading" role="columnheader">\(k=0\)<small>common suffix</small></span>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>A</b><span>\(0=0000_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>B</b><span>\(80=1100_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+                <div class="pair-law-word-row" role="row">
+                  <div class="pair-law-word-name" role="rowheader"><b>C</b><span>\(96=1200_4\)</span></div>
+                  <div class="pair-law-cell" data-k="3" role="cell"><strong>1</strong><span class="pair-law-emission" data-reveal="1" aria-label="emits x bit 0 and y bit 1"><i class="pair-law-x">0</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-mismatch" data-k="2" role="cell"><strong>2</strong><span class="pair-law-emission" data-reveal="2" aria-label="emits x bit 1 and y bit 1"><i class="pair-law-x">1</i><i class="pair-law-y">1</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="1" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="3" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                  <div class="pair-law-cell is-suffix" data-k="0" role="cell"><strong>0</strong><span class="pair-law-emission" data-reveal="4" aria-label="emits x bit 0 and y bit 0"><i class="pair-law-x">0</i><i class="pair-law-y">0</i></span></div>
+                </div>
+              </div>
+              <div class="pair-law-rewind" data-reveal="5">
+                <div class="pair-law-rewind-heading"><b>Rewind the common suffix</b><span>state moves backward; emitted bits above stay put</span></div>
+                <div class="pair-law-rewind-track" aria-label="Forward state path I through S to terminal I, rewound from right to left">
+                  <span class="pair-law-state-node" data-active-steps="6"><small>after mismatch</small><b>I</b></span>
+                  <span class="pair-law-state-edge" data-active-steps="6"><small>digit 0 at \(k=1\)</small><b>→</b></span>
+                  <span class="pair-law-state-node" data-active-steps="5 6"><small>after \(k=1\)</small><b>S</b></span>
+                  <span class="pair-law-state-edge" data-active-steps="5"><small>digit 0 at \(k=0\)</small><b>→</b></span>
+                  <span class="pair-law-state-node" data-active-steps="5"><small>terminal</small><b>I</b></span>
+                </div>
+                <div class="pair-law-rewind-direction"><span>backward rewind</span><b>←</b></div>
+              </div>
+              <div class="pair-law-rails" data-reveal="7" aria-label="Emitted pairs unzipped into coordinate bits">
+                <div><b>A</b><span><i class="pair-law-x">x</i> \(0000_2=0\)</span><span><i class="pair-law-y">y</i> \(0000_2=0\)</span><strong>\(H(0)=(0,0)\)</strong></div>
+                <div><b>B</b><span><i class="pair-law-x">x</i> \(0000_2=0\)</span><span><i class="pair-law-y">y</i> \(1100_2=12\)</span><strong>\(H(80)=(0,12)\)</strong></div>
+                <div><b>C</b><span><i class="pair-law-x">x</i> \(0100_2=4\)</span><span><i class="pair-law-y">y</i> \(1100_2=12\)</span><strong>\(H(96)=(4,12)\)</strong></div>
+              </div>
+              <div class="pair-law-outcomes">
+                <div class="pair-law-outcome one-rail" data-reveal="8">
+                  <span>A versus B</span>
+                  <b>One reduced coordinate is odd</b>
+                  <p>\(80=2^4\cdot5\), while \(H(80)-H(0)=4(0,3)\).</p>
+                  <strong>\(\nu_2(80)=V(0,12)=4=2j\)</strong>
+                </div>
+                <div class="pair-law-outcome two-rails" data-reveal="9">
+                  <span>A versus C</span>
+                  <b>Both reduced coordinates are odd</b>
+                  <p>\(96=2^5\cdot3\), while \(H(96)-H(0)=4(1,3)\).</p>
+                  <strong>\(\nu_2(96)=V(4,12)=5=2j+1\)</strong>
+                </div>
+              </div>
+            </div>
+            <div class="pair-law-controls" aria-label="Pair-law animation controls">
+              <button class="button pair-law-back" id="pairLawBack" type="button">Back</button>
+              <div class="pair-law-step-status" aria-live="polite">
+                <span id="pairLawStepCount">Step 1 of 10</span>
+                <strong id="pairLawStepLabel">Set up three same-state indices with one shared suffix.</strong>
+                <div class="pair-law-step-meter" id="pairLawStepMeter" role="progressbar" aria-label="Walkthrough progress" aria-valuemin="1" aria-valuemax="10" aria-valuenow="1"><i></i></div>
+              </div>
+              <button class="button primary pair-law-next" id="pairLawNext" type="button">Next</button>
+            </div>
+            <noscript><p class="pair-law-noscript">JavaScript is off, so every stage is shown together as a static diagram.</p></noscript>
+            <figcaption id="pairLawPlayerCaption">Use Back and Next—or the left and right arrow keys while the diagram is focused. Forward steps emit bits; backward steps rewind state only.</figcaption>
+          </figure>
+          <p>Read both base-4 indices from the right until reaching their first different digit. Suppose that mismatch occurs at position \(j\). The final \(j\) base-4 digits match, so their difference contains a factor \(4^j=2^{2j}\).</p>
+          <div class="math-block">\[
+            n-m=4^j\times(\text{remaining integer}).
+          \]</div>
+          <p>The mismatching digits have only two parity types:</p>
+          <div class="math-block">\[
+            \begin{array}{c|c|c}
+            \text{digit difference}&\nu_2(|n-m|)&\text{corner-bit difference}\\ \hline
+            1\text{ or }3&2j&\text{exactly one coordinate bit}\\
+            2&2j+1&\text{both coordinate bits}
+            \end{array}
+          \]</div>
+          <p>On the planar side, matching lower digits produce matching lower coordinate bits. At binary position \(j\), an odd digit difference changes exactly one emitted coordinate bit, giving fingerprint \(2j\). A digit difference of 2 changes both, giving fingerprint \(2j+1\). The two sides match in both cases.</p>
+          <h3>Why the terminal-state hypothesis is indispensable</h3>
+          <p>The same base-4 digit can be interpreted inside differently rotated or reflected Hilbert pieces. Equal terminal states let us rewind the common low suffix and recover one shared orientation at the first mismatch. Without that alignment, “the same mismatch” need not emit the same type of coordinate-bit difference.</p>
+          <div class="voice-note"><b>The compact mental model</b><p>Matching final base-4 digits create matching low binary coordinate bits. The first mismatching digit then says whether one coordinate changes first or both do. The index gap and vector fingerprint encode those same two possibilities as \(2j\) or \(2j+1\).</p></div>
+          <div class="concept-grid">
+            <div class="concept"><b>Need a place-value detour?</b><p>In any base, matching final digits cancel on subtraction. In base 4, each matching digit contributes a factor of 4.</p></div>
+            <div class="concept"><b>Need an orientation detour?</b><p>A “child square” is one ordinary quarter of the current grid square. The carried state tells the next digit how that quarter is turned.</p></div>
+          </div>
+          <details class="checkpoint"><summary>Checkpoint: explain the bridge in one sentence</summary><div><p>Why do the index-gap valuation and planar-vector fingerprint agree?</p><div class="answer"><strong>Answer.</strong> The first base-4 mismatch from the right determines both how many factors of two occur in the index difference and whether one or both planar coordinate bits first differ, and equal terminal states ensure both indices interpret that mismatch in one common orientation.</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="contradiction">
+          <span class="eyebrow">Use all three pairs</span>
+          <h2><span class="lesson-number">6</span>Why three selected lifts cannot be collinear</h2>
+          <p>Assume for contradiction that three selected indices \(a&lt;b&lt;c\) produce collinear lifted points. All selected indices have the same terminal state, so the pair law applies to \((a,b)\), \((b,c)\), and \((a,c)\).</p>
+          <p>Let the adjacent index—and therefore height—gaps be</p>
+          <div class="math-block">\[
+            A=b-a,\qquad B=c-b,
+          \]</div>
+          <p>and let the corresponding planar chords be</p>
+          <div class="math-block">\[
+            X=H(b)-H(a),\qquad Y=H(c)-H(b).
+          \]</div>
+          <figure class="collinearity-figure proof-collinearity">
+            <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three selected lifts on a supposed line, with directed green and orange adjacent displacement vectors.">
+            <figcaption>The green vector is \((X,A)\) and the orange vector is \((Y,B)\). If the three points really shared the red line, these two directed displacements would have the same planar change per unit height.</figcaption>
+          </figure>
+          <h3>Collinearity produces one common integer vector</h3>
+          <p>The full 3D displacements are \((X,A)\) and \((Y,B)\). Collinearity gives equal planar change per unit height, hence</p>
+          <div class="math-block">\[
+            \frac{X}{A}=\frac{Y}{B}
+            \qquad\Longrightarrow\qquad
+            BX=AY.
+          \]</div>
+          <p>Remove the greatest common factor \(g=\gcd(A,B)\):</p>
+          <div class="math-block">\[
+            A=gr,\qquad B=gs,\qquad \gcd(r,s)=1.
+          \]</div>
+          <p>After cancelling \(g\), we have \(sX=rY\). Coordinate by coordinate, coprimality implies that \(r\) divides both coordinates of \(X\). Define \(W=X/r\); then \(W\in\mathbb Z^2\), and substitution gives</p>
+          <div class="math-block">\[
+            \boxed{X=rW,\qquad Y=sW.}
+          \]</div>
+          <div class="voice-note"><b>The jump to W, made explicit</b><p>Nothing guesses \(W\). Euclid’s lemma constructs it: from \(r\mid sX_i\) and \(\gcd(r,s)=1\), conclude \(r\mid X_i\) for each coordinate, then set \(W=X/r\).</p></div>
+          <h3>The adjacent pairs force \(r\) and \(s\) to be odd</h3>
+          <p>Introduce</p>
+          <div class="math-block">\[
+            \gamma=\nu_2(g),\quad
+            \alpha=\nu_2(r),\quad
+            \beta=\nu_2(s),\quad
+            w=V(W).
+          \]</div>
+          <p>For pair \((a,b)\), the gap is \(gr\) and the chord is \(rW\). Pair law plus scaling gives</p>
+          <div class="math-block">\[
+            \gamma+\alpha=w+2\alpha
+            \qquad\Longrightarrow\qquad
+            w=\gamma-\alpha.
+          \]</div>
+          <p>The pair \((b,c)\) similarly gives</p>
+          <div class="math-block">\[
+            w=\gamma-\beta.
+          \]</div>
+          <p>Therefore \(\alpha=\beta\). If their common value were positive, both \(r\) and \(s\) would be even, contradicting \(\gcd(r,s)=1\). Hence</p>
+          <div class="math-block">\[
+            \alpha=\beta=0,
+            \qquad r,s\text{ are odd},
+            \qquad w=\gamma.
+          \]</div>
+          <h3>The endpoint pair forces \(r+s\) to be odd</h3>
+          <p>The endpoint gap and planar chord are</p>
+          <div class="math-block">\[
+            c-a=A+B=g(r+s),
+            \qquad
+            H(c)-H(a)=X+Y=(r+s)W.
+          \]</div>
+          <p>Let \(\delta=\nu_2(r+s)\). The endpoint pair law compares an index-side valuation of \(\gamma+\delta\) with a vector-side fingerprint of \(w+2\delta=\gamma+2\delta\):</p>
+          <div class="math-block">\[
+            \gamma+\delta=\gamma+2\delta.
+          \]</div>
+          <p>Thus \(\delta=0\), so \(r+s\) is odd.</p>
+          <div class="voice-note warning"><b>The contradiction</b><p>The adjacent pairs forced \(r\) and \(s\) to be odd. Ordinary parity says their sum is even. The endpoint pair law forced that same sum to be odd. Therefore the original collinearity assumption is impossible.</p></div>
+          <h3>The proof in six ordinary-language sentences</h3>
+          <ol>
+            <li>Assume three distinct selected lifted points are collinear; their common terminal state lets us apply the pair law to all three pairs.</li>
+            <li>Remove the gcd from the two adjacent index gaps, leaving coprime scale factors \(r\) and \(s\).</li>
+            <li>Collinearity and coprimality express the adjacent planar chords as \(rW\) and \(sW\) for one nonzero integer vector \(W\).</li>
+            <li>The adjacent pair laws give equal two-adic valuations for \(r\) and \(s\); coprimality makes both valuations zero, so both numbers are odd.</li>
+            <li>The endpoint pair law forces \(r+s\) to have valuation zero, so their sum is odd.</li>
+            <li>But odd plus odd is even, which contradicts the assumed line.</li>
+          </ol>
+          <details class="checkpoint"><summary>Final checkpoint: reconstruct the contradiction</summary><div><ol><li>Why does collinearity produce \(X=rW\) and \(Y=sW\)?</li><li>Why does \(\alpha=\beta\) become \(\alpha=\beta=0\)?</li><li>Which two endpoint quantities become \(\gamma+\delta\) and \(\gamma+2\delta\)?</li></ol><div class="answer"><strong>Answer.</strong> Reduce the height ratio to coprime terms and apply Euclid’s lemma coordinatewise; coprime numbers cannot share a positive two-adic valuation; and the endpoint index gap \(g(r+s)\) scales once while the planar chord \((r+s)W\) scales both coordinates, producing coefficients 1 and 2 on \(\delta\).</div></div></details>
+        </section>
+
+        <section class="lesson-section" id="verification">
+          <span class="eyebrow">Keep the kinds of evidence separate</span>
+          <h2><span class="lesson-number">7</span>What is proved, checked, and still pending</h2>
+          <div class="concept-grid">
+            <div class="concept"><b>Mathematical manuscript</b><p>States the explicit infinite construction and proves its pair law, selector bounds, collinearity contradiction, and finite-menu conclusion.</p></div>
+            <div class="concept"><b>Lean formalization</b><p>Kernel-checks the load-bearing theorem against pinned Lean and Mathlib versions, with no unfinished placeholders or project-specific axioms.</p></div>
+            <div class="concept"><b>Finite artifact</b><p>Records 500,001 exact vertices and 16 realized displacement vectors as reproducible implementation evidence.</p></div>
+            <div class="concept"><b>Exhaustive finite scan</b><p>Checks all 125,000,250,000 earlier-point directions in that prefix; it does not prove the infinite theorem.</p></div>
+          </div>
+          <p>The repository’s claim is an unconditional construction, not a result conditional on a conjecture or a large computation. The remaining uncertainty is external assessment: a formal proof can faithfully prove definitions that reviewers later judge not to match the intended problem. The <a href="proof.html">proof page</a> therefore links the formal theorem and records that review status.</p>
+          <div class="voice-note success"><b>What you should now be able to summarize</b><p>The Hilbert route supplies planar adjacency; terminal-state steering supplies a bounded same-state subsequence; lifting turns index into height; the pair law synchronizes index and planar binary scales; and the unequal scaling coefficients make a collinear triple impossible.</p></div>
+          <div class="route-actions"><a class="button primary" href="proof.html">Open the proof</a><a class="button" href="hilbert-proof.pdf?v=20260824-3">Read the manuscript</a><a class="button" href="walk3d.html">Inspect the finite artifact</a><a class="button" href="hilbert-colors.html">Inspect terminal states</a></div>
+          <p class="inline-status">Pedagogical guide only. Authoritative sources: the proof manuscript and the Lean project in the repository. External mathematical review and community acceptance are pending.</p>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+</div>
+<script>
+(() => {
+  const root = document.getElementById('pairLawPlayer');
+  if (!root) return;
+  const back = document.getElementById('pairLawBack');
+  const next = document.getElementById('pairLawNext');
+  const count = document.getElementById('pairLawStepCount');
+  const label = document.getElementById('pairLawStepLabel');
+  const meter = document.getElementById('pairLawStepMeter');
+  const labels = [
+    'Set up three same-state indices with one shared suffix.',
+    'Forward: read k=3. Each base-4 digit emits one x-bit and one y-bit.',
+    'Forward: k=2 is the first mismatch from the right. A to B changes one bit; A to C changes both.',
+    'Forward: read the shared digit at k=1. Every word emits 00.',
+    'Forward: read the shared digit at k=0. Every word emits 00 and finishes in state I.',
+    'Backward: undo k=0 from terminal I. Every decoder returns to S; no emitted bit moves.',
+    'Backward: undo k=1. Every decoder returns to I, the common state immediately after the mismatch.',
+    'Unzip the emitted pairs. First bits form x; second bits form y.',
+    'Compare A with B. One reduced coordinate is odd, so both fingerprints equal 4 = 2j.',
+    'Compare A with C. Both reduced coordinates are odd, so both fingerprints equal 5 = 2j + 1.'
+  ];
+  const reveals = [...root.querySelectorAll('[data-reveal]')];
+  const digitCells = [...root.querySelectorAll('.pair-law-cell[data-k]')];
+  const rewindParts = [...root.querySelectorAll('[data-active-steps]')];
+  let step = 0;
+
+  const render = () => {
+    root.dataset.step = String(step);
+    root.classList.toggle('has-mismatch', step >= 2);
+    reveals.forEach(element => {
+      const visible = step >= Number(element.dataset.reveal);
+      element.classList.toggle('is-visible', visible);
+      element.setAttribute('aria-hidden', String(!visible));
+    });
+
+    let activeK = null;
+    let rewinding = false;
+    if (step >= 1 && step <= 4) activeK = 4 - step;
+    if (step === 5) {
+      activeK = 0;
+      rewinding = true;
+    }
+    if (step === 6) {
+      activeK = 1;
+      rewinding = true;
+    }
+    digitCells.forEach(cell => {
+      const active = Number(cell.dataset.k) === activeK;
+      cell.classList.toggle('is-active', active);
+      cell.classList.toggle('is-reverse', active && rewinding);
+    });
+    rewindParts.forEach(element => {
+      const active = element.dataset.activeSteps.split(/\s+/).includes(String(step));
+      element.classList.toggle('is-active', active);
+    });
+
+    count.textContent = `Step ${step + 1} of ${labels.length}`;
+    label.textContent = labels[step];
+    meter.setAttribute('aria-valuenow', String(step + 1));
+    meter.setAttribute('aria-valuetext', labels[step]);
+    meter.firstElementChild.style.width = `${((step + 1) / labels.length) * 100}%`;
+    back.disabled = step === 0;
+    next.disabled = step === labels.length - 1;
+  };
+
+  const move = delta => {
+    const destination = Math.max(0, Math.min(labels.length - 1, step + delta));
+    if (destination === step) return;
+    step = destination;
+    render();
+  };
+
+  back.addEventListener('click', () => move(-1));
+  next.addEventListener('click', () => move(1));
+  root.addEventListener('keydown', event => {
+    if (event.altKey || event.ctrlKey || event.metaKey) return;
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      move(-1);
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      move(1);
+    }
+  });
+
+  root.classList.add('is-enhanced');
+  render();
+})();
+</script>
+</body>
+</html>

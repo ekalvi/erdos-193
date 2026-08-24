@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 210" role="img" aria-labelledby="title desc">
+  <title id="title">A two-dimensional discrete Hilbert path</title>
+  <desc id="desc">An order-three Hilbert route visits every point of an eight-by-eight grid through neighboring lattice steps.</desc>
+  <rect width="300" height="210" fill="#04060d"/>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M20 0H0V20" fill="none" stroke="#23324a" stroke-width="1"/>
+    </pattern>
+  </defs>
+  <rect x="70" y="25" width="160" height="160" fill="url(#grid)"/>
+  <polyline points="80,175 80,155 100,155 100,175 120,175 140,175 140,155 120,155 120,135 140,135 140,115 120,115 100,115 100,135 80,135 80,115 80,95 100,95 100,75 80,75 80,55 80,35 100,35 100,55 120,55 120,35 140,35 140,55 140,75 120,75 120,95 140,95 160,95 180,95 180,75 160,75 160,55 160,35 180,35 180,55 200,55 200,35 220,35 220,55 220,75 200,75 200,95 220,95 220,115 220,135 200,135 200,115 180,115 160,115 160,135 180,135 180,155 160,155 160,175 180,175 200,175 200,155 220,155 220,175" fill="none" stroke="#56b4e9" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"/>
+  <circle cx="80" cy="175" r="5" fill="#1baf7a"/>
+  <text x="59" y="194" fill="#b8c6dd" font-family="ui-sans-serif, sans-serif" font-size="11">n=0</text>
+  <circle cx="220" cy="175" r="5" fill="#e6a93a"/>
+  <text x="226" y="194" fill="#b8c6dd" font-family="ui-sans-serif, sans-serif" font-size="11">63</text>
+</svg>

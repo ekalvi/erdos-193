@@ -1,18 +1,49 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.svg"><title>How the Hilbert proof developed — Erdős Problem 193</title><meta name="description" content="The idea, failures, discovery, formal proof, and verification milestones behind the Hilbert construction."><link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="site.css?v=hilbert2"></head>
-<body><div class="wrap"><header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site"><a href="/">Home</a><a href="proof-steps.html">The idea</a><a href="theorem.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a class="cur" href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav></header>
-<main><span class="eyebrow">Research log</span><h1>How the robot idea became a proof</h1><p class="sub">The first Hilbert staircase did not work. Each failure narrowed the question until a small coloring rule and a binary fingerprint produced the final construction.</p>
-<div class="timeline">
-<article class="milestone"><time>Starting idea</time><h3>Lift a Hilbert path into 3D</h3><p>Use the Hilbert square number as height. This turns a flat, winding path into a staircase that always rises.</p></article>
-<article class="milestone"><time>Fast failure</time><h3>The robot cannot land on every stair</h3><p>Steps 3, 4, and 5 already form a straight line. This exact counterexample killed the simplest version immediately.</p></article>
-<article class="milestone"><time>More failed rules</time><h3>Keeping corners or every few steps is not enough</h3><p>Simple patterns still left straight-line triples. The landing rule had to use the way each small Hilbert piece is turned.</p></article>
-<article class="milestone"><time>Key discovery</time><h3>Four colors reveal a binary fingerprint</h3><p>Squares with the same orientation color obey one exact rule connecting their floor separation to the difference between their path numbers.</p></article>
-<article class="milestone"><time>Robot landing rule</time><h3>Keep one color, with no long gaps</h3><p>Two base-4 address digits are enough to guarantee another chosen square within 28 Hilbert places.</p></article>
-<article class="milestone"><time>General proof</time><h3>The fingerprint rules out every straight-line triple</h3><p>A straight line would make the fingerprint scale in two incompatible ways. The contradiction works at every future distance.</p></article>
-<article class="milestone"><time>Independent replay</time><h3>500,000 steps reconstructed exactly</h3><p>A separate program recomputed all 500,001 vertices and all 16 step choices from scratch. It matched the saved file exactly.</p></article>
-<article class="milestone"><time>Exhaustive finite check</time><h3>Every direction in the 500,000-step walk checked</h3><p>A separate four-core verifier checked all 125,000,250,000 earlier-point directions. No direction repeated from any vertex, so no three recorded vertices are collinear.</p></article>
-<article class="milestone"><time>Lean closure</time><h3>The robot’s moves are proved to stay bounded forever</h3><p>Lean proves the Hilbert path moves between neighbouring floor squares and that every chosen robot move belongs to one fixed finite set.</p></article>
-<article class="milestone"><time>Current status</time><h3>Unconditional AI-assisted proof; outside review pending</h3><p>The complete Lean theorem constructs the infinite walk and rules out every group of three in a line. The next useful step is independent mathematical review.</p></article>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="favicon.svg">
+  <title>How the Hilbert proof developed — Erdős Problem 193</title>
+  <meta name="description" content="The failed ideas, discoveries, teaching questions, formal proof, and verification milestones behind the Hilbert construction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=learn1">
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a class="cur" href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+  </header>
+
+  <main>
+    <span class="eyebrow">Research and understanding log</span>
+    <h1>How the robot idea became a proof I could explain</h1>
+    <p class="sub">The first Hilbert staircase failed almost immediately. Later, even after the formal argument existed, teaching it exposed places where compact language hid essential distinctions. This timeline keeps both kinds of progress visible.</p>
+    <div class="voice-note"><b>Why include the moments of confusion?</b><p>A polished proof can make its decisive choices look inevitable. They were not. The failures explain why a selector is needed; the learning questions explain why terminal state, fixed lookup, vector fingerprint, and endpoint parity each deserve their own step.</p></div>
+
+    <div class="timeline">
+      <article class="milestone"><time>Starting idea</time><h3>Lift a Hilbert path into 3D</h3><p>Use the Hilbert route index as height. This turns a flat winding path into a staircase that always rises.</p></article>
+      <article class="milestone"><time>Fast failure</time><h3>The robot cannot land on every stair</h3><p>Indices 3, 4, and 5 already form a straight line after lifting. This exact counterexample killed the simplest version.</p></article>
+      <article class="milestone"><time>More failed rules</time><h3>Keeping corners or every few indices is not enough</h3><p>Simple periodic choices still left collinear triples. The selector had to use the orientation carried by the recursive Hilbert decoder.</p></article>
+      <article class="milestone"><time>Key discovery</time><h3>One terminal state carries an exact pair law</h3><p>For two indices with the same final orientation, the first base-4 mismatch controls both the valuation of their index gap and a fingerprint of their planar chord.</p></article>
+      <article class="milestone"><time>Selector</time><h3>One fixed representative from every 16-index block</h3><p>A two-digit base-4 suffix cancels any incoming state. The fixed lookup I→5, S→1, T→13, C→3 gives successive index gaps from 4 through 28.</p></article>
+      <article class="milestone"><time>General contradiction</time><h3>Odd, odd, and an impossible odd sum</h3><p>On a supposed line, the adjacent pair laws make two coprime scale factors odd. The endpoint pair law says their sum is odd. But odd plus odd is even.</p></article>
+      <article class="milestone"><time>Independent replay</time><h3>500,000 steps reconstructed exactly</h3><p>A separate program recomputed all 500,001 vertices and all 16 realized steps from the construction. It matched the saved artifact exactly.</p></article>
+      <article class="milestone"><time>Exhaustive finite check</time><h3>Every direction in the finite artifact checked</h3><p>A separate four-core verifier checked all 125,000,250,000 earlier-point directions. No direction repeated from one vertex, so no three recorded vertices are collinear.</p></article>
+      <article class="milestone"><time>Lean closure</time><h3>The infinite argument and finite menu are kernel-checked</h3><p>Lean checks the transducer, pair law, terminal-state selector, no-three-collinear contradiction, Hilbert adjacency, and membership of every step in one fixed finite set.</p></article>
+      <article class="milestone"><time>Teaching pass</time><h3>The proof was rebuilt from the reader’s questions</h3><p>The guided lessons separated sixteen suffixes from four states, explained why the selector is a lookup rather than a search, derived the common vector W coordinate by coordinate, and made the endpoint oddness equation explicit.</p></article>
+      <article class="milestone"><time>Current status</time><h3>Unconditional AI-assisted construction; outside review pending</h3><p>The Lean theorem constructs the infinite walk and excludes every ordered triple. Independent mathematical review remains the next load-bearing external step.</p></article>
+    </div>
+
+    <h2>Who did what</h2>
+    <p>Erik Kalviainen, a math hobbyist and engineer, directed the research through prompts to GPT-5.6 using Paseo and Oh My Pi. Erik chose the questions, rejected unclear explanations, asked for exact counterexamples, and steered the project toward reproducible checks and Lean. GPT-5.6 performed much of the algebra, coding, adversarial testing, writing, and formal proof development.</p>
+    <p>The repository records the successful route, failed approaches, finite artifacts, and formal sources. The <a href="learn.html">guided proof</a> also records which explanations survived a from-memory reconstruction by the person steering the work.</p>
+    <div class="actions"><a class="button primary" href="learn.html">Guided proof</a><a class="button" href="hilbert-proof.pdf?v=20260824-3">Proof PDF</a><a class="button" href="proof.html">Standalone proof</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/archive/scale-and-rotate/REPORT.md">Earlier research archive</a></div>
+  </main>
+
+  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
-<h2>Who did what</h2><p>Erik Kalviainen, a math hobbyist and engineer, directed the research through prompts to GPT‑5.6 using Paseo and Oh My Pi as the working stack. Erik chose the questions, challenged conclusions, and steered the work toward exact checks and Lean. GPT‑5.6 performed much of the algebra, coding, testing, and formal proof development. The repository records both the successful route and the failed ideas.</p>
-<div class="actions"><a class="button primary" href="hilbert-proof.pdf">Proof PDF</a><a class="button" href="theorem.html">Lean proof ledger</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/archive/scale-and-rotate/REPORT.md">Earlier research archive</a></div></main>
-<footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer></div></body></html>
+</body>
+</html>
