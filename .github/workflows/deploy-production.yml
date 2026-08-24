@@ -1,0 +1,84 @@
+name: Deploy production
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: erdos-193-production
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Container contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact candidate
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Build and probe the hardened image
+        shell: bash
+        run: |
+          set -euo pipefail
+          image="q5m/erdos-193:$GITHUB_SHA"
+          docker build \
+            --file q5m/Dockerfile \
+            --build-arg "Q5M_RELEASE=$GITHUB_SHA" \
+            --tag "$image" \
+            .
+          container=$(docker run --detach \
+            --network none \
+            --read-only \
+            --user 1000:1000 \
+            --cap-drop ALL \
+            --security-opt no-new-privileges \
+            --tmpfs /tmp:rw,nosuid,nodev,noexec,size=32m \
+            "$image")
+          trap 'docker rm --force "$container" >/dev/null' EXIT
+          for attempt in {1..20}; do
+            if docker exec "$container" /usr/local/bin/erdos-193-health; then
+              break
+            fi
+            sleep 0.5
+          done
+          docker exec "$container" /usr/local/bin/erdos-193-health
+          test "$(docker exec "$container" /usr/bin/wget -q -O - \
+            http://127.0.0.1:8193/.q5m-release)" = "$GITHUB_SHA"
+
+  deploy:
+    needs: validate
+    if: >-
+      github.repository == 'ekalvi/erdos-193' &&
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
+    environment: production
+    runs-on: [self-hosted, Linux, X64, erdos-193-deploy]
+    timeout-minutes: 30
+    steps:
+      - name: Check out exact trusted release
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Verify trusted workflow context
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$GITHUB_REPOSITORY" = "ekalvi/erdos-193"
+          test "$GITHUB_REF" = "refs/heads/main"
+          test "$GITHUB_EVENT_NAME" = "push" -o "$GITHUB_EVENT_NAME" = "workflow_dispatch"
+          test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+      - name: Deploy and health-gate the exact commit
+        shell: bash
+        run: q5m-app deploy-checkout erdos-193 "$GITHUB_WORKSPACE" "$GITHUB_SHA"
+      - name: Report exact active release
+        if: always()
+        shell: bash
+        run: q5m-app status erdos-193

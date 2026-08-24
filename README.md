@@ -8,6 +8,7 @@ The construction is unconditional and formalized in Lean 4. External mathematica
 
 - **Visual explanation:** [erdos-193.q5m.ai](https://erdos-193.q5m.ai)
 - **Guided lessons:** [`lessons/README.md`](lessons/README.md)
+- **Production deployment:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - **Proof manuscript:** [`paper/erdos193.pdf`](paper/erdos193.pdf)
 - **Lean theorem:** `Hilbert193.erdos193_unconditional`
 - **Formal proof guide:** [`formal/Hilbert193/README.md`](formal/Hilbert193/README.md)
