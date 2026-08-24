@@ -37,7 +37,7 @@ $$
 The route is a **discrete Hilbert path**. Its first four points are
 
 $$
-H(0)=(0,0),\quad H(1)=(0,1),\quad H(2)=(1,1),\quad H(3)=(1,0).
+H(0)=(0,0),\quad H(1)=(1,0),\quad H(2)=(1,1),\quad H(3)=(0,1).
 $$
 
 The path continues by placing rotated or reflected versions of the same pattern inside larger squares.
