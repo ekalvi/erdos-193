@@ -9,7 +9,7 @@
 
 - From each block select one terminal-\(I\) point using offsets
   \[
-  o(S)=5,\qquad o(I)=1,\qquad o(T)=13,\qquad o(C)=3.
+  o(S)=1,\qquad o(I)=5,\qquad o(T)=13,\qquad o(C)=3.
   \]
   The selected-index gaps are bounded, so the lifted sequence uses only finitely many step vectors.
 
@@ -28,7 +28,7 @@
   \]
   where \((\Delta x,\Delta y)=H(m)-H(n)\). Use their common base-\(4\) suffix and the corresponding common binary coordinate suffix.
 
-- Assume \(Q(a),Q(b),Q(c)\) are collinear. Write
+- Assume three points \(Q(a),Q(b),Q(c)\) from the selected subsequence are collinear. Write
   \[
   b-a=gr,\qquad c-b=gs,\qquad \gcd(r,s)=1.
   \]
