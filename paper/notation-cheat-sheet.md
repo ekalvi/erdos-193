@@ -1,6 +1,6 @@
 # Erdős Problem 193 proof: notation and formula cheat sheet
 
-Source of truth: `paper/erdos193.tex`, Sections 1–5. The proof ends before Section 6 (“Verification and evidence”).
+Source of truth: `paper/erdos193.tex`, Sections 1–6. The proof ends before Section 7 (“Verification and evidence”).
 
 ## 1. Ambient conventions
 
