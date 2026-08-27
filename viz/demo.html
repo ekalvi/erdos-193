@@ -39,7 +39,6 @@
       <p id="demoStatus" class="demo-status" role="status">Python loads locally in this browser when you press Run.</p>
       <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
       <div class="route-actions">
-        <a class="button" href="hilbert_walk_demo.py">Read or download the Python source</a>
         <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">View source on GitHub</a>
         <a class="button" href="https://replit.com/import">Import the Replit-ready repository</a>
       </div>
@@ -69,7 +68,6 @@
   const output = document.getElementById('demoOutput');
   let runtimePromise;
   let sourcePromise;
-  let runnerSourcePromise;
 
   const loadRuntime = () => {
     if (!runtimePromise) runtimePromise = loadPyodide();
@@ -81,13 +79,6 @@
       return response.text();
     });
     return sourcePromise;
-  };
-  const loadRunnerSource = () => {
-    if (!runnerSourcePromise) runnerSourcePromise = fetch('hilbert_walk_demo_runner.py').then(response => {
-      if (!response.ok) throw new Error(`runner request failed: ${response.status}`);
-      return response.text();
-    });
-    return runnerSourcePromise;
   };
 
   form.addEventListener('submit', async event => {
@@ -104,19 +95,16 @@
     const lines = [];
 
     try {
-      const [pyodide, source, runnerSource] = await Promise.all([loadRuntime(), loadSource(), loadRunnerSource()]);
+      const [pyodide, source] = await Promise.all([loadRuntime(), loadSource()]);
       pyodide.setStdout({batched: line => lines.push(line)});
       pyodide.setStderr({batched: line => lines.push(line)});
       pyodide.globals.set('DEMO_SOURCE', source);
-      pyodide.globals.set('RUNNER_SOURCE', runnerSource);
       pyodide.globals.set('DEMO_LENGTH', length);
       status.textContent = 'Constructing and checking with exact integer arithmetic…';
       await pyodide.runPythonAsync(`
-demo_namespace = {"__name__": "hilbert_walk_demo"}
-exec(DEMO_SOURCE, demo_namespace)
-runner_namespace = {"__name__": "hilbert_walk_demo_runner"}
-exec(RUNNER_SOURCE, runner_namespace)
-runner_namespace["demonstrate"](demo_namespace, DEMO_LENGTH)
+namespace = {"__name__": "hilbert_walk_demo"}
+exec(DEMO_SOURCE, namespace)
+namespace["demonstrate"](DEMO_LENGTH)
 `);
       output.textContent = lines.join('\n');
       status.textContent = `Finished the ${length}-point finite demonstration.`;
