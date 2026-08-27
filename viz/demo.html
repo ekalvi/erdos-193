@@ -33,7 +33,7 @@
       </div>
       <form id="demoForm" class="demo-controls">
         <label for="demoLength">Walk points</label>
-        <input id="demoLength" name="length" type="number" min="0" max="150" value="60" inputmode="numeric">
+        <input id="demoLength" name="length" type="number" min="1" max="150" value="60" inputmode="numeric">
         <button id="demoRun" class="button primary" type="submit">Run finite check</button>
       </form>
       <p id="demoStatus" class="demo-status" role="status">Python loads locally in this browser when you press Run.</p>
@@ -69,6 +69,7 @@
   const output = document.getElementById('demoOutput');
   let runtimePromise;
   let sourcePromise;
+  let runnerSourcePromise;
 
   const loadRuntime = () => {
     if (!runtimePromise) runtimePromise = loadPyodide();
@@ -81,12 +82,19 @@
     });
     return sourcePromise;
   };
+  const loadRunnerSource = () => {
+    if (!runnerSourcePromise) runnerSourcePromise = fetch('hilbert_walk_demo_runner.py').then(response => {
+      if (!response.ok) throw new Error(`runner request failed: ${response.status}`);
+      return response.text();
+    });
+    return runnerSourcePromise;
+  };
 
   form.addEventListener('submit', async event => {
     event.preventDefault();
     const length = Number(lengthInput.value);
-    if (!Number.isInteger(length) || length < 0 || length > 150) {
-      status.textContent = 'Choose an integer from 0 through 150.';
+    if (!Number.isInteger(length) || length < 1 || length > 150) {
+      status.textContent = 'Choose an integer from 1 through 150.';
       return;
     }
 
@@ -96,16 +104,19 @@
     const lines = [];
 
     try {
-      const [pyodide, source] = await Promise.all([loadRuntime(), loadSource()]);
+      const [pyodide, source, runnerSource] = await Promise.all([loadRuntime(), loadSource(), loadRunnerSource()]);
       pyodide.setStdout({batched: line => lines.push(line)});
       pyodide.setStderr({batched: line => lines.push(line)});
       pyodide.globals.set('DEMO_SOURCE', source);
+      pyodide.globals.set('RUNNER_SOURCE', runnerSource);
       pyodide.globals.set('DEMO_LENGTH', length);
       status.textContent = 'Constructing and checking with exact integer arithmetic…';
       await pyodide.runPythonAsync(`
-namespace = {"__name__": "hilbert_walk_demo"}
-exec(DEMO_SOURCE, namespace)
-namespace["demonstrate"](DEMO_LENGTH)
+demo_namespace = {"__name__": "hilbert_walk_demo"}
+exec(DEMO_SOURCE, demo_namespace)
+runner_namespace = {"__name__": "hilbert_walk_demo_runner"}
+exec(RUNNER_SOURCE, runner_namespace)
+runner_namespace["demonstrate"](demo_namespace, DEMO_LENGTH)
 `);
       output.textContent = lines.join('\n');
       status.textContent = `Finished the ${length}-point finite demonstration.`;
