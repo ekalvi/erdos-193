@@ -8,11 +8,13 @@
   <meta name="description" content="Run and inspect a standalone handwritten Python demonstration of the terminal-steered Hilbert walk construction.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=demo1">
-  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+  <link rel="stylesheet" href="site.css?v=demo5">
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/ace.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/mode-python.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/theme-tomorrow_night.js"></script>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
     <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
@@ -27,20 +29,32 @@
 
     <section class="section demo-runner" aria-labelledby="runner-title">
       <div class="section-head">
-        <span class="eyebrow">Run in your browser</span>
-        <h2 id="runner-title">Choose a small prefix.</h2>
-        <p>Pair checking is quadratic and triple checking is cubic, so the browser runner is intentionally capped at 150 points.</p>
+        <span class="eyebrow">Single-file Python playground</span>
+        <h2 id="runner-title">Edit one Python file and run it.</h2>
+        <p>The source stays in this browser. Change the construction, choose a small prefix, and run the edited file with no account or deployment.</p>
       </div>
+      <p class="demo-safety"><b>Contained run:</b> each execution uses a disposable browser worker with a 12-second cutoff. It cannot access the page DOM or your computer’s files, but edited code can still make network requests. Do not paste secrets or untrusted code.</p>
+      <details class="demo-source-panel" open>
+        <summary>Standalone Python source</summary>
+        <div id="demoSource" class="demo-source" aria-label="Editable standalone Python source" aria-describedby="sourceHelp">Loading source…</div>
+        <div class="demo-source-actions">
+          <p id="sourceHelp">Use the gutter triangles to fold definitions. Runs are capped at 150 points because pair and triple checking scale quadratically and cubically.</p>
+          <div class="demo-source-buttons">
+            <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
+            <button id="demoReset" class="button" type="button" disabled>Reset source</button>
+          </div>
+        </div>
+      </details>
       <form id="demoForm" class="demo-controls">
         <label for="demoLength">Walk points</label>
         <input id="demoLength" name="length" type="number" min="1" max="150" value="60" inputmode="numeric">
-        <button id="demoRun" class="button primary" type="submit">Run finite check</button>
+        <button id="demoRun" class="button primary" type="submit" disabled>Run code</button>
+        <button id="demoStop" class="button" type="button" disabled>Stop</button>
       </form>
-      <p id="demoStatus" class="demo-status" role="status">Python loads locally in this browser when you press Run.</p>
+      <p id="demoStatus" class="demo-status" role="status">Loading the standalone Python source…</p>
       <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
       <div class="route-actions">
         <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">View source on GitHub</a>
-        <a class="button" href="https://replit.com/github/ekalvi/erdos-193">Open this repository in Replit</a>
       </div>
     </section>
 
@@ -61,60 +75,181 @@
 </div>
 <script>
 (() => {
+  const RUN_TIMEOUT_MS = 12_000;
   const form = document.getElementById('demoForm');
   const lengthInput = document.getElementById('demoLength');
   const runButton = document.getElementById('demoRun');
+  const stopButton = document.getElementById('demoStop');
+  const resetButton = document.getElementById('demoReset');
+  const sourcePanel = document.querySelector('.demo-source-panel');
+  const fullscreenButton = document.getElementById('demoFullscreen');
   const status = document.getElementById('demoStatus');
   const output = document.getElementById('demoOutput');
-  let runtimePromise;
-  let sourcePromise;
 
-  const loadRuntime = () => {
-    if (!runtimePromise) runtimePromise = loadPyodide();
-    return runtimePromise;
+  ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/');
+  const sourceEditor = ace.edit('demoSource');
+  sourceEditor.setTheme('ace/theme/tomorrow_night');
+  sourceEditor.session.setMode('ace/mode/python');
+  sourceEditor.session.setUseWorker(false);
+  sourceEditor.session.setFoldStyle('markbeginend');
+  sourceEditor.setOptions({
+    fontSize: '12px',
+    showPrintMargin: false,
+    showFoldWidgets: true,
+    fadeFoldWidgets: false,
+    readOnly: true,
+    tabSize: 4,
+    useSoftTabs: true
+  });
+  sourceEditor.textInput.getElement().setAttribute('aria-label', 'Editable standalone Python source');
+  sourceEditor.container.setAttribute('aria-describedby', 'sourceHelp');
+
+  let worker;
+  let workerReady = false;
+  let sourceReady = false;
+  let running = false;
+  let runTimer;
+  let currentLength = 0;
+  let originalSource;
+
+  const updateControls = () => {
+    runButton.disabled = running || !sourceReady || !workerReady;
+    stopButton.disabled = !running;
+    resetButton.disabled = running || !sourceReady;
+    sourceEditor.setReadOnly(running || !sourceReady);
   };
-  const loadSource = () => {
-    if (!sourcePromise) sourcePromise = fetch('hilbert_walk_demo.py').then(response => {
+
+  const appendOutput = line => {
+    output.textContent += `${output.textContent ? '\n' : ''}${line}`;
+  };
+
+  const startWorker = readyStatus => {
+    worker?.terminate();
+    workerReady = false;
+    worker = new Worker('demo-worker.js?v=1');
+    updateControls();
+
+    worker.addEventListener('message', event => {
+      const message = event.data;
+      if (message?.type === 'ready') {
+        workerReady = true;
+        updateControls();
+        if (readyStatus && !running) status.textContent = readyStatus;
+      } else if (message?.type === 'running') {
+        status.textContent = 'Running the edited file in an isolated browser worker…';
+      } else if (message?.type === 'line') {
+        appendOutput(message.line);
+      } else if (message?.type === 'done') {
+        status.textContent = `Finished the ${currentLength}-point run.`;
+        finishRun();
+      } else if (message?.type === 'run-error') {
+        appendOutput(message.error);
+        status.textContent = 'The edited Python run failed. Check the output and source.';
+        finishRun();
+      } else if (message?.type === 'boot-error') {
+        appendOutput(message.error);
+        status.textContent = 'The isolated Python worker could not start.';
+        workerReady = false;
+        updateControls();
+      }
+    });
+
+    worker.addEventListener('error', event => {
+      appendOutput(event.message || 'The isolated Python worker failed.');
+      status.textContent = 'The isolated Python worker failed.';
+      if (running) finishRun('Fresh worker ready after the failure.');
+    });
+  };
+
+  const finishRun = readyStatus => {
+    clearTimeout(runTimer);
+    running = false;
+    worker?.terminate();
+    worker = undefined;
+    workerReady = false;
+    updateControls();
+    startWorker(readyStatus);
+  };
+
+  const stopRun = (message, readyStatus) => {
+    if (!running) return;
+    appendOutput(message);
+    status.textContent = message;
+    finishRun(readyStatus);
+  };
+
+  fetch('hilbert_walk_demo.py')
+    .then(response => {
       if (!response.ok) throw new Error(`source request failed: ${response.status}`);
       return response.text();
+    })
+    .then(source => {
+      originalSource = source;
+      sourceReady = true;
+      sourceEditor.setValue(source, -1);
+      sourceEditor.resize(true);
+      sourceEditor.renderer.updateFull(true);
+      updateControls();
+      if (!workerReady) status.textContent = 'Source loaded; isolated Python worker is loading…';
+    })
+    .catch(error => {
+      output.textContent = String(error);
+      status.textContent = 'The standalone source could not be loaded.';
     });
-    return sourcePromise;
-  };
 
-  form.addEventListener('submit', async event => {
+  resetButton.addEventListener('click', () => {
+    sourceEditor.setValue(originalSource, -1);
+    sourceEditor.resize(true);
+    sourceEditor.renderer.updateFull(true);
+    output.textContent = 'Ready.';
+    status.textContent = 'Source reset to the repository version.';
+  });
+
+  const setSourceFullscreen = active => {
+    sourcePanel.open = true;
+    sourcePanel.classList.toggle('is-fullscreen', active);
+    document.body.classList.toggle('source-fullscreen', active);
+    fullscreenButton.textContent = active ? 'Exit full screen' : 'Full screen';
+    fullscreenButton.setAttribute('aria-pressed', String(active));
+    requestAnimationFrame(() => sourceEditor.resize(true));
+  };
+  fullscreenButton.addEventListener('click', () => {
+    setSourceFullscreen(!sourcePanel.classList.contains('is-fullscreen'));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && sourcePanel.classList.contains('is-fullscreen')) {
+      setSourceFullscreen(false);
+    }
+  });
+
+  form.addEventListener('submit', event => {
     event.preventDefault();
     const length = Number(lengthInput.value);
     if (!Number.isInteger(length) || length < 1 || length > 150) {
       status.textContent = 'Choose an integer from 1 through 150.';
       return;
     }
+    if (!workerReady || running) return;
 
-    runButton.disabled = true;
+    currentLength = length;
+    running = true;
     output.textContent = '';
-    status.textContent = 'Loading Python and the standalone source…';
-    const lines = [];
-
-    try {
-      const [pyodide, source] = await Promise.all([loadRuntime(), loadSource()]);
-      pyodide.setStdout({batched: line => lines.push(line)});
-      pyodide.setStderr({batched: line => lines.push(line)});
-      pyodide.globals.set('DEMO_SOURCE', source);
-      pyodide.globals.set('DEMO_LENGTH', length);
-      status.textContent = 'Constructing and checking with exact integer arithmetic…';
-      await pyodide.runPythonAsync(`
-namespace = {"__name__": "hilbert_walk_demo"}
-exec(DEMO_SOURCE, namespace)
-namespace["demonstrate"](DEMO_LENGTH)
-`);
-      output.textContent = lines.join('\n');
-      status.textContent = `Finished the ${length}-point finite demonstration.`;
-    } catch (error) {
-      output.textContent = lines.concat(String(error)).join('\n');
-      status.textContent = 'The browser run failed; the downloadable Python file remains available.';
-    } finally {
-      runButton.disabled = false;
-    }
+    status.textContent = 'Starting the isolated Python run…';
+    updateControls();
+    worker.postMessage({type: 'run', source: sourceEditor.getValue(), length});
+    runTimer = setTimeout(() => {
+      stopRun(
+        'Execution stopped after the 12-second safety limit.',
+        'Timed-out worker replaced; ready to edit or run.'
+      );
+    }, RUN_TIMEOUT_MS);
   });
+
+  stopButton.addEventListener('click', () => {
+    stopRun('Execution stopped by the user.', 'Stopped worker replaced; ready to edit or run.');
+  });
+
+  startWorker('Ready to edit or run in an isolated worker.');
 })();
 </script>
 </body>

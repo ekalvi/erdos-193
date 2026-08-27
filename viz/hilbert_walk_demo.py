@@ -141,12 +141,17 @@ def σ(n: int) -> K:
 
 
 def v_2(n: int) -> int | float:
-    """Count the factors of 2 in n, taking v_2(0) to be infinity."""
+    """Return the largest exponent e for which 2**e divides n."""
     if n == 0:
         return float("inf")
 
     n = abs(n)
-    return (n & -n).bit_length() - 1
+    exponent = 0
+    while n % 2 == 0:
+        # Divide out one factor of 2, then count it.
+        n //= 2
+        exponent += 1
+    return exponent
 
 
 def V(u_x: int, u_y: int) -> int:
@@ -267,6 +272,7 @@ def demonstrate(length: int) -> None:
     print(f"✅ Hilbert pair law verified for {pair_checks} pairs.")
 
     # This step is O(n^3), so it gets very slow for large walks.
+    print("⏱️  Verifying...")
     triple_checks = verify_walk(walk)
     print(f"✅ No collinear triples among {triple_checks} checked.")
     print("Finite checks illustrate the construction; they do not prove infinity.")
