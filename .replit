@@ -1,2 +1,10 @@
-entrypoint = "viz/hilbert_walk_demo_runner.py"
-run = "python3 viz/hilbert_walk_demo_runner.py --length 60"
+entrypoint = "viz/hilbert_walk_demo.py"
+run = "python3 viz/hilbert_walk_demo.py --length 60"
+
+[deployment]
+run = ["python3", "-m", "http.server", "3000", "--directory", "viz"]
+deploymentTarget = "cloudrun"
+
+[[ports]]
+localPort = 3000
+externalPort = 80

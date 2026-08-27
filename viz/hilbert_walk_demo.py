@@ -1,5 +1,7 @@
 """Construct the Hilbert-based walk from the Erdős 193 proof skeleton."""
 
+import argparse
+
 Point2D = tuple[int, int]
 Point = tuple[int, int, int]
 
@@ -246,14 +248,17 @@ def verify_walk(points: list[Point]) -> int:
     return checks
 
 
-if __name__ == "__main__":
-    # Proof and construction details: https://erdos-193.q5m.ai/proof.html
-    l = 1000
+def demonstrate(length: int) -> None:
+    """Construct and finitely check a prefix, printing a compact report."""
+    if length < 1:
+        raise ValueError("length must be positive")
 
-    print(f"🧮 Attempting to contruction a triple-free walk of with {l} points.")
+    print(f"🧮 Attempting to construct a triple-free walk with {length} points.")
     # Construction is O(n log^2 n) with the current string-based decoder.
-    walk = generate_walk(l)
-    print(f"🛠️  Constructed a candidated walk of {len(walk)} points.")
+    walk = generate_walk(length)
+    print(f"🛠️  Constructed a candidate walk of {len(walk)} points.")
+    print(f"   First point: {walk[0]}")
+    print(f"   Last point:  {walk[-1]}")
 
     print("⏱️  Verifying...")
 
@@ -264,3 +269,23 @@ if __name__ == "__main__":
     # This step is O(n^3), so it gets very slow for large walks.
     triple_checks = verify_walk(walk)
     print(f"✅ No collinear triples among {triple_checks} checked.")
+    print("Finite checks illustrate the construction; they do not prove infinity.")
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse the requested finite prefix length."""
+    parser = argparse.ArgumentParser(
+        description="Run the standalone handwritten Erdős 193 demonstration."
+    )
+    parser.add_argument(
+        "--length",
+        type=int,
+        default=60,
+        help="number of selected points to construct and check (default: 60)",
+    )
+    return parser.parse_args()
+
+
+if __name__ == "__main__":
+    # Proof and construction details: https://erdos-193.q5m.ai/proof.html
+    demonstrate(parse_args().length)
