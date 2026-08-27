@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="favicon.svg">
+  <title>Run the handwritten Hilbert walk — Erdős Problem 193</title>
+  <meta name="description" content="Run and inspect a standalone handwritten Python demonstration of the terminal-steered Hilbert walk construction.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=demo1">
+  <script src="https://cdn.jsdelivr.net/pyodide/v0.28.3/full/pyodide.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="site">
+    <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+  </header>
+
+  <main>
+    <span class="eyebrow">Standalone handwritten demonstration</span>
+    <h1>Construct the walk, then check a finite prefix yourself.</h1>
+    <p class="sub">This deliberately direct Python program follows the proof skeleton: decode the discrete Hilbert path, steer every selected index to terminal state <b>I</b>, lift index into height, check the pair fingerprint, and search the chosen finite prefix for collinear triples.</p>
+
+    <div class="voice-note warning"><b>Learning artifact, not the proof</b><p>A successful run checks only the finite prefix requested below. The manuscript and Lean development establish the unconditional infinite theorem.</p></div>
+
+    <section class="section demo-runner" aria-labelledby="runner-title">
+      <div class="section-head">
+        <span class="eyebrow">Run in your browser</span>
+        <h2 id="runner-title">Choose a small prefix.</h2>
+        <p>Pair checking is quadratic and triple checking is cubic, so the browser runner is intentionally capped at 150 points.</p>
+      </div>
+      <form id="demoForm" class="demo-controls">
+        <label for="demoLength">Walk points</label>
+        <input id="demoLength" name="length" type="number" min="0" max="150" value="60" inputmode="numeric">
+        <button id="demoRun" class="button primary" type="submit">Run finite check</button>
+      </form>
+      <p id="demoStatus" class="demo-status" role="status">Python loads locally in this browser when you press Run.</p>
+      <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
+      <div class="route-actions">
+        <a class="button" href="hilbert_walk_demo.py">Read or download the Python source</a>
+        <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">View source on GitHub</a>
+        <a class="button" href="https://replit.com/import">Import the Replit-ready repository</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head"><span class="eyebrow">What the program exposes</span><h2>The executable spine of the proof.</h2></div>
+      <div class="concept-grid">
+        <div class="concept"><b><code>decode</code> and <code>H</code></b><p>Read even-padded base-4 digits, emit coordinate bits, and retain the terminal decoder state.</p></div>
+        <div class="concept"><b><code>n_a</code></b><p>Use the four-state suffix lookup to choose one terminal-state-I index from each block of sixteen.</p></div>
+        <div class="concept"><b><code>verify_pair_law</code></b><p>Check the two-adic vector fingerprint for every pair in the finite prefix.</p></div>
+        <div class="concept"><b><code>verify_walk</code></b><p>Use exact integer arithmetic to reject every collinear triple in the finite prefix.</p></div>
+      </div>
+    </section>
+
+    <p class="inline-status"><b>Proof boundary:</b> the runner is pedagogical finite evidence. <a href="proof.html">Read the unconditional argument</a> or <a href="hilbert-proof.pdf?v=20260827-1">open the manuscript</a>.</p>
+  </main>
+
+  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+</div>
+<script>
+(() => {
+  const form = document.getElementById('demoForm');
+  const lengthInput = document.getElementById('demoLength');
+  const runButton = document.getElementById('demoRun');
+  const status = document.getElementById('demoStatus');
+  const output = document.getElementById('demoOutput');
+  let runtimePromise;
+  let sourcePromise;
+
+  const loadRuntime = () => {
+    if (!runtimePromise) runtimePromise = loadPyodide();
+    return runtimePromise;
+  };
+  const loadSource = () => {
+    if (!sourcePromise) sourcePromise = fetch('hilbert_walk_demo.py').then(response => {
+      if (!response.ok) throw new Error(`source request failed: ${response.status}`);
+      return response.text();
+    });
+    return sourcePromise;
+  };
+
+  form.addEventListener('submit', async event => {
+    event.preventDefault();
+    const length = Number(lengthInput.value);
+    if (!Number.isInteger(length) || length < 0 || length > 150) {
+      status.textContent = 'Choose an integer from 0 through 150.';
+      return;
+    }
+
+    runButton.disabled = true;
+    output.textContent = '';
+    status.textContent = 'Loading Python and the standalone source…';
+    const lines = [];
+
+    try {
+      const [pyodide, source] = await Promise.all([loadRuntime(), loadSource()]);
+      pyodide.setStdout({batched: line => lines.push(line)});
+      pyodide.setStderr({batched: line => lines.push(line)});
+      pyodide.globals.set('DEMO_SOURCE', source);
+      pyodide.globals.set('DEMO_LENGTH', length);
+      status.textContent = 'Constructing and checking with exact integer arithmetic…';
+      await pyodide.runPythonAsync(`
+namespace = {"__name__": "hilbert_walk_demo"}
+exec(DEMO_SOURCE, namespace)
+namespace["demonstrate"](DEMO_LENGTH)
+`);
+      output.textContent = lines.join('\n');
+      status.textContent = `Finished the ${length}-point finite demonstration.`;
+    } catch (error) {
+      output.textContent = lines.concat(String(error)).join('\n');
+      status.textContent = 'The browser run failed; the downloadable Python file remains available.';
+    } finally {
+      runButton.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

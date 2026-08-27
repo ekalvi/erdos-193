@@ -28,7 +28,7 @@
   <main class="article proof-document">
     <span class="eyebrow">Erdős Problem 193</span>
     <h1>A finite-step walk in \(\mathbb Z^3\) with no three collinear vertices</h1>
-    <div class="route-actions proof-top-actions"><a class="button primary" href="hilbert-proof.pdf?v=20260824-3">Open PDF manuscript</a></div>
+    <div class="route-actions proof-top-actions"><a class="button primary" href="hilbert-proof.pdf?v=20260827-1">Open PDF manuscript</a><a class="button" href="demo.html">Try it yourself in Python</a><span class="proof-demo-note">Teaching aid, not a proof.</span></div>
 
     <p><strong>Theorem.</strong> There exist a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\in\mathbb Z^3\) such that</p>
     <div class="math-block">
@@ -72,7 +72,7 @@
       \end{aligned}
       \]
     </div>
-    <p>The <em>state</em> is the accumulated transformation carried from one digit to the next. It is orientation memory, not a point and not another coordinate. Start in state \(I\). Digits \(0,1,2,3\) contribute the relative transformations</p>
+    <p>The <em>state</em> is the accumulated transformation carried from one digit to the next. It is orientation memory, not a point and not another coordinate. The mutable current state \(g\in K\) starts at \(g=I\). Digits \(0,1,2,3\) select the transition maps</p>
     <div class="math-block">
       \[
       \begin{gathered}
@@ -81,9 +81,10 @@
       \end{gathered}
       \]
     </div>
+    <p>Here \(r_q\in K\) is the digit-indexed transition map selected by digit \(q\); it is not a numeric sequence.</p>
 
     <h3>The exact decoder</h3>
-    <p>For a base-4 word \(w=q_{\ell-1}\cdots q_1q_0\), read the digits from most significant to least significant. If the current state is \(g\), digit \(q_j\) emits one \(x\)-bit and one \(y\)-bit and then updates the state:</p>
+    <p>For a base-4 word \(w=q_{\ell-1}\cdots q_1q_0\), read the digits from most significant to least significant. At digit \(q_j\), the current state \(g\) emits one \(x\)-bit and one \(y\)-bit and is then replaced by the composed state:</p>
     <div class="math-block">
       \[
       \begin{aligned}
@@ -106,7 +107,7 @@
       <b>Keep three directions separate</b>
       <p>The decoder reads \(q_{\ell-1},\ldots,q_0\) from most significant to least significant. Digit \(q_j\) nevertheless writes the coordinate bits at binary place \(j\). “First mismatch from the low end” means the least \(j\ge0\) for which the two digits \(q_j\) differ.</p>
     </div>
-    <p>The state \(g\) left after the final digit is the <strong>terminal state</strong> \(\sigma(w)\). It records the net turn or reflection accumulated during the nested quadrant descent. It does not alter the coordinate \(H_\ell(w)\), whose bits have already been emitted.</p>
+    <p>After the final digit \(q_0\), define \(\sigma(w)\) to be the resulting value of \(g\). Thus \(g\) denotes the changing intermediate state, while \(\sigma(w)\) is its <strong>terminal value</strong>. It records the net turn or reflection accumulated during the nested quadrant descent; it is not a point or an additional coordinate.</p>
 
     <p><strong>Hilbert lemma.</strong> For every \(\ell\), \(H_\ell\) bijects the length-\(\ell\) base-4 words with the square \(\{0,\ldots,2^\ell-1\}^2\), and consecutive words in numerical order map to lattice neighbors. Moreover,</p>
     <div class="math-block">
@@ -312,12 +313,13 @@
     <div class="math-block">
       \[
       \begin{gathered}
+        g=\gcd(A,B),\\
         A=gr,\qquad B=gs,\\
         \gcd(r,s)=1.
       \end{gathered}
       \]
     </div>
-    <p>After cancelling \(g\), equation (6) becomes \(sX=rY\). For each coordinate \(i\), \(sX_i=rY_i\) and \(\gcd(r,s)=1\) imply \(r\mid X_i\). Thus \(W=X/r\) is an integer vector; substitution gives \(Y=sW\). Hence</p>
+    <p>Here \(g,r,s\) are integers local to the collinearity argument: this \(g=\gcd(A,B)\) is unrelated to the decoder state \(g\in K\), and scalar \(r\) is unrelated to the transition maps \(r_q\). After cancelling \(g\), equation (6) becomes \(sX=rY\). For each coordinate \(i\), \(sX_i=rY_i\) and \(\gcd(r,s)=1\) imply \(r\mid X_i\). Thus \(W=X/r\) is an integer vector; substitution gives \(Y=sW\). Hence</p>
     <div class="math-block">
       \[
         X=rW,\qquad Y=sW.
@@ -419,7 +421,7 @@
       <div class="concept"><b>External status</b><p>Novelty, priority, and correspondence with the intended reading of the problem remain subject to external mathematical review and community acceptance.</p></div>
     </div>
     <p>The <a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/AxiomAudit.lean">axiom audit</a> reports only <code>propext</code>, <code>Classical.choice</code>, and <code>Quot.sound</code>, the standard axioms used by Mathlib.</p>
-    <div class="actions"><a class="button primary" href="hilbert-proof.pdf?v=20260824-3">Proof manuscript</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/paper/erdos193.tex">TeX source</a><a class="button" href="learn.html">Guided lessons</a><a class="button" href="https://github.com/ekalvi/erdos-193/tree/main/formal/Hilbert193">Lean project</a></div>
+    <div class="actions"><a class="button primary" href="hilbert-proof.pdf?v=20260827-1">Proof manuscript</a><a class="button" href="demo.html">Handwritten Python demo</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/paper/erdos193.tex">TeX source</a><a class="button" href="learn.html">Guided lessons</a><a class="button" href="https://github.com/ekalvi/erdos-193/tree/main/formal/Hilbert193">Lean project</a></div>
   </main>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
