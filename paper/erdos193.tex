@@ -30,7 +30,7 @@
 
 \title{A finite-step lattice walk in $\Z^3$ with no three collinear vertices}
 \author{Erik Kalviainen}
-\date{August 24, 2026}
+\date{August 26, 2026}
 \begin{document}
 \maketitle
 
@@ -124,10 +124,12 @@ be the four child positions in the basic U-shaped traversal, and set
 \[
  r_0=S,\qquad r_1=I,\qquad r_2=I,\qquad r_3=T.
 \]
+Here $r_q\in K$ is the digit-indexed transition map selected by digit $q$;
+it is not a numeric sequence.
 For a length-$\ell$ base-$4$ word
 $w=q_{\ell-1}\cdots q_1q_0$, read the digits from most significant to least
-significant, starting in state $I$.  If the current state is $g$, digit $q_j$
-emits one pair of coordinate bits and then updates the state by
+significant.  The mutable current state $g\in K$ starts at $g=I$.  At digit
+$q_j$, emit one pair of coordinate bits and then replace the current state:
 \[
  (x_j,y_j)=g(c_{q_j}),\qquad g\longleftarrow g\circ r_{q_j}.
 \]
@@ -142,9 +144,10 @@ the decoder processes $q_{\ell-1},q_{\ell-2},\ldots,q_0$ in that order, while
 $q_j$ writes the coordinate bits at binary place $j$.  Accordingly, for two
 words ``the first mismatch from the low end'' means the least $j\geq0$ for
 which their digits $q_j$ differ.
-The state left after the final digit is the terminal state $\sigma(w)$.  It
-is the accumulated quadrant transformation, not a point or an additional
-coordinate.
+After the final digit $q_0$, define $\sigma(w)$ to be the resulting value of
+$g$.  Thus $g$ denotes the changing intermediate state, while $\sigma(w)$ is
+its terminal value.  This value is the accumulated quadrant transformation,
+not a point or an additional coordinate.
 
 \subsection{Hilbert properties and terminal states}
 
@@ -509,6 +512,9 @@ Write
  A=gr,\qquad B=gs,\qquad
  g=\gcd(A,B),\qquad \gcd(r,s)=1.
 \]
+Here $g,r,s$ are integers local to the collinearity argument.  In particular,
+this $g=\gcd(A,B)$ is unrelated to the decoder state $g\in K$, and the scalar
+$r$ is unrelated to the transition maps $r_q$.
 After cancelling $g$, equation~\eqref{eq:scaled-chords} becomes
 $sX=rY$.  For each coordinate $i$, the relation $sX_i=rY_i$ and
 $\gcd(r,s)=1$ imply $r\mid X_i$.  Hence $W=X/r$ is an integer vector.
