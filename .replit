@@ -1,5 +1,5 @@
 entrypoint = "viz/hilbert_walk_demo.py"
-run = "python3 viz/hilbert_walk_demo.py --length 60"
+run = ["python3", "-m", "http.server", "3000", "--directory", "viz"]
 
 [deployment]
 run = ["python3", "-m", "http.server", "3000", "--directory", "viz"]
