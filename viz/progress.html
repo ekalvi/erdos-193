@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>The journey — Erdős Problem 193</title>
+  <title>Timeline — Erdős Problem 193</title>
   <meta name="description" content="The dated Obsidian lesson sequence, whiteboards, handwritten implementation, failed ideas, formal proof, and verification milestones behind the Hilbert construction.">
   <link rel="canonical" href="https://erdos-193.q5m.ai/progress.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=nav1">
+  <link rel="stylesheet" href="site.css?v=story1">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -22,12 +22,12 @@
 <div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a class="cur" href="progress.html">The journey<span class="dot"></span></a><a href="walk3d.html">3D</a><a href="demo.html">Code</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a class="cur" href="progress.html">Timeline<span class="dot"></span></a><a href="walk3d.html">Visualize</a><a href="demo.html">Code</a></nav>
   </header>
 
   <main class="progress-page">
     <section class="artefact-hero">
-      <span class="eyebrow">The journey</span>
+      <span class="eyebrow">Timeline</span>
       <h1>How the proof became understandable.</h1>
       <p class="sub">The finished proof is linear; learning it was not. A connected Obsidian course made every hidden prerequisite answerable from memory; the boards and executable replay then turned the hardest mechanisms into objects that could be traced and tested.</p>
       <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes, not proof certificates. Notation is provisional and some steps are compressed. The <a href="proof.html">written proof</a> and <a href="hilbert-proof.pdf?v=20260827-1">manuscript</a> contain the authoritative argument.</p>
@@ -37,10 +37,11 @@
         <a href="#board-aug-26"><time datetime="2026-08-26">Aug 26</time><b>Open the pair law</b></a>
         <a href="#board-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Follow the bits</b></a>
         <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
+        <a href="#workstation-aug-28"><time datetime="2026-08-28">Aug 28</time><b>See the workspace</b></a>
       </nav>
     </section>
 
-    <section class="artefact-timeline" aria-label="Chronological journey artefacts">
+    <section class="artefact-timeline" aria-label="Chronological working artefacts">
       <article class="artefact-entry" id="lessons-aug-20">
         <header class="artefact-entry-head">
           <div class="artefact-sequence"><span>01</span><time datetime="2026-08-20">August 20–26, 2026</time></div>
@@ -156,6 +157,26 @@
           </div>
         </div>
       </article>
+
+      <article class="artefact-entry" id="workstation-aug-28">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>06</span><time datetime="2026-08-28">August 28, 2026</time></div>
+          <div><span class="eyebrow">The physical workspace</span><h2>The proof lived off-screen too.</h2><p>Behind the formal files and polished diagrams was a working desk: a well-used laptop, a larger display, adapters, network hardware, and the ordinary clutter of sustained study.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/mac-workstation.webp"><img src="artifacts/mac-workstation.webp" width="1568" height="882" decoding="async" alt="A well-used MacBook connected to an iMac, network equipment, and power adapters on a glass desk."></a>
+            <figcaption>The workstation behind the lessons, whiteboards, code, and proof artifacts. Select the photograph to open it at full size.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>Why include the desk</h3>
+            <p>The finished argument can look inevitable when presented as a clean sequence of definitions and lemmas. The workspace records the less tidy human process around it: reading, drawing, testing, revising, and returning to the same hard idea.</p>
+            <h3>From workspace to proof</h3>
+            <ul><li>The laptop and display held the notes, code, and formal development side by side.</li><li>The nearby whiteboards made the pair law and parity contradiction spatial before they became concise prose.</li><li>The final authority remains the written proof and Lean project, not the photograph or working notes.</li></ul>
+            <p class="artefact-link"><a href="proof.html">Read the finished proof →</a></p>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section class="progress-log">
@@ -180,7 +201,7 @@
     </section>
   </main>
 
-  <dialog id="artefactLightbox" class="artefact-lightbox" aria-label="Expanded journey photograph">
+  <dialog id="artefactLightbox" class="artefact-lightbox" aria-label="Expanded timeline photograph">
     <div class="artefact-lightbox-frame">
       <button id="artefactLightboxClose" type="button">Close <kbd>Esc</kbd></button>
       <img id="artefactLightboxImage" alt="">
