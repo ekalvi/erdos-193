@@ -83,7 +83,7 @@ footer.sitefoot{margin-top:48px;padding-top:18px;border-top:1px solid hsl(var(--
 @media(max-width:620px){.selector-state-table mjx-container{font-size:88%!important}}
 @media(max-width:360px){.selector-state-table mjx-container{font-size:76%!important}}
 @media(max-width:480px){.lesson-toc nav{grid-template-columns:1fr}.lesson-toc a{padding:5px 0}}
-@media(max-width:480px){.stack-grid{grid-template-columns:1fr}.stack-item{min-width:0}}
+@media(max-width:480px){.stack-logos{width:calc(100vw - 24px);margin-left:calc((100% - (100vw - 24px))/2)}.stack-grid{grid-template-columns:auto auto auto;justify-content:space-between;gap:4px}.stack-item{min-width:0}.stack-brands{flex-wrap:nowrap;gap:clamp(6px,2vw,8px)}.stack-item:nth-child(2) .stack-brands{gap:12px}.stack-brand{gap:5px;font-size:clamp(10px,3.2vw,12px);white-space:nowrap}.stack-brand img{width:clamp(30px,9.5vw,36px);height:clamp(30px,9.5vw,36px)}}
 @media(max-width:480px){.demo-runner{padding:17px}.demo-controls input{width:100%}.demo-controls .button{flex:1;text-align:center}}
 @media(max-width:480px){.demo-source{height:320px}.demo-source-head{align-items:stretch;flex-direction:column}.demo-source-buttons{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%}.demo-source-buttons .button{width:auto;text-align:center}}
 @media(max-width:480px){.demo-source-panel.is-fullscreen .demo-source{height:100%}}
