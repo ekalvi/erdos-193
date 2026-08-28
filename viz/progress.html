@@ -4,24 +4,164 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>How the Hilbert proof developed — Erdős Problem 193</title>
-  <meta name="description" content="The failed ideas, discoveries, teaching questions, formal proof, and verification milestones behind the Hilbert construction.">
+  <title>The journey — Erdős Problem 193</title>
+  <meta name="description" content="The dated Obsidian lesson sequence, whiteboards, handwritten implementation, failed ideas, formal proof, and verification milestones behind the Hilbert construction.">
+  <link rel="canonical" href="https://erdos-193.q5m.ai/progress.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=learn1">
+  <link rel="stylesheet" href="site.css?v=nav1">
+  <script>
+    window.MathJax={
+      tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
+      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
-<div class="wrap">
+<div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a class="cur" href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a class="cur" href="progress.html">The journey<span class="dot"></span></a><a href="walk3d.html">3D</a><a href="demo.html">Code</a></nav>
   </header>
 
-  <main>
+  <main class="progress-page">
+    <section class="artefact-hero">
+      <span class="eyebrow">The journey</span>
+      <h1>How the proof became understandable.</h1>
+      <p class="sub">The finished proof is linear; learning it was not. A connected Obsidian course made every hidden prerequisite answerable from memory; the boards and executable replay then turned the hardest mechanisms into objects that could be traced and tested.</p>
+      <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes, not proof certificates. Notation is provisional and some steps are compressed. The <a href="proof.html">written proof</a> and <a href="hilbert-proof.pdf?v=20260827-1">manuscript</a> contain the authoritative argument.</p>
+      <nav class="artefact-index" aria-label="Artefact chronology">
+        <a href="#lessons-aug-20"><time datetime="2026-08-20">Aug 20–26</time><b>Build the lessons</b></a>
+        <a href="#board-aug-23"><time datetime="2026-08-23">Aug 23</time><b>See the contradiction</b></a>
+        <a href="#board-aug-26"><time datetime="2026-08-26">Aug 26</time><b>Open the pair law</b></a>
+        <a href="#board-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Follow the bits</b></a>
+        <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
+      </nav>
+    </section>
+
+    <section class="artefact-timeline" aria-label="Chronological journey artefacts">
+      <article class="artefact-entry" id="lessons-aug-20">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>01</span><time datetime="2026-08-20">August 20–26, 2026</time></div>
+          <div><span class="eyebrow">Build a course, not a summary</span><h2>Understanding came from teaching the proof back.</h2><p>The formal argument existed, but compact exposition was not enough. A synced Obsidian vault turned each point of confusion into its own linked lesson, then used from-memory prompts to decide what had to be explained next.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <div class="lesson-vault-artefact" aria-label="Obsidian course chronology from August 20 through August 26">
+            <div class="lesson-vault-topbar"><b>Erdos-193-Study</b><small>Obsidian vault · Aug 20–26</small></div>
+            <div class="lesson-vault-summary"><strong>13 linked lessons</strong><span>2 synthesis references</span></div>
+            <ol>
+              <li><time datetime="2026-08-20">Aug 20</time><span><b>Begin in plain English</b><small>Define the problem, then answer calibration questions from memory.</small></span></li>
+              <li><time datetime="2026-08-21">Aug 21</time><span><b>Split the hidden prerequisites</b><small>Bounded gaps, final digits, notation direction, and Hilbert orientation.</small></span></li>
+              <li><time datetime="2026-08-22">Aug 22</time><span><b>Give each mechanism one lesson</b><small>Selector offsets, powers of two, and the lifted-point contradiction.</small></span></li>
+              <li><time datetime="2026-08-23">Aug 23–25</time><span><b>Open the pair-law black box</b><small>Terminal state, planar scales, and finally one shared mismatch.</small></span></li>
+              <li><time datetime="2026-08-26">Aug 26</time><span><b>Compress only after understanding</b><small>A formula cheat sheet and proof skeleton became usable references.</small></span></li>
+            </ol>
+          </div>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The vault was not after-the-fact documentation. It was the method that made the proof personally reconstructible. “Trace. Select. Lift.” supplied the global map; separate lessons then isolated terminal state, suffix choice, the two-adic fingerprint, and the endpoint parity contradiction.</p>
+            <p>Each lesson ended with a recall skeleton or calibration questions. An unclear answer was evidence that another prerequisite was missing—not a cue to repeat the same compressed explanation.</p>
+            <h3>The seven-day learning sequence</h3>
+            <ul><li>August 20: establish plain-language meaning and test recall.</li><li>August 21–22: separate the decoder, selector, valuation, and collinearity jobs.</li><li>August 23–25: rebuild the pair law until both sides became the same first-mismatch odometer.</li><li>August 26: consolidate the now-understood proof into a notation sheet and seven-step skeleton.</li></ul>
+            <p class="artefact-link"><a href="learn.html">Follow the guided lessons →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-23">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>02</span><time datetime="2026-08-23">August 23, 2026</time></div>
+          <div><span class="eyebrow">The endgame first</span><h2>The contradiction became a shape.</h2><p>Start by pretending that three lifted points lie on one line. The board turns that geometric picture into adjacent height gaps, planar chords, and finally a parity impossibility.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-23-collinearity.jpg"><img src="artifacts/whiteboard-2026-08-23-collinearity.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard with a sketch of three collinear lifted points and equations reducing collinearity to a two-adic parity contradiction."></a>
+            <figcaption>Collinearity on the left; the gcd reduction in the middle; three pair-law applications and the odd-versus-even contradiction on the right. Select the photograph to open it at full size.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The no-collinearity theorem stopped looking global. It was enough to understand three gaps and three chords. With</p>
+            <p class="artefact-formula">\(A=gr,\quad B=gs,\)<br>\(X=rW,\quad Y=sW.\)</p>
+            <p>the first two pair-law equations force the coprime numbers \(r,s\) to be odd. The third pair sees \(r+s\), which cannot also be odd. The final proof keeps this skeleton and makes every divisibility step explicit.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>“Assume collinear” and the three-point diagram.</li><li>\(BX=AY\), the common-vector reduction, and the labels \(A=gr\), \(B=gs\).</li><li>The circled reminder that \(r,s\) cannot both be even.</li><li>The final clash: the third pair wants \(r+s\) odd, while odd plus odd is even.</li></ul>
+            <p class="artefact-link"><a href="proof.html#same-state-lift">Read the polished argument →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-26">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>03</span><time datetime="2026-08-26">August 26, 2026</time></div>
+          <div><span class="eyebrow">Open the black box</span><h2>The pair law stopped looking like magic.</h2><p>The contradiction was clear, but its engine still needed a mental model. This board pulls apart the Hilbert decoder: base-4 digits, emitted coordinate bits, and the four terminal transformations.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-26-pair-law.jpg"><img src="artifacts/whiteboard-2026-08-26-pair-law.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard centred on the Hilbert pair law, with base-4 index examples, a first-mismatch sketch, and the four decoder states I, S, T, and C."></a>
+            <figcaption>The pair law dominates the top edge. Concrete Hilbert indices occupy the centre; the four state transformations and their bit actions are collected on the right.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The identity</p>
+            <p class="artefact-formula">\(V(H(m)-H(n))=\nu_2(m-n)\)</p>
+            <p>became a decoder statement rather than a mysterious metric fact. A first unequal base-4 digit determines the two-adic scale. Equal terminal states let the later common suffix be unwound, so it cannot erase that first mismatch.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>The large pair-law identity across the top.</li><li>Examples such as \(H(149)\), \(H(6)\), and \(H(13)\), used to test the decoder by hand.</li><li>The square showing the Gray-code child order.</li><li>The state actions \(I,S,T,C\) on a bit pair and the Klein-four composition notes.</li></ul>
+            <p class="artefact-link"><a href="learn.html#pair-law">Learn the pair law step by step →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-27">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>04</span><time datetime="2026-08-27">August 27, 2026</time></div>
+          <div><span class="eyebrow">Make it mechanical</span><h2>The mismatch was followed bit by bit.</h2><p>The last board replaces the broad state diagram with a concrete trace. Base-4 words are read from one end while their emitted coordinate bits land at binary places counted from the other.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-27-bit-mismatch.jpg"><img src="artifacts/whiteboard-2026-08-27-bit-mismatch.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard tracing base-4 digits through Hilbert decoder states into binary coordinate bits and checking a first-mismatch valuation example."></a>
+            <figcaption>Candidate indices and base-4 words on the left; state updates and emitted bit pairs through the centre; the first-mismatch valuation check on the right.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The proof’s opposite directions became visible: the decoder reads high base-4 digits first, but a digit \(q_j\) writes coordinate bits at binary place \(j\). Tracing the states backward from a common terminal state recovers the state entering the first mismatch.</p>
+            <p>At the worked scale \(j=1\), the board records \(\nu_2(B-A)=2j=2\) and compares it with the planar chord invariant. This is the local calculation formalized by the first-mismatch lemma.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>The unit-step reminder \(\lVert H(n+1)-H(n)\rVert_1=1\).</li><li>Several candidate indices rewritten as base-4 words.</li><li>Blue emitted bits and red accumulated-state notes.</li><li>The circled mismatch digit and the calculation \(\nu_2(B-A)=2j\).</li></ul>
+            <p class="artefact-link"><a href="proof.html#pair-law">Read the formal first-mismatch argument →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="handcode-aug-27">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>05</span><time datetime="2026-08-27">August 27, 2026</time></div>
+          <div><span class="eyebrow">Make it executable</span><h2>The argument became one runnable file.</h2><p>The whiteboard mechanics were replayed as standalone Python: decode the Hilbert path, steer the selector, lift into three dimensions, then check the pair law and finite collinearity claim.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <a class="handcode-artefact" href="demo.html">
+            <span class="handcode-topbar"><b>hilbert_walk_demo.py</b><small>standalone Python</small></span>
+            <span class="handcode-flow"><code>decode</code><i>→</i><code>n_a</code><i>→</i><code>lift</code><i>→</i><code>verify</code></span>
+            <strong>Edit and run the construction in your browser.</strong>
+            <em>Open the handcoded replay →</em>
+          </a>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>Code forced every compressed convention to become an explicit decision: which end of the base-4 word is read first, where emitted bits land, how terminal state is updated, and which exact integer checks correspond to the proof.</p>
+            <p>The program deliberately imports no project construction code. It is an independent finite replay, not a premise for the infinite theorem.</p>
+            <h3>Functions worth reading</h3>
+            <ul><li><code>decode</code> and <code>H</code> expose the digit and state machinery.</li><li><code>n_a</code> contains the four-state suffix lookup.</li><li><code>verify_pair_law</code> checks every applicable vector fingerprint.</li><li><code>verify_walk</code> rejects collinear triples with exact integer arithmetic.</li></ul>
+            <p class="artefact-link"><a href="demo.html">Open the editor →</a></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="progress-log">
     <span class="eyebrow">Research and understanding log</span>
-    <h1>How the robot idea became a proof I could explain</h1>
+      <h2 class="progress-log-title">How the robot idea became a proof I could explain</h2>
     <p class="sub">The first Hilbert staircase failed almost immediately. Later, even after the formal argument existed, teaching it exposed places where compact language hid essential distinctions. This timeline keeps both kinds of progress visible.</p>
-    <div class="voice-note"><b>Why include the moments of confusion?</b><p>A polished proof can make its decisive choices look inevitable. They were not. The failures explain why a selector is needed; the learning questions explain why terminal state, fixed lookup, vector fingerprint, and endpoint parity each deserve their own step.</p></div>
 
     <div class="timeline">
       <article class="milestone"><time>Starting idea</time><h3>Lift a Hilbert path into 3D</h3><p>Use the Hilbert route index as height. This turns a flat winding path into a staircase that always rises.</p></article>
@@ -33,17 +173,70 @@
       <article class="milestone"><time>Independent replay</time><h3>500,000 steps reconstructed exactly</h3><p>A separate program recomputed all 500,001 vertices and all 16 realized steps from the construction. It matched the saved artifact exactly.</p></article>
       <article class="milestone"><time>Exhaustive finite check</time><h3>Every direction in the finite artifact checked</h3><p>A separate four-core verifier checked all 125,000,250,000 earlier-point directions. No direction repeated from one vertex, so no three recorded vertices are collinear.</p></article>
       <article class="milestone"><time>Lean closure</time><h3>The infinite argument and finite menu are kernel-checked</h3><p>Lean checks the transducer, pair law, terminal-state selector, no-three-collinear contradiction, Hilbert adjacency, and membership of every step in one fixed finite set.</p></article>
-      <article class="milestone"><time>Teaching pass</time><h3>The proof was rebuilt from the reader’s questions</h3><p>The guided lessons separated sixteen suffixes from four states, explained why the selector is a lookup rather than a search, derived the common vector W coordinate by coordinate, and made the endpoint oddness equation explicit.</p></article>
+      <article class="milestone"><time>Aug 20–26 · Understanding breakthrough</time><h3>Thirteen Obsidian lessons made the proof reconstructible</h3><p>Plain-language setup, linked prerequisites, and from-memory calibration turned confusion into the next lesson. The pair law finally became one shared first mismatch; only then were the notation sheet and proof skeleton useful compression.</p></article>
       <article class="milestone"><time>Current status</time><h3>Unconditional AI-assisted construction; outside review pending</h3><p>The Lean theorem constructs the infinite walk and excludes every ordered triple. Independent mathematical review remains the next load-bearing external step.</p></article>
     </div>
 
-    <h2>Who did what</h2>
-    <p>Erik Kalviainen, a math hobbyist and engineer, directed the research through prompts to GPT-5.6 using <a href="https://pi.dev/">Pi</a>, <a href="https://omp.sh/">Oh My Pi</a>, and <a href="https://paseo.sh/">Paseo</a>. Erik chose the questions, rejected unclear explanations, asked for exact counterexamples, and steered the project toward reproducible checks and Lean. GPT-5.6 performed much of the algebra, coding, adversarial testing, writing, and formal proof development.</p>
-    <p>The repository records the successful route, failed approaches, finite artifacts, and formal sources. The <a href="learn.html">guided proof</a> also records which explanations survived a from-memory reconstruction by the person steering the work.</p>
-    <div class="actions"><a class="button primary" href="learn.html">Guided proof</a><a class="button" href="hilbert-proof.pdf?v=20260827-1">Proof PDF</a><a class="button" href="proof.html">Standalone proof</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/archive/scale-and-rotate/REPORT.md">Earlier research archive</a></div>
+    </section>
   </main>
+
+  <dialog id="artefactLightbox" class="artefact-lightbox" aria-label="Expanded journey photograph">
+    <div class="artefact-lightbox-frame">
+      <button id="artefactLightboxClose" type="button">Close <kbd>Esc</kbd></button>
+      <img id="artefactLightboxImage" alt="">
+      <p id="artefactLightboxCaption"></p>
+    </div>
+  </dialog>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
+<script>
+(() => {
+  const dialog = document.getElementById('artefactLightbox');
+  if (!dialog?.showModal) return;
+
+  const frame = dialog.querySelector('.artefact-lightbox-frame');
+  const image = document.getElementById('artefactLightboxImage');
+  const caption = document.getElementById('artefactLightboxCaption');
+  const closeButton = document.getElementById('artefactLightboxClose');
+  let opener = null;
+
+  document.querySelectorAll('.artefact-figure > a').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      opener = link;
+      const thumbnail = link.querySelector('img');
+      image.src = link.href;
+      image.alt = thumbnail?.alt || '';
+      caption.textContent =
+        link.closest('figure')?.querySelector('figcaption')?.textContent || '';
+      dialog.showModal();
+      closeButton.focus();
+    });
+  });
+
+  const restorePage = () => {
+    image.removeAttribute('src');
+    image.alt = '';
+    const returnTarget = opener;
+    opener = null;
+    returnTarget?.focus();
+  };
+  const closeLightbox = () => {
+    if (dialog.open) dialog.close();
+    restorePage();
+  };
+
+  closeButton.addEventListener('click', closeLightbox);
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog || event.target === frame) closeLightbox();
+  });
+  dialog.addEventListener('cancel', event => {
+    event.preventDefault();
+    closeLightbox();
+  });
+  dialog.addEventListener('close', restorePage);
+})();
+</script>
 </body>
 </html>

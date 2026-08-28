@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=home13">
+  <link rel="stylesheet" href="site.css?v=nav1">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -22,15 +22,7 @@
 <div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation">
-      <a class="cur" href="/">Home</a>
-      <a href="learn.html">Learn</a>
-      <a href="proof.html">Proof</a>
-      <a href="walk3d.html">3D</a>
-      <a href="hilbert-colors.html">State map</a>
-      <a href="progress.html">Progress<span class="dot"></span></a>
-      <a href="https://github.com/ekalvi/erdos-193">GitHub</a>
-    </nav>
+    <nav class="site" aria-label="Main navigation"><a class="cur" href="/">Home</a><a href="proof.html">Proof</a><a href="progress.html">The journey<span class="dot"></span></a><a href="walk3d.html">3D</a><a href="demo.html">Code</a></nav>
   </header>
 
   <main>
@@ -44,7 +36,8 @@
             <a class="button primary" href="proof.html">Read the proof</a>
             <a class="button" href="learn.html">Learn the proof</a>
             <a class="button" href="walk3d.html">Explore the walk in 3D</a>
-            <a class="button" href="demo.html">Run the handwritten demo</a>
+            <a class="button" href="demo.html">Try the code</a>
+            <a class="button" href="progress.html">The journey</a>
           </div>
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
@@ -62,16 +55,27 @@
       <div class="stat"><b>No three</b><span>visited points on one line</span></div>
     </div>
 
-    <section class="section stack-callout" aria-labelledby="stack-title">
-      <div class="section-head">
-        <span class="eyebrow">How it was made</span>
-        <h2 id="stack-title">Research and production stack</h2>
-        <p><b>GPT-5.6 Sol</b> was the primary model. <a href="https://pi.dev/">Pi</a> and <a href="https://omp.sh/">Oh My Pi</a> were used interchangeably for agent sessions, while <a href="https://paseo.sh/">Paseo</a> provided remote access and review. The project ran from an older Intel MacBook Pro.</p>
-      </div>
+    <section class="section stack-logos" aria-label="Research and production stack">
       <div class="stack-grid" aria-label="Tools used">
-        <a class="stack-item" href="https://openai.com/"><span>Primary model</span><b>GPT-5.6 Sol</b></a>
-        <div class="stack-item"><span>Interchangeable agents</span><b><a href="https://pi.dev/">Pi</a> / <a href="https://omp.sh/">Oh My Pi</a></b></div>
-        <a class="stack-item" href="https://paseo.sh/"><span>Remote interface</span><b>Paseo</b></a>
+        <div class="stack-item">
+          <span>Primary model</span>
+          <div class="stack-brands">
+            <a class="stack-brand" href="https://openai.com/"><img src="logo-openai.svg" width="40" height="40" decoding="async" alt=""><b>GPT-5.6 Sol</b></a>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span>Interchangeable agents</span>
+          <div class="stack-brands">
+            <a class="stack-brand" href="https://pi.dev/"><img src="logo-pi.svg" width="40" height="40" decoding="async" alt=""><b>Pi</b></a>
+            <a class="stack-brand" href="https://omp.sh/"><img src="logo-omp.svg" width="40" height="40" decoding="async" alt=""><b>Oh My Pi</b></a>
+          </div>
+        </div>
+        <div class="stack-item">
+          <span>Remote interface</span>
+          <div class="stack-brands">
+            <a class="stack-brand" href="https://paseo.sh/"><img src="logo-paseo.svg" width="40" height="40" decoding="async" alt=""><b>Paseo</b></a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -184,7 +188,7 @@
           <div class="terminal-state-readout">
             <span><small>Active transformation</small><b id="terminalStateName">I · unchanged</b></span>
             <code id="terminalStateRule">(x,y) → (x,y)</code>
-            <a href="hilbert-colors.html">Open the full state map</a>
+            <a href="walk3d.html#state-map">Open the full state map</a>
           </div>
         </div>
         <figcaption>Each digit may leave, turn, or reflect the smaller route. The final highlighted orientation is the terminal state.</figcaption>
@@ -239,82 +243,25 @@
     <section class="section proof-part contradiction-section">
       <div class="part-heading">
         <span class="part-number">3</span>
-        <div><span class="eyebrow">Rule out a line</span><h2>Assume three selected points are collinear.</h2></div>
+        <div><span class="eyebrow">Rule out a line</span><h2>The pair law rules out collinearity.</h2></div>
       </div>
       <div class="collinearity-layout">
         <figure class="collinearity-figure">
-          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three lifted Hilbert points on a supposed line. The solid arrow labeled X comma A and dashed arrow labeled Y comma B are their adjacent displacement vectors.">
-          <figcaption>The lift rule makes each Hilbert index the vertical coordinate: \(Q(a)=(H(a),a)\), and likewise for \(b,c\). The dotted guide through those three points is the temporary collinearity assumption.</figcaption>
+          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three lifted Hilbert points on a supposed line, with their two adjacent displacement vectors.">
+          <figcaption>Lift each selected Hilbert point to height \(n\). A line would make the two adjacent chords proportional.</figcaption>
         </figure>
         <div class="collinearity-copy">
-          <p>The lift rule makes the three heights \(a&lt;b&lt;c\). Write the adjacent height gaps and floor displacements as</p>
-          <div class="math-block compact-math">
-            \[
-            \begin{gathered}
-            A=b-a,\qquad B=c-b,\\
-            X=H(b)-H(a),\\
-            Y=H(c)-H(b).
-            \end{gathered}
-            \]
+          <p>Assume three selected lifts lie on one line. After reducing their adjacent gaps, their planar chords are \(rW\) and \(sW\), where \(r\) and \(s\) are coprime.</p>
+          <div class="contradiction-result">
+            <span class="eyebrow">Contradiction</span>
+            <h3>Odd + odd cannot be odd.</h3>
+            <p>The pair law on the adjacent pairs forces \(r\) and \(s\) to be odd. Applied to the endpoints, it forces \(r+s\) to be odd. But the sum of two odd numbers is even.</p>
           </div>
-          <p>Collinearity makes the two 3D chords proportional. Comparing their height coordinates and clearing the ratio gives</p>
-          <div class="math-block compact-math">\[BX=AY.\]</div>
-          <p>Write \(A=gr\) and \(B=gs\), with \(r\) and \(s\) coprime. Integer divisibility then gives one planar vector \(W\) with \(X=rW\) and \(Y=sW\).</p>
+          <p class="contradiction-link"><a href="proof.html#same-state-lift">Read the full proof</a> or <a href="learn.html#contradiction">study the guided lesson</a>.</p>
         </div>
       </div>
-      <h3 class="application-title">Apply the Hilbert pair law to all three pairs</h3>
-      <p>The indices \(a,b,c\) have the same terminal state, so Part 2 applies to each pair. Using \(V(kW)=V(W)+2\nu_2(k)\) gives:</p>
-      <div class="pair-applications" aria-label="Three applications of the Hilbert pair law">
-        <article class="pair-application">
-          <b>1. Adjacent pair \((a,b)\)</b>
-          <div class="application-equation">
-            \[
-            \begin{aligned}
-            V(X)&amp;=\nu_2(A),\\
-            V(rW)&amp;=\nu_2(gr),\\
-            V(W)+\nu_2(r)&amp;=\nu_2(g).
-            \end{aligned}
-            \]
-          </div>
-        </article>
-        <article class="pair-application">
-          <b>2. Adjacent pair \((b,c)\)</b>
-          <div class="application-equation">
-            \[
-            \begin{aligned}
-            V(Y)&amp;=\nu_2(B),\\
-            V(sW)&amp;=\nu_2(gs),\\
-            V(W)+\nu_2(s)&amp;=\nu_2(g).
-            \end{aligned}
-            \]
-          </div>
-        </article>
-        <article class="pair-application">
-          <b>3. Endpoint pair \((a,c)\)</b>
-          <div class="application-equation">
-            \[
-            \begin{aligned}
-            V(X+Y)&amp;=\nu_2(A+B),\\
-            V((r+s)W)&amp;=\nu_2(g(r+s)),\\
-            V(W)+\nu_2(r+s)&amp;=\nu_2(g).
-            \end{aligned}
-            \]
-          </div>
-        </article>
-      </div>
-      <div class="pair-deductions">
-        <p><b>Compare the adjacent pairs.</b> Their last equations give \(\nu_2(r)=\nu_2(s)\). Since \(r\) and \(s\) are coprime, both valuations are zero: \(r\) and \(s\) are odd. Substituting back also gives \(V(W)=\nu_2(g)\).</p>
-        <p><b>Now use the endpoint pair.</b> Its last equation and \(V(W)=\nu_2(g)\) give \(\nu_2(r+s)=0\). The endpoint pair therefore says \(r+s\) is odd.</p>
-      </div>
-      <div class="contradiction-result">
-        <span class="eyebrow">Contradiction</span>
-        <h3>\(r+s\) would have to be both even and odd.</h3>
-        <p>The adjacent pairs make \(r\) and \(s\) odd, so their sum is even. The endpoint pair makes the same sum odd. Therefore the three selected lifts cannot be collinear.</p>
-      </div>
-      <p class="contradiction-link"><a href="learn.html#contradiction">Read the complete contradiction.</a></p>
     </section>
 
-    <p class="inline-status"><b>Proof status:</b> the construction is unconditional and formalized in Lean. External mathematical review is still pending. <a href="proof.html">See the exact theorem and review boundary.</a></p>
   </main>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>

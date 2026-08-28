@@ -8,67 +8,50 @@
   <meta name="description" content="Run and inspect a standalone handwritten Python demonstration of the terminal-steered Hilbert walk construction.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=demo5">
+  <link rel="stylesheet" href="site.css?v=nav1">
   <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/ace.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/mode-python.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/theme-tomorrow_night.js"></script>
 </head>
 <body>
-<div class="wrap wide">
+<div class="wrap wide demo-wrap">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress</a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a href="progress.html">The journey</a><a href="walk3d.html">3D</a><a class="cur" href="demo.html">Code</a></nav>
   </header>
 
-  <main>
-    <span class="eyebrow">Standalone handwritten demonstration</span>
-    <h1>Construct the walk, then check a finite prefix yourself.</h1>
-    <p class="sub">This deliberately direct Python program follows the proof skeleton: decode the discrete Hilbert path, steer every selected index to terminal state <b>I</b>, lift index into height, check the pair fingerprint, and search the chosen finite prefix for collinear triples.</p>
-
-    <div class="voice-note warning"><b>Learning artifact, not the proof</b><p>A successful run checks only the finite prefix requested below. The manuscript and Lean development establish the unconditional infinite theorem.</p></div>
-
-    <section class="section demo-runner" aria-labelledby="runner-title">
-      <div class="section-head">
-        <span class="eyebrow">Single-file Python playground</span>
-        <h2 id="runner-title">Edit one Python file and run it.</h2>
-        <p>The source stays in this browser. Change the construction, choose a small prefix, and run the edited file with no account or deployment.</p>
+  <main class="demo-page">
+    <section class="demo-runner demo-runner-standalone" aria-labelledby="runner-title">
+      <header class="demo-runner-head">
+        <h1 id="runner-title">Edit and run the construction.</h1>
+        <p><b>Finite check—not proof.</b> <a href="proof.html">Proof</a> · <a href="hilbert-proof.pdf?v=20260827-1">PDF</a></p>
+      </header>
+      <div class="demo-workbench">
+        <section class="demo-source-panel" aria-labelledby="demoSourceFilename">
+          <header class="demo-source-head">
+            <strong id="demoSourceFilename">hilbert_walk_demo.py</strong>
+            <div class="demo-source-buttons">
+              <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
+              <button id="demoReset" class="button" type="button" disabled>Reset</button>
+              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">GitHub</a>
+            </div>
+          </header>
+          <div id="demoSource" class="demo-source" aria-label="Editable hilbert_walk_demo.py source">Loading source…</div>
+        </section>
+        <section class="demo-output-panel" aria-labelledby="demoOutputLabel">
+          <header class="demo-output-head"><strong id="demoOutputLabel">Output</strong></header>
+          <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
+        </section>
+        <form id="demoForm" class="demo-controls">
+          <label for="demoLength">Walk points</label>
+          <input id="demoLength" name="length" type="number" min="1" max="1000" value="60" inputmode="numeric">
+          <button id="demoRun" class="button primary" type="submit" disabled><span aria-hidden="true">▶</span> Run code</button>
+          <button id="demoStop" class="button" type="button" disabled>Stop</button>
+        </form>
       </div>
-      <p class="demo-safety"><b>Contained run:</b> each execution uses a disposable browser worker with a 12-second cutoff. It cannot access the page DOM or your computer’s files, but edited code can still make network requests. Do not paste secrets or untrusted code.</p>
-      <details class="demo-source-panel" open>
-        <summary>Standalone Python source</summary>
-        <div id="demoSource" class="demo-source" aria-label="Editable standalone Python source" aria-describedby="sourceHelp">Loading source…</div>
-        <div class="demo-source-actions">
-          <p id="sourceHelp">Use the gutter triangles to fold definitions. Runs are capped at 150 points because pair and triple checking scale quadratically and cubically.</p>
-          <div class="demo-source-buttons">
-            <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
-            <button id="demoReset" class="button" type="button" disabled>Reset source</button>
-          </div>
-        </div>
-      </details>
-      <form id="demoForm" class="demo-controls">
-        <label for="demoLength">Walk points</label>
-        <input id="demoLength" name="length" type="number" min="1" max="150" value="60" inputmode="numeric">
-        <button id="demoRun" class="button primary" type="submit" disabled>Run code</button>
-        <button id="demoStop" class="button" type="button" disabled>Stop</button>
-      </form>
-      <p id="demoStatus" class="demo-status" role="status">Loading the standalone Python source…</p>
-      <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
-      <div class="route-actions">
-        <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">View source on GitHub</a>
-      </div>
+      <p id="demoStatus" class="demo-status" role="status">Loading hilbert_walk_demo.py…</p>
+      <p class="demo-safety"><b>Contained run:</b> disposable browser worker · 12-second cutoff · 1,000-point maximum. No page or file access. Edited code can make network requests; do not paste secrets or untrusted code.</p>
     </section>
-
-    <section class="section">
-      <div class="section-head"><span class="eyebrow">What the program exposes</span><h2>The executable spine of the proof.</h2></div>
-      <div class="concept-grid">
-        <div class="concept"><b><code>decode</code> and <code>H</code></b><p>Read even-padded base-4 digits, emit coordinate bits, and retain the terminal decoder state.</p></div>
-        <div class="concept"><b><code>n_a</code></b><p>Use the four-state suffix lookup to choose one terminal-state-I index from each block of sixteen.</p></div>
-        <div class="concept"><b><code>verify_pair_law</code></b><p>Check the two-adic vector fingerprint for every pair in the finite prefix.</p></div>
-        <div class="concept"><b><code>verify_walk</code></b><p>Use exact integer arithmetic to reject every collinear triple in the finite prefix.</p></div>
-      </div>
-    </section>
-
-    <p class="inline-status"><b>Proof boundary:</b> the runner is pedagogical finite evidence. <a href="proof.html">Read the unconditional argument</a> or <a href="hilbert-proof.pdf?v=20260827-1">open the manuscript</a>.</p>
   </main>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
@@ -101,7 +84,10 @@
     tabSize: 4,
     useSoftTabs: true
   });
-  sourceEditor.textInput.getElement().setAttribute('aria-label', 'Editable standalone Python source');
+  sourceEditor.textInput.getElement().setAttribute(
+    'aria-label',
+    'Editable standalone Python source'
+  );
   sourceEditor.container.setAttribute('aria-describedby', 'sourceHelp');
 
   let worker;
@@ -116,7 +102,13 @@
     runButton.disabled = running || !sourceReady || !workerReady;
     stopButton.disabled = !running;
     resetButton.disabled = running || !sourceReady;
+    lengthInput.disabled = running || !sourceReady;
     sourceEditor.setReadOnly(running || !sourceReady);
+  };
+
+  const redrawSource = () => {
+    sourceEditor.resize(true);
+    sourceEditor.renderer.updateFull(true);
   };
 
   const appendOutput = line => {
@@ -126,7 +118,7 @@
   const startWorker = readyStatus => {
     worker?.terminate();
     workerReady = false;
-    worker = new Worker('demo-worker.js?v=1');
+    worker = new Worker('demo-worker.js?v=3');
     updateControls();
 
     worker.addEventListener('message', event => {
@@ -178,7 +170,7 @@
     finishRun(readyStatus);
   };
 
-  fetch('hilbert_walk_demo.py')
+  fetch('hilbert_walk_demo.py', {cache: 'no-store'})
     .then(response => {
       if (!response.ok) throw new Error(`source request failed: ${response.status}`);
       return response.text();
@@ -187,8 +179,7 @@
       originalSource = source;
       sourceReady = true;
       sourceEditor.setValue(source, -1);
-      sourceEditor.resize(true);
-      sourceEditor.renderer.updateFull(true);
+      redrawSource();
       updateControls();
       if (!workerReady) status.textContent = 'Source loaded; isolated Python worker is loading…';
     })
@@ -199,14 +190,12 @@
 
   resetButton.addEventListener('click', () => {
     sourceEditor.setValue(originalSource, -1);
-    sourceEditor.resize(true);
-    sourceEditor.renderer.updateFull(true);
+    redrawSource();
     output.textContent = 'Ready.';
     status.textContent = 'Source reset to the repository version.';
   });
 
   const setSourceFullscreen = active => {
-    sourcePanel.open = true;
     sourcePanel.classList.toggle('is-fullscreen', active);
     document.body.classList.toggle('source-fullscreen', active);
     fullscreenButton.textContent = active ? 'Exit full screen' : 'Full screen';
@@ -225,8 +214,8 @@
   form.addEventListener('submit', event => {
     event.preventDefault();
     const length = Number(lengthInput.value);
-    if (!Number.isInteger(length) || length < 1 || length > 150) {
-      status.textContent = 'Choose an integer from 1 through 150.';
+    if (!Number.isInteger(length) || length < 1 || length > 1000) {
+      status.textContent = 'Choose an integer from 1 through 1,000.';
       return;
     }
     if (!workerReady || running) return;
@@ -249,6 +238,7 @@
     stopRun('Execution stopped by the user.', 'Stopped worker replaced; ready to edit or run.');
   });
 
+  updateControls();
   startWorker('Ready to edit or run in an isolated worker.');
 })();
 </script>

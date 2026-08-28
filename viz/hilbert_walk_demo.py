@@ -1,22 +1,16 @@
 """Construct the Hilbert-based walk from the Erdős 193 proof skeleton."""
 
-import argparse
-
 Point2D = tuple[int, int]
 Point = tuple[int, int, int]
 
 
-def to_base4(n: int) -> str:
-    """Write the nonnegative index n as a base-4 word."""
-    if n < 0:
-        raise ValueError("n must be nonnegative")
-
-    digits = ""
-    while n:
-        n, digit = divmod(n, 4)
-        digits = str(digit) + digits
-
-    return digits or "0"
+# The four child corners c_q in cyclic Gray-code order.
+c: tuple[Point2D, ...] = (
+    (0, 0),
+    (0, 1),
+    (1, 1),
+    (1, 0),
+)
 
 
 class K:
@@ -24,18 +18,11 @@ class K:
 
     symbol: str
 
-    def __call__(self, x: int, y: int) -> Point2D:
-        """Apply this state to one pair of coordinate bits."""
-        raise NotImplementedError
-
     def __str__(self) -> str:
-        """Display the state using its proof symbol."""
         return self.symbol
 
 
 class Identity(K):
-    """Leave both coordinate bits unchanged: I(x, y) = (x, y)."""
-
     symbol = "I"
 
     def __call__(self, x: int, y: int) -> Point2D:
@@ -43,8 +30,6 @@ class Identity(K):
 
 
 class Swap(K):
-    """Swap the coordinate bits: S(x, y) = (y, x)."""
-
     symbol = "S"
 
     def __call__(self, x: int, y: int) -> Point2D:
@@ -52,8 +37,6 @@ class Swap(K):
 
 
 class Turn(K):
-    """Swap and complement the bits: T(x, y) = (1-y, 1-x)."""
-
     symbol = "T"
 
     def __call__(self, x: int, y: int) -> Point2D:
@@ -61,8 +44,6 @@ class Turn(K):
 
 
 class Complement(K):
-    """Complement both bits: C(x, y) = (1-x, 1-y)."""
-
     symbol = "C"
 
     def __call__(self, x: int, y: int) -> Point2D:
@@ -74,16 +55,6 @@ S = Swap()
 T = Turn()
 C = Complement()
 
-
-# The four child corners c_q in cyclic Gray-code order.
-c: tuple[Point2D, ...] = (
-    (0, 0),
-    (0, 1),
-    (1, 1),
-    (1, 0),
-)
-
-# The digit-indexed transition maps r_0, r_1, r_2, r_3 from Step 1.
 R: tuple[K, ...] = (S, I, I, T)
 
 
@@ -125,6 +96,19 @@ def decode(w: str) -> tuple[Point2D, K]:
     return (int(x, 2), int(y, 2)), g
 
 
+def to_base4(n: int) -> str:
+    """Write the nonnegative index n as a base-4 word."""
+    if n < 0:
+        raise ValueError("n must be nonnegative")
+
+    digits = ""
+    while n:
+        n, digit = divmod(n, 4)
+        digits = str(digit) + digits
+
+    return digits or "0"
+
+
 def H(n: int) -> tuple[Point2D, K]:
     """Return the infinite Hilbert-path point H(n) and terminal state σ(n)."""
     w = to_base4(n)
@@ -154,8 +138,9 @@ def v_2(n: int) -> int | float:
     return exponent
 
 
-def V(u_x: int, u_y: int) -> int:
+def V(u: Point2D) -> int:
     """Return the planar two-adic invariant V(u)."""
+    u_x, u_y = u
     if u_x == 0 and u_y == 0:
         raise ValueError("V is undefined at (0, 0)")
 
@@ -226,7 +211,7 @@ def verify_pair_law(points: list[Point]) -> int:
         x_n, y_n, n = points[j]
 
         assert states[i] is states[j], "the pair law requires equal states"
-        assert V(x_n - x_m, y_n - y_m) == v_2(n - m)
+        assert V((x_n - x_m, y_n - y_m)) == v_2(n - m)
         checks += 1
 
     return checks
@@ -238,19 +223,38 @@ def verify_walk(points: list[Point]) -> int:
 
     for i in range(len(points)):
         for j, k in index_pairs(len(points), i + 1):
-            point_a, point_b, point_c = points[i], points[j], points[k]
-            u = Δ(point_a, point_b)
-            v = Δ(point_a, point_c)
+            a, b, c = points[i], points[j], points[k]
+            u = Δ(a, b)
+            v = Δ(a, c)
 
             # Equality in Cauchy–Schwarz holds exactly when u and v
             # are collinear.
             collinear = dot(u, v) ** 2 == dot(u, u) * dot(v, v)
             assert (
                 not collinear
-            ), f"collinear walk points: {point_a}, {point_b}, {point_c}"
+            ), f"collinear walk points: {a}, {b}, {c}"
             checks += 1
 
     return checks
+
+
+def run_check(
+    label: str,
+    verify,
+    points: list[Point],
+    success: str,
+) -> bool:
+    """Run one assertion-based check and report its result without a traceback."""
+    print(f"Checking {label}...")
+    try:
+        checks = verify(points)
+    except AssertionError as error:
+        detail = str(error).strip() or "assertion failed"
+        print(f"❌ FAIL {label}: {detail}")
+        return False
+
+    print(f"✅ PASS {label}: {success.format(checks=checks)}")
+    return True
 
 
 def demonstrate(length: int) -> None:
@@ -265,33 +269,31 @@ def demonstrate(length: int) -> None:
     print(f"   First point: {walk[0]}")
     print(f"   Last point:  {walk[-1]}")
 
-    print("⏱️  Verifying...")
-
-    # This step is O(n^2): it checks every pair against the Hilbert Pair Law.
-    pair_checks = verify_pair_law(walk)
-    print(f"✅ Hilbert pair law verified for {pair_checks} pairs.")
+    failures = 0
+    if not run_check(
+        "Hilbert pair law",
+        verify_pair_law,
+        walk,
+        "{checks} pairs verified.",
+    ):
+        failures += 1
 
     # This step is O(n^3), so it gets very slow for large walks.
-    print("⏱️  Verifying...")
-    triple_checks = verify_walk(walk)
-    print(f"✅ No collinear triples among {triple_checks} checked.")
+    if not run_check(
+        "collinearity search",
+        verify_walk,
+        walk,
+        "no collinear triples among {checks} checked.",
+    ):
+        failures += 1
+
+    if failures:
+        print(f"Finished with {failures} failed check{'s' if failures != 1 else ''}.")
+    else:
+        print("All finite checks passed.")
     print("Finite checks illustrate the construction; they do not prove infinity.")
-
-
-def parse_args() -> argparse.Namespace:
-    """Parse the requested finite prefix length."""
-    parser = argparse.ArgumentParser(
-        description="Run the standalone handwritten Erdős 193 demonstration."
-    )
-    parser.add_argument(
-        "--length",
-        type=int,
-        default=60,
-        help="number of selected points to construct and check (default: 60)",
-    )
-    return parser.parse_args()
 
 
 if __name__ == "__main__":
     # Proof and construction details: https://erdos-193.q5m.ai/proof.html
-    demonstrate(parse_args().length)
+    demonstrate(60)
