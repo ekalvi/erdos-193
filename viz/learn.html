@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/learn.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=learn3">
+  <link rel="stylesheet" href="site.css?v=nav1">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -22,7 +22,7 @@
 <div class="wrap wide">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a class="cur" href="learn.html">Learn</a><a href="proof.html">Proof</a><a href="walk3d.html">3D</a><a href="hilbert-colors.html">State map</a><a href="progress.html">Progress<span class="dot"></span></a><a href="https://github.com/ekalvi/erdos-193">GitHub</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a href="progress.html">The journey<span class="dot"></span></a><a href="walk3d.html">3D</a><a href="demo.html">Code</a></nav>
   </header>
 
   <main>
@@ -165,7 +165,7 @@
           <h3>Why equal terminal states matter later</h3>
           <p>When two base-4 words finish in the same state and share a low suffix, the proof can undo that common suffix from right to left. Both words reach their first mismatch in one common orientation. That makes the two mismatch digits geometrically comparable.</p>
           <details class="checkpoint"><summary>Checkpoint: states versus suffixes</summary><div><ol><li>Why are there 16 two-digit suffixes but only four states?</li><li>What does the suffix lookup guarantee?</li></ol><div class="answer"><strong>Answer.</strong> Two base-4 digits have \(4^2=16\) possible values, while their orientation effects collapse to four transformations. The lookup chooses one suffix whose effect cancels the incoming state, so every selected index finishes in state \(I\).</div></div></details>
-          <div class="route-actions"><a class="button" href="hilbert-colors.html">Use the interactive state map</a></div>
+          <div class="route-actions"><a class="button" href="walk3d.html#state-map">Use the interactive state map</a></div>
         </section>
 
         <section class="lesson-section" id="fingerprint">
@@ -416,7 +416,7 @@
           </div>
           <p>The repository’s claim is an unconditional construction, not a result conditional on a conjecture or a large computation. The remaining uncertainty is external assessment: a formal proof can faithfully prove definitions that reviewers later judge not to match the intended problem. The <a href="proof.html">proof page</a> therefore links the formal theorem and records that review status.</p>
           <div class="voice-note success"><b>What you should now be able to summarize</b><p>The Hilbert route supplies planar adjacency; terminal-state steering supplies a bounded same-state subsequence; lifting turns index into height; the pair law synchronizes index and planar binary scales; and the unequal scaling coefficients make a collinear triple impossible.</p></div>
-          <div class="route-actions"><a class="button primary" href="proof.html">Open the proof</a><a class="button" href="hilbert-proof.pdf?v=20260827-1">Read the manuscript</a><a class="button" href="demo.html">Run the handwritten demo</a><a class="button" href="walk3d.html">Inspect the finite artifact</a><a class="button" href="hilbert-colors.html">Inspect terminal states</a></div>
+          <div class="route-actions"><a class="button primary" href="proof.html">Open the proof</a><a class="button" href="hilbert-proof.pdf?v=20260827-1">Read the manuscript</a><a class="button" href="demo.html">Run the handwritten demo</a><a class="button" href="walk3d.html">Inspect the finite artifact</a><a class="button" href="walk3d.html#state-map">Inspect terminal states</a></div>
           <p class="inline-status">Pedagogical guide only. Authoritative sources: the proof manuscript and the Lean project in the repository. External mathematical review and community acceptance are pending.</p>
         </section>
       </div>

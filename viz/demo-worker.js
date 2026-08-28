@@ -13,14 +13,19 @@ self.addEventListener('message', async event => {
 
   try {
     const pyodide = await runtimePromise;
+    if (typeof event.data.source !== 'string') throw new Error('Missing Python source.');
     pyodide.setStdout({batched: line => self.postMessage({type: 'line', line})});
     pyodide.setStderr({batched: line => self.postMessage({type: 'line', line})});
     pyodide.globals.set('DEMO_SOURCE', event.data.source);
     pyodide.globals.set('DEMO_LENGTH', event.data.length);
     self.postMessage({type: 'running'});
     await pyodide.runPythonAsync(`
-namespace = {"__name__": "hilbert_walk_demo"}
-exec(DEMO_SOURCE, namespace)
+namespace = {
+    "__name__": "hilbert_walk_demo",
+    "__file__": "hilbert_walk_demo.py",
+    "__package__": None,
+}
+exec(compile(DEMO_SOURCE, "hilbert_walk_demo.py", "exec"), namespace)
 namespace["demonstrate"](DEMO_LENGTH)
 `);
     self.postMessage({type: 'done'});
