@@ -1,10 +1,11 @@
-"""Construct the Hilbert-based walk from the Erdős 193 proof skeleton."""
+"""Construct the Hilbert lift resolving Erdős Problem 193."""
 
 Point2D = tuple[int, int]
 Point = tuple[int, int, int]
 
 
-# The four child corners c_q in cyclic Gray-code order.
+# The Hilbert child corners c_q in cyclic Gray-code order. The alternative
+# construction later reuses these same four corners as terminal-state tags.
 c: tuple[Point2D, ...] = (
     (0, 0),
     (0, 1),
@@ -58,13 +59,8 @@ C = Complement()
 R: tuple[K, ...] = (S, I, I, T)
 
 
-def compose(
-    g: K,
-    h: K,
-) -> K:
+def compose(g: K, h: K) -> K:
     """Compose two decoder states as g ∘ h, with h acting first."""
-    # The composition must be one of the same four maps in K. Compare its
-    # action on every bit pair to recover that named terminal state.
     for transformation in (I, S, T, C):
         if all(transformation(*point) == g(*h(*point)) for point in c):
             return transformation
@@ -77,22 +73,14 @@ def decode(w: str) -> tuple[Point2D, K]:
     if not w or any(digit not in "0123" for digit in w):
         raise ValueError(f"invalid base-4 word: {w!r}")
 
-    # Step 1 starts in the identity state and reads the most significant
-    # base-4 digit first. The strings collect the emitted binary digits.
     g = I
     x, y = "", ""
-
     for digit in w:
         q = int(digit)
-        h = R[q]
+        x_bit, y_bit = g(*c[q])
+        x, y = x + str(x_bit), y + str(y_bit)
+        g = compose(g, R[q])
 
-        # Emit the corner bits using the current state, then update the state.
-        # This order is essential to the decoder in the proof.
-        _x, _y = g(*c[q])
-        x, y = x + str(_x), y + str(_y)
-        g = compose(g, h)
-
-    # After the final digit, g is the terminal state σ(w).
     return (int(x, 2), int(y, 2)), g
 
 
@@ -112,8 +100,6 @@ def to_base4(n: int) -> str:
 def H(n: int) -> tuple[Point2D, K]:
     """Return the infinite Hilbert-path point H(n) and terminal state σ(n)."""
     w = to_base4(n)
-    # Use the proof's even-length word. Adding another pair of leading zeros
-    # would change neither the point nor its terminal state.
     if len(w) % 2:
         w = "0" + w
     return decode(w)
@@ -132,56 +118,45 @@ def v_2(n: int) -> int | float:
     n = abs(n)
     exponent = 0
     while n % 2 == 0:
-        # Divide out one factor of 2, then count it.
         n //= 2
         exponent += 1
     return exponent
 
 
-def V(u: Point2D) -> int:
-    """Return the planar two-adic invariant V(u)."""
-    u_x, u_y = u
-    if u_x == 0 and u_y == 0:
-        raise ValueError("V is undefined at (0, 0)")
-
-    v_x, v_y = v_2(u_x), v_2(u_y)
-    p = min(v_x, v_y)
-    ε = int(v_x == v_y)
-    return int(2 * p + ε)
+# Give the four terminal states cyclic labels used in both coordinate encodings.
+def λ(state: K) -> int:
+    """Give a terminal state its cyclic label I=0, S=1, C=2, T=3."""
+    return {I: 0, S: 1, C: 2, T: 3}[state]
 
 
-def ρ(state: K) -> int:
-    """Choose the Step 4 suffix offset that cancels terminal state σ."""
-    # These are 11, 01, 31, and 03 in base 4 for I, S, T, and C.
-    return {I: 5, S: 1, T: 13, C: 3}[state]
+def state_corner(state: K) -> Point2D:
+    """Return the Gray-code corner matching the state's cyclic label."""
+    return c[λ(state)]
 
 
-# Every selected index lies in a two-digit base-4 block of size 16.
-block_size = 4**2
+def G(n: int) -> Point2D:
+    """Encode the terminal state in the low bits of H(n)."""
+    (x, y), state = H(n)
+    corner_x, corner_y = state_corner(state)
+    return 2 * x + corner_x, 2 * y + corner_y
 
 
-def n_a(a: int) -> int:
-    """Select the bounded-gap index n_a in block a with terminal state I."""
-    # Multiplication by 16 appends 00 in base 4, so σ(16a) = σ(a).
-    return block_size * a + ρ(σ(block_size * a))
+def z(n: int) -> int:
+    """Encode the terminal state in the height modulo four."""
+    return 4 * n + λ(σ(n))
+
+
+def P(n: int) -> Point:
+    """Return the Hilbert lift P_n=(G(n), z(n))."""
+    x, y = G(n)
+    return x, y, z(n)
 
 
 def generate_walk(length: int) -> list[Point]:
-    """Return the lifted points P_a=(H(n_a), n_a) below walk length."""
+    """Return the first length points; no indices are discarded."""
     if length < 0:
         raise ValueError("length cannot be negative")
-
-    walk = []
-    a = 0
-    while True:
-        n = n_a(a)
-        H_n, _ = H(n)
-        # Step 8 lifts the planar point by using n as its third coordinate.
-        walk.append((H_n[0], H_n[1], n))
-        if len(walk) >= length:
-            break
-        a += 1
-    return walk
+    return [P(n) for n in range(length)]
 
 
 def Δ(start: Point, end: Point) -> Point:
@@ -201,59 +176,53 @@ def index_pairs(length: int, start: int = 0):
             yield i, j
 
 
-def verify_pair_law(points: list[Point]) -> int:
-    """Verify every pair and return the number of pair-law checks."""
-    states = [σ(n) for _, _, n in points]
+def verify_all_pairs_identity(points: list[Point]) -> int:
+    """Check ν₂(||G(n)-G(m)||²)=ν₂(z(n)-z(m)) for every pair."""
     checks = 0
-
-    for i, j in index_pairs(len(points)):
-        x_m, y_m, m = points[i]
-        x_n, y_n, n = points[j]
-
-        assert states[i] is states[j], "the pair law requires equal states"
-        assert V((x_n - x_m, y_n - y_m)) == v_2(n - m)
+    for m, n in index_pairs(len(points)):
+        x_m, y_m, z_m = points[m]
+        x_n, y_n, z_n = points[n]
+        dx, dy = x_n - x_m, y_n - y_m
+        assert v_2(dx * dx + dy * dy) == v_2(z_n - z_m)
         checks += 1
+    return checks
 
+
+def verify_step_bounds(points: list[Point]) -> int:
+    """Check that every step lies in |x|,|y|≤3 and 1≤z≤7."""
+    checks = 0
+    for start, end in zip(points, points[1:]):
+        dx, dy, dz = Δ(start, end)
+        assert abs(dx) <= 3 and abs(dy) <= 3 and 1 <= dz <= 7
+        checks += 1
     return checks
 
 
 def verify_walk(points: list[Point]) -> int:
     """Verify every triple and return the number of collinearity checks."""
     checks = 0
-
     for i in range(len(points)):
         for j, k in index_pairs(len(points), i + 1):
-            a, b, c = points[i], points[j], points[k]
+            a, b, c_point = points[i], points[j], points[k]
             u = Δ(a, b)
-            v = Δ(a, c)
-
-            # Equality in Cauchy–Schwarz holds exactly when u and v
-            # are collinear.
+            v = Δ(a, c_point)
             collinear = dot(u, v) ** 2 == dot(u, u) * dot(v, v)
-            assert (
-                not collinear
-            ), f"collinear walk points: {a}, {b}, {c}"
+            assert not collinear, f"collinear walk points: {a}, {b}, {c_point}"
             checks += 1
-
     return checks
 
 
-def run_check(
-    label: str,
-    verify,
-    points: list[Point],
-    success: str,
-) -> bool:
+def run_check(label: str, verify, points: list[Point], success: str) -> bool:
     """Run one assertion-based check and report its result without a traceback."""
     print(f"Checking {label}...")
     try:
         checks = verify(points)
     except AssertionError as error:
         detail = str(error).strip() or "assertion failed"
-        print(f"❌ FAIL {label}: {detail}")
+        print(f"FAIL {label}: {detail}")
         return False
 
-    print(f"✅ PASS {label}: {success.format(checks=checks)}")
+    print(f"PASS {label}: {success.format(checks=checks)}")
     return True
 
 
@@ -262,30 +231,35 @@ def demonstrate(length: int) -> None:
     if length < 1:
         raise ValueError("length must be positive")
 
-    print(f"🧮 Attempting to construct a triple-free walk with {length} points.")
-    # Construction is O(n log^2 n) with the current string-based decoder.
+    print(f"Constructing the Hilbert lift with {length} points.")
+    print("Every index is used; σ(n) is encoded in the planar coordinates and height.")
     walk = generate_walk(length)
-    print(f"🛠️  Constructed a candidate walk of {len(walk)} points.")
-    print(f"   First point: {walk[0]}")
-    print(f"   Last point:  {walk[-1]}")
+    print(f"Constructed {len(walk)} candidate points from indices 0 through {length - 1}.")
+    print(f"First point: {walk[0]}")
+    print(f"Last point:  {walk[-1]}")
+    print("First eight lifted points:")
+    print("  n  σ(n)   H(n)    corner   P(n)")
+    for n in range(min(8, length)):
+        h_n, state = H(n)
+        print(f"  {n:<2} {state!s:^4}  {h_n!s:<8} {state_corner(state)!s:<8} {walk[n]}")
 
-    failures = 0
-    if not run_check(
-        "Hilbert pair law",
-        verify_pair_law,
-        walk,
-        "{checks} pairs verified.",
-    ):
-        failures += 1
-
-    # This step is O(n^3), so it gets very slow for large walks.
-    if not run_check(
-        "collinearity search",
-        verify_walk,
-        walk,
-        "no collinear triples among {checks} checked.",
-    ):
-        failures += 1
+    checks = (
+        (
+            "all-pairs identity",
+            verify_all_pairs_identity,
+            "{checks} pairs verified",
+        ),
+        ("finite step bounds", verify_step_bounds, "{checks} steps verified"),
+        (
+            "collinearity search",
+            verify_walk,
+            "no collinear triples among {checks} checked",
+        ),
+    )
+    failures = sum(
+        not run_check(label, verify, walk, success)
+        for label, verify, success in checks
+    )
 
     if failures:
         print(f"Finished with {failures} failed check{'s' if failures != 1 else ''}.")
@@ -295,5 +269,4 @@ def demonstrate(length: int) -> None:
 
 
 if __name__ == "__main__":
-    # Proof and construction details: https://erdos-193.q5m.ai/proof.html
     demonstrate(60)

@@ -9,13 +9,11 @@ Source and Lean formalization: https://github.com/ekalvi/erdos-193
 Formal theorem: formal/Hilbert193/Hilbert193/Continuity.lean, theorem Hilbert193.erdos193_unconditional
 
 Summary:
-Define a nested infinite discrete Hilbert path H:N→N^2. For two Hilbert indices m,n with the same terminal orientation state, the planar chord satisfies an exact two-adic pair law V(H(n)-H(m))=ν₂(|n-m|). A two-base-4-digit correction selects one such index n_a in every aligned block of 16, with 4≤n_{a+1}-n_a≤28. Lift the selected points to P_a=(H(n_a),n_a)∈Z^3. If three lifts were collinear, applying the pair law and its scaling rule to the two adjacent chords and their sum would force two coprime integers to be odd while their sum has two-adic valuation zero, a contradiction. Hilbert adjacency and the bounded index gaps put every consecutive displacement in one fixed finite set.
+Define a nested infinite discrete Hilbert path H:N→N² with terminal orientation σ(n). Label the four states cyclically by λ(I),λ(S),λ(C),λ(T)=0,1,2,3 and give them the matching Gray-code corner tags u. Retain every index and define G(n)=2H(n)+u_{σ(n)}, z(n)=4n+λ(σ(n)), and P_n=(G(n),z(n)). The same-state Hilbert pair law and the tag parity cases give the all-pairs identity V(G(n)−G(m))=ν₂(|z(n)−z(m)|). Applying this identity and its scaling rule to two adjacent chords of a hypothetical collinear triple and their sum forces two coprime integers to be odd while their sum is also odd, a contradiction. Hilbert adjacency gives |Δx|,|Δy|≤3, while 1≤Δz≤7, so every consecutive displacement lies in one fixed finite set.
 
 Verification status:
-- The infinite construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
+- The complete tagged construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
 - The axiom audit reports only propext, Classical.choice, and Quot.sound.
-- The 500,000-step artifact is independently reconstructed, then exhaustively checked for repeated primitive directions across all 125,000,250,000 earlier-point pairs; neither finite check is a premise of the proof.
-- External mathematical review is pending.
-
-Submission action after review:
-Post this text at https://www.erdosproblems.com/forum/thread/193/submit-proof and attach/link the public PDF. The site requires the logged-in human account; do not submit before the review pull request is approved.
+- The standalone Python demo independently checks finite prefixes using exact integer arithmetic; no finite check is a premise of the proof.
+- Stijn Cambie suggested the state-tagging refinement and shared a GPT-assisted alternative draft.
+- External mathematical peer review remains pending.

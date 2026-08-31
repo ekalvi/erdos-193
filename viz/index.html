@@ -42,15 +42,15 @@
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
           <canvas id="heroCanvas"></canvas>
-          <span class="art-chip">exact generated prefix</span>
-          <span class="art-label">the selected Hilbert lift</span>
+          <span class="art-chip">exact 500,000-step prefix</span>
+          <span class="art-label">the Hilbert lift</span>
         </a>
       </div>
     </section>
 
     <div class="stats" aria-label="Construction facts">
       <div class="stat"><b>Infinite</b><span>the sequence never stops</span></div>
-      <div class="stat"><b>4–28</b><span>gaps between selected indices</span></div>
+      <div class="stat"><b>1–7</b><span>height changes in the walk</span></div>
       <div class="stat"><b>Finite</b><span>menu of 3D steps</span></div>
       <div class="stat"><b>No three</b><span>visited points on one line</span></div>
     </div>
@@ -106,7 +106,7 @@
     <section class="section proof-part">
       <div class="part-heading">
         <span class="part-number">1</span>
-        <div><span class="eyebrow">Build the walk</span><h2>Trace. Select. Lift.</h2></div>
+        <div><span class="eyebrow">Build the walk</span><h2>Trace. Encode. Lift.</h2></div>
       </div>
       <p>Let \(H(n)\) be the point reached at index \(n\) on an infinite discrete <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a>. The same recursive rule builds routes on larger and larger 2D grids:</p>
       <figure class="growth-figure hilbert-growth">
@@ -217,34 +217,51 @@
         </div>
         <figcaption>Each digit may leave, turn, or reflect the smaller route. The final highlighted orientation is the terminal state.</figcaption>
       </figure>
-      <p>The selector keeps one index per 16-index block and chooses its final two digits so every selected point has the same type—the terminal state \(I\) in our construction. Because their types match, the <strong>Hilbert pair law</strong> can relate the height displacement between any two selected lifts to their planar vector displacement. Each selected index then becomes its height:</p>
-      <div class="math-block compact-math">\[P_a=\bigl(H(n_a),n_a\bigr)\in\mathbb Z^3.\]</div>
-      <div class="construction-diagrams" aria-label="Trace, select, and lift diagrams">
+      <p>Encode each terminal state by a cyclic label and the corresponding Gray-code corner:</p>
+      <div class="math-block compact-math">
+        \[
+        \begin{array}{c|cccc}
+          g&amp;I&amp;S&amp;C&amp;T\\ \hline
+          \lambda(g)&amp;0&amp;1&amp;2&amp;3\\
+          u_g&amp;(0,0)&amp;(0,1)&amp;(1,1)&amp;(1,0).
+        \end{array}
+        \]
+      </div>
+      <p>Use every Hilbert index. The state code occupies the low planar bits and the height residue:</p>
+      <div class="math-block compact-math">
+        \[
+        G(n)=2H(n)+u_{\sigma(n)},\qquad
+        z(n)=4n+\lambda(\sigma(n)),\qquad
+        P_n=(G(n),z(n)).
+        \]
+      </div>
+      <div class="construction-diagrams" aria-label="Trace, encode, and lift construction">
         <figure class="diagram-card">
           <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
           <figcaption><b>Trace</b><span>The Hilbert path visits neighboring floor points in a fixed order.</span></figcaption>
         </figure>
         <figure class="diagram-card">
-          <img src="diagram-select.svg" width="300" height="210" loading="lazy" decoding="async" alt="Four same-state Hilbert points selected from consecutive blocks at indices 5, 17, 33, and 51.">
-          <figcaption><b>Select</b><span>Keep one same-state point from each 16-index block.</span></figcaption>
+          <img src="diagram-encode.svg" width="300" height="210" loading="lazy" decoding="async" alt="A Hilbert point doubled into a two-by-two low-bit cell whose four corners encode the terminal state.">
+          <figcaption><b>Encode</b><span>Place the terminal state in the low planar bits and the height modulo four.</span></figcaption>
         </figure>
         <figure class="diagram-card">
-          <img src="diagram-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="The four selected Hilbert points lifted to heights equal to their indices.">
-          <figcaption><b>Lift</b><span>The selected index becomes height, turning index gaps into vertical displacement. Height is exaggerated here for clarity.</span></figcaption>
+          <img src="diagram-coordinate-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="The first planar points raised to their encoded heights to form the three-dimensional walk.">
+          <figcaption><b>Lift</b><span>Use every point. Consecutive heights differ by \(1\) through \(7\).</span></figcaption>
         </figure>
       </div>
-      <p>One selected point per block makes the walk infinite. Successive selected indices differ by 4 to 28, which bounds both the floor displacement and the height displacement. The walk therefore uses only finitely many 3D steps.</p>
+      <p>The doubled Hilbert step contributes \(0\) or \(\pm2\) to each planar coordinate; the corner-code difference contributes at most \(1\). Thus the planar step coordinates lie between \(-3\) and \(3\), and the walk uses only finitely many 3D steps.</p>
     </section>
 
     <section class="section proof-part">
       <div class="part-heading">
         <span class="part-number">2</span>
-        <div><span class="eyebrow">Prove the key identity</span><h2>The Hilbert pair law connects floor displacement to height.</h2></div>
+        <div><span class="eyebrow">Prove the key identity</span><h2>The state encoding gives one identity for every pair.</h2></div>
       </div>
-      <p>All selected indices finish in the same Hilbert state. For any two of them, \(m&lt;n\), the planar displacement is \(H(n)-H(m)\), while the height displacement is exactly \(n-m\). The pair law equates a fingerprint of the floor vector with the <a href="https://en.wikipedia.org/wiki/P-adic_valuation">2-adic valuation</a> of the height gap:</p>
+      <p>For equal terminal states, the first-mismatch argument relates the Hilbert chord to the index gap. For unequal states, the Gray-code corner and height residue give matching parity cases. Together they produce</p>
       <div class="math-block pair-law">
         \[
-        V\bigl(H(n)-H(m)\bigr)=\nu_2(n-m).
+        V\bigl(G(n)-G(m)\bigr)
+        =\nu_2\bigl(|z(n)-z(m)|\bigr).
         \]
       </div>
       <p>Here \(\nu_2(k)\) counts the factors of 2 in a nonzero integer \(k\). For a nonzero planar vector \(u=(u_x,u_y)\), let \(p(u)\) be the lower coordinate valuation and let \(\epsilon(u)\) record whether the two valuations tie:</p>
@@ -261,7 +278,7 @@
         \end{aligned}
         \]
       </div>
-      <p>The first base-4 digit where \(m\) and \(n\) differ determines both sides of the pair law. Scaling a planar vector by \(k\) adds \(2\nu_2(k)\) to \(V\), while scaling the height gap by \(k\) adds only \(\nu_2(k)\) to its valuation. That factor of two is what breaks a supposed straight line. <a href="learn.html#pair-law">See the pair-law derivation.</a></p>
+      <p>The first base-4 digit where equal-state indices differ proves the underlying pair law. For unequal states, adjacent Gray-code corners make both sides have valuation \(0\), while opposite corners make both sides have valuation \(1\). Scaling a planar vector by \(k\) adds \(2\nu_2(k)\) to \(V\), but scaling the height gap adds only \(\nu_2(k)\). That factor of two breaks a supposed straight line. <a href="proof.html#pair-law">See the derivation.</a></p>
     </section>
 
     <section class="section proof-part contradiction-section">
@@ -272,16 +289,16 @@
       <div class="collinearity-layout">
         <figure class="collinearity-figure">
           <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three lifted Hilbert points on a supposed line, with their two adjacent displacement vectors.">
-          <figcaption>Lift each selected Hilbert point to height \(n\). A line would make the two adjacent chords proportional.</figcaption>
+          <figcaption>Three lifted points on a line would make their adjacent planar chords proportional to their positive height gaps.</figcaption>
         </figure>
         <div class="collinearity-copy">
-          <p>Assume three selected lifts lie on one line. After reducing their adjacent gaps, their planar chords are \(rW\) and \(sW\), where \(r\) and \(s\) are coprime.</p>
+          <p>Assume three lifted points lie on one line. After reducing their adjacent height gaps, their planar chords are \(rW\) and \(sW\), where \(r\) and \(s\) are coprime.</p>
           <div class="contradiction-result">
             <span class="eyebrow">Contradiction</span>
             <h3>Odd + odd cannot be odd.</h3>
             <p>The pair law on the adjacent pairs forces \(r\) and \(s\) to be odd. Applied to the endpoints, it forces \(r+s\) to be odd. But the sum of two odd numbers is even.</p>
           </div>
-          <p class="contradiction-link"><a href="proof.html#same-state-lift">Read the full proof</a> or <a href="learn.html#contradiction">study the guided lesson</a>.</p>
+          <p class="contradiction-link"><a href="proof.html#hilbert-lift">Read the full proof</a>.</p>
         </div>
       </div>
     </section>
@@ -609,7 +626,7 @@
 (async()=>{
   const c=document.getElementById('heroCanvas'),x=c.getContext('2d');let pts=[];
   try{
-    const d=await(await fetch('walk3d-data.json?v=hilbert1')).json(),b=Uint8Array.from(atob(d.packed),q=>q.charCodeAt(0));
+    const d=await(await fetch('walk3d-data.json?v=walk3')).json();if(d.version!==2||d.construction!=='hilbert-lift-v1')throw Error('unexpected walk data');const b=Uint8Array.from(atob(d.packed),q=>q.charCodeAt(0));
     let p=d.start.slice();pts=[p.slice()];
     for(let i=0;i<Math.min(7000,d.steps);i++){
       const id=i%2===0?b[i>>1]>>4:b[i>>1]&15,s=d.menu[id];

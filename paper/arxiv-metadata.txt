@@ -1,13 +1,13 @@
 Title: A finite-step lattice walk in Z^3 with no three collinear vertices
 Authors: Erik Kalviainen
 Primary category: math.CO (Combinatorics)
-Comments: 9 pages, 1 table, 3 figures. Includes a Lean 4 formalization, independent finite reconstruction, and an exhaustive 500,000-step no-three-in-line check.
+Comments: Includes a Lean 4 formalization and a standalone exact finite-prefix implementation check.
 Report number: None
 Journal reference: None
 DOI: None
 
 Abstract:
-We give an explicit negative answer to Erdős Problem 193. We define a nested infinite discrete Hilbert path H:N→N^2, select one terminal-steered index from every block of sixteen indices, and lift each selected point by its index. The resulting sequence in Z^3 has successive steps in one fixed finite set and has no three collinear vertices. The obstruction to collinearity is a two-adic pair invariant: for indices with the same terminal quadrant transformation, a valuation of the planar chord equals the ordinary two-adic valuation of the index gap. Applying this identity to the two adjacent chords and their sum rules out a collinear triple. The complete construction has also been formalized in Lean 4 against Mathlib; the formal theorem uses no additional axioms.
+We give an explicit negative answer to Erdős Problem 193. A nested discrete Hilbert path H:N→N^2 carries one of four terminal orientation states. We encode that state twice: as a Gray-code corner appended to the planar coordinates and as a residue modulo four appended to the height. The resulting sequence in Z^3 uses every Hilbert index, has successive steps in one fixed finite set, and has no three collinear vertices. The obstruction is an all-pairs two-adic identity equating a valuation of each planar chord with the ordinary two-adic valuation of its height gap. The complete tagged construction has also been formalized in Lean 4 against Mathlib; the formal theorem uses no additional axioms.
 
 Submission files:
 - erdos193.tex only; select PDFLaTeX in arXiv's submission interface.
@@ -17,5 +17,5 @@ Required human submission steps after review:
 1. Sign in to arXiv and confirm endorsement for math.CO.
 2. Upload erdos193.tex.
 3. Enter the metadata above and choose an arXiv license.
-4. Inspect arXiv's generated PDF, especially the four-copy endpoint calculation, selector table, all three figures, and references.
-5. Submit only after the pull request and external mathematical review are accepted.
+4. Inspect arXiv's generated PDF, especially the Hilbert endpoint calculation, state-tag table, all-pairs case split, and references.
+5. Submit only after external mathematical review and attribution wording are settled.
