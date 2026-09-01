@@ -8,7 +8,7 @@ def gaussian_walk(n):
         c = 1j * (1 - u) / (1 - 1j)
         W = 2 * z + c
         H = 4 * k + s2 % 4
-        P = round(W.real), round(W.imag), H
+        P = int(W.real), int(W.imag), H
         points.append(P)
         z += u
 

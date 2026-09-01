@@ -97,7 +97,7 @@
 <span class="code-line">        c = <span class="py-number">1j</span> * (<span class="py-number">1</span> - u) / (<span class="py-number">1</span> - <span class="py-number">1j</span>)</span>
 <span class="code-line">        W = <span class="py-number">2</span> * z + c</span>
 <span class="code-line">        H = <span class="py-number">4</span> * k + s2 % <span class="py-number">4</span></span>
-<span class="code-line">        P = <span class="py-builtin">round</span>(W.real), <span class="py-builtin">round</span>(W.imag), H</span>
+<span class="code-line">        P = <span class="py-builtin">int</span>(W.real), <span class="py-builtin">int</span>(W.imag), H</span>
 <span class="code-line">        points.<span class="py-function">append</span>(P)</span>
 <span class="code-line">        z += u</span>
 <span class="code-line code-line-blank"></span>
