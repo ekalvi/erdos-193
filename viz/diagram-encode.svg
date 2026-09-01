@@ -17,10 +17,10 @@
     <rect x="171" y="51" width="98" height="88" rx="8" fill="#08111f" stroke="#263750" stroke-width="1.5"/>
     <path d="M220 51V139M171 95H269" stroke="#30415c" stroke-width="1.5"/>
     <g font-size="10" font-weight="700" text-anchor="middle">
-      <circle cx="196" cy="117" r="7" fill="#56b4e9"/><text x="196" y="121" fill="#04101a">0</text>
-      <circle cx="196" cy="73" r="10" fill="#e6a93a" stroke="#fff" stroke-width="2"/><text x="196" y="77" fill="#201300">1</text>
-      <circle cx="244" cy="73" r="7" fill="#cc79a7"/><text x="244" y="77" fill="#1a0711">2</text>
-      <circle cx="244" cy="117" r="7" fill="#009e73"/><text x="244" y="121" fill="#00160f">3</text>
+      <circle cx="244" cy="117" r="7" fill="#56b4e9"/><text x="244" y="121" fill="#04101a">0</text>
+      <circle cx="244" cy="73" r="10" fill="#e6a93a" stroke="#fff" stroke-width="2"/><text x="244" y="77" fill="#201300">1</text>
+      <circle cx="196" cy="73" r="7" fill="#cc79a7"/><text x="196" y="77" fill="#1a0711">2</text>
+      <circle cx="196" cy="117" r="7" fill="#009e73"/><text x="196" y="121" fill="#00160f">3</text>
     </g>
     <text x="220" y="158" fill="#b8c6dd" font-size="12" text-anchor="middle">wₙ = 2zₙ + c<tspan baseline-shift="sub" font-size="8">αₙ</tspan></text>
     <rect x="55" y="177" width="190" height="22" rx="11" fill="#0b1727" stroke="#30415c"/>
