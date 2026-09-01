@@ -1,4 +1,4 @@
-"""Construct the Gaussian-lattice lift in the joint Kalviainen–Cambie paper."""
+"""Construct the Gaussian-lattice lift in the joint Cambie–Kalviainen paper."""
 
 from functools import cache
 from math import gcd
