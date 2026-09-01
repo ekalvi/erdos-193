@@ -1,6 +1,5 @@
 """Construct and finitely verify the joint Cambie–Kalviainen Gaussian walk."""
 
-from math import gcd
 
 
 def gaussian_walk(n):
@@ -25,6 +24,11 @@ def v2(n):
         return float("inf")
     n = abs(n)
     return (n & -n).bit_length() - 1
+
+def gcd(a, b):
+    while b:
+        a, b = b, a % b
+    return abs(a)
 
 
 def delta(a, b):
