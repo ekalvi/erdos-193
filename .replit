@@ -1,4 +1,4 @@
-entrypoint = "viz/hilbert_walk_demo.py"
+entrypoint = "viz/gaussian_walk.py"
 run = ["python3", "-m", "http.server", "3000", "--directory", "viz"]
 
 [deployment]

@@ -21,11 +21,11 @@ self.addEventListener('message', async event => {
     self.postMessage({type: 'running'});
     await pyodide.runPythonAsync(`
 namespace = {
-    "__name__": "hilbert_walk_demo",
-    "__file__": "hilbert_walk_demo.py",
+    "__name__": "gaussian_walk_demo",
+    "__file__": "gaussian_walk_demo.py",
     "__package__": None,
 }
-exec(compile(DEMO_SOURCE, "hilbert_walk_demo.py", "exec"), namespace)
+exec(compile(DEMO_SOURCE, "gaussian_walk_demo.py", "exec"), namespace)
 namespace["demonstrate"](DEMO_LENGTH)
 `);
     self.postMessage({type: 'done'});

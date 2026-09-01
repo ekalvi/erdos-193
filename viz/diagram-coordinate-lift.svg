@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 210" role="img" aria-labelledby="title desc">
   <title id="title">Planar points lifted by encoded heights</title>
-  <desc id="desc">The first four planar points G of the construction rise to heights zero, five, nine, and fourteen, forming the beginning of the three-dimensional walk.</desc>
+  <desc id="desc">The first four tagged Gaussian points w_n rise to heights zero, five, nine, and fourteen, forming the beginning of the three-dimensional walk.</desc>
   <rect width="300" height="210" fill="#04060d"/>
   <g font-family="Outfit, system-ui, sans-serif">
     <polygon points="35,166 142,202 267,160 158,124" fill="#08111f" stroke="#263750" stroke-width="1.5"/>
@@ -24,16 +24,16 @@
       <circle cx="164" cy="34" r="6" fill="#cc79a7"/>
     </g>
     <g fill="#8191aa" font-size="10" font-weight="600">
-      <text x="74" y="190">z=0</text>
-      <text x="163" y="128">z=5</text>
-      <text x="198" y="83">z=9</text>
-      <text x="174" y="37">z=14</text>
+      <text x="74" y="190">h=0</text>
+      <text x="163" y="128">h=5</text>
+      <text x="198" y="83">h=9</text>
+      <text x="174" y="37">h=14</text>
     </g>
     <g fill="#b8c6dd" font-size="10">
-      <text x="45" y="151">G(0)</text>
-      <text x="228" y="183">planar G(n)</text>
+      <text x="45" y="151">w₀</text>
+      <text x="228" y="183">planar wₙ</text>
     </g>
     <rect x="25" y="17" width="104" height="25" rx="12.5" fill="#0b1727" stroke="#30415c"/>
-    <text x="77" y="33" fill="#b9dcf2" font-size="11" font-weight="600" text-anchor="middle">P(n) = (G(n), z(n))</text>
+    <text x="77" y="33" fill="#b9dcf2" font-size="11" font-weight="600" text-anchor="middle">Pₙ = (wₙ, hₙ)</text>
   </g>
 </svg>

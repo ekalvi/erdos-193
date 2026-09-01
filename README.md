@@ -2,28 +2,27 @@
 
 This repository gives an explicit negative answer to [Erdős Problem 193](https://www.erdosproblems.com/193).
 
-There are a finite set $S \subseteq \mathbb Z^3$ and an infinite sequence $P : \mathbb N \to \mathbb Z^3$ such that every difference $P_{n+1}-P_n$ lies in $S$, while no three distinct terms of $P$ are collinear.
-
-The construction is unconditional and formalized in Lean 4. External mathematical review and community acceptance are still pending.
+There are a finite set $S\subseteq\mathbb Z^3$ and an infinite sequence $P:\mathbb N\to\mathbb Z^3$ such that every difference $P_{n+1}-P_n$ lies in $S$, while no three distinct terms of $P$ are collinear. The proof is unconditional and formalized in Lean 4. External mathematical review and community acceptance remain pending.
 
 - **Visual explanation:** [erdos-193.q5m.ai](https://erdos-193.q5m.ai)
 - **Guided explanation:** [`viz/learn.html`](viz/learn.html)
-- **Production deployment:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - **Proof manuscript:** [`paper/erdos193.pdf`](paper/erdos193.pdf)
 - **Lean theorem:** `Hilbert193.erdos193_unconditional`
 - **Formal proof guide:** [`formal/Hilbert193/README.md`](formal/Hilbert193/README.md)
 
 ## Result at a glance
 
-The proof uses a nested discrete Hilbert path $H : \mathbb N \to \mathbb N^2$.
+The formal witness is the Gaussian-lattice construction in the joint Stijn Cambie–Erik Kalviainen version of the paper.
 
-1. Every Hilbert index carries one of four terminal orientation states.
-2. Matching Gray-code and height tags encode that state without discarding points.
-3. The same-state two-adic pair law thereby extends to every pair of tagged vertices.
-4. Applying the all-pairs law to two adjacent chords and their sum rules out a collinear triple.
-5. Hilbert adjacency bounds tagged planar steps by 3 and height steps between 1 and 7.
+1. Let $u_n=i^{s_2(n)}$, where $s_2(n)$ is the binary digit sum, and let $z_n=\sum_{r<n}u_r$.
+2. Binary recursion gives $u_{2n+\varepsilon}=i^\varepsilon u_n$ and $z_{2n+\varepsilon}=(1+i)z_n+\varepsilon u_n$.
+3. If $u_m=u_n$, repeated parity halving proves
+   $$\nu_2(|z_n-z_m|^2)=\nu_2(n-m).$$
+4. Matching square-corner and height tags extend this identity to every pair.
+5. Applying the all-pairs law to two adjacent chords and their sum excludes a collinear triple.
+6. The walk uses a fixed menu indexed by the sixteen ordered pairs of Gaussian directions, with $|dx|,|dy|\le2$ and $1\le dz\le7$.
 
-The Lean development checks this complete infinite argument. The standalone Python demo independently checks finite prefixes; finite computation is not a premise of the theorem.
+The discrete Hilbert curve remains on the website as the geometric discovery route and an alternative state-tagged witness. It is not a premise of the current manuscript or Lean theorem.
 
 ## Verify the formal proof
 
@@ -35,79 +34,52 @@ lake build
 lake env lean Hilbert193/AxiomAudit.lean
 ```
 
-The axiom audit reports only Mathlib's standard `propext`, `Classical.choice`, and `Quot.sound`. No project-specific axioms or unfinished placeholders are used by the main theorem.
+The axiom audit reports only Mathlib's standard `propext`, `Classical.choice`, and `Quot.sound`. No project-specific axioms or unfinished placeholders are used.
 
 The load-bearing modules are:
 
-1. [`Basic.lean`](formal/Hilbert193/Hilbert193/Basic.lean) — shared elementary definitions.
-2. [`Transducer.lean`](formal/Hilbert193/Hilbert193/Transducer.lean) — digits, orientations, and the Hilbert transducer.
-3. [`Valuation.lean`](formal/Hilbert193/Hilbert193/Valuation.lean) — the two-adic planar chord invariant.
-4. [`PairLaw.lean`](formal/Hilbert193/Hilbert193/PairLaw.lean) — the same-terminal-state pair law and lifting obstruction.
-5. [`Construction.lean`](formal/Hilbert193/Hilbert193/Construction.lean) — state tags, all-pairs law, and exclusion of collinear triples.
-6. [`Continuity.lean`](formal/Hilbert193/Hilbert193/Continuity.lean) — Hilbert adjacency, tagged finite step menu, and final theorem.
-7. [`AxiomAudit.lean`](formal/Hilbert193/Hilbert193/AxiomAudit.lean) — kernel dependency report.
+1. [`GaussianValuation.lean`](formal/Hilbert193/Hilbert193/GaussianValuation.lean) — squared-norm valuation and scaling laws.
+2. [`Gaussian.lean`](formal/Hilbert193/Hilbert193/Gaussian.lean) — binary recursion, nearest-neighbor continuity, and the same-state halving law.
+3. [`Construction.lean`](formal/Hilbert193/Hilbert193/Construction.lean) — matching state tags, the all-pairs law, and exclusion of collinear triples.
+4. [`Continuity.lean`](formal/Hilbert193/Hilbert193/Continuity.lean) — the sixteen-state-pair step menu and final theorem.
+5. [`AxiomAudit.lean`](formal/Hilbert193/Hilbert193/AxiomAudit.lean) — kernel dependency report.
 
-## Archived finite artifact from the earlier selector construction
+The package and namespace retain the historical `Hilbert193` name for repository compatibility; the theorem's dependency graph is Gaussian-lattice only.
 
-[`hilbert-193-500k.jsonl`](hilbert-193-500k.jsonl) contains 500,001 vertices from the earlier bounded-gap selector construction. It remains independently inspectable evidence for that valid alternative witness, but it is not an implementation of the tagged walk now used in the manuscript and Lean theorem. The standalone verifier reconstructs every selected index and checks its 16-vector step menu:
+## Minimal construction
 
-```bash
-python3 verify_hilbert_construction.py
-```
+[`viz/gaussian_walk.py`](viz/gaussian_walk.py) is the formula-matched thirteen-line constructor displayed on the homepage. `gaussian_walk(n)` returns the first \(n\) vertices for any requested natural number \(n\); because \(n\) is arbitrary, the same rule defines the complete infinite sequence. It uses the same variables \(s_2,u,c,W,H,P\) as the compressed mathematical definition.
 
-The recorded artifact has SHA-256
-`6f8fdf59b7ecef5533b8a65265d80df961f67a955dabaf9d5bb973d7ae143d63`.
+## Independent finite replay
 
-An independent C++ verifier checked all 125,000,250,000 earlier-point directions in the artifact and found no repeated vertex and no collinear triple. The signed-off result is in [`results/hilbert-193-500k-exhaustive.json`](results/hilbert-193-500k-exhaustive.json). Re-running the full quadratic scan takes roughly 105 minutes on the machine used for the recorded run and uses exactly four workers:
+[`viz/gaussian_walk_demo.py`](viz/gaussian_walk_demo.py) independently reconstructs finite prefixes and checks:
 
-```bash
-clang++ -O3 -std=c++17 -pthread verify_hilbert_exhaustive.cpp \
-  -o verify_hilbert_exhaustive
-./verify_hilbert_exhaustive hilbert-193-500k.jsonl
-```
+- the exact all-pairs identity $\nu_2(|\Delta w|^2)=\nu_2(\Delta h)$;
+- the sixteen-vector small-step menu;
+- exact absence of repeated primitive directions from each anchor.
 
-Both long-running programs checkpoint progress and resume only when checkpoint metadata matches the requested artifact and parameters.
-
-## Reconstruct the finite artifact
-
-The constructor is deterministic and safely resumable:
+Run it with:
 
 ```bash
-python3 construct_hilbert_walk.py
-python3 verify_hilbert_construction.py
+python3 viz/gaussian_walk_demo.py
 ```
 
-Construction logs and checkpoints live in `logs/`. The constructor and verifier use independent coordinate implementations.
+Finite computation is supporting evidence and an implementation check, not a premise of the infinite theorem.
 
-## Repository map
+## Geometry and historical artifacts
 
-| Path | Purpose |
-|---|---|
-| [`paper/erdos193.tex`](paper/erdos193.tex) | Mathematical proof manuscript |
-| [`formal/Hilbert193/`](formal/Hilbert193/) | Lean 4 formalization and axiom audit |
-| [`construct_hilbert_walk.py`](construct_hilbert_walk.py) | Deterministic finite-prefix constructor |
-| [`verify_hilbert_construction.py`](verify_hilbert_construction.py) | Independent reconstruction and step-menu verifier |
-| [`verify_hilbert_exhaustive.cpp`](verify_hilbert_exhaustive.cpp) | Exact quadratic no-three-collinear verifier |
-| [`hilbert-193-500k.jsonl`](hilbert-193-500k.jsonl) | Recorded 500,000-step construction prefix |
-| [`results/`](results/) | Final machine-readable verification result |
-| [`design/`](design/) | Derivation notes and checks specific to the Hilbert proof |
-| [`viz/`](viz/) | Public explanatory site and interactive walk |
-| [`archive/`](archive/) | Superseded approaches, failed routes, and historical computations |
+The project passed through three unconditional constructions: Kalviainen's bounded-gap Hilbert selector; Cambie's all-index state-tagging refinement, integrated and formalized by Kalviainen; and the current Gaussian common core identified by Cambie and formalized and visualized by Kalviainen. The website timeline preserves all three routes and the earlier scale-and-rotate research archive.
 
-## Proof status and trust boundary
+Earlier selector and scale-and-rotate artifacts remain archived for provenance. In particular, `hilbert-193-500k.jsonl` and `results/hilbert-193-500k-exhaustive.json` certify an earlier finite prefix; they are not generated by the current Gaussian witness.
 
-The repository distinguishes three forms of evidence:
+## Attribution and status
 
-- **Mathematical proof:** the argument in `paper/erdos193.tex`.
-- **Kernel-checked formal proof:** the Lean theorem and its axiom audit in `formal/Hilbert193/`.
-- **Finite computation:** independent reconstruction and exhaustive checking of a 500,000-step prefix.
+This staging version is jointly authored by Stijn Cambie and Erik Kalviainen in alphabetical order. Kalviainen developed the first proof using a two-dimensional discrete Hilbert curve, formalized it in Lean, and built the exact checks, executable tooling, and visualization. Cambie became involved after that proof and proposed two successive simplifications: direct all-index state tags eliminating the selector, followed by the complex Gaussian-lattice walk that eliminated the Hilbert machinery. Kalviainen migrated the final proof into Lean and the current site. Both authors have checked the proof and state the result as an unconditional theorem. Both development streams were AI-assisted; S.C. is supported by FWO grant 1225224N.
 
-The finite computation does not establish the infinite result. The paper and Lean development do. Remaining work is external review: checking that the formal definitions match the original problem exactly, reviewing the mathematical exposition, and obtaining community acceptance.
+The source-of-truth boundaries are:
 
-## Historical approaches
+- **Mathematical proof:** [`paper/erdos193.tex`](paper/erdos193.tex) and [`paper/erdos193.pdf`](paper/erdos193.pdf).
+- **Kernel-checked proof:** `Hilbert193.erdos193_unconditional` and its axiom audit.
+- **Finite evidence:** the standalone Python replay and archived exact-prefix artifacts.
 
-Earlier scale-and-rotate, affine, search, and certificate programmes are preserved under [`archive/`](archive/). They include useful finite records and exact negative results, but they are not dependencies of the current proof and should not be read as its proof path. The archive README explains the status and points to the chronological research record.
-
-## Citation
-
-Citation metadata is provided in [`CITATION.cff`](CITATION.cff). The manuscript source contains the mathematical bibliography and attribution details.
+Citation metadata is in [`CITATION.cff`](CITATION.cff).

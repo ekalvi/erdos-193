@@ -42,8 +42,8 @@
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
           <canvas id="heroCanvas"></canvas>
-          <span class="art-chip">exact 500,000-step prefix</span>
-          <span class="art-label">the Hilbert lift</span>
+          <span class="art-chip">the walk continues forever</span>
+          <span class="art-label">one rendered view</span>
         </a>
       </div>
     </section>
@@ -51,7 +51,7 @@
     <div class="stats" aria-label="Construction facts">
       <div class="stat"><b>Infinite</b><span>the sequence never stops</span></div>
       <div class="stat"><b>1–7</b><span>height changes in the walk</span></div>
-      <div class="stat"><b>Finite</b><span>menu of 3D steps</span></div>
+      <div class="stat"><b>16</b><span>small 3D steps</span></div>
       <div class="stat"><b>No three</b><span>visited points on one line</span></div>
     </div>
 
@@ -79,6 +79,102 @@
       </div>
     </section>
 
+
+    <section class="section proof-part code-fractal">
+      <div class="part-heading">
+        <span class="part-number">1</span>
+        <div><span class="eyebrow">The whole construction</span><h2>This tiny program generates any requested part of an infinite fractal walk.</h2></div>
+      </div>
+      <p>Pass any \(n\) to obtain the first \(n\) exact lattice points. There is no fixed maximum: the same rule defines the walk for every natural-number index, so arbitrarily long prefixes expose more of the infinite structure.</p>
+      <div class="code-fractal-grid">
+        <pre class="fractal-code" aria-label="Gaussian walk Python constructor"><code class="python-code"><span class="code-line"><span class="py-keyword">def</span> <span class="py-function">gaussian_walk</span>(n):</span>
+<span class="code-line">    z = <span class="py-number">0j</span></span>
+<span class="code-line">    points = []</span>
+<span class="code-line code-line-blank"></span>
+<span class="code-line">    <span class="py-keyword">for</span> k <span class="py-keyword">in</span> <span class="py-builtin">range</span>(n):</span>
+<span class="code-line">        s2 = k.<span class="py-function">bit_count</span>()</span>
+<span class="code-line">        u = <span class="py-number">1j</span>**s2</span>
+<span class="code-line">        c = <span class="py-number">1j</span> * (<span class="py-number">1</span> - u) / (<span class="py-number">1</span> - <span class="py-number">1j</span>)</span>
+<span class="code-line">        W = <span class="py-number">2</span> * z + c</span>
+<span class="code-line">        H = <span class="py-number">4</span> * k + s2 % <span class="py-number">4</span></span>
+<span class="code-line">        P = <span class="py-builtin">int</span>(W.real), <span class="py-builtin">int</span>(W.imag), H</span>
+<span class="code-line">        points.<span class="py-function">append</span>(P)</span>
+<span class="code-line">        z += u</span>
+<span class="code-line code-line-blank"></span>
+<span class="code-line">    <span class="py-keyword">return</span> points</span></code></pre>
+        <div class="code-fractal-copy">
+          <span class="eyebrow">Simple rule · unexpected geometry</span>
+          <h3>A binary counter becomes a self-similar spatial walk.</h3>
+          <p>The letters match the mathematics:</p>
+          <div class="math-block compact-math">\[
+            \begin{aligned}
+              u_n&amp;=i^{s_2(n)},\\
+              z_0&amp;=0,\qquad z_{n+1}=z_n+u_n,\\
+              c_n&amp;=\frac{i(1-u_n)}{1-i},\\
+              W_n&amp;=2z_n+c_n,\\
+              H_n&amp;=4n+s_2(n)\bmod4,\\
+              P_n&amp;=(\Re W_n,\Im W_n,H_n).
+            \end{aligned}
+          \]</div>
+          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes are generated entirely by that recurrence—not by a drawing algorithm. The constructor returns whichever finite prefix is requested; the underlying sequence is defined for all \(n\).</p>
+          <div class="route-actions"><a class="button primary" href="demo.html">Edit and verify this code</a><a class="button" href="walk3d.html">Explore the walk in 3D</a></div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section proof-part">
+      <div class="part-heading">
+        <span class="part-number">2</span>
+        <div><span class="eyebrow">Prove the key identity</span><h2>Every chord has the same binary fingerprint as its height.</h2></div>
+      </div>
+      <p>If \(u_m=u_n\) and \(n-m\) is even, the binary recurrence halves both indices and factors the planar chord by \(1+i\). Each halving adds one to the valuation of the squared norm. After \(\nu_2(n-m)\) halvings, the remaining gap is odd and the remaining squared norm is odd:</p>
+      <div class="math-block compact-math">\[
+        u_m=u_n\quad\Longrightarrow\quad
+        \nu_2\!\left(|z_n-z_m|^2\right)=\nu_2(n-m).
+      \]</div>
+      <p>The matching square and height tags remove the equal-state restriction. Adjacent corners make both sides odd; opposite corners give valuation one. Thus every pair satisfies</p>
+      <div class="math-block pair-law">
+        \[
+        \nu_2\!\left(|w_n-w_m|^2\right)=\nu_2(h_n-h_m).
+        \]
+      </div>
+      <p>Multiplying a planar chord by \(k\) adds \(2\nu_2(k)\) because its squared norm scales by \(k^2\). A height gap gains only \(\nu_2(k)\). That mismatch makes a straight line impossible. <a href="proof.html#pair-law">See the full derivation.</a></p>
+    </section>
+
+    <section class="section proof-part contradiction-section">
+      <div class="part-heading">
+        <span class="part-number">3</span>
+        <div><span class="eyebrow">Rule out a line</span><h2>The pair law rules out collinearity.</h2></div>
+      </div>
+      <div class="collinearity-layout">
+        <figure class="collinearity-figure">
+          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three Gaussian-lift points on a supposed line, with their two adjacent displacement vectors.">
+          <figcaption>Three lifted points on a line would give one common complex slope for the two adjacent chords and their sum.</figcaption>
+        </figure>
+        <div class="collinearity-copy">
+          <p>Let \(A,B&gt;0\) be the adjacent height gaps and \(X,Y\) the matching planar chords. Collinearity gives \(X/A=Y/B=(X+Y)/(A+B)\).</p>
+          <div class="contradiction-result">
+            <span class="eyebrow">Contradiction</span>
+            <h3>Equal order + equal order has larger order.</h3>
+            <p>The three pair laws force \(\nu_2(A)=\nu_2(B)=\nu_2(A+B)\). But after removing their common power of two, \(A\) and \(B\) are both odd, so their sum is even.</p>
+          </div>
+          <p class="contradiction-link"><a href="proof.html#collinearity">Read the full proof</a>.</p>
+        </div>
+      </div>
+    </section>
+    <section class="section hilbert-history-compact">
+      <div>
+        <span class="eyebrow">An earlier construction</span>
+        <h2>A Hilbert-curve walk first exposed the four-state tag geometry.</h2>
+        <p>Before the compact Gaussian formula, an earlier construction followed a discrete Hilbert curve—a recursive path through square grids—and tracked four possible orientations. Those orientations suggested the cyclic corner tags. This background is optional: the code and proof above are self-contained.</p>
+        <a href="progress.html#board-aug-26">See the earlier construction’s development →</a>
+      </div>
+      <figure class="diagram-card">
+        <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="An earlier construction based on a discrete Hilbert curve.">
+        <figcaption><b>Earlier construction</b><span>Useful geometric intuition; not a premise of the Gaussian proof.</span></figcaption>
+      </figure>
+    </section>
     <section class="section making-story" aria-labelledby="making-story-title">
       <div class="making-story-head">
         <div>
@@ -103,530 +199,15 @@
       </div>
     </section>
 
-    <section class="section proof-part">
-      <div class="part-heading">
-        <span class="part-number">1</span>
-        <div><span class="eyebrow">Build the walk</span><h2>Trace. Encode. Lift.</h2></div>
-      </div>
-      <p>Let \(H(n)\) be the point reached at index \(n\) on an infinite discrete <a href="https://en.wikipedia.org/wiki/Hilbert_curve">Hilbert curve</a>. The same recursive rule builds routes on larger and larger 2D grids:</p>
-      <figure class="growth-figure hilbert-growth">
-        <div class="hilbert-growth-stage">
-          <div class="hilbert-growth-hud">
-            <span class="hilbert-growth-kicker" aria-hidden="true"><i></i> Recursive step</span>
-            <strong id="hilbertGrowthScale">2 × 2 → 4 × 4</strong>
-            <button id="hilbertGrowthToggle" type="button" aria-pressed="false" aria-label="Pause Hilbert curve animation">Pause</button>
-          </div>
-          <svg id="hilbertGrowth" viewBox="0 0 760 430" role="img" aria-labelledby="growthTitle growthDescription">
-            <title id="growthTitle">A Hilbert route recursively becoming four turned or reflected copies</title>
-            <desc id="growthDescription">The animation repeatedly transforms a Hilbert route into four smaller copies, adds three connecting steps, and produces the next route on a grid twice as wide. In traversal order, the lower-left, upper-left, upper-right, and lower-right copies use transformations S, I, I, and T.</desc>
-            <rect width="760" height="430" fill="#04060d"/>
-            <g id="hilbertGridLow" class="hilbert-growth-grid"></g>
-            <g id="hilbertGridHigh" class="hilbert-growth-grid"></g>
-            <rect class="hilbert-growth-frame" x="185" y="20" width="390" height="390" rx="7"/>
-            <g class="hilbert-growth-side" aria-hidden="true">
-              <text x="94" y="186">ONE ROUTE</text>
-              <text x="94" y="207">COPIED ×4</text>
-              <path d="M135 219H170"/>
-              <text x="666" y="186">TURN</text>
-              <text x="666" y="207">+ CONNECT</text>
-              <path d="M590 219H625"/>
-            </g>
-            <g fill="none" stroke-linecap="round" stroke-linejoin="round">
-              <path id="hilbertBaseLow" class="hilbert-growth-line"/>
-              <path id="hilbertBaseHigh" class="hilbert-growth-line"/>
-              <g id="hilbertCopies" class="hilbert-growth-copies">
-                <path/><path/><path/><path/>
-              </g>
-              <g id="hilbertJoins" class="hilbert-growth-joins">
-                <line/><line/><line/>
-              </g>
-            </g>
-            <circle id="hilbertGrowthStart" class="hilbert-growth-endpoint start" r="5"/>
-            <circle id="hilbertGrowthEnd" class="hilbert-growth-endpoint end" r="5"/>
-            <g id="hilbertOrientations" class="hilbert-growth-orientations" aria-hidden="true">
-              <g transform="translate(282.5 312.5)"><circle r="18"/><text>S</text></g>
-              <g transform="translate(282.5 117.5)"><circle r="18"/><text>I</text></g>
-              <g transform="translate(477.5 117.5)"><circle r="18"/><text>I</text></g>
-              <g transform="translate(477.5 312.5)"><circle r="18"/><text>T</text></g>
-            </g>
-          </svg>
-          <div class="hilbert-growth-legend" aria-hidden="true">
-            <span class="copy-key"><i></i><i></i><i></i><i></i>four recursive copies</span>
-            <span class="join-key"><i></i>three one-cell joins</span>
-            <span id="hilbertGrowthAction">copy ×4 · turn or reflect · connect</span>
-          </div>
-        </div>
-        <figcaption><b>Watch the recursive step.</b> One route becomes four smaller turned or reflected copies; three one-cell joins make the next Hilbert route. The animation runs backward and repeats because the same rule works at every scale.</figcaption>
-      </figure>
-      <figure class="terminal-state-figure" aria-labelledby="terminalStateTitle">
-        <div class="terminal-state-stage">
-          <div class="terminal-state-header">
-            <div>
-              <span class="eyebrow">Orientation memory</span>
-              <h3 id="terminalStateTitle">The last transformed U is the terminal state.</h3>
-            </div>
-            <button id="terminalStateToggle" type="button" aria-pressed="false" aria-label="Pause terminal-state animation">Pause</button>
-          </div>
-          <div class="terminal-state-grid" role="group" aria-label="Four terminal-state orientations">
-            <button class="terminal-state-card is-active" type="button" data-state="I" data-label="unchanged" data-rule="(x,y) → (x,y)" aria-pressed="true" aria-label="I: unchanged; x y maps to x y">
-              <span class="terminal-state-card-heading"><strong>I</strong><small>unchanged</small></span>
-              <svg viewBox="0 0 120 112" aria-hidden="true">
-                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
-                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
-                <path class="terminal-state-route" pathLength="1" d="M30 86L30 30L90 30L90 86"/>
-                <circle class="terminal-state-start" cx="30" cy="86" r="4"/>
-                <circle class="terminal-state-end" cx="90" cy="86" r="4"/>
-              </svg>
-            </button>
-            <button class="terminal-state-card" type="button" data-state="S" data-label="swap coordinates" data-rule="(x,y) → (y,x)" aria-pressed="false" aria-label="S: swap coordinates; x y maps to y x">
-              <span class="terminal-state-card-heading"><strong>S</strong><small>swap</small></span>
-              <svg viewBox="0 0 120 112" aria-hidden="true">
-                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
-                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
-                <path class="terminal-state-route" pathLength="1" d="M30 86L90 86L90 30L30 30"/>
-                <circle class="terminal-state-start" cx="30" cy="86" r="4"/>
-                <circle class="terminal-state-end" cx="30" cy="30" r="4"/>
-              </svg>
-            </button>
-            <button class="terminal-state-card" type="button" data-state="T" data-label="swap and reflect" data-rule="(x,y) → (1−y,1−x)" aria-pressed="false" aria-label="T: swap and reflect; x y maps to one minus y, one minus x">
-              <span class="terminal-state-card-heading"><strong>T</strong><small>swap + reflect</small></span>
-              <svg viewBox="0 0 120 112" aria-hidden="true">
-                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
-                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
-                <path class="terminal-state-route" pathLength="1" d="M90 30L30 30L30 86L90 86"/>
-                <circle class="terminal-state-start" cx="90" cy="30" r="4"/>
-                <circle class="terminal-state-end" cx="90" cy="86" r="4"/>
-              </svg>
-            </button>
-            <button class="terminal-state-card" type="button" data-state="C" data-label="half-turn" data-rule="(x,y) → (1−x,1−y)" aria-pressed="false" aria-label="C: half-turn; x y maps to one minus x, one minus y">
-              <span class="terminal-state-card-heading"><strong>C</strong><small>half-turn</small></span>
-              <svg viewBox="0 0 120 112" aria-hidden="true">
-                <rect class="terminal-state-frame" x="22" y="18" width="76" height="76" rx="4"/>
-                <path class="terminal-state-grid-lines" d="M60 18V94M22 56H98"/>
-                <path class="terminal-state-route" pathLength="1" d="M90 30L90 86L30 86L30 30"/>
-                <circle class="terminal-state-start" cx="90" cy="30" r="4"/>
-                <circle class="terminal-state-end" cx="30" cy="30" r="4"/>
-              </svg>
-            </button>
-          </div>
-          <div class="terminal-state-readout">
-            <span><small>Active transformation</small><b id="terminalStateName">I · unchanged</b></span>
-            <code id="terminalStateRule">(x,y) → (x,y)</code>
-            <a href="walk3d.html#state-map">Open the full state map</a>
-          </div>
-        </div>
-        <figcaption>Each digit may leave, turn, or reflect the smaller route. The final highlighted orientation is the terminal state.</figcaption>
-      </figure>
-      <p>Encode each terminal state by a cyclic label and the corresponding Gray-code corner:</p>
-      <div class="math-block compact-math">
-        \[
-        \begin{array}{c|cccc}
-          g&amp;I&amp;S&amp;C&amp;T\\ \hline
-          \lambda(g)&amp;0&amp;1&amp;2&amp;3\\
-          u_g&amp;(0,0)&amp;(0,1)&amp;(1,1)&amp;(1,0).
-        \end{array}
-        \]
-      </div>
-      <p>Use every Hilbert index. The state code occupies the low planar bits and the height residue:</p>
-      <div class="math-block compact-math">
-        \[
-        G(n)=2H(n)+u_{\sigma(n)},\qquad
-        z(n)=4n+\lambda(\sigma(n)),\qquad
-        P_n=(G(n),z(n)).
-        \]
-      </div>
-      <div class="construction-diagrams" aria-label="Trace, encode, and lift construction">
-        <figure class="diagram-card">
-          <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
-          <figcaption><b>Trace</b><span>The Hilbert path visits neighboring floor points in a fixed order.</span></figcaption>
-        </figure>
-        <figure class="diagram-card">
-          <img src="diagram-encode.svg" width="300" height="210" loading="lazy" decoding="async" alt="A Hilbert point doubled into a two-by-two low-bit cell whose four corners encode the terminal state.">
-          <figcaption><b>Encode</b><span>Place the terminal state in the low planar bits and the height modulo four.</span></figcaption>
-        </figure>
-        <figure class="diagram-card">
-          <img src="diagram-coordinate-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="The first planar points raised to their encoded heights to form the three-dimensional walk.">
-          <figcaption><b>Lift</b><span>Use every point. Consecutive heights differ by \(1\) through \(7\).</span></figcaption>
-        </figure>
-      </div>
-      <p>The doubled Hilbert step contributes \(0\) or \(\pm2\) to each planar coordinate; the corner-code difference contributes at most \(1\). Thus the planar step coordinates lie between \(-3\) and \(3\), and the walk uses only finitely many 3D steps.</p>
-    </section>
-
-    <section class="section proof-part">
-      <div class="part-heading">
-        <span class="part-number">2</span>
-        <div><span class="eyebrow">Prove the key identity</span><h2>The state encoding gives one identity for every pair.</h2></div>
-      </div>
-      <p>For equal terminal states, the first-mismatch argument relates the Hilbert chord to the index gap. For unequal states, the Gray-code corner and height residue give matching parity cases. Together they produce</p>
-      <div class="math-block pair-law">
-        \[
-        V\bigl(G(n)-G(m)\bigr)
-        =\nu_2\bigl(|z(n)-z(m)|\bigr).
-        \]
-      </div>
-      <p>Here \(\nu_2(k)\) counts the factors of 2 in a nonzero integer \(k\). For a nonzero planar vector \(u=(u_x,u_y)\), let \(p(u)\) be the lower coordinate valuation and let \(\epsilon(u)\) record whether the two valuations tie:</p>
-      <div class="math-block compact-math">
-        \[
-        \begin{aligned}
-        p(u)&amp;=\min\{\nu_2(u_x),\nu_2(u_y)\},\\
-        \epsilon(u)&amp;=
-        \begin{cases}
-        1,&amp;\nu_2(u_x)=\nu_2(u_y),\\
-        0,&amp;\text{otherwise},
-        \end{cases}\\
-        V(u)&amp;=2p(u)+\epsilon(u),\qquad \nu_2(0)=\infty.
-        \end{aligned}
-        \]
-      </div>
-      <p>The first base-4 digit where equal-state indices differ proves the underlying pair law. For unequal states, adjacent Gray-code corners make both sides have valuation \(0\), while opposite corners make both sides have valuation \(1\). Scaling a planar vector by \(k\) adds \(2\nu_2(k)\) to \(V\), but scaling the height gap adds only \(\nu_2(k)\). That factor of two breaks a supposed straight line. <a href="proof.html#pair-law">See the derivation.</a></p>
-    </section>
-
-    <section class="section proof-part contradiction-section">
-      <div class="part-heading">
-        <span class="part-number">3</span>
-        <div><span class="eyebrow">Rule out a line</span><h2>The pair law rules out collinearity.</h2></div>
-      </div>
-      <div class="collinearity-layout">
-        <figure class="collinearity-figure">
-          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three lifted Hilbert points on a supposed line, with their two adjacent displacement vectors.">
-          <figcaption>Three lifted points on a line would make their adjacent planar chords proportional to their positive height gaps.</figcaption>
-        </figure>
-        <div class="collinearity-copy">
-          <p>Assume three lifted points lie on one line. After reducing their adjacent height gaps, their planar chords are \(rW\) and \(sW\), where \(r\) and \(s\) are coprime.</p>
-          <div class="contradiction-result">
-            <span class="eyebrow">Contradiction</span>
-            <h3>Odd + odd cannot be odd.</h3>
-            <p>The pair law on the adjacent pairs forces \(r\) and \(s\) to be odd. Applied to the endpoints, it forces \(r+s\) to be odd. But the sum of two odd numbers is even.</p>
-          </div>
-          <p class="contradiction-link"><a href="proof.html#hilbert-lift">Read the full proof</a>.</p>
-        </div>
-      </div>
-    </section>
-
   </main>
 
   <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
 </div>
 <script>
-(()=>{
-  const svg=document.getElementById('hilbertGrowth');
-  const scaleLabel=document.getElementById('hilbertGrowthScale');
-  const actionLabel=document.getElementById('hilbertGrowthAction');
-  const toggle=document.getElementById('hilbertGrowthToggle');
-  if(!svg||!scaleLabel||!actionLabel||!toggle)return;
-
-  const NS='http://www.w3.org/2000/svg';
-  const left=185,top=20,size=390;
-  const baseLow=document.getElementById('hilbertBaseLow');
-  const baseHigh=document.getElementById('hilbertBaseHigh');
-  const gridLow=document.getElementById('hilbertGridLow');
-  const gridHigh=document.getElementById('hilbertGridHigh');
-  const copies=[...document.querySelectorAll('#hilbertCopies path')];
-  const joins=[...document.querySelectorAll('#hilbertJoins line')];
-  const startPoint=document.getElementById('hilbertGrowthStart');
-  const endPoint=document.getElementById('hilbertGrowthEnd');
-  const orientationLabels=document.getElementById('hilbertOrientations');
-
-  function hilbertPoints(order){
-    const dimension=2**order;
-    const points=new Array(dimension*dimension);
-    for(let distance=0;distance<points.length;distance++){
-      let index=distance,x=0,y=0;
-      for(let scale=1;scale<dimension;scale*=2){
-        const rx=1&(index>>1),ry=1&(index^rx);
-        if(ry===0){
-          if(rx===1){x=scale-1-x;y=scale-1-y}
-          const swap=x;x=y;y=swap
-        }
-        x+=scale*rx;y+=scale*ry;index>>=2
-      }
-      points[distance]=[
-        left+(x+.5)*size/dimension,
-        top+size-(y+.5)*size/dimension
-      ]
-    }
-    return points
-  }
-
-  const pointSets=Array.from({length:7},(_,order)=>order?hilbertPoints(order):null);
-  const pathData=pointSets.map(points=>points?points.map((point,index)=>`${index?'L':'M'}${point[0]} ${point[1]}`).join(''):'');
-  const clamp=value=>Math.max(0,Math.min(1,value));
-  const smooth=(from,to,value)=>{
-    const t=clamp((value-from)/(to-from));
-    return t*t*(3-2*t)
-  };
-  const mix=(from,to,amount)=>from+(to-from)*amount;
-  const coordinate=value=>Math.round(value*10)/10;
-
-  function stagedPoint(from,placed,to,moveAmount,turnAmount){
-    return [
-      coordinate(mix(mix(from[0],placed[0],moveAmount),to[0],turnAmount)),
-      coordinate(mix(mix(from[1],placed[1],moveAmount),to[1],turnAmount))
-    ]
-  }
-
-  function morphPath(from,placed,to,moveAmount,turnAmount){
-    let data='';
-    for(let index=0;index<from.length;index++){
-      const point=stagedPoint(from[index],placed[index],to[index],moveAmount,turnAmount);
-      data+=`${index?'L':'M'}${point[0]} ${point[1]}`
-    }
-    return data
-  }
-
-  function buildGrid(group,dimension){
-    const fragment=document.createDocumentFragment();
-    for(let index=1;index<dimension;index++){
-      const offset=index*size/dimension;
-      const vertical=document.createElementNS(NS,'line');
-      vertical.setAttribute('x1',left+offset);
-      vertical.setAttribute('y1',top);
-      vertical.setAttribute('x2',left+offset);
-      vertical.setAttribute('y2',top+size);
-      const horizontal=document.createElementNS(NS,'line');
-      horizontal.setAttribute('x1',left);
-      horizontal.setAttribute('y1',top+offset);
-      horizontal.setAttribute('x2',left+size);
-      horizontal.setAttribute('y2',top+offset);
-      fragment.append(vertical,horizontal)
-    }
-    group.replaceChildren(fragment)
-  }
-
-  let preparedOrder=0,transition;
-  function prepare(order){
-    if(order===preparedOrder)return;
-    const low=pointSets[order],high=pointSets[order+1],count=low.length;
-    const children=Array.from({length:4},(_,child)=>high.slice(child*count,(child+1)*count));
-    const quadrants=[[0,1],[0,0],[1,0],[1,1]];
-    const placed=quadrants.map(([column,row])=>low.map(point=>[
-      left+column*size/2+(point[0]-left)/2,
-      top+row*size/2+(point[1]-top)/2
-    ]));
-    transition={low,children,placed};
-    baseLow.setAttribute('d',pathData[order]);
-    baseHigh.setAttribute('d',pathData[order+1]);
-    buildGrid(gridLow,2**order);
-    buildGrid(gridHigh,2**(order+1));
-    preparedOrder=order
-  }
-
-  let labelKey='';
-  function renderTransition(order,progress,direction){
-    prepare(order);
-    const moveAmount=smooth(.05,.43,progress);
-    const turnAmount=smooth(.45,.68,progress);
-    const lowOpacity=1-smooth(.02,.2,progress);
-    const highOpacity=smooth(.91,.99,progress);
-    const copyOpacity=Math.min(smooth(.02,.2,progress),1-smooth(.91,.99,progress));
-    const {low,children,placed}=transition;
-    const last=low.length-1;
-
-    baseLow.style.opacity=lowOpacity;
-    baseHigh.style.opacity=highOpacity;
-    gridLow.style.opacity=.52*(1-smooth(.18,.7,progress));
-    gridHigh.style.opacity=.52*smooth(.3,.82,progress);
-    orientationLabels.style.opacity=smooth(.28,.52,progress);
-
-    for(let child=0;child<4;child++){
-      copies[child].style.opacity=copyOpacity;
-      if(copyOpacity>.002)copies[child].setAttribute('d',morphPath(low,placed[child],children[child],moveAmount,turnAmount))
-    }
-    for(let join=0;join<3;join++){
-      const from=stagedPoint(low[last],placed[join][last],children[join][last],moveAmount,turnAmount);
-      const to=stagedPoint(low[0],placed[join+1][0],children[join+1][0],moveAmount,turnAmount);
-      const reveal=smooth(.69+join*.035,.78+join*.035,progress);
-      joins[join].style.opacity=Math.min(copyOpacity,smooth(.69+join*.035,.715+join*.035,progress));
-      joins[join].setAttribute('x1',from[0]);
-      joins[join].setAttribute('y1',from[1]);
-      joins[join].setAttribute('x2',coordinate(mix(from[0],to[0],reveal)));
-      joins[join].setAttribute('y2',coordinate(mix(from[1],to[1],reveal)))
-    }
-
-    const start=stagedPoint(low[0],placed[0][0],children[0][0],moveAmount,turnAmount);
-    const end=stagedPoint(low[last],placed[3][last],children[3][last],moveAmount,turnAmount);
-    startPoint.setAttribute('cx',start[0]);
-    startPoint.setAttribute('cy',start[1]);
-    endPoint.setAttribute('cx',end[0]);
-    endPoint.setAttribute('cy',end[1]);
-
-    const lowDimension=2**order,highDimension=2**(order+1);
-    const nextLabelKey=`${order}:${direction}`;
-    if(labelKey!==nextLabelKey){
-      const from=direction>0?lowDimension:highDimension;
-      const to=direction>0?highDimension:lowDimension;
-      scaleLabel.textContent=`${from} × ${from} → ${to} × ${to}`;
-      actionLabel.textContent=direction>0
-        ?'copy ×4 · turn or reflect · connect'
-        :'the same recursive step · shown backward';
-      labelKey=nextLabelKey
-    }
-    svg.dataset.from=String(direction>0?lowDimension:highDimension);
-    svg.dataset.to=String(direction>0?highDimension:lowDimension);
-    svg.dataset.progress=progress.toFixed(3)
-  }
-
-  const transitionTime=1900;
-  const largestOrder=pointSets.length-2;
-  const timeline=[
-    ...Array.from({length:largestOrder},(_,index)=>({
-      order:index+1,
-      direction:1,
-      hold:index===largestOrder-1?850:350
-    })),
-    ...Array.from({length:largestOrder},(_,index)=>({
-      order:largestOrder-index,
-      direction:-1,
-      hold:index===largestOrder-1?850:350
-    }))
-  ];
-  const duration=timeline.reduce((sum,step)=>sum+transitionTime+step.hold,0);
-
-  function renderAt(time){
-    let remaining=time%duration;
-    for(const step of timeline){
-      const stepTime=transitionTime+step.hold;
-      if(remaining<stepTime){
-        const phase=Math.min(1,remaining/transitionTime);
-        renderTransition(step.order,step.direction>0?phase:1-phase,step.direction);
-        return
-      }
-      remaining-=stepTime
-    }
-  }
-
-  const compact=matchMedia('(max-width:600px)');
-  const setViewBox=()=>svg.setAttribute('viewBox',compact.matches?'165 0 430 430':'0 0 760 430');
-  compact.addEventListener('change',setViewBox);
-  setViewBox();
-
-  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let elapsed=reduced
-    ?timeline.slice(0,largestOrder-1).reduce((sum,step)=>sum+transitionTime+step.hold,0)+transitionTime
-    :0;
-  let running=!reduced,visible=false,frame=0,lastTick=0,lastPaint=0;
-
-  function updateToggle(){
-    toggle.textContent=running?'Pause':'Play';
-    toggle.setAttribute('aria-pressed',String(!running));
-    toggle.setAttribute('aria-label',`${running?'Pause':'Play'} Hilbert curve animation`);
-    svg.dataset.running=String(running)
-  }
-  function stopFrame(){
-    if(frame)cancelAnimationFrame(frame);
-    frame=0;lastTick=0
-  }
-  function requestFrame(){
-    if(running&&visible&&!document.hidden&&!frame){
-      lastTick=0;lastPaint=0;frame=requestAnimationFrame(tick)
-    }
-  }
-  function tick(now){
-    frame=0;
-    if(!running||!visible||document.hidden){lastTick=0;return}
-    if(lastTick)elapsed=(elapsed+Math.min(now-lastTick,80))%duration;
-    lastTick=now;
-    if(!lastPaint||now-lastPaint>=32){renderAt(elapsed);lastPaint=now}
-    frame=requestAnimationFrame(tick)
-  }
-
-  toggle.addEventListener('click',()=>{
-    running=!running;
-    updateToggle();
-    if(running){visible=true;requestFrame()}else stopFrame()
-  });
-  new IntersectionObserver(([entry])=>{
-    visible=entry.isIntersecting;
-    if(visible)requestFrame();else stopFrame()
-  },{rootMargin:'140px'}).observe(svg);
-  document.addEventListener('visibilitychange',()=>{
-    if(document.hidden)stopFrame();else requestFrame()
-  });
-
-  renderAt(elapsed);
-  if(reduced){
-    const largestDimension=2**(largestOrder+1);
-    scaleLabel.textContent=`${largestDimension} × ${largestDimension} Hilbert route`;
-    actionLabel.textContent='motion paused · the same rule continues'
-  }
-  updateToggle()
-})();
-</script>
-<script>
-(()=>{
-  const figure=document.querySelector('.terminal-state-figure');
-  const cards=[...document.querySelectorAll('.terminal-state-card')];
-  const name=document.getElementById('terminalStateName');
-  const rule=document.getElementById('terminalStateRule');
-  const toggle=document.getElementById('terminalStateToggle');
-  if(!figure||!cards.length||!name||!rule||!toggle)return;
-
-  const states=cards.map(card=>({
-    state:card.dataset.state,
-    label:card.dataset.label,
-    rule:card.dataset.rule
-  }));
-  const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  let index=0,running=!reduced,visible=false,timer=0;
-
-  function render(next){
-    index=(next+states.length)%states.length;
-    cards.forEach((card,cardIndex)=>{
-      const active=cardIndex===index;
-      card.classList.toggle('is-active',active);
-      card.setAttribute('aria-pressed',String(active))
-    });
-    const active=states[index];
-    name.textContent=`${active.state} · ${active.label}`;
-    rule.textContent=active.rule;
-    figure.dataset.state=active.state
-  }
-  function stop(){
-    if(timer)clearTimeout(timer);
-    timer=0
-  }
-  function schedule(){
-    stop();
-    if(running&&visible&&!document.hidden){
-      timer=setTimeout(()=>{
-        render(index+1);
-        schedule()
-      },2200)
-    }
-  }
-  function updateToggle(){
-    toggle.textContent=running?'Pause':'Play';
-    toggle.setAttribute('aria-pressed',String(!running));
-    toggle.setAttribute('aria-label',`${running?'Pause':'Play'} terminal-state animation`);
-    figure.dataset.running=String(running)
-  }
-
-  cards.forEach((card,cardIndex)=>card.addEventListener('click',()=>{
-    render(cardIndex);
-    schedule()
-  }));
-  toggle.addEventListener('click',()=>{
-    running=!running;
-    updateToggle();
-    schedule()
-  });
-  new IntersectionObserver(([entry])=>{
-    visible=entry.isIntersecting;
-    if(visible)schedule();else stop()
-  },{rootMargin:'120px'}).observe(figure);
-  document.addEventListener('visibilitychange',()=>{
-    if(document.hidden)stop();else schedule()
-  });
-
-  render(0);
-  updateToggle()
-})();
-</script>
-<script>
 (async()=>{
   const c=document.getElementById('heroCanvas'),x=c.getContext('2d');let pts=[];
   try{
-    const d=await(await fetch('walk3d-data.json?v=walk3')).json();if(d.version!==2||d.construction!=='hilbert-lift-v1')throw Error('unexpected walk data');const b=Uint8Array.from(atob(d.packed),q=>q.charCodeAt(0));
+    const d=await(await fetch('walk3d-data.json?v=gaussian1')).json();if(d.version!==3||d.construction!=='gaussian-lift-v1')throw Error('unexpected walk data');const b=Uint8Array.from(atob(d.packed),q=>q.charCodeAt(0));
     let p=d.start.slice();pts=[p.slice()];
     for(let i=0;i<Math.min(7000,d.steps);i++){
       const id=i%2===0?b[i>>1]>>4:b[i>>1]&15,s=d.menu[id];

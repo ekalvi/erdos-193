@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Build the browser payload for the all-index Hilbert lift.
+"""Build the browser payload for the Gaussian-lattice lift.
 
-The builder evaluates the exact construction from ``hilbert_walk_demo.py`` and
+The builder evaluates the exact construction from ``gaussian_walk_demo.py`` and
 packs two 4-bit realized-step identifiers per byte. Work is checkpointed every
 ``--checkpoint-every`` vertices. A compatible checkpoint resumes automatically;
 ``--fresh`` discards it. Result and checkpoint writes are atomic.
@@ -19,14 +19,14 @@ import sys
 import time
 from pathlib import Path
 
-from hilbert_walk_demo import H, state_corner, λ
+from gaussian_walk_demo import gaussian_point
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / "viz" / "walk3d-data.json"
 DEFAULT_CHECKPOINT = ROOT / "logs" / "walk3d-build.ckpt.json"
 DEFAULT_LOG = ROOT / "logs" / "walk3d-build.log"
-FORMAT_VERSION = 2
-CONSTRUCTION = "hilbert-lift-v1"
+FORMAT_VERSION = 3
+CONSTRUCTION = "gaussian-lift-v1"
 
 
 def parse_args() -> argparse.Namespace:
@@ -45,11 +45,8 @@ def parse_args() -> argparse.Namespace:
 
 
 def lifted_point(n: int) -> tuple[int, int, int]:
-    """Evaluate P_n while decoding the Hilbert word only once."""
-    (x, y), state = H(n)
-    corner_x, corner_y = state_corner(state)
-    label = λ(state)
-    return 2 * x + corner_x, 2 * y + corner_y, 4 * n + label
+    """Evaluate the exact Gaussian tagged lift P_n."""
+    return gaussian_point(n)
 
 
 def atomic_json(path: Path, value: object) -> None:
@@ -62,7 +59,7 @@ def atomic_json(path: Path, value: object) -> None:
 def build_identity(vertices: int) -> str:
     digest = hashlib.sha256()
     digest.update(f"{FORMAT_VERSION}:{CONSTRUCTION}:{vertices}".encode())
-    for path in (Path(__file__), Path(__file__).with_name("hilbert_walk_demo.py")):
+    for path in (Path(__file__), Path(__file__).with_name("gaussian_walk_demo.py")):
         digest.update(path.read_bytes())
     return digest.hexdigest()
 
@@ -163,7 +160,7 @@ def load_checkpoint(saved: object, identity: str, vertices: int) -> tuple[
         ):
             raise ValueError("checkpoint menu step is invalid")
         step = tuple(raw_step)
-        if not (abs(step[0]) <= 3 and abs(step[1]) <= 3 and 1 <= step[2] <= 7):
+        if not (abs(step[0]) <= 2 and abs(step[1]) <= 2 and 1 <= step[2] <= 7):
             raise ValueError("checkpoint menu step violates the walk bounds")
         menu.append(step)
     if len(set(menu)) != len(menu):
@@ -303,7 +300,7 @@ def main() -> int:
     while next_n < args.vertices:
         point = lifted_point(next_n)
         step = tuple(point[axis] - previous[axis] for axis in range(3))
-        if not (abs(step[0]) <= 3 and abs(step[1]) <= 3 and 1 <= step[2] <= 7):
+        if not (abs(step[0]) <= 2 and abs(step[1]) <= 2 and 1 <= step[2] <= 7):
             raise ValueError(f"step {next_n - 1} violates the walk bounds: {step}")
 
         identifier = menu_id.get(step)
@@ -363,7 +360,7 @@ def main() -> int:
         "version": FORMAT_VERSION,
         "construction": CONSTRUCTION,
         "encoding": "two 4-bit menu indices per byte; even step in high nibble",
-        "source": "hilbert_walk_demo.py",
+        "source": "gaussian_walk_demo.py",
         "sha256": digest,
         "vertices": args.vertices,
         "steps": args.vertices - 1,

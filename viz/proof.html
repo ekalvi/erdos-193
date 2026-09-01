@@ -4,357 +4,127 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>A finite-step walk with no three collinear vertices — Erdős Problem 193</title>
-  <meta name="description" content="A self-contained proof constructing an infinite finite-step walk in the three-dimensional integer lattice with no three collinear vertices.">
+  <title>An infinite small-step Z³-walk with no collinear triple | Erdős Problem 193</title>
+  <meta name="description" content="The minimal proof of an infinite small-step Z³-walk with no collinear triple, with Lean verification and interactive visualization.">
   <link rel="canonical" href="https://erdos-193.q5m.ai/proof.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=story1">
-  <script>
-    window.MathJax={
-      tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
-      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
-    };
-  </script>
+  <link rel="stylesheet" href="site.css?v=gaussian1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
 <body>
-<div class="wrap wide">
+<div class="wrap">
   <header class="site">
     <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a class="cur" href="proof.html">Proof</a><a href="progress.html">Timeline<span class="dot"></span></a><a href="walk3d.html">Visualize</a><a href="demo.html">Code</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a class="cur" href="proof.html">Proof</a><a href="progress.html">Timeline</a><a href="walk3d.html">Visualize</a><a href="demo.html">Code</a></nav>
   </header>
 
-  <main class="article proof-document">
-    <span class="eyebrow">Erdős Problem 193</span>
-    <h1>A finite-step walk in \(\mathbb Z^3\) with no three collinear vertices</h1>
-    <div class="route-actions proof-top-actions"><a class="button primary" href="hilbert-proof.pdf?v=20260831-1">Open PDF manuscript</a><a class="button" href="demo.html">Try it yourself in Python</a></div>
+  <main class="section proof-page">
+    <span class="eyebrow">Unconditional construction · Stijn Cambie and Erik Kalviainen</span>
+    <h1>An infinite small-step \(\mathbb Z^3\)-walk with no collinear triple</h1>
+    <div class="route-actions proof-top-actions"><a class="button primary" href="erdos-193-gaussian-proof.pdf">Open the joint paper</a><a class="button" href="demo.html">Run the exact Python replay</a></div>
 
-    <p><strong>Theorem.</strong> There exist a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\in\mathbb Z^3\) such that</p>
-    <div class="math-block">
-      \[
-        P_{a+1}-P_a\in S\qquad(a\ge0),
-      \]
-    </div>
-    <p>and no three distinct terms of the sequence are collinear.</p>
+    <p><strong>Theorem.</strong> There are a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\) such that every successive displacement lies in \(S\), while no three distinct vertices are collinear. The construction has sixteen state-pair steps with \(|dx|,|dy|\le2\) and \(1\le dz\le7\).</p>
 
-    <div class="voice-note success">
-      <b>Proof engine</b>
-      <p>Encode the terminal Hilbert state in matching low planar bits and a low base-4 height digit. The same-state pair law then becomes an exact identity for every pair.</p>
-    </div>
-    <p>After defining the Hilbert decoder, the argument has three tasks:</p>
-    <div class="proof-chain" aria-label="Three proof tasks">
-      <div class="proof-link"><span>1</span><p><strong>Prove the pair law.</strong> Same-state index gaps and planar chords have the same binary fingerprint.</p></div>
-      <div class="proof-link"><span>2</span><p><strong>Encode the state.</strong> Use matching Gray-code corners and height residues to obtain one identity for every pair.</p></div>
-      <div class="proof-link"><span>3</span><p><strong>Contradict collinearity.</strong> Three applications of the all-pairs law force two odd numbers to have an odd sum.</p></div>
-    </div>
-    <p><strong>Proof.</strong> We prove the same-state law, encode each terminal state in the coordinates, apply the resulting all-pairs law, and bound every successive step.</p>
-
-    <h2>1. Trace the Hilbert path and record its orientation</h2>
-    <p>A base-4 digit chooses one of four quadrants. In the basic U-shaped order, their local addresses are</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        c_0=(0,0),\quad c_1=(0,1),\\
-        c_2=(1,1),\quad c_3=(1,0).
-      \end{gathered}
-      \]
+    <div class="proof-chain" aria-label="Proof architecture">
+      <div class="proof-link"><span>1</span><p><strong>Walk.</strong> Follow four Gaussian units selected by binary digit sums.</p></div>
+      <div class="proof-link"><span>2</span><p><strong>Tag.</strong> Write the direction as both a square corner and a height residue.</p></div>
+      <div class="proof-link"><span>3</span><p><strong>Obstruct.</strong> Three chord valuations cannot coexist on one line.</p></div>
     </div>
 
-    <p>Inside each chosen quadrant sits a smaller U-shaped route. To connect the four copies, that smaller route may need to be left alone, have its coordinates swapped, be swapped and complemented, or be half-turned. On a local coordinate pair \((x,y)\in\{0,1\}^2\), call these four transformations</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        I(x,y)&amp;=(x,y),\\
-        S(x,y)&amp;=(y,x),\\
-        T(x,y)&amp;=(1-y,1-x),\\
-        C(x,y)&amp;=(1-x,1-y).
-      \end{aligned}
-      \]
-    </div>
-    <p>The <em>state</em> is the accumulated transformation carried from one digit to the next. It is orientation memory, not a point and not another coordinate. The mutable current state \(g\in K\) starts at \(g=I\). Digits \(0,1,2,3\) select the transition maps</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        r_0=S,\qquad r_1=r_2=I,\\
-        r_3=T.
-      \end{gathered}
-      \]
-    </div>
-    <p>Here \(r_q\in K\) is the digit-indexed transition map selected by digit \(q\); it is not a numeric sequence.</p>
+    <h2>1. The Gaussian nearest-neighbor walk</h2>
+    <p>Let \(s_2(n)\) be the number of \(1\)s in the binary expansion of \(n\). Define</p>
+    <div class="math-block">\[
+      u_n=i^{s_2(n)},\qquad z_n=\sum_{0\le r&lt;n}u_r\in\mathbb Z[i].
+    \]</div>
+    <p>Every increment \(z_{n+1}-z_n=u_n\) is one of \(1,i,-1,-i\). Splitting an index by its last binary digit gives</p>
+    <div class="math-block">\[
+      u_{2n+\varepsilon}=i^\varepsilon u_n,
+      \qquad z_{2n+\varepsilon}=(1+i)z_n+\varepsilon u_n,
+      \qquad \varepsilon\in\{0,1\}.
+    \]</div>
 
-    <h3>The exact decoder</h3>
-    <p>For a base-4 word \(w=q_{\ell-1}\cdots q_1q_0\), read the digits from most significant to least significant. At digit \(q_j\), the current state \(g\) emits one \(x\)-bit and one \(y\)-bit and is then replaced by the composed state:</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        (x_j,y_j)&amp;=g(c_{q_j}),\\
-        g&amp;\leftarrow g\circ r_{q_j}.
-      \end{aligned}
-      \]
-    </div>
-    <p>Assemble the emitted bits by binary place value:</p>
-    <div class="math-block">
-      \[
-        H_\ell(w)=
-        \left(
-          \sum_{j=0}^{\ell-1}x_j2^j,\,
-          \sum_{j=0}^{\ell-1}y_j2^j
-        \right).
-      \]
-    </div>
-    <div class="voice-note">
-      <b>Keep three directions separate</b>
-      <p>The decoder reads \(q_{\ell-1},\ldots,q_0\) from most significant to least significant. Digit \(q_j\) nevertheless writes the coordinate bits at binary place \(j\). “First mismatch from the low end” means the least \(j\ge0\) for which the two digits \(q_j\) differ.</p>
-    </div>
-    <p>After the final digit \(q_0\), define \(\sigma(w)\) to be the resulting value of \(g\). Thus \(g\) denotes the changing intermediate state, while \(\sigma(w)\) is its <strong>terminal value</strong>. It records the net turn or reflection accumulated during the nested quadrant descent; it is not a point or an additional coordinate.</p>
+    <h2 id="pair-law">2. Equal states give an exact halving law</h2>
+    <p>Assume \(m&lt;n\) and \(u_m=u_n\). If \(n-m\) is even, the indices have the same last binary digit: \(m=2a+\varepsilon\), \(n=2b+\varepsilon\). Equality of the states descends to \(u_a=u_b\), while</p>
+    <div class="math-block">\[
+      z_n-z_m=(1+i)(z_b-z_a).
+    \]</div>
+    <p>Multiplication by \(1+i\) doubles the squared modulus and therefore adds one to its two-adic valuation. Repeat exactly \(r=\nu_2(n-m)\) times. The remaining gap is odd, so the remaining chord is a sum of an odd number of Gaussian units. Writing it as \(x+iy\), the sum \(x+y\) and hence \(x^2+y^2\) are odd. Therefore</p>
+    <div class="math-block pair-law">\[
+      u_m=u_n\quad\Longrightarrow\quad
+      \nu_2\!\left(|z_n-z_m|^2\right)=\nu_2(n-m).
+    \]</div>
 
-    <p><strong>Hilbert lemma.</strong> For every \(\ell\), \(H_\ell\) bijects the length-\(\ell\) base-4 words with the square \(\{0,\ldots,2^\ell-1\}^2\), and consecutive words in numerical order map to lattice neighbors. Moreover,</p>
-    <div class="math-block">
-      \[
-        H_{\ell+2}(00w)=H_\ell(w).
-      \]
-    </div>
-    <p><strong>Proof.</strong> First note that the decoder respects its current state: if a suffix is decoded from state \(g\) instead of \(I\), every later state and every emitted bit pair is obtained by applying \(g\) to the corresponding \(I\)-started decoding. Indeed, if the \(I\)-started state is \(h\), the other state is \(g\circ h\), and both update on the right by the same \(r_q\). Thus a suffix decoded from \(g\) is exactly the bitwise \(g\)-transform of the basic suffix route.</p>
-    <p>Now induct on \(\ell\), while also recording that the order-\(\ell\) route starts at \((0,0)\) and ends at \((2^\ell-1,0)\). To form the next order, the first digit places four transformed copies in four disjoint quadrants. If \(N=2^\ell\), applying \(S\) bit by bit sends \((x,y)\) to \((y,x)\), while applying \(T\) bit by bit sends it to \((N-1-y,N-1-x)\). The four copies therefore have start–end pairs</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        (0,0)&amp;\to(0,N-1),\\
-        (0,N)&amp;\to(N-1,N),\\
-        (N,N)&amp;\to(2N-1,N),\\
-        (2N-1,N-1)&amp;\to(2N-1,0).
-      \end{aligned}
-      \]
-    </div>
-    <p>The maps \(S\) and \(T\) only swap or reflect square coordinates, so they preserve unit \(\ell^1\)-adjacency inside each transformed copy. The three junctions are also single lattice steps: \((0,1)\), \((1,0)\), and \((0,-1)\). Disjoint quadrants give bijectivity. Finally, two leading zeroes emit \((0,0)\) twice and carry the state through \(I\to S\to I\), so they change neither the point nor the state in which the remaining word is read. \(\square\)</p>
-
-    <p>For \(n\in\mathbb N\), pad its base-4 expansion on the left to any sufficiently large even length and define \(H(n)\) by the lemma. If \(m\ne n\), choose one even length large enough for both words. They remain distinct, so finite-order bijectivity gives \(H(m)\ne H(n)\). For \(n\) and \(n+1\), choose one common even length; finite-order adjacency, including across a base-4 carry, gives</p>
-    <div class="math-block">
-      \[
-        \lVert H(n+1)-H(n)\rVert_1=1.
-      \]
-    </div>
-    <div class="proof-diagrams one" aria-label="Hilbert trace diagram">
-      <figure class="diagram-card">
-        <img src="diagram-trace.svg" width="300" height="210" loading="lazy" decoding="async" alt="A discrete Hilbert route visiting neighboring points of an eight-by-eight grid.">
-        <figcaption><b>Trace</b><span>The decoder generates one continuous route; each increase of the index is one planar lattice step.</span></figcaption>
-      </figure>
+    <h2>3. Encode the direction state twice</h2>
+    <p>Write \(u_n=i^{\alpha_n}\), where \(\alpha_n\in\{0,1,2,3\}\). Use the four corners of one unit square in cyclic Gray-code order:</p>
+    <div class="math-block compact-math">\[
+      c_0=0,\qquad c_1=i,\qquad c_2=-1+i,\qquad c_3=-1.
+    \]</div>
+    <p>Double the Gaussian point to open one low planar bit in each coordinate, and append the same state to the height modulo four:</p>
+    <div class="math-block">\[
+      w_n=2z_n+c_{\alpha_n},\qquad
+      h_n=4n+\alpha_n,\qquad
+      P_n=(\Re w_n,\Im w_n,h_n).
+    \]</div>
+    <div class="construction-diagrams" aria-label="Discover, encode, and lift geometry">
+      <figure class="diagram-card"><img src="diagram-trace.svg" width="300" height="210" loading="lazy" alt="A Hilbert route showing the historical four-state discovery geometry."><figcaption><b>Discover</b><span>The Hilbert route exposed the reusable four-state square geometry.</span></figcaption></figure>
+      <figure class="diagram-card"><img src="diagram-encode.svg" width="300" height="210" loading="lazy" alt="A doubled planar point with four low-bit corner tags."><figcaption><b>Encode</b><span>A square corner records the Gaussian direction in the low planar bits.</span></figcaption></figure>
+      <figure class="diagram-card"><img src="diagram-coordinate-lift.svg" width="300" height="210" loading="lazy" alt="Tagged planar points lifted to increasing heights."><figcaption><b>Lift</b><span>The same state becomes the low base-four digit of height.</span></figcaption></figure>
     </div>
 
-    <p>Only digits \(0\) and \(3\) change the state. The transformations \(S\) and \(T\) commute and each undoes itself, so the terminal state is exactly</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        \sigma(w)
-        =S^{\,N_0(w)\bmod2}
-         T^{\,N_3(w)\bmod2},\\
-        \sigma(w)\in K:=\{I,S,T,C\},
-      \end{gathered}
-      \]
-    </div>
-    <p>where \(N_0(w)\) and \(N_3(w)\) count the \(0\)- and \(3\)-digits. Thus the terminal state remembers only whether those two counts are even or odd. Two leading zeroes leave it unchanged, so the same even padding defines \(\sigma(n)\) for every integer \(n\). The <a href="walk3d.html#state-map">inline state map</a> draws these four transformed quadrant routes.</p>
+    <h2>4. The all-pairs identity</h2>
+    <p>For \(m&lt;n\), put \(a=\alpha_m\), \(b=\alpha_n\), and \(d=n-m\). Then</p>
+    <div class="math-block">\[
+      w_n-w_m=2(z_n-z_m)+c_b-c_a,
+      \qquad h_n-h_m=4d+b-a.
+    \]</div>
+    <ul>
+      <li>If \(a=b\), the tags cancel and the equal-state law applies; doubling adds two to both valuations.</li>
+      <li>If \(b-a\) is odd, the corners are adjacent. Exactly one planar coordinate is odd, and the height gap is odd.</li>
+      <li>If \(b-a=\pm2\), the corners are opposite. Both planar coordinates are odd, so their squared sum is \(2\bmod4\); the height gap also has valuation one.</li>
+    </ul>
+    <p>Thus every pair—not merely equal states—satisfies</p>
+    <div class="math-block pair-law">\[
+      \boxed{\nu_2\!\left(|w_n-w_m|^2\right)=\nu_2(h_n-h_m)}.
+    \]</div>
 
-    <h2 id="pair-law">2. Prove the same-state pair law</h2>
-    <p>Intuitively, \(V(u)\) locates the first nonzero binary scale of a planar chord: it records twice that scale, plus one when both coordinates first become nonzero there.</p>
-    <p>Formally, for a nonzero integer \(t\), let \(\nu_2(t)\) count the factors of \(2\) in \(|t|\), and put \(\nu_2(0)=\infty\). For a nonzero planar vector \(u=(u_x,u_y)\), define</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        p(u)&amp;=\min\{\nu_2(u_x),\nu_2(u_y)\},\\
-        \epsilon(u)&amp;=
-        \begin{cases}
-          1,&amp;\nu_2(u_x)=\nu_2(u_y),\\
-          0,&amp;\nu_2(u_x)\ne\nu_2(u_y),
-        \end{cases}\\
-        V(u)&amp;=2p(u)+\epsilon(u).
-      \end{aligned}
-      \]
+    <h2 id="collinearity">5. Three such chords cannot lie on one line</h2>
+    <div class="collinearity-layout">
+      <figure class="collinearity-figure"><img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" alt="Three lifted points temporarily assumed collinear."><figcaption>The adjacent planar chords \(X,Y\) correspond to positive height gaps \(A,B\); the endpoint chord is their sum.</figcaption></figure>
+      <div class="collinearity-copy">
+        <p>Suppose \(P_a,P_b,P_c\) are collinear for \(a&lt;b&lt;c\). Put</p>
+        <div class="math-block compact-math">\[
+          A=h_b-h_a,\quad B=h_c-h_b,\quad X=w_b-w_a,\quad Y=w_c-w_b.
+        \]</div>
+        <p>Strict height growth gives \(A,B&gt;0\), and collinearity gives one common complex slope:</p>
+        <div class="math-block compact-math">\[
+          \frac XA=\frac YB=\frac{X+Y}{A+B}.
+        \]</div>
+      </div>
     </div>
-    <p>After removing \(2^{p(u)}\), the fingerprint is even when one coordinate is odd and odd when both are odd. Multiplication by \(2\) shifts both coordinate bit streams one place. Because \(V\) reserves the consecutive values \(2j\) and \(2j+1\) for the two parity types at scale \(j\), one scale shift adds two. More generally, multiplying by a positive integer \(k\) shifts both coordinate valuations by \(\nu_2(k)\), so</p>
-    <div class="math-block">
-      \[
-        V(ku)=V(u)+2\nu_2(k).
-        \tag{1}
-      \]
-    </div>
+    <p>The all-pairs law on these three chords forces</p>
+    <div class="math-block">\[
+      \nu_2(A)=\nu_2(B)=\nu_2(A+B).
+    \]</div>
+    <div class="contradiction-result"><span class="eyebrow">Contradiction</span><h3>Odd plus odd is even.</h3><p>If the first two valuations equal \(t\), then \(A/2^t\) and \(B/2^t\) are odd. Their sum is even, so \(\nu_2(A+B)&gt;t\), contrary to the third equality.</p></div>
 
-    <p><strong>Pair lemma.</strong> If \(m\ne n\) and the two indices have the same terminal state, then</p>
-    <div class="math-block">
-      \[
-        V\bigl(H(n)-H(m)\bigr)=\nu_2(n-m).
-        \tag{2}
-      \]
-    </div>
+    <h2>6. Sixteen bounded steps</h2>
+    <p>Successive differences are</p>
+    <div class="math-block">\[
+      w_{n+1}-w_n=2i^{\alpha_n}+c_{\alpha_{n+1}}-c_{\alpha_n},
+      \qquad h_{n+1}-h_n=4+\alpha_{n+1}-\alpha_n.
+    \]</div>
+    <p>The Gaussian direction points outward from its matching square corner, so the corner correction never extends its outward component. Hence \(|dx|,|dy|\le2\), while \(1\le dz\le7\). The ordered pair \((\alpha_n,\alpha_{n+1})\) determines the step, giving sixteen possible vectors.</p>
 
-    <p><strong>Proof.</strong> By symmetry take \(m&lt;n\) and pad both base-4 expansions to one common even length. Write the digits of \(m\) as \(q_{\ell-1}\cdots q_0\) and those of \(n\) as \(q'_{\ell-1}\cdots q'_0\). Put \(j=\min\{k\ge0:q_k\ne q'_k\}\), so positions \(0,\ldots,j-1\) are the common low suffix, and set \(d=q_j\), \(e=q'_j\). Then</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        n-m&amp;=4^jM,\\
-        M&amp;\equiv e-d\pmod4.
-      \end{aligned}
-      \]
-    </div>
+    <h2>Development and author contributions</h2>
+    <p>The present formula is the third construction in the project. Erik Kalviainen developed the first bounded-gap Hilbert selector, its Lean formalization, exact checks, and the interactive proof site. Stijn Cambie then proposed the all-index state-tagging refinement that removed the selector and, in a further AI-assisted revision, isolated the Gaussian digit-sum common core.</p>
+    <p>Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem. The paper lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#three-constructions">timeline compares all three constructions</a>.</p>
 
-    <p>The equal low-digit suffix alone does not guarantee that the two mismatching digits are viewed in the same orientation. This is exactly where equal terminal states are used. Start from those equal final states and undo the common low suffix in lockstep. Every state transition is invertible, so immediately after the mismatching digit both decoders reach one common state \(h\).</p>
-
-    <p>The circle \(\circ\) means <em>function composition</em>: \((f\circ g)(z)=f(g(z))\), so the transformation on the right acts first. The incoming states at the mismatch are \(h\circ r_d\) and \(h\circ r_e\). Since the four fixed choices satisfy \(r_q(c_q)=c_q\), the two emitted bit pairs are</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        (h\circ r_d)(c_d)&amp;=h\bigl(r_d(c_d)\bigr)=h(c_d),\\
-        (h\circ r_e)(c_e)&amp;=h\bigl(r_e(c_e)\bigr)=h(c_e).
-      \end{aligned}
-      \]
-    </div>
-    <figure class="collinearity-figure proof-collinearity">
-      <img src="diagram-pair-mismatch.svg" width="760" height="260" loading="lazy" decoding="async" alt="Two mismatch digits lead from different incoming states to one common outgoing state h; a common suffix leads to the shared terminal state and can be rewound back to h.">
-      <figcaption>Forward decoding emits the two mismatch pairs and then follows one common suffix. Backward reasoning rewinds that suffix from the shared terminal state to the common outgoing state \(h\); it does not undo emitted bits.</figcaption>
-    </figure>
-    <div class="route-actions"><a class="button" href="learn.html#pair-law">Step through the controlled animation</a></div>
-    <p>Thus both digits are compared through one common square symmetry \(h\). The four corners \(c_0,c_1,c_2,c_3\) form a cyclic Gray code: a digit difference odd modulo \(4\) changes exactly one coordinate, while a difference of \(2\) modulo \(4\) changes both. Every \(h\in K\) only swaps coordinates and complements bits, so it can permute which coordinates differ but cannot change one differing coordinate into two or vice versa. Starting from the common state \(h\), the identical lower suffix also emits identical bits below position \(j\).</p>
-
-    <p>If coordinate bits first differ at place \(j\), their coordinate difference has the form \(\pm2^j+2^{j+1}L=2^j(\pm1+2L)\). The bracket is odd, so higher bits cannot cancel the mismatch or add another factor of two.</p>
-    <p>If \(e-d\) is odd, then \(\nu_2(n-m)=2j\), and exactly one coordinate first differs at binary position \(j\), so \(V=2j\). If \(e-d\equiv2\pmod4\), then \(\nu_2(n-m)=2j+1\), and both coordinates first differ there, so \(V=2j+1\). These are all possibilities, proving (2). \(\square\)</p>
-
-    <h2>3. Encode the terminal state in the coordinates</h2>
-    <p>Label the four states in cyclic order and assign each state the corresponding Gray-code corner:</p>
-    <div class="math-block compact-math selector-state-table">
-      \[
-      \begin{array}{c|cccc}
-        g&amp;I&amp;S&amp;C&amp;T\\ \hline
-        \lambda(g)&amp;0&amp;1&amp;2&amp;3\\
-        u_g&amp;(0,0)&amp;(0,1)&amp;(1,1)&amp;(1,0).
-      \end{array}
-      \]
-    </div>
-    <p>For every \(n\), use one low binary place in each planar coordinate for the corner code and one low base-4 place in the height for the state label:</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        G(n)&amp;=2H(n)+u_{\sigma(n)},\\
-        z(n)&amp;=4n+\lambda(\sigma(n)),\\
-        P_n&amp;=(G(n),z(n)).
-      \end{aligned}
-      \tag{3}
-      \]
-    </div>
-    <div class="voice-note">
-      <b>One state, two matching encodings</b>
-      <p>The planar corner and height residue carry the same cyclic label. Their parity patterns are therefore synchronized for every pair of indices.</p>
-    </div>
-
-    <h2>4. Extend the pair law to every pair</h2>
-    <p><strong>All-pairs law.</strong> For every \(m\ne n\), the planar chord is nonzero and</p>
-    <div class="math-block">
-      \[
-        V\bigl(G(n)-G(m)\bigr)
-        =\nu_2\bigl(|z(n)-z(m)|\bigr).
-        \tag{4}
-      \]
-    </div>
-    <p><strong>Proof.</strong> Put \(d=n-m\), \(i=\lambda(\sigma(m))\), \(j=\lambda(\sigma(n))\), and \(X=H(n)-H(m)\). Then</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        G(n)-G(m)&amp;=2X+c_j-c_i,\\
-        z(n)-z(m)&amp;=4d+j-i.
-      \end{aligned}
-      \]
-    </div>
     <div class="concept-grid">
-      <div class="concept"><b>Same label: \(i=j\)</b><p>The corner codes cancel. Scaling the same-state law gives \(V(2X)=V(X)+2=\nu_2(d)+2=\nu_2(4d)\).</p></div>
-      <div class="concept"><b>Adjacent labels: \(j-i\) odd</b><p>Adjacent Gray-code corners differ in one bit. Exactly one planar coordinate and the height gap are odd, so both valuations are \(0\).</p></div>
-      <div class="concept"><b>Opposite labels: \(j-i=\pm2\)</b><p>Opposite corners differ in both bits. Both planar coordinates are odd and the height gap is twice an odd number, so both valuations are \(1\).</p></div>
-    </div>
-    <p>These cases exhaust all state pairs, proving (4). \(\square\)</p>
-
-    <h2 id="hilbert-lift">5. Finish with the all-pairs contradiction</h2>
-    <p>The heights are strictly increasing because</p>
-    <div class="math-block">
-      \[
-        1\le z(n+1)-z(n)
-        =4+\lambda(\sigma(n+1))-\lambda(\sigma(n))
-        \le7.
-      \]
-    </div>
-    <p>Suppose \(a&lt;b&lt;c\) and \(P_a,P_b,P_c\) lie on one line. Write</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        A&amp;=z(b)-z(a),&amp;B&amp;=z(c)-z(b),\\
-        X&amp;=G(b)-G(a),&amp;Y&amp;=G(c)-G(b).
-      \end{aligned}
-      \]
-    </div>
-    <p>Collinearity and \(A,B&gt;0\) give \(BX=AY\). Set \(A=gr\), \(B=gs\), where \(g=\gcd(A,B)\) and \(\gcd(r,s)=1\). Cancelling \(g\) and using coordinatewise coprimality produces an integer vector \(W\ne0\) with</p>
-    <div class="math-block">
-      \[
-        X=rW,\qquad Y=sW.
-        \tag{5}
-      \]
-    </div>
-    <div class="pair-applications adjacent-pair-applications" aria-label="Adjacent applications of the all-pairs law">
-      <article class="pair-application">
-        <b>Adjacent pair \((a,b)\)</b>
-        <div class="application-equation">
-          \[
-          \nu_2(g)+\nu_2(r)
-          =V(rW)=V(W)+2\nu_2(r).
-          \]
-        </div>
-      </article>
-      <article class="pair-application">
-        <b>Adjacent pair \((b,c)\)</b>
-        <div class="application-equation">
-          \[
-          \nu_2(g)+\nu_2(s)
-          =V(sW)=V(W)+2\nu_2(s).
-          \]
-        </div>
-      </article>
-    </div>
-    <p>The two equations force \(\nu_2(r)=\nu_2(s)\). Coprimality then makes both zero: \(r\) and \(s\) are odd, and \(V(W)=\nu_2(g)\).</p>
-    <p>The endpoint pair has planar chord \((r+s)W\) and height gap \(g(r+s)\). If \(t=\nu_2(r+s)\), its all-pairs identity becomes</p>
-    <div class="math-block">
-      \[
-        \nu_2(g)+t=V(W)+2t=\nu_2(g)+2t.
-      \]
-    </div>
-    <div class="contradiction-result">
-      <span class="eyebrow">Contradiction</span>
-      <h3>\(r+s\) would have to be both even and odd.</h3>
-      <p>The endpoint equation forces \(t=0\), so \(r+s\) is odd. The adjacent equations forced both \(r\) and \(s\) to be odd, so their sum is even. Therefore the Hilbert lift contains no collinear triple.</p>
-    </div>
-
-    <h2>6. Bound the finite step menu</h2>
-    <p>One successive planar displacement is twice a Hilbert unit step plus the difference of two corner codes:</p>
-    <div class="math-block">
-      \[
-      \begin{aligned}
-        G(n+1)-G(n)
-        &amp;=2\bigl(H(n+1)-H(n)\bigr)
-          +u_{\sigma(n+1)}-u_{\sigma(n)},\\
-        z(n+1)-z(n)
-        &amp;=4+\lambda(\sigma(n+1))-\lambda(\sigma(n)).
-      \end{aligned}
-      \]
-    </div>
-    <p>The doubled Hilbert step changes one planar coordinate by \(2\); each corner-code coordinate changes by at most \(1\). Hence every step belongs to</p>
-    <div class="math-block">
-      \[
-        S=\{(d_x,d_y,d_z)\in\mathbb Z^3:
-        |d_x|,|d_y|\le3,\ 1\le d_z\le7\}.
-      \]
-    </div>
-    <p>The strictly increasing height makes the sequence infinite and injective. The previous section excludes every collinear triple, completing the proof. \(\square\)</p>
-
-    <h2>Verification and evidence—not proof premises</h2>
-    <div class="voice-note success"><b>Proof boundary</b><p>The unconditional proof ends above. The material here audits the formal statement and implementation; no finite computation is used as a premise.</p></div>
-    <div class="concept-grid">
-      <div class="concept"><b>Self-contained proof</b><p>The decoder, same-state pair law, terminal-state coordinate encoding, collinearity contradiction, and finite-menu bound establish the infinite result.</p></div>
-      <div class="concept"><b>Lean verification</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> kernel-checks the formal construction against pinned Lean and Mathlib versions.</p></div>
+      <div class="concept"><b>Kernel-checked proof</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> checks the Gaussian construction against pinned Lean and Mathlib revisions.</p></div>
+      <div class="concept"><b>Joint theorem</b><p>Stijn Cambie and Erik Kalviainen both affirm the unconditional result; neither AI output nor finite computation is a premise.</p></div>
+      <div class="concept"><b>Evidence boundary</b><p>The Python and 3D prefixes check finite instances. The infinite theorem is the argument above and its Lean formalization.</p></div>
     </div>
   </main>
 

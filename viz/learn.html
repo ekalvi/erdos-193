@@ -1,121 +1,59 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>Learn the proof of Erdős Problem 193</title>
-  <meta name="description" content="A guided explanation of the Hilbert lift resolving Erdős Problem 193.">
+  <title>Learn the Gaussian proof — Erdős Problem 193</title>
+  <meta name="description" content="A guided explanation of the Gaussian-lattice tagged lift resolving Erdős Problem 193.">
   <link rel="canonical" href="https://erdos-193.q5m.ai/learn.html">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=story1">
-  <script>
-    window.MathJax={
-      tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
-      options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
-    };
-  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="site.css?v=gaussian1">
+  <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
-<body>
-<div class="wrap wide">
-  <header class="site">
-    <div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="/">Home</a><a href="proof.html">Proof</a><a href="progress.html">Timeline<span class="dot"></span></a><a href="walk3d.html">Visualize</a><a href="demo.html">Code</a></nav>
-  </header>
+<body><div class="wrap">
+<header class="site"><div class="brand"><a href="/">erdos-193<span>.q5m.ai</span></a></div><nav class="site"><a href="/">Home</a><a href="proof.html">Proof</a><a href="progress.html">Timeline</a><a href="walk3d.html">Visualize</a><a href="demo.html">Code</a></nav></header>
+<main class="lesson-page section">
+  <span class="eyebrow">Guided route</span><h1>Learn the Gaussian proof</h1>
+  <nav aria-label="Lesson sections"><a href="#walk">1. Walk</a><a href="#halving">2. Halve</a><a href="#tag">3. Tag</a><a href="#line">4. Obstruct</a><a href="#geometry">5. Geometry</a></nav>
 
-  <main class="learning-route">
-    <aside class="lesson-toc">
-      <span class="eyebrow">Guided route</span>
-      <h1>Learn the Hilbert proof</h1>
-      <nav aria-label="Lesson sections">
-        <a href="#architecture">1. Trace and encode</a>
-        <a href="#pair-law">2. Same-state law</a>
-        <a href="#all-pairs">3. Every pair</a>
-        <a href="#contradiction">4. No line</a>
-        <a href="#steps">5. Finite steps</a>
-      </nav>
-      <div class="route-actions"><a class="button primary" href="proof.html">Read the formal proof</a><a class="button" href="demo.html">Run the construction</a></div>
-    </aside>
+  <section id="walk" class="lesson-step"><span class="eyebrow">Four complex directions</span><h2><span class="lesson-number">1</span>Binary digit sums steer a lattice walk</h2>
+    <p>The state \(u_n=i^{s_2(n)}\) cycles through \(1,i,-1,-i\). Add that state to the current Gaussian integer:</p>
+    <div class="math-block">\[z_0=0,\qquad z_{n+1}=z_n+u_n.\]</div>
+    <p>Appending a binary digit gives the self-similar recurrence</p>
+    <div class="math-block">\[u_{2n+\varepsilon}=i^\varepsilon u_n,\qquad z_{2n+\varepsilon}=(1+i)z_n+\varepsilon u_n.\]</div>
+  </section>
 
-    <div class="lesson-content">
-      <section class="lesson-section" id="architecture">
-        <span class="eyebrow">The architecture</span>
-        <h2><span class="lesson-number">1</span>Trace the Hilbert path and encode its final state</h2>
-        <p>The discrete Hilbert decoder maps each index \(n\) to a lattice point \(H(n)\in\mathbb N^2\). Consecutive indices are planar lattice neighbors. The decoder also ends in one of four orientation states \(I,S,C,T\).</p>
-        <p>Give those states cyclic labels and matching Gray-code corners:</p>
-        <div class="math-block">\[
-          \begin{array}{c|cccc}
-            g&I&S&C&T\\ \hline
-            \lambda(g)&0&1&2&3\\
-            u_g&(0,0)&(0,1)&(1,1)&(1,0).
-          \end{array}
-        \]</div>
-        <p>Use every index and place its state code in the planar and height coordinates:</p>
-        <div class="math-block">\[
-          G(n)=2H(n)+u_{\sigma(n)},\qquad
-          z(n)=4n+\lambda(\sigma(n)),\qquad
-          P_n=(G(n),z(n)).
-        \]</div>
-        <div class="voice-note success"><b>One state, two matching encodings</b><p>The Gray-code corner and height residue carry the same cyclic label, synchronizing the parity calculation for every pair.</p></div>
-      </section>
+  <section id="halving" class="lesson-step"><span class="eyebrow">The binary fingerprint</span><h2><span class="lesson-number">2</span>Matching directions let a chord be halved</h2>
+    <p>If \(u_m=u_n\) and the gap is even, both indices have the same last bit. Remove it. The states still match and the chord loses one factor of \(1+i\). Repeat until the gap is odd.</p>
+    <div class="math-block">\[\nu_2(|z_n-z_m|^2)=\nu_2(n-m).\]</div>
+    <p>The last squared norm is odd because an odd number of horizontal or vertical unit steps makes the sum of its two coordinates odd.</p>
+  </section>
 
-      <section class="lesson-section" id="pair-law">
-        <span class="eyebrow">The binary fingerprint</span>
-        <h2><span class="lesson-number">2</span>Equal terminal states expose the first mismatch</h2>
-        <p>For a nonzero planar vector \(u=(u_x,u_y)\), let</p>
-        <div class="math-block">\[
-          p(u)=\min\{\nu_2(u_x),\nu_2(u_y)\},\qquad
-          V(u)=2p(u)+\mathbf 1_{\nu_2(u_x)=\nu_2(u_y)}.
-        \]</div>
-        <p>If two Hilbert indices finish in the same state, their first differing base-4 digit from the low end controls both their index gap and the first nonzero binary scale of their planar chord:</p>
-        <div class="math-block">\[
-          \sigma(m)=\sigma(n),\ m\ne n
-          \quad\Longrightarrow\quad
-          V(H(n)-H(m))=\nu_2(|n-m|).
-        \]</div>
-        <p>A scalar contributes twice to the planar fingerprint because it shifts both coordinate streams:</p>
-        <div class="math-block">\[V(ku)=V(u)+2\nu_2(k).\]</div>
-      </section>
+  <section id="tag" class="lesson-step"><span class="eyebrow">One state, two encodings</span><h2><span class="lesson-number">3</span>A square corner and a height digit remove the matching-state restriction</h2>
+    <div class="math-block">\[
+      (c_0,c_1,c_2,c_3)=(0,i,-1+i,-1),\qquad
+      w_n=2z_n+c_{\alpha_n},\quad h_n=4n+\alpha_n.
+    \]</div>
+    <p>Equal states use the halving law. Adjacent corners make both sides odd. Opposite corners make both sides exactly divisible by two. Therefore every pair satisfies</p>
+    <div class="math-block pair-law">\[\nu_2(|w_n-w_m|^2)=\nu_2(h_n-h_m).\]</div>
+  </section>
 
-      <section class="lesson-section" id="all-pairs">
-        <span class="eyebrow">Complete the parity cases</span>
-        <h2><span class="lesson-number">3</span>One identity holds for every pair</h2>
-        <p>For \(d=n-m\), \(i=\lambda(\sigma(m))\), \(j=\lambda(\sigma(n))\), and \(X=H(n)-H(m)\),</p>
-        <div class="math-block">\[
-          G(n)-G(m)=2X+c_j-c_i,\qquad z(n)-z(m)=4d+j-i.
-        \]</div>
-        <ul>
-          <li>If \(i=j\), the corner codes cancel and the same-state law shifts by two.</li>
-          <li>If \(j-i\) is odd, adjacent Gray-code corners change one planar parity bit; both sides have valuation \(0\).</li>
-          <li>If \(j-i=\pm2\), opposite corners change both planar parity bits; both sides have valuation \(1\).</li>
-        </ul>
-        <div class="voice-note success"><b>All-pairs law</b><p>For every \(m\ne n\), \(V(G(n)-G(m))=\nu_2(|z(n)-z(m)|)\).</p></div>
-      </section>
+  <section id="line" class="lesson-step"><span class="eyebrow">The contradiction</span><h2><span class="lesson-number">4</span>A line would assign the same order to \(A\), \(B\), and \(A+B\)</h2>
+    <p>For three points in increasing order, let \(A,B\) be the adjacent positive height gaps. One common slope and the three pair laws imply</p>
+    <div class="math-block">\[\nu_2(A)=\nu_2(B)=\nu_2(A+B).\]</div>
+    <p>Remove the common power of two from \(A\) and \(B\). Both are then odd, so their sum is even. The third valuation must be larger. Contradiction.</p>
+  </section>
 
-      <section class="lesson-section" id="contradiction">
-        <span class="eyebrow">Assume a line</span>
-        <h2><span class="lesson-number">4</span>Three pair laws demand an impossible parity</h2>
-        <p>Suppose \(P_a,P_b,P_c\) are collinear for \(a&lt;b&lt;c\). Let their adjacent positive height gaps be \(A,B\) and planar chords be \(X,Y\). Collinearity gives \(BX=AY\).</p>
-        <p>Write \(A=gr\), \(B=gs\) with \(\gcd(r,s)=1\). Then an integer vector \(W\ne0\) satisfies \(X=rW\), \(Y=sW\). Applying the all-pairs law to the adjacent pairs forces \(r\) and \(s\) to be odd. Applying it to the endpoint chord \((r+s)W\) forces \(r+s\) to be odd.</p>
-        <div class="contradiction-result"><span class="eyebrow">Contradiction</span><h3>Odd plus odd cannot be odd.</h3><p>No three lifted points are collinear.</p></div>
-      </section>
+  <section class="lesson-step"><span class="eyebrow">The finite menu</span><h2><span class="lesson-number">5</span>Four current directions times four next directions give sixteen steps</h2>
+    <p>The planar part is twice one Gaussian unit plus a square-corner correction. Its coordinates have absolute value at most \(2\). The height increment is between \(1\) and \(7\).</p>
+  </section>
 
-      <section class="lesson-section" id="steps">
-        <span class="eyebrow">Finish the walk</span>
-        <h2><span class="lesson-number">5</span>Every successive displacement comes from one finite box</h2>
-        <p>The planar displacement is twice one Hilbert unit step plus a corner-code difference. Each planar coordinate therefore has absolute value at most \(3\). The height increment is \(4\) plus a label difference, hence lies between \(1\) and \(7\).</p>
-        <div class="math-block">\[
-          S=\{(d_x,d_y,d_z)\in\mathbb Z^3:
-          |d_x|,|d_y|\le3,\ 1\le d_z\le7\}.
-        \]</div>
-        <p>The height is strictly increasing, so the sequence is infinite and has no repeated vertices. The previous section excludes every collinear triple.</p>
-      </section>
-    </div>
-  </main>
-
-  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
-</div>
-</body>
-</html>
+  <section id="geometry" class="lesson-step"><span class="eyebrow">Discovery route retained</span><h2>The Hilbert curve still explains the geometry</h2>
+    <p>The previous Hilbert proof supplied four terminal orientations of a recursively filled square. Encoding those orientations as Gray-code corners and height residues revealed the tag-and-lift architecture. The current proof uses Gaussian directions instead, but keeps the same square, state, chord, and 3D geometry.</p>
+    <div class="construction-diagrams"><figure class="diagram-card"><img src="diagram-trace.svg" width="300" height="210" alt="Discrete Hilbert route"><figcaption><b>Hilbert</b><span>Discovery model and alternative witness.</span></figcaption></figure><figure class="diagram-card"><img src="diagram-encode.svg" width="300" height="210" alt="Square state tags"><figcaption><b>Tag</b><span>The geometry shared by both constructions.</span></figcaption></figure><figure class="diagram-card"><img src="diagram-coordinate-lift.svg" width="300" height="210" alt="Three-dimensional lift"><figcaption><b>Lift</b><span>The monotone spatial obstruction.</span></figcaption></figure></div>
+  </section>
+  <div class="route-actions"><a class="button primary" href="proof.html">Read the complete proof</a><a class="button" href="walk3d.html">Explore the Gaussian walk</a><a class="button" href="demo.html">Run the code</a></div>
+</main>
+<footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+</div></body></html>

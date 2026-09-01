@@ -1,6 +1,6 @@
 # Research archive
 
-This directory contains approaches that preceded the terminal-steered Hilbert construction now used for the proof of Erdős Problem 193.
+This directory contains exploratory approaches that preceded the three unconditional constructions now documented in the paper and timeline: the bounded-gap Hilbert selector, the all-index tagged Hilbert lift, and the current Gaussian-lattice walk.
 
 ## `scale-and-rotate/`
 
@@ -8,4 +8,4 @@ The scale-and-rotate programme produced strong finite walks, extensive exact sea
 
 Start with [`scale-and-rotate/REPORT.md`](scale-and-rotate/REPORT.md) for the chronological research record, including corrections and failed proof routes. The archived scripts, design notes, logs, and generated artifacts retain their former relative layout so that historical computations remain inspectable.
 
-Nothing in this archive is required to build the Lean proof, read the paper, reconstruct the current 500,000-step artifact, or serve the visualization site. Current proof material lives at the repository root and in `paper/`, `formal/`, `design/`, `results/`, and `viz/`.
+Nothing in this archive is required to build the current Gaussian Lean proof, read the paper, reconstruct the 500,000-step artifact, or serve the visualization site. Current proof material lives at the repository root and in `paper/`, `formal/`, `design/`, `results/`, and `viz/`.

@@ -21,6 +21,8 @@ The repository’s construction is unconditional and formalized in Lean 4. Exter
 7. [Why three lifted points cannot be collinear](06%20-%20Why%20Three%20Lifted%20Points%20Cannot%20Be%20Collinear.md) — how collinearity, the pair law, and the fingerprint scaling law force an impossible odd-plus-odd parity conclusion.
 
 If the place-value step in Lesson 05 feels compressed, pause for [Why matching final digits forces divisibility](05A%20-%20Why%20Matching%20Final%20Digits%20Forces%20Divisibility.md), then return to Lesson 05.
+> **Current proof.** These lessons preserve the Hilbert-curve discovery route and its four-state geometry. The authoritative manuscript and Lean theorem now use Stijn Cambie's simpler Gaussian-lattice source walk; the matching tag and collinearity layers remain the same.
+
 
 If the digit-to-coordinate notation in Lesson 05 is unfamiliar, pause for [How to read the Hilbert digit notation](05B%20-%20How%20to%20Read%20the%20Hilbert%20Digit%20Notation.md). It defines $k$, $q_k$, $\in$, $\{0,1\}^2$, emitted bits, and the coordinate sums from first principles.
 

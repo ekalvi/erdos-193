@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
   <title>Timeline — Erdős Problem 193</title>
-  <meta name="description" content="The dated Obsidian lesson sequence, whiteboards, handwritten implementation, failed ideas, formal proof, and verification milestones behind the Hilbert construction.">
+  <meta name="description" content="The dated lesson sequence, Hilbert discovery route, Gaussian simplification, formal proof, and verification milestones behind the resolution of Erdős Problem 193.">
   <link rel="canonical" href="https://erdos-193.q5m.ai/progress.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -29,8 +29,8 @@
     <section class="artefact-hero">
       <span class="eyebrow">Timeline</span>
       <h1>How the proof became understandable.</h1>
-      <p class="sub">The finished proof is linear; learning it was not. A connected Obsidian course made every hidden prerequisite answerable from memory; the boards and executable replay then turned the hardest mechanisms into objects that could be traced and tested.</p>
-      <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes, not proof certificates. The <a href="proof.html">written proof</a> and <a href="hilbert-proof.pdf?v=20260831-1">manuscript</a> contain the authoritative argument.</p>
+      <p class="sub">The current proof is the third of three explicit constructions. Each stage kept the same two-adic obstruction while removing machinery: first a bounded-gap Hilbert selector, then an all-index tagged Hilbert lift, and finally the Gaussian digit-sum walk.</p>
+      <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes and discovery artifacts, not proof certificates. The current <a href="proof.html">Gaussian proof</a> and <a href="erdos-193-gaussian-proof.pdf">joint Cambie–Kalviainen paper</a> contain the authoritative argument; the Hilbert material below records the route that exposed the tag geometry.</p>
       <nav class="artefact-index" aria-label="Artefact chronology">
         <a href="#lessons-aug-20"><time datetime="2026-08-20">Aug 20–26</time><b>Build the lessons</b></a>
         <a href="#board-aug-23"><time datetime="2026-08-23">Aug 23</time><b>See the contradiction</b></a>
@@ -39,6 +39,31 @@
         <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
         <a href="#workstation-aug-28"><time datetime="2026-08-28">Aug 28</time><b>See the workspace</b></a>
       </nav>
+    </section>
+
+    <section class="approach-history" id="three-constructions" aria-labelledby="approach-history-title">
+      <span class="eyebrow">Three constructions</span>
+      <h2 id="approach-history-title">How the proof became thirteen lines of Python</h2>
+      <div class="approach-grid">
+        <article>
+          <span class="approach-number">01 · Erik Kalviainen</span>
+          <h3>Bounded-gap Hilbert selector</h3>
+          <p>A same-terminal-state two-adic law was proved for a nested Hilbert path. A finite-state suffix rule selected one matching orientation from every aligned block, producing a bounded-gap infinite walk.</p>
+          <small>First unconditional construction · Lean-formalized · most Hilbert indices discarded</small>
+        </article>
+        <article>
+          <span class="approach-number">02 · Stijn Cambie refinement</span>
+          <h3>All-index tagged Hilbert lift</h3>
+          <p>Cambie proposed writing each terminal orientation twice: as a cyclic planar corner and as the height modulo four. The tags extended the pair law to every index and eliminated the selector.</p>
+          <small>Proposed by Cambie · integrated and formalized by Kalviainen · every Hilbert index retained</small>
+        </article>
+        <article class="current">
+          <span class="approach-number">03 · Joint Gaussian version</span>
+          <h3>Binary digit sums replace Hilbert</h3>
+          <p>In a further AI-assisted revision, Cambie isolated \(u_n=i^{s_2(n)}\) as the common core. Kalviainen checked and formalized the proof and built the exact generator, finite artifacts, and visualizations.</p>
+          <small>Current joint working paper · 16 steps · 13 construction lines</small>
+        </article>
+      </div>
     </section>
 
     <section class="artefact-timeline" aria-label="Chronological working artefacts">
@@ -87,7 +112,7 @@
             <p>the first two pair-law equations force the coprime numbers \(r,s\) to be odd. The third pair sees \(r+s\), which cannot also be odd. The final proof keeps this skeleton and makes every divisibility step explicit.</p>
             <h3>Marks worth reading</h3>
             <ul><li>“Assume collinear” and the three-point diagram.</li><li>\(BX=AY\), the common-vector reduction, and the labels \(A=gr\), \(B=gs\).</li><li>The circled reminder that \(r,s\) cannot both be even.</li><li>The final clash: the third pair wants \(r+s\) odd, while odd plus odd is even.</li></ul>
-            <p class="artefact-link"><a href="proof.html#hilbert-lift">Read the polished argument →</a></p>
+            <p class="artefact-link"><a href="proof.html#same-state-lift">Read the polished argument →</a></p>
           </div>
         </div>
       </article>
@@ -109,7 +134,7 @@
             <p>became a decoder statement rather than a mysterious metric fact. A first unequal base-4 digit determines the two-adic scale. Equal terminal states let the later common suffix be unwound, so it cannot erase that first mismatch.</p>
             <h3>Marks worth reading</h3>
             <ul><li>The large pair-law identity across the top.</li><li>Examples such as \(H(149)\), \(H(6)\), and \(H(13)\), used to test the decoder by hand.</li><li>The square showing the Gray-code child order.</li><li>The state actions \(I,S,T,C\) on a bit pair and the Klein-four composition notes.</li></ul>
-            <p class="artefact-link"><a href="learn.html#pair-law">Learn the pair law step by step →</a></p>
+            <p class="artefact-link"><a href="learn.html#geometry">See how the Hilbert route survives as discovery geometry →</a></p>
           </div>
         </div>
       </article>
@@ -138,21 +163,21 @@
       <article class="artefact-entry" id="handcode-aug-27">
         <header class="artefact-entry-head">
           <div class="artefact-sequence"><span>05</span><time datetime="2026-08-27">August 27, 2026</time></div>
-          <div><span class="eyebrow">Make it executable</span><h2>The argument became one runnable file.</h2><p>The construction was replayed as standalone Python: decode the Hilbert path, encode the terminal state in the coordinates, lift into three dimensions, then check the all-pairs law and finite collinearity claim.</p></div>
+          <div><span class="eyebrow">Make it executable</span><h2>The argument became one tiny runnable function.</h2><p>The original replay decoded the Hilbert path and made every state convention explicit. The live editor now runs the formula-matched Gaussian generator directly.</p></div>
         </header>
         <div class="artefact-layout">
           <a class="handcode-artefact" href="demo.html">
-            <span class="handcode-topbar"><b>hilbert_walk_demo.py</b><small>standalone Python</small></span>
-            <span class="handcode-flow"><code>decode</code><i>→</i><code>encode</code><i>→</i><code>lift</code><i>→</i><code>verify</code></span>
+            <span class="handcode-topbar"><b>gaussian_walk.py</b><small>thirteen construction lines</small></span>
+            <span class="handcode-flow"><code>s₂</code><i>→</i><code>u,c</code><i>→</i><code>W,H</code><i>→</i><code>P</code></span>
             <strong>Edit and run the construction in your browser.</strong>
             <em>Open the handcoded replay →</em>
           </a>
           <div class="artefact-reading">
             <h3>What changed in understanding</h3>
-            <p>Code forced every compressed convention to become an explicit decision: which end of the base-4 word is read first, where emitted bits land, how terminal state is updated, and which exact integer checks correspond to the proof.</p>
-            <p>The program deliberately imports no project construction code. It is an independent finite replay, not a premise for the infinite theorem.</p>
-            <h3>Functions worth reading</h3>
-            <ul><li><code>decode</code> and <code>H</code> expose the digit and state machinery.</li><li><code>G</code>, <code>z</code>, and <code>P</code> define the lifted walk.</li><li><code>verify_all_pairs_identity</code> checks every vector fingerprint.</li><li><code>verify_walk</code> rejects collinear triples with exact integer arithmetic.</li></ul>
+            <p>The replacement makes the simplification visible: binary digit sum chooses one complex direction, the closed corner formula supplies the tag, and \(W,H\) are appended directly.</p>
+            <p>The constructor accepts any prefix length \(n\); the browser selects a manageable \(n\) and then runs the exact identity, step-menu, and collinearity checks.</p>
+            <h3>Variables worth reading</h3>
+            <ul><li><code>s2</code> is the binary digit sum.</li><li><code>u</code> is the current Gaussian unit.</li><li><code>c</code> is its cyclic corner tag.</li><li><code>W</code> and <code>H</code> are the planar and height coordinates.</li></ul>
             <p class="artefact-link"><a href="demo.html">Open the editor →</a></p>
           </div>
         </div>
@@ -185,16 +210,13 @@
     <p class="sub">The first Hilbert staircase failed almost immediately. Later, even after the formal argument existed, teaching it exposed places where compact language hid essential distinctions. This timeline keeps both kinds of progress visible.</p>
 
     <div class="timeline">
-      <article class="milestone"><time>Starting idea</time><h3>Lift a Hilbert path into 3D</h3><p>Use the Hilbert route index as height. This turns a flat winding path into a staircase that always rises.</p></article>
-      <article class="milestone"><time>First obstacle</time><h3>The plain index lift contains a line</h3><p>Using \((H(n),n)\) directly makes indices 3, 4, and 5 collinear. The height needed to carry the decoder’s terminal state as well as the index.</p></article>
-      <article class="milestone"><time>State memory</time><h3>The terminal orientation supplies four coordinate codes</h3><p>The cyclic labels \(0,1,2,3\) and Gray-code corners \((0,0),(0,1),(1,1),(1,0)\) encode the same state in height and in the planar low bits.</p></article>
-      <article class="milestone"><time>Key identity</time><h3>Every pair has matching two-adic fingerprints</h3><p>The first base-4 mismatch proves the equal-state case; the corner and residue parities supply the remaining state pairs.</p></article>
-      <article class="milestone"><time>General contradiction</time><h3>Odd, odd, and an impossible odd sum</h3><p>On a supposed line, the adjacent pair laws make two coprime scale factors odd. The endpoint pair law says their sum is odd. But odd plus odd is even.</p></article>
-      <article class="milestone"><time>Exact visualization</time><h3>500,000 steps reconstructed from the formula</h3><p>The browser artifact evaluates the same \(P_n=(G(n),z(n))\) construction and records all 16 realized step vectors.</p></article>
-      <article class="milestone"><time>Finite implementation check</time><h3>Exact prefixes replay the defining identities</h3><p>The standalone Python program checks the all-pairs valuation law, the finite step bounds, and every triple in the requested prefix.</p></article>
-      <article class="milestone"><time>Lean closure</time><h3>The infinite argument and finite menu are kernel-checked</h3><p>Lean checks the transducer, same-state pair law, terminal-state coordinate encoding, all-pairs law, no-three-collinear contradiction, Hilbert adjacency, and every step’s membership in one fixed finite set.</p></article>
-      <article class="milestone"><time>Aug 20–26 · Understanding breakthrough</time><h3>Linked lessons made the proof reconstructible</h3><p>Plain-language setup, linked prerequisites, and from-memory calibration turned confusion into the next lesson. The pair law became one shared first mismatch; only then was the proof ready for concise exposition.</p></article>
-      <article class="milestone"><time>Current status</time><h3>Unconditional AI-assisted construction; outside review pending</h3><p>The Lean theorem constructs the infinite walk and excludes every ordered triple. Independent mathematical review remains the next load-bearing external step.</p></article>
+      <article class="milestone"><time>Initial geometric route</time><h3>Lift a Hilbert path into 3D</h3><p>Kalviainen explored using the Hilbert index as height. The plain lift failed, but its four terminal orientations exposed a useful two-adic state.</p></article>
+      <article class="milestone"><time>Approach 1 · bounded-gap selector</time><h3>Keep only one terminal orientation</h3><p>Kalviainen proved the same-state pair law and used a two-digit suffix rule to choose one representative per block. This produced the project's first unconditional infinite walk and first Lean theorem.</p></article>
+      <article class="milestone"><time>Approach 1 · verification</time><h3>Formal proof and exact finite artifacts</h3><p>Kalviainen developed the Lean formalization, independent constructor, exhaustive finite checks, and the original 3D presentation for the selected Hilbert walk.</p></article>
+      <article class="milestone"><time>Aug 28 · Approach 2</time><h3>Cambie removes the selector</h3><p>Cambie's first alternative encoded all four terminal states directly in the planar low bits and height residue. Kalviainen integrated the all-index tagged Hilbert lift into Lean and the website.</p></article>
+      <article class="milestone"><time>Aug 31 · Approach 3</time><h3>Cambie isolates the Gaussian common core</h3><p>A further AI-assisted revision replaced the Hilbert decoder by \(u_n=i^{s_2(n)}\) and reduced the same-state law to repeated binary halving.</p></article>
+      <article class="milestone"><time>Sep 1 · joint theorem</time><h3>The Gaussian proof becomes executable and formal</h3><p>Kalviainen verified the argument, migrated the Lean theorem, reconstructed all sixteen steps, and developed the compact Python generator and fractal visualization. Both authors checked the proof and state the result unconditionally; the paper lists Cambie and Kalviainen alphabetically. S.C. is supported by FWO grant 1225224N.</p></article>
+      <article class="milestone"><time>Current status</time><h3>Unconditional theorem; outside review pending</h3><p>The paper proof and Lean theorem are complete. The finite computations illustrate and independently check the construction; they are not premises.</p></article>
     </div>
 
     </section>

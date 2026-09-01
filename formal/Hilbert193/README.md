@@ -1,31 +1,22 @@
-# Hilbert193
+# Lean formalization
 
-Lean 4 formalization of the all-index state-tagged Hilbert construction for
-Erdős Problem 193.
+This package formalizes the Gaussian-lattice construction in the joint Stijn Cambie–Erik Kalviainen version of the Erdős Problem 193 paper against pinned Lean 4 and Mathlib revisions.
 
-## Main result
+`Hilbert193.erdos193_unconditional` in `Hilbert193/Continuity.lean` constructs a fixed finite step set in `ℤ³` and an infinite walk using that set, then proves that no ordered triple of distinct walk vertices is collinear. The historical package namespace is retained for repository compatibility; the theorem no longer imports the Hilbert decoder.
 
-`Hilbert193.erdos193_unconditional` in `Hilbert193/Continuity.lean` constructs
-a fixed finite step set in `ℤ³` and an infinite walk using that set, then proves
-that no ordered triple of distinct walk vertices is collinear.
+## Build and audit
 
-## Verification
-
-```sh
+```bash
 lake build
 lake env lean Hilbert193/AxiomAudit.lean
 ```
 
-The package pins Lean 4.33.0 and its Mathlib revision in
-`lake-manifest.json`. The axiom audit prints only Mathlib's standard
-`propext`, `Classical.choice`, and `Quot.sound`.
+The load-bearing dependency chain is:
 
-## Module order
+1. `GaussianValuation.lean` — the two-adic valuation of a Gaussian chord's squared norm.
+2. `Gaussian.lean` — binary recursion for `u_n=i^{s₂(n)}` and `z_n=Σ_{r<n}u_r`, continuity, and the equal-state halving law.
+3. `Construction.lean` — Gray-code planar tags, height tags, the all-pairs law, and the no-collinearity theorem.
+4. `Continuity.lean` — the sixteen direction-pair steps, coordinate bounds, and the final theorem.
+5. `AxiomAudit.lean` — reports the kernel dependencies of the public theorems.
 
-1. `Basic.lean` — shared elementary definitions.
-2. `Transducer.lean` — digits, square orientations, and the Hilbert transducer.
-3. `Valuation.lean` — the two-adic planar chord invariant.
-4. `PairLaw.lean` — the same-terminal-state pair law and lifting obstruction.
-5. `Construction.lean` — state tags, the all-pairs law, and no-three-in-line lift.
-6. `Continuity.lean` — Hilbert adjacency, the tagged finite step menu, and final theorem.
-7. `AxiomAudit.lean` — kernel dependency report for the load-bearing theorems.
+The audit reports only Mathlib's standard `propext`, `Classical.choice`, and `Quot.sound`. There are no project-specific axioms, `sorry`s, or finite-computation assumptions in the theorem.
