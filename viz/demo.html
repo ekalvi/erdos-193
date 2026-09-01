@@ -23,8 +23,8 @@
   <main class="demo-page">
     <section class="demo-runner demo-runner-standalone" aria-labelledby="runner-title">
       <header class="demo-runner-head">
-        <h1 id="runner-title">A few readable lines generate the whole fractal.</h1>
-        <p>Edit the formula-matched generator and run any finite prefix. <b>Executable illustration—not the infinite proof.</b> <a href="proof.html">Proof</a> · <a href="gaussian-proof.pdf">Paper</a></p>
+        <h1 id="runner-title">A few readable lines define an infinite fractal walk.</h1>
+        <p>Edit the unbounded generator, then choose how many initial points to inspect. <b>The finite run is only a window into the infinite sequence.</b> <a href="proof.html">Proof</a> · <a href="gaussian-proof.pdf">Paper</a></p>
       </header>
       <div class="demo-workbench">
         <section class="demo-source-panel" aria-labelledby="demoSourceFilename">
@@ -43,7 +43,7 @@
           <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
         </section>
         <form id="demoForm" class="demo-controls">
-          <label for="demoLength">Walk points</label>
+          <label for="demoLength">Initial points to inspect</label>
           <input id="demoLength" name="length" type="number" min="1" max="1000" value="60" inputmode="numeric">
           <button id="demoRun" class="button primary" type="submit" disabled><span aria-hidden="true">▶</span> Run code</button>
           <button id="demoStop" class="button" type="button" disabled>Stop</button>

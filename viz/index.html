@@ -42,8 +42,8 @@
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
           <canvas id="heroCanvas"></canvas>
-          <span class="art-chip">exact 500,000-step prefix</span>
-          <span class="art-label">the Gaussian lift</span>
+          <span class="art-chip">the walk continues forever</span>
+          <span class="art-label">one rendered view</span>
         </a>
       </div>
     </section>
@@ -83,25 +83,24 @@
     <section class="section proof-part code-fractal">
       <div class="part-heading">
         <span class="part-number">1</span>
-        <div><span class="eyebrow">The whole construction</span><h2>This tiny program creates the fractal above.</h2></div>
+        <div><span class="eyebrow">The whole construction</span><h2>This tiny program defines an infinite fractal walk.</h2></div>
       </div>
-      <p>The 500,000-step shape is not traced by hand. It emerges from these thirteen readable lines: binary digit sum chooses one of four complex directions, and the same state is written into the planar point and its height.</p>
+      <p>The generator has no final index: each call yields the next exact lattice point, forever. Binary digit sum chooses one of four complex directions, and the same state is written into the planar point and its height.</p>
       <div class="code-fractal-grid">
-        <pre class="fractal-code" aria-label="Minimal Gaussian walk Python code"><code class="python-code"><span class="code-line"><span class="py-keyword">def</span> <span class="py-function">gaussian_walk</span>(length):</span>
+        <pre class="fractal-code" aria-label="Infinite Gaussian walk Python generator"><code class="python-code"><span class="code-line"><span class="py-keyword">def</span> <span class="py-function">gaussian_walk</span>():</span>
 <span class="code-line">    z = <span class="py-number">0j</span></span>
-<span class="code-line">    points = []</span>
+<span class="code-line">    n = <span class="py-number">0</span></span>
 <span class="code-line code-line-blank"></span>
-<span class="code-line">    <span class="py-keyword">for</span> n <span class="py-keyword">in</span> <span class="py-builtin">range</span>(length):</span>
+<span class="code-line">    <span class="py-keyword">while</span> <span class="py-keyword">True</span>:</span>
 <span class="code-line">        s2 = n.<span class="py-function">bit_count</span>()</span>
 <span class="code-line">        u = <span class="py-number">1j</span> ** s2</span>
 <span class="code-line">        c = <span class="py-number">1j</span> * (<span class="py-number">1</span> - u) / (<span class="py-number">1</span> - <span class="py-number">1j</span>)</span>
 <span class="code-line">        W = <span class="py-number">2</span> * z + c</span>
 <span class="code-line">        H = <span class="py-number">4</span> * n + s2 % <span class="py-number">4</span></span>
 <span class="code-line">        P = <span class="py-builtin">round</span>(W.real), <span class="py-builtin">round</span>(W.imag), H</span>
-<span class="code-line">        points.<span class="py-function">append</span>(P)</span>
+<span class="code-line">        <span class="py-keyword">yield</span> P</span>
 <span class="code-line">        z += u</span>
-<span class="code-line code-line-blank"></span>
-<span class="code-line">    <span class="py-keyword">return</span> points</span></code></pre>
+<span class="code-line">        n += <span class="py-number">1</span></span></code></pre>
         <div class="code-fractal-copy">
           <span class="eyebrow">Simple rule · unexpected geometry</span>
           <h3>A binary counter becomes a self-similar spatial walk.</h3>
@@ -114,8 +113,8 @@
               H&amp;=4n+s_2(n)\bmod4.
             \end{aligned}
           \]</div>
-          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes in the viewer are generated entirely by that recurrence—not by a drawing algorithm.</p>
-          <div class="route-actions"><a class="button primary" href="demo.html">Edit and run this code</a><a class="button" href="walk3d.html">Explore 500,000 steps</a></div>
+          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes are generated entirely by that recurrence—not by a drawing algorithm. The viewer renders a selectable window; the mathematical walk itself is infinite.</p>
+          <div class="route-actions"><a class="button primary" href="demo.html">Edit and run this code</a><a class="button" href="walk3d.html">Explore the walk in 3D</a></div>
         </div>
       </div>
     </section>

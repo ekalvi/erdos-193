@@ -26,8 +26,9 @@ namespace = {
     "__package__": None,
 }
 exec(compile(DEMO_SOURCE, "gaussian_walk.py", "exec"), namespace)
-points = namespace["gaussian_walk"](DEMO_LENGTH)
-print(f"Generated {len(points):,} exact lattice points.")
+from itertools import islice
+points = list(islice(namespace["gaussian_walk"](), DEMO_LENGTH))
+print(f"Generated the first {len(points):,} points of the infinite walk.")
 print("First eight points:")
 for n, point in enumerate(points[:8]):
     print(f"  P_{n} = {point}")

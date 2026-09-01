@@ -48,7 +48,7 @@ The package and namespace retain the historical `Hilbert193` name for repository
 
 ## Minimal construction
 
-[`viz/gaussian_walk.py`](viz/gaussian_walk.py) is the formula-matched thirteen-line generator displayed on the homepage and in the browser editor. It uses the same variables \(s_2,u,c,W,H,P\) as the compressed mathematical definition.
+[`viz/gaussian_walk.py`](viz/gaussian_walk.py) is the formula-matched thirteen-line infinite generator displayed on the homepage and in the browser editor. Its `while True` loop defines every vertex of the unbounded sequence and uses the same variables \(s_2,u,c,W,H,P\) as the compressed mathematical definition.
 
 ## Independent finite replay
 
