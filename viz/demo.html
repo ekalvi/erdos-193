@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="icon" href="favicon.svg">
-  <title>Run the handwritten Hilbert walk — Erdős Problem 193</title>
-  <meta name="description" content="Run and inspect a standalone handwritten Python demonstration of the terminal-steered Hilbert walk construction.">
+  <title>Run the Gaussian lattice walk — Erdős Problem 193</title>
+  <meta name="description" content="Edit and run the compact formula-matched Python generator for the Gaussian-lattice fractal walk.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="site.css?v=story1">
@@ -23,20 +23,20 @@
   <main class="demo-page">
     <section class="demo-runner demo-runner-standalone" aria-labelledby="runner-title">
       <header class="demo-runner-head">
-        <h1 id="runner-title">Edit and run the construction.</h1>
-        <p><b>Finite check—not proof.</b> <a href="proof.html">Proof</a> · <a href="hilbert-proof.pdf?v=20260831-1">PDF</a></p>
+        <h1 id="runner-title">A few readable lines generate the whole fractal.</h1>
+        <p>Edit the formula-matched generator and run any finite prefix. <b>Executable illustration—not the infinite proof.</b> <a href="proof.html">Proof</a> · <a href="gaussian-proof.pdf">Paper</a></p>
       </header>
       <div class="demo-workbench">
         <section class="demo-source-panel" aria-labelledby="demoSourceFilename">
           <header class="demo-source-head">
-            <strong id="demoSourceFilename">hilbert_walk_demo.py</strong>
+            <strong id="demoSourceFilename">gaussian_walk.py</strong>
             <div class="demo-source-buttons">
               <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
               <button id="demoReset" class="button" type="button" disabled>Reset</button>
-              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/hilbert_walk_demo.py">GitHub</a>
+              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/gaussian_walk.py">GitHub</a>
             </div>
           </header>
-          <div id="demoSource" class="demo-source" aria-label="Editable hilbert_walk_demo.py source">Loading source…</div>
+          <div id="demoSource" class="demo-source" aria-label="Editable gaussian_walk.py source">Loading source…</div>
         </section>
         <section class="demo-output-panel" aria-labelledby="demoOutputLabel">
           <header class="demo-output-head"><strong id="demoOutputLabel">Output</strong></header>
@@ -49,7 +49,7 @@
           <button id="demoStop" class="button" type="button" disabled>Stop</button>
         </form>
       </div>
-      <p id="demoStatus" class="demo-status" role="status">Loading hilbert_walk_demo.py…</p>
+      <p id="demoStatus" class="demo-status" role="status">Loading gaussian_walk.py…</p>
       <p class="demo-safety"><b>Contained run:</b> disposable browser worker · 12-second cutoff · 1,000-point maximum. No page or file access. Edited code can make network requests; do not paste secrets or untrusted code.</p>
     </section>
   </main>
@@ -170,7 +170,7 @@
     finishRun(readyStatus);
   };
 
-  fetch('hilbert_walk_demo.py', {cache: 'no-store'})
+  fetch('gaussian_walk.py', {cache: 'no-store'})
     .then(response => {
       if (!response.ok) throw new Error(`source request failed: ${response.status}`);
       return response.text();

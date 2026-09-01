@@ -1,21 +1,27 @@
-Title: A finite-step lattice walk in Z^3 with no three collinear vertices
-Authors: Erik Kalviainen
+Title: An infinite small-step Z^3-walk with no collinear triple
+Authors: Erik Kalviainen, Stijn Cambie
+Affiliations:
+- Erik Kalviainen — Independent researcher, Canada; ekalvi@gmail.com
+- Stijn Cambie — Department of Computer Science, KU Leuven Campus Kulak-Kortrijk, 8500 Kortrijk, Belgium; stijn.cambie@hotmail.com
+Repository: https://github.com/ekalvi/erdos-193
 Primary category: math.CO (Combinatorics)
-Comments: Includes a Lean 4 formalization and a standalone exact finite-prefix implementation check.
+Comments: 2 pages. Lean 4 formalization, exact finite checks, and interactive visualization available from the linked repository.
 Report number: None
 Journal reference: None
 DOI: None
+License: arXiv.org perpetual, non-exclusive license (selected by Erik; awaiting Stijn's agreement)
 
 Abstract:
-We give an explicit negative answer to Erdős Problem 193. A nested discrete Hilbert path H:N→N^2 carries one of four terminal orientation states. We encode that state twice: as a Gray-code corner appended to the planar coordinates and as a residue modulo four appended to the height. The resulting sequence in Z^3 uses every Hilbert index, has successive steps in one fixed finite set, and has no three collinear vertices. The obstruction is an all-pairs two-adic identity equating a valuation of each planar chord with the ordinary two-adic valuation of its height gap. The complete tagged construction has also been formalized in Lean 4 against Mathlib; the formal theorem uses no additional axioms.
+We construct an infinite walk in Z^3 whose steps come from a fixed set of sixteen vectors and no three of whose vertices are collinear, answering a problem of Gerver and Ramsey popularized as Erdős Problem 193.
 
 Submission files:
 - erdos193.tex only; select PDFLaTeX in arXiv's submission interface.
 - Do not upload erdos193.pdf, erdos193.aux, erdos193.log, or erdos193.out with the TeX source.
 
-Required human submission steps after review:
-1. Sign in to arXiv and confirm endorsement for math.CO.
-2. Upload erdos193.tex.
-3. Enter the metadata above and choose an arXiv license.
-4. Inspect arXiv's generated PDF, especially the Hilbert endpoint calculation, state-tag table, all-pairs case split, and references.
-5. Submit only after external mathematical review and attribution wording are settled.
+Required human submission steps:
+1. Obtain Stijn Cambie's approval of the exact source, joint author order, and submission.
+2. Sign in to arXiv and confirm endorsement for math.CO.
+3. Upload `arxiv-submission.tar.gz`.
+4. Enter the metadata above and choose an arXiv license agreed by both authors.
+5. Inspect arXiv's generated PDF, especially formulas (1)--(5), author names, attribution/AI disclosure, and references.
+6. Submit only after both authors approve the generated preview.

@@ -144,9 +144,9 @@ available for controlled reversal:
    blocked.
 4. Change only the NPM origin to `10.1.1.31:8193`; do not change DNS,
    hostnames, certificate, or canonical content in this step.
-5. Verify `/`, `proof-steps.html`, `theorem.html`, `walk3d.html`,
-   `hilbert-colors.html`, `progress.html`, `hilbert-proof.pdf`, `robots.txt`,
-   and `sitemap.xml` over the canonical public hostname.
+5. Verify `/`, `proof.html`, `learn.html`, `walk3d.html`, `progress.html`,
+   `demo.html`, `gaussian-proof.pdf`, `robots.txt`, and `sitemap.xml` over the
+   canonical public hostname.
 6. Reverse NPM to `q5m-dev:8193` once and repeat the baseline. Then return it to
    `q5m-n02:8193` and repeat the replacement checks.
 7. Keep the old PM2 origin during stabilization. Remove it only after explicit

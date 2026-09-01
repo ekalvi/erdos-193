@@ -2,18 +2,19 @@ Proof claim for Erdős Problem #193
 
 Claim: The answer is no. There is a finite set S⊂Z^3 and an infinite S-walk with no three distinct collinear vertices.
 
-Paper: A finite-step lattice walk in Z^3 with no three collinear vertices
-Author: Erik Kalviainen
-Public PDF after merge: https://erdos-193.q5m.ai/hilbert-proof.pdf
+Paper: A Gaussian-lattice walk in Z^3 with no three collinear vertices
+Authors: Erik Kalviainen and Stijn Cambie
+Public PDF after merge: https://erdos-193.q5m.ai/gaussian-proof.pdf
 Source and Lean formalization: https://github.com/ekalvi/erdos-193
 Formal theorem: formal/Hilbert193/Hilbert193/Continuity.lean, theorem Hilbert193.erdos193_unconditional
 
 Summary:
-Define a nested infinite discrete Hilbert path H:N→N² with terminal orientation σ(n). Label the four states cyclically by λ(I),λ(S),λ(C),λ(T)=0,1,2,3 and give them the matching Gray-code corner tags u. Retain every index and define G(n)=2H(n)+u_{σ(n)}, z(n)=4n+λ(σ(n)), and P_n=(G(n),z(n)). The same-state Hilbert pair law and the tag parity cases give the all-pairs identity V(G(n)−G(m))=ν₂(|z(n)−z(m)|). Applying this identity and its scaling rule to two adjacent chords of a hypothetical collinear triple and their sum forces two coprime integers to be odd while their sum is also odd, a contradiction. Hilbert adjacency gives |Δx|,|Δy|≤3, while 1≤Δz≤7, so every consecutive displacement lies in one fixed finite set.
+Let u_n=i^{s₂(n)} and z_n=Σ_{r<n}u_r. Binary recursion gives u_{2n+ε}=i^εu_n and z_{2n+ε}=(1+i)z_n+εu_n. Equal direction states yield ν₂(|z_n-z_m|²)=ν₂(n-m) by repeated halving. Matching Gray-code planar tags and base-4 height residues extend the identity to every pair. Applying it to two adjacent chords and their sum excludes a collinear triple. The walk has sixteen state-pair steps with planar coordinates bounded by 2 and height increments from 1 through 7.
 
 Verification status:
-- The complete tagged construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
+- The complete Gaussian construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
 - The axiom audit reports only propext, Classical.choice, and Quot.sound.
-- The standalone Python demo independently checks finite prefixes using exact integer arithmetic; no finite check is a premise of the proof.
-- Stijn Cambie suggested the state-tagging refinement and shared a GPT-assisted alternative draft.
+- The standalone Python demo independently checks exact finite prefixes; finite computation is not a premise.
+- Contribution history: Kalviainen developed the first proof using a two-dimensional Hilbert curve and formalized and visualized it; Cambie then proposed two successive simplifications—first direct state tags removing the selector, then the complex Gaussian-lattice walk removing Hilbert entirely. Kalviainen migrated the final proof into Lean and the executable site. This staging paper credits both jointly while final publication wording remains under discussion.
+- The Hilbert curve remains documented as the geometric discovery route, not as a premise of the current theorem.
 - External mathematical peer review remains pending.

@@ -21,12 +21,17 @@ self.addEventListener('message', async event => {
     self.postMessage({type: 'running'});
     await pyodide.runPythonAsync(`
 namespace = {
-    "__name__": "hilbert_walk_demo",
-    "__file__": "hilbert_walk_demo.py",
+    "__name__": "gaussian_walk",
+    "__file__": "gaussian_walk.py",
     "__package__": None,
 }
-exec(compile(DEMO_SOURCE, "hilbert_walk_demo.py", "exec"), namespace)
-namespace["demonstrate"](DEMO_LENGTH)
+exec(compile(DEMO_SOURCE, "gaussian_walk.py", "exec"), namespace)
+points = namespace["gaussian_walk"](DEMO_LENGTH)
+print(f"Generated {len(points):,} exact lattice points.")
+print("First eight points:")
+for n, point in enumerate(points[:8]):
+    print(f"  P_{n} = {point}")
+print(f"Last point: P_{len(points) - 1} = {points[-1]}")
 `);
     self.postMessage({type: 'done'});
   } catch (error) {

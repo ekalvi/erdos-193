@@ -1,25 +1,29 @@
 cff-version: 1.2.0
 message: "If you use this construction or formalization, please cite the paper below."
-title: "Erdős Problem 193: terminal-steered Hilbert lift"
+title: "Erdős Problem 193: Gaussian-lattice tagged lift"
 type: software
 authors:
   - family-names: Kalviainen
     given-names: Erik
+  - family-names: Cambie
+    given-names: Stijn
 repository-code: "https://github.com/ekalvi/erdos-193"
 url: "https://erdos-193.q5m.ai"
 version: 1.0.0
 date-released: 2026-08-19
 keywords:
   - Erdős Problem 193
-  - discrete Hilbert path
+  - Gaussian lattice
   - lattice walk
   - no-three-in-line
   - Lean 4
 preferred-citation:
   type: article
-  title: "A finite-step lattice walk in Z^3 with no three collinear vertices"
+  title: "A Gaussian-lattice walk in Z^3 with no three collinear vertices"
   authors:
     - family-names: Kalviainen
       given-names: Erik
+    - family-names: Cambie
+      given-names: Stijn
   year: 2026
-  url: "https://erdos-193.q5m.ai/hilbert-proof.pdf"
+  url: "https://erdos-193.q5m.ai/gaussian-proof.pdf"
