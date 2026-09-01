@@ -2,7 +2,7 @@ Title: An infinite small-step Z^3-walk with no collinear triple
 Authors: Stijn Cambie, Erik Kalviainen
 Affiliations:
 - Stijn Cambie — Department of Computer Science, KU Leuven Campus Kulak-Kortrijk, 8500 Kortrijk, Belgium; stijn.cambie@hotmail.com; supported by FWO grant 1225224N
-- Erik Kalviainen — Independent researcher, Canada; ekalvi@gmail.com
+- Erik Kalviainen — Independent researcher, Waterloo, Ontario, Canada; ekalvi@gmail.com
 Explainer and visualization: https://erdos-193.q5m.ai
 Source repository: https://github.com/ekalvi/erdos-193
 Primary category: math.CO (Combinatorics)
