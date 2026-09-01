@@ -2,7 +2,7 @@ Proof claim for Erdős Problem #193
 
 Claim: The answer is no. There is a finite set S⊂Z^3 and an infinite S-walk with no three distinct collinear vertices.
 
-Paper: An infinite small-step Z^3-walk with no collinear triple
+Paper: Solution of Erdős Problem #193: A recursive Gaussian-integer walk with no collinear triple
 Authors: Stijn Cambie and Erik Kalviainen
 Public PDF after merge: https://erdos-193.q5m.ai/erdos-193-gaussian-proof.pdf
 Source and Lean formalization: https://github.com/ekalvi/erdos-193
