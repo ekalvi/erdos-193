@@ -3,9 +3,10 @@ Authors: Stijn Cambie, Erik Kalviainen
 Affiliations:
 - Stijn Cambie — Department of Computer Science, KU Leuven Campus Kulak-Kortrijk, 8500 Kortrijk, Belgium; stijn.cambie@hotmail.com; supported by FWO grant 1225224N
 - Erik Kalviainen — Independent researcher, Canada; ekalvi@gmail.com
-Repository: https://github.com/ekalvi/erdos-193
+Explainer and visualization: https://erdos-193.q5m.ai
+Source repository: https://github.com/ekalvi/erdos-193
 Primary category: math.CO (Combinatorics)
-Comments: 2 pages. Lean 4 formalization, exact finite checks, and interactive visualization available from the linked repository.
+Comments: 2 pages. Lean 4 formalization, exact finite checks, and interactive visualization are available at the linked supplementary site and repository.
 Report number: None
 Journal reference: None
 DOI: None
