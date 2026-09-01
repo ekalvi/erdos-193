@@ -30,22 +30,21 @@
 
 \title{A finite-step lattice walk in $\Z^3$ with no three collinear vertices}
 \author{Erik Kalviainen}
-\date{August 26, 2026}
+\date{August 31, 2026}
 \begin{document}
 \maketitle
 
 \begin{abstract}
-We give an explicit negative answer to Erd\H{o}s Problem~193.  We define a nested
-infinite discrete Hilbert path $H\colon\N\to\N^2$, select one terminal-steered
-index from every block of sixteen indices, and lift each selected point by its
-index.  The resulting sequence in $\Z^3$ has successive steps in one fixed
-finite set and has no three collinear vertices.  The obstruction to
-collinearity is a two-adic pair invariant: for indices with the same terminal
-quadrant transformation, a valuation of the planar chord equals the ordinary
-two-adic valuation of the index gap.  Applying this identity to the two adjacent chords
-and their sum rules out a collinear triple.  The complete construction has
-also been formalized in Lean~4 against Mathlib; the formal theorem uses no
-additional axioms.
+We give an explicit negative answer to Erd\H{o}s Problem~193.  A nested
+discrete Hilbert path $H\colon\N\to\N^2$ carries one of four terminal
+orientation states.  We encode that state twice: as a Gray-code corner
+appended to the planar coordinates and as a residue modulo four appended to
+the height.  The resulting sequence in $\Z^3$ uses every Hilbert index, has
+successive steps in one fixed finite set, and has no three collinear vertices.
+The obstruction is an all-pairs two-adic identity equating a valuation of
+each planar chord with the ordinary two-adic valuation of its height gap.
+The complete tagged construction has also been formalized in Lean~4 against
+Mathlib; the formal theorem uses no additional axioms.
 \end{abstract}
 
 \section{Introduction}
@@ -70,27 +69,24 @@ and no three distinct terms of $P$ are collinear.
 
 The construction uses the discrete Hilbert path, but the space-filling
 property is not the decisive ingredient.  What matters is its finite-state
-quadrant recursion.  After the path $H$ and terminal state $\sigma$ are
-defined, the conceptual engine is:
-\begin{center}
-\fbox{\parbox{.9\linewidth}{
-\textbf{Same-state engine.}  Put $Q(n)=(H(n),n)$.  On every set of indices
-$E\subseteq\N$ for which $\sigma$ is constant, the lifted set
-$\{Q(n):n\in E\}$ contains no three collinear points.}}
-\end{center}
+quadrant recursion.  For indices ending in the same state, a two-adic
+valuation of the planar chord already equals the valuation of the index gap.
+We remove the same-state restriction by appending the state itself as one
+new binary digit in each planar coordinate and one new base-$4$ digit in the
+height.
 
-The proof then has three visibly separate tasks:
+The proof has three parts:
 \begin{enumerate}[nosep]
 \item prove the same-terminal-state pair law for $H$;
-\item construct an infinite bounded-gap set on which $\sigma$ is constant;
-\item prove the abstract same-state engine and apply it to that set.
+\item use matching planar and height tags to extend it to every pair; and
+\item apply the all-pairs law to a hypothetical collinear triple, then bound
+      the successive tagged steps.
 \end{enumerate}
 Section~\ref{sec:hilbert} supplies the Hilbert decoder and its finite-state
-properties.  Section~\ref{sec:pair} proves the pair law, the conceptual core.
-Section~\ref{sec:selector} carries out the selector engineering.
-Section~\ref{sec:triple} proves and invokes the same-state engine, and
-Section~\ref{sec:steer} turns the bounded gaps into a finite step menu.
-Section~\ref{sec:formal} is verification and evidence, not an additional
+properties.  Section~\ref{sec:pair} proves the same-state pair law.
+Section~\ref{sec:tagging} constructs the tagged walk and proves its all-pairs
+law.  Sections~\ref{sec:triple} and~\ref{sec:steps} finish the theorem.
+Section~\ref{sec:formal} records verification and evidence, not an additional
 premise of the proof.
 
 \section{A nested discrete Hilbert path}\label{sec:hilbert}
@@ -387,123 +383,102 @@ $j$.  Hence $p=j$, $\epsilon=1$, and $V=2j+1$.  These cases exhaust unequal
 base-$4$ digits.
 \end{proof}
 
-\section{A bounded-gap same-state selector}\label{sec:selector}
+\section{Tagging all four terminal states}\label{sec:tagging}
 
-For a block index $a\geq0$, choose a two-digit suffix according to the state
-left by $a$:
+The pair law compares indices with one common terminal state.  We remove
+that restriction by recording the state in one additional planar bit pair
+and in the corresponding residue modulo four.  Label the four states in
+cyclic order by
 \[
-\begin{array}{c|c|c|c}
-\toprule
-\text{state after prefix }a&\text{chosen base-$4$ suffix}&\rho(g)&
-  \text{full state chain}\\
-\midrule
-I&11_4&5&I\circ I\circ I=I\\
-S&01_4&1&I\circ S\circ S=I\\
-T&31_4&13&I\circ T\circ T=I\\
-C&03_4&3&I\circ C\circ C=I\\
-\bottomrule
+ \lambda(I)=0,\qquad \lambda(S)=1,\qquad
+ \lambda(C)=2,\qquad \lambda(T)=3,
+\]
+and give $g\in K$ the Gray-code corner tag
+\[
+ u_g=c_{\lambda(g)}.
+\]
+Thus
+\[
+\begin{array}{c|cccc}
+g&I&S&C&T\\ \hline
+\lambda(g)&0&1&2&3\\
+u_g&(0,0)&(0,1)&(1,1)&(1,0).
 \end{array}
 \]
-The leading $I$ in the last column is the initial decoder state.  The middle
-factor is the net transformation contributed by the prefix $a$, and the last
-factor is the net transformation contributed by the chosen suffix when
-measured separately from $I$.  For example, the $S$ row records the complete
-path $I\circ S\circ S=I$.  Define
-\begin{equation}\label{eq:selected-index}
- n_a=16a+\rho(\sigma(a)).
-\end{equation}
-Multiplication by $16$ appends two base-$4$ digits.  If the prefix contributes
-$g=\sigma(a)$, the chosen suffix contributes a second copy of $g$.  Starting
-from $I$, the completed word therefore has the full state chain
-\begin{equation}\label{eq:selected-state}
- \sigma(n_a)=I\circ g\circ g=I,
-\end{equation}
-because every element of $K$ is its own inverse.  Hence all selected indices
-have one common terminal state.
-
-There is one selected index in every block of sixteen.  Since
-$\rho(K)=\{1,3,5,13\}$,
-\begin{equation}\label{eq:gaps}
+Define
+\begin{equation}\label{eq:tagged-walk}
 \begin{aligned}
- n_{a+1}-n_a
- &=16+\rho(\sigma(a+1))-\rho(\sigma(a)),\\
- 4&\leq n_{a+1}-n_a\leq28.
+ G(n)&=2H(n)+u_{\sigma(n)}\in\Z^2,\\
+ z(n)&=4n+\lambda(\sigma(n))\in\Z,\\
+ P_n&=(G(n),z(n))\in\Z^3.
 \end{aligned}
 \end{equation}
-In particular, $(n_a)$ is strictly increasing and infinite.  Lift the
-selected planar points by using the selected index as height:
-\begin{equation}\label{eq:walk}
- P_a=(H(n_a),n_a)\in\Z^3.
-\end{equation}
-The bounded gaps will give a finite step menu in Section~\ref{sec:steer}.
-This selector is an engineering step: bounded gaps are needed for the finite
-menu, while the no-collinearity argument below uses only the shared terminal
-state.
-\section{Excluding collinear triples}\label{sec:triple}
+Multiplication by two leaves one low binary place for the planar corner tag,
+while multiplication by four leaves one low base-$4$ place for the height
+label.
 
-\begin{theorem}[Same-state lift theorem]
-\label{thm:same-state-triple-free}
-Let $E\subseteq\N$ and suppose that $\sigma$ is constant on $E$.  Put
-$Q(n)=(H(n),n)$.  Then $\{Q(n):n\in E\}$ contains no three collinear points.
+\begin{theorem}[All-pairs tagged law]\label{thm:all-pairs}
+For all distinct $m,n\in\N$, the planar chord is nonzero and
+\begin{equation}\label{eq:all-pairs}
+ V\bigl(G(n)-G(m)\bigr)=\vTwo\bigl(\abs{z(n)-z(m)}\bigr).
+\end{equation}
 \end{theorem}
 
 \begin{proof}
-Suppose for contradiction that $a<b<c$ are elements of $E$ for which
-$Q(a),Q(b),Q(c)$ are collinear.  Their terminal states agree by hypothesis,
-so the pair law applies to all three pairs.  Write the adjacent height gaps
+Put
+\[
+ d=n-m,\qquad i=\lambda(\sigma(m)),\qquad
+ j=\lambda(\sigma(n)),\qquad X=H(n)-H(m).
+\]
+Then
+\begin{equation}\label{eq:tagged-chords}
+ G(n)-G(m)=2X+c_j-c_i,\qquad z(n)-z(m)=4d+j-i.
+\end{equation}
+If $i=j$, the states agree and the corner tags cancel.  Theorem
+\ref{thm:pair-law} and Lemma~\ref{lem:scaling} give
+\[
+ V(2X)=V(X)+2=\vTwo(\abs d)+2=\vTwo(\abs{4d}).
+\]
+
+Suppose $i\ne j$.  If $j-i$ is odd, then $c_i$ and $c_j$ are adjacent
+corners in the cyclic Gray code.  Exactly one coordinate of
+$2X+c_j-c_i$ is odd, so this chord is nonzero and has $V=0$.  The integer
+$4d+j-i$ is also odd.
+
+The remaining case is $j-i=\pm2$.  The two corners are opposite, so both
+coordinates of $2X+c_j-c_i$ are odd.  Hence $p=0$, $\epsilon=1$, and
+$V=1$.  Also
+\[
+ 4d+j-i=4d\pm2=2(2d\pm1)
+\]
+has valuation one.  These cases prove \eqref{eq:all-pairs}.
+\end{proof}
+
+\section{Excluding collinear triples}\label{sec:triple}
+
+\begin{theorem}[The tagged lift is triple-free]
+\label{thm:tagged-triple-free}
+The sequence $(P_n)_{n\geq0}$ in \eqref{eq:tagged-walk} contains no three
+collinear terms.
+\end{theorem}
+
+\begin{proof}
+Because $\lambda$ takes values in $\{0,1,2,3\}$,
+\begin{equation}\label{eq:height-step}
+ 1\le z(n+1)-z(n)
+   =4+\lambda(\sigma(n+1))-\lambda(\sigma(n))\le7.
+\end{equation}
+Thus $z$ is strictly increasing.  Suppose for contradiction that
+$a<b<c$ and $P_a,P_b,P_c$ are collinear.  Write the adjacent height gaps
 and planar chords as
 \[
 \begin{aligned}
- A&=b-a,& B&=c-b,\\
- X&=H(b)-H(a),& Y&=H(c)-H(b).
+ A&=z(b)-z(a),& B&=z(c)-z(b),\\
+ X&=G(b)-G(a),& Y&=G(c)-G(b).
 \end{aligned}
 \]
-
-\begin{figure}[htbp]
-\centering
-\begin{tikzpicture}[x=.95cm,y=.95cm,>=Stealth]
- \fill[black!3] (-.8,-.1)--(1.4,-.9)--(6.8,-.1)--(4.6,.7)--cycle;
- \draw[black!28] (-.8,-.1)--(1.4,-.9)--(6.8,-.1)--(4.6,.7)--cycle;
- \draw[black!13] (.3,-.5)--(5.7,.3) (2.0,-.65)--(6.0,-.05)
-  (1.0,.15)--(3.2,-.55) (3.1,.45)--(5.3,-.25);
- \coordinate (Ha) at (0,0);
- \coordinate (Hb) at (3,.15);
- \coordinate (Hc) at (6,0);
- \coordinate (Qa) at (0,1);
- \coordinate (Qb) at (3,2.2);
- \coordinate (Qc) at (6,3.4);
- \draw[black!55,densely dashed] (Ha)--(Qa) (Hb)--(Qb) (Hc)--(Qc);
- \draw[black!65,densely dotted,line width=.8pt] (-.25,.9)--(6.25,3.5);
- \draw[->,black,line width=1.5pt,shorten <=3pt,shorten >=5pt]
-  (Qa)--node[midway,above left,font=\small] {$(X,A)$}(Qb);
- \draw[->,black,densely dashed,line width=1.5pt,shorten <=3pt,shorten >=5pt]
-  (Qb)--node[midway,above left,font=\small] {$(Y,B)$}(Qc);
- \filldraw[fill=white,draw=black,line width=.8pt]
-  (Qa) circle (2.5pt) (Qb) circle (2.5pt) (Qc) circle (2.5pt);
- \filldraw[fill=white,draw=black!60]
-  (Ha) circle (1.7pt) (Hb) circle (1.7pt) (Hc) circle (1.7pt);
- \node[above left,font=\small] at (Qa) {$Q(a)$};
- \node[above left,font=\small] at (Qb) {$Q(b)$};
- \node[above right,font=\small] at (Qc) {$Q(c)$};
- \node[below,font=\small] at (Ha) {$H(a)$};
- \node[below,font=\small] at (Hb) {$H(b)$};
- \node[below,font=\small] at (Hc) {$H(c)$};
- \node[right,font=\scriptsize] at (0,.48) {height $a$};
- \node[right,font=\scriptsize] at (3,1.08) {height $b$};
- \node[right,font=\scriptsize] at (6,1.65) {height $c$};
-\end{tikzpicture}
-\caption{The contradiction setup, with $Q(n)=(H(n),n)$.  The solid arrow
-labeled $(X,A)$ and the dashed arrow labeled $(Y,B)$ are the directed adjacent
-displacements.  The dotted guide through $Q(a),Q(b),Q(c)$ marks the temporary
-collinearity assumption.}
-\label{fig:collinearity}
-\end{figure}
-
-The full displacements are $(X,A)$ and $(Y,B)$.  The three lifted points are
-collinear over $\mathbb R$ exactly when these displacements are proportional.
-Because their last coordinates satisfy $A,B>0$, the proportionality factor is
-forced to be $B/A$.  Clearing denominators gives the equivalent
-coordinatewise equation
+Both $A$ and $B$ are positive.  Collinearity makes the full displacements
+$(X,A)$ and $(Y,B)$ proportional, and their last coordinates force
 \begin{equation}\label{eq:scaled-chords}
  BX=AY.
 \end{equation}
@@ -512,98 +487,66 @@ Write
  A=gr,\qquad B=gs,\qquad
  g=\gcd(A,B),\qquad \gcd(r,s)=1.
 \]
-Here $g,r,s$ are integers local to the collinearity argument.  In particular,
-this $g=\gcd(A,B)$ is unrelated to the decoder state $g\in K$, and the scalar
-$r$ is unrelated to the transition maps $r_q$.
-After cancelling $g$, equation~\eqref{eq:scaled-chords} becomes
-$sX=rY$.  For each coordinate $i$, the relation $sX_i=rY_i$ and
-$\gcd(r,s)=1$ imply $r\mid X_i$.  Hence $W=X/r$ is an integer vector.
-Substitution into $sX=rY$ then gives $Y=sW$, so
+After cancelling $g$, equation~\eqref{eq:scaled-chords} becomes $sX=rY$.
+Coordinatewise coprimality gives an integer vector $W$ such that
 \begin{equation}\label{eq:common-vector}
  X=rW,\qquad Y=sW.
 \end{equation}
-Injectivity of $H$ gives $X\neq0$, hence $W\neq0$.
+Theorem~\ref{thm:all-pairs} gives $X\ne0$, hence $W\ne0$.
 
-Apply the pair law and scaling lemma first to $(a,b)$ and then to $(b,c)$:
+Apply the all-pairs law and scaling lemma to the two adjacent pairs:
 \begin{align*}
  \vTwo(g)+\vTwo(r)
   &=V(X)=V(W)+2\vTwo(r),\\
  \vTwo(g)+\vTwo(s)
   &=V(Y)=V(W)+2\vTwo(s).
 \end{align*}
-Hence $\vTwo(r)=\vTwo(s)$.  Since $r$ and $s$ are coprime, both valuations
-are zero.  Thus $r$ and $s$ are odd, and the same equations give
-\[
- V(W)=\vTwo(g).
-\]
+Therefore $\vTwo(r)=\vTwo(s)$.  Coprimality forces both valuations to be
+zero, so $r$ and $s$ are odd, and either equality gives
+$V(W)=\vTwo(g)$.
 
-Now use the endpoint pair $(a,c)$.  Its index gap and planar chord are
-\[
- c-a=g(r+s),\qquad H(c)-H(a)=(r+s)W.
-\]
-Put $t=\vTwo(r+s)$.  The pair law and scaling lemma give
+For the endpoint pair, the height gap is $A+B=g(r+s)$ and the planar chord
+is $X+Y=(r+s)W$.  If $t=\vTwo(r+s)$, the all-pairs law gives
 \[
  \vTwo(g)+t
  =V((r+s)W)
  =V(W)+2t
  =\vTwo(g)+2t.
 \]
-Therefore $t=0$, so the endpoint pair forces $r+s$ to be odd.  But the two
-adjacent pairs forced both $r$ and $s$ to be odd, whose sum is even.  This is
-a contradiction.
+Thus $t=0$, so $r+s$ is odd.  But $r$ and $s$ are both odd, making their
+sum even.  This contradiction proves the theorem.
 \end{proof}
 
-\begin{corollary}[The selected lift is triple-free]
-\label{thm:selected-triple-free}
-The sequence $(P_a)_{a\geq0}$ defined by \eqref{eq:walk} contains no three
-collinear terms.
-\end{corollary}
+\section{The finite step menu}\label{sec:steps}
 
-\begin{proof}
-The indices $n_a$ are strictly increasing, satisfy $\sigma(n_a)=I$, and obey
-$P_a=Q(n_a)$.  Apply Theorem~\ref{thm:same-state-triple-free} to
-$E=\{n_a:a\in\N\}$.
-\end{proof}
-
-The use of all three pair laws---for gaps $A$, $B$, and $A+B$---is essential.
-A pairwise direction restriction alone would not rule out every triple.
-
-\section{The finite step menu}\label{sec:steer}
-
-The third-coordinate difference of one successive step is
+For one successive step, \eqref{eq:tagged-walk} gives
 \[
- d_z=n_{a+1}-n_a,\qquad 4\leq d_z\leq28.
+\begin{aligned}
+ G(n+1)-G(n)
+ &=2\bigl(H(n+1)-H(n)\bigr)
+   +u_{\sigma(n+1)}-u_{\sigma(n)},\\
+ z(n+1)-z(n)
+ &=4+\lambda(\sigma(n+1))-\lambda(\sigma(n)).
+\end{aligned}
 \]
-The Hilbert path takes one planar lattice step per unit increase of its index.
-Therefore \eqref{eq:unit-step} and the triangle inequality give the sharper
-path-length bound
-\[
- \abs{d_x}+\abs{d_y}
- =\norm{H(n_{a+1})-H(n_a)}_1
- \leq n_{a+1}-n_a=d_z.
-\]
-Hence every successive displacement belongs to the fixed finite set
+The first planar term is twice a coordinate unit vector by
+\eqref{eq:unit-step}; each coordinate of the tag difference lies between
+$-1$ and $1$.  Equation~\eqref{eq:height-step} bounds the last coordinate.
+Every successive displacement therefore belongs to the fixed finite set
 \begin{equation}\label{eq:menu}
  S=\{(d_x,d_y,d_z)\in\Z^3:
-       4\leq d_z\leq28,\ \abs{d_x}+\abs{d_y}\leq d_z\}.
+       \abs{d_x}\le3,\ \abs{d_y}\le3,\ 1\le d_z\le7\}.
 \end{equation}
-The strictly increasing third coordinate makes $(P_a)$ infinite with no
-repeated terms, and Corollary~\ref{thm:selected-triple-free} excludes three
-collinear terms.  Equations \eqref{eq:walk} and \eqref{eq:menu} therefore
-prove Theorem~\ref{thm:main}.
-
-\begin{remark}
-The displayed set $S$ is a convenient finite superset of the realized step
-vectors, not a minimal menu.  The independently reconstructed first
-$500{,}000$ steps realize $16$ distinct vectors.
-\end{remark}
+The strictly increasing height makes $(P_n)$ infinite with no repeated
+terms, and Theorem~\ref{thm:tagged-triple-free} excludes collinear triples.
+This proves Theorem~\ref{thm:main}.
 
 \section{Verification and evidence}\label{sec:formal}
 
 \noindent\textbf{Proof boundary.}
 The proof of Theorem~\ref{thm:main} ends above.  Nothing in this section is an
-additional premise; it records formal verification, implementation checks,
-and the status of external claims.
+additional premise; it records formal verification and the status of external
+claims.
 
 \subsection{Lean formalization}
 
@@ -634,42 +577,29 @@ lake build
 lake env lean Hilbert193/AxiomAudit.lean
 \end{verbatim}
 
-\subsection{Finite implementation checks}
+\subsection{Finite implementation check}
 
-The independent finite reconstruction is checked by
-\begin{verbatim}
-python3 verify_hilbert_construction.py hilbert-193-500k.jsonl \
-  --steps 500000 --fresh
-\end{verbatim}
-It reconstructs $500{,}001$ vertices and checks the defining selector,
-coordinates, and fixed-menu condition for the recorded finite artifact.  It
-does not enumerate triples.  A separate exact direction-hash scan is run by
-\begin{verbatim}
-clang++ -O3 -std=c++17 -pthread verify_hilbert_exhaustive.cpp \
-  -o verify_hilbert_exhaustive
-./verify_hilbert_exhaustive hilbert-193-500k.jsonl
-\end{verbatim}
-For each vertex, this scan reduces the vectors to all earlier vertices to
-canonical primitive integer directions.  A repeated direction is equivalent
-to a collinear triple.  The completed four-worker run checked all
-$125{,}000{,}250{,}000$ pairs in $6299.67$ seconds and found no repetition.
-The artifact SHA-256 is
-\begin{center}
-\texttt{6f8fdf59b7ecef5533b8a65265d80df9}\\
-\texttt{61f67a955dabaf9d5bb973d7ae143d63}.
-\end{center}
-Concatenating the two lines gives the digest.
+The standalone script
+\path{viz/hilbert_walk_tagged_demo.py} independently evaluates the decoder,
+constructs a finite tagged prefix, and checks the all-pairs identity, the
+step bounds, and every collinear triple in that prefix using exact integer
+arithmetic.  This is an implementation check only; no finite computation
+proves the infinite theorem.
 
 \subsection{Logical and historical status}
 
-The theorem above is unconditional.  The Lean development checks the formal
-statement; the finite reconstruction and exhaustive scan check an
-implementation and a finite prefix only.  Neither computation proves the
-infinite theorem.  Novelty, priority, and correspondence with the intended
+The theorem above is unconditional.  The Lean development checks the complete
+tagged construction, while the standalone script checks an implementation
+and a finite prefix only.
+Novelty, priority, and correspondence with the intended
 reading of Erd\H{o}s Problem~193 remain subject to external mathematical
 review and community acceptance.
 
 \section*{Acknowledgments and disclosure}
+
+Stijn Cambie suggested the state-tagging refinement that removes the
+same-terminal-state selector and shared a GPT-assisted alternative draft.
+The author thanks him for this substantial simplification.
 
 The working stack included Pi (\url{https://pi.dev/}), Oh My Pi
 (\url{https://omp.sh/}), Paseo (\url{https://paseo.sh/}), and OpenAI GPT-5.6
@@ -712,7 +642,7 @@ on Certified Programs and Proofs}, 2020, 367--381.
 
 \bibitem{Repository}
 E.~Kalviainen,
-\newblock Erd\H{o}s 193: terminal-steered Hilbert lift, source code and formal
+\newblock Erd\H{o}s 193: state-tagged Hilbert lift, source code and formal
 proof,
 \newblock \url{https://github.com/ekalvi/erdos-193}, 2026.
 

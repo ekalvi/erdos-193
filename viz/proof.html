@@ -28,7 +28,7 @@
   <main class="article proof-document">
     <span class="eyebrow">Erdős Problem 193</span>
     <h1>A finite-step walk in \(\mathbb Z^3\) with no three collinear vertices</h1>
-    <div class="route-actions proof-top-actions"><a class="button primary" href="hilbert-proof.pdf?v=20260827-1">Open PDF manuscript</a><a class="button" href="demo.html">Try it yourself in Python</a></div>
+    <div class="route-actions proof-top-actions"><a class="button primary" href="hilbert-proof.pdf?v=20260831-1">Open PDF manuscript</a><a class="button" href="demo.html">Try it yourself in Python</a></div>
 
     <p><strong>Theorem.</strong> There exist a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\in\mathbb Z^3\) such that</p>
     <div class="math-block">
@@ -40,15 +40,15 @@
 
     <div class="voice-note success">
       <b>Proof engine</b>
-      <p>Put \(Q(n)=(H(n),n)\). On any set of indices sharing one terminal state, the lifted points \(Q(n)\) contain no collinear triple.</p>
+      <p>Encode the terminal Hilbert state in matching low planar bits and a low base-4 height digit. The same-state pair law then becomes an exact identity for every pair.</p>
     </div>
-    <p>After defining the Hilbert decoder, the argument has three separate tasks:</p>
+    <p>After defining the Hilbert decoder, the argument has three tasks:</p>
     <div class="proof-chain" aria-label="Three proof tasks">
       <div class="proof-link"><span>1</span><p><strong>Prove the pair law.</strong> Same-state index gaps and planar chords have the same binary fingerprint.</p></div>
-      <div class="proof-link"><span>2</span><p><strong>Engineer the selector and step boundary.</strong> Keep an infinite same-state set with bounded index gaps, then convert those gaps into a finite move menu.</p></div>
-      <div class="proof-link"><span>3</span><p><strong>Proof by contradiction.</strong> Three applications of the pair law make a collinear triple arithmetically impossible.</p></div>
+      <div class="proof-link"><span>2</span><p><strong>Encode the state.</strong> Use matching Gray-code corners and height residues to obtain one identity for every pair.</p></div>
+      <div class="proof-link"><span>3</span><p><strong>Contradict collinearity.</strong> Three applications of the all-pairs law force two odd numbers to have an odd sum.</p></div>
     </div>
-    <p><strong>Proof.</strong> We prove the pair law, construct the selector, turn its bounded gaps into a finite step menu, and finish by ruling out collinear triples.</p>
+    <p><strong>Proof.</strong> We prove the same-state law, encode each terminal state in the coordinates, apply the resulting all-pairs law, and bound every successive step.</p>
 
     <h2>1. Trace the Hilbert path and record its orientation</h2>
     <p>A base-4 digit chooses one of four quadrants. In the basic U-shaped order, their local addresses are</p>
@@ -218,200 +218,142 @@
     <p>If coordinate bits first differ at place \(j\), their coordinate difference has the form \(\pm2^j+2^{j+1}L=2^j(\pm1+2L)\). The bracket is odd, so higher bits cannot cancel the mismatch or add another factor of two.</p>
     <p>If \(e-d\) is odd, then \(\nu_2(n-m)=2j\), and exactly one coordinate first differs at binary position \(j\), so \(V=2j\). If \(e-d\equiv2\pmod4\), then \(\nu_2(n-m)=2j+1\), and both coordinates first differ there, so \(V=2j+1\). These are all possibilities, proving (2). \(\square\)</p>
 
-    <h2>3. Engineer a bounded-gap same-state selector</h2>
-    <p>Let \(g=\sigma(a)\). We identify each decoder state with its accumulated transformation in \(K\). Starting in \(I\), reading the base-4 digits of \(a\) contributes the transformation \(g\) and leaves the decoder in state \(I\circ g=g\). We choose two more digits whose net transformation, when measured separately from \(I\), is also \(g\).</p>
-    <p>The complete state chain therefore contains the starting identity followed by two transformation contributions. Writing the otherwise redundant leading \(I\) exposes both stages: \(I\circ g\circ g=I\).</p>
+    <h2>3. Encode the terminal state in the coordinates</h2>
+    <p>Label the four states in cyclic order and assign each state the corresponding Gray-code corner:</p>
     <div class="math-block compact-math selector-state-table">
       \[
-      \begin{array}{c|c|c|c}
-        \substack{\text{state after}\\\text{reading }a}
-          &amp;\text{append}
-          &amp;\substack{\text{decimal}\\\text{offset }\rho(g)}
-          &amp;\substack{\text{full state}\\\text{chain}}\\ \hline
-        I&amp;11_4&amp;5&amp;I\circ I\circ I=I\\
-        S&amp;01_4&amp;1&amp;I\circ S\circ S=I\\
-        T&amp;31_4&amp;13&amp;I\circ T\circ T=I\\
-        C&amp;03_4&amp;3&amp;I\circ C\circ C=I
+      \begin{array}{c|cccc}
+        g&amp;I&amp;S&amp;C&amp;T\\ \hline
+        \lambda(g)&amp;0&amp;1&amp;2&amp;3\\
+        u_g&amp;(0,0)&amp;(0,1)&amp;(1,1)&amp;(1,0).
       \end{array}
       \]
     </div>
-    <p>For example, if reading \(a\) ends in state \(S\), append \(01_4\). Starting from \(I\), the prefix contributes \(S\), and the suffix contributes a second \(S\), so the full chain is \(I\circ S\circ S=I\). Multiplying \(a\) by \(16\) makes room for the two base-4 digits, and adding the decimal offset \(\rho(g)\) writes the chosen suffix there. Define</p>
+    <p>For every \(n\), use one low binary place in each planar coordinate for the corner code and one low base-4 place in the height for the state label:</p>
     <div class="math-block">
       \[
       \begin{aligned}
-        n_a&amp;=16a+\rho(\sigma(a)),\\
-        P_a&amp;=\bigl(H(n_a),n_a\bigr)\in\mathbb Z^3.
+        G(n)&amp;=2H(n)+u_{\sigma(n)},\\
+        z(n)&amp;=4n+\lambda(\sigma(n)),\\
+        P_n&amp;=(G(n),z(n)).
       \end{aligned}
       \tag{3}
       \]
     </div>
-    <p>The complete decoder starts in \(I\), reads \(a\) and accumulates \(g=\sigma(a)\), then accumulates the suffix transformation \(g\). Therefore</p>
+    <div class="voice-note">
+      <b>One state, two matching encodings</b>
+      <p>The planar corner and height residue carry the same cyclic label. Their parity patterns are therefore synchronized for every pair of indices.</p>
+    </div>
+
+    <h2>4. Extend the pair law to every pair</h2>
+    <p><strong>All-pairs law.</strong> For every \(m\ne n\), the planar chord is nonzero and</p>
     <div class="math-block">
       \[
-        \sigma(n_a)=I\circ g\circ g=I.
+        V\bigl(G(n)-G(m)\bigr)
+        =\nu_2\bigl(|z(n)-z(m)|\bigr).
         \tag{4}
       \]
     </div>
-    <div class="proof-diagrams two" aria-label="Selection and lift diagrams">
-      <figure class="diagram-card">
-        <img src="diagram-select.svg" width="300" height="210" loading="lazy" decoding="async" alt="Same-state Hilbert points selected from consecutive blocks.">
-        <figcaption><b>Select</b><span>Keep one index from every block and steer each retained index to terminal state \(I\).</span></figcaption>
-      </figure>
-      <figure class="diagram-card">
-        <img src="diagram-lift.svg" width="300" height="210" loading="lazy" decoding="async" alt="Selected Hilbert points lifted to heights equal to their indices.">
-        <figcaption><b>Lift</b><span>Using the selected index as height turns every index gap into the vertical displacement.</span></figcaption>
-      </figure>
-    </div>
-    <p>Hence every selected Hilbert index has the same terminal state. There is exactly one selected index in every 16-index block, so the selection is infinite. Because \(\rho\) takes only the values \(1,3,5,13\), consecutive selected indices satisfy</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        n_{a+1}-n_a=16+\rho(\sigma(a+1))-\rho(\sigma(a)),\\[2pt]
-        4\le n_{a+1}-n_a\le28.
-      \end{gathered}
-      \tag{5}
-      \]
-    </div>
-
-    <p>The bounded gaps now supply the finite step menu. The final no-collinearity argument will use only the common terminal state.</p>
-
-    <h2>4. Turn the bounded gaps into a finite step menu</h2>
-    <p>For one successive selected step, write its coordinate differences as \((d_x,d_y,d_z)\). The third-coordinate difference is</p>
-    <div class="math-block">
-      \[
-      d_z=n_{a+1}-n_a,\qquad 4\le d_z\le28.
-      \]
-    </div>
-    <p>The Hilbert path moves one planar lattice unit whenever its index increases by one. The triangle inequality therefore gives</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        |d_x|+|d_y|\\
-        =\bigl\|H(n_{a+1})-H(n_a)\bigr\|_1\\
-        \le n_{a+1}-n_a=d_z.
-      \end{gathered}
-      \]
-    </div>
-    <p>Hence every successive displacement belongs to the fixed finite set</p>
-    <div class="math-block">
-      \[
-      \begin{gathered}
-        S=\{(d_x,d_y,d_z)\in\mathbb Z^3:\\
-        4\le d_z\le28,\quad |d_x|+|d_y|\le d_z\}.
-      \end{gathered}
-      \]
-    </div>
-    <p>This \(S\) is a convenient finite superset of the realized steps; it need not be minimal. It remains only to exclude three collinear vertices.</p>
-
-    <h2 id="same-state-lift">5. Finish with the same-state contradiction</h2>
-    <div class="voice-note">
-      <b>Abstract theorem</b>
-      <p>If \(E\subseteq\mathbb N\) and \(\sigma\) is constant on \(E\), then \(\{(H(n),n):n\in E\}\) contains no three collinear points.</p>
-    </div>
-    <p><strong>Proof.</strong> Suppose, for contradiction, that \(a&lt;b&lt;c\) lie in \(E\) and their three lifts are collinear. Their terminal states agree, so the pair law applies to all three pairs.</p>
-
-    <p>Write the two adjacent height gaps and planar chords as</p>
+    <p><strong>Proof.</strong> Put \(d=n-m\), \(i=\lambda(\sigma(m))\), \(j=\lambda(\sigma(n))\), and \(X=H(n)-H(m)\). Then</p>
     <div class="math-block">
       \[
       \begin{aligned}
-        A&amp;=b-a,\qquad B=c-b,\\
-        X&amp;=H(b)-H(a),\\
-        Y&amp;=H(c)-H(b).
+        G(n)-G(m)&amp;=2X+c_j-c_i,\\
+        z(n)-z(m)&amp;=4d+j-i.
       \end{aligned}
       \]
     </div>
-    <figure class="collinearity-figure proof-collinearity">
-      <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three same-state lifts on a supposed line. The solid arrow labeled X comma A and dashed arrow labeled Y comma B are their adjacent displacement vectors.">
-      <figcaption>The solid arrow labeled \((X,A)\) and the dashed arrow labeled \((Y,B)\) are the directed adjacent displacements. The dotted guide through \(Q(a),Q(b),Q(c)\) marks the temporary collinearity assumption. The third coordinates \(a&lt;b&lt;c\) make both height gaps positive.</figcaption>
-    </figure>
-    <p>The three lifted points are collinear over \(\mathbb R\) exactly when the full displacements \((X,A)\) and \((Y,B)\) are proportional. Since \(A,B&gt;0\), the proportionality factor is forced to be \(B/A\). Clearing denominators gives the equivalent coordinatewise equation</p>
-    <div class="math-block">
-      \[
-        BX=AY.
-        \tag{6}
-      \]
+    <div class="concept-grid">
+      <div class="concept"><b>Same label: \(i=j\)</b><p>The corner codes cancel. Scaling the same-state law gives \(V(2X)=V(X)+2=\nu_2(d)+2=\nu_2(4d)\).</p></div>
+      <div class="concept"><b>Adjacent labels: \(j-i\) odd</b><p>Adjacent Gray-code corners differ in one bit. Exactly one planar coordinate and the height gap are odd, so both valuations are \(0\).</p></div>
+      <div class="concept"><b>Opposite labels: \(j-i=\pm2\)</b><p>Opposite corners differ in both bits. Both planar coordinates are odd and the height gap is twice an odd number, so both valuations are \(1\).</p></div>
     </div>
+    <p>These cases exhaust all state pairs, proving (4). \(\square\)</p>
 
-    <p>Remove the greatest common factor of the two gaps:</p>
+    <h2 id="hilbert-lift">5. Finish with the all-pairs contradiction</h2>
+    <p>The heights are strictly increasing because</p>
     <div class="math-block">
       \[
-      \begin{gathered}
-        g=\gcd(A,B),\\
-        A=gr,\qquad B=gs,\\
-        \gcd(r,s)=1.
-      \end{gathered}
+        1\le z(n+1)-z(n)
+        =4+\lambda(\sigma(n+1))-\lambda(\sigma(n))
+        \le7.
       \]
     </div>
-    <p>Here \(g,r,s\) are integers local to the collinearity argument: this \(g=\gcd(A,B)\) is unrelated to the decoder state \(g\in K\), and scalar \(r\) is unrelated to the transition maps \(r_q\). After cancelling \(g\), equation (6) becomes \(sX=rY\). For each coordinate \(i\), \(sX_i=rY_i\) and \(\gcd(r,s)=1\) imply \(r\mid X_i\). Thus \(W=X/r\) is an integer vector; substitution gives \(Y=sW\). Hence</p>
+    <p>Suppose \(a&lt;b&lt;c\) and \(P_a,P_b,P_c\) lie on one line. Write</p>
+    <div class="math-block">
+      \[
+      \begin{aligned}
+        A&amp;=z(b)-z(a),&amp;B&amp;=z(c)-z(b),\\
+        X&amp;=G(b)-G(a),&amp;Y&amp;=G(c)-G(b).
+      \end{aligned}
+      \]
+    </div>
+    <p>Collinearity and \(A,B&gt;0\) give \(BX=AY\). Set \(A=gr\), \(B=gs\), where \(g=\gcd(A,B)\) and \(\gcd(r,s)=1\). Cancelling \(g\) and using coordinatewise coprimality produces an integer vector \(W\ne0\) with</p>
     <div class="math-block">
       \[
         X=rW,\qquad Y=sW.
-        \tag{7}
+        \tag{5}
       \]
     </div>
-    <p>Injectivity of \(H\) gives \(X\ne0\), hence \(W\ne0\).</p>
-
-    <h3 class="application-title">Apply the pair law in manuscript order</h3>
-    <p>The three pairs see three multipliers of the same nonzero planar vector \(W\): \(r\), \(s\), and \(r+s\). We use the two adjacent pairs first; their conclusion \(V(W)=\nu_2(g)\) is then substituted in the endpoint calculation. In each card, the first line is the pair law, the second substitutes the corresponding chord and height gap, and the third uses \(V(kW)=V(W)+2\nu_2(k)\). The planar scaling contributes two copies of \(\nu_2(k)\), while the height scaling contributes one, so one copy remains on the left.</p>
-    <div class="pair-applications adjacent-pair-applications" aria-label="Adjacent-pair applications of the same-state pair law">
+    <div class="pair-applications adjacent-pair-applications" aria-label="Adjacent applications of the all-pairs law">
       <article class="pair-application">
-        <b>1. Adjacent pair \((a,b)\): multiplier \(r\)</b>
+        <b>Adjacent pair \((a,b)\)</b>
         <div class="application-equation">
           \[
-          \begin{aligned}
-            V(X)&amp;=\nu_2(A),\\
-            V(rW)&amp;=\nu_2(gr),\\
-            V(W)+\nu_2(r)&amp;=\nu_2(g).
-          \end{aligned}
+          \nu_2(g)+\nu_2(r)
+          =V(rW)=V(W)+2\nu_2(r).
           \]
         </div>
       </article>
       <article class="pair-application">
-        <b>2. Adjacent pair \((b,c)\): multiplier \(s\)</b>
+        <b>Adjacent pair \((b,c)\)</b>
         <div class="application-equation">
           \[
-          \begin{aligned}
-            V(Y)&amp;=\nu_2(B),\\
-            V(sW)&amp;=\nu_2(gs),\\
-            V(W)+\nu_2(s)&amp;=\nu_2(g).
-          \end{aligned}
+          \nu_2(g)+\nu_2(s)
+          =V(sW)=V(W)+2\nu_2(s).
           \]
         </div>
       </article>
     </div>
-    <div class="pair-deductions single-deduction">
-      <p><b>Cards 1 and 2 force \(r\) and \(s\) to be odd.</b> Their last lines give \(\nu_2(r)=\nu_2(s)\). Since \(\gcd(r,s)=1\), the two valuations cannot both be positive; hence both are zero. Thus \(r\) and \(s\) are odd, and either card also gives \(V(W)=\nu_2(g)\).</p>
+    <p>The two equations force \(\nu_2(r)=\nu_2(s)\). Coprimality then makes both zero: \(r\) and \(s\) are odd, and \(V(W)=\nu_2(g)\).</p>
+    <p>The endpoint pair has planar chord \((r+s)W\) and height gap \(g(r+s)\). If \(t=\nu_2(r+s)\), its all-pairs identity becomes</p>
+    <div class="math-block">
+      \[
+        \nu_2(g)+t=V(W)+2t=\nu_2(g)+2t.
+      \]
     </div>
-    <div class="pair-applications" aria-label="Endpoint-pair application of the same-state pair law">
-      <article class="pair-application">
-        <b>3. Endpoint pair \((a,c)\): multiplier \(r+s\)</b>
-        <div class="application-equation">
-          \[
-          \begin{aligned}
-            V(X+Y)&amp;=\nu_2(A+B),\\
-            V((r+s)W)&amp;=\nu_2(g(r+s)),\\
-            V(W)+\nu_2(r+s)&amp;=\nu_2(g),\\
-            \underbrace{V(W)}_{\nu_2(g)}+\nu_2(r+s)&amp;=\nu_2(g),\\
-            \nu_2(r+s)&amp;=0.
-          \end{aligned}
-          \]
-        </div>
-      </article>
-    </div>
-    <div class="pair-deductions single-deduction">
-      <p><b>Card 3 forces \(r+s\) to be odd.</b> Its final two lines visibly substitute \(V(W)=\nu_2(g)\), giving \(\nu_2(r+s)=0\). That is exactly the statement that \(r+s\) is odd.</p>
-    </div>
-
     <div class="contradiction-result">
       <span class="eyebrow">Contradiction</span>
       <h3>\(r+s\) would have to be both even and odd.</h3>
-      <p>The two adjacent pairs forced \(r\) and \(s\) to be odd, so their sum is even. The endpoint pair forced that same sum to be odd. Therefore no three lifts from any same-state set can be collinear. The selector produced the infinite set \(E=\{n_a:a\ge0\}\) with terminal state \(I\), and \(P_a=(H(n_a),n_a)\), so the selected lift is triple-free. Section 4 showed that all successive displacements lie in one fixed finite set, while the strictly increasing third coordinate makes the sequence infinite with no repeated vertices. This proves the theorem. \(\square\)</p>
+      <p>The endpoint equation forces \(t=0\), so \(r+s\) is odd. The adjacent equations forced both \(r\) and \(s\) to be odd, so their sum is even. Therefore the Hilbert lift contains no collinear triple.</p>
     </div>
+
+    <h2>6. Bound the finite step menu</h2>
+    <p>One successive planar displacement is twice a Hilbert unit step plus the difference of two corner codes:</p>
+    <div class="math-block">
+      \[
+      \begin{aligned}
+        G(n+1)-G(n)
+        &amp;=2\bigl(H(n+1)-H(n)\bigr)
+          +u_{\sigma(n+1)}-u_{\sigma(n)},\\
+        z(n+1)-z(n)
+        &amp;=4+\lambda(\sigma(n+1))-\lambda(\sigma(n)).
+      \end{aligned}
+      \]
+    </div>
+    <p>The doubled Hilbert step changes one planar coordinate by \(2\); each corner-code coordinate changes by at most \(1\). Hence every step belongs to</p>
+    <div class="math-block">
+      \[
+        S=\{(d_x,d_y,d_z)\in\mathbb Z^3:
+        |d_x|,|d_y|\le3,\ 1\le d_z\le7\}.
+      \]
+    </div>
+    <p>The strictly increasing height makes the sequence infinite and injective. The previous section excludes every collinear triple, completing the proof. \(\square\)</p>
 
     <h2>Verification and evidence—not proof premises</h2>
     <div class="voice-note success"><b>Proof boundary</b><p>The unconditional proof ends above. The material here audits the formal statement and implementation; no finite computation is used as a premise.</p></div>
     <div class="concept-grid">
-      <div class="concept"><b>Self-contained proof</b><p>The decoder, pair law, selector, same-state theorem, and finite-menu argument above establish the infinite result.</p></div>
+      <div class="concept"><b>Self-contained proof</b><p>The decoder, same-state pair law, terminal-state coordinate encoding, collinearity contradiction, and finite-menu bound establish the infinite result.</p></div>
       <div class="concept"><b>Lean verification</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> kernel-checks the formal construction against pinned Lean and Mathlib versions.</p></div>
     </div>
   </main>

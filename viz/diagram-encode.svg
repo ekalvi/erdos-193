@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 210" role="img" aria-labelledby="title desc">
+  <title id="title">Terminal state encoded in the low coordinate bits</title>
+  <desc id="desc">A Hilbert point is doubled to open a two-by-two cell. The four terminal states occupy its four Gray-code corners, with state S highlighted.</desc>
+  <rect width="300" height="210" fill="#04060d"/>
+  <g font-family="Outfit, system-ui, sans-serif">
+    <text x="55" y="31" fill="#8191aa" font-size="10" font-weight="700" letter-spacing="1">HILBERT POINT</text>
+    <rect x="28" y="51" width="88" height="88" rx="8" fill="#08111f" stroke="#263750" stroke-width="1.5"/>
+    <path d="M72 51V139M28 95H116" stroke="#17243a"/>
+    <circle cx="72" cy="95" r="7" fill="#56b4e9" stroke="#d9f1ff" stroke-width="2"/>
+    <text x="72" y="158" fill="#b8c6dd" font-size="12" text-anchor="middle">H(n)</text>
+
+    <path d="M126 95H155" fill="none" stroke="#edf5ff" stroke-width="2"/>
+    <path d="M149 89L157 95L149 101" fill="none" stroke="#edf5ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="141" y="82" fill="#8191aa" font-size="10" text-anchor="middle">× 2</text>
+
+    <text x="220" y="31" fill="#8191aa" font-size="10" font-weight="700" letter-spacing="1" text-anchor="middle">LOW-BIT CELL</text>
+    <rect x="171" y="51" width="98" height="88" rx="8" fill="#08111f" stroke="#263750" stroke-width="1.5"/>
+    <path d="M220 51V139M171 95H269" stroke="#30415c" stroke-width="1.5"/>
+    <g font-size="10" font-weight="700" text-anchor="middle">
+      <circle cx="196" cy="117" r="7" fill="#56b4e9"/><text x="196" y="121" fill="#04101a">0</text>
+      <circle cx="196" cy="73" r="10" fill="#e6a93a" stroke="#fff" stroke-width="2"/><text x="196" y="77" fill="#201300">1</text>
+      <circle cx="244" cy="73" r="7" fill="#cc79a7"/><text x="244" y="77" fill="#1a0711">2</text>
+      <circle cx="244" cy="117" r="7" fill="#009e73"/><text x="244" y="121" fill="#00160f">3</text>
+    </g>
+    <text x="220" y="158" fill="#b8c6dd" font-size="12" text-anchor="middle">G(n) = 2H(n) + u<tspan baseline-shift="sub" font-size="8">σ(n)</tspan></text>
+    <rect x="55" y="177" width="190" height="22" rx="11" fill="#0b1727" stroke="#30415c"/>
+    <text x="150" y="192" fill="#b9dcf2" font-size="11" font-weight="600" text-anchor="middle">state S · λ = 1 · u = (0,1)</text>
+  </g>
+</svg>

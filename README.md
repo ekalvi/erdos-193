@@ -7,7 +7,7 @@ There are a finite set $S \subseteq \mathbb Z^3$ and an infinite sequence $P : \
 The construction is unconditional and formalized in Lean 4. External mathematical review and community acceptance are still pending.
 
 - **Visual explanation:** [erdos-193.q5m.ai](https://erdos-193.q5m.ai)
-- **Guided lessons:** [`lessons/README.md`](lessons/README.md)
+- **Guided explanation:** [`viz/learn.html`](viz/learn.html)
 - **Production deployment:** [`docs/DEPLOYMENT.md`](docs/DEPLOYMENT.md)
 - **Proof manuscript:** [`paper/erdos193.pdf`](paper/erdos193.pdf)
 - **Lean theorem:** `Hilbert193.erdos193_unconditional`
@@ -17,13 +17,13 @@ The construction is unconditional and formalized in Lean 4. External mathematica
 
 The proof uses a nested discrete Hilbert path $H : \mathbb N \to \mathbb N^2$.
 
-1. A finite-state rule selects one Hilbert index from every block of 16 indices.
-2. The selected indices have gaps between 4 and 28.
-3. Each selected planar point is lifted by its Hilbert index, giving points in $\mathbb Z^3$.
-4. A two-adic invariant of every selected planar chord rules out three collinear lifted points.
-5. Bounded index gaps and Hilbert adjacency imply that successive lifted points use a fixed finite step menu.
+1. Every Hilbert index carries one of four terminal orientation states.
+2. Matching Gray-code and height tags encode that state without discarding points.
+3. The same-state two-adic pair law thereby extends to every pair of tagged vertices.
+4. Applying the all-pairs law to two adjacent chords and their sum rules out a collinear triple.
+5. Hilbert adjacency bounds tagged planar steps by 3 and height steps between 1 and 7.
 
-The Lean development checks this infinite argument. A separate 500,000-step computation is supporting evidence and an independently inspectable implementation check; it is not the proof of the infinite theorem.
+The Lean development checks this complete infinite argument. The standalone Python demo independently checks finite prefixes; finite computation is not a premise of the theorem.
 
 ## Verify the formal proof
 
@@ -39,17 +39,17 @@ The axiom audit reports only Mathlib's standard `propext`, `Classical.choice`, a
 
 The load-bearing modules are:
 
-1. [`Basic.lean`](formal/Hilbert193/Hilbert193/Basic.lean) — digits, orientations, and the Hilbert transducer.
-2. [`Transducer.lean`](formal/Hilbert193/Hilbert193/Transducer.lean) — reversibility and coordinate evaluation.
+1. [`Basic.lean`](formal/Hilbert193/Hilbert193/Basic.lean) — shared elementary definitions.
+2. [`Transducer.lean`](formal/Hilbert193/Hilbert193/Transducer.lean) — digits, orientations, and the Hilbert transducer.
 3. [`Valuation.lean`](formal/Hilbert193/Hilbert193/Valuation.lean) — the two-adic planar chord invariant.
-4. [`PairLaw.lean`](formal/Hilbert193/Hilbert193/PairLaw.lean) — the same-terminal-state pair law.
-5. [`Construction.lean`](formal/Hilbert193/Hilbert193/Construction.lean) — bounded-gap selection and exclusion of collinear triples.
-6. [`Continuity.lean`](formal/Hilbert193/Hilbert193/Continuity.lean) — the finite step menu and final theorem.
+4. [`PairLaw.lean`](formal/Hilbert193/Hilbert193/PairLaw.lean) — the same-terminal-state pair law and lifting obstruction.
+5. [`Construction.lean`](formal/Hilbert193/Hilbert193/Construction.lean) — state tags, all-pairs law, and exclusion of collinear triples.
+6. [`Continuity.lean`](formal/Hilbert193/Hilbert193/Continuity.lean) — Hilbert adjacency, tagged finite step menu, and final theorem.
 7. [`AxiomAudit.lean`](formal/Hilbert193/Hilbert193/AxiomAudit.lean) — kernel dependency report.
 
-## Check the finite artifact
+## Archived finite artifact from the earlier selector construction
 
-[`hilbert-193-500k.jsonl`](hilbert-193-500k.jsonl) contains 500,001 vertices from the explicit construction. The standalone Python verifier independently reconstructs every selected Hilbert index and coordinate, then checks every consecutive step against the 16-vector menu:
+[`hilbert-193-500k.jsonl`](hilbert-193-500k.jsonl) contains 500,001 vertices from the earlier bounded-gap selector construction. It remains independently inspectable evidence for that valid alternative witness, but it is not an implementation of the tagged walk now used in the manuscript and Lean theorem. The standalone verifier reconstructs every selected index and checks its 16-vector step menu:
 
 ```bash
 python3 verify_hilbert_construction.py

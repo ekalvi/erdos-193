@@ -67,4 +67,65 @@ theorem pairVal_nsmul (k : ℕ) (u : Vec2) (hk : k ≠ 0) (hu : u ≠ (0, 0)) :
         simp [hxy, hxy', Nat.mul_add]
         <;> omega
 
+theorem coordVal_eq_zero_of_not_two_dvd {z : ℤ} (hodd : ¬(2 : ℤ) ∣ z) :
+    coordVal z = 0 := by
+  unfold coordVal
+  apply padicValNat.eq_zero_of_not_dvd
+  intro hd
+  apply hodd
+  apply Int.dvd_natAbs.mp
+  exact Int.natCast_dvd_natCast.mpr hd
+
+theorem coordVal_ne_zero_of_two_dvd {z : ℤ} (hz : z ≠ 0) (heven : (2 : ℤ) ∣ z) :
+    coordVal z ≠ 0 := by
+  obtain ⟨k, hk⟩ := heven
+  subst z
+  have hk0 : k ≠ 0 := by
+    intro h
+    subst k
+    simp at hz
+  have hv : coordVal (2 * k) = coordVal k + padicValNat 2 2 := by
+    simpa using coordVal_mul_nat 2 k (by decide) hk0
+  rw [hv, padicValNat_base (by decide)]
+  omega
+
+theorem pairVal_odd_even {x y : ℤ} (hx : ¬(2 : ℤ) ∣ x) (hy : (2 : ℤ) ∣ y) :
+    pairVal (x, y) = 0 := by
+  have hx0 : x ≠ 0 := by
+    intro h
+    subst x
+    exact hx (by simp)
+  have hvx : coordVal x = 0 := coordVal_eq_zero_of_not_two_dvd hx
+  by_cases hy0 : y = 0
+  · simp [pairVal, hx0, hy0, hvx]
+  · have hvy : coordVal y ≠ 0 := coordVal_ne_zero_of_two_dvd hy0 hy
+    have hvy' : 0 ≠ coordVal y := Ne.symm hvy
+    simp [pairVal, hx0, hy0, hvx, hvy']
+
+theorem pairVal_even_odd {x y : ℤ} (hx : (2 : ℤ) ∣ x) (hy : ¬(2 : ℤ) ∣ y) :
+    pairVal (x, y) = 0 := by
+  have hy0 : y ≠ 0 := by
+    intro h
+    subst y
+    exact hy (by simp)
+  have hvy : coordVal y = 0 := coordVal_eq_zero_of_not_two_dvd hy
+  by_cases hx0 : x = 0
+  · simp [pairVal, hx0, hy0, hvy]
+  · have hvx : coordVal x ≠ 0 := coordVal_ne_zero_of_two_dvd hx0 hx
+    simp [pairVal, hx0, hy0, hvx, hvy]
+
+theorem pairVal_odd_odd {x y : ℤ} (hx : ¬(2 : ℤ) ∣ x) (hy : ¬(2 : ℤ) ∣ y) :
+    pairVal (x, y) = 1 := by
+  have hx0 : x ≠ 0 := by
+    intro h
+    subst x
+    exact hx (by simp)
+  have hy0 : y ≠ 0 := by
+    intro h
+    subst y
+    exact hy (by simp)
+  have hvx : coordVal x = 0 := coordVal_eq_zero_of_not_two_dvd hx
+  have hvy : coordVal y = 0 := coordVal_eq_zero_of_not_two_dvd hy
+  simp [pairVal, hx0, hy0, hvx, hvy]
+
 end Hilbert193

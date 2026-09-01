@@ -183,7 +183,7 @@ private theorem pairVal_bitDelta (a₁ a₂ b₁ b₂ : Bit) (x₁ x₂ y₁ y�
     have hv₂ := coordVal_bitDelta_of_ne x₂ y₂ h₂
     simp [h₁, h₂, pairVal, hz₁, hz₂, hv₁, hv₂]
 
-private theorem padicValNat_natAbs_eq_zero {z : ℤ} (hodd : ¬(2 : ℤ) ∣ z) :
+theorem padicValNat_natAbs_eq_zero {z : ℤ} (hodd : ¬(2 : ℤ) ∣ z) :
     padicValNat 2 z.natAbs = 0 := by
   apply padicValNat.eq_zero_of_not_dvd
   intro hd
@@ -191,7 +191,7 @@ private theorem padicValNat_natAbs_eq_zero {z : ℤ} (hodd : ¬(2 : ℤ) ∣ z) 
   apply Int.dvd_natAbs.mp
   exact Int.natCast_dvd_natCast.mpr hd
 
-private theorem padicValNat_natAbs_eq_one {z : ℤ}
+theorem padicValNat_natAbs_eq_one {z : ℤ}
     (htwo : (2 : ℤ) ∣ z) (hfour : ¬(4 : ℤ) ∣ z) :
     padicValNat 2 z.natAbs = 1 := by
   have htwoN : 2 ∣ z.natAbs := by
@@ -397,19 +397,20 @@ theorem indexLSB_append_zeroPairs (a : List Digit) (k : ℕ) :
   | nil => simp [indexLSB]
   | cons d ds ih => simp [indexLSB, ih]
 
-theorem coordinateLSB_append_zeroPairs (a : List Digit) (k : ℕ)
-    (hback : backwardState I a = I) :
-    coordinateLSB I (a ++ zeroPairs k) = coordinateLSB I a := by
+theorem coordinateLSB_append_zeroPairs (out : Orient) (a : List Digit) (k : ℕ)
+    (hback : backwardState out a = I) :
+    coordinateLSB out (a ++ zeroPairs k) = coordinateLSB out a := by
   rw [coordinateLSB_append, hback, coordinateLSB_I_zeroPairs]
   simp
 
 /-- The pair law remains valid for unequal even word lengths once both words
-undo to the same terminal orientation; high zero-pairs provide a common length. -/
-theorem pair_law_even_words {a b : List Digit}
+undo from one common terminal orientation; high zero-pairs provide a common
+length. -/
+theorem pair_law_even_words (out : Orient) {a b : List Digit}
     (haeven : Even a.length) (hbeven : Even b.length)
-    (haback : backwardState I a = I) (hbback : backwardState I b = I)
+    (haback : backwardState out a = I) (hbback : backwardState out b = I)
     (hindex : indexLSB a ≠ indexLSB b) :
-    pairVal (coordinateDelta I a b) = padicValNat 2 (indexDistance a b) := by
+    pairVal (coordinateDelta out a b) = padicValNat 2 (indexDistance a b) := by
   obtain ⟨la, hla⟩ := haeven
   obtain ⟨lb, hlb⟩ := hbeven
   let ap := a ++ zeroPairs lb
@@ -417,24 +418,24 @@ theorem pair_law_even_words {a b : List Digit}
   have hlen : ap.length = bp.length := by
     simp [ap, bp, hla, hlb]
     omega
-  have hcoordA : coordinateLSB I ap = coordinateLSB I a :=
-    coordinateLSB_append_zeroPairs a lb haback
-  have hcoordB : coordinateLSB I bp = coordinateLSB I b :=
-    coordinateLSB_append_zeroPairs b la hbback
+  have hcoordA : coordinateLSB out ap = coordinateLSB out a :=
+    coordinateLSB_append_zeroPairs out a lb haback
+  have hcoordB : coordinateLSB out bp = coordinateLSB out b :=
+    coordinateLSB_append_zeroPairs out b la hbback
   have hindexA : indexLSB ap = indexLSB a := indexLSB_append_zeroPairs a lb
   have hindexB : indexLSB bp = indexLSB b := indexLSB_append_zeroPairs b la
   have hne : ap ≠ bp := by
     intro h
     apply hindex
     rw [← hindexA, ← hindexB, h]
-  have hp := pair_law_words I hlen hne
+  have hp := pair_law_words out hlen hne
   simpa [coordinateDelta, indexDistance, hcoordA, hcoordB, hindexA, hindexB] using hp
 
-theorem coordinateLSB_even_injective {a b : List Digit}
+theorem coordinateLSB_even_injective (out : Orient) {a b : List Digit}
     (haeven : Even a.length) (hbeven : Even b.length)
-    (haback : backwardState I a = I) (hbback : backwardState I b = I)
+    (haback : backwardState out a = I) (hbback : backwardState out b = I)
     (hindex : indexLSB a ≠ indexLSB b) :
-    coordinateLSB I a ≠ coordinateLSB I b := by
+    coordinateLSB out a ≠ coordinateLSB out b := by
   obtain ⟨la, hla⟩ := haeven
   obtain ⟨lb, hlb⟩ := hbeven
   let ap := a ++ zeroPairs lb
@@ -442,12 +443,12 @@ theorem coordinateLSB_even_injective {a b : List Digit}
   have hlen : ap.length = bp.length := by
     simp [ap, bp, hla, hlb]
     omega
-  have hcoordA : coordinateLSB I ap = coordinateLSB I a :=
-    coordinateLSB_append_zeroPairs a lb haback
-  have hcoordB : coordinateLSB I bp = coordinateLSB I b :=
-    coordinateLSB_append_zeroPairs b la hbback
+  have hcoordA : coordinateLSB out ap = coordinateLSB out a :=
+    coordinateLSB_append_zeroPairs out a lb haback
+  have hcoordB : coordinateLSB out bp = coordinateLSB out b :=
+    coordinateLSB_append_zeroPairs out b la hbback
   intro hcoord
-  have hp : ap = bp := coordinateLSB_injective I hlen (by simpa [hcoordA, hcoordB])
+  have hp : ap = bp := coordinateLSB_injective out hlen (by simpa [hcoordA, hcoordB])
   apply hindex
   have hi := congrArg indexLSB hp
   simpa [ap, bp, indexLSB_append_zeroPairs] using hi

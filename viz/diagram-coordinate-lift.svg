@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 210" role="img" aria-labelledby="title desc">
+  <title id="title">Planar points lifted by encoded heights</title>
+  <desc id="desc">The first four planar points G of the construction rise to heights zero, five, nine, and fourteen, forming the beginning of the three-dimensional walk.</desc>
+  <rect width="300" height="210" fill="#04060d"/>
+  <g font-family="Outfit, system-ui, sans-serif">
+    <polygon points="35,166 142,202 267,160 158,124" fill="#08111f" stroke="#263750" stroke-width="1.5"/>
+    <g fill="none" stroke="#17243a">
+      <path d="M62 175L169 139M90 185L197 149M118 194L225 158"/>
+      <path d="M64 156L170 191M93 146L199 181M122 136L228 172"/>
+    </g>
+
+    <g stroke="#486180" stroke-width="1.5" stroke-dasharray="4 4">
+      <path d="M87 174V174"/>
+      <path d="M155 173V126"/>
+      <path d="M190 160V81"/>
+      <path d="M164 151V34"/>
+    </g>
+    <path d="M87 174L155 126L190 81L164 34" fill="none" stroke="#56b4e9" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <g stroke="#04060d" stroke-width="2">
+      <circle cx="87" cy="174" r="6" fill="#56b4e9"/>
+      <circle cx="155" cy="126" r="6" fill="#e6a93a"/>
+      <circle cx="190" cy="81" r="6" fill="#e6a93a"/>
+      <circle cx="164" cy="34" r="6" fill="#cc79a7"/>
+    </g>
+    <g fill="#8191aa" font-size="10" font-weight="600">
+      <text x="74" y="190">z=0</text>
+      <text x="163" y="128">z=5</text>
+      <text x="198" y="83">z=9</text>
+      <text x="174" y="37">z=14</text>
+    </g>
+    <g fill="#b8c6dd" font-size="10">
+      <text x="45" y="151">G(0)</text>
+      <text x="228" y="183">planar G(n)</text>
+    </g>
+    <rect x="25" y="17" width="104" height="25" rx="12.5" fill="#0b1727" stroke="#30415c"/>
+    <text x="77" y="33" fill="#b9dcf2" font-size="11" font-weight="600" text-anchor="middle">P(n) = (G(n), z(n))</text>
+  </g>
+</svg>

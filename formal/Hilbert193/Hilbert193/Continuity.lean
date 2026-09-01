@@ -340,137 +340,138 @@ theorem run_backwardState_reverse (out : Orient) (ds : List Digit) :
       rw [ih]
       exact previous_refinement out d
 
-theorem coordinateMSB_reverse_of_backward (a : List Digit)
-    (hback : backwardState I a = I) :
-    coordinateMSB I a.reverse = coordinateLSB I a := by
-  have hout := run_backwardState_reverse I a
+theorem coordinateMSB_reverse_of_backward (out : Orient) (a : List Digit)
+    (hback : backwardState out a = I) :
+    coordinateMSB I a.reverse = coordinateLSB out a := by
+  have hout := run_backwardState_reverse out a
   rw [hback] at hout
   have h := coordinateMSB_eq_coordinateLSB_reverse I a.reverse
   rw [List.reverse_reverse, hout] at h
   exact h
 
-def paddedSelected (a k : ℕ) : List Digit :=
-  selectedWord a ++ zeroPairs k
+def paddedHilbert (n k : ℕ) : List Digit :=
+  evenDigits n ++ zeroPairs k
 
-@[simp] theorem paddedSelected_length (a k : ℕ) :
-    (paddedSelected a k).length = (selectedWord a).length + 2 * k := by
-  simp [paddedSelected]
+@[simp] theorem paddedHilbert_length (n k : ℕ) :
+    (paddedHilbert n k).length = (evenDigits n).length + 2 * k := by
+  simp [paddedHilbert]
 
-@[simp] theorem paddedSelected_index (a k : ℕ) :
-    indexLSB (paddedSelected a k) = selectedIndex selectedState a := by
-  simp [paddedSelected, indexLSB_append_zeroPairs, selectedWord_index]
+@[simp] theorem paddedHilbert_index (n k : ℕ) :
+    indexLSB (paddedHilbert n k) = n := by
+  simp [paddedHilbert, indexLSB_append_zeroPairs]
 
-@[simp] theorem paddedSelected_backward (a k : ℕ) :
-    backwardState I (paddedSelected a k) = I := by
-  simp [paddedSelected, backwardState_append, selectedWord_backward]
+@[simp] theorem paddedHilbert_backward (n k : ℕ) :
+    backwardState (hilbertOrient n) (paddedHilbert n k) = I := by
+  simp [paddedHilbert, backwardState_append, hilbertWord_backward]
 
-@[simp] theorem paddedSelected_coordinate (a k : ℕ) :
-    coordinateLSB I (paddedSelected a k) = selectedPlanar a := by
-  simp [paddedSelected, coordinateLSB_append_zeroPairs, selectedWord_backward,
-    selectedPlanar]
+@[simp] theorem paddedHilbert_coordinate (n k : ℕ) :
+    coordinateLSB (hilbertOrient n) (paddedHilbert n k) = hilbertPlanar n := by
+  exact coordinateLSB_append_zeroPairs (hilbertOrient n) (evenDigits n) k
+    (hilbertWord_backward n)
 
-theorem paddedSelected_index_bound (a k : ℕ) :
-    selectedIndex selectedState a < 4 ^ (paddedSelected a k).length := by
-  have h := indexMSB_lt_pow (paddedSelected a k).reverse
-  rw [indexMSB_reverse, List.length_reverse] at h
-  simpa using h
+theorem paddedHilbert_index_bound (n k : ℕ) :
+    n < 4 ^ (paddedHilbert n k).length := by
+  have h := indexMSB_lt_pow (paddedHilbert n k).reverse
+  rw [indexMSB_reverse, List.length_reverse, paddedHilbert_index] at h
+  exact h
 
-theorem paddedSelected_fixedPoint (a k : ℕ) :
-    fixedPoint (paddedSelected a k).length (selectedIndex selectedState a) =
-      selectedPlanar a := by
-  have hbound := paddedSelected_index_bound a k
-  have heq : paddedSelected a k =
-      fixedWord (paddedSelected a k).length (selectedIndex selectedState a) := by
+theorem paddedHilbert_fixedPoint (n k : ℕ) :
+    fixedPoint (paddedHilbert n k).length n = hilbertPlanar n := by
+  have hbound := paddedHilbert_index_bound n k
+  have heq : paddedHilbert n k =
+      fixedWord (paddedHilbert n k).length n := by
     apply indexLSB_injective_of_length
     · rw [fixedWord_length hbound]
-    · rw [paddedSelected_index, fixedWord_index hbound]
+    · rw [paddedHilbert_index, fixedWord_index hbound]
   rw [fixedPoint, ← heq, coordinateMSB_reverse_of_backward]
-  · exact paddedSelected_coordinate a k
-  · exact paddedSelected_backward a k
+  · exact paddedHilbert_coordinate n k
+  · exact paddedHilbert_backward n k
 
-theorem selectedPair_fixedPoint (a b : ℕ) :
+theorem hilbertPair_fixedPoint (a b : ℕ) :
     ∃ K,
-      fixedPoint K (selectedIndex selectedState a) = selectedPlanar a ∧
-      fixedPoint K (selectedIndex selectedState b) = selectedPlanar b ∧
-      selectedIndex selectedState b < 4 ^ K := by
-  obtain ⟨ka, hka⟩ := selectedWord_length_even a
-  obtain ⟨kb, hkb⟩ := selectedWord_length_even b
-  let K := (selectedWord a).length + (selectedWord b).length
-  have hlenA : (paddedSelected a kb).length = K := by
-    rw [paddedSelected_length]
+      fixedPoint K a = hilbertPlanar a ∧
+      fixedPoint K b = hilbertPlanar b ∧
+      b < 4 ^ K := by
+  obtain ⟨ka, hka⟩ := evenDigits_length_even a
+  obtain ⟨kb, hkb⟩ := evenDigits_length_even b
+  let K := (evenDigits a).length + (evenDigits b).length
+  have hlenA : (paddedHilbert a kb).length = K := by
+    rw [paddedHilbert_length]
     unfold K
     omega
-  have hlenB : (paddedSelected b ka).length = K := by
-    rw [paddedSelected_length]
+  have hlenB : (paddedHilbert b ka).length = K := by
+    rw [paddedHilbert_length]
     unfold K
     omega
   refine ⟨K, ?_, ?_, ?_⟩
   · rw [← hlenA]
-    exact paddedSelected_fixedPoint a kb
+    exact paddedHilbert_fixedPoint a kb
   · rw [← hlenB]
-    exact paddedSelected_fixedPoint b ka
+    exact paddedHilbert_fixedPoint b ka
   · rw [← hlenB]
-    exact paddedSelected_index_bound b ka
+    exact paddedHilbert_index_bound b ka
 
-theorem selectedPlanar_succ_dist_le (a : ℕ) :
-    planarDist (selectedPlanar a) (selectedPlanar (a + 1)) ≤ 28 := by
-  obtain ⟨gap, _, hgap, heq⟩ := selectedIndex_succ_gap selectedState a
-  obtain ⟨K, hcoordA, hcoordB, hbound⟩ := selectedPair_fixedPoint a (a + 1)
+/-- Consecutive points of the nested Hilbert path are planar lattice neighbors. -/
+theorem hilbertPlanar_succ_dist (n : ℕ) :
+    planarDist (hilbertPlanar n) (hilbertPlanar (n + 1)) = 1 := by
+  obtain ⟨K, hcoordA, hcoordB, hbound⟩ := hilbertPair_fixedPoint n (n + 1)
   rw [← hcoordA, ← hcoordB]
-  have hd := fixedPoint_add_dist_le
-    (k := K) (n := selectedIndex selectedState a) (r := gap) (by rwa [← heq])
-  rw [← heq] at hd
-  omega
+  exact fixedPoint_succ hbound
 
 def displacement (p q : Point3) : Point3 where
   x := q.x - p.x
   y := q.y - p.y
   z := q.z - p.z
+
 def finiteStepMenu : Set Point3 :=
   (fun p : (ℤ × ℤ) × ℤ => { x := p.1.1, y := p.1.2, z := p.2 }) ''
-    (((Set.Icc (-28 : ℤ) 28).prod (Set.Icc (-28 : ℤ) 28)).prod
-      (Set.Icc (4 : ℤ) 28))
+    (((Set.Icc (-3 : ℤ) 3).prod (Set.Icc (-3 : ℤ) 3)).prod
+      (Set.Icc (1 : ℤ) 7))
 
 theorem finiteStepMenu_finite : finiteStepMenu.Finite := by
   apply Set.Finite.image
-  exact ((Set.finite_Icc (-28 : ℤ) 28).prod (Set.finite_Icc (-28 : ℤ) 28)).prod
-    (Set.finite_Icc (4 : ℤ) 28)
+  exact ((Set.finite_Icc (-3 : ℤ) 3).prod (Set.finite_Icc (-3 : ℤ) 3)).prod
+    (Set.finite_Icc (1 : ℤ) 7)
 
-private theorem int_bounds_of_natAbs_le {z : ℤ} (h : z.natAbs ≤ 28) :
-    -28 ≤ z ∧ z ≤ 28 := by
-  cases z <;> simp [Int.natAbs] at h ⊢ <;> omega
-
-theorem selectedLift_step_mem (a : ℕ) :
-    displacement (selectedLift a) (selectedLift (a + 1)) ∈ finiteStepMenu := by
+theorem taggedLift_step_mem (n : ℕ) :
+    displacement (taggedLift n) (taggedLift (n + 1)) ∈ finiteStepMenu := by
   classical
-  have hplanar := selectedPlanar_succ_dist_le a
-  have hxabs : Int.natAbs (((selectedPlanar (a + 1)).1 : ℤ) -
-      (selectedPlanar a).1) ≤ 28 := by
+  have hplanar := hilbertPlanar_succ_dist n
+  have hx :
+      -1 ≤ ((hilbertPlanar (n + 1)).1 : ℤ) - (hilbertPlanar n).1 ∧
+        ((hilbertPlanar (n + 1)).1 : ℤ) - (hilbertPlanar n).1 ≤ 1 := by
     unfold planarDist at hplanar
     omega
-  have hyabs : Int.natAbs (((selectedPlanar (a + 1)).2 : ℤ) -
-      (selectedPlanar a).2) ≤ 28 := by
+  have hy :
+      -1 ≤ ((hilbertPlanar (n + 1)).2 : ℤ) - (hilbertPlanar n).2 ∧
+        ((hilbertPlanar (n + 1)).2 : ℤ) - (hilbertPlanar n).2 ≤ 1 := by
     unfold planarDist at hplanar
     omega
-  have hx := int_bounds_of_natAbs_le hxabs
-  have hy := int_bounds_of_natAbs_le hyabs
-  have haBounds := steeringValue_bounds (selectedState a)
-  have hbBounds := steeringValue_bounds (selectedState (a + 1))
-  have hz : (4 : ℤ) ≤
-      (selectedIndex selectedState (a + 1) : ℤ) -
-        selectedIndex selectedState a ∧
-      (selectedIndex selectedState (a + 1) : ℤ) -
-        selectedIndex selectedState a ≤ 28 := by
-    unfold selectedIndex
-    push_cast
+  have htagA₁ : (stateTag (hilbertState n)).1 ≤ 1 := by
+    rcases hilbertState n with ⟨a,b⟩
+    cases a <;> cases b <;> decide
+  have htagA₂ : (stateTag (hilbertState n)).2 ≤ 1 := by
+    rcases hilbertState n with ⟨a,b⟩
+    cases a <;> cases b <;> decide
+  have htagB₁ : (stateTag (hilbertState (n + 1))).1 ≤ 1 := by
+    rcases hilbertState (n + 1) with ⟨a,b⟩
+    cases a <;> cases b <;> decide
+  have htagB₂ : (stateTag (hilbertState (n + 1))).2 ≤ 1 := by
+    rcases hilbertState (n + 1) with ⟨a,b⟩
+    cases a <;> cases b <;> decide
+  have hzNat := taggedHeight_succ_bounds n
+  have hz :
+      (1 : ℤ) ≤ (taggedHeight (n + 1) : ℤ) - taggedHeight n ∧
+        (taggedHeight (n + 1) : ℤ) - taggedHeight n ≤ 7 := by
     omega
   let v : (ℤ × ℤ) × ℤ :=
-    ((((selectedPlanar (a + 1)).1 : ℤ) - (selectedPlanar a).1,
-      ((selectedPlanar (a + 1)).2 : ℤ) - (selectedPlanar a).2),
-      (selectedIndex selectedState (a + 1) : ℤ) -
-        selectedIndex selectedState a)
+    (((taggedPlanar (n + 1)).1 - (taggedPlanar n).1,
+      (taggedPlanar (n + 1)).2 - (taggedPlanar n).2),
+      (taggedHeight (n + 1) : ℤ) - taggedHeight n)
   refine ⟨v, ?_, ?_⟩
-  · exact ⟨⟨hx, hy⟩, hz⟩
+  · constructor
+    · constructor <;> simp [v, taggedPlanar] at * <;> omega
+    · exact hz
   · rfl
 
 /-- Unconditional finite-step, no-three-in-line walk in `ℤ³`. -/
@@ -479,9 +480,9 @@ theorem erdos193_unconditional :
       S.Finite ∧
       (∀ n, displacement (P n) (P (n + 1)) ∈ S) ∧
       (∀ ⦃i j k⦄, i < j → j < k → ¬ OrderedCollinear (P i) (P j) (P k)) := by
-  refine ⟨finiteStepMenu, selectedLift, finiteStepMenu_finite, ?_, ?_⟩
+  refine ⟨finiteStepMenu, taggedLift, finiteStepMenu_finite, ?_, ?_⟩
   · intro n
-    exact selectedLift_step_mem n
+    exact taggedLift_step_mem n
   · intro i j k hij hjk
-    exact selectedLift_no_three hij hjk
+    exact taggedLift_no_three hij hjk
 end Hilbert193
