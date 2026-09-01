@@ -74,8 +74,14 @@ def verify_no_collinear_triple(points):
 
 def run_check(name, verify, points, message):
     print(f"Checking {name}...")
-    checks = verify(points)
-    print(f"PASS {name}: {message.format(checks=checks)}")
+    try:
+        checks = verify(points)
+    except AssertionError as error:
+        detail = str(error).strip() or "assertion failed"
+        print(f"❌ {name}: {detail}")
+        return False
+    print(f"✅ {name}: {message.format(checks=checks)}")
+    return True
 
 
 def demonstrate(n):
@@ -86,15 +92,20 @@ def demonstrate(n):
         print(f"  P_{k} = {point}")
     print(f"Last point: P_{n - 1} = {points[-1]}")
 
-    run_check("all-pairs identity", verify_all_pairs, points, "{checks} pairs verified")
-    run_check("small step menu", verify_step_menu, points, "{checks} steps verified")
-    run_check(
-        "collinearity search",
-        verify_no_collinear_triple,
-        points,
-        "{checks} anchored directions unique",
-    )
-    print("All finite checks passed.")
+    results = [
+        run_check("all-pairs identity", verify_all_pairs, points, "{checks} pairs verified"),
+        run_check("small step menu", verify_step_menu, points, "{checks} steps verified"),
+        run_check(
+            "collinearity search",
+            verify_no_collinear_triple,
+            points,
+            "{checks} anchored directions unique",
+        ),
+    ]
+    if all(results):
+        print("✅ All finite checks passed.")
+    else:
+        print("❌ One or more finite checks failed.")
     print("These checks inspect a prefix; the proof establishes the infinite walk.")
 
 
