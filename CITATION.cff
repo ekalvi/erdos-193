@@ -19,7 +19,7 @@ keywords:
   - Lean 4
 preferred-citation:
   type: article
-  title: "Solution of Erdős Problem #193: A recursive Gaussian-integer walk with no collinear triple"
+  title: "An infinite small-step Z^3-walk with no collinear triple"
   authors:
     - family-names: Cambie
       given-names: Stijn
