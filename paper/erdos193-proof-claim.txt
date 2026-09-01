@@ -2,8 +2,8 @@ Proof claim for Erdős Problem #193
 
 Claim: The answer is no. There is a finite set S⊂Z^3 and an infinite S-walk with no three distinct collinear vertices.
 
-Paper: A Gaussian-lattice walk in Z^3 with no three collinear vertices
-Authors: Erik Kalviainen and Stijn Cambie
+Paper: An infinite small-step Z^3-walk with no collinear triple
+Authors: Stijn Cambie and Erik Kalviainen
 Public PDF after merge: https://erdos-193.q5m.ai/gaussian-proof.pdf
 Source and Lean formalization: https://github.com/ekalvi/erdos-193
 Formal theorem: formal/Hilbert193/Hilbert193/Continuity.lean, theorem Hilbert193.erdos193_unconditional
@@ -15,6 +15,7 @@ Verification status:
 - The complete Gaussian construction and no-three theorem build in Lean 4.33.0 against pinned Mathlib.
 - The axiom audit reports only propext, Classical.choice, and Quot.sound.
 - The standalone Python demo independently checks exact finite prefixes; finite computation is not a premise.
+- Both authors have checked the proof and state the result as an unconditional theorem.
 - Contribution history: Kalviainen developed the first proof using a two-dimensional Hilbert curve and formalized and visualized it; Cambie then proposed two successive simplifications—first direct state tags removing the selector, then the complex Gaussian-lattice walk removing Hilbert entirely. Kalviainen migrated the final proof into Lean and the executable site. This staging paper credits both jointly while final publication wording remains under discussion.
 - The Hilbert curve remains documented as the geometric discovery route, not as a premise of the current theorem.
 - External mathematical peer review remains pending.

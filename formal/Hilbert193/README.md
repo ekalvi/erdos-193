@@ -1,6 +1,6 @@
 # Lean formalization
 
-This package formalizes the Gaussian-lattice construction in the joint Erik Kalviainen–Stijn Cambie version of the Erdős Problem 193 paper against pinned Lean 4 and Mathlib revisions.
+This package formalizes the Gaussian-lattice construction in the joint Stijn Cambie–Erik Kalviainen version of the Erdős Problem 193 paper against pinned Lean 4 and Mathlib revisions.
 
 `Hilbert193.erdos193_unconditional` in `Hilbert193/Continuity.lean` constructs a fixed finite step set in `ℤ³` and an infinite walk using that set, then proves that no ordered triple of distinct walk vertices is collinear. The historical package namespace is retained for repository compatibility; the theorem no longer imports the Hilbert decoder.
 

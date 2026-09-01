@@ -12,7 +12,7 @@ There are a finite set $S\subseteq\mathbb Z^3$ and an infinite sequence $P:\math
 
 ## Result at a glance
 
-The formal witness is the Gaussian-lattice construction in the joint Erik Kalviainen–Stijn Cambie version of the paper.
+The formal witness is the Gaussian-lattice construction in the joint Stijn Cambie–Erik Kalviainen version of the paper.
 
 1. Let $u_n=i^{s_2(n)}$, where $s_2(n)$ is the binary digit sum, and let $z_n=\sum_{r<n}u_r$.
 2. Binary recursion gives $u_{2n+\varepsilon}=i^\varepsilon u_n$ and $z_{2n+\varepsilon}=(1+i)z_n+\varepsilon u_n$.
@@ -74,7 +74,7 @@ Earlier selector and scale-and-rotate artifacts remain archived for provenance. 
 
 ## Attribution and status
 
-This staging version is jointly authored by Erik Kalviainen and Stijn Cambie while final publication wording and author order are being settled. Kalviainen developed the first proof using a two-dimensional discrete Hilbert curve, formalized it in Lean, and built the exact checks, executable tooling, and visualization. Cambie became involved after that proof and proposed two successive simplifications: direct all-index state tags eliminating the selector, followed by the complex Gaussian-lattice walk that eliminated the Hilbert machinery. Kalviainen migrated the final proof into Lean and the current site. Both development streams were AI-assisted.
+This staging version is jointly authored by Stijn Cambie and Erik Kalviainen in alphabetical order. Kalviainen developed the first proof using a two-dimensional discrete Hilbert curve, formalized it in Lean, and built the exact checks, executable tooling, and visualization. Cambie became involved after that proof and proposed two successive simplifications: direct all-index state tags eliminating the selector, followed by the complex Gaussian-lattice walk that eliminated the Hilbert machinery. Kalviainen migrated the final proof into Lean and the current site. Both authors have checked the proof and state the result as an unconditional theorem. Both development streams were AI-assisted; S.C. is supported by FWO grant 1225224N.
 
 The source-of-truth boundaries are:
 

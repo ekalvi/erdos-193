@@ -21,8 +21,8 @@
   </header>
 
   <main class="section proof-page">
-    <span class="eyebrow">Unconditional construction · Erik Kalviainen and Stijn Cambie</span>
-    <h1>A Gaussian-lattice walk in \(\mathbb Z^3\) with no three collinear vertices</h1>
+    <span class="eyebrow">Unconditional construction · Stijn Cambie and Erik Kalviainen</span>
+    <h1>An infinite small-step \(\mathbb Z^3\)-walk with no collinear triple</h1>
     <div class="route-actions proof-top-actions"><a class="button primary" href="gaussian-proof.pdf">Open the joint paper</a><a class="button" href="demo.html">Run the exact Python replay</a></div>
 
     <p><strong>Theorem.</strong> There are a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\) such that every successive displacement lies in \(S\), while no three distinct vertices are collinear. The construction has sixteen state-pair steps with \(|dx|,|dy|\le2\) and \(1\le dz\le7\).</p>
@@ -119,11 +119,11 @@
 
     <h2>Development and author contributions</h2>
     <p>The present formula is the third construction in the project. Erik Kalviainen developed the first bounded-gap Hilbert selector, its Lean formalization, exact checks, and the interactive proof site. Stijn Cambie then proposed the all-index state-tagging refinement that removed the selector and, in a further AI-assisted revision, isolated the Gaussian digit-sum common core.</p>
-    <p>Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. This staging paper credits Kalviainen and Cambie jointly while final publication wording and author order remain under discussion. The <a href="progress.html#three-constructions">timeline compares all three constructions</a>.</p>
+    <p>Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem. The paper lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#three-constructions">timeline compares all three constructions</a>.</p>
 
     <div class="concept-grid">
       <div class="concept"><b>Kernel-checked proof</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> checks the Gaussian construction against pinned Lean and Mathlib revisions.</p></div>
-      <div class="concept"><b>Joint working version</b><p>The paper currently lists Erik Kalviainen and Stijn Cambie as coauthors pending agreement on final publication credit.</p></div>
+      <div class="concept"><b>Joint theorem</b><p>Stijn Cambie and Erik Kalviainen both affirm the unconditional result; neither AI output nor finite computation is a premise.</p></div>
       <div class="concept"><b>Evidence boundary</b><p>The Python and 3D prefixes check finite instances. The infinite theorem is the argument above and its Lean formalization.</p></div>
     </div>
   </main>
