@@ -145,7 +145,7 @@ available for controlled reversal:
 4. Change only the NPM origin to `10.1.1.31:8193`; do not change DNS,
    hostnames, certificate, or canonical content in this step.
 5. Verify `/`, `proof.html`, `learn.html`, `walk3d.html`, `progress.html`,
-   `demo.html`, `gaussian-proof.pdf`, `robots.txt`, and `sitemap.xml` over the
+   `demo.html`, `erdos-193-gaussian-proof.pdf`, `robots.txt`, and `sitemap.xml` over the
    canonical public hostname.
 6. Reverse NPM to `q5m-dev:8193` once and repeat the baseline. Then return it to
    `q5m-n02:8193` and repeat the replacement checks.
