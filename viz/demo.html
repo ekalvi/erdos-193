@@ -23,20 +23,20 @@
   <main class="demo-page">
     <section class="demo-runner demo-runner-standalone" aria-labelledby="runner-title">
       <header class="demo-runner-head">
-        <h1 id="runner-title">A few readable lines define an infinite fractal walk.</h1>
-        <p>Edit the unbounded generator, then choose how many initial points to inspect. <b>The finite run is only a window into the infinite sequence.</b> <a href="proof.html">Proof</a> · <a href="gaussian-proof.pdf">Paper</a></p>
+        <h1 id="runner-title">Run the constructor and its exact finite checks.</h1>
+        <p>The file begins with the same <code>gaussian_walk(n)</code> shown on the homepage, then verifies the pair identity, step menu, and absence of collinear triples in the selected prefix. <a href="proof.html">Proof</a> · <a href="gaussian-proof.pdf">Paper</a></p>
       </header>
       <div class="demo-workbench">
         <section class="demo-source-panel" aria-labelledby="demoSourceFilename">
           <header class="demo-source-head">
-            <strong id="demoSourceFilename">gaussian_walk.py</strong>
+            <strong id="demoSourceFilename">gaussian_walk_demo.py</strong>
             <div class="demo-source-buttons">
               <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
               <button id="demoReset" class="button" type="button" disabled>Reset</button>
-              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/gaussian_walk.py">GitHub</a>
+              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/gaussian_walk_demo.py">GitHub</a>
             </div>
           </header>
-          <div id="demoSource" class="demo-source" aria-label="Editable gaussian_walk.py source">Loading source…</div>
+          <div id="demoSource" class="demo-source" aria-label="Editable gaussian_walk_demo.py source">Loading source…</div>
         </section>
         <section class="demo-output-panel" aria-labelledby="demoOutputLabel">
           <header class="demo-output-head"><strong id="demoOutputLabel">Output</strong></header>
@@ -49,7 +49,7 @@
           <button id="demoStop" class="button" type="button" disabled>Stop</button>
         </form>
       </div>
-      <p id="demoStatus" class="demo-status" role="status">Loading gaussian_walk.py…</p>
+      <p id="demoStatus" class="demo-status" role="status">Loading gaussian_walk_demo.py…</p>
       <p class="demo-safety"><b>Contained run:</b> disposable browser worker · 12-second cutoff · 1,000-point maximum. No page or file access. Edited code can make network requests; do not paste secrets or untrusted code.</p>
     </section>
   </main>
@@ -170,7 +170,7 @@
     finishRun(readyStatus);
   };
 
-  fetch('gaussian_walk.py', {cache: 'no-store'})
+  fetch('gaussian_walk_demo.py', {cache: 'no-store'})
     .then(response => {
       if (!response.ok) throw new Error(`source request failed: ${response.status}`);
       return response.text();

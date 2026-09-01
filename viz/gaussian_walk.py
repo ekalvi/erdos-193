@@ -1,14 +1,15 @@
-def gaussian_walk():
+def gaussian_walk(n):
     z = 0j
-    n = 0
+    points = []
 
-    while True:
-        s2 = n.bit_count()
+    for k in range(n):
+        s2 = k.bit_count()
         u = 1j ** s2
         c = 1j * (1 - u) / (1 - 1j)
         W = 2 * z + c
-        H = 4 * n + s2 % 4
+        H = 4 * k + s2 % 4
         P = round(W.real), round(W.imag), H
-        yield P
+        points.append(P)
         z += u
-        n += 1
+
+    return points

@@ -83,24 +83,25 @@
     <section class="section proof-part code-fractal">
       <div class="part-heading">
         <span class="part-number">1</span>
-        <div><span class="eyebrow">The whole construction</span><h2>This tiny program defines an infinite fractal walk.</h2></div>
+        <div><span class="eyebrow">The whole construction</span><h2>This tiny program generates any requested part of an infinite fractal walk.</h2></div>
       </div>
-      <p>The generator has no final index: each call yields the next exact lattice point, forever. Binary digit sum chooses one of four complex directions, and the same state is written into the planar point and its height.</p>
+      <p>Pass any \(n\) to obtain the first \(n\) exact lattice points. There is no fixed maximum: the same rule defines the walk for every natural-number index, so arbitrarily long prefixes expose more of the infinite structure.</p>
       <div class="code-fractal-grid">
-        <pre class="fractal-code" aria-label="Infinite Gaussian walk Python generator"><code class="python-code"><span class="code-line"><span class="py-keyword">def</span> <span class="py-function">gaussian_walk</span>():</span>
+        <pre class="fractal-code" aria-label="Gaussian walk Python constructor"><code class="python-code"><span class="code-line"><span class="py-keyword">def</span> <span class="py-function">gaussian_walk</span>(n):</span>
 <span class="code-line">    z = <span class="py-number">0j</span></span>
-<span class="code-line">    n = <span class="py-number">0</span></span>
+<span class="code-line">    points = []</span>
 <span class="code-line code-line-blank"></span>
-<span class="code-line">    <span class="py-keyword">while</span> <span class="py-keyword">True</span>:</span>
-<span class="code-line">        s2 = n.<span class="py-function">bit_count</span>()</span>
+<span class="code-line">    <span class="py-keyword">for</span> k <span class="py-keyword">in</span> <span class="py-builtin">range</span>(n):</span>
+<span class="code-line">        s2 = k.<span class="py-function">bit_count</span>()</span>
 <span class="code-line">        u = <span class="py-number">1j</span> ** s2</span>
 <span class="code-line">        c = <span class="py-number">1j</span> * (<span class="py-number">1</span> - u) / (<span class="py-number">1</span> - <span class="py-number">1j</span>)</span>
 <span class="code-line">        W = <span class="py-number">2</span> * z + c</span>
-<span class="code-line">        H = <span class="py-number">4</span> * n + s2 % <span class="py-number">4</span></span>
+<span class="code-line">        H = <span class="py-number">4</span> * k + s2 % <span class="py-number">4</span></span>
 <span class="code-line">        P = <span class="py-builtin">round</span>(W.real), <span class="py-builtin">round</span>(W.imag), H</span>
-<span class="code-line">        <span class="py-keyword">yield</span> P</span>
+<span class="code-line">        points.<span class="py-function">append</span>(P)</span>
 <span class="code-line">        z += u</span>
-<span class="code-line">        n += <span class="py-number">1</span></span></code></pre>
+<span class="code-line code-line-blank"></span>
+<span class="code-line">    <span class="py-keyword">return</span> points</span></code></pre>
         <div class="code-fractal-copy">
           <span class="eyebrow">Simple rule · unexpected geometry</span>
           <h3>A binary counter becomes a self-similar spatial walk.</h3>
@@ -113,8 +114,8 @@
               H&amp;=4n+s_2(n)\bmod4.
             \end{aligned}
           \]</div>
-          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes are generated entirely by that recurrence—not by a drawing algorithm. The viewer renders a selectable window; the mathematical walk itself is infinite.</p>
-          <div class="route-actions"><a class="button primary" href="demo.html">Edit and run this code</a><a class="button" href="walk3d.html">Explore the walk in 3D</a></div>
+          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes are generated entirely by that recurrence—not by a drawing algorithm. The constructor returns whichever finite prefix is requested; the underlying sequence is defined for all \(n\).</p>
+          <div class="route-actions"><a class="button primary" href="demo.html">Edit and verify this code</a><a class="button" href="walk3d.html">Explore the walk in 3D</a></div>
         </div>
       </div>
     </section>

@@ -21,18 +21,12 @@ self.addEventListener('message', async event => {
     self.postMessage({type: 'running'});
     await pyodide.runPythonAsync(`
 namespace = {
-    "__name__": "gaussian_walk",
-    "__file__": "gaussian_walk.py",
+    "__name__": "gaussian_walk_demo",
+    "__file__": "gaussian_walk_demo.py",
     "__package__": None,
 }
-exec(compile(DEMO_SOURCE, "gaussian_walk.py", "exec"), namespace)
-from itertools import islice
-points = list(islice(namespace["gaussian_walk"](), DEMO_LENGTH))
-print(f"Generated the first {len(points):,} points of the infinite walk.")
-print("First eight points:")
-for n, point in enumerate(points[:8]):
-    print(f"  P_{n} = {point}")
-print(f"Last point: P_{len(points) - 1} = {points[-1]}")
+exec(compile(DEMO_SOURCE, "gaussian_walk_demo.py", "exec"), namespace)
+namespace["demonstrate"](DEMO_LENGTH)
 `);
     self.postMessage({type: 'done'});
   } catch (error) {
