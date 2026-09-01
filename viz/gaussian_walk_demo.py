@@ -1,14 +1,10 @@
-"""Construct and finitely verify the joint Cambie–Kalviainen Gaussian walk."""
-
-
-
 def gaussian_walk(n):
     z = 0j
     points = []
 
     for k in range(n):
         s2 = k.bit_count()
-        u = 1j ** s2
+        u = 1j**s2
         c = 1j * (1 - u) / (1 - 1j)
         W = 2 * z + c
         H = 4 * k + s2 % 4
@@ -24,6 +20,7 @@ def v2(n):
         return float("inf")
     n = abs(n)
     return (n & -n).bit_length() - 1
+
 
 def gcd(a, b):
     while b:
@@ -62,7 +59,7 @@ def verify_no_collinear_triple(points):
     checks = 0
     for i, anchor in enumerate(points):
         directions = set()
-        for point in points[i + 1:]:
+        for point in points[i + 1 :]:
             direction = delta(anchor, point)
             divisor = gcd(gcd(abs(direction[0]), abs(direction[1])), direction[2])
             primitive = tuple(coordinate // divisor for coordinate in direction)
@@ -93,8 +90,12 @@ def demonstrate(n):
     print(f"Last point: P_{n - 1} = {points[-1]}")
 
     results = [
-        run_check("all-pairs identity", verify_all_pairs, points, "{checks} pairs verified"),
-        run_check("small step menu", verify_step_menu, points, "{checks} steps verified"),
+        run_check(
+            "all-pairs identity", verify_all_pairs, points, "{checks} pairs verified"
+        ),
+        run_check(
+            "small step menu", verify_step_menu, points, "{checks} steps verified"
+        ),
         run_check(
             "collinearity search",
             verify_no_collinear_triple,
