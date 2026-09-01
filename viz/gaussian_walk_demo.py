@@ -28,6 +28,25 @@ def gcd(a, b):
     return abs(a)
 
 
+def gaussian_z(n):
+    if n == 0:
+        return 0j
+    parent, bit = divmod(n, 2)
+    z = (1 + 1j) * gaussian_z(parent)
+    if bit:
+        z += 1j ** parent.bit_count()
+    return z
+
+
+def gaussian_point(n):
+    s2 = n.bit_count()
+    u = 1j**s2
+    c = 1j * (1 - u) / (1 - 1j)
+    W = 2 * gaussian_z(n) + c
+    H = 4 * n + s2 % 4
+    return int(W.real), int(W.imag), H
+
+
 def delta(a, b):
     return tuple(y - x for x, y in zip(a, b))
 

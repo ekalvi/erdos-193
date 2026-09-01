@@ -6,6 +6,7 @@ packs two 4-bit realized-step identifiers per byte. Work is checkpointed every
 ``--checkpoint-every`` vertices. A compatible checkpoint resumes automatically;
 ``--fresh`` discards it. Result and checkpoint writes are atomic.
 """
+
 from __future__ import annotations
 
 import argparse
@@ -18,7 +19,7 @@ import sys
 import time
 from pathlib import Path
 
-from gaussian_walk_demo import P
+from gaussian_walk_demo import gaussian_point
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT = ROOT / "viz" / "walk3d-data.json"
@@ -45,7 +46,7 @@ def parse_args() -> argparse.Namespace:
 
 def lifted_point(n: int) -> tuple[int, int, int]:
     """Evaluate the exact Gaussian tagged lift P_n."""
-    return P(n)
+    return gaussian_point(n)
 
 
 def atomic_json(path: Path, value: object) -> None:
@@ -105,6 +106,111 @@ def checkpoint_payload(
     }
 
 
+def load_checkpoint(saved: object, identity: str, vertices: int) -> tuple[
+    int,
+    tuple[int, int, int],
+    tuple[int, int, int],
+    list[tuple[int, int, int]],
+    list[int],
+    bytearray,
+]:
+    if not isinstance(saved, dict) or (
+        saved.get("identity") != identity
+        or saved.get("version") != FORMAT_VERSION
+        or saved.get("construction") != CONSTRUCTION
+        or saved.get("vertices") != vertices
+    ):
+        raise ValueError("incompatible checkpoint")
+
+    next_n = saved.get("next_n")
+    if (
+        not isinstance(next_n, int)
+        or isinstance(next_n, bool)
+        or not 1 <= next_n <= vertices
+    ):
+        raise ValueError("checkpoint next_n is invalid")
+
+    def parse_point(name: str) -> tuple[int, int, int]:
+        value = saved.get(name)
+        if (
+            not isinstance(value, list)
+            or len(value) != 3
+            or any(not isinstance(x, int) or isinstance(x, bool) for x in value)
+        ):
+            raise ValueError(f"checkpoint {name} is invalid")
+        return tuple(value)
+
+    start = parse_point("start")
+    previous = parse_point("previous")
+    if start != lifted_point(0) or previous != lifted_point(next_n - 1):
+        raise ValueError("checkpoint endpoint does not match the construction")
+
+    raw_menu = saved.get("menu")
+    if not isinstance(raw_menu, list) or len(raw_menu) > 16:
+        raise ValueError("checkpoint menu is invalid")
+    menu: list[tuple[int, int, int]] = []
+    for raw_step in raw_menu:
+        if (
+            not isinstance(raw_step, list)
+            or len(raw_step) != 3
+            or any(
+                not isinstance(value, int) or isinstance(value, bool)
+                for value in raw_step
+            )
+        ):
+            raise ValueError("checkpoint menu step is invalid")
+        step = tuple(raw_step)
+        if not (abs(step[0]) <= 2 and abs(step[1]) <= 2 and 1 <= step[2] <= 7):
+            raise ValueError("checkpoint menu step violates the walk bounds")
+        menu.append(step)
+    if len(set(menu)) != len(menu):
+        raise ValueError("checkpoint menu contains duplicate steps")
+
+    raw_counts = saved.get("counts")
+    if (
+        not isinstance(raw_counts, list)
+        or len(raw_counts) != len(menu)
+        or any(
+            not isinstance(count, int) or isinstance(count, bool) or count < 0
+            for count in raw_counts
+        )
+    ):
+        raise ValueError("checkpoint counts are invalid")
+    counts = list(raw_counts)
+
+    raw_packed = saved.get("packed")
+    if not isinstance(raw_packed, str):
+        raise ValueError("checkpoint packed data is invalid")
+    try:
+        packed = bytearray(base64.b64decode(raw_packed, validate=True))
+    except (ValueError, TypeError) as error:
+        raise ValueError("checkpoint packed data is not valid base64") from error
+
+    completed_steps = next_n - 1
+    if len(packed) != (completed_steps + 1) // 2:
+        raise ValueError("checkpoint packed length is inconsistent")
+    if completed_steps % 2 and packed and packed[-1] & 0x0F:
+        raise ValueError("checkpoint unused packed nibble is nonzero")
+
+    decoded_counts = [0] * len(menu)
+    decoded_point = list(start)
+    for step_index in range(completed_steps):
+        byte = packed[step_index // 2]
+        identifier = byte >> 4 if step_index % 2 == 0 else byte & 0x0F
+        if identifier >= len(menu):
+            raise ValueError("checkpoint packed step identifier is out of range")
+        decoded_counts[identifier] += 1
+        step = menu[identifier]
+        for axis in range(3):
+            decoded_point[axis] += step[axis]
+    if decoded_counts != counts or sum(counts) != completed_steps:
+        raise ValueError("checkpoint counts do not match packed steps")
+    if tuple(decoded_point) != previous:
+        raise ValueError("checkpoint decoded endpoint is inconsistent")
+
+    return next_n, start, previous, menu, counts, packed
+
+
 def main() -> int:
     args = parse_args()
     if args.vertices < 2:
@@ -130,21 +236,15 @@ def main() -> int:
     start_time = time.monotonic()
     if args.checkpoint.exists():
         saved = json.loads(args.checkpoint.read_text())
-        if (
-            saved.get("identity") != identity
-            or saved.get("version") != FORMAT_VERSION
-            or saved.get("construction") != CONSTRUCTION
-            or saved.get("vertices") != args.vertices
-        ):
-            raise ValueError(
-                f"incompatible checkpoint {args.checkpoint}; pass --fresh to discard it"
+        try:
+            next_n, start, previous, menu, counts, packed = load_checkpoint(
+                saved, identity, args.vertices
             )
-        next_n = int(saved["next_n"])
-        start = tuple(saved["start"])
-        previous = tuple(saved["previous"])
-        menu = [tuple(step) for step in saved["menu"]]
-        counts = [int(count) for count in saved["counts"]]
-        packed = bytearray(base64.b64decode(saved["packed"]))
+        except ValueError as error:
+            raise ValueError(
+                f"incompatible checkpoint {args.checkpoint}: {error}; "
+                "pass --fresh to discard it"
+            ) from error
         emit(
             "resume",
             identity=identity,
@@ -178,6 +278,8 @@ def main() -> int:
             },
         )
 
+    run_start_n = next_n
+
     menu_id = {step: index for index, step in enumerate(menu)}
 
     def save_checkpoint() -> None:
@@ -198,11 +300,7 @@ def main() -> int:
     while next_n < args.vertices:
         point = lifted_point(next_n)
         step = tuple(point[axis] - previous[axis] for axis in range(3))
-        if not (
-            abs(step[0]) <= 2
-            and abs(step[1]) <= 2
-            and 1 <= step[2] <= 7
-        ):
+        if not (abs(step[0]) <= 2 and abs(step[1]) <= 2 and 1 <= step[2] <= 7):
             raise ValueError(f"step {next_n - 1} violates the walk bounds: {step}")
 
         identifier = menu_id.get(step)
@@ -227,7 +325,7 @@ def main() -> int:
         if next_n % args.checkpoint_every == 0 or stop_requested:
             save_checkpoint()
             elapsed = max(time.monotonic() - start_time, 1e-9)
-            processed = next_n
+            processed = max(next_n - run_start_n, 1)
             throughput = processed / elapsed
             remaining = (args.vertices - next_n) / throughput
             emit(
