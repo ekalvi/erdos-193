@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=gaussian4">
+  <link rel="stylesheet" href="site.css?v=gaussian10">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -34,10 +34,8 @@
           <p class="lede"><a href="https://www.erdosproblems.com/193"><b>Erdős Problem 193</b></a> asks whether every such walk on the 3D integer grid must eventually contain three collinear points. This construction gives an explicit counterexample.</p>
           <div class="actions">
             <a class="button primary" href="proof.html">Read the proof</a>
-            <a class="button" href="learn.html">Learn the proof</a>
-            <a class="button" href="walk3d.html">Explore the walk in 3D</a>
+            <a class="button" href="walk3d.html">Explore the 3D walk</a>
             <a class="button" href="demo.html">Try the code</a>
-            <a class="button" href="progress.html">Timeline</a>
           </div>
         </div>
         <a class="hero-art" href="walk3d.html" aria-label="Open the interactive 3D robot walk">
@@ -83,7 +81,7 @@
     <section class="section proof-part code-fractal">
       <div class="part-heading">
         <span class="part-number">1</span>
-        <div><span class="eyebrow">The whole construction</span><h2>This tiny program generates any requested part of an infinite fractal walk.</h2></div>
+        <div><span class="eyebrow">The whole construction</span><h2>Simple rule · unexpected geometry</h2></div>
       </div>
       <p>Pass any \(n\) to obtain the first \(n\) exact lattice points. There is no fixed maximum: the same rule defines the walk for every natural-number index, so arbitrarily long prefixes expose more of the infinite structure.</p>
       <div class="code-fractal-grid">
@@ -103,9 +101,7 @@
 <span class="code-line code-line-blank"></span>
 <span class="code-line">    <span class="py-keyword">return</span> points</span></code></pre>
         <div class="code-fractal-copy">
-          <span class="eyebrow">Simple rule · unexpected geometry</span>
           <h3>A binary counter becomes a self-similar spatial walk.</h3>
-          <p>The letters match the mathematics:</p>
           <div class="math-block compact-math">\[
             \begin{aligned}
               u_n&amp;=i^{s_2(n)},\\
@@ -116,7 +112,7 @@
               P_n&amp;=(\Re W_n,\Im W_n,H_n).
             \end{aligned}
           \]</div>
-          <p>Each new binary scale rotates and enlarges earlier pieces. The intricate lobes and holes are generated entirely by that recurrence—not by a drawing algorithm. The constructor returns whichever finite prefix is requested; the underlying sequence is defined for all \(n\).</p>
+          <p>This recurrence generates the fractal walk for every \(n\).</p>
           <div class="route-actions"><a class="button primary" href="demo.html">Edit and verify this code</a><a class="button" href="walk3d.html">Explore the walk in 3D</a></div>
         </div>
       </div>
@@ -149,11 +145,10 @@
       </div>
       <div class="collinearity-layout">
         <figure class="collinearity-figure">
-          <img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" decoding="async" alt="Three Gaussian-lift points on a supposed line, with their two adjacent displacement vectors.">
-          <figcaption>Three lifted points on a line would give one common complex slope for the two adjacent chords and their sum.</figcaption>
+          <img src="diagram-collinearity.svg?v=2" width="540" height="280" loading="lazy" decoding="async" alt="Three Gaussian-lift points on a supposed line, with their two adjacent displacement vectors.">
+          <figcaption><span>Three lifted points on a line would give one common complex slope for the two adjacent chords and their sum.</span><p class="collinearity-setup">Let \(A,B&gt;0\) be the adjacent height gaps and \(X,Y\) the matching planar chords. Collinearity gives \(X/A=Y/B=(X+Y)/(A+B)\).</p></figcaption>
         </figure>
         <div class="collinearity-copy">
-          <p>Let \(A,B&gt;0\) be the adjacent height gaps and \(X,Y\) the matching planar chords. Collinearity gives \(X/A=Y/B=(X+Y)/(A+B)\).</p>
           <div class="contradiction-result">
             <span class="eyebrow">Contradiction</span>
             <h3>Equal order + equal order has larger order.</h3>
@@ -201,7 +196,7 @@
 
   </main>
 
-  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+  <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
 </div>
 <script>
 (async()=>{

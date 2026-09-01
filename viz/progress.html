@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/progress.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=gaussian4">
+  <link rel="stylesheet" href="site.css?v=gaussian10">
   <script>
     window.MathJax={
       tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},
@@ -29,7 +29,7 @@
     <section class="artefact-hero">
       <span class="eyebrow">Timeline</span>
       <h1>How the proof became understandable.</h1>
-      <p class="sub">The current proof is the third of three explicit constructions. Each stage kept the same two-adic obstruction while removing machinery: first a bounded-gap Hilbert selector, then an all-index tagged Hilbert lift, and finally the Gaussian digit-sum walk.</p>
+      <p class="sub">A concentrated publication and refinement phase kept the same two-adic obstruction while removing machinery: first a bounded-gap Hilbert selector, then an all-index tagged Hilbert lift, and finally the Gaussian digit-sum walk.</p>
       <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes and discovery artifacts, not proof certificates. The current <a href="proof.html">Gaussian proof</a> and <a href="erdos-193-gaussian-proof.pdf">joint Cambie–Kalviainen paper</a> contain the authoritative argument; the Hilbert material below records the route that exposed the tag geometry.</p>
       <nav class="artefact-index" aria-label="Artefact chronology">
         <a href="#lessons-aug-20"><time datetime="2026-08-20">Aug 20–26</time><b>Build the lessons</b></a>
@@ -38,32 +38,8 @@
         <a href="#board-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Follow the bits</b></a>
         <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
         <a href="#workstation-aug-28"><time datetime="2026-08-28">Aug 28</time><b>See the workspace</b></a>
+        <a href="#publish-aug-28"><time datetime="2026-08-28">Aug 28–Sep 1</time><b>Publish and simplify</b></a>
       </nav>
-    </section>
-
-    <section class="approach-history" id="three-constructions" aria-labelledby="approach-history-title">
-      <span class="eyebrow">Three constructions</span>
-      <h2 id="approach-history-title">How the proof became thirteen lines of Python</h2>
-      <div class="approach-grid">
-        <article>
-          <span class="approach-number">01 · Erik Kalviainen</span>
-          <h3>Bounded-gap Hilbert selector</h3>
-          <p>A same-terminal-state two-adic law was proved for a nested Hilbert path. A finite-state suffix rule selected one matching orientation from every aligned block, producing a bounded-gap infinite walk.</p>
-          <small>First unconditional construction · Lean-formalized · most Hilbert indices discarded</small>
-        </article>
-        <article>
-          <span class="approach-number">02 · Stijn Cambie refinement</span>
-          <h3>All-index tagged Hilbert lift</h3>
-          <p>Cambie proposed writing each terminal orientation twice: as a cyclic planar corner and as the height modulo four. The tags extended the pair law to every index and eliminated the selector.</p>
-          <small>Proposed by Cambie · integrated and formalized by Kalviainen · every Hilbert index retained</small>
-        </article>
-        <article class="current">
-          <span class="approach-number">03 · Joint Gaussian version</span>
-          <h3>Binary digit sums replace Hilbert</h3>
-          <p>In a further AI-assisted revision, Cambie isolated \(u_n=i^{s_2(n)}\) as the common core. Kalviainen checked and formalized the proof and built the exact generator, finite artifacts, and visualizations.</p>
-          <small>Current joint working paper · 16 steps · 13 construction lines</small>
-        </article>
-      </div>
     </section>
 
     <section class="artefact-timeline" aria-label="Chronological working artefacts">
@@ -112,7 +88,7 @@
             <p>the first two pair-law equations force the coprime numbers \(r,s\) to be odd. The third pair sees \(r+s\), which cannot also be odd. The final proof keeps this skeleton and makes every divisibility step explicit.</p>
             <h3>Marks worth reading</h3>
             <ul><li>“Assume collinear” and the three-point diagram.</li><li>\(BX=AY\), the common-vector reduction, and the labels \(A=gr\), \(B=gs\).</li><li>The circled reminder that \(r,s\) cannot both be even.</li><li>The final clash: the third pair wants \(r+s\) odd, while odd plus odd is even.</li></ul>
-            <p class="artefact-link"><a href="proof.html#same-state-lift">Read the polished argument →</a></p>
+            <p class="artefact-link"><a href="proof.html#pair-law">Read the polished argument →</a></p>
           </div>
         </div>
       </article>
@@ -202,6 +178,27 @@
           </div>
         </div>
       </article>
+
+      <article class="artefact-entry" id="publish-aug-28">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>07</span><time datetime="2026-08-28">August 28–September 1, 2026</time></div>
+          <div><span class="eyebrow">Publish, refine, simplify</span><h2>One iteration phase reduced the proof to thirteen lines of Python.</h2><p>Preparing the unconditional result for publication prompted a concentrated exchange: expose the first proof, remove its selector, then isolate the Gaussian common core. Each revision preserved the same two-adic obstruction while making the construction smaller.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <ol class="proof-iterations" aria-label="Three proof iterations">
+            <li><span>01 · Publish</span><h3>Bounded-gap Hilbert selector</h3><p>Kalviainen's first unconditional construction selected one matching orientation from each aligned block and was formalized in Lean.</p></li>
+            <li><span>02 · Refine</span><h3>All-index tagged Hilbert lift</h3><p>Cambie's cyclic planar and height tags extended the pair law to every Hilbert index, removing the selector.</p></li>
+            <li><span>03 · Simplify</span><h3>Binary digit sums replace Hilbert</h3><p>Cambie isolated \(u_n=i^{s_2(n)}\); Kalviainen checked and formalized the joint Gaussian proof and built its exact generator and visualizations.</p></li>
+          </ol>
+          <div class="artefact-reading">
+            <h3>What changed</h3>
+            <p>This was one publication-driven refinement phase, not three disconnected research episodes. The witness moved from selected Hilbert indices, through all-index tags, to a Gaussian digit-sum recurrence without changing the valuation argument at its core.</p>
+            <h3>Where it landed</h3>
+            <ul><li>A joint unconditional paper.</li><li>A kernel-checked Lean theorem.</li><li>A 16-step walk generated by 13 lines of Python.</li></ul>
+            <p class="artefact-link"><a href="proof.html">Read the simplified proof →</a></p>
+          </div>
+        </div>
+      </article>
     </section>
 
     <section class="progress-log">
@@ -212,10 +209,7 @@
     <div class="timeline">
       <article class="milestone"><time>Initial geometric route</time><h3>Lift a Hilbert path into 3D</h3><p>Kalviainen explored using the Hilbert index as height. The plain lift failed, but its four terminal orientations exposed a useful two-adic state.</p></article>
       <article class="milestone"><time>Approach 1 · bounded-gap selector</time><h3>Keep only one terminal orientation</h3><p>Kalviainen proved the same-state pair law and used a two-digit suffix rule to choose one representative per block. This produced the project's first unconditional infinite walk and first Lean theorem.</p></article>
-      <article class="milestone"><time>Approach 1 · verification</time><h3>Formal proof and exact finite artifacts</h3><p>Kalviainen developed the Lean formalization, independent constructor, exhaustive finite checks, and the original 3D presentation for the selected Hilbert walk.</p></article>
-      <article class="milestone"><time>Aug 28 · Approach 2</time><h3>Cambie removes the selector</h3><p>Cambie's first alternative encoded all four terminal states directly in the planar low bits and height residue. Kalviainen integrated the all-index tagged Hilbert lift into Lean and the website.</p></article>
-      <article class="milestone"><time>Aug 31 · Approach 3</time><h3>Cambie isolates the Gaussian common core</h3><p>A further AI-assisted revision replaced the Hilbert decoder by \(u_n=i^{s_2(n)}\) and reduced the same-state law to repeated binary halving.</p></article>
-      <article class="milestone"><time>Sep 1 · joint theorem</time><h3>The Gaussian proof becomes executable and formal</h3><p>Kalviainen verified the argument, migrated the Lean theorem, reconstructed all sixteen steps, and developed the compact Python generator and fractal visualization. Both authors checked the proof and state the result unconditionally; the paper lists Cambie and Kalviainen alphabetically. S.C. is supported by FWO grant 1225224N.</p></article>
+      <article class="milestone"><time>Aug 28–Sep 1 · publish, refine, simplify</time><h3>One iteration phase strips away the machinery</h3><p>Kalviainen published and formalized the bounded-gap Hilbert proof; Cambie removed the selector with all-index tags, then isolated the Gaussian digit-sum core. Kalviainen checked and formalized the joint simplification and rebuilt the exact generator and visualizations around its 16 steps.</p></article>
       <article class="milestone"><time>Current status</time><h3>Unconditional theorem; outside review pending</h3><p>The paper proof and Lean theorem are complete. The finite computations illustrate and independently check the construction; they are not premises.</p></article>
     </div>
 
@@ -230,7 +224,7 @@
     </div>
   </dialog>
 
-  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+  <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
 </div>
 <script>
 (() => {

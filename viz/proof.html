@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://erdos-193.q5m.ai/proof.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="site.css?v=gaussian4">
+  <link rel="stylesheet" href="site.css?v=gaussian10">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -25,7 +25,7 @@
     <h1>An infinite small-step \(\mathbb Z^3\)-walk with no collinear triple</h1>
     <div class="route-actions proof-top-actions"><a class="button primary" href="erdos-193-gaussian-proof.pdf">Open the joint paper</a><a class="button" href="demo.html">Run the exact Python replay</a></div>
 
-    <p><strong>Theorem.</strong> There are a finite set \(S\subseteq\mathbb Z^3\) and an infinite sequence \(P_0,P_1,\ldots\) such that every successive displacement lies in \(S\), while no three distinct vertices are collinear. The construction has sixteen state-pair steps with \(|dx|,|dy|\le2\) and \(1\le dz\le7\).</p>
+    <p><strong>Theorem.</strong> There is an infinite sequence \(P_0,P_1,\ldots\) in \(\mathbb Z^3\) with no three collinear terms and with every successive displacement in \(\{-2,-1,0,1,2\}^2\times\{1,2,\ldots,7\}\). Only sixteen successive displacement vectors occur.</p>
 
     <div class="proof-chain" aria-label="Proof architecture">
       <div class="proof-link"><span>1</span><p><strong>Walk.</strong> Follow four Gaussian units selected by binary digit sums.</p></div>
@@ -69,8 +69,8 @@
     \]</div>
     <div class="construction-diagrams" aria-label="Discover, encode, and lift geometry">
       <figure class="diagram-card"><img src="diagram-trace.svg" width="300" height="210" loading="lazy" alt="A Hilbert route showing the historical four-state discovery geometry."><figcaption><b>Discover</b><span>The Hilbert route exposed the reusable four-state square geometry.</span></figcaption></figure>
-      <figure class="diagram-card"><img src="diagram-encode.svg" width="300" height="210" loading="lazy" alt="A doubled planar point with four low-bit corner tags."><figcaption><b>Encode</b><span>A square corner records the Gaussian direction in the low planar bits.</span></figcaption></figure>
-      <figure class="diagram-card"><img src="diagram-coordinate-lift.svg" width="300" height="210" loading="lazy" alt="Tagged planar points lifted to increasing heights."><figcaption><b>Lift</b><span>The same state becomes the low base-four digit of height.</span></figcaption></figure>
+      <figure class="diagram-card"><img src="diagram-encode.svg?v=2" width="300" height="210" loading="lazy" alt="A doubled planar point with four low-bit corner tags."><figcaption><b>Encode</b><span>A square corner records the Gaussian direction in the low planar bits.</span></figcaption></figure>
+      <figure class="diagram-card"><img src="diagram-coordinate-lift.svg?v=2" width="300" height="210" loading="lazy" alt="Tagged planar points lifted to increasing heights."><figcaption><b>Lift</b><span>The same state becomes the low base-four digit of height.</span></figcaption></figure>
     </div>
 
     <h2>4. The all-pairs identity</h2>
@@ -91,7 +91,7 @@
 
     <h2 id="collinearity">5. Three such chords cannot lie on one line</h2>
     <div class="collinearity-layout">
-      <figure class="collinearity-figure"><img src="diagram-collinearity.svg" width="540" height="280" loading="lazy" alt="Three lifted points temporarily assumed collinear."><figcaption>The adjacent planar chords \(X,Y\) correspond to positive height gaps \(A,B\); the endpoint chord is their sum.</figcaption></figure>
+      <figure class="collinearity-figure"><img src="diagram-collinearity.svg?v=2" width="540" height="280" loading="lazy" alt="Three lifted points temporarily assumed collinear."><figcaption>The adjacent planar chords \(X,Y\) correspond to positive height gaps \(A,B\); the endpoint chord is their sum.</figcaption></figure>
       <div class="collinearity-copy">
         <p>Suppose \(P_a,P_b,P_c\) are collinear for \(a&lt;b&lt;c\). Put</p>
         <div class="math-block compact-math">\[
@@ -103,7 +103,7 @@
         \]</div>
       </div>
     </div>
-    <p>The all-pairs law on these three chords forces</p>
+    <p>Taking squared moduli of the common slopes and applying the all-pairs law to the three chords forces</p>
     <div class="math-block">\[
       \nu_2(A)=\nu_2(B)=\nu_2(A+B).
     \]</div>
@@ -115,11 +115,11 @@
       w_{n+1}-w_n=2i^{\alpha_n}+c_{\alpha_{n+1}}-c_{\alpha_n},
       \qquad h_{n+1}-h_n=4+\alpha_{n+1}-\alpha_n.
     \]</div>
-    <p>The Gaussian direction points outward from its matching square corner, so the corner correction never extends its outward component. Hence \(|dx|,|dy|\le2\), while \(1\le dz\le7\). The ordered pair \((\alpha_n,\alpha_{n+1})\) determines the step, giving sixteen possible vectors.</p>
+    <p>The Gaussian direction points outward from its matching square corner, so the corner correction never extends its outward component. Hence \(|dx|,|dy|\le2\), while \(1\le dz\le7\). The ordered pair \((\alpha_n,\alpha_{n+1})\) determines the step, so at most sixteen steps occur.</p>
 
     <h2>Development and author contributions</h2>
-    <p>The present formula is the third construction in the project. Erik Kalviainen developed the first bounded-gap Hilbert selector, its Lean formalization, exact checks, and the interactive proof site. Stijn Cambie then proposed the all-index state-tagging refinement that removed the selector and, in a further AI-assisted revision, isolated the Gaussian digit-sum common core.</p>
-    <p>Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem. The paper lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#three-constructions">timeline compares all three constructions</a>.</p>
+    <p>The present formula is the third construction in the project. Erik Kalviainen developed the first bounded-gap Hilbert selector, its Lean formalization, exact checks, and the interactive proof site. Stijn Cambie then proposed two successive simplifications: first the all-index state tags that removed the selector, then the Gaussian digit-sum walk that removed the Hilbert machinery.</p>
+    <p>Cambie's simplifications and drafts and Kalviainen's formalization and presentation were AI-assisted. Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem; neither AI output nor finite computation is a premise. The paper lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#publish-aug-28">timeline records the publication and refinement phase</a>.</p>
 
     <div class="concept-grid">
       <div class="concept"><b>Kernel-checked proof</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> checks the Gaussian construction against pinned Lean and Mathlib revisions.</p></div>
@@ -128,7 +128,7 @@
     </div>
   </main>
 
-  <footer class="sitefoot"><span>Made in Canada by <a href="https://github.com/ekalvi">ekalvi</a></span><span class="right"><a href="https://www.q5m.ai"><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><em>GitHub</em></a></span></footer>
+  <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
 </div>
 </body>
 </html>
