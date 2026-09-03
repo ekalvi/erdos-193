@@ -87,7 +87,7 @@
     let total = 0;
     let place = 0;
     while (n) {
-      if (n & 1) total += signs[place & 7];
+      if (n & 1) total += signs[place % signs.length];
       place += 1;
       n = Math.floor(n / 2);
     }

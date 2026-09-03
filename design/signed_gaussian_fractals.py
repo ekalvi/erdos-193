@@ -16,7 +16,13 @@ h_n = 4*n + state(n).  Finite checks are evidence, not an infinite proof.
 from __future__ import annotations
 
 import argparse
+from datetime import datetime, timezone
+import hashlib
+import json
+import os
 from pathlib import Path
+import signal
+import time
 
 DIRECTIONS = ((1, 0), (0, 1), (-1, 0), (0, -1))
 CORNERS = ((0, 0), (0, 1), (-1, 1), (-1, 0))
@@ -277,6 +283,18 @@ def svg_gallery(
     output.write_text("\n".join(chunks) + "\n", encoding="utf-8")
 
 
+def atomic_json_write(path: Path, payload: dict) -> None:
+    """Atomically replace a JSON checkpoint after flushing it to disk."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_name(path.name + ".tmp")
+    with temporary.open("w", encoding="utf-8") as stream:
+        json.dump(payload, stream, indent=2, sort_keys=True)
+        stream.write("\n")
+        stream.flush()
+        os.fsync(stream.fileno())
+    temporary.replace(path)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--patterns", nargs="+", default=list(DEFAULT_PATTERNS))
@@ -288,24 +306,113 @@ def main() -> None:
         "--output", type=Path,
         default=Path("results/valuation-walk-fractals-g000-g063.svg"),
     )
+    parser.add_argument(
+        "--checkpoint", type=Path,
+        help="resume checkpoint (default: logs/.checkpoint-<output-stem>.json)",
+    )
+    parser.add_argument(
+        "--log", type=Path,
+        help="append-only progress log (default: logs/<output-stem>.log)",
+    )
     args = parser.parse_args()
     if args.check_count < 2 or args.depth < 1:
         parser.error("--check-count must be at least 2 and --depth must be positive")
     if args.start < 0 or args.limit < 1 or args.start + args.limit > len(args.patterns):
         parser.error("--start/--limit must select rules inside --patterns")
     selected = args.patterns[args.start:args.start + args.limit]
+    checkpoint = args.checkpoint or Path("logs") / f".checkpoint-{args.output.stem}.json"
+    log_path = args.log or Path("logs") / f"{args.output.stem}.log"
+    log_path.parent.mkdir(parents=True, exist_ok=True)
 
-    for pattern in selected:
-        result = verify(pattern, args.check_count)
-        print(
-            f"{pattern:>7}: {result['same_state_pairs']:,} same-state pairs, "
-            f"{result['tagged_pairs']:,} tagged pairs, "
-            f"{result['step_vectors']} step vectors"
-        )
+    def log(message: str) -> None:
+        line = f"{datetime.now(timezone.utc).isoformat()} {message}"
+        print(line, flush=True)
+        with log_path.open("a", encoding="utf-8") as stream:
+            stream.write(line + "\n")
+            stream.flush()
+
+    metadata = {
+        "version": 1,
+        "code_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+        "patterns": selected,
+        "check_count": args.check_count,
+        "depth": args.depth,
+        "start": args.start,
+        "output": str(args.output),
+    }
+    completed: list[dict] = []
+    if checkpoint.exists():
+        try:
+            saved = json.loads(checkpoint.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as error:
+            parser.error(f"cannot read checkpoint {checkpoint}: {error}")
+        if saved.get("metadata") != metadata:
+            parser.error(f"checkpoint {checkpoint} is incompatible with this run")
+        completed = saved.get("completed", [])
+        if not isinstance(completed, list) or len(completed) > len(selected):
+            parser.error(f"checkpoint {checkpoint} has invalid progress data")
+        expected_prefix = selected[:len(completed)]
+        if [entry.get("pattern") for entry in completed] != expected_prefix:
+            parser.error(f"checkpoint {checkpoint} does not match the selected rule order")
+
+    def save_checkpoint(status: str) -> None:
+        atomic_json_write(checkpoint, {
+            "metadata": metadata,
+            "completed": completed,
+            "status": status,
+        })
+
+    interrupted_signal: list[int | None] = [None]
+
+    def handle_signal(signum: int, _frame: object) -> None:
+        interrupted_signal[0] = signum
+        raise InterruptedError
+
+    signal.signal(signal.SIGINT, handle_signal)
+    signal.signal(signal.SIGTERM, handle_signal)
+    started = time.monotonic()
+    total = len(selected)
+    resume_count = len(completed)
+    log(
+        f"start output={args.output} rules={total} check_count={args.check_count} "
+        f"depth={args.depth} completed={len(completed)} checkpoint={checkpoint} "
+        "workers=1"
+    )
+    try:
+        for index in range(len(completed), total):
+            pattern = selected[index]
+            result = verify(pattern, args.check_count)
+            completed.append({"pattern": pattern, "result": result})
+            save_checkpoint("running")
+            elapsed = time.monotonic() - started
+            # Throughput and ETA concern this process only; resumed work is already done.
+            newly_done = index + 1 - resume_count
+            rate = newly_done / elapsed if elapsed else 0.0
+            remaining = total - index - 1
+            eta = remaining / rate if rate else 0.0
+            log(
+                f"progress={index + 1}/{total} pattern={pattern} "
+                f"same_state_pairs={result['same_state_pairs']} "
+                f"tagged_pairs={result['tagged_pairs']} "
+                f"step_vectors={result['step_vectors']} elapsed={elapsed:.2f}s "
+                f"rate={rate:.3f}_rules/s eta={eta:.2f}s"
+            )
+    except (KeyboardInterrupt, InterruptedError):
+        save_checkpoint("interrupted")
+        signum = interrupted_signal[0]
+        log(f"interrupted signal={signum} completed={len(completed)}/{total} checkpoint={checkpoint}")
+        raise SystemExit(128 + signum if signum is not None else 130)
+    except Exception as error:
+        save_checkpoint("error")
+        log(f"error type={type(error).__name__} message={error!s} completed={len(completed)}/{total}")
+        raise
+
     svg_gallery(selected, args.depth, args.output, index_offset=args.start)
-    print(
-        f"wrote {args.output} ({1 << args.depth:,} steps per panel; "
-        f"g{args.start}..g{args.start + len(selected) - 1})"
+    save_checkpoint("complete")
+    elapsed = time.monotonic() - started
+    log(
+        f"complete output={args.output} rules={total} vertices_per_panel={1 << args.depth} "
+        f"elapsed={elapsed:.2f}s checkpoint={checkpoint}"
     )
 
 
