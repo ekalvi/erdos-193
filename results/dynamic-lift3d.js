@@ -9,6 +9,7 @@
   const button = document.querySelector('#lift3d');
   const status = document.querySelector('#liftStatus');
   const note = document.querySelector('#viewerNote');
+  const buttonLabel = button?.querySelector('span');
   const inspector = document.querySelector('#inspector');
 
   if (!canvas || !button) return;
@@ -27,8 +28,8 @@
   let panX = 0;
   let panY = 0;
   let dragging = false;
-  let lastX = 0;
-  let lastY = 0;
+  let pinchGesture = null;
+  const activePointers = new Map();
 
   const vertexSource = `
     attribute vec3 aPosition;
@@ -224,9 +225,9 @@
     flatCanvas.style.display = 'none';
     canvas.style.display = 'block';
     status.style.display = 'block';
-    button.textContent = 'Return to 2D';
-    button.classList.add('primary');
-    note.textContent = 'drag to orbit · scroll to zoom · shift-drag to pan · double-click to reset';
+    buttonLabel.textContent = 'Return to 2D';
+    button.classList.add('primary', 'showing-3d');
+    note.textContent = 'drag to orbit · pinch/scroll to zoom · two-finger pan · double-click to reset';
     resetCamera();
     const current = window.signedGaussianCurrentRule;
     if (current) build(current.rule, current.pattern);
@@ -239,9 +240,9 @@
     canvas.style.display = 'none';
     flatCanvas.style.display = 'block';
     status.style.display = 'none';
-    button.textContent = 'Lift to 3D';
-    button.classList.remove('primary');
-    note.textContent = 'scroll to zoom · drag to pan · select a vertex · double-click to reset';
+    buttonLabel.textContent = 'Lift to 3D';
+    button.classList.remove('primary', 'showing-3d');
+    note.textContent = 'pinch/scroll to zoom · drag to pan · select a vertex · double-click to reset';
     inspector.innerHTML = '<p>Hover or select a vertex to inspect its exact source and lifted coordinates.</p>';
   }
 
@@ -256,19 +257,41 @@
     if (active) resetCamera();
   });
 
+  function twoPointerGesture() {
+    const [first, second] = [...activePointers.values()];
+    return {
+      distance: Math.max(1, Math.hypot(second.x - first.x, second.y - first.y)),
+      x: (first.x + second.x) / 2,
+      y: (first.y + second.y) / 2
+    };
+  }
+
   canvas.addEventListener('pointerdown', event => {
+    event.preventDefault();
+    activePointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
     dragging = true;
-    lastX = event.clientX;
-    lastY = event.clientY;
+    if (activePointers.size >= 2) pinchGesture = twoPointerGesture();
     canvas.classList.add('dragging');
     canvas.setPointerCapture(event.pointerId);
   });
   canvas.addEventListener('pointermove', event => {
-    if (!dragging) return;
-    const dx = event.clientX - lastX;
-    const dy = event.clientY - lastY;
-    lastX = event.clientX;
-    lastY = event.clientY;
+    const previous = activePointers.get(event.pointerId);
+    if (!previous) return;
+    event.preventDefault();
+    activePointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
+    if (activePointers.size >= 2) {
+      const next = twoPointerGesture();
+      if (pinchGesture) {
+        zoom = Math.max(0.7, Math.min(18, zoom * next.distance / pinchGesture.distance));
+        panX += (next.x - pinchGesture.x) / canvas.clientWidth * 2;
+        panY -= (next.y - pinchGesture.y) / canvas.clientHeight * 2;
+      }
+      pinchGesture = next;
+      draw();
+      return;
+    }
+    const dx = event.clientX - previous.x;
+    const dy = event.clientY - previous.y;
     if (event.shiftKey) {
       panX += dx / canvas.clientWidth * 2;
       panY -= dy / canvas.clientHeight * 2;
@@ -279,11 +302,15 @@
     draw();
   });
   function endDrag(event) {
+    activePointers.delete(event.pointerId);
+    pinchGesture = null;
+    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+    if (activePointers.size === 1) {
+      dragging = true;
+      return;
+    }
     dragging = false;
     canvas.classList.remove('dragging');
-    if (event.pointerId !== undefined && canvas.hasPointerCapture(event.pointerId)) {
-      canvas.releasePointerCapture(event.pointerId);
-    }
   }
   canvas.addEventListener('pointerup', endDrag);
   canvas.addEventListener('pointercancel', endDrag);
