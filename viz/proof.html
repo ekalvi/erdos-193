@@ -23,7 +23,7 @@
   <main class="section proof-page">
     <span class="eyebrow">Unconditional construction · Stijn Cambie and Erik Kalviainen</span>
     <h1>An infinite small-step \(\mathbb Z^3\)-walk with no collinear triple</h1>
-    <div class="route-actions proof-top-actions"><a class="button primary" href="erdos-193-gaussian-proof.pdf">Open the joint paper</a><a class="button" href="demo.html">Run the exact Python replay</a></div>
+    <div class="route-actions proof-top-actions"><a class="button primary" href="https://arxiv.org/abs/2609.01766">Read arXiv:2609.01766</a><a class="button" href="erdos-193-gaussian-proof.pdf">Open the local PDF</a><a class="button" href="demo.html">Run the exact Python replay</a></div>
 
     <p><strong>Theorem.</strong> There is an infinite sequence \(P_0,P_1,\ldots\) in \(\mathbb Z^3\) with no three collinear terms and with every successive displacement in \(\{-2,-1,0,1,2\}^2\times\{1,2,\ldots,7\}\). Only sixteen successive displacement vectors occur.</p>
 
@@ -119,7 +119,7 @@
 
     <h2>Development and author contributions</h2>
     <p>The present formula is the third construction in the project. Erik Kalviainen developed the first bounded-gap Hilbert selector, its Lean formalization, exact checks, and the interactive proof site. Stijn Cambie then proposed two successive simplifications: first the all-index state tags that removed the selector, then the Gaussian digit-sum walk that removed the Hilbert machinery.</p>
-    <p>Cambie's simplifications and drafts and Kalviainen's formalization and presentation were AI-assisted. Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem; neither AI output nor finite computation is a premise. The paper lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#publish-aug-28">timeline records the publication and refinement phase</a>.</p>
+    <p>Cambie's simplifications and drafts and Kalviainen's formalization and presentation were AI-assisted. Kalviainen migrated the Gaussian argument into Lean and developed the compact generator, finite artifacts, and visualizations. Both authors have checked the proof and state the result as an unconditional theorem; neither AI output nor finite computation is a premise. The paper, <a href="https://arxiv.org/abs/2609.01766">arXiv:2609.01766</a>, lists Stijn Cambie and Erik Kalviainen in alphabetical order; S.C. is supported by FWO grant 1225224N. The <a href="progress.html#publish-aug-28">timeline records the publication and refinement phase</a>.</p>
 
     <div class="concept-grid">
       <div class="concept"><b>Kernel-checked proof</b><p><a href="https://github.com/ekalvi/erdos-193/blob/main/formal/Hilbert193/Hilbert193/Continuity.lean"><code>Hilbert193.erdos193_unconditional</code></a> checks the Gaussian construction against pinned Lean and Mathlib revisions.</p></div>
