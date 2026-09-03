@@ -191,13 +191,27 @@
     draw();
   }
 
+  function hideVisualStatus(message) {
+    status.textContent = message;
+    status.title = '';
+    status.classList.add('visually-hidden');
+    status.classList.remove('lift-error');
+  }
+
+  function showError(error) {
+    status.textContent = '3D PREVIEW UNAVAILABLE';
+    status.title = String(error.message || error);
+    status.classList.remove('visually-hidden');
+    status.classList.add('lift-error');
+    status.style.display = 'block';
+  }
+
   function build(rule, pattern) {
     if (!active) return;
     const token = ++buildToken;
     const shortRule = abbreviated(rule);
     status.style.display = 'block';
-    status.title = '';
-    status.textContent = `BUILDING g${shortRule} · ${STEPS.toLocaleString()} STEPS · UNVERIFIED`;
+    hideVisualStatus(`Building g${shortRule}, ${STEPS.toLocaleString()} steps`);
     window.setTimeout(() => {
       if (!active || token !== buildToken) return;
       try {
@@ -210,11 +224,10 @@
         gl.bufferData(gl.ARRAY_BUFFER, data.colors, gl.STATIC_DRAW);
         vertexCount = data.count;
         builtRule = rule;
-        status.textContent = `DYNAMIC g${shortRule} · ${STEPS.toLocaleString()} STEPS · NOT VERIFIED`;
+        hideVisualStatus(`Dynamic g${shortRule}, ${STEPS.toLocaleString()} steps ready`);
         draw();
       } catch (error) {
-        status.textContent = '3D PREVIEW UNAVAILABLE';
-        status.title = String(error.message || error);
+        showError(error);
       }
     }, 30);
   }
@@ -225,6 +238,7 @@
     flatCanvas.style.display = 'none';
     canvas.style.display = 'block';
     status.style.display = 'block';
+    hideVisualStatus('Dynamic 3D preview ready');
     buttonLabel.textContent = 'Return to 2D';
     button.classList.add('primary', 'showing-3d');
     note.textContent = 'drag to orbit · pinch/scroll to zoom · two-finger pan · double-click to reset';
@@ -240,6 +254,7 @@
     canvas.style.display = 'none';
     flatCanvas.style.display = 'block';
     status.style.display = 'none';
+    hideVisualStatus('Dynamic 3D preview ready');
     buttonLabel.textContent = 'Lift to 3D';
     button.classList.remove('primary', 'showing-3d');
     note.textContent = 'pinch/scroll to zoom · drag to pan · select a vertex · double-click to reset';

@@ -45,6 +45,7 @@
     #liftCanvas { position: absolute; inset: 0; display: none; }
     .viewer-note { position: absolute; left: 12px; bottom: 11px; padding: 5px 8px; border-radius: 6px; background: #070b14cc; color: #8fa4c1; font-size: 11px; pointer-events: none; }
     .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    .lift-error { position: absolute; top: 12px; left: 12px; z-index: 7; max-width: calc(100% - 180px); padding: 7px 10px; border: 1px solid #ef6a6a; border-radius: 7px; background: #260b0be8; color: #ffd6d6; font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
     .lift-hero { position: absolute; top: 12px; right: 12px; z-index: 6; display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border-color: hsl(var(--link)); background: hsl(var(--link)); color: #fff; font-size: 14px; box-shadow: 0 8px 24px #0007; }
     .lift-hero svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
     .lift-hero .icon-2d { display: none; }
@@ -171,6 +172,7 @@
       </div>
       <div class="formula-panel" aria-label="Rule formulas"><span class="control-label">Formula</span><p id="formula" class="formula">σ(n)=Σ ε[j mod 8]bⱼ(n) mod 4 · z(n+1)=z(n)+i^σ(n)</p></div>
     </section>
+    <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
 
     <section class="atlas" aria-labelledby="atlasTitle">
       <div class="atlas-head"><h2 id="atlasTitle">Complete static atlas</h2></div>
@@ -182,7 +184,6 @@
       </nav>
       <div class="atlas-stage"><nav class="downloads atlas-downloads" aria-label="Atlas image downloads"><a id="pngDownload" class="button primary" href="valuation-walk-fractals-g000-g063.png" download>PNG</a><a id="svgDownload" class="button" href="valuation-walk-fractals-g000-g063.svg" download>SVG</a></nav><img id="atlas" src="valuation-walk-fractals-g000-g063.png?v=13" loading="lazy" decoding="async" width="1600" height="7220" alt="Period-eight signed Gaussian walks g0 through g63 with Hilbert reference"></div>
     </section>
-    <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
   </main>
   <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
 </div>
@@ -207,6 +208,6 @@
     if (requestedSheet !== 1) selectSheet(requestedSheet - 1, false);
   </script>
   <script src="interactive-viewer.js?v=13"></script>
-  <script src="dynamic-lift3d.js?v=7"></script>
+  <script src="dynamic-lift3d.js?v=8"></script>
 </body>
 </html>
