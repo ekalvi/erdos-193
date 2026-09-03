@@ -9,4 +9,7 @@ paper/*.out
 verify_hilbert_exhaustive
 logs/hilbert-193-500k.exhaustive.ckpt
 logs/hilbert-193-500k.exhaustive.log
+logs/gallery-server.log
+logs/gallery-server.pid
+logs/valuation-walk-fractals-*.log
 .site-challenge-key

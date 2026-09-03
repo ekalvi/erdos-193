@@ -5,6 +5,7 @@ USER root
 COPY q5m/nginx.conf /etc/nginx/nginx.conf
 COPY --chmod=0555 q5m/health.sh /usr/local/bin/erdos-193-health
 COPY viz/ /usr/share/nginx/html/
+COPY results/ /usr/share/nginx/html/family/
 RUN test "${#Q5M_RELEASE}" -eq 40 \
     && case "$Q5M_RELEASE" in *[!0-9a-f]*) exit 1 ;; *) : ;; esac \
     && printf '%s\n' "$Q5M_RELEASE" > /usr/share/nginx/html/.q5m-release \
