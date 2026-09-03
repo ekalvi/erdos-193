@@ -9,4 +9,6 @@ paper/*.out
 verify_hilbert_exhaustive
 logs/hilbert-193-500k.exhaustive.ckpt
 logs/hilbert-193-500k.exhaustive.log
+logs/gallery-server.log
+logs/gallery-server.pid
 .site-challenge-key
