@@ -2,12 +2,12 @@
 
 This repository gives an explicit negative answer to [Erdős Problem 193](https://www.erdosproblems.com/193): it constructs an infinite sequence in $\mathbb Z^3$ whose consecutive differences come from a fixed finite set, while no three vertices are collinear.
 
-The construction is unconditional and formalized in Lean 4. External mathematical review and community acceptance remain pending.
+The construction is unconditional, formalized in Lean 4, and publicly posted as [arXiv:2609.01766](https://arxiv.org/abs/2609.01766). External mathematical review and community acceptance remain pending.
 
 ## Read and run it
 
 - **Production site:** [erdos-193.q5m.ai](https://erdos-193.q5m.ai)
-- **Current paper:** [PDF](https://erdos-193.q5m.ai/erdos-193-gaussian-proof.pdf) · [LaTeX source](paper/erdos193.tex)
+- **Current paper:** [arXiv:2609.01766](https://arxiv.org/abs/2609.01766) · [PDF](https://arxiv.org/pdf/2609.01766) · [LaTeX source](paper/erdos193.tex)
 - **Lean theorem:** [`Hilbert193.erdos193_unconditional`](formal/Hilbert193/Hilbert193/Continuity.lean) · [formal proof guide](formal/Hilbert193/README.md)
 - **Minimal constructor:** [`viz/gaussian_walk.py`](viz/gaussian_walk.py)
 - **Executable finite checks:** [`viz/gaussian_walk_demo.py`](viz/gaussian_walk_demo.py) · [run in the browser](https://erdos-193.q5m.ai/demo.html)

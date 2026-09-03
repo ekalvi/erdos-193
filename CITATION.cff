@@ -26,4 +26,5 @@ preferred-citation:
     - family-names: Kalviainen
       given-names: Erik
   year: 2026
-  url: "https://erdos-193.q5m.ai/erdos-193-gaussian-proof.pdf"
+  doi: "10.48550/arXiv.2609.01766"
+  url: "https://arxiv.org/abs/2609.01766"
