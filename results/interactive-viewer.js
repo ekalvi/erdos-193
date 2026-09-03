@@ -13,6 +13,7 @@
   const stage = document.querySelector('#curveStage');
   const explorer = document.querySelector('.explorer');
   const fullscreenView = document.querySelector('#fullscreenView');
+  const secondaryControlsToggle = document.querySelector('#secondaryControlsToggle');
   const ruleNumber = document.querySelector('#ruleNumber');
   const ruleSlider = document.querySelector('#ruleSlider');
   const ruleName = document.querySelector('#ruleName');
@@ -41,6 +42,9 @@
   let didDrag = false;
   let dragX = 0;
   let dragY = 0;
+  let pinchGesture = null;
+  let gestureWasPinch = false;
+  const activePointers = new Map();
   let showTrace = true;
   const shownTags = [false, false, false, false];
 
@@ -339,6 +343,16 @@
   document.querySelector('#resetView').addEventListener('click', () => {
     zoom = 1; panX = panY = 0; draw();
   });
+  function setSecondaryControls(open) {
+    explorer.classList.toggle('mobile-controls-open', open);
+    secondaryControlsToggle.setAttribute('aria-expanded', String(open));
+    const label = open ? 'Hide display settings' : 'Show display settings';
+    secondaryControlsToggle.setAttribute('aria-label', label);
+    secondaryControlsToggle.title = label;
+  }
+  secondaryControlsToggle.addEventListener('click', () => {
+    setSecondaryControls(!explorer.classList.contains('mobile-controls-open'));
+  });
   if (explorer.requestFullscreen) {
     fullscreenView.addEventListener('click', async () => {
       try {
@@ -354,6 +368,7 @@
       fullscreenView.setAttribute('aria-label', label);
       fullscreenView.title = label;
       fullscreenView.setAttribute('aria-pressed', String(isFullscreen));
+      if (!isFullscreen) setSecondaryControls(false);
       window.setTimeout(() => {
         resize();
         window.dispatchEvent(new Event('resize'));
@@ -401,25 +416,65 @@
     panY = y - rect.height / 2 - ratio * (y - rect.height / 2 - panY);
     draw();
   }, {passive: false});
+  function twoPointerGesture() {
+    const [first, second] = [...activePointers.values()];
+    return {
+      distance: Math.max(1, Math.hypot(second.x - first.x, second.y - first.y)),
+      x: (first.x + second.x) / 2,
+      y: (first.y + second.y) / 2
+    };
+  }
+
   canvas.addEventListener('pointerdown', event => {
-    dragging = true;
-    didDrag = false;
-    dragX = event.clientX;
-    dragY = event.clientY;
+    activePointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
     canvas.setPointerCapture(event.pointerId);
     canvas.classList.add('dragging');
-  });
-  canvas.addEventListener('pointermove', event => {
-    if (dragging) {
-      const dx = event.clientX - dragX;
-      const dy = event.clientY - dragY;
-      if (Math.hypot(dx, dy) >= 2) didDrag = true;
-      panX += dx;
-      panY += dy;
+    if (activePointers.size === 1) {
+      dragging = true;
+      didDrag = false;
+      gestureWasPinch = false;
       dragX = event.clientX;
       dragY = event.clientY;
-      hovered = null;
-      draw();
+    } else {
+      dragging = false;
+      didDrag = true;
+      gestureWasPinch = true;
+      pinchGesture = twoPointerGesture();
+    }
+  });
+  canvas.addEventListener('pointermove', event => {
+    if (activePointers.has(event.pointerId)) {
+      activePointers.set(event.pointerId, {x: event.clientX, y: event.clientY});
+      if (activePointers.size >= 2) {
+        const next = twoPointerGesture();
+        if (pinchGesture) {
+          const rect = canvas.getBoundingClientRect();
+          const oldZoom = zoom;
+          zoom = Math.max(0.5, Math.min(80, zoom * next.distance / pinchGesture.distance));
+          const ratio = zoom / oldZoom;
+          const previousX = pinchGesture.x - rect.left;
+          const previousY = pinchGesture.y - rect.top;
+          const nextX = next.x - rect.left;
+          const nextY = next.y - rect.top;
+          panX = nextX - rect.width / 2 - ratio * (previousX - rect.width / 2 - panX);
+          panY = nextY - rect.height / 2 - ratio * (previousY - rect.height / 2 - panY);
+        }
+        pinchGesture = next;
+        hovered = null;
+        draw();
+        return;
+      }
+      if (dragging) {
+        const dx = event.clientX - dragX;
+        const dy = event.clientY - dragY;
+        if (Math.hypot(dx, dy) >= 2) didDrag = true;
+        panX += dx;
+        panY += dy;
+        dragX = event.clientX;
+        dragY = event.clientY;
+        hovered = null;
+        draw();
+      }
       return;
     }
     const rect = canvas.getBoundingClientRect();
@@ -427,20 +482,29 @@
     inspect(hovered ?? selected);
     draw();
   });
-  canvas.addEventListener('pointerup', event => {
+  function endPointer(event, cancelled = false) {
+    activePointers.delete(event.pointerId);
+    if (canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+    pinchGesture = null;
+    if (activePointers.size === 1) {
+      const remaining = [...activePointers.values()][0];
+      dragging = true;
+      dragX = remaining.x;
+      dragY = remaining.y;
+      return;
+    }
     dragging = false;
     canvas.classList.remove('dragging');
-    if (!didDrag) {
+    if (!cancelled && !didDrag && !gestureWasPinch) {
       const rect = canvas.getBoundingClientRect();
       selected = nearestVertex(event.clientX - rect.left, event.clientY - rect.top);
       inspect(selected);
       draw();
     }
-  });
-  canvas.addEventListener('pointercancel', () => {
-    dragging = false;
-    canvas.classList.remove('dragging');
-  });
+    gestureWasPinch = false;
+  }
+  canvas.addEventListener('pointerup', event => endPointer(event));
+  canvas.addEventListener('pointercancel', event => endPointer(event, true));
   canvas.addEventListener('pointerleave', () => {
     hovered = null;
     inspect(selected);

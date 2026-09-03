@@ -26,21 +26,31 @@
     button:hover, a.button:hover { background: hsl(var(--accent)); border-color: hsl(var(--link)); color: var(--ink); }
     button:focus-visible, a.button:focus-visible { outline: 2px solid hsl(var(--link)); outline-offset: 2px; }
     .explorer { border: 1px solid var(--line); border-radius: 14px; background: var(--panel); overflow: hidden; box-shadow: 0 18px 55px #0005; }
-    .explorer:fullscreen { width: 100vw; height: 100vh; border: 0; border-radius: 0; display: grid; grid-template-rows: auto minmax(0, 1fr); background: var(--panel); }
+    .explorer:fullscreen { width: 100vw; height: 100vh; border: 0; border-radius: 0; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; background: var(--panel); }
     .explorer:fullscreen .explorer-grid { min-height: 0; }
     .explorer:fullscreen #curveStage { height: 100%; min-height: 0; }
     .explorer:fullscreen .controls { min-height: 0; overflow-y: auto; }
-    .explorer-head { display: flex; align-items: start; justify-content: space-between; gap: 18px; padding: 18px; border-bottom: 1px solid var(--line); }
-    .rule-title { font: 750 18px ui-monospace, SFMono-Regular, Menlo, monospace; }
-    .formula { margin-top: 5px; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .family-nav { display: grid; grid-template-columns: minmax(220px, auto) minmax(0, 1fr); gap: 18px; align-items: center; padding: 12px 16px; border-bottom: 1px solid var(--line); background: hsl(var(--accent)/.45); }
+    .family-nav .control-label { margin-bottom: 3px; }
+    .family-nav-controls { display: grid; grid-template-columns: minmax(230px, 1fr) minmax(170px, 280px); gap: 7px 12px; align-items: center; }
+    .family-nav-controls .rule-number-control { margin: 0; }
+    .family-nav-controls .rule-help { grid-column: 1/-1; margin: 0; }
+    .rule-title { font: 750 16px ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+    .formula-panel { padding: 10px 16px 11px; border-top: 1px solid var(--line); background: hsl(var(--accent)/.35); }
+    .formula { margin-top: 3px; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
     .explorer-grid { display: grid; grid-template-columns: minmax(0, 1fr) 310px; }
     #curveStage { position: relative; height: min(68vh, 720px); min-height: 470px; background: #080e1a; overflow: hidden; }
     #curveCanvas, #liftCanvas { display: block; width: 100%; height: 100%; cursor: grab; touch-action: none; }
     #curveCanvas.dragging, #liftCanvas.dragging { cursor: grabbing; }
     #liftCanvas { position: absolute; inset: 0; display: none; }
     .viewer-note { position: absolute; left: 12px; bottom: 11px; padding: 5px 8px; border-radius: 6px; background: #070b14cc; color: #8fa4c1; font-size: 11px; pointer-events: none; }
-    .lift-status { position: absolute; left: 12px; top: 12px; z-index: 5; display: none; max-width: calc(100% - 180px); padding: 6px 9px; border: 1px solid #e69f0066; border-radius: 7px; background: #171207e8; color: #f2c66d; font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; pointer-events: none; }
-    .lift-hero { position: absolute; top: 12px; right: 12px; z-index: 6; padding: 9px 14px; border-color: hsl(var(--link)); background: hsl(var(--link)); color: #fff; font-size: 14px; box-shadow: 0 8px 24px #0007; }
+    .visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+    .lift-error { position: absolute; top: 12px; left: 12px; z-index: 7; max-width: calc(100% - 180px); padding: 7px 10px; border: 1px solid #ef6a6a; border-radius: 7px; background: #260b0be8; color: #ffd6d6; font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .lift-hero { position: absolute; top: 12px; right: 12px; z-index: 6; display: inline-flex; align-items: center; gap: 7px; padding: 9px 14px; border-color: hsl(var(--link)); background: hsl(var(--link)); color: #fff; font-size: 14px; box-shadow: 0 8px 24px #0007; }
+    .lift-hero svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .lift-hero .icon-2d { display: none; }
+    .lift-hero.showing-3d .icon-3d { display: none; }
+    .lift-hero.showing-3d .icon-2d { display: block; }
     .lift-hero:hover, .lift-hero:focus-visible { background: hsl(var(--link)); color: #fff; filter: brightness(1.1); }
     .controls { padding: 16px; border-left: 1px solid var(--line); }
     .control-block { padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid var(--line); }
@@ -59,7 +69,11 @@
     input[type="range"] { width: 100%; accent-color: hsl(var(--link)); }
     .signs, .tags, .actions, .downloads, .sheet-nav, .head-actions { display: flex; flex-wrap: wrap; gap: 7px; }
     .head-actions { align-items: center; flex-wrap: nowrap; }
-    .icon-action { display: inline-grid; width: 38px; height: 38px; place-items: center; padding: 0; color: var(--muted); }
+    .stage-actions { position: absolute; right: 12px; bottom: 12px; z-index: 6; display: flex; gap: 6px; }
+    .icon-action { display: inline-grid; width: 34px; height: 34px; place-items: center; padding: 0; color: var(--muted); }
+    .stage-actions .icon-action { border-color: #30415c; background: #070b14dd; color: #b9c7da; box-shadow: 0 5px 16px #0006; }
+    .stage-actions .icon-action:hover, .stage-actions .icon-action:focus-visible { border-color: #56b4e9; background: #101d30; color: #fff; }
+    .secondary-controls-toggle { display: none; }
     .icon-action svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
     .signs { flex-wrap: nowrap; gap: 6px; }
     .signs .sign { flex: 0 0 29px; width: 29px; min-width: 0; height: 32px; padding: 0; border-color: color-mix(in srgb, var(--plus-fg) 35%, transparent); background: var(--plus-bg); color: var(--plus-fg); font: 700 15px/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
@@ -77,19 +91,23 @@
     #inspector dt { color: var(--muted); }
     #inspector dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
     .atlas { margin-top: 28px; }
+    .family-footnote { margin-top: 14px; color: var(--muted); font-size: 11px; }
     .atlas .button, .sheet-nav button { padding: 7px 10px; font-size: 13px; }
-    .atlas-head { display: flex; justify-content: space-between; gap: 18px; align-items: end; margin-bottom: 12px; }
+    .atlas-head { margin-bottom: 12px; }
     .sheet-nav { margin: 12px 0; }
+    .atlas-stage { position: relative; }
+    .atlas-downloads { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 5px; border: 1px solid #30415c; border-radius: 9px; background: #070b14dd; box-shadow: 0 5px 18px #0007; }
+    .atlas-downloads .button { border-color: #40516b; background: #101d30; color: #dce8f8; }
+    .atlas-downloads .button.primary { border-color: #56b4e9; background: #56b4e9; color: #06101b; }
     #atlas { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; }
     @media (max-width: 850px) {
       .explorer-grid { grid-template-columns: 1fr; }
       .controls { border-left: 0; border-top: 1px solid var(--line); }
       #curveStage { height: min(62vh, 600px); min-height: 390px; }
-      .explorer-head, .atlas-head { align-items: flex-start; flex-direction: column; }
-      .explorer:fullscreen .explorer-head { flex-direction: row; }
+      .family-nav { grid-template-columns: 1fr; gap: 8px; }
       .explorer:fullscreen .explorer-grid { grid-template-columns: minmax(0, 1fr) min(310px, 40vw); }
     }
-    @media (max-width: 500px) { .family-shell { padding: 24px 10px 48px; } #curveStage { min-height: 340px; } .formula { font-size: 10px; } .explorer:fullscreen .explorer-head > div:first-child { display: none; } .explorer:fullscreen .explorer-grid { grid-template-columns: 1fr; grid-template-rows: minmax(260px, 1fr) auto; overflow-y: auto; } .explorer:fullscreen .controls { max-height: 42vh; } }
+    @media (max-width: 500px) { .family-shell { padding: 24px 10px 48px; } .family-nav { padding: 10px 12px; } .family-nav-controls { grid-template-columns: minmax(0, 1fr) 112px; } .rule-title { font-size: 14px; } #curveStage { min-height: 340px; } .formula { font-size: 10px; } .formula-panel { padding: 8px 12px 9px; } .explorer:fullscreen { grid-template-rows: auto minmax(0, 1fr); } .explorer:fullscreen .family-nav { grid-template-columns: auto minmax(0, 1fr); gap: 8px; padding: 7px 10px; } .explorer:fullscreen .family-nav .control-label, .explorer:fullscreen .family-nav .rule-help { display: none; } .explorer:fullscreen .explorer-grid { position: relative; display: block; overflow: hidden; } .explorer:fullscreen #curveStage { height: 100%; min-height: 0; } .explorer:fullscreen .controls, .explorer:fullscreen .formula-panel { display: none; } .explorer:fullscreen .secondary-controls-toggle { display: inline-grid; } .explorer:fullscreen.mobile-controls-open .controls { position: absolute; right: 8px; bottom: 54px; left: 8px; z-index: 8; display: block; max-height: min(62vh, 520px); overflow-y: auto; border: 1px solid var(--line); border-radius: 11px; background: var(--panel); box-shadow: 0 14px 45px #0009; } .atlas-downloads { top: 7px; right: 7px; } }
   </style>
 </head>
 <body>
@@ -99,35 +117,29 @@
     <nav class="site" aria-label="Main navigation"><a href="../">Home</a><a href="../proof.html">Proof</a><a href="../progress.html">Timeline<span class="dot"></span></a><a class="cur" href="../walk3d.html">Visualize</a><a href="../demo.html">Code</a></nav>
   </header>
   <main>
-    <section class="explorer" aria-labelledby="explorerTitle">
-      <div class="explorer-head">
-        <div>
-          <h2 id="explorerTitle">Interactive single-curve explorer</h2>
-          <div id="ruleName" class="rule-title">g0 · ε=++++++++</div>
-          <p id="formula" class="formula">σ(n)=Σ ε[j mod 8]bⱼ(n) mod 4 · z(n+1)=z(n)+i^σ(n)</p>
-          <p class="formula">The on-demand 500,000-step 3D lift is an unverified dynamic preview.</p>
+    <section class="explorer" aria-label="Interactive signed Gaussian rule explorer">
+      <div class="family-nav">
+        <div><span class="control-label">Family rule</span><div id="ruleName" class="rule-title">g0 · ε=++++++++</div></div>
+        <div class="family-nav-controls">
+          <div class="rule-control">
+            <button id="previousRule" type="button" aria-label="Previous rule">←</button>
+            <input id="ruleSlider" type="range" min="0" max="255" value="0" aria-label="Rule number">
+            <button id="nextRule" type="button" aria-label="Next rule">→</button>
+          </div>
+          <label class="rule-number-control"><span>g</span><input id="ruleNumber" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="1234" value="0" spellcheck="false" aria-label="Exact nonnegative rule number"></label>
+          <small id="ruleHelp" class="rule-help">g0–g255 have period 8; g256 begins period 9; g768 begins period 10.</small>
         </div>
-        <div class="head-actions"><button id="fullscreenView" class="icon-action" type="button" aria-label="Enter full screen" aria-pressed="false" title="Full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></svg></button><button id="saveView" class="icon-action" type="button" aria-label="Save current view" title="Save current view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 18v3h16v-3"/></svg></button></div>
       </div>
       <div class="explorer-grid">
         <div id="curveStage">
           <canvas id="curveCanvas" aria-label="Interactive signed Gaussian curve"></canvas>
           <canvas id="liftCanvas" aria-label="Dynamically generated 500,000-step three-dimensional tagged lift"></canvas>
-          <button id="lift3d" class="lift-hero primary" type="button">Lift to 3D</button>
-          <div id="viewerNote" class="viewer-note">scroll to zoom · drag to pan · select a vertex · double-click to reset</div>
-          <div id="liftStatus" class="lift-status">DYNAMIC PREVIEW · NOT VERIFIED</div>
+          <button id="lift3d" class="lift-hero primary" type="button"><svg class="icon-3d" viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 8 4.5v9L12 21l-8-4.5v-9L12 3Z M4 7.5l8 4.5 8-4.5M12 12v9"/></svg><svg class="icon-2d" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="1.5"/></svg><span>Lift to 3D</span></button>
+          <div class="stage-actions"><button id="secondaryControlsToggle" class="icon-action secondary-controls-toggle" type="button" aria-label="Show display settings" aria-expanded="false" title="Display settings"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10M14 4v6M7 14v6"/></svg></button><button id="fullscreenView" class="icon-action" type="button" aria-label="Enter full screen" aria-pressed="false" title="Full screen"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H3v5M16 3h5v5M21 16v5h-5M8 21H3v-5"/></svg></button><button id="saveView" class="icon-action" type="button" aria-label="Download current view" title="Download current view"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M4 18v3h16v-3"/></svg></button></div>
+          <div id="viewerNote" class="viewer-note">pinch/scroll to zoom · drag to pan · select a vertex · double-click to reset</div>
+          <div id="liftStatus" class="visually-hidden" aria-live="polite">Dynamic 3D preview ready</div>
         </div>
         <aside class="controls" aria-label="Curve controls">
-          <div class="control-block">
-            <span class="control-label">Family rule</span>
-            <div class="rule-control">
-              <button id="previousRule" type="button" aria-label="Previous rule">←</button>
-              <input id="ruleSlider" type="range" min="0" max="255" value="0" aria-label="Rule number">
-              <button id="nextRule" type="button" aria-label="Next rule">→</button>
-            </div>
-            <label class="rule-number-control"><span>g</span><input id="ruleNumber" type="text" inputmode="numeric" pattern="[0-9]+" maxlength="1234" value="0" spellcheck="false" aria-label="Exact nonnegative rule number"></label>
-            <small id="ruleHelp" class="rule-help">g0–g255 have period 8; g256 begins period 9; g768 begins period 10.</small>
-          </div>
           <div class="control-block">
             <label class="control-label" for="depthSlider">Recursion detail</label>
             <div class="depth-control">
@@ -158,23 +170,19 @@
           <div id="inspector" class="control-block" aria-live="polite"><p>Hover or select a vertex to inspect its exact source and lifted coordinates.</p></div>
         </aside>
       </div>
+      <div class="formula-panel" aria-label="Rule formulas"><span class="control-label">Formula</span><p id="formula" class="formula">σ(n)=Σ ε[j mod 8]bⱼ(n) mod 4 · z(n+1)=z(n)+i^σ(n)</p></div>
     </section>
+    <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
 
     <section class="atlas" aria-labelledby="atlasTitle">
-      <div class="atlas-head">
-        <div><h2 id="atlasTitle">Complete static atlas</h2><p>Four memory-safe sheets for overview, sharing, and print.</p></div>
-        <nav class="downloads" aria-label="Image downloads">
-          <a id="pngDownload" class="button primary" href="valuation-walk-fractals-g000-g063.png" download>Download PNG</a>
-          <a id="svgDownload" class="button" href="valuation-walk-fractals-g000-g063.svg" download>Download SVG</a>
-        </nav>
-      </div>
+      <div class="atlas-head"><h2 id="atlasTitle">Complete static atlas</h2></div>
       <nav class="sheet-nav" aria-label="Atlas sheets">
         <button type="button" data-sheet="0" aria-pressed="true">g0–g63</button>
         <button type="button" data-sheet="1" aria-pressed="false">g64–g127</button>
         <button type="button" data-sheet="2" aria-pressed="false">g128–g191</button>
         <button type="button" data-sheet="3" aria-pressed="false">g192–g255</button>
       </nav>
-      <img id="atlas" src="valuation-walk-fractals-g000-g063.png?v=13" loading="lazy" decoding="async" width="1600" height="7220" alt="Period-eight signed Gaussian walks g0 through g63 with Hilbert reference">
+      <div class="atlas-stage"><nav class="downloads atlas-downloads" aria-label="Atlas image downloads"><a id="pngDownload" class="button primary" href="valuation-walk-fractals-g000-g063.png" download>PNG</a><a id="svgDownload" class="button" href="valuation-walk-fractals-g000-g063.svg" download>SVG</a></nav><img id="atlas" src="valuation-walk-fractals-g000-g063.png?v=13" loading="lazy" decoding="async" width="1600" height="7220" alt="Period-eight signed Gaussian walks g0 through g63 with Hilbert reference"></div>
     </section>
   </main>
   <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
@@ -199,7 +207,7 @@
     const requestedSheet = Math.min(4, Math.max(1, Number(new URLSearchParams(location.search).get('sheet')) || 1));
     if (requestedSheet !== 1) selectSheet(requestedSheet - 1, false);
   </script>
-  <script src="interactive-viewer.js?v=11"></script>
-  <script src="dynamic-lift3d.js?v=4"></script>
+  <script src="interactive-viewer.js?v=13"></script>
+  <script src="dynamic-lift3d.js?v=8"></script>
 </body>
 </html>
