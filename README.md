@@ -44,6 +44,15 @@ python3 viz/gaussian_walk_demo.py
 
 Finite computation is supporting evidence, not a premise of the infinite theorem.
 
+## Exploratory adjacent applications
+
+The signed Gaussian family is also being evaluated as a deterministic network code and schedule. The current investigation is explicitly exploratory:
+
+- [`design/SIGNED-GAUSSIAN-NETWORK-ROUTING.md`](design/SIGNED-GAUSSIAN-NETWORK-ROUTING.md) separates the exact transferable algebra from routing analogies and failure modes.
+- [`design/WALSH-CODED-ALTERNATE-MARKING.md`](design/WALSH-CODED-ALTERNATE-MARKING.md) develops a concrete constant-counter multipath fault-monitoring candidate with a bounded decoder prototype.
+
+These application notes do not change or serve as premises for the Erdős 193 theorem.
+
 ## Authors and provenance
 
 The current paper is jointly authored by [Stijn Cambie](https://arxiv.org/search/?query=Stijn+Cambie&searchtype=author) and [Erik Kalviainen](https://github.com/ekalvi). Cambie proposed the all-index and Gaussian-lattice simplifications; Kalviainen developed the original Hilbert construction and migrated the final proof into Lean, executable checks, and this site. Both authors have checked the proof and state the result as an unconditional theorem. Both development streams were AI-assisted; S.C. is supported by FWO grant 1225224N.
