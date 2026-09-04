@@ -158,6 +158,21 @@
         </div>
       </div>
     </section>
+    <section class="family-callout" aria-labelledby="familyCalloutTitle">
+      <div>
+        <span class="eyebrow">Experimental infinite family</span>
+        <strong id="familyCalloutTitle">This walk is just one of an infinite family</strong>
+        <p>A four-state automaton turns each indexed ± sign rule into a striking self-similar walk. Explore compact, branching, woven, and reflective forms.</p>
+        <a class="family-cta" href="family/">Explore the rule family →</a>
+      </div>
+      <div class="family-teasers" aria-label="Four low-order signed Gaussian walk previews">
+        <a class="family-teaser" href="family/?rule=0" aria-label="Explore low-order g0 walk"><canvas width="180" height="180" data-family-rule="0" aria-hidden="true"></canvas><small>g0</small></a>
+        <a class="family-teaser" href="family/?rule=7" aria-label="Explore low-order g7 walk"><canvas width="180" height="180" data-family-rule="7" aria-hidden="true"></canvas><small>g7</small></a>
+        <a class="family-teaser" href="family/?rule=15" aria-label="Explore low-order g15 walk"><canvas width="180" height="180" data-family-rule="15" aria-hidden="true"></canvas><small>g15</small></a>
+        <a class="family-teaser" href="family/?rule=43" aria-label="Explore low-order g43 walk"><canvas width="180" height="180" data-family-rule="43" aria-hidden="true"></canvas><small>g43</small></a>
+      </div>
+    </section>
+
     <section class="section hilbert-history-compact">
       <div>
         <span class="eyebrow">An earlier construction</span>
@@ -198,6 +213,7 @@
 
   <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
 </div>
+<script src="family-callout.js"></script>
 <script>
 (async()=>{
   const c=document.getElementById('heroCanvas'),x=c.getContext('2d');let pts=[];
