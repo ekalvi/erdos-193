@@ -99,6 +99,20 @@ The Gaussian phase is common to every path and known from the slot number. A min
 
 This would be a new controlled-domain marking profile; reusing one or two bits does not make it semantically compatible with RFC 9341.
 
+### Does one family shape work best?
+
+No—not in the synchronized constant-rate model. The measurement uses the complete set of increment sequences, not the shapes of their cumulative planar walks. For any rules $r$ and $s$,
+
+$$
+\sum_{n=0}^{N-1}u_r(n)\overline{u_s(n)}=N\,\delta_{rs}.
+$$
+
+Every rule therefore has the same energy, matched-filter gain, and independent-loss variance. Relabeling rules only permutes the decoded paths, and any subset of distinct rows remains orthogonal. In particular, the family member that has the best geometric triangle conditioning for mobile-anchor localization has no corresponding advantage here.
+
+Rule choice can matter only after the ideal assumptions fail. Bursty path volumes leak according to the Walsh spectrum indexed by $r\oplus s$, so an assignment could be optimized from measured traffic traces, but there is no traffic-independent best rule. Clock offsets also distinguish rows, but even favorable rows produce false coefficients; synchronization and guard handling are the remedy, not visual shape selection.
+
+The practical choices are instead to use the smallest power-of-two frame that covers the active paths, omit the common Gaussian phase when a two-color implementation is possible, assign the complete codebook by a stable path-ID mapping, and use cluster-then-refine frames when a single full frame becomes too large.
+
 ---
 
 ## 3. Why this is implementable
