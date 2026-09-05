@@ -89,11 +89,12 @@ def render(count: int, pdf: Path, svg: Path, png: Path) -> None:
     print_trace(axes[2], projected, equal_aspect=False)
     axes[2].set_title(r"tagged $g_{85}$ lift $Q_n$  (oblique; $h_n/40$)", fontweight="bold", pad=5)
 
-    fig.suptitle(
-        rf"Alternating signed-Gaussian rules at level 10  ($2^{{10}}={count:,}$ vertices)",
-        fontsize=11,
-        fontweight="bold",
-    )
+    if count & (count - 1) == 0:
+        level = count.bit_length() - 1
+        heading = rf"Alternating signed-Gaussian rules at level {level}  ($2^{{{level}}}={count:,}$ vertices)"
+    else:
+        heading = f"Alternating signed-Gaussian rules with {count:,} vertices"
+    fig.suptitle(heading, fontsize=11, fontweight="bold")
     pdf.parent.mkdir(parents=True, exist_ok=True)
     svg.parent.mkdir(parents=True, exist_ok=True)
     png.parent.mkdir(parents=True, exist_ok=True)

@@ -1,6 +1,6 @@
 {
-  "code_sha256": "4afb24e8226044cf70986a67bb3965f4b759e5964bc725460b1683b72541b96c",
-  "generated_at": "2026-09-05T15:10:20.347560+00:00",
+  "code_sha256": "49b7f0adbedbf085da553f0815f68728a7a7ebbd4cbb0b3745c8e9b743a4ace5",
+  "generated_at": "2026-09-05T16:01:25.924603+00:00",
   "method": "exact trailing-ones state-change orbit; no sampled-prefix inference",
   "minimizers": [
     {

@@ -30,7 +30,7 @@ Write \(b_j(n)\) for bit \(j\) of \(n\), and define
 \qquad
 u_n=i^{\sigma(n)},
 \qquad
-z_n=\sum_{r<n}\nu_r.
+z_n=\sum_{r<n}u_r.
 \]
 
 Use Cambie's offsets
@@ -128,4 +128,6 @@ The calculation determines the complete transition-change orbit algebraically ov
 - 2 rules with 6 distinct steps;
 - minimizers \(g_{85}=+-+-+-+-\) and \(g_{170}=-+-+-+-+\).
 
-Machine-readable output is written atomically to `results/signed-gaussian-unit-step-audit.json`.
+Machine-readable output is written atomically to `results/signed-gaussian-unit-step-audit.json`. Larger runs stream their two passes, append timestamped progress and ETA records under `logs/`, checkpoint at configurable intervals, and automatically resume only when the period, offsets, schema, and code identity match.
+
+An exact run over all 65,536 period-16 words also has minimum six. Its only minimizers are `+-+-+-+-+-+-+-+-` and `-+-+-+-+-+-+-+-+`, the same two primitive period-two rules written with a longer period. Thus period 16 introduces no improvement; periods beyond 16 have not been exhaustively enumerated, while the structural lower bound above rules out five dimensions throughout this particular signed four-state tag scheme.
