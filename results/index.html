@@ -95,6 +95,9 @@
     .unit-step-result h2 { margin-top: 4px; }
     .unit-step-result p { max-width: 900px; margin-top: 7px; }
     .unit-step-result .actions { margin-top: 13px; }
+    .unit-step-result figure { margin: 18px 0 0; }
+    .unit-step-result figure img { display: block; width: 100%; height: auto; border: 1px solid #263750; border-radius: 9px; background: #080e1a; }
+    .unit-step-result figcaption { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.45; }
     .atlas { margin-top: 28px; }
     .family-footnote { margin-top: 14px; color: var(--muted); font-size: 11px; }
     .atlas .button, .sheet-nav button { padding: 7px 10px; font-size: 13px; }
@@ -180,10 +183,11 @@
     <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
 
     <section class="unit-step-result" aria-labelledby="unitStepTitle">
-      <span class="eyebrow">Derived theorem · awaiting external review</span>
-      <h2 id="unitStepTitle">The alternating fractal gives a six-coordinate unit-step walk</h2>
-      <p>For g85, the signs alternate +−+−+−+−. Only eight state transitions can occur, and Cambie’s offset choice merges them into six distinct vectors. Encoding those vectors as coordinate directions proves an infinite standard-basis walk in ℕ⁶ with no collinear triple, improving the immediate bound from 16 to 6. An exact audit finds g170 as the symmetric minimizer and proves that fewer than six is impossible within this signed four-state tag scheme.</p>
-      <div class="actions"><a class="button primary" href="?rule=85">Open g85</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md">Read the derivation</a><a class="button" href="signed-gaussian-unit-step-audit.json">Exact audit JSON</a></div>
+      <span class="eyebrow">Context · derived theorem awaiting external review</span>
+      <h2 id="unitStepTitle">From two alternating fractals to six coordinate directions</h2>
+      <p>For g85, the signs alternate +−+−+−+−; g170 is its sign-reversed counterpart. Binary carries restrict each rule to eight state transitions, and Cambie’s offset choice merges those into six distinct spatial vectors. Encoding the vectors as coordinate directions proves an infinite standard-basis walk in ℕ⁶ with no collinear triple, improving the immediate bound from 16 to 6.</p>
+      <figure><img src="unit-step-g85-g170-context.svg" width="979" height="312" loading="lazy" alt="Planar signed Gaussian walks g85 and g170 beside a compressed-height oblique projection of the tagged g85 lift"><figcaption>The first 512 source vertices and the tagged lift. Colors identify the four states; the lift’s height is compressed for display. The diagrams are finite context, while the theorem uses the all-index valuation identity. The six-dimensional basis walk maps linearly onto the displayed lift.</figcaption></figure>
+      <div class="actions"><a class="button primary" href="?rule=85">Open g85</a><a class="button" href="?rule=170">Open g170</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md">Read the derivation</a><a class="button" href="signed-gaussian-unit-step-audit.json">Exact audit JSON</a></div>
     </section>
 
     <section class="atlas" aria-labelledby="atlasTitle">

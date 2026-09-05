@@ -2,6 +2,7 @@
 \usepackage[T1]{fontenc}
 \usepackage{lmodern,microtype}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
 \usepackage[margin=.45in]{geometry}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{1.5pt}
@@ -76,7 +77,20 @@ List the six vectors in (3) as $v_1,\ldots,v_6$.  Replace each occurrence of $v_
 {\footnotesize\textbf{Attribution and AI disclosure.}
 The alternating signed rule comes from Kalviainen's signed-Gaussian family; the offset choice is due to Cambie~[2], and the standard-basis encoding was introduced in this context by Shallit~[3] and simplified by Cambie.  The search leading to the six-vector menu and this draft were AI-assisted.  The displayed argument is exact; the result has not yet been Lean-formalized or externally reviewed.}
 
-\vspace{1pt}
+\newpage
+\section*{Context: from the planar family to six basis directions}
+The original walk in~[1] is the all-positive signed-Gaussian rule.  Its four states admit all sixteen ordered transitions.  Shallit~[3] assigned a separate basis direction to each transition, while Cambie's offsets~[2] made two pairs of the resulting spatial vectors equal.  The alternating rules $g_{85}$ and $g_{170}$ add a second reduction: binary carries permit only eight state transitions, and the same offsets identify two pairs, leaving the six vectors in (3).
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\textwidth]{unit_step_g85_g170_context.pdf}
+\vspace{-5pt}
+\caption*{The first 512 vertices of the two planar source walks and an oblique view of the tagged $g_{85}$ lift. Segments are colored by state $0,1,2,3$ in blue, orange, green, and pink. Height is compressed only for display. These finite pictures provide context; the infinite theorem follows from (1)--(3).}
+\end{figure}
+
+The six-dimensional walk itself is the cumulative count of the six vector types, so it has no faithful two-dimensional picture.  The right panel shows its linear shadow $T(P_n)=Q_n$: every unit move in one of six coordinate directions maps to the corresponding spatial vector.  Thus the planar fractal controls which transitions occur, the tagged lift certifies no collinear triple, and the basis encoding enforces unit steps.
+
+\vspace{3pt}
 {\footnotesize\textbf{References.}
 \begin{enumerate}\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}\setlength{\topsep}{1pt}
 \item[\textup{[1]}] S.~Cambie and E.~Kalviainen, \emph{An infinite small-step $\Z^3$-walk with no collinear triple}, arXiv:2609.01766, 2026.

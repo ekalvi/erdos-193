@@ -10,6 +10,17 @@ There is an infinite standard-basis walk in \(\mathbb N^6\) with no three collin
 
 This is a derived theorem about the unit-step variant, not a stronger solution of Erdős Problem 193 in dimension three.
 
+## Geometric context
+
+The planar rules and one tagged lift are rendered in `results/unit-step-g85-g170-context.svg`. Regenerate the SVG, PNG, and paper-ready PDF with:
+
+```bash
+OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1 \
+  uv run --with matplotlib python design/render_unit_step_context.py
+```
+
+The planar images explain which transitions survive, while the compressed-height lift shows the three-dimensional linear image used in the proof. They are finite illustrations, not premises of the infinite theorem.
+
 ## Alternating signed Gaussian rule
 
 Write \(b_j(n)\) for bit \(j\) of \(n\), and define
