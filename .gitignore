@@ -12,4 +12,6 @@ logs/hilbert-193-500k.exhaustive.log
 logs/gallery-server.log
 logs/gallery-server.pid
 logs/valuation-walk-fractals-*.log
+logs/signed-gaussian-unit-step-period-*.log
+logs/signed-gaussian-unit-step-period-*.checkpoint.json
 .site-challenge-key
