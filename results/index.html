@@ -90,14 +90,6 @@
     #inspector dl { display: grid; grid-template-columns: 68px 1fr; gap: 7px; margin: 0; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
     #inspector dt { color: var(--muted); }
     #inspector dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
-    .unit-step-result { margin-top: 28px; border: 1px solid hsl(var(--link)/.55); border-radius: 12px; padding: 20px 22px; background: linear-gradient(125deg, hsl(var(--link)/.12), var(--panel)); }
-    .unit-step-result .eyebrow { color: hsl(var(--link)); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
-    .unit-step-result h2 { margin-top: 4px; }
-    .unit-step-result p { max-width: 900px; margin-top: 7px; }
-    .unit-step-result .actions { margin-top: 13px; }
-    .unit-step-result figure { margin: 18px 0 0; }
-    .unit-step-result figure img { display: block; width: 100%; height: auto; border: 1px solid #263750; border-radius: 9px; background: #080e1a; }
-    .unit-step-result figcaption { margin-top: 7px; color: var(--muted); font-size: 11px; line-height: 1.45; }
     .atlas { margin-top: 28px; }
     .family-footnote { margin-top: 14px; color: var(--muted); font-size: 11px; }
     .atlas .button, .sheet-nav button { padding: 7px 10px; font-size: 13px; }
@@ -181,14 +173,6 @@
       <div class="formula-panel" aria-label="Rule formulas"><span class="control-label">Formula</span><p id="formula" class="formula">σ(n)=Σ ε[j mod 8]bⱼ(n) mod 4 · z(n+1)=z(n)+i^σ(n)</p></div>
     </section>
     <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
-
-    <section class="unit-step-result" aria-labelledby="unitStepTitle">
-      <span class="eyebrow">Context · derived theorem awaiting external review</span>
-      <h2 id="unitStepTitle">From two alternating fractals to six coordinate directions</h2>
-      <p>For g85, the signs alternate +−+−+−+−; g170 is its sign-reversed counterpart. Binary carries restrict each rule to eight state transitions, and Cambie’s offset choice merges those into six distinct spatial vectors. Encoding the vectors as coordinate directions proves an infinite standard-basis walk in ℕ⁶ with no collinear triple, improving the immediate bound from 16 to 6.</p>
-      <figure><img src="unit-step-g85-g170-context.svg" width="979" height="312" loading="lazy" alt="Monochrome level-10 planar signed Gaussian walks g85 and g170 beside a compressed-height oblique projection of the tagged g85 lift"><figcaption>Level-10 approximations with 1,024 vertices, redrawn in monochrome for print. Open and filled circles mark the initial and final vertices; the lift’s height is compressed for display. The diagrams are finite context, while the theorem uses the all-index valuation identity. The six-dimensional basis walk maps linearly onto the displayed lift.</figcaption></figure>
-      <div class="actions"><a class="button primary" href="?rule=85">Open g85</a><a class="button" href="?rule=170">Open g170</a><a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md">Read the derivation</a><a class="button" href="signed-gaussian-unit-step-audit.json">Exact audit JSON</a></div>
-    </section>
 
     <section class="atlas" aria-labelledby="atlasTitle">
       <div class="atlas-head"><h2 id="atlasTitle">Complete static atlas</h2></div>
