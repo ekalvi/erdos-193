@@ -1,0 +1,230 @@
+{
+  "code_sha256": "4afb24e8226044cf70986a67bb3965f4b759e5964bc725460b1683b72541b96c",
+  "generated_at": "2026-09-05T15:10:20.347560+00:00",
+  "method": "exact trailing-ones state-change orbit; no sampled-prefix inference",
+  "minimizers": [
+    {
+      "distinct_step_count": 6,
+      "index": 85,
+      "menu": [
+        {
+          "state_pairs": [
+            [
+              2,
+              3
+            ]
+          ],
+          "vector": [
+            -1,
+            -2,
+            5
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "vector": [
+            -1,
+            -1,
+            2
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              3,
+              0
+            ]
+          ],
+          "vector": [
+            0,
+            -1,
+            1
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              1,
+              2
+            ]
+          ],
+          "vector": [
+            0,
+            3,
+            5
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              0,
+              1
+            ]
+          ],
+          "vector": [
+            1,
+            0,
+            5
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "vector": [
+            1,
+            1,
+            6
+          ]
+        }
+      ],
+      "pattern": "+-+-+-+-",
+      "state_changes_mod_4": [
+        1,
+        2
+      ],
+      "transition_pair_count": 8
+    },
+    {
+      "distinct_step_count": 6,
+      "index": 170,
+      "menu": [
+        {
+          "state_pairs": [
+            [
+              2,
+              1
+            ]
+          ],
+          "vector": [
+            -2,
+            -1,
+            3
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              2,
+              0
+            ],
+            [
+              3,
+              1
+            ]
+          ],
+          "vector": [
+            -1,
+            -1,
+            2
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              3,
+              2
+            ]
+          ],
+          "vector": [
+            -1,
+            0,
+            3
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              0,
+              2
+            ],
+            [
+              1,
+              3
+            ]
+          ],
+          "vector": [
+            1,
+            1,
+            6
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              1,
+              0
+            ]
+          ],
+          "vector": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "state_pairs": [
+            [
+              0,
+              3
+            ]
+          ],
+          "vector": [
+            2,
+            -1,
+            7
+          ]
+        }
+      ],
+      "pattern": "-+-+-+-+",
+      "state_changes_mod_4": [
+        2,
+        3
+      ],
+      "transition_pair_count": 8
+    }
+  ],
+  "minimum_distinct_steps": 6,
+  "offsets": [
+    [
+      0,
+      0
+    ],
+    [
+      -1,
+      0
+    ],
+    [
+      -1,
+      1
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "patterns_checked": 256,
+  "period": 8,
+  "schema_version": 1,
+  "step_count_histogram": {
+    "10": 28,
+    "14": 226,
+    "6": 2
+  }
+}
