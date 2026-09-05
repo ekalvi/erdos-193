@@ -104,6 +104,9 @@ def render(count: int, pdf: Path, svg: Path, png: Path) -> None:
     png.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(pdf, bbox_inches="tight", metadata={"Creator": "design/render_unit_step_context.py", "CreationDate": None})
     fig.savefig(svg, bbox_inches="tight", metadata={"Creator": "design/render_unit_step_context.py", "Date": None})
+    # Matplotlib writes spaces before newlines in multiline SVG path data.
+    # Normalize those generated lines so repository whitespace checks stay clean.
+    svg.write_text("\n".join(line.rstrip() for line in svg.read_text(encoding="utf-8").splitlines()) + "\n", encoding="utf-8")
     fig.savefig(png, bbox_inches="tight", dpi=180, metadata={"Software": "design/render_unit_step_context.py"})
     plt.close(fig)
     print(f"vertices={count} pdf={pdf} svg={svg} png={png}")
