@@ -20,7 +20,6 @@ import numpy as np
 
 DIRECTIONS = np.array(((1, 0), (0, 1), (-1, 0), (0, -1)), dtype=float)
 OFFSETS = np.array(((0, 0), (-1, 0), (-1, 1), (0, -1)), dtype=float)
-COLORS = np.array(("#56b4e9", "#e69f00", "#009e73", "#cc79a7"))
 
 
 def states(pattern: str, count: int) -> np.ndarray:
@@ -49,54 +48,50 @@ def source_and_lift(pattern: str, count: int):
     return sigma, source, tagged, height
 
 
-def colored_trace(axis, points: np.ndarray, sigma: np.ndarray) -> None:
+def print_trace(axis, points: np.ndarray, *, equal_aspect: bool = True) -> None:
+    """Draw a minimal monochrome trace suitable for print at column scale."""
     segments = np.stack((points[:-1], points[1:]), axis=1)
-    collection = LineCollection(segments, colors=COLORS[sigma[:-1]], linewidths=.82, alpha=.9)
+    collection = LineCollection(segments, colors="#111111", linewidths=.48, alpha=1)
     axis.add_collection(collection)
-    axis.scatter(points[0, 0], points[0, 1], s=22, c="#ffffff", edgecolors="#07101d", linewidths=.8, zorder=3)
-    axis.scatter(points[-1, 0], points[-1, 1], s=22, c="#ffcf66", edgecolors="#07101d", linewidths=.8, zorder=3)
+    axis.scatter(points[0, 0], points[0, 1], s=18, facecolors="white", edgecolors="black", linewidths=.8, zorder=3)
+    axis.scatter(points[-1, 0], points[-1, 1], s=18, facecolors="black", edgecolors="black", linewidths=.8, zorder=3)
     axis.autoscale()
-    axis.set_aspect("equal", adjustable="datalim")
+    if equal_aspect:
+        axis.set_aspect("equal", adjustable="datalim")
+    axis.margins(.055)
+    axis.set_axis_off()
 
 
 def render(count: int, pdf: Path, svg: Path, png: Path) -> None:
     mpl.rcParams.update({
         "font.family": "DejaVu Sans",
         "font.size": 8.5,
-        "axes.facecolor": "#080e1a",
-        "figure.facecolor": "#080e1a",
-        "axes.edgecolor": "#41516a",
-        "axes.labelcolor": "#c6d4e7",
-        "xtick.color": "#8394ad",
-        "ytick.color": "#8394ad",
-        "text.color": "#e8f0fb",
+        "axes.facecolor": "white",
+        "figure.facecolor": "white",
+        "axes.edgecolor": "black",
+        "axes.labelcolor": "black",
+        "xtick.color": "black",
+        "ytick.color": "black",
+        "text.color": "black",
         "svg.hashsalt": "erdos193-unit-step-context",
     })
     fig, axes = plt.subplots(1, 3, figsize=(10.2, 3.25), constrained_layout=True)
-    records = []
     for axis, (rule, pattern) in zip(axes[:2], ((85, "+-+-+-+-"), (170, "-+-+-+-+"))):
-        sigma, source, _, _ = source_and_lift(pattern, count)
-        colored_trace(axis, source, sigma)
-        axis.set_title(rf"$g_{{{rule}}}$  $\varepsilon={pattern}$", fontweight="bold", pad=7)
-        axis.set_xlabel(r"$\Re z_n$")
-        axis.set_ylabel(r"$\Im z_n$")
-        axis.grid(color="#52637a", alpha=.18, linewidth=.5)
-        records.append((sigma, source))
+        _, source, _, _ = source_and_lift(pattern, count)
+        print_trace(axis, source)
+        axis.set_title(rf"$g_{{{rule}}}$  $\varepsilon={pattern}$", fontweight="bold", pad=5)
+        axis.text(.02, .02, "○ start   ● end", transform=axis.transAxes, fontsize=7, color="#333333")
 
-    sigma, _, tagged, height = source_and_lift("+-+-+-+-", count)
+    _, _, tagged, height = source_and_lift("+-+-+-+-", count)
     # An explicit oblique projection; vertical height is compressed so planar
     # structure and monotone lifting remain visible in one static panel.
-    projected = np.column_stack((tagged[:, 0] + .42 * tagged[:, 1], height / 28 + .22 * tagged[:, 1]))
-    colored_trace(axes[2], projected, sigma)
-    axes[2].set_aspect("auto")
-    axes[2].set_title(r"tagged $g_{85}$ lift $Q_n$", fontweight="bold", pad=7)
-    axes[2].set_xlabel(r"oblique planar coordinate")
-    axes[2].set_ylabel(r"height $h_n/28$ (compressed)")
-    axes[2].grid(color="#52637a", alpha=.18, linewidth=.5)
+    projected = np.column_stack((tagged[:, 0] + .42 * tagged[:, 1], height / 40 + .22 * tagged[:, 1]))
+    print_trace(axes[2], projected, equal_aspect=False)
+    axes[2].set_title(r"tagged $g_{85}$ lift $Q_n$  (oblique; $h_n/40$)", fontweight="bold", pad=5)
 
     fig.suptitle(
-        f"Alternating signed-Gaussian rules and the valuation lift · first {count} vertices",
-        fontsize=11.5,
+        rf"Alternating signed-Gaussian rules at level 10  ($2^{{10}}={count:,}$ vertices)",
+        fontsize=11,
         fontweight="bold",
     )
     pdf.parent.mkdir(parents=True, exist_ok=True)
@@ -114,7 +109,7 @@ def render(count: int, pdf: Path, svg: Path, png: Path) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--count", type=int, default=512)
+    parser.add_argument("--count", type=int, default=1 << 10, help="vertex count (default: 2^10, recursion level 10)")
     parser.add_argument("--pdf", type=Path, default=Path("paper/unit_step_g85_g170_context.pdf"))
     parser.add_argument("--svg", type=Path, default=Path("results/unit-step-g85-g170-context.svg"))
     parser.add_argument("--png", type=Path, default=Path("results/unit-step-g85-g170-context.png"))
