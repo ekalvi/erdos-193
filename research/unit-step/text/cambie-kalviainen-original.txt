@@ -1,0 +1,85 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/erdos193.pdf
+
+=== Page 1 ===
+An inﬁnite small-step Z3-walk with no collinear triple
+Stijn Cambie Erik Kalviainen
+September 1, 2026
+Abstract
+We construct an inﬁnite walk in Z3 whose steps come from a ﬁxed set of sixteen vectors and no three of
+whose vertices are collinear, answering a problem of Gerver and Ramsey popularized as Erdős Problem 193.
+Theorem 1. There is an inﬁnite sequence P0, P1, . . . in Z3 with no three collinear terms and with
+Pn+1 − Pn ∈ {−2, −1, 0, 1, 2}2 × {1, 2, . . . ,7} (n ≥ 0).
+Only sixteen successive displacement vectors occur.
+Proof. Let s2(n) be the number of 1s in the binary expansion of n, and put
+un = is2(n), z n =
+∑
+0≤r<n
+ur ∈ Z[i].
+Thus (zn) is a nearest-neighbor walk in the Gaussian lattice. Binary expansion gives, for ε ∈ {0, 1},
+u2n+ε = iεun, z 2n+ε = (1 + i)zn + εun. (1)
+We ﬁrst record the only property of this walk that we need. If 0 ≤ m < n and um = un, then
+ν2
+(
+|zn − zm|2)
+= ν2(n − m). (2)
+Indeed, whenever n − m is even, the endpoints have the same parity, say m = 2a + ε and n = 2b + ε. From ( 1),
+um = un implies ua = ub and
+zn − zm = (1 + i)(zb − za).
+If r = ν2(n − m), repeating this reduction r times gives
+zn − zm = (1 + i)r(zn′ − zm′),
+where n′ − m′ is odd. The last diﬀerence is a sum of an odd number of Gaussian units. Writing it as x + iy, we
+have x + y odd, so x2 + y2 is odd. Since |1 + i|2 = 2, equation ( 2) follows.
+Let αn ∈ {0, 1, 2, 3} be determined by un = iαn . Tag the four states by the corners
+c0 = 0, c 1 = i, c 2 = −1 + i, c 3 = −1
+of a unit square in cyclic order, and deﬁne
+wn = 2zn + cαn , h n = 4n + αn, P n = (ℜwn, ℑwn, hn). (3)
+We claim that, for every m < n ,
+ν2
+(
+|wn − wm|2)
+= ν2(hn − hm). (4)
+Put a = αm, b = αn, and d = n − m. Then
+wn − wm = 2(zn − zm) + cb − ca, h n − hm = 4d + b − a.
+If a = b, equation ( 4) follows from ( 2). If b − a is odd, exactly one coordinate of cb − ca is odd; hence the squared
+modulus and 4d + b − a are both odd. If b − a = ±2, both planar coordinates are odd, so their squared sum is
+2 modulo 4, while 4d ± 2 has valuation one. This proves ( 4).
+1
+
+
+=== Page 2 ===
+The sequence has bounded steps. If j = αn and k = αn+1, then
+wn+1 − wn = 2ij + ck − cj, h n+1 − hn = 4 + k − j. (5)
+The second quantity lies between 1 and 7. The corner cj was oriented so that ij points outward from the square.
+The component of ck − cj in that direction is 0 or −1, and its perpendicular component has absolute value at
+most 1. Thus both planar step coordinates have absolute value at most 2. Equation ( 5) also shows that the
+step is determined by (j, k), so at most sixteen steps occur. Since hn+1 > h n, the points are distinct.
+It remains to exclude collinearity. Suppose Pa, Pb, Pc are collinear for a < b < c , and write
+A = hb − ha, B = hc − hb, X = wb − wa, Y = wc − wb.
+Because A, B > 0, collinearity gives one common complex slope,
+X
+A = Y
+B = X + Y
+A + B .
+Extend ν2 to nonzero rational numbers in the usual way. Applying ( 4) to the three chords and taking squared
+moduli of the slopes yields
+ν2(A) = ν2(B) = ν2(A + B).
+This is impossible: if the ﬁrst two valuations equal t, then A/2t and B/2t are odd, so (A + B)/2t is even. Hence
+no three points Pn are collinear.
+Attribution and AI disclosure. Erik Kalviainen developed the ﬁrst proof, relying on a two-dimensional
+discrete Hilbert curve, and formalized it in Lean with exact computational checks and an interactive visualization.
+Stijn Cambie became involved at that point and proposed two successive simpliﬁcations: ﬁrst, encoding all four
+Hilbert terminal states directly to eliminate the selector; second, replacing the Hilbert machinery by the complex
+Gaussian-lattice walk used in this proof. Cambie’s simpliﬁcations and drafts and Kalviainen’s formalization
+and presentation were AI-assisted. Both authors have checked the proof and state the result above as an
+unconditional theorem. Neither AI output nor ﬁnite computation is used as a premise.
+Author information. Stijn Cambie, Department of Computer Science, KU Leuven Campus Kulak-Kortrijk, 8500 Kortrijk,
+Belgium ( stijn.cambie@hotmail.com); Erik Kalviainen, independent researcher, Waterloo, Ontario, Canada ( ekalvi@gmail.com).
+S.C. is supported by FWO grant 1225224N. Supplementary exposition and visualization: https://erdos-193.q5m.ai. Source,
+Lean formalization, and exact checks: https://github.com/ekalvi/erdos-193.
+References
+[1] T. F. Bloom, Erdős Problem 193, https://www.erdosproblems.com/193.
+[2] J. L. Gerver and L. T. Ramsey, On certain sequences of lattice points, Paciﬁc J. Math. 83 (1979), 357–363.
+[3] T. F. Lidbetter, Improved bound for the Gerver–Ramsey collinearity problem, Discrete Math. 347 (2024),
+Article 113718.
+2

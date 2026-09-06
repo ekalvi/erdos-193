@@ -1,0 +1,174 @@
+{
+  "schema": 1,
+  "snapshot_date": "2026-09-06",
+  "scope": "Public research archive requested by Erik Kalviainen; preserves source attribution, not a jointly approved new manuscript or a grant of redistribution rights.",
+  "text_extractor": "pypdf==6.17.0",
+  "pdfs": [
+    {
+      "id": "cambie-kalviainen-original",
+      "title": "An infinite small-step Z^3-walk with no collinear triple",
+      "attribution": "Named authors: Stijn Cambie and Erik Kalviainen.",
+      "status": "Original unconditional theorem; Lean-formalized; original proof recorded as accepted by the Erdos Problems site.",
+      "path": "paper/erdos193.pdf",
+      "aliases": [
+        "viz/erdos-193-gaussian-proof.pdf"
+      ],
+      "sha256": "1995dcb753b1516f0a55246788f0c1804c242a2f1e4da0d9ab7f986b92c34bea",
+      "source": {
+        "kind": "existing_repository_paper",
+        "date": "2026-09-01",
+        "url": "https://arxiv.org/abs/2609.01766v1",
+        "note": "Repository PDF; do not infer byte equality with the arXiv download."
+      },
+      "editable_sources": [
+        "paper/erdos193.tex"
+      ],
+      "text_path": "research/unit-step/text/cambie-kalviainen-original.txt",
+      "pdf_bytes": 67693,
+      "pdf_pages": 2,
+      "text_sha256": "2df084bac119d2c3d2208e0e4c78d9f8f9be041c1dfc7d2ee6b82a41075c754d"
+    },
+    {
+      "id": "shallit-N16",
+      "title": "An infinite walk in N^16, using only unit steps, with no three collinear points",
+      "attribution": "Named author: Jeffrey Shallit. Builds on Cambie and Kalviainen; introduces the basis-step formulation/encoding and explicit 16-letter construction in this manuscript.",
+      "status": "Received manuscript with a written infinite proof; not a journal publication or Lean-formalized follow-up.",
+      "path": "paper/followups/2026-09-04-shallit-N16.pdf",
+      "sha256": "bad2ad86e2ba4fdc1568dabfb89b0a263d35770af6caf194f6e5f3888661f8b3",
+      "source": {
+        "kind": "received_manuscript",
+        "date": "2026-09-04",
+        "original_filename": "three.pdf",
+        "supplied_by": "Jeffrey Shallit"
+      },
+      "editable_sources": [],
+      "source_gap": "No LaTeX source supplied in available correspondence.",
+      "text_path": "research/unit-step/text/shallit-N16.txt",
+      "pdf_bytes": 303890,
+      "pdf_pages": 9,
+      "text_sha256": "b899271d1334dafe065d0942a32939184bde3c1906694018f23f02e649738e51"
+    },
+    {
+      "id": "cambie-N14",
+      "title": "A unit-step walk in fourteen dimensions",
+      "attribution": "Note and offset simplification supplied by Stijn Cambie. PDF has no byline; this is supplier/contribution attribution, not an inserted author line.",
+      "status": "Received short proof note; no formal verification claimed.",
+      "path": "paper/followups/2026-09-05-cambie-N14.pdf",
+      "sha256": "83b2ff9b908c245d869df3de227aad83f92a8a2208c8a787e0522716d5740766",
+      "source": {
+        "kind": "received_manuscript",
+        "date": "2026-09-05",
+        "original_filename": "EP193_followupShallit.pdf",
+        "supplied_by": "Stijn Cambie"
+      },
+      "editable_sources": [],
+      "source_gap": "Original unit_step_walk_N14_short.tex (3924 bytes) was attached, but the attachment tool rejects application/x-tex. Manual import is pending; PDF preserved.",
+      "text_path": "research/unit-step/text/cambie-N14.txt",
+      "pdf_bytes": 165272,
+      "pdf_pages": 1,
+      "text_sha256": "08fb2fee77d20ee44dbbd51d0fa4c4f85e7da61bb916a761d8f34147d83f96db"
+    },
+    {
+      "id": "kalviainen-N6",
+      "title": "A six-dimensional unit-step walk with no collinear triple",
+      "attribution": "Named draft author: Erik Kalviainen. Alternating signed-Gaussian source uses Cambie's offsets and Shallit's basis encoding on the Cambie-Kalviainen foundation.",
+      "status": "Proposed six-dimensional upper bound; independent review pending; not Lean-formalized. No global minimality claim.",
+      "path": "paper/unit_step_walk_N6_short.pdf",
+      "sha256": "dbca9935d49b5141d06a9f6022a82aa4e7845b9066ca3071c4271a3048800dec",
+      "source": {
+        "kind": "repository_and_sent_draft",
+        "date": "2026-09-05",
+        "original_filename": "unit_step_walk_N6_short (1).pdf",
+        "supplied_by": "Erik Kalviainen",
+        "note": "The sent attachment was downloaded and found byte-identical to this repository PDF."
+      },
+      "editable_sources": [
+        "paper/unit_step_walk_N6_short.tex"
+      ],
+      "dependencies": [
+        "paper/unit_step_g85_g170_context.pdf"
+      ],
+      "text_path": "research/unit-step/text/kalviainen-N6.txt",
+      "pdf_bytes": 97186,
+      "pdf_pages": 2,
+      "text_sha256": "04ac89c7ee465e149697ea254095e718a2c301d31f56a5d401b915a62c601b1b"
+    },
+    {
+      "id": "shallit-weak-abelian-cubes",
+      "title": "A four-letter infinite word avoiding weak abelian cubes",
+      "attribution": "Supplied by Jeffrey Shallit, reported AI-generated. No named author byline in PDF; no sole or joint authorship inferred. Credits the Cambie-Kalviainen valuation method.",
+      "status": "Unchecked draft; preliminary repository audit and finite checks only. Four-collinear avoidance, not three-collinear avoidance; novelty not established here.",
+      "path": "paper/followups/2026-09-06-shallit-weak-abelian-cubes.pdf",
+      "sha256": "856901a441d522a30bc45d2bfc4febeedbe7fb6c42b96cd7e28a7e0c272e5786",
+      "source": {
+        "kind": "received_manuscript",
+        "date": "2026-09-06",
+        "original_filename": "weak_abelian_cube_free_word.pdf",
+        "supplied_by": "Jeffrey Shallit"
+      },
+      "editable_sources": [],
+      "source_gap": "No LaTeX source supplied in available correspondence.",
+      "text_path": "research/unit-step/text/shallit-weak-abelian-cubes.txt",
+      "pdf_bytes": 312636,
+      "pdf_pages": 6,
+      "text_sha256": "2e0b4016177664a4bfb3bb05eece3a36ef1370826d6a2d0d173cb4abbd288216"
+    },
+    {
+      "id": "unit-step-context",
+      "title": "Level-10 g85/g170 planar and tagged-lift context diagram",
+      "attribution": "Repository visualization supporting Kalviainen's 6D draft, with the Cambie-Kalviainen construction and Cambie offsets credited in that draft.",
+      "status": "Finite visualization, not a proof.",
+      "path": "paper/unit_step_g85_g170_context.pdf",
+      "sha256": "f9773704be0651f59f3bd8c80c48facceae04f6d7d1520d1a5e3dd8152f11246",
+      "source": {
+        "kind": "existing_repository_figure",
+        "date": "2026-09-05"
+      },
+      "editable_sources": [
+        "design/render_unit_step_context.py"
+      ],
+      "text_path": "research/unit-step/text/unit-step-context.txt",
+      "pdf_bytes": 47649,
+      "pdf_pages": 1,
+      "text_sha256": "2540a48f05c4e76086b2dd99577eebce1ce5f835313e9263b74a6b5b464d1276"
+    },
+    {
+      "id": "historical-notation-cheat-sheet",
+      "title": "Erdos Problem 193 proof: notation and formula cheat sheet",
+      "attribution": "Existing repository explanatory artifact; not a separate newly attributed joint paper.",
+      "status": "Historical aid containing earlier Hilbert-era notation; not the current Gaussian proof or a unit-step theorem.",
+      "path": "paper/notation-cheat-sheet.pdf",
+      "sha256": "a8f7bbf3cab34d41c2577b45b4b5c036b76bba81aaa16375bdae964d35160a69",
+      "source": {
+        "kind": "existing_repository_aid",
+        "revision": "bebc640e86903ab3c1186ec89cc197c033264034"
+      },
+      "editable_sources": [
+        "paper/notation-cheat-sheet.md"
+      ],
+      "text_path": "research/unit-step/text/historical-notation-cheat-sheet.txt",
+      "pdf_bytes": 395844,
+      "pdf_pages": 7,
+      "text_sha256": "4098b033850607ec1875e2295b14ca39ffc990df67729267bbe8acb406c4b7a4"
+    },
+    {
+      "id": "historical-proof-skeleton",
+      "title": "Gaussian-lattice proof skeleton",
+      "attribution": "Existing repository explanatory artifact concerning the Cambie-Kalviainen proof, not a new author-approved manuscript.",
+      "status": "Preserved explanatory aid; consult current paper/erdos193.tex for authoritative notation and proof.",
+      "path": "paper/proof-skeleton.pdf",
+      "sha256": "a97836de4fec4d9ada4923567c7468064afc3f975ee35cb9e84302f9e9a87038",
+      "source": {
+        "kind": "existing_repository_aid",
+        "revision": "bebc640e86903ab3c1186ec89cc197c033264034"
+      },
+      "editable_sources": [
+        "paper/proof-skeleton.md"
+      ],
+      "text_path": "research/unit-step/text/historical-proof-skeleton.txt",
+      "pdf_bytes": 167672,
+      "pdf_pages": 2,
+      "text_sha256": "7be3d7c1a070fbbbdb38281dfb72ea21f2ffd8afb4933b2671df8574ed1fb03f"
+    }
+  ]
+}

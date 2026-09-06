@@ -1,0 +1,67 @@
+name: Unit-step research checkpoint
+
+on:
+  pull_request:
+    paths:
+      - 'research/unit-step/**'
+      - 'paper/**'
+      - 'design/**'
+      - 'results/*unit-step*'
+      - 'results/shallit-*'
+      - 'q5m.yaml'
+      - '.dockerignore'
+      - 'README.md'
+      - '.github/workflows/research-checkpoint.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'research/unit-step/**'
+      - 'paper/**'
+      - 'design/**'
+      - 'results/*unit-step*'
+      - 'results/shallit-*'
+      - 'q5m.yaml'
+      - '.dockerignore'
+      - 'README.md'
+      - '.github/workflows/research-checkpoint.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checkpoint:
+    name: Archive and finite certificates
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      OMP_NUM_THREADS: '1'
+      OPENBLAS_NUM_THREADS: '1'
+      MKL_NUM_THREADS: '1'
+      NUMEXPR_NUM_THREADS: '1'
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Check PDF archive, links, and production separation
+        run: node research/unit-step/check.mjs
+      - name: Check joint-minimum finite projection examples
+        run: node research/unit-step/joint_minimum_examples.mjs
+      - name: Check the offline explainer build and finite models
+        run: |
+          node design/unit-step-explainer/build.mjs
+          git diff --exit-code -- design/unit-step-explainer/standalone.html design/unit-step-explainer/public/index.html
+          node design/unit-step-explainer/test.mjs
+          node design/check_weak_abelian_cube_draft.mjs
+      - name: Independently validate dimension certificates and C++ resume behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          src=design/verify_unit_step_prefix.cpp
+          g++ -O2 -std=c++17 -Wall -Wextra -pedantic \
+            -DSOURCE_SHA=\"$(sha256sum "$src" | cut -d' ' -f1)\" \
+            "$src" -o /tmp/verify_unit_step_prefix
+          python3 design/check_unit_step_dimension_results.py --binary /tmp/verify_unit_step_prefix

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>From g85 to six unit directions | research explainer</title>
+<style>
+:root{color-scheme:light;font:16px/1.55 system-ui,sans-serif;color:#172b3b;background:#f2f5f7;--accent:#0072b2}*{box-sizing:border-box}body{margin:0}main{max-width:1250px;margin:auto;padding:32px 22px 70px}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.12;margin:12px 0}h2{line-height:1.25;font-size:1.5rem;margin:0 0 14px}h3{margin:0 0 8px;font-size:1.1rem}p{margin:10px 0}.lead{font-size:1.18rem;max-width:850px}.badge{display:inline-block;border:1px solid #a46a21;background:#fff3df;color:#654114;border-radius:6px;padding:5px 10px;font-size:.86rem}.muted,figcaption{color:#526776;font-size:.9rem}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.two{display:grid;grid-template-columns:1fr 1fr;gap:22px}.card,section.box{background:white;border:1px solid #d2dce2;border-radius:12px;padding:20px;min-width:0}section{margin-top:26px}figure{margin:0}canvas{display:block;width:100%;height:255px;background:#fff}button,select,input{font:inherit}button,select{padding:7px 12px;border:1px solid #9cabb5;border-radius:6px;background:white;color:#172b3b}button{cursor:pointer}button:hover{background:#edf5fa}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #0072b2;outline-offset:3px}.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}.controls input[type=range]{flex:1;min-width:150px;accent-color:var(--accent)}.controls input[type=number]{width:80px;padding:5px;border:1px solid #9cabb5;border-radius:5px}.math{font:1rem/1.6 ui-monospace,monospace;overflow-wrap:anywhere;background:#f3f6f8;padding:12px;border-radius:6px}.strip{display:flex;gap:4px;flex-wrap:wrap;margin-top:10px}.letter{display:inline-grid;place-items:center;width:24px;height:28px;color:white;font-weight:700;border-radius:3px}.active{outline:3px solid #152f40;outline-offset:2px}.barrow{display:grid;grid-template-columns:20px 1fr 40px;gap:8px;align-items:center;margin:14px 0}.track{background:#eef2f5;height:19px;border-radius:3px;overflow:hidden}.bar{height:100%;min-width:0;transition:width .1s}table{width:100%;border-collapse:collapse;font-size:.93rem}td,th{padding:9px 7px;text-align:left;border-bottom:1px solid #dce3e8}tr.selected{background:#e8f3fa}ol{padding-left:24px}li{margin:12px 0}.success{border-left:4px solid #008568;padding:9px 13px;background:#edf8f2}.warning{border-left:4px solid #b36b00;padding:9px 13px;background:#fff6e8}a{color:#006499}summary{cursor:pointer;font-weight:600}footer{margin-top:35px;border-top:1px solid #d2dce2;padding-top:18px;font-size:.88rem;color:#526776}@media(max-width:900px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}canvas{height:280px}main{padding:22px 14px}}@media print{body{background:white}.controls,button{display:none}main{max-width:none;padding:0}section,.card{break-inside:avoid}.grid{grid-template-columns:repeat(3,1fr)}canvas{height:180px}.badge{background:white}a{color:black}}
+</style></head><body><main>
+<span class="badge">Unpublished research explainer · 6D draft awaiting independent review</span>
+<h1>One alternating rule.<br>Eight transitions. Six directions.</h1>
+<p class="lead">The fractal is a source of directions. A three-dimensional lift supplies the no-collinearity proof. Six counters turn its moves into positive coordinate-unit steps.</p>
+<p class="muted">This page illustrates the proposed g85 construction. The pictures and numerical examples are finite; the infinite claim rests on the mathematical argument below. This is a follow-up to Erdős Problem 193, not the original problem itself.</p>
+<section class="box"><h2>1. Watch the same walk in three forms</h2>
+<div class="controls"><button id="play" type="button">Play</button><button id="back" type="button" aria-label="Previous vertex">−1</button><button id="next" type="button" aria-label="Next vertex">+1</button><label for="position">Vertex n</label><input id="position" type="range" min="0" max="1023" value="69"><output id="positionLabel" for="position">69 / 1023</output><button id="reset" type="button">Reset</button></div>
+<p class="muted">Level 10: 1,024 vertices. Gray is the full finite trace; color marks the path so far. The black marker is the selected vertex.</p>
+<div class="grid">
+<figure class="card"><h3>① Planar source zₙ</h3><canvas id="source" aria-label="Planar g85 source trace"></canvas><figcaption>Steps are east, north, west, or south. This planar picture is <strong>not</strong> the no-collinearity certificate.</figcaption><p class="math" id="sourceReadout"></p></figure>
+<figure class="card"><h3>② Tagged 3D walk Qₙ</h3><canvas id="shadow" aria-label="Oblique projection of the tagged three dimensional walk"></canvas><figcaption>Oblique 2D projection; height is compressed by 40. Apparent intersections in this picture do not establish collinearity in 3D.</figcaption><p class="math" id="liftReadout"></p></figure>
+<figure class="card"><h3>③ Six-dimensional walk Pₙ</h3><div id="bars" aria-label="Six exact coordinate counts"></div><figcaption>These are the actual six coordinates, not a projection. One and only one increases at each step.</figcaption><p class="math" id="basisReadout"></p></figure>
+</div><p id="stepReadout" class="success" aria-live="polite"></p><div id="letters" class="strip" aria-label="First 48 step types"></div>
+</section>
+<section class="two"><article class="card"><h2>2. Where g85 enters the math</h2><p>In the explorer’s eight-sign numbering, 85 is binary <code>01010101</code>: zero selects + and one selects −. That gives <strong>+−+−+−+−</strong>, repeated forever.</p><div class="math">σ(n) = Σⱼ (−1)ʲ bⱼ(n) mod 4<br>uₙ = i<sup>σ(n)</sup><br>zₙ = Σᵣ&lt;ₙ uᵣ</div><p>Here bⱼ(n) is binary digit j, starting at the right. The alternating signs weight those digits. State 0 means east; 1 north; 2 west; 3 south.</p><p class="math" id="bits"></p><p>If n ends in k binary ones, adding one changes the state by <strong>1 when k is even, or 2 when k is odd</strong>, modulo four. This is why only eight transitions occur, rather than sixteen.</p><p>Rule 170 reverses all signs and produces a companion six-step construction. This page uses <strong>g85 only</strong>.</p></article>
+<article class="card"><h2>3. Why eight becomes six</h2><p>Use Cambie’s four planar offsets:</p><div class="math">c₀=0, c₁=−1, c₂=−1+i, c₃=−i<br>wₙ=2zₙ+c<sub>σ(n)</sub><br>hₙ=4n+σ(n)<br>Qₙ=(Re wₙ, Im wₙ, hₙ)</div><p>A transition r→s gives the spatial step (2iʳ+cₛ−cᵣ, 4+s−r). Two pairs coincide:</p><table><thead><tr><th>Type</th><th>r→s</th><th>3D step vector</th></tr></thead><tbody id="menu"></tbody></table><p><strong>Assign A through F to e₁ through e₆.</strong> Pₙ simply counts how often each type has occurred.</p></article></section>
+<section class="two"><article class="card"><h2>4. Why the six-coordinate walk inherits the proof</h2><ol><li>The signed Gaussian argument gives a matching-endpoint-state identity: the power of 2 dividing |zₙ−zₘ|² equals the power dividing n−m.</li><li>The offsets and height tags extend this to <strong>every</strong> pair: ν₂(|wₙ−wₘ|²)=ν₂(hₙ−hₘ).</li><li>A collinear triple would force its positive height gaps A, B, and A+B to have the same power of 2. Impossible: after removing that common power, two odd integers have an even sum.</li><li>The linear map T sending each coordinate direction to its vector in the table satisfies <strong>T(Pₙ)=Qₙ</strong>. Collinear P vertices would have collinear Q images. Those images are distinct because hₙ strictly increases.</li></ol><p class="warning">This is a proof outline, not independent verification of the draft. In particular, the shifted-sign source identity must be checked mathematically; finite pictures do not prove it.</p><details><summary>What ν₂ means</summary><p>ν₂(12)=2 because 12=4×3; ν₂(10)=1. It counts the number of factors of two in a nonzero integer.</p></details></article>
+<article class="card"><h2>Try three vertices</h2><p>Two adjacent stretches are collinear exactly when their six direction proportions are identical. Test any ordered triple in this prefix.</p><div class="controls"><label>a <input id="a" type="number" min="0" max="1021" value="41"></label><label>b <input id="b" type="number" min="1" max="1022" value="55"></label><label>c <input id="c" type="number" min="2" max="1023" value="69"></label><button id="check" type="button">Check exactly</button></div><p id="tripleResult" class="math" aria-live="polite"></p><h3>Why not simply merge two coordinates?</h3><p>Every pairwise merger of these six types creates a collinear triple. Select one to see an exact counterexample:</p><label for="merger">Merge </label><select id="merger"></select><p id="mergeResult" class="warning"></p><p class="muted">This disproves these specific reductions. It does not rule out a different 5D construction, such as Shallit’s unproved candidate.</p></article></section>
+<section class="box"><h2>What this could advance</h2><div class="grid"><article><h3>Smaller step sets in 3D</h3><p>The table itself gives a 3D integer walk with only six allowed step vectors, instead of the original sixteen. The six-dimensional basis walk is its coordinate-count encoding.</p></article><article><h3>Infinite words with unequal adjacent proportions</h3><p>The A–F sequence avoids adjacent nonempty blocks having the same letter frequencies, even at unequal lengths. This is called weak abelian-square avoidance.</p></article><article><h3>The minimum dimension</h3><p>If the 6D proof is confirmed, L(d)=∞ for every d≥6 in the standard-basis path problem. The key remaining cases are d=4 and d=5; 3D is impossible for positive basis steps.</p></article></div><p class="muted">These are mathematical consequences, not established applications in cryptography, communication networks, or physical routing. Novelty relative to the broader literature still needs specialist review.</p><h3>Related reading</h3><ul><li><a href="https://arxiv.org/abs/2608.07906" target="_blank" rel="noopener noreferrer">Korsky: Long Lattice Paths with No Three Collinear Vertices</a> studies finite standard-basis walks as dimension grows.</li><li><a href="https://arxiv.org/abs/1302.4359" target="_blank" rel="noopener noreferrer">Avgustinovich and Puzynina: Weak abelian periodicity of infinite words</a> provides the letter-frequency framework; it is related background, not a claim that this construction settles all their questions.</li><li><a href="https://arxiv.org/abs/2609.01766" target="_blank" rel="noopener noreferrer">Cambie and Kalviainen: original small-step 3D construction</a>.</li></ul></section>
+<footer>No analytics, external scripts, fonts, or data requests. Only the reading links navigate off this page. The files live outside the production build directories. A “noindex” tag is not access control; LAN-only exposure must be enforced by the managed hosting configuration.</footer>
+</main><script type="module">
+// Exact integer model. No rendering assumptions enter the mathematics.
+const TYPES = [
+  {name:'A', pairs:[[0,1]], vector:[1,0,5], color:'#0072b2'},
+  {name:'B', pairs:[[1,2]], vector:[0,3,5], color:'#b36b00'},
+  {name:'C', pairs:[[2,3]], vector:[-1,-2,5], color:'#008568'},
+  {name:'D', pairs:[[3,0]], vector:[0,-1,1], color:'#b44982'},
+  {name:'E', pairs:[[0,2],[1,3]], vector:[1,1,6], color:'#7746ad'},
+  {name:'F', pairs:[[2,0],[3,1]], vector:[-1,-1,2], color:'#bd491b'},
+];
+const OFFSETS = [[0,0],[-1,0],[-1,1],[0,-1]];
+const DIR = [[1,0],[0,1],[-1,0],[0,-1]];
+function state(n) {
+  let sum=0, sign=1;
+  while(n) {sum+=sign*(n%2); sign=-sign; n=Math.floor(n/2);}
+  return ((sum%4)+4)%4;
+}
+function build(vertices=1024) {
+  if(!Number.isInteger(vertices)||vertices<2||vertices>65536) throw Error('Invalid vertex count');
+  const source=[[0,0]], basis=[Array(6).fill(0)], lift=[], steps=[], states=[];
+  for(let n=0;n<vertices;n++) {
+    const r=state(n); states.push(r);
+    const [x,y]=source[n];
+    lift.push([2*x+OFFSETS[r][0],2*y+OFFSETS[r][1],4*n+r]);
+    if(n+1<vertices) {
+      const s=state(n+1), type=TYPES.findIndex(t=>t.pairs.some(([a,b])=>a===r&&b===s));
+      if(type<0) throw Error('Unexpected transition');
+      const p=basis[n].slice(); p[type]++;
+      steps.push(type); basis.push(p); source.push([x+DIR[r][0],y+DIR[r][1]]);
+    }
+  }
+  return {source,basis,lift,steps,states,vertices};
+}
+const sub=(a,b)=>a.map((v,j)=>v-b[j]);
+const image=p=>[0,1,2].map(j=>p.reduce((s,v,i)=>s+v*TYPES[i].vector[j],0));
+function triple(model,a,b,c) {
+  if(![a,b,c].every(Number.isInteger)||a<0||a>=b||b>=c||c>=model.vertices) throw Error('Choose 0 ≤ a < b < c ≤ 1023');
+  const left=sub(model.basis[b],model.basis[a]), right=sub(model.basis[c],model.basis[b]);
+  return {left,right,p:b-a,q:c-b,mismatch:left.findIndex((x,j)=>(c-b)*x!==(b-a)*right[j])};
+}
+const MERGERS = [
+  [0,1,3,4,5],[0,2,6,9,12],[0,3,2,3,4],[0,4,0,1,2],[0,5,5,6,7],
+  [1,2,19,20,21],[1,3,28,35,42],[1,4,11,14,17],[1,5,4,5,6],
+  [2,3,10,11,12],[2,4,9,10,11],[2,5,20,21,22],
+  [3,4,1,2,3],[3,5,14,17,20],[4,5,41,55,69],
+];
+function merge(p,i,j) {return p.map((x,k)=>k===i?x+p[j]:x).filter((_,k)=>k!==j);}
+
+const model=build(), $=id=>document.getElementById(id);
+const tuple=p=>'('+p.join(', ')+')';
+let n=69, playing=false, last=0, frame=null;
+$('menu').innerHTML=TYPES.map((t,j)=>`<tr id="type${j}"><td><strong style="color:${t.color}">${t.name}</strong></td><td>${t.pairs.map(p=>p.join('→')).join(', ')}</td><td>${tuple(t.vector)}</td></tr>`).join('');
+$('bars').innerHTML=TYPES.map((t,j)=>`<div class="barrow"><strong style="color:${t.color}">${t.name}</strong><div class="track"><div id="bar${j}" class="bar" style="background:${t.color}"></div></div><output id="count${j}"></output></div>`).join('');
+$('merger').innerHTML=MERGERS.map(([i,j],k)=>`<option value="${k}" ${k===14?'selected':''}>${TYPES[i].name} + ${TYPES[j].name}</option>`).join('');
+const projected=model.lift.map(([x,y,h])=>[x+.42*y,h/40+.22*y]);
+function plot(id,points) {
+  const canvas=$(id), ctx=canvas.getContext('2d'), rect=canvas.getBoundingClientRect();
+  const w=rect.width,h=rect.height,dpr=window.devicePixelRatio||1;
+  canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);
+  let xmin=Infinity,xmax=-Infinity,ymin=Infinity,ymax=-Infinity;
+  for(const [x,y] of points){xmin=Math.min(xmin,x);xmax=Math.max(xmax,x);ymin=Math.min(ymin,y);ymax=Math.max(ymax,y);}
+  const scale=Math.min((w-30)/Math.max(1,xmax-xmin),(h-30)/Math.max(1,ymax-ymin));
+  const xy=([x,y])=>[w/2+(x-(xmin+xmax)/2)*scale,h/2-(y-(ymin+ymax)/2)*scale];
+  function path(end,color,width){ctx.beginPath();for(let i=0;i<=end;i++){const [x,y]=xy(points[i]);i?ctx.lineTo(x,y):ctx.moveTo(x,y);}ctx.strokeStyle=color;ctx.lineWidth=width;ctx.stroke();}
+  path(points.length-1,'#d8e0e6',1);path(n,'#496273',1.2);
+  if(n>0){const [x,y]=xy(points[n-1]),[u,v]=xy(points[n]);ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(u,v);ctx.lineWidth=3;ctx.strokeStyle=TYPES[model.steps[n-1]].color;ctx.stroke();}
+  const [x,y]=xy(points[n]);ctx.beginPath();ctx.arc(x,y,4.5,0,2*Math.PI);ctx.fillStyle='#172b3b';ctx.fill();
+  const [sx,sy]=xy(points[0]);ctx.beginPath();ctx.arc(sx,sy,4,0,2*Math.PI);ctx.strokeStyle='#172b3b';ctx.lineWidth=1.5;ctx.stroke();
+}
+function render() {
+  $('position').value=n;$('positionLabel').textContent=`${n} / 1023`;
+  const p=model.basis[n],r=model.states[n],max=Math.max(1,...p);
+  TYPES.forEach((t,j)=>{$('bar'+j).style.width=`${100*p[j]/max}%`;$('count'+j).textContent=p[j];$('type'+j).classList.toggle('selected',n>0&&model.steps[n-1]===j);});
+  $('sourceReadout').textContent=`z${n} = ${tuple(model.source[n])}`;
+  $('liftReadout').textContent=`Q${n} = ${tuple(model.lift[n])}`;
+  $('basisReadout').textContent=`P${n} = ${tuple(p)}; sum = ${n}`;
+  const terms=[...n.toString(2)].reverse().flatMap((b,j)=>b==='1'?[`${j%2?'−':'+'}1 (bit ${j})`]:[]);
+  $('bits').textContent=`n=${n}, binary ${n.toString(2)}: ${terms.join(' ')||'0'} ≡ ${r} mod 4`;
+  $('stepReadout').textContent=n?`Step ${n-1}→${n}: state ${model.states[n-1]}→${r}, type ${TYPES[model.steps[n-1]].name}. Add ${tuple(TYPES[model.steps[n-1]].vector)} in 3D, or increase coordinate ${TYPES[model.steps[n-1]].name} by 1 in 6D. T(P${n}) = ${tuple(image(p))}.`:'At the origin: all six counters are zero.';
+  $('letters').innerHTML=model.steps.slice(0,48).map((j,k)=>`<span class="letter ${k===n-1?'active':''}" style="background:${TYPES[j].color}" title="Step ${k}">${TYPES[j].name}</span>`).join('');
+  plot('source',model.source);plot('shadow',projected);
+}
+function select(value){n=Math.max(0,Math.min(1023,Number(value)));render();}
+function stop(){playing=false;if(frame!==null)cancelAnimationFrame(frame);frame=null;$('play').textContent='Play';}
+$('position').addEventListener('input',e=>{stop();select(e.target.value);});
+$('back').onclick=()=>{stop();select(n-1);};$('next').onclick=()=>{stop();select(n+1);};$('reset').onclick=()=>{stop();select(0);};
+$('play').onclick=()=>{if(playing){stop();return;}playing=true;$('play').textContent='Pause';if(n===1023)select(0);last=0;frame=requestAnimationFrame(tick);};
+function tick(t){if(!playing)return;if(t-last>130){last=t;select(n+1);if(n===1023)stop();}if(playing)frame=requestAnimationFrame(tick);}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+function check(){try{const a=Number($('a').value),b=Number($('b').value),c=Number($('c').value),v=triple(model,a,b,c),j=v.mismatch;
+$('tripleResult').textContent=`[${a},${b}): ${tuple(v.left)} over ${v.p} steps. [${b},${c}): ${tuple(v.right)} over ${v.q} steps. ${j>=0?`Not collinear: coordinate ${TYPES[j].name} has proportions ${v.left[j]}/${v.p} ≠ ${v.right[j]}/${v.q}. Exact cross-products: ${v.q*v.left[j]} ≠ ${v.p*v.right[j]}.`:'Collinear.'}`;
+}catch(e){$('tripleResult').textContent=e.message;}}
+function showMerger(){const [i,j,a,b,c]=MERGERS[Number($('merger').value)],left=merge(sub(model.basis[b],model.basis[a]),i,j),right=merge(sub(model.basis[c],model.basis[b]),i,j);
+$('mergeResult').textContent=`After merging ${TYPES[i].name} and ${TYPES[j].name}, intervals [${a},${b}) and [${b},${c}) have counts ${tuple(left)} and ${tuple(right)}. Both lengths are ${b-a}, so the projected vertices ${a}, ${b}, ${c} are collinear. The original six-coordinate vertices are not.`;
+$('a').value=a;$('b').value=b;$('c').value=c;check();}
+$('check').onclick=check;$('merger').onchange=showMerger;
+let resizing;window.addEventListener('resize',()=>{clearTimeout(resizing);resizing=setTimeout(render,100);});
+showMerger();render();
+
+</script></body></html>

@@ -2,7 +2,7 @@
 
 This repository gives an explicit negative answer to [Erdős Problem 193](https://www.erdosproblems.com/193): it constructs an infinite sequence in $\mathbb Z^3$ whose consecutive differences come from a fixed finite set, while no three vertices are collinear.
 
-The construction is unconditional, formalized in Lean 4, and publicly posted as [arXiv:2609.01766](https://arxiv.org/abs/2609.01766). External mathematical review and community acceptance remain pending.
+The construction is unconditional, formalized in Lean 4, and publicly posted as [arXiv:2609.01766](https://arxiv.org/abs/2609.01766). The Erdős Problems site [records the original proof as accepted as correct](https://www.erdosproblems.com/forum/thread/193/proof-claims#proof-claim-239). This status does not extend to the follow-up drafts.
 
 ## Read and run it
 
@@ -11,6 +11,32 @@ The construction is unconditional, formalized in Lean 4, and publicly posted as 
 - **Lean theorem:** [`Hilbert193.erdos193_unconditional`](formal/Hilbert193/Hilbert193/Continuity.lean) · [formal proof guide](formal/Hilbert193/README.md)
 - **Minimal constructor:** [`viz/gaussian_walk.py`](viz/gaussian_walk.py)
 - **Executable finite checks:** [`viz/gaussian_walk_demo.py`](viz/gaussian_walk_demo.py) · [run in the browser](https://erdos-193.q5m.ai/demo.html)
+
+## Unit-step follow-up: research checkpoint
+
+The separate follow-up asks for the **minimum dimension of an infinite positive
+standard-basis walk with no three collinear vertices**. The lower bound is four;
+a proposed six-dimensional upper bound awaits independent review. Dimensions
+four and five are not settled here.
+
+- **[AI resume checkpoint](research/unit-step/AI-CHECKPOINT.md):** proof status,
+  attribution, known obstructions, WIP, and the next proof-oriented tasks.
+- **[Precise mathematical problem](research/unit-step/PROBLEM.md)** and its
+  equivalent word-combinatorics formulation.
+- **[Joint dimension/step-count problem](research/unit-step/JOINT-MINIMUM.md):**
+  the implication matrix, minimum step-count profile, and the distinction
+  between length-dependent finite examples and one fixed infinite 3D walk.
+- **[Parallel research handoffs](research/unit-step/PARALLEL-TASKS.md):** four
+  bounded tracks with copyable session prompts and a shared host resource budget.
+- **[Manuscript archive](paper/followups/README.md):** Cambie–Kalviainen's original
+  paper, Shallit's 16D manuscript, Cambie's 14D note, Kalviainen's 6D draft, and
+  the four-collinear draft supplied by Shallit. PDFs, available sources, and
+  machine-readable text are indexed with provenance and checksums.
+
+This is a public research archive, not a new joint paper, a claim that the
+minimum is known, or a production-site announcement. A joint synthesis by
+Cambie, Kalviainen, and Shallit is the proposed direction; final authorship and
+publication decisions remain to be agreed.
 
 ## Construction at a glance
 

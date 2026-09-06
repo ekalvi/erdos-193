@@ -1,0 +1,9 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/unit_step_g85_g170_context.pdf
+
+=== Page 1 ===
+○ start   ● end
+g85  ε = + − + − + − + −
+○ start   ● end
+g170  ε = − + − + − + − + tagged g85 lift Qn  (oblique; hn/40)
+Alternating signed-Gaussian rules at level 10  (210 = 1, 024 vertices)

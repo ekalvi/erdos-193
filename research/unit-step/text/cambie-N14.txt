@@ -1,0 +1,51 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/followups/2026-09-05-cambie-N14.pdf
+
+=== Page 1 ===
+A unit-step walk in fourteen dimensions
+Shallit [2] constructed an infinite standard-basis walk inN16 with no three collinear vertices. A small
+change to the offsets in the construction of Cambie and Kalviainen [1] lowers the dimension to fourteen. Here
+N={0,1,2,...}.
+Theorem.There is an infinite sequence𝑃0,𝑃 1,...∈N 14, starting at the origin, whose steps are standard
+basis vectors and no three of whose vertices are collinear.
+Proof. Let 𝑠2(𝑛) count the 1’s in the binary expansion of𝑛, and set𝑡𝑛 =𝑠 2(𝑛)mod 4∈{0,1,2,3} and
+𝑍𝑛 = ˝
+0≤𝑗<𝑛 i𝑡 𝑗. Choose the four offsets
+(𝑐 0,𝑐 1,𝑐 2,𝑐 3)=(0,−1,−1+i,−i), 𝑊 𝑛 =2𝑍 𝑛+𝑐 𝑡𝑛, 𝐻 𝑛 =4𝑛+𝑡 𝑛,
+and identify𝑄𝑛 =(𝑊 𝑛,𝐻 𝑛) with(ℜ𝑊𝑛,ℑ𝑊 𝑛,𝐻 𝑛)∈Z 3. Writing𝜈2 for the exponent of2, we claim that for
+every𝑚 <𝑛,
+𝜈2
+�|𝑊𝑛−𝑊 𝑚|2� =𝜈 2(𝐻 𝑛−𝐻 𝑚).(1)
+For equal states, [1, eq. (2)] gives𝜈2(|𝑍 𝑛−𝑍 𝑚|2)=𝜈 2(𝑛−𝑚) , so both sides are2+𝜈 2(𝑛−𝑚) . For states of
+opposite parity,𝑊𝑛−𝑊 𝑚 has exactly one odd coordinate and𝐻𝑛−𝐻 𝑚 is odd, so both sides are zero. For
+distinctstatesofequalparity, both coordinatesof 𝑊𝑛−𝑊 𝑚 areodd and𝐻𝑛−𝐻 𝑚≡2(mod 4) , sobothsides
+are one. In particular,𝑊𝑛 ≠𝑊 𝑚.
+The heights strictly increase, since𝐻𝑛+1−𝐻 𝑛≥1 . If𝑄 𝑎,𝑄 𝑏,𝑄 𝑐 were collinear, with𝑎 < 𝑏 < 𝑐, put
+𝐴=𝐻 𝑏−𝐻 𝑎 >0and𝐵=𝐻 𝑐−𝐻 𝑏 >0. The three complex slopes
+𝑊𝑏−𝑊 𝑎
+𝐴 = 𝑊𝑐−𝑊 𝑏
+𝐵 = 𝑊𝑐−𝑊 𝑎
+𝐴+𝐵
+would coincide. Extend𝜈2 to positive rationals by𝜈2(𝑎/𝑏)=𝜈 2(𝑎)−𝜈 2(𝑏). By(1), their squared moduli
+have valuations−𝜈2(𝐴),−𝜈2(𝐵) and−𝜈2(𝐴+𝐵) , respectively. Thus𝐴,𝐵,𝐴+𝐵 would have the same
+valuation, which is impossible: after removing their common power of2, the first two are odd but their sum is
+even.
+Thestepcorrespondingto (𝑡 𝑛,𝑡 𝑛+1)=(𝑟,𝑠) is𝑣𝑟 ,𝑠 =(2i 𝑟+𝑐 𝑠−𝑐 𝑟,4+𝑠−𝑟) . Thereareatmostfourteen
+such vectors, since
+𝑣0,2 =𝑣 1,3 =(1+i,6), 𝑣 2,0 =𝑣 3,1 =(−1−i,2).
+List the distinct vectors as𝑣1,...,𝑣 𝑘, where𝑘≤14 . Starting at𝑃0 =0 , replace each step𝑣 𝑗 of(𝑄 𝑛) by the
+𝑗th standard basis vector ofR14. This defines a unit-step walk inN14, with any unused coordinates zero. The
+linear map𝑇:R 14→R 3,𝑇(𝑥)= ˝ 𝑘
+𝑗=1𝑥 𝑗𝑣 𝑗, satisfies𝑇(𝑃 𝑛)=𝑄 𝑛: both sides are the sum of the first𝑛 steps
+of(𝑄 𝑛), since𝑄 0 =0.
+Finally, suppose𝑃𝑎,𝑃 𝑏,𝑃 𝑐 were collinear, where𝑎 < 𝑏 <𝑐. The coordinate sum of𝑃𝑛 is𝑛, so these
+points are distinct. Write𝑃𝑏 =(1−𝜆)𝑃 𝑎+𝜆𝑃 𝑐. Taking coordinate sums gives𝑏=(1−𝜆)𝑎+𝜆𝑐 , hence
+𝜆=(𝑏−𝑎)/(𝑐−𝑎)∈(0,1). Applying𝑇now yields
+𝑄𝑏 =𝑇(𝑃 𝑏)=(1−𝜆)𝑇(𝑃 𝑎)+𝜆𝑇(𝑃 𝑐)=(1−𝜆)𝑄 𝑎+𝜆𝑄 𝑐.
+Since𝐻𝑎 <𝐻 𝑏 <𝐻 𝑐, the threeimage pointsare distinct, contradictingthe absenceof collinear triples among
+the𝑄 𝑛. □
+References
+[1] S. Cambie and E. Kalviainen,An infinite small-stepZ3-walk with no collinear triple, arXiv:2609.01766v1, 2026.
+[2] J. Shallit,An infinite walk inN16, using only unit steps, with no three collinear points, manuscript, September 4,
+2026.
+1
