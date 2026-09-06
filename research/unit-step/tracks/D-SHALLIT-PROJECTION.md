@@ -277,6 +277,8 @@ still insufficient, as explained by
 3D projections of Shallit's five-letter word admitting a fixed linear scaling
 under any substitution iterate, even with bounded errors. General integer
 projections remain open; no change to the minimum bounds.” Central files are
-left untouched for parallel work. No public theorem-status/visualization
-change, publication, merge, or deployment is proposed for this restricted
-research result.
+left untouched for parallel work. A [research-only visual summary](../../../viz/unit-step-track-d.html)
+records the obstruction and changed route, with the independent-review caveat.
+It is explicitly excluded from production by `.dockerignore`, preserving the
+prior decision in PR #46 to keep unreviewed follow-up claims off the public site.
+There is no public theorem-status or minimum-bound change.

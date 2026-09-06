@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Track D: a restricted projection obstruction — research only</title>
+  <link rel="stylesheet" href="site.css">
+</head>
+<body>
+<div class="wrap">
+  <main>
+    <span class="eyebrow">Unit-step follow-up · Track D · September 6, 2026</span>
+    <h1>One projection shortcut is ruled out, not five-step walks</h1>
+    <div class="voice-note warning">
+      <b>Research only — independent mathematical review pending</b>
+      <p>This page summarizes an AI-assisted written argument and its exact arithmetic
+        checks. It is excluded from the production website. It does not change any
+        minimum bound or the status of the original Erdős 193 theorem.</p>
+    </div>
+
+    <h2>The attempted shortcut</h2>
+    <p>Jeffrey Shallit's candidate replaces each of five letters with a 14-letter
+      pattern. Assign one fixed integer arrow in 3D to each letter. Could replacing
+      letters with larger patterns simply transform the whole path by one fixed
+      stretch, rotation, or shear, allowing an error that stays bounded?</p>
+    <div class="proof-chain" aria-label="The restricted projection class">
+      <div class="proof-link"><span>1</span><p><strong>Choose the arrows once.</strong>
+        A rational 3-by-5 matrix A maps cumulative letter counts F(n) to Q(n).</p></div>
+      <div class="proof-link"><span>2</span><p><strong>Require one scaling law.</strong>
+        For some fixed positive t and fixed real matrix B,
+        Q(14<sup>t</sup>n) − BQ(n) must remain bounded for every n.</p></div>
+      <div class="proof-link"><span>3</span><p><strong>The written conclusion:</strong>
+        all five columns of A coincide. Every step is the same arrow.</p></div>
+    </div>
+
+    <figure class="collinearity-figure">
+      <svg viewBox="0 0 640 155" role="img" aria-labelledby="collapse-title collapse-description">
+        <title id="collapse-title">The restricted scaling law forces a straight path</title>
+        <desc id="collapse-description">Four equally spaced vertices, zero, v, two v,
+          and three v, joined on a line. If v is nonzero, any three are collinear;
+          if v is zero, the vertices coincide.</desc>
+        <path d="M80 70H560" fill="none" stroke="#8bd7ff" stroke-width="4"/>
+        <g fill="#e6a93a" stroke="#04060d" stroke-width="3">
+          <circle cx="80" cy="70" r="8"/><circle cx="240" cy="70" r="8"/>
+          <circle cx="400" cy="70" r="8"/><circle cx="560" cy="70" r="8"/>
+        </g>
+        <g fill="#eef5ff" font-size="19" text-anchor="middle">
+          <text x="80" y="110">0</text><text x="240" y="110">v</text>
+          <text x="400" y="110">2v</text><text x="560" y="110">3v</text>
+        </g>
+      </svg>
+      <figcaption>The consequence under the stated scaling hypothesis, not a sampled
+        candidate path. A nonzero v gives collinear triples; v = 0 gives repeated vertices.</figcaption>
+    </figure>
+
+    <h2>Why blocking or bounded errors do not rescue it</h2>
+    <div class="concept-grid">
+      <div class="concept"><b>All substitution powers</b>
+        <p>A modular certificate at the prime 421 shows that the four rational
+          frequency-deviation coordinates have no proper nonzero invariant subspace,
+          for any positive substitution iterate.</p></div>
+      <div class="concept"><b>Bounded-error rigidity</b>
+        <p>An integer sum-of-squares identity proves expansion. Any uniformly
+          bounded error in this fixed linear scaling law must actually vanish.</p></div>
+    </div>
+    <p>The infinite claim is supplied by the written argument. The checker verifies
+      its finite arithmetic inputs; it does not replace the proof with a prefix
+      scan or a finite list of exponents.</p>
+
+    <h2>What remains open</h2>
+    <ul>
+      <li>A fixed integer projection with no such scaling law could still work.</li>
+      <li>This does not prove that Shallit's candidate avoids triples forever.</li>
+      <li>General four- and five-step constructions and the exact minimum pair remain open.</li>
+    </ul>
+    <p><strong>Next route:</strong> retain the full four-dimensional rational deviation
+      state when studying a proposed integer projection. Do not assume that its three
+      displayed coordinates obey a closed linear substitution recursion. All interval
+      ratios and all lengths must still be handled.</p>
+
+    <h2>Sources and reproduction</h2>
+    <ul>
+      <li><a href="../research/unit-step/tracks/D-SHALLIT-PROJECTION.md">Written proof,
+        exact hypotheses, limitations, and reproduction commands</a></li>
+      <li><a href="../research/unit-step/tracks/check_d_shallit_projection.mjs">Dependency-free
+        exact arithmetic checker</a></li>
+      <li><a href="https://github.com/ekalvi/erdos-193/pull/46">Prior visibility decision:
+        keep unreviewed follow-up claims off production</a></li>
+    </ul>
+    <p class="inline-status">Shallit is credited for the candidate. This track's
+      AI-assisted obstruction is not collaborator approval or a new manuscript byline.
+      The production exclusion is enforced by .dockerignore and the research integrity check.</p>
+  </main>
+</div>
+</body>
+</html>
