@@ -6,6 +6,16 @@ This file is the repository-wide source of truth for OMP, Pi, Codex, and Claude.
 
 The goal of this project is an **unconditional proof of Erdős Problem 193**. Keep that goal visible when choosing, running, and evaluating work. Conditional theorems, finite computations, experiments, and heuristic evidence are useful only insofar as they advance an unconditional proof; never present them as the final result.
 
+## Unit-step follow-up checkpoint
+
+For work on the Cambie–Kalviainen / Shallit positive-basis follow-up, start with
+[`research/unit-step/AI-CHECKPOINT.md`](research/unit-step/AI-CHECKPOINT.md) and
+[`research/unit-step/PROBLEM.md`](research/unit-step/PROBLEM.md). The target is the
+exact minimum dimension for avoiding collinear triples, not an expanding list
+of unvetted applications. Keep this open problem distinct from the original
+Erdős 193 theorem. Preserve manuscript attribution and the distinctions between
+proved lower bounds, unreviewed upper-bound drafts, and finite evidence.
+
 ## Progress communication
 
 - Signpost meaningful phases of work. Tell the user what is happening, why it is the next useful step, and what result or decision it should produce.

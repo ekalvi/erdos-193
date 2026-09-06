@@ -1,0 +1,395 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/notation-cheat-sheet.pdf
+
+=== Page 1 ===
+Erdős Problem 193 proof: notation and formula cheat
+sheet
+Source of truth: paper/erdos193.tex , Sections 1–6. The proof ends before Section 7 (“Verification and evidence”).
+1. Ambient conventions
+Notation Meaning
+Nonnegative integers  in this paper.
+, , Integers, planar integer lattice, and spatial integer lattice.
+Field with two elements. Exponents reduced modulo  encode parity.
+Absolute value.
+ norm; for , .
+Function composition with the right-hand map acting first: .
+Two-adic valuation: the exponent of the largest power of  dividing nonzero integer . The convention is
+.
+Base- digit at place ;  is the least significant digit.
+Coordinate bits emitted at binary place .
+Coordinates of a planar vector .
+An infinite -walk is a sequence  satisfying
+for one fixed finite step set .
+2. Hilbert decoder
+State transformations
+The decoder acts on a bit pair  using
+Here  is the identity,  swaps the bits,  swaps and complements them, and  complements both. The state set is
+with
+Thus every  is an involution: .
+During a decode,  is a mutable local variable for the current orientation state. It starts at
+After the last digit  has been processed, define
+N {0, 1, 2, …}
+Z Z2 Z3
+F2 2
+|x|
+∥u∥1 ℓ1 u = (ux,uy) ∥u∥1 = |ux| + |uy|
+f ∘g (f ∘g)(z) = f(g(z))
+ν2(k) 2 k ν2(0) = ∞
+qj 4 j j = 0
+xj,yj j
+ux,uy u
+S (Pa)a≥0 ⊆ Z3
+Pa+1 −Pa ∈ S (a ∈ N),
+S ⊆ Z3
+(x,y) ∈ {0, 1}2
+I(x,y) = (x,y), S(x,y) = (y,x),
+T (x,y) = (1 −y, 1 −x), C(x,y) = (1 −x, 1 −y).
+I S T C
+K = {I,S,T ,C} ≅F2
+2,
+S 2 = T 2 = C 2 = I, S ∘T = T ∘S = C.
+g ∈ K g−1 = g
+g ∈ K
+g = I.
+q0
+σ(w) = the resulting value of g.
+1 / 7
+
+
+=== Page 2 ===
+Thus  denotes the changing intermediate state;  denotes its final value. They are related, but they are not
+interchangeable during the scan.
+Digit data
+The four child positions, in U-shaped traversal order, are
+The symbol  denotes the transition map selected by digit ; it is not a numeric sequence. The lookup table is
+In
+“update” means replace the current orientation map  by the composed map  after digit  emits its coordinate
+bits. The subscripted map  is unrelated to the scalar integer  used later in the collinearity proof.
+For a length- base- word
+the decoder reads digits from most significant to least significant, begins in state , and at digit  performs
+Reading order and output place run oppositely:  is read first, but the pair emitted by  occupies binary place .
+The finite-order Hilbert point is
+The map  is a bijection from length- base- words to . Consecutive words represent planar lattice
+neighbors.
+The finite-order induction also uses the convention that the order- route starts at  and ends at .
+Writing , bitwise action on an  child square is
+The four transformed order- copies have start–end pairs
+and junction displacements , , and . A suffix decoded from state  rather than  has state
+whenever the -started suffix has state , and its emitted route is the bitwise -transform of the -started route.
+Padding, infinite path, and terminal state
+Two leading zero digits do not change the point or terminal state:
+For , use any sufficiently long, even-length, zero-padded base- representation of :
+ is its finite-order Hilbert point;
+ is the state left after decoding it.
+The same symbol  denotes the terminal state of a finite word. Context distinguishes word input from integer input.
+The infinite path  is injective and has unit steps:
+g σ(w)
+c0 = (0, 0), c1 = (0, 1), c2 = (1, 1), c3 = (1, 0).
+rq q
+r0 = S, r1 = I, r2 = I, r3 = T .
+g ⟵ g ∘rq,
+g g ∘rq q
+rq ∈ K r
+ℓ 4
+w = qℓ−1 ⋯q1q0,
+I qj
+(xj,yj) = g(cqj), g ⟵ g ∘rqj.
+qℓ−1 qj j
+Hℓ(w) = (
+ℓ−1
+∑
+j=0
+xj2j,
+ℓ−1
+∑
+j=0
+yj2j).
+Hℓ ℓ 4 {0, … , 2ℓ − 1}2
+ℓ (0, 0) (2ℓ − 1, 0)
+N = 2ℓ N ×N
+S(x,y) = (y,x), T (x,y) = (N − 1 −y,N − 1 −x).
+ℓ
+(0, 0) ⟶ (0,N − 1),
+(0,N) ⟶ (N − 1,N),
+(N,N) ⟶ (2N − 1,N),
+(2N − 1,N − 1) ⟶ (2N − 1, 0),
+(0, 1) (1, 0) (0, −1) g I g ∘h
+I h g I
+Hℓ+2(00w) = Hℓ(w), σ(00w) = σ(w).
+n ∈ N 4 n
+H(n) ∈ N2
+σ(n) ∈ K
+σ(w)
+H : N → N2
+∥H(n + 1) −H(n)∥1 = 1.
+2 / 7
+
+
+=== Page 3 ===
+Only digits  and  change the state. If  and  count those digits, then
+Thus  records exactly the parity pair .
+If digit  leaves outgoing state , its incoming state and emitted pair can be recovered backward:
+because .
+3. Two-adic chord invariant
+For a nonzero planar chord , define
+and
+Interpretation:  is the largest common binary scale of the two coordinates. The bit  says whether both
+normalized coordinates first become odd at that scale.
+For every positive integer ,
+The factor  appears because each binary scale has two possible -values: one coordinate first appears ( ), or both
+do ( ).
+First-mismatch convention
+For equal-length, even-padded words  and , define the first mismatch from the low end by
+Digits  form the common low suffix. If the two words have equal terminal state, their Hilbert coordinates
+agree below binary place , and at place :
+exactly one coordinate bit differs if  is odd;
+both coordinate bits differ if .
+In the pair-law proof, the local names are
+and, for \(m,
+A differing coordinate has the form
+where  and the parenthesized factor is odd.
+Pair law
+For distinct indices with the same terminal state,
+0 3 N0(w) N3(w)
+σ(w) = SN0(w) mod 2T N3(w) mod 2.
+σ (N0 mod 2,N3 mod 2)
+q h
+incoming state = h ∘rq,
+(h ∘rq)(cq) = h(rq(cq)) = h(cq),
+rq(cq) = cq
+u = (ux,uy) ∈ Z2 ∖ {0}
+p(u) = min{ν2(ux),ν2(uy)},
+ϵ(u) = {1, ν2(ux) = ν2(uy),
+0, ν2(ux) ≠ ν2(uy),
+V (u) = 2p(u) +ϵ(u).
+p(u) ϵ(u)
+k
+V (ku) = V (u) + 2ν2(k).
+2 V 2j
+2j + 1
+qℓ−1 ⋯q0 q ′
+ℓ−1 ⋯q ′
+0
+j = min{k ≥ 0 : qk ≠ q ′
+k}.
+q0, … ,qj−1
+j j
+qj −q ′
+j
+qj −q ′
+j ≡ 2 (mod 4)
+d = qj, e = q ′
+j,
+n −m = 4jM, M ≡ e −d (mod 4).
+±2j + 2j+1L = 2j(±1 + 2L),
+L ∈ Z
+σ(m) = σ(n) ⟹ V (H(n) −H(m)) = ν2(|n −m|).
+3 / 7
+
+
+=== Page 4 ===
+This is the proofʼs central invariant.
+4. Bounded-gap selector and lifted walk
+For block index , let  and choose a two-digit base- suffix through the offset map :
+Prefix state Chosen suffix Decimal offset Full state chain
+Define the selected index
+Multiplication by  appends the chosen two base- digits. Since every  is its own inverse,
+The selected gaps satisfy
+Two lift notations are used:
+for the generic lift of an index, and
+for the selected walk. Every  has terminal state  through its index .
+5. Collinearity contradiction
+The same-state lift theorem says: if  and  is constant on , then
+contains no three collinear points.
+For a hypothetical collinear triple with \(a in , define adjacent index gaps and planar chords by
+The corresponding spatial displacements are  and . Because , collinearity is equivalent to
+Factor the gaps as
+Cancelling  gives . Coordinatewise divisibility yields an integer vector  with
+Applying the pair law and scaling law to the adjacent pairs gives
+a ≥ 0 g = σ(a) 4 ρ : K → {1, 3, 5, 13}
+g ρ(g)
+I 114 5 I ∘I ∘I = I
+S 014 1 I ∘S ∘S = I
+T 314 13 I ∘T ∘T = I
+C 034 3 I ∘C ∘C = I
+na = 16a +ρ(σ(a)).
+16 = 42 4 g ∈ K
+σ(na) = I ∘g ∘g = I.
+na+1 −na = 16 +ρ(σ(a + 1)) −ρ(σ(a)),
+4 ≤ na+1 −na ≤ 28.
+Q(n) = (H(n),n)
+Pa = Q(na) = (H(na),na) ∈ Z3
+Pa I na
+E ⊆ N σ E
+{Q(n) : n ∈ E}
+E
+A = b −a, B = c −b,
+X = H(b) −H(a), Y = H(c) −H(b).
+(X,A) (Y ,B) A,B > 0
+BX = AY .
+A = gr, B = gs,
+g = gcd(A,B), gcd(r,s) = 1.
+g sX = rY W ∈ Z2 ∖ {0}
+X = rW , Y = sW .
+ν2(g) +ν2(r) = V (X) = V (W ) + 2ν2(r),
+( ) ( ) ( ) ( ) ( )
+4 / 7
+
+
+=== Page 5 ===
+Hence
+so coprime  and  are both odd.
+For the endpoint pair,
+Set
+The pair and scaling laws give
+Therefore , which says  is odd. But  and  are both odd, so  is even: contradiction.
+6. Finite step menu
+Write one successive spatial displacement as
+Its height increment is
+Unit Hilbert steps and the triangle inequality give
+A fixed finite menu containing every realized step is therefore
+This  is a convenient finite superset, not the minimal realized menu.
+7. Letter index
+Global or recurring symbols
+Symbol Type Role
+transformation, then
+set
+Decoder swap  in Sections 2–4; finite spatial step set in the theorem
+and Section 5. See the collision warning below.
+th vertex of the selected infinite walk.
+finite words Finite-order Hilbert decoder.
+Nested infinite Hilbert path.
+words or Terminal value of the mutable decoder state  after the last digit.
+four-element
+set/group
+Decoder state space .
+maps on Four decoder transformations.
+Child position associated with digit .
+Digit-indexed transition map; after digit , replace the current state  by . Not the
+scalar  in the triple argument.
+ν2(g) +ν2(s) = V (Y ) = V (W ) + 2ν2(s).
+ν2(r) = ν2(s) = 0, V (W ) = ν2(g),
+r s
+c −a = g(r +s), H(c) −H(a) = (r +s)W .
+t = ν2(r +s).
+ν2(g) +t = V ((r +s)W ) = V (W ) + 2t = ν2(g) + 2t.
+t = 0 r +s r s r +s
+Pa+1 −Pa = (dx,dy,dz).
+dz = na+1 −na, 4 ≤ dz ≤ 28.
+|dx| + |dy| = ∥H(na+1) −H(na)∥1 ≤ na+1 −na = dz.
+S = {(dx,dy,dz) ∈ Z3 : 4 ≤ dz ≤ 28,  |dx| + |dy| ≤ dz}.
+S
+S S(x,y) = (y,x)
+Pa Z3 a
+Hℓ → N2
+H N → N2
+σ N → K g
+K {I,S,T ,C}
+I,S,T ,C {0, 1}2
+cq {0, 1}2 q ∈ {0, 1, 2, 3}
+rq K q g g ∘rq
+r
+5 / 7
+
+
+=== Page 6 ===
+Symbol Type Role
+base- word Finite decoder input.
+nonnegative integer Word length / finite Hilbert order.
+base- digits Digits of two compared words at place .
+bits Coordinate bits emitted at place .
+nonnegative integers Counts of digits  and  in .
+nonzero  vector Generic planar chord.
+nonnegative integer Common two-adic coordinate scale.
+Whether the coordinate valuations are equal.
+nonnegative integer Two-adic planar chord invariant.
+State-dependent selector offset.
+nonnegative integer Selected Hilbert index in block .
+Generic lift .
+subset of Arbitrary same-terminal-state index set.
+integers Coordinates of one successive step of .
+Proof-local symbols
+Symbol Scope Meaning
+Decoder arguments  is the mutable current state, initialized at , whose final value is ;  is an outgoing or
+common state used in reverse decoding.
+First-mismatch
+lemma
+Unequal digits .
+First-mismatch
+argument
+Least digit place where two base- words differ.
+Pair-law proof Integer remaining after .
+Pair-law proof Integer collecting higher binary-place contributions.
+Scaling lemma Positive integer scalar; in the mismatch definition, a dummy digit-place index.
+Selector sections Block number indexing  and .
+Triple-free theorem Three ordered indices in ; this reuses  with a different local role.
+Triple-free theorem Positive adjacent gaps  and .
+Triple-free theorem Adjacent planar chords.
+Triple-free theorem ; this reuses  with a different local role.
+Triple-free theorem Coprime reduced gap factors: , .
+Triple-free theorem Common nonzero primitive-direction multiple with , .
+Triple-free theorem .
+w 4
+ℓ
+qj,q ′
+j 4 j
+xj,yj j
+N0(w),N3(w) 0 3 w
+u = (ux,uy) Z2
+p(u)
+ϵ(u) {0, 1}
+V (u)
+ρ K → {1, 3, 5, 13}
+na a
+Q(n) Z3 (H(n),n)
+E N
+dx,dy,dz P
+g,h g I σ(w) h
+d,e qj,q ′
+j
+j 4
+M n −m = 4jM
+L
+k
+a na Pa
+a,b,c E a
+A,B b −a c −b
+X,Y
+g gcd(A,B) g
+r,s A = gr B = gs
+W X = rW Y = sW
+t ν2(r +s)
+6 / 7
+
+
+=== Page 7 ===
+8. Collision and reading warnings
+1.  is overloaded. In the decoder,  is the swap transformation. In the theorem and final section,  is the
+finite step menu. Type and section determine the meaning.
+2.  is local and overloaded. In the decoder,  is the mutable current state: it starts at , and its final value is
+. In the collinearity proof, the unrelated integer  means .
+3.  and  are different objects. The subscripted  is the transition map selected by base- digit . The
+unsubscripted  is the coprime reduced factor in .
+4.  changes role. It is the block/walk index in , but one of three arbitrary ordered indices \(a inside the same-
+state lift theorem.
+5.  is not a coordinate. It is the accumulated terminal transformation left by decoding.
+6. Most-significant-first reading, least-significant place labels. The decoder reads , while  emits at
+binary place .
+7. “First mismatch” means from the low end. It is the least , not the first digit encountered by the forward
+decoder.
+8.  is planar;  and  are spatial. The third coordinate is the Hilbert index itself.
+9. The menu is not the realized set. The displayed finite  contains all possible successive displacements allowed
+by the proved bounds; it need not be minimal.
+S S S ⊆ Z3
+g g ∈ K I
+σ(w) g gcd(A,B)
+rq r rq ∈ K 4 q
+r ∈ N A = gr
+a na,Pa
+σ
+qℓ−1, … ,q0 qj
+j
+j
+H(n) Q(n) Pa
+S
+7 / 7

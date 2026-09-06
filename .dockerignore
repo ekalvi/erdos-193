@@ -5,3 +5,7 @@
 !viz/**
 !results/
 !results/**
+# Research-only checkpoint evidence stays in Git, not the production website.
+results/unit-step-dimension-probe.json
+results/shallit-five-prefix.json
+results/shallit-substitution-algebra.json

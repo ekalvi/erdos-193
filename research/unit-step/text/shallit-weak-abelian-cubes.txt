@@ -1,0 +1,260 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/followups/2026-09-06-shallit-weak-abelian-cubes.pdf
+
+=== Page 1 ===
+A four-letter infinite word
+avoiding weak abelian cubes
+Abstract
+We give an explicit infinite word over{0, 1, 2, 3} with no factorxyz in which the
+three nonempty blocks have the same normalized Parikh vector. The word is obtained
+by coding a fixed point of a substitution on five auxiliary letters. The proof uses a
+ternary recursion and the quadratic formX 2− 3Y 2: at equal endpoint states, the
+3-adic valuation of the form evaluated on a displacement equals the valuation of the
+corresponding difference of indices. This excludes four collinear return vertices and
+hence excludes every weak abelian cube.
+All indices start at0, andN ={0, 1, 2,...} . For a finite wordv overΣ = {0, 1, 2, 3}, let
+|v| denote its length, let|v|j denote the number of occurrences of the letterj, and define
+its Parikh vector by
+ψ(v) = (|v| 0,|v| 1,|v| 2,|v| 3)T∈Z 4
+≥0.
+Aweak abelian cubeis a concatenationxyzof three nonempty finite words such that
+ψ(x)
+|x| = ψ(y)
+|y| = ψ(z)
+|z| .
+The three block lengths need not be equal. A factor of an infinite word means a finite
+contiguous block.
+The construction below is a ternary adaptation of the valuation method used by Cambie
+and Kalviainen [1] for a finite-step lattice walk with no three collinear vertices. The
+argument here is self-contained; in particular, no finite search is used as a premise.
+Theorem 1.Let A ={A,B,C,D,E} . Define a substitutionτ :A∗→A∗ and a letter-to-
+letter codingh:A ∗→Σ∗ by
+a A B C D E
+τ(a) AB AACA ADE AACCE ADCCA
+h(a) 0 1 2 3 3
+and extend both maps to words by concatenation. Then
+w=h
+(
+τ∞(A)
+)
+is an infinite word overΣcontaining no weak abelian cube.
+1
+
+
+=== Page 2 ===
+The limitτ∞(A)is well defined: τ(A)starts with A, soτ k(A)is a prefix ofτ k+1(A),
+and all images have length at least2, so these prefix lengths tend to infinity. Sinceh maps
+every auxiliary letter to one letter, its image is also infinite. For reference, the word begins
+w=0100200101033010100200100200100223···.
+All four output letters occur:A,B,C occur in τ 2(A) = ABAACA, and D,E occur in
+τ 3(A).
+We first identify the blocks encoded by the auxiliary letters. Define another substitution,
+this time onΣ, by
+σ(0) =010, σ(1) =232, σ(2) =101, σ(3) =323,(1)
+and putt= σ∞(0). This fixed point exists becauseσ(0)starts with0and every image has
+length3. DefineR:A ∗→Σ∗ by the following nonempty images:
+a A B C D E
+R(a) 01 0232 013231 02323231 01323232. (2)
+Lemma 2.Writings=s 0s1s2···=τ ∞(A), we have
+R(s) =R(s 0)R(s1)R(s2)···=t.
+Moreover, the starts of these blocks are exactly the positions at whichthas the letter0.
+Proof. The five required substitution identities are as follows. Spaces on the right separate
+the successiveR-images.
+σ(R(A)) =01 0232=R(A)R(B),
+σ(R(B)) =01 01 013231 01=R(A)R(A)R(C)R(A),
+σ(R(C)) =01 02323231 01323232=R(A)R(D)R(E),
+σ(R(D)) =01 01 013231 013231 01323232=R(A)R(A)R(C)R(C)R(E),
+σ(R(E)) =01 02323231 013231 013231 01=R(A)R(D)R(C)R(C)R(A).
+Thusσ◦R=R◦τon every letter, and hence on every finite word. Induction onkgives
+R(τ k(A)) =σ k(R(A)) =σ k(01).
+The word on the right starts withσk(0), whose length is3k. Consequently, for every fixed
+prefix length, these prefixes eventually agree witht. On the left, the nested words converge
+toR(s). This provesR(s) =t.
+Each of the five words in(2) begins with0and has no other occurrence of0. The
+concatenation is infinite and each block is nonempty. Its block starts are therefore precisely
+all the zero positions oft.
+2
+
+
+=== Page 3 ===
+We next associate a lattice walk tot=t0t1t2··· . For eachn∈N , define(an,b n)from
+tn by
+tn 0 1 2 3
+an 1 1−1−1
+bn 1−1 1−1
+(3)
+and define integer prefix sums and vertices by
+Xn =
+n−1∑
+j=0
+aj, Y n =
+n−1∑
+j=0
+bj, P n = (Xn,Y n,n)∈Z 3.(4)
+An empty sum is zero, soP0 = (0,0,0). Finally, put
+F(U,V) =U 2−3V 2.
+For a nonzero integerq,ν3(q)denotes the largest nonnegative integere such that3e dividesq;
+the sign ofq is irrelevant. Extend this to nonzero rational numbers byν3(p/q) =ν3(p)−ν3(q).
+In particular,ν 3(uv) =ν 3(u) +ν 3(v)for nonzero rationalu,v.
+Lemma 3.For everyn∈Nandr∈{0,1,2},
+a3n+r =b n, b 3n+r = (−1)ran,(5)
+X3n+r = 3Yn +rb n, Y 3n+r =X n +ε ran,(6)
+whereε 0 = 0,ε 1 = 1, andε 2 = 0.
+Proof. For an input state(an,b n), the three output states in itsσ-image, as read from(1)
+and (3), are
+(bn,a n),(b n,−a n),(b n,a n).
+This proves(5). The sum of their first coordinates is3bn, and the sum of their second
+coordinates isan. ThusX3n = 3Yn and Y3n =Xn. Within the next block, the firstr first
+coordinates sum torbn, while the firstr second coordinates sum to0,a n, 0for r = 0, 1, 2,
+respectively. Adding these partial sums proves (6).
+Lemma 4(Equal-state valuation identity).If0≤m<nandt m =t n, then
+F(X n−X m,Y n−Y m)̸= 0
+and
+ν3
+(
+F(X n−X m,Y n−Y m)
+)
+=ν 3(n−m).(7)
+Proof. Writem = 3u +r and n = 3v +s, withr,s∈{ 0, 1, 2}. We separate the casesr̸ =s
+andr=s.
+Suppose first thatr̸=s. The endpoint states agree, soa m =a n. Equation (5) implies
+bu =a m =a n =b v.
+3
+
+
+=== Page 4 ===
+Consequently, by (6),
+Xn−X m = 3(Yv−Y u) +sb v−rb u≡(s−r)a m (mod 3).
+Here am∈{− 1, 1}, ands−r is not divisible by3. ThereforeXn−X m is not divisible by
+3, and
+F(X n−X m,Y n−Y m)≡(X n−X m)2̸≡0 (mod 3).
+The quadratic expression is nonzero and has valuation zero. Also3∤n−m , so(7) holds in
+this case.
+Now supposer =s. Equality of the first coordinates of the endpoint states givesbu =bv,
+and equality of the second coordinates gives(−1)rau = (−1)rav, hence au = av. The
+correspondence in(3) is one-to-one, sotu =tv. In particular, the correction terms in(6)
+cancel, giving
+Xn−X m = 3(Yv−Y u), Y n−Y m =X v−X u.
+It follows that
+F(X n−X m,Y n−Y m) = 9(Yv−Y u)2−3(X v−X u)2
+=−3F(X v−X u,Y v−Y u).(8)
+At the same time,n−m= 3(v−u), andu<v.
+Let e =ν3(n−m ). Apply this second case exactlye times. At each step the endpoint
+states still agree, the indices remain distinct and ordered, and their difference is divided by
+3. We arrive at indicesm′ <n′ such thatt m′ =t n′ and3∤n ′−m′, with
+F(X n−X m,Y n−Y m) = (−3)eF(X n′−X m′,Y n′−Y m′).
+The first case shows that the final factor is nonzero and has valuation zero. The original
+expression is therefore nonzero and has valuatione, as required.
+Proposition 5.No four distinct vertices in the set
+{Pn :n∈N, t n = 0}
+are collinear.
+Proof. Suppose thatPn0,P n1,P n2,P n3 are collinear, wheren0 <n 1 <n 2 <n 3 and tni = 0
+for eachi. Their third coordinates are distinct, so the line has well-defined rational slopes
+α= Xn1−X n0
+n1−n 0
+, β= Yn1−Y n0
+n1−n 0
+.
+For every0≤i<j≤3, collinearity gives
+Xnj−X ni =α(n j−n i), Y nj−Y ni =β(n j−n i).
+4
+
+
+=== Page 5 ===
+Put c =α2− 3β2. Applying Lemma 4 to the pair(n0,n 1)shows that c̸ = 0. For every pair
+(i,j), the same lemma now gives
+ν3(nj−n i) =ν 3
+(
+c(nj−n i)2
+)
+=ν 3(c) + 2ν3(nj−n i).
+Hence all six positive differencesnj−n i have the same valuation
+e=−ν 3(c)∈Z ≥0.
+The four numbers
+qi = ni−n 0
+3e (0≤i≤3)
+are integers. Fori<j , the differenceqj−q i = (nj−n i)/3e is not divisible by3. Thus the
+four qi would be pairwise distinct modulo3. There are only three residue classes modulo3,
+a contradiction.
+We can now relate the geometry to the normalized Parikh vectors ofw. For a finite
+wordvoverΣ, define its displacement by
+∆(v) =
+(
+|v|0 +|v| 1−|v| 2−|v| 3,|v| 0−|v| 1 +|v| 2−|v| 3,|v|
+)T
+.
+By (3) and (4), ifv is the factortmtm+1···t n−1, then∆(v) =Pn−P m. The return blocks
+have the following Parikh vectors and displacements:
+a h(a)ψ(R(a)) T ∆(R(a))T
+A0 (1,1,0,0) (2,0,2)
+B1 (1,0,2,1) (−2,2,4)
+C2 (1,2,1,2) (0,−2,6)
+D3 (1,1,3,3) (−4,0,8)
+E3 (1,1,3,3) (−4,0,8)
+In particular, the displacement depends only onh(a), including for the two auxiliary letters
+D,Ethat share the output letter3. Define the linear mapL:Q 4→Q 3 by the matrix
+L=
+
+
+2−2 0−4
+0 2−2 0
+2 4 6 8
+
+.(9)
+Its columns, in output-letter order0,1,2,3, are the four return displacements above.
+Proof of Theorem 1.Fors=s 0s1s2···, let
+N0 = 0, N k =
+k−1∑
+j=0
+|R(sj)|(k≥1).
+5
+
+
+=== Page 6 ===
+By Lemma 2, these are precisely the zero positions oft, in increasing order. The strict
+increase follows also from the fact that every return block has positive length.
+Writew= w0w1w2··· , wherewj =h(sj). Additivity of displacements and the return-
+block table show that, for all0≤p<q,
+PNq−P Np =
+q−1∑
+j=p
+∆(R(sj)) =Lψ(w pwp+1···w q−1).(10)
+This holds even thoughh is not one-to-one, becauseR(D)and R(E)have equal displace-
+ments.
+Suppose for a contradiction that a factor ofwis a weak abelian cubexyz. Letk0 be
+the position at which it starts and put
+k1 =k 0 +|x|, k 2 =k 1 +|y|, k 3 =k 2 +|z|.
+All three blocks are nonempty, sok0 <k 1 <k 2 <k 3. There is a vectorf∈Q 4
+≥0 such that
+ψ(x) =|x|f, ψ(y) =|y|f, ψ(z) =|z|f.
+Its coordinates sum to1, sincef=ψ(x)/|x|. Ifv=Lf, then the third coordinate ofvis
+2f0 + 4f1 + 6f2 + 8f3≥2>0.
+In particular,v̸= 0. Applying (10) to the three blocks gives
+PNk1
+−P Nk0
+=|x|v,
+PNk2
+−P Nk1
+=|y|v,
+PNk3
+−P Nk2
+=|z|v.
+Thus the four distinct verticesPNk0
+,P Nk1
+,P Nk2
+,P Nk3
+lie on the line PNk0
++ Rv. Each
+associated index is a zero position oft, contradicting Proposition 5. This excludes every
+weak abelian cube, regardless of its position or its three block lengths.
+Remark.There is also a description using only the zero positions of the four-letter fixed
+pointt. The return lengths associated with output letters0, 1, 2, 3are2 , 4, 6, 8, respectively.
+Hence, withN 0 <N 1 <···enumerating the zero positions oft,
+wk = Nk+1−N k
+2 −1 (k∈N).
+Lemma 2 proves that these gaps are always in{2, 4, 6, 8}, so this formula is equivalent to
+the explicit substitution-and-coding construction in Theorem 1.
+References
+[1] Stijn Cambie and Erik Kalviainen,An infinite small-step Z3-walk with no collinear
+triple, arXiv:2609.01766v1, 2026.https://arxiv.org/abs/2609.01766.
+6

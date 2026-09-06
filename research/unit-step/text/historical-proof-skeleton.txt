@@ -1,0 +1,115 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/proof-skeleton.pdf
+
+=== Page 1 ===
+Erdős Problem 193: proof skeleton
+The construction gives an unconditional negative answer: there is an infinite finite-step walk in  with no three collinear
+vertices.
+1. Build the nested Hilbert path and record its terminal state. Decode an even-padded base- word .
+The symbol  is the mutable current decoder state, initialized as ; it is one of four maps on coordinate bits:
+Digit  has a child corner  and a transition map :
+Here “update” means replacement of the current orientation map: when digit  is read, emit
+and then set . Thus  is a digit-indexed map, unrelated to the integer  used in Steps 5–7. Finally set
+After the last digit , define  to be the resulting value of . Thus  denotes the changing intermediate state, while
+denotes its terminal value. The four-copy induction shows that  is bijective, consecutive inputs are lattice neighbors, and
+two leading zero digits change neither  nor . Hence they define an injective infinite path
+together with a terminal state .
+2. Define the planar two-adic invariant. For , put
+Multiplying both coordinates by a positive integer  gives
+3. Prove the same-state pair law. Let  with , and let  be the least base- place where their even-
+padded words differ. Equal terminal states let us reverse their common lower-digit suffix to one common state
+immediately after place . The corners  form a cyclic Gray code, so at binary place  exactly one
+coordinate differs when the two base- digits differ oddly, and both differ when their difference is .
+Therefore
+and hence
+4. Select bounded-gap indices with one terminal state. Use
+corresponding respectively to suffixes , and define
+Each suffix contributes a second copy of the prefix state, so every selected word ends in
+Since ,
+Z3
+4 w = qℓ−1 ⋯q0
+g ∈ K g = I
+K = {I,S,T ,C}.I(x,y) = (x,y), S(x,y) = (y,x),
+T (x,y) = (1 −y, 1 −x), C(x,y) = (1 −x, 1 −y),
+q ∈ {0, 1, 2, 3} cq rq ∈ K
+q 0 1 2 3
+cq (0, 0) (0, 1) (1, 1) (1, 0)
+rq S I I T
+qj
+(xj,yj) = g(cqj)
+g ← g ∘rqj rq r
+Hℓ(w) = (
+ℓ−1
+∑
+j=0
+xj2j,
+ℓ−1
+∑
+j=0
+yj2j),
+q0 σ(w) g g σ(w)
+Hℓ
+Hℓ σ
+H : N → N2, ∥H(n + 1) −H(n)∥1 = 1,
+σ(n) ∈ K
+u = (ux,uy) ≠ 0
+p(u) = min{ν2(ux),ν2(uy)},
+ϵ(u) = { V (u) = 2p(u) +ϵ(u).1, ν2(ux) = ν2(uy),
+0, ν2(ux) ≠ ν2(uy),
+k
+V (ku) = V (u) + 2ν2(k).
+m ≠ n σ(m) = σ(n) j 4
+j c0,c1,c2,c3 j
+4 2 (mod 4)
+V (H(n) −H(m)) = {2j, ν2(|n −m|) = 2j,
+2j + 1, ν2(|n −m|) = 2j + 1,
+V (H(n) −H(m)) = ν2(|n −m|).
+ρ(I) = 5, ρ(S) = 1, ρ(T ) = 13, ρ(C) = 3,
+114, 014, 314, 034
+na = 16a +ρ(σ(a)).
+σ(na) = I.
+ρ(K) = {1, 3, 5, 13}
+4 ≤ na+1 −na ≤ 28.
+1 / 2
+
+
+=== Page 2 ===
+5. Reduce a hypothetical collinear triple to one common planar vector. On any set  where  is constant, lift by
+Suppose  in  give three collinear lifts. Write
+Collinearity of  and  gives . If
+coordinatewise divisibility gives a nonzero  such that
+6. The adjacent pairs force both reduced gaps to be odd. Apply the pair law and scaling identity to  and :
+Thus . Since , both valuations are zero, so  are odd and
+7. The endpoint pair gives the contradiction. Since
+put . The pair law and scaling identity for  give
+Hence , so  is odd. But Step 6 made both  and  odd, so their sum is even. Contradiction. Therefore every
+constant- lift, in particular the selected lift, has no three collinear points.
+8. Form the required finite-step walk. Define
+It is infinite because its third coordinate strictly increases. For
+the bounded selector gaps and unit Hilbert steps give
+Thus every step lies in the fixed finite set
+Step 7 excludes collinear triples, so  is the required counterexample.
+E ⊆ N σ
+Q(n) = (H(n),n).
+a < b < c E
+A = b −a, B = c −b, X = H(b) −H(a), Y = H(c) −H(b).
+(X,A) (Y ,B) BX = AY
+A = gr, B = gs, g = gcd(A,B), gcd(r,s) = 1,
+W ∈ Z2
+X = rW , Y = sW .
+(a,b) (b,c)
+ν2(g) +ν2(r) = V (W ) + 2ν2(r),
+ν2(g) +ν2(s) = V (W ) + 2ν2(s).
+ν2(r) = ν2(s) gcd(r,s) = 1 r,s
+V (W ) = ν2(g).
+c −a = g(r +s), H(c) −H(a) = (r +s)W ,
+t = ν2(r +s) (a,c)
+ν2(g) +t = V ((r +s)W ) = V (W ) + 2t = ν2(g) + 2t.
+t = 0 r +s r s
+σ
+Pa = Q(na) = (H(na),na).
+Pa+1 −Pa = (dx,dy,dz),
+4 ≤ dz ≤ 28, |dx| + |dy| ≤ dz.
+S = {(dx,dy,dz) ∈ Z3 : 4 ≤ dz ≤ 28,  |dx| + |dy| ≤ dz}.
+(Pa)a≥0
+2 / 2

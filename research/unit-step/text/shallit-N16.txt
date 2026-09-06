@@ -1,0 +1,320 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/followups/2026-09-04-shallit-N16.pdf
+
+=== Page 1 ===
+An infinite walk inN16, using only unit steps, with no
+three collinear points
+Jeffrey Shallit
+School of Computer Science
+University of Waterloo
+Waterloo, ON N2L 3G1
+Canada
+shallit@uwaterloo.ca
+September 4, 2026
+Abstract
+Is it possible to walk to infinity, avoiding three collinear points, using as steps only
+the standard unit basis vectors(0, 0, . . . ,0, 1, 0, . . . ,0)? We prove this is possible in16
+dimensions.
+1 Introduction
+Let k≥ 2, and consider an infinite walk inNk using only steps that are basis vectors of
+the form(0, 0,..., 0, 1, 0,..., 0). For whichk can one avoid some finite number of collinear
+points?
+For dimensionk = 2every such infinite planar walk must have every possible finite number
+of collinear points. This is the content of the famous Gerver-Ramsey theorem [2, 10, 6]. Also
+see [7].
+For dimensionk = 3Gerver and Ramsey proved that there is an infinite walk that avoids
+511 + 1collinear points. This was recently improved to189by Lidbetter [9].
+Of course it is impossible to avoid2collinear points in such a walk. This raises the natural
+question: for which dimensionsk can one avoid three collinear points? One cannot do it for
+k = 3, as shown by Brown [2], since every walk of8unit steps contains three collinear points.
+In this paper we solve the problem fork = 16. The construction can be given explicitly
+as a morphism on16letters.
+The description of such a walk can be given picturesquely as follows: if an infinitesimal
+1
+
+
+=== Page 2 ===
+obstruction is placed at each lattice point visited, then it is possible to see all the other lattice
+points of the walk from every point of the walk.
+1.1 A reformulation
+The problem of avoiding3collinear points can be rephrased in an equivalent way as follows,
+which interprets the original problem in the terminology of combinatorics on words.
+Consider an infinite sequence(an)n≥0 over a finite alphabetΣk ={0, 1,...,k− 1}, and
+call itgoodif it contains no two consecutive nonempty blocksx,y (possibly of different sizes)
+with the property that the|x|a/|x|=|y| a/|y|for all lettersa∈Σ k. Here|x|is the length of
+the block and|x|a is the number of occurrences of a lettera.
+The vectorψ(x) := (|x|0,|x| 1,...,|x| k−1)is often called theParikh vectorof the word
+x∈{ 0, 1,...,k− 1}∗. The vector of letter frequenciesψ(x)/|x| is called the normalized
+Parikh vector. Thus a good sequence has no two consecutive nonempty blocks with the same
+normalized Parikh vector.
+Equality of letter frequencies is sometimes calledweak abelian equivalence; see the discus-
+sion in [1] and [5, Section 8.2]. Accordingly, the forbidden factorxy is sometimes termed
+aweak abelian square. (An ordinaryabelian squareadditionally has|x| =|y| and consists
+of two consecutive words, where the second is a permutation of the first. Avoiding ordinary
+abelian squares alone is therefore not the whole requirement in this problem.)
+Proposition 1.LetΣ = {0,...,k− 1} and letE0,...,E k−1 be the standard basis vectors of
+Nk. Define
+P0 = 0, P n =
+n−1∑
+j=0
+Ebj (n≥1).
+The word(bn)n≥0 is good if and only if no three distinct vertices of(Pn)n≥0 are collinear.
+Proof. The sum of the coordinates ofPn isn, so all vertices are distinct. Fix indicesα<β <γ
+and setp=β−α>0,q=γ−β >0. Withx,yas in the definition,
+Pβ−Pα =ψ(x), P γ−Pβ =ψ(y).
+If the three vertices are collinear, their two displayed nonzero displacements are scalar
+multiples: ψ(y) =λψ(x). Taking coordinate sums givesq =λp, soλ =q/p> 0. Consequently
+ψ(x)/p = ψ(y)/q. Conversely, this equality makes the two displacements positive scalar
+multiples, so the three vertices are collinear. This holds for every ordered triple of indices,
+proving both directions.
+For avoidance of triples, Cambie and Kalviainen [4] recently gave a different construction
+in Z3 with sixteen possible step vectors, but they are not all unit vectors. Our construction
+is a small variation on theirs. Also see [8], which gave a lower bound on the length of the
+longest good sequence in dimensionk(now made obsolete fork≥16).
+2
+
+
+=== Page 3 ===
+2 The construction
+We will show that the sequence
+b= 1,5,6,9,6,10,11,13,6,10,11,14,11,15,12,1,6,10,11,14,11,15,12,2,11,15,12,3,12,0,1,5,...
+is good. This sequence can be defined as the fixed point of the following morphism:
+Letter Image Letter Image
+0 1 4 8 11 12
+1 1 5 9 11 13
+2 1 6 10 11 14
+3 1 7 11 11 15
+4 6 8 12 12 0
+5 6 9 13 12 1
+6 6 10 14 12 2
+7 6 11 15 12 3
+Table 1: The morphism generating the good sequenceb.
+For n∈N , let s2(n)denote the number of1s in the binary expansion of n, and let
+tn =s 2(n) (mod 4). This is sequence A179868in the OEIS [11]. Set
+Γ ={0,1,2,3} 2, a n = (tn,tn+1),a=a 0a1a2···.(1)
+Each ordered pair isone letterof the sixteen-letter alphabetΓ. For example,
+a= (0,1)(1,1)(1,2)(2,1)(1,2)(2,2)(2,3)(3,1)···.
+Now form the desired good sequence
+b= 1,5,6,9,6,10,11,13,6,10,11,...
+by applying the coding
+ρ(r,s) = 4r+s(2)
+to each element ofa.
+Appending a binary digit gives
+s2(2n) =s 2(n), s 2(2n+ 1) =s 2(n) + 1.
+Hence
+t2n =t n, t 2n+1 =t n + 1 (mod 4).(3)
+Forr∈{0,1,2,3}, writer + for the representative ofr+ 1 (mod 4)in that set.
+3
+
+
+=== Page 4 ===
+Proposition 2.The wordais the fixed point starting with(0 , 1)of the2-uniform morphism
+H(r,s) = (r,r +)(r+,s).(4)
+Proof. A morphism acts on words by replacing each letter with its image and concatenating
+the resulting images. Each image in (4) consists of two letters, soHis2-uniform. By (3),
+a2n = (t2n,t 2n+1) = (tn,t +
+n ),
+a2n+1 = (t2n+1,t 2n+2) = (t+
+n,tn+1).
+ThusH(a n) =a 2na2n+1 for everyn, and concatenation givesH(a) =a.
+Also t0 = 0, t1 = 1, andH(0, 1) = (0, 1)(1, 1). ThereforeHj+1(0, 1)begins with Hj(0, 1),
+whose length is2j. These prefixes determine a unique infinite word. Sinceais such a fixed
+point, it is precisely this limit.
+Finally, applying the codingρrewrites the morphism as
+(4r+s)→(4r+r +) (4r+ +s),(5)
+which gives us the morphism in Table 1.
+3 The arithmetic ingredient
+For a nonzero integerv, define the2-adic valuationν2(v)by writing v = 2ew, withw odd.
+Thenν 2(v) =e. For a positive rational numbera/b, define
+ν2(a/b) =ν 2(a)−ν 2(b).
+This is independent of the chosen representation, becausea/b =c/d implies ad =bc, and the
+exponent of2in a product is the sum of the exponents in its factors. In particular,
+ν2(xy) =ν 2(x) +ν 2(y), ν 2(x/y) =ν 2(x)−ν 2(y).(6)
+Leti 2 =−1, and put
+un = itn = is2(n), Z 0 = 0, Z n =
+n−1∑
+j=0
+uj (n≥1).(7)
+The equality of the two powers ofiusesi 4 = 1. Each uj is one of1, i,− 1,− i, so eachZn
+is a Gaussian integer. For a Gaussian integerX + iY, its squared modulus is the ordinary
+nonnegative integerX 2 +Y 2.
+Equation (3) gives
+u2n =u n, u 2n+1 = iun.
+4
+
+
+=== Page 5 ===
+Pairing consecutive terms in the defining sum forZ2n, we obtain
+Z2n =
+n−1∑
+j=0
+(u2j +u 2j+1) =
+n−1∑
+j=0
+(1 + i)uj = (1 + i)Zn,
+Z2n+1 =Z 2n +u 2n = (1 + i)Zn +un.
+Equivalently, forε∈{0,1},
+u2n+ε = iεun, Z 2n+ε = (1 + i)Zn +εun.(8)
+The following lemma is from [4].
+Lemma 3.If0≤m<nandt m =t n, thenZn−Zm̸= 0and
+ν2
+(
+|Zn−Zm|2
+)
+=ν 2(n−m).(9)
+Proof. Let e =ν2(n−m ). We first explain one halving step. Ifn−m is even, the indices
+have the same parity, so write
+m= 2a+ε, n= 2b+ε, ε∈{0,1}.
+The hypothesis tm = tn is equivalent toum = un. The first identity in (8) then gives
+iεua = iεub, henceua =u b andt a =t b. The second identity consequently gives
+Zn−Zm = (1 + i)(Zb−Za) +ε(ub−ua)
+= (1 + i)(Zb−Za).
+After exactlyesuch steps, there are indicesm′ <n′ with odd difference and
+Zn−Zm = (1 + i)e(Zn′−Zm′).(10)
+Ife= 0, this meansm ′ =mandn ′ =n.
+WriteZn′−Zm′ =X + iY. This difference is a sum of the odd numbern′−m′ of Gaussian
+units uj. The sum of the real and imaginary coordinates of each unit is either1or−1, both
+odd. It follows thatX+Yis odd. Since an integer and its square have the same parity,
+X 2 +Y 2≡X+Y≡1 (mod 2).
+In particular, this squared modulus is positive and odd. Taking squared moduli in(10), and
+using|1 + i| 2 = 2, gives
+|Zn−Zm|2 = 2e(X 2 +Y 2).
+The right side is nonzero and has exponent of2equal toe. This proves both assertions.
+5
+
+
+=== Page 6 ===
+For a letter(r,s)∈Γand a finite blockxofa, now write
+Cx(r,s) =|x| (r,s).
+Lete 0,e 1,e 2,e 3 be the standard basis ofN4. To a pair(r,s)assign the vectore r−es.
+For indicesα<βand the blockx=a α···a β−1, summing these vectors gives
+3∑
+r,s=0
+Cx(r,s)(er−es) =
+β−1∑
+j=α
+(etj−etj+1)
+=e tα−etβ.(11)
+Lemma 4.Suppose consecutive blocks x =aα···a β−1 and y =aβ···a γ−1, withα<β <γ ,
+have the same normalized Parikh vectors. Thentα =t β =t γ.
+Proof.Setp=β−αandq=γ−β. The hypothesis says
+qCx(r,s) =pC y(r,s) (0≤r,s≤3).(12)
+Multiply each equality byer−es, sum, and apply (11) to the two blocks. The result is
+q(etα−etβ) =p(e tβ−etγ),
+which rearranges to
+qetα +petγ = (p+q)e tβ.(13)
+Look at the coordinate labeledtβ. Its value on the left is
+q1{tα=tβ} +p1 {tγ =tβ},
+and its value on the right isp +q. Becausep andq are both strictly positive, equality requires
+both indicators to be1.
+4 Proof that the sequence is good
+Theorem 5.The infinite wordadefined by (1) is good. Equivalently, the standard-basis
+walk inN 16 obtained fromρ(an) = 4tn +tn+1 has no three collinear vertices.
+Proof. Assume, to get a contradiction, that consecutive nonempty blocksx,y have identical
+normalized Parikh vectors. Write their positions as[α,β )and[ β,γ ), and setp =β−α> 0,
+q=γ−β >0. Equation (12) holds, and Lemma 4 gives
+tα =t β =t γ.(14)
+6
+
+
+=== Page 7 ===
+Assign( r,s )the complex numberi r. Since the first coordinate ofaj is tj, grouping gives
+3∑
+r,s=0
+Cx(r,s)ir =
+β−1∑
+j=α
+itj =Z β−Zα,
+3∑
+r,s=0
+Cy(r,s)ir =
+γ−1∑
+j=β
+itj =Z γ−Zβ.
+Consequently, multiplying (12) byir and summing yields
+q(Zβ−Zα) =p(Z γ−Zβ).
+Put X =Zβ−Zα and Y =Zγ−Zβ. There is a common complex numberV =X/p =Y/q.
+Adding the identitiesX=pV,Y=qVshows that
+X
+p = Y
+q = X+Y
+p+q =V.(15)
+By (14), Lemma 3 applies to each of the three pairs of indices(α,β ),( β,γ ), and(α,γ ).
+Therefore
+ν2(|X| 2) =ν 2(p),
+ν2(|Y| 2) =ν 2(q),
+ν2(|X+Y| 2) =ν 2(p+q).(16)
+The same lemma also proves that all three displacements are nonzero. In particular|V| 2 is a
+positive rational number, so its valuation is defined.
+Using the first expression forVin (15), followed by (6) and (16), gives
+ν2(|V| 2) =ν 2
+(
+|X| 2
+p2
+)
+=ν 2(|X| 2)−2ν 2(p)
+=ν 2(p)−2ν 2(p) =−ν 2(p).
+Using the other two expressions forVin exactly the same way gives
+ν2(|V| 2) =−ν 2(q) =−ν 2(p+q).
+Thus
+ν2(p) =ν 2(q) =ν 2(p+q).(17)
+Let the common value of the first two terms bed. Thenp = 2dp0 and q = 2dq0 for positive
+odd integersp 0,q 0. Their sum is even, so
+p+q= 2 d(p0 +q 0) =⇒ν 2(p+q)≥d+ 1,
+contradicting (17). No such blocksx,ycan exist.
+Relabeling letters by the bijectionρ preserves all frequency equalities. Proposition 1 now
+gives the asserted geometric conclusion.
+7
+
+
+=== Page 8 ===
+5 The dimension bound and the proposed smaller mor-
+phisms
+Define kmin to be the least size of an alphabet admitting a good infinite word. Theorem 5
+proves that this minimum exists and is at most16.
+As mentioned above, we know thatkmin≥ 4. Therefore it is still of interest to determine
+its exact value.
+I found a number of candidate cyclic morphisms, but have been unable to prove that they
+work. I list them here in the hope that they may aid other researchers to improve the bound
+kmin≤16.
+Alphabet sizekProposed image of0Image length
+5 01213101314310 14
+6 01210140 8
+7 012520 6
+8 012560 6
+For these proposals, the image of letterr is obtained by addingr modulo k to every letter in
+the displayed image of0.
+6 Declaration of AI usage
+I originally proposed this problem about walks on unit vectors in June 2018, and mentioned
+it to many people. The recent construction of Cambie and Kalviainen, and the release of
+GPT-6 Astra, led me to try this new LLM on the unit vector version of the problem. Much
+of this paper was written by ChatGPT 6 Astra.
+References
+[1] Sergey Avgustinovich and Svetlana Puzynina. Weak abelian periodicity of infinite words.
+Theory of Computing Systems59(2016), 161–179.
+[2] T. C. Brown. Is there a sequence on four symbols in which no two adjacent segments
+are permutations of one another?Amer. Math. Monthly78(1971), 886–888.
+[3] T. C. Brown. Advanced problem 5811.Amer. Math. Monthly78(1971), 798.
+[4] Stijn Cambie and Erik Kalviainen. An infinite small-stepZ3-walk with no collinear
+triple. ArXiV preprint arXiv:2609.01766 [math.CO], September 1 2026. Available at
+https://arxiv.org/abs/2609.01766v1.
+8
+
+
+=== Page 9 ===
+[5] Gabriele Fici and Svetlana Puzynina. Abelian combinatorics on words: A survey.
+Computer Science Review47(2023), article 100532.
+[6] Joseph L. Gerver and L. Thomas Ramsey. On certain sequences of lattice points.Pacific
+Journal of Mathematics83(1979), 357–363.
+[7] Samuel Korsky. North-east lattice paths with few collinear vertices. Arxiv preprint
+arXiv:2607.02832 [math.CO], July 2 2026. Available at https://arxiv.org/abs/2607.02832.
+[8] Samuel Korsky. Long lattice paths with no three collinear vertices. Arxiv preprint
+arXiv:2608.07906 [math.CO], August 8 2026. Available at https://arxiv.org/abs/2608.
+07906.
+[9] Thomas F. Lidbetter. Improved bound for the Gerver–Ramsey collinearity problem.
+Discrete Mathematics347(2024), article 113718.
+[10] P. L. Montgomery. Solution to Advanced Problem 5811: collinear points on a monotonic
+polygon.American Mathematical Monthly79(1972), 1143–1144.
+[11] N. J. A. Sloane et al. The On-Line Encyclopedia of Integer Sequences. Electronic
+resource, 2026. Available at https://oeis.org.
+9

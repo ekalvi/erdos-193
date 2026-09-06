@@ -26,8 +26,11 @@ Results of this investigation:
 4. Exact substitution algebra proves descent for block-aligned triples and
    identifies the partial-block correction terms obstructing naive descent.
 
-No family-page or other public-site claim is added. These files and results
-remain local research until the user chooses to publish them.
+No family-page or other production-site claim is added. At Kalviainen's request,
+these files and results are now preserved in the public GitHub research
+checkpoint. The three new JSON evidence files are excluded from the production
+Docker context. See the [AI checkpoint](../research/unit-step/AI-CHECKPOINT.md)
+for current scope, attribution, and manuscript status.
 
 ## 1. Why three positive coordinate directions cannot work
 

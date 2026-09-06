@@ -1,0 +1,127 @@
+{
+  "identity": {
+    "schema": 1,
+    "code_sha256": "17d72ff89b04fc11aebd7825fe4653ec0e8206209dd9689a0479969c7cd1593f",
+    "pdf_sha256": "856901a441d522a30bc45d2bfc4febeedbe7fb6c42b96cd7e28a7e0c272e5786",
+    "ternary_depth": 8,
+    "auxiliary_depth": 7,
+    "pair_vertices": 729
+  },
+  "status": "finite_checks_pass",
+  "substitution_identities_checked": 5,
+  "return_table": [
+    {
+      "auxiliary": "A",
+      "output": "0",
+      "return_word": "01",
+      "counts": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "displacement": [
+        2,
+        0,
+        2
+      ]
+    },
+    {
+      "auxiliary": "B",
+      "output": "1",
+      "return_word": "0232",
+      "counts": [
+        1,
+        0,
+        2,
+        1
+      ],
+      "displacement": [
+        -2,
+        2,
+        4
+      ]
+    },
+    {
+      "auxiliary": "C",
+      "output": "2",
+      "return_word": "013231",
+      "counts": [
+        1,
+        2,
+        1,
+        2
+      ],
+      "displacement": [
+        0,
+        -2,
+        6
+      ]
+    },
+    {
+      "auxiliary": "D",
+      "output": "3",
+      "return_word": "02323231",
+      "counts": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "displacement": [
+        -4,
+        0,
+        8
+      ]
+    },
+    {
+      "auxiliary": "E",
+      "output": "3",
+      "return_word": "01323232",
+      "counts": [
+        1,
+        1,
+        3,
+        3
+      ],
+      "displacement": [
+        -4,
+        0,
+        8
+      ]
+    }
+  ],
+  "source_vertices": 6561,
+  "common_expansion_letters_checked": 4374,
+  "equal_state_pairs_checked": 66248,
+  "coded_prefix": "0100200101033010100200100200100223032200100200100200101033010100",
+  "triple_avoidance_counterexample": {
+    "indices": [
+      2,
+      3,
+      4
+    ],
+    "vertices": [
+      [
+        1,
+        1,
+        0,
+        0
+      ],
+      [
+        2,
+        1,
+        0,
+        0
+      ],
+      [
+        3,
+        1,
+        0,
+        0
+      ]
+    ],
+    "factor": "00"
+  },
+  "scope": "Exact finite identities and prefix checks supporting the written cube argument; not an infinite proof, novelty claim, or solution to triple avoidance."
+}

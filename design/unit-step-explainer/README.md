@@ -1,9 +1,9 @@
-# Unpublished g85 to six-coordinate explainer
+# Research-draft g85 to six-coordinate explainer
 
 This directory is outside the production Docker build's `viz/` and `results/`
-roots. Nothing here was published publicly. The page labels the six-dimensional
-result as a draft awaiting independent review and distinguishes proof from
-finite illustration. No analytics or external runtime assets are loaded.
+roots. It is preserved in the public GitHub research checkpoint, not deployed
+on the production website. The page labels the six-dimensional result as a
+draft awaiting independent review and distinguishes proof from finite illustration. No analytics or external runtime assets are loaded.
 
 ## View offline
 
@@ -69,4 +69,5 @@ Desktop, 390-pixel mobile width, playback, stepping, invalid triples, mergers,
 endpoint readouts, and offline-file loading passed without page errors.
 
 Related mathematical consequences and their limitations are documented in
-`design/UNIT-STEP-CONSEQUENCES.md`.
+[`design/UNIT-STEP-CONSEQUENCES.md`](../UNIT-STEP-CONSEQUENCES.md). Start a new
+research session with the [AI checkpoint](../../research/unit-step/AI-CHECKPOINT.md).

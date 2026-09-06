@@ -1,0 +1,78 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: paper/unit_step_walk_N6_short.pdf
+
+=== Page 1 ===
+A six-dimensional unit-step walk with no collinear triple
+Erik Kalviainen September 5, 2026
+Shallit [3] used the Gaussian construction of Cambie and Kalviainen [1] to obtain an inﬁnite standard-basis walk in N16 with no three
+collinear vertices. Cambie [2] changed the four state oﬀsets so that two pairs of steps coincide, reducing 16 to 14. Applying those oﬀsets
+to an alternating member of the signed Gaussian family reduces the dimension to six.
+Theorem 1. There is an inﬁnite sequence P0, P1, . . . ∈ N6, starting at the origin, such that every diﬀerence Pn+1 − Pn is a standard
+basis vector and no three vertices are collinear.
+Proof. Write bj(n) ∈ {0, 1} for bit j of n, and put
+σ(n) =
+∑
+j≥0
+(−1)jbj(n) (mod 4) , u n = iσ(n), z n =
+∑
+r<n
+ur ∈ Z[i].
+The signed analogue of the source lemma in [1] is
+σ(m) = σ(n), m < n =⇒ ν2(|zn − zm|2) = ν2(n − m). (1)
+For completeness, if m, n have the same ﬁnal bit, deleting that bit replaces the sign stream by its shift and multiplies the chord by 1 + i
+or 1 − i; equality of the endpoint states descends to the shifted stream. Repeat ν2(n − m) times. The remaining chord is a sum of an
+odd number of Gaussian units, so if it is x + iy, then x + y and hence x2 + y2 are odd. Since |1 ± i|2 = 2, (1) follows.
+Use Cambie’s oﬀsets
+(c0, c1, c2, c3) = (0 , −1, −1 + i, −i), w n = 2zn + cσ(n), h n = 4n + σ(n),
+and set Qn = (ℜwn, ℑwn, hn) ∈ Z3. Exactly as in [1,2], (1) and the parity pattern of the four oﬀsets give, for every m < n ,
+ν2(|wn − wm|2) = ν2(hn − hm). (2)
+Indeed, equal states use (1); opposite-parity states make both sides odd; and distinct equal-parity states make both sides exactly divisible
+by 2. Also hn+1 > h n. If Qa, Qb, Qc were collinear, a < b < c , equality of their three complex slopes and (2) would imply
+ν2(A) = ν2(B) = ν2(A + B), A = hb − ha > 0, B = hc − hb > 0,
+which is impossible because two odd integers have even sum after their common power of 2 is removed. Thus (Qn) has no collinear triple.
+It remains to count its steps. If n has k trailing 1’s, then
+σ(n + 1) − σ(n) = ( −1)k −
+∑
+j<k
+(−1)j ≡
+{
+1 ( k even),
+2 ( k odd) (mod 4) .
+Hence only s = r + 1 or s = r + 2 (mod 4) occurs. For vr,s = (2ir + cs − cr, 4 + s − r), the eight possible state pairs give exactly
+(1, 0, 5) 01 (0, 3, 5) 12
+(−1, −2, 5) 23 (0, −1, 1) 30
+(1, 1, 6) 02, 13 ( −1, −1, 2) 20, 31.
+(3)
+List the six vectors in (3) as v1, . . . , v6. Replace each occurrence of vj in (Qn) by ej, the jth standard basis vector of N6, to obtain (Pn).
+The linear map T : R6 → R3 deﬁned by T (ej) = vj satisﬁes T (Pn) = Qn. A collinear triple among the Pn would map to one among the
+Qn; the images are distinct because their heights strictly increase. This is a contradiction.
+Attribution and AI disclosure. The alternating signed rule comes from Kalviainen’s signed-Gaussian family; the oﬀset choice is due to Cambie [2], and
+the standard-basis encoding was introduced in this context by Shallit [3] and simpliﬁed by Cambie. The search leading to the six-vector menu and this draft
+were AI-assisted. The displayed argument is exact; the result has not yet been Lean-formalized or externally reviewed.
+1
+
+
+=== Page 2 ===
+Context: from the planar family to six basis directions
+The original walk in [1] is the all-positive signed-Gaussian rule. Its four states admit all sixteen ordered transitions. Shallit [3] assigned a
+separate basis direction to each transition, while Cambie’s oﬀsets [2] made two pairs of the resulting spatial vectors equal. The alternating
+rules g85 and g170 add a second reduction: binary carries permit only eight state transitions, and the same oﬀsets identify two pairs,
+leaving the six vectors in (3).
+○ start   ● end
+g85  ε = + − + − + − + −
+○ start   ● end
+g170  ε = − + − + − + − + tagged g85 lift Qn  (oblique; hn/40)
+Alternating signed-Gaussian rules at level 10  (210 = 1, 024 vertices)
+Figure 1: *
+Level-10 approximations (1,024 vertices) of the two planar source walks and an oblique view of the tagged g85 lift. Open and ﬁlled
+circles mark the initial and ﬁnal vertices. Height is compressed only for display. These ﬁnite pictures provide context; the inﬁnite
+theorem follows from (1)–(3).
+The six-dimensional walk itself is the cumulative count of the six vector types, so it has no faithful two-dimensional picture. The right
+panel shows its linear shadow T (Pn) = Qn: every unit move in one of six coordinate directions maps to the corresponding spatial vector.
+Thus the planar fractal controls which transitions occur, the tagged lift certiﬁes no collinear triple, and the basis encoding enforces unit
+steps.
+References.
+[1] S. Cambie and E. Kalviainen, An inﬁnite small-step Z3-walk with no collinear triple , arXiv:2609.01766, 2026.
+[2] S. Cambie, A unit-step walk in fourteen dimensions , manuscript, September 5, 2026.
+[3] J. Shallit, An inﬁnite walk in N16, using only unit steps, with no three collinear points , manuscript, September 4, 2026.
+2
