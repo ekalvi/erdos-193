@@ -59,6 +59,10 @@ jobs:
         run: |
           node research/unit-step/tracks/shallit-five/check.mjs
           node research/unit-step/tracks/shallit-five/test.mjs
+      - name: Check four-letter return reduction and local obstruction certificate
+        env:
+          UV_THREADPOOL_SIZE: '1'
+        run: node research/unit-step/tracks/check_four_letter_returns.mjs
       - name: Check the offline explainer build and finite models
         run: |
           node design/unit-step-explainer/build.mjs
