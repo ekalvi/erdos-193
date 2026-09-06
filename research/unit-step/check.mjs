@@ -53,6 +53,7 @@ assert.deepEqual([...new Set(gitPdfs)].sort(), [...covered].sort(), 'all reposit
 const docs = ['README.md', 'paper/followups/README.md',
   'research/unit-step/AI-CHECKPOINT.md', 'research/unit-step/PROBLEM.md', 'research/unit-step/FRAMEWORK.md',
   'research/unit-step/JOINT-MINIMUM.md', 'research/unit-step/PARALLEL-TASKS.md',
+  'research/unit-step/tracks/D-SHALLIT-PROJECTION.md',
   'design/WEAK-ABELIAN-CUBE-DRAFT-REVIEW.md', 'design/unit-step-explainer/README.md'];
 let links = 0;
 for (const doc of docs) {
@@ -70,6 +71,20 @@ const excludedEvidence = ['results/unit-step-dimension-probe.json',
 const dockerignore = (await read('.dockerignore')).toString().split('\n');
 for (const name of excludedEvidence) {
   assert(dockerignore.lastIndexOf(name) > dockerignore.lastIndexOf('!results/**'), `research data exposed: ${name}`);
+}
+const researchVisualizations = ['viz/unit-step-track-d.html'];
+for (const name of researchVisualizations) {
+  assert(dockerignore.lastIndexOf(name) > dockerignore.lastIndexOf('!viz/**'), `unreviewed research visualization exposed: ${name}`);
+  const html = (await read(name)).toString();
+  assert(html.includes('independent mathematical review pending'), `${name}: missing review caveat`);
+  assert(html.includes('excluded from the production website'), `${name}: missing visibility caveat`);
+  for (const match of html.matchAll(/(?:href|src)="([^"#]+)"/g)) {
+    const target = match[1].split(/[?#]/)[0];
+    if (/^[a-z]+:/i.test(target)) continue;
+    const relative = path.posix.normalize(path.posix.join(path.posix.dirname(name), target));
+    assert((await lstat(safe(relative))).isFile(), `${name} -> ${target}`);
+    links++;
+  }
 }
 const dockerfile = (await read('q5m/Dockerfile')).toString();
 assert(!/^COPY[^\n]*(?:paper\/|research\/|design\/)/m.test(dockerfile));
@@ -92,4 +107,5 @@ assert.deepEqual(periodic.step_count_histogram, {'6': 2, '10': 508, '14': 65026}
 assert.deepEqual(periodic.minimizers.map(row => row.index), [21845, 43690]);
 console.log(JSON.stringify({status: 'pass', pdf_files: covered.size, distinct_pdf_artifacts: catalogue.pdfs.length,
   local_links: links, research_only_jsons: excludedEvidence.length,
+  research_only_visualizations: researchVisualizations.length,
   scope: 'Archive integrity, provenance coverage, and visibility checks; not mathematical proof certification.'}));

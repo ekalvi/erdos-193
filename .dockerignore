@@ -9,3 +9,5 @@
 results/unit-step-dimension-probe.json
 results/shallit-five-prefix.json
 results/shallit-substitution-algebra.json
+# Keep unreviewed track D visualization available for research, not production.
+viz/unit-step-track-d.html
