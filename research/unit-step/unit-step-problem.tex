@@ -1,0 +1,22 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath,amssymb}
+\usepackage[margin=1in]{geometry}
+\pagestyle{empty}
+\begin{document}
+\section*{Minimum dimension for a no-three-collinear unit-step walk}
+Determine the least positive integer $d_*$ admitting an infinite sequence
+$P_n\in\mathbb Z^{d_*}$, with $P_0=0$, such that
+\[
+P_{n+1}-P_n\in\{e_1,\ldots,e_{d_*}\}\qquad(n\ge0).
+\]
+and
+\[
+(k-j)(P_j-P_i)\ne(j-i)(P_k-P_j) \qquad(0\le i<j<k).
+\]
+Here $e_1,\ldots,e_{d_*}$ are the standard basis vectors. The coordinate sum
+of $P_n$ is $n$, so the last condition is equivalent to noncollinearity.
+
+Prove existence in dimension $d_*$ and impossibility in every smaller dimension.
+The lower bound $d_*\ge4$ is proved. The proposed upper bound $d_*\le6$
+awaits independent review.
+\end{document}

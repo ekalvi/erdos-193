@@ -9,6 +9,10 @@ Determine the least dimension $d_*$ admitting an infinite positive
 standard-basis walk with no three collinear vertices. Prove an infinite
 construction and a lower bound applying to **every** walk in smaller dimensions.
 The exact [problem statement](PROBLEM.md) is the canonical short task definition.
+For correspondence, use the [monochrome PNG](unit-step-problem.png) and
+[standalone raw LaTeX](unit-step-problem.tex). They are generated from the
+statement by [render_problem.py](render_problem.py), using
+`uv run --with matplotlib==3.10.6 python research/unit-step/render_problem.py`.
 
 - **Proved:** $d_*\ge4$, by unavoidable ternary abelian squares.
 - **Proposed upper bound:** $d_*\le6$, pending independent review of the 6D draft.
