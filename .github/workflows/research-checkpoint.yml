@@ -50,6 +50,16 @@ jobs:
         run: node research/unit-step/check.mjs
       - name: Check joint-minimum finite projection examples
         run: node research/unit-step/joint_minimum_examples.mjs
+      - name: Check signed-family selector reductions and overlap exclusions
+        run: |
+          node --test --test-concurrency=1 research/unit-step/tracks/*.test.mjs
+          node research/unit-step/tracks/check_signed_phase_selector.mjs
+          node research/unit-step/tracks/signed_phase_overlap.mjs --q 3 --seconds 60 \
+            --output research/unit-step/checks/signed-phase-overlap-8.json
+          node research/unit-step/tracks/check_signed_phase_overlap.mjs --q 3 --write
+          git diff --exit-code -- \
+            research/unit-step/checks/signed-phase-overlap-8.json \
+            research/unit-step/checks/signed-phase-reference-8.json
       - name: Check the offline explainer build and finite models
         run: |
           node design/unit-step-explainer/build.mjs
