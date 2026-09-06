@@ -1,0 +1,7 @@
+# Managed LAN development preview only. No production hostname is declared.
+# This dedicated root excludes research sources and the production website.
+version: 1
+name: erdos-193-unit-step-explainer
+kind: static
+root: design/unit-step-explainer/public
+health: /index.html
