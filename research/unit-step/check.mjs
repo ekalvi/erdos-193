@@ -52,6 +52,7 @@ assert.deepEqual([...new Set(gitPdfs)].sort(), [...covered].sort(), 'all reposit
 
 const docs = ['README.md', 'paper/followups/README.md',
   'research/unit-step/AI-CHECKPOINT.md', 'research/unit-step/PROBLEM.md', 'research/unit-step/FRAMEWORK.md',
+  'research/unit-step/JOINT-MINIMUM.md', 'research/unit-step/PARALLEL-TASKS.md',
   'design/WEAK-ABELIAN-CUBE-DRAFT-REVIEW.md', 'design/unit-step-explainer/README.md'];
 let links = 0;
 for (const doc of docs) {

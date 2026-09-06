@@ -23,6 +23,11 @@ four and five are not settled here.
   attribution, known obstructions, WIP, and the next proof-oriented tasks.
 - **[Precise mathematical problem](research/unit-step/PROBLEM.md)** and its
   equivalent word-combinatorics formulation.
+- **[Joint dimension/step-count problem](research/unit-step/JOINT-MINIMUM.md):**
+  the implication matrix, minimum step-count profile, and the distinction
+  between length-dependent finite examples and one fixed infinite 3D walk.
+- **[Parallel research handoffs](research/unit-step/PARALLEL-TASKS.md):** four
+  bounded tracks with copyable session prompts and a shared host resource budget.
 - **[Manuscript archive](paper/followups/README.md):** Cambie–Kalviainen's original
   paper, Shallit's 16D manuscript, Cambie's 14D note, Kalviainen's 6D draft, and
   the four-collinear draft supplied by Shallit. PDFs, available sources, and

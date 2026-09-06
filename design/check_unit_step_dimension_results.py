@@ -9,6 +9,7 @@ validation task. The C++ interruption test also checks its own resume behavior.
 from __future__ import annotations
 import argparse
 from collections import Counter
+from fractions import Fraction
 import hashlib
 import itertools
 import json
@@ -131,19 +132,91 @@ def cpp_resume(binary, state):
     assert completed.returncode == 2 and "incompatible" in completed.stderr
 
 
+def expected_algebra_corrections():
+    """Reconstruct all integral nonzero corrections, without the producer's sieve.
+
+    Use exact Gaussian elimination rather than SymPy or the 421-root filter.
+    The bounded 70^3 enumeration is one atomic, resumable validation task.
+    """
+    image = tuple(map(int, "01213101314310"))
+    counts = [image.count(j) for j in range(5)]
+    matrix = [[counts[(i-j) % 5] for j in range(5)] for i in range(5)]
+    augmented = [[Fraction(x) for x in row] + [Fraction(i == j) for j in range(5)]
+                 for i, row in enumerate(matrix)]
+    determinant = Fraction(1)
+    for column in range(5):
+        pivot = next(i for i in range(column, 5) if augmented[i][column])
+        if pivot != column:
+            augmented[column], augmented[pivot] = augmented[pivot], augmented[column]
+            determinant *= -1
+        scale = augmented[column][column]
+        determinant *= scale
+        augmented[column] = [x / scale for x in augmented[column]]
+        for i in range(5):
+            if i != column:
+                scale = augmented[i][column]
+                augmented[i] = [x - scale*y for x, y in zip(augmented[i], augmented[column])]
+    assert determinant == 5894
+    adjugate = [[x * determinant for x in row[5:]] for row in augmented]
+    assert all(x.denominator == 1 for row in adjugate for x in row)
+    adjugate = [[int(x) for x in row] for row in adjugate]
+    determinant = int(determinant)
+    prefixes = []
+    for letter in range(5):
+        for offset in range(14):
+            prefix = [(letter + c) % 5 for c in image[:offset]]
+            prefixes.append(((letter, offset), tuple(prefix.count(j) for j in range(5))))
+    expected = set()
+    for a, b, c in itertools.product(prefixes, repeat=3):
+        vector = tuple(x - 2*y + z for x, y, z in zip(a[1], b[1], c[1]))
+        # Every incidence column sums to 14, so this is a necessary condition.
+        if not any(vector) or sum(vector) % 14:
+            continue
+        numerators = [sum(x*y for x, y in zip(row, vector)) for row in adjugate]
+        if all(x % determinant == 0 for x in numerators):
+            expected.add(((a[0], b[0], c[0]), tuple(x // determinant for x in numerators)))
+    assert len(expected) == 170
+    return matrix, determinant, expected
+
+
+def validate_algebra(data, expected):
+    matrix, determinant, rows = expected
+    assert data["image0"] == "01213101314310"
+    assert data["matrix"] == matrix
+    assert data["determinant"] == determinant
+    saved = data["nonzero_boundary_corrections"]
+    assert len(saved) == len(rows), "incomplete boundary-correction list"
+    seen = set()
+    for item in saved:
+        boundaries = tuple(tuple(pair) for pair in item["boundaries"])
+        correction = tuple(item["correction"])
+        assert len(boundaries) == 3 and all(len(pair) == 2 for pair in boundaries)
+        assert all(type(letter) is int and 0 <= letter < 5 and
+                   type(offset) is int and 0 <= offset < 14 for letter, offset in boundaries)
+        assert len(correction) == 5 and all(type(x) is int for x in correction)
+        key = (boundaries, correction)
+        assert key not in seen, "duplicate boundary correction"
+        seen.add(key)
+    assert seen == rows, "boundary-correction set differs from independent reconstruction"
+
+
 def algebra():
     data = json.loads((ROOT / "results/shallit-substitution-algebra.json").read_text())
-    m = data["matrix"]
-    assert [sum(row) for row in m] == [14]*5
-    assert data["determinant"] == 14*421
-    image = list(map(int, data["image0"]))
-    for item in data["nonzero_boundary_corrections"]:
-        p = []
-        for letter, offset in item["boundaries"]:
-            prefix = [(letter + c) % 5 for c in image[:offset]]
-            p.append([prefix.count(j) for j in range(5)])
-        vector = [a-2*b+c for a, b, c in zip(*p)]
-        assert vector == [sum(m[i][j]*item["correction"][j] for j in range(5)) for i in range(5)]
+    expected = expected_algebra_corrections()
+    validate_algebra(data, expected)
+    saved = data["nonzero_boundary_corrections"]
+    altered = dict(saved[0], correction=[saved[0]["correction"][0] + 1,
+                                       *saved[0]["correction"][1:]])
+    mutations = {"empty": [], "truncated": saved[:-1],
+                 "duplicate": [*saved[:-1], saved[0]], "altered": [altered, *saved[1:]]}
+    for name, rows in mutations.items():
+        try:
+            validate_algebra(dict(data, nonzero_boundary_corrections=rows), expected)
+        except AssertionError:
+            pass
+        else:
+            raise AssertionError(f"accepted {name} boundary-correction certificate")
+    return dict(nonzero_boundary_corrections=len(expected[2]), rejected_mutations=list(mutations))
 
 
 def main():
@@ -180,14 +253,14 @@ def main():
             log_event(log, "interrupted", completed=len(saved["completed"]))
             return 130
         try:
-            task()
+            details = task()
         except Exception as exc:
             log_event(log, "error", task=name, error=repr(exc))
             raise
         saved["completed"].append(name)
         atomic_json(checkpoint, saved)
         log_event(log, "progress", task=name, completed=len(saved["completed"]), total=len(tasks),
-                  elapsed_seconds=time.monotonic()-started, checkpoint=str(checkpoint))
+                  elapsed_seconds=time.monotonic()-started, checkpoint=str(checkpoint), details=details)
     log_event(log, "complete", tests=len(tasks))
     return 0
 

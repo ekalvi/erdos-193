@@ -48,6 +48,8 @@ jobs:
           node-version: '22'
       - name: Check PDF archive, links, and production separation
         run: node research/unit-step/check.mjs
+      - name: Check joint-minimum finite projection examples
+        run: node research/unit-step/joint_minimum_examples.mjs
       - name: Check the offline explainer build and finite models
         run: |
           node design/unit-step-explainer/build.mjs

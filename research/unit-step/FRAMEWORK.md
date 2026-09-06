@@ -70,6 +70,14 @@ coding do not exclude context-dependent or return-block constructions.
 
 ## 4. Focus
 
+The [joint minimum formulation](JOINT-MINIMUM.md) makes the two thresholds
+precise: $d_*\le s_*$, with equality not established. It also isolates the
+quantifier gap between arbitrarily long finite 3D examples whose step menus
+may vary with length and a single fixed menu supporting an infinite walk.
+Only one optimal basis word needs a 3D realization to establish equality;
+a projection theorem for every valid word would be stronger than necessary.
+Neither problem assumes that a 2-adic certificate is necessary.
+
 The useful synthesis question is: **which arithmetic structure is essential
 for avoiding triples, and how economically can it be represented by positive
 basis steps?** A separate general word-combinatorial lower bound may be needed.

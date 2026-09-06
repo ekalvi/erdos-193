@@ -12,8 +12,11 @@ For work on the Cambie–Kalviainen / Shallit positive-basis follow-up, start wi
 [`research/unit-step/AI-CHECKPOINT.md`](research/unit-step/AI-CHECKPOINT.md) and
 [`research/unit-step/PROBLEM.md`](research/unit-step/PROBLEM.md). The target is the
 exact minimum dimension for avoiding collinear triples, not an expanding list
-of unvetted applications. Keep this open problem distinct from the original
-Erdős 193 theorem. Preserve manuscript attribution and the distinctions between
+of unvetted applications. The
+[joint minimum formulation](research/unit-step/JOINT-MINIMUM.md) relates this to
+the minimum 3D step count, with explicit quantifiers and no assumption that the
+two minima coincide. Keep these questions distinct from the original Erdős 193
+theorem. Preserve manuscript attribution and the distinctions between
 proved lower bounds, unreviewed upper-bound drafts, and finite evidence.
 
 ## Progress communication

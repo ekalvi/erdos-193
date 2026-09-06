@@ -1,4 +1,4 @@
-# AI resume checkpoint: sharp unit-step dimension
+# AI resume checkpoint: sharp basis dimension and 3D step count
 
 **Snapshot: September 6, 2026. Status: research WIP, not a finished joint paper.**
 Start here, then read only the linked material needed for the next task.
@@ -6,17 +6,27 @@ Start here, then read only the linked material needed for the next task.
 ## 1. The target and the boundary
 
 Determine the least dimension $d_*$ admitting an infinite positive
-standard-basis walk with no three collinear vertices. Prove an infinite
-construction and a lower bound applying to **every** walk in smaller dimensions.
-The exact [problem statement](PROBLEM.md) is the canonical short task definition.
-For correspondence, use the [monochrome PNG](unit-step-problem.png) and
+standard-basis walk with no three collinear vertices, together with the
+minimum number $s_*$ of arbitrary integer step types for such a walk in 3D.
+Prove infinite constructions and lower bounds applying to **every** walk in
+the smaller classes. The [joint formulation](JOINT-MINIMUM.md) defines the
+aggregate target, the implication matrix, and the open equality question.
+The original [problem statement](PROBLEM.md) remains the canonical short
+basis-only definition. Its correspondence assets still describe that problem,
+not the entire joint formulation: the [monochrome PNG](unit-step-problem.png) and
 [standalone raw LaTeX](unit-step-problem.tex). They are generated from the
 statement by [render_problem.py](render_problem.py), using
 `uv run --with matplotlib==3.10.6 python research/unit-step/render_problem.py`.
 
-- **Proved:** $d_*\ge4$, by unavoidable ternary abelian squares.
-- **Proposed upper bound:** $d_*\le6$, pending independent review of the 6D draft.
-- **Open here:** existence in 4D and 5D; no value of $d_*$ is conjectured as fact.
+- **Proved:** $4\le d_*\le s_*$, by unavoidable ternary abelian squares and basis encoding.
+- **Proposed upper bounds:** $d_*\le s_*\le6$, pending independent review of the
+  existing six-step 3D / 6D draft. The construction is already found.
+- **Open here:** exact $(d_*,s_*)$, including whether they coincide; no exact
+  value is conjectured as fact.
+- **Quantifier distinction:** $d_*$ is also the minimum step budget for
+  arbitrarily long finite 3D examples whose menus may depend on length;
+  $s_*$ requires one fixed menu for all lengths. The finite projection and
+  compactness arguments are in the joint formulation, not a new threshold proof.
 - **Already distinct and settled:** the original Erdős 193 construction allows
   an arbitrary finite step set in Z³, not only the three positive basis vectors.
   Its Lean theorem and site acceptance do not verify the follow-ups.
@@ -28,7 +38,9 @@ new byline. Reconciliation and independent review come before journal packaging.
 Do not hold the original result hostage to solving every extension.
 
 Four-collinear constructions are secondary unless they clarify the common
-mechanism. Applications are optional research questions, not established
+mechanism or the 3D step-count/collinearity trade-off. The four-displacement
+return draft would give $C_3(4)\le3$ if vetted, not triple avoidance.
+Applications are optional research questions, not established
 engineering consequences. Related exploration remains separate in
 [PR #38](https://github.com/ekalvi/erdos-193/pull/38) and
 [PR #44](https://github.com/ekalvi/erdos-193/pull/44); those titles are not evidence
@@ -59,7 +71,7 @@ the original paper's Cambie–Kalviainen citation.
 |---|---|
 | Original Erdős 193 negative answer | [Paper/source](../../paper/erdos193.tex), [Lean package](../../formal/Hilbert193/README.md), [site acceptance](https://www.erdosproblems.com/forum/thread/193/proof-claims#proof-claim-239). Applies to arbitrary finite step sets. |
 | Three positive directions cannot suffice | [Short extension-tree certificate and independent exhaustive check](../../design/UNIT-STEP-4D-5D-INVESTIGATION.md#1-why-three-positive-coordinate-directions-cannot-work): every ternary eight-letter word contains an ordinary abelian square. This finite exhaustive obstruction proves an infinite impossibility. |
-| A six-coordinate construction | [Two-page draft](../../paper/unit_step_walk_N6_short.pdf), [source](../../paper/unit_step_walk_N6_short.tex), [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md). Exact written argument, independent review pending, not Lean-formalized. |
+| A six-step 3D construction and its six-coordinate basis encoding | [Two-page draft](../../paper/unit_step_walk_N6_short.pdf), [source](../../paper/unit_step_walk_N6_short.tex), [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md). Exact written argument, independent review pending, not Lean-formalized. |
 | Six is optimal in the stated tagging scheme | Analytic argument in the [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md#optimality-inside-this-tag-scheme). Not a global dimension lower bound. |
 | Fixed transition recoding cannot give 4D/5D | [Certificates](../../results/unit-step-dimension-probe.json), [independent validator](../../design/check_unit_step_dimension_results.py): all 1,701 onto four-label codings fail within 44 steps; all 1,050 five-label codings fail within 85 steps. Does not exclude context-dependent coding. |
 | Shallit's five-letter candidate survives a finite prefix | [Result](../../results/shallit-five-prefix.json): 38,416 steps, 38,417 vertices, 737,913,736 exact chord checks. **Not an infinite 5D proof.** |
@@ -106,15 +118,25 @@ lengths**, not a larger prefix scan. The candidate might still fail later.
 
 ## 5. Next proof-oriented work
 
+For concurrent sessions, use the [four bounded track handoffs](PARALLEL-TASKS.md).
+Start each in a separate worktree from current `origin/main`; the four-core
+resource limit is host-wide across sessions, not a per-session allowance.
+
 1. **Vet and reconcile.** Independently check the 6D argument and audit the
    others with their authors. Use the [working synthesis](FRAMEWORK.md) to
    separate the shared valuation mechanism from the dimension bottleneck.
-2. **Attack the exact minimum on two fronts.** Seek 4D/5D infinite constructions
-   and general combinatorial obstructions. For Shallit's candidate, target a
-   certified all-ratios boundary-state descent, or an exact counterexample.
-3. **Do not repeat exhausted work.** Merely merging fixed g85 transitions has
+2. **Attack the exact minima.** Seek 4D/5D infinite constructions and general
+   combinatorial obstructions, tracking their one-way consequences for 3D
+   step count. For Shallit's candidate, target a certified all-ratios
+   boundary-state descent, or an exact counterexample.
+3. **Bridge only with explicit quantifiers.** A 3D integer projection with an
+   infinite proof certifies both models. Prefix projections with unbounded
+   coefficients do not suffice; a uniform bound would permit compactness.
+   Equality of minima needs one optimal basis witness to project, not a
+   classification of every walk or a universal 2-adic law.
+4. **Do not repeat exhausted work.** Merely merging fixed g85 transitions has
    been exhaustively refuted. Any new reduction needs more than that coding.
-4. **Keep an honest stopping/review checkpoint.** A sharp result is the ambition,
+5. **Keep an honest stopping/review checkpoint.** A sharp result is the ambition,
    not a guaranteed consequence of more AI searches. If the gap persists,
    distinguish a publishable synthesis from a complete optimality theorem.
 
@@ -128,6 +150,7 @@ Quick archive and model checks (run from repository root):
 
 ```sh
 node research/unit-step/check.mjs
+node research/unit-step/joint_minimum_examples.mjs
 node design/unit-step-explainer/test.mjs
 node design/check_weak_abelian_cube_draft.mjs
 ```
@@ -184,9 +207,11 @@ proof. [All PDFs and provenance](../../paper/followups/README.md) remain indexed
 
 ## Copyable AI task
 
-> Read AGENTS.md and research/unit-step/AI-CHECKPOINT.md, then PROBLEM.md.
-> Determine the exact minimum dimension for an infinite positive standard-basis
-> walk with no three collinear vertices. Preserve author attribution and the
+> Read AGENTS.md and research/unit-step/AI-CHECKPOINT.md, then JOINT-MINIMUM.md
+> and PARALLEL-TASKS.md. Work toward exact (d_*, s_*): the positive-basis minimum
+> dimension and the minimum 3D step count for avoiding triples. Choose one track
+> in a separate worktree and coordinate the shared four-core budget.
+> Preserve author attribution and the
 > distinction between the original proved theorem, unreviewed drafts, exact
 > finite obstructions, and finite positive evidence. Choose one bounded,
 > proof-oriented next step, state what it can establish, and preserve resumable
