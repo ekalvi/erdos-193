@@ -59,8 +59,8 @@ def main():
         event("start", identity=identity, threads=1, completed=0, total=1, eta_seconds=5, checkpoint=str(checkpoint))
         statement = source.split("\n## Exactly equivalent combinatorial problem\n", 1)[0]
         displays = [re.sub(r"\s+", " ", s).strip() for s in re.findall(r"\$\$(.*?)\$\$", statement, re.S)]
-        assert len(displays) == 3 and "$P_0=0$" in source
-        steps, triples = displays[:2]
+        assert len(displays) == 2 and "$P_0=0$" in source
+        steps, triples = displays
         plt.rcParams.update({"font.family": "DejaVu Serif", "mathtext.fontset": "cm", "font.size": 15})
         fig = plt.figure(figsize=(10, 8), facecolor="white")
         def text(x, y, value, **options):
@@ -78,7 +78,9 @@ def main():
         text(.50, .335, "$" + triples + "$", ha="center", fontsize=19)
         text(.07, .265, r"Coordinate sums equal $n$, so the last condition expresses noncollinearity.", fontsize=12.5)
         text(.07, .195, r"Goal: prove existence at $d_*$ and impossibility in every smaller dimension.", fontsize=13.5)
-        text(.07, .110, r"Proved: $d_*\geq4$. Proposed: $d_*\leq6$, pending independent review.", fontsize=13.5)
+        text(.07, .145, "Dimensions 1–3: impossible.", fontsize=13.5)
+        text(.07, .100, "Dimensions 4 and 5: unresolved.", fontsize=13.5)
+        text(.07, .055, "Dimension 6: proposed construction, awaiting independent review.", fontsize=13.5)
         temporary = paths[0].with_suffix(".png.tmp")
         fig.savefig(temporary, format="png", dpi=identity["dpi"], facecolor="white", metadata={"Software": "Matplotlib " + matplotlib.__version__})
         plt.close(fig)
@@ -98,8 +100,11 @@ Here $e_1,\ldots,e_{d_*}$ are the standard basis vectors. The coordinate sum
 of $P_n$ is $n$, so the last condition is equivalent to noncollinearity.
 
 Prove existence in dimension $d_*$ and impossibility in every smaller dimension.
-The lower bound $d_*\ge4$ is proved. The proposed upper bound $d_*\le6$
-awaits independent review.
+\begin{itemize}
+\item Dimensions 1--3: impossible.
+\item Dimensions 4 and 5: unresolved.
+\item Dimension 6: proposed construction, awaiting independent review.
+\end{itemize}
 \end{document}
 """
         temporary = paths[1].with_suffix(".tex.tmp")

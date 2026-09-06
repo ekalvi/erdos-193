@@ -28,9 +28,9 @@ of $P_n$ sum to $n$.
 
 ## Current proof status
 
-$$
-\boxed{d_*\ge4\text{ is proved};\qquad d_*\le6\text{ is proposed, pending independent review}.}
-$$
+- **Dimensions 1–3:** impossible.
+- **Dimensions 4 and 5:** unresolved.
+- **Dimension 6:** proposed construction, awaiting independent review.
 
 Thus the working target is $d_*\in\{4,5,6\}$, subject to vetting the six-dimensional
 draft. This is a problem to solve, **not a conjecture that $d_*=6$**. Existence
