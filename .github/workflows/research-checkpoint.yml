@@ -50,6 +50,8 @@ jobs:
         run: node research/unit-step/check.mjs
       - name: Check joint-minimum finite projection examples
         run: node research/unit-step/joint_minimum_examples.mjs
+      - name: Check Track A six-step audit diagnostics (finite only)
+        run: node research/unit-step/tracks/check_six_step_audit.mjs --recompute
       - name: Check four-letter return reduction and local obstruction certificate
         env:
           UV_THREADPOOL_SIZE: '1'
