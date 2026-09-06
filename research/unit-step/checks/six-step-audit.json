@@ -1,0 +1,408 @@
+{
+  "identity": {
+    "schema": 1,
+    "code_sha256": "da56449717c7f1aa3248c9754ccaceace12bf922c2d28dc28172aa07aa159f17",
+    "source_sha256": {
+      "paper/unit_step_walk_N6_short.tex": "e5a50d6f0b28e98d0becfceee28bed77b64b305424384be528ef6b20c1ae96bf",
+      "paper/unit_step_walk_N6_short.pdf": "dbca9935d49b5141d06a9f6022a82aa4e7845b9066ca3071c4271a3048800dec",
+      "paper/erdos193.tex": "7dd12731d44245490978616abd9638d7dc54eea73dcf6802cff1ba8b02138823",
+      "design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md": "5c85a4b526b4104e91adb29089f8fa4f404f9ba5e65ac7daf9eae72f9ead12bb"
+    },
+    "config": {
+      "sign_period": 4,
+      "sign_patterns": 16,
+      "last_index": 128,
+      "triple_last_index": 32
+    }
+  },
+  "status": "finite_checks_pass",
+  "cases": [
+    {
+      "name": "sign-pattern-0",
+      "result": {
+        "signs": [
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1004,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-1",
+      "result": {
+        "signs": [
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-2",
+      "result": {
+        "signs": [
+          -1,
+          1,
+          -1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1012,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-3",
+      "result": {
+        "signs": [
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-4",
+      "result": {
+        "signs": [
+          -1,
+          -1,
+          1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1012,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-5",
+      "result": {
+        "signs": [
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-6",
+      "result": {
+        "signs": [
+          -1,
+          1,
+          1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1004,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-7",
+      "result": {
+        "signs": [
+          1,
+          1,
+          1,
+          -1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-8",
+      "result": {
+        "signs": [
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-9",
+      "result": {
+        "signs": [
+          1,
+          -1,
+          -1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1004,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-10",
+      "result": {
+        "signs": [
+          -1,
+          1,
+          -1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-11",
+      "result": {
+        "signs": [
+          1,
+          1,
+          -1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1012,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-12",
+      "result": {
+        "signs": [
+          -1,
+          -1,
+          1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-13",
+      "result": {
+        "signs": [
+          1,
+          -1,
+          1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1012,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-14",
+      "result": {
+        "signs": [
+          -1,
+          1,
+          1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2052,
+        "even_same_state_halvings": 1008,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "sign-pattern-15",
+      "result": {
+        "signs": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "recurrence_indices": 129,
+        "same_state_pairs": 2044,
+        "even_same_state_halvings": 1004,
+        "all_state_pairs": 8256
+      }
+    },
+    {
+      "name": "alternating-menus-and-encoding",
+      "result": {
+        "g85_transition_witnesses": [
+          {
+            "pair": "01",
+            "least_index": 0,
+            "vector": [
+              1,
+              0,
+              5
+            ]
+          },
+          {
+            "pair": "12",
+            "least_index": 4,
+            "vector": [
+              0,
+              3,
+              5
+            ]
+          },
+          {
+            "pair": "23",
+            "least_index": 10,
+            "vector": [
+              -1,
+              -2,
+              5
+            ]
+          },
+          {
+            "pair": "30",
+            "least_index": 2,
+            "vector": [
+              0,
+              -1,
+              1
+            ]
+          },
+          {
+            "pair": "02",
+            "least_index": 9,
+            "vector": [
+              1,
+              1,
+              6
+            ]
+          },
+          {
+            "pair": "13",
+            "least_index": 1,
+            "vector": [
+              1,
+              1,
+              6
+            ]
+          },
+          {
+            "pair": "20",
+            "least_index": 5,
+            "vector": [
+              -1,
+              -1,
+              2
+            ]
+          },
+          {
+            "pair": "31",
+            "least_index": 21,
+            "vector": [
+              -1,
+              -1,
+              2
+            ]
+          }
+        ],
+        "g170_vectors": [
+          [
+            2,
+            -1,
+            7
+          ],
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            -2,
+            -1,
+            3
+          ],
+          [
+            -1,
+            0,
+            3
+          ],
+          [
+            1,
+            1,
+            6
+          ],
+          [
+            -1,
+            -1,
+            2
+          ]
+        ],
+        "encoded_steps": 128,
+        "triples_in_each_model": 5456
+      }
+    },
+    {
+      "name": "offset-collision-coefficients",
+      "result": {
+        "affine_coefficient_identities": 4,
+        "cyclic_parity_taggings": 8,
+        "height_classes_by_delta": [
+          [
+            4,
+            4,
+            4,
+            4
+          ],
+          [
+            5,
+            5,
+            5,
+            1
+          ],
+          [
+            6,
+            6,
+            2,
+            2
+          ],
+          [
+            7,
+            3,
+            3,
+            3
+          ]
+        ]
+      }
+    }
+  ],
+  "scope": "Bounded exact-integer and affine-coefficient diagnostics only; the infinite proof and restricted scheme bound are audited in A-SIX-STEP-AUDIT.md. Not human collaborator approval or Lean certification."
+}
