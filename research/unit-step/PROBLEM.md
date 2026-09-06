@@ -4,7 +4,11 @@
 
 Let $\mathbb Z^d$ be the integer lattice in dimension $d$, and let
 $e_1,\ldots,e_d$ be its standard basis vectors: $e_r$ has a $1$ in coordinate
-$r$ and zeros elsewhere.
+$r$ and zeros elsewhere. Explicitly,
+
+$$
+e_1=(1,0,\ldots,0),\qquad\ldots,\qquad e_d=(0,\ldots,0,1).
+$$
 
 Determine the smallest positive integer $d_*$ for which there exists an infinite
 sequence $(P_n)_{n\ge0}$ in $\mathbb Z^{d_*}$ satisfying:
