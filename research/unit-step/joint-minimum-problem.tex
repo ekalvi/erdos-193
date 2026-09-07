@@ -52,20 +52,23 @@ Equality alone would not determine the common value.
 \textbf{Basic reduction and bounds.}
 Label the vectors of a successful step set by $1,\ldots,t$, $t\le s$,
 and replace each step of type $r$ by $e_r$. The resulting count walk
-projects linearly onto the original walk, so is itself admissible. Hence
+projects linearly onto the original walk, so is itself admissible. Thus
+$\E(3,s)\Rightarrow\B(s)$. The existing $g_{85}$ six-step construction gives
+the \emph{working bounds}
 \[
- \E(3,s)\Longrightarrow\B(s),\qquad
- \boxed{4\le d_*\le s_*\le16}.
+ \boxed{4\le d_*\le s_*\le6}
+ \qquad\text{subject to independent verification of the $g_{85}$ proof.}
 \]
-The lower bound follows because every ternary word of length eight contains
-an abelian square; the ceiling comes from the original sixteen-step 3D
-construction. The converse implication $\B(s)\Rightarrow\E(3,s)$ is
-\emph{not assumed}. Equivalently, $d_*$ is the minimum number of step types
-when the ambient lattice dimension is unrestricted.
-A written six-step construction proposes $s_*\le6$, hence $d_*\le6$,
-but independent review remains pending. Subject to that verification, the
-candidate pairs are $(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)$; none is asserted
-as the answer.
+Its written infinite argument is intended to be unconditional; the caveat
+concerns pending independent review, not an additional mathematical hypothesis.
+The established fallback ceiling is $s_*\le16$, from the original
+sixteen-step 3D construction. The lower bound follows because every ternary
+word of length eight contains an abelian square.
+The converse implication $\B(s)\Rightarrow\E(3,s)$ is \emph{not assumed}.
+Equivalently, $d_*$ is the minimum number of step types when the ambient
+lattice dimension is unrestricted. Subject to verification of the six-step
+proof, the candidate pairs are $(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)$;
+none is asserted as the answer.
 
 \textbf{Equivalent word and projection formulations.}
 Let $\mathcal W_d$ consist of infinite words on $\{1,\ldots,d\}$ having no

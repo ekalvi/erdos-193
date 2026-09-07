@@ -17,13 +17,15 @@ Problem. Determine the exact ordered pair (d∗,s ∗): prove unconditional in�
 mum and impossibility for every walk with a smaller dimension or step budget, respectively. In particular, determine
 whether the compression gap s∗ −d∗ is zero. Equality alone would not determine the common value.
 Basic reduction and bounds. Label the vectors of a successful step set by 1,...,t , t ≤s, and replace each step
-of type r byer. The resulting count walk projects linearly onto the original walk, so is itself admissible. Hence
-E(3,s ) =⇒ B (s), 4 ≤d∗ ≤s∗ ≤ 16 .
-The lower bound follows because every ternary word of length eight contains an abelian square; the ceiling comes from
-the original sixteen-step 3D construction. The converse implication B(s) ⇒ E (3,s ) is not assumed . Equivalently,
-d∗ is the minimum number of step types when the ambient lattice dimension is unrestricted. A written six-step
-construction proposes s∗ ≤ 6, hence d∗ ≤ 6, but independent review remains pending. Subject to that veriﬁcation,
-the candidate pairs are (4, 4), (4, 5), (4, 6), (5, 5), (5, 6), (6, 6); none is asserted as the answer.
+of type r by er. The resulting count walk projects linearly onto the original walk, so is itself admissible. Thus
+E(3,s ) ⇒ B (s). The existing g85 six-step construction gives the working bounds
+4 ≤d∗ ≤s∗ ≤ 6 subject to independent veriﬁcation of the g85 proof.
+Its written inﬁnite argument is intended to be unconditional; the caveat concerns pending independent review, not
+an additional mathematical hypothesis. The established fallback ceiling is s∗ ≤ 16, from the original sixteen-step
+3D construction. The lower bound follows because every ternary word of length eight contains an abelian square.
+The converse implication B(s) ⇒ E (3,s ) is not assumed . Equivalently, d∗ is the minimum number of step types
+when the ambient lattice dimension is unrestricted. Subject to veriﬁcation of the six-step proof, the candidate pairs
+are (4, 4), (4, 5), (4, 6), (5, 5), (5, 6), (6, 6); none is asserted as the answer.
 Equivalent word and projection formulations. Let Wd consist of inﬁnite words on {1,...,d } having no
 adjacent nonempty blocks x,y with ψ(x)/|x| =ψ(y)/|y|, where ψ is the Parikh (letter-count) vector. The lengths
 |x|, |y| may diﬀer: avoiding ordinary abelian squares alone is insuﬃcient. If Pn(w) counts the ﬁrst n letters, then
