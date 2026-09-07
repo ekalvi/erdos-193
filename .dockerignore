@@ -11,3 +11,5 @@ results/shallit-five-prefix.json
 results/shallit-substitution-algebra.json
 # Keep unreviewed track D visualization available for research, not production.
 viz/unit-step-track-d.html
+# Local AI research status must not restore the hidden public follow-up callout.
+viz/unit-step-research.html

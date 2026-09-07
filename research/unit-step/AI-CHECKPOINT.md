@@ -72,7 +72,9 @@ the original paper's Cambie–Kalviainen citation.
 | Original Erdős 193 negative answer | [Paper/source](../../paper/erdos193.tex), [Lean package](../../formal/Hilbert193/README.md), [site acceptance](https://www.erdosproblems.com/forum/thread/193/proof-claims#proof-claim-239). Applies to arbitrary finite step sets. |
 | Three positive directions cannot suffice | [Short extension-tree certificate and independent exhaustive check](../../design/UNIT-STEP-4D-5D-INVESTIGATION.md#1-why-three-positive-coordinate-directions-cannot-work): every ternary eight-letter word contains an ordinary abelian square. This finite exhaustive obstruction proves an infinite impossibility. |
 | A six-step 3D construction and its six-coordinate basis encoding | [Two-page draft](../../paper/unit_step_walk_N6_short.pdf), [source](../../paper/unit_step_walk_N6_short.tex), [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md). Exact written argument, independent review pending, not Lean-formalized. |
-| Six is optimal in the stated tagging scheme | Analytic argument in the [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md#optimality-inside-this-tag-scheme). Not a global dimension lower bound. |
+| Six is optimal in the stated tagging scheme | Analytic argument in the [scheme notes](../../design/SIGNED-GAUSSIAN-UNIT-STEP-OPTIMIZATION.md#optimality-inside-this-tag-scheme). The new [arbitrary-tag classification](explorations/gaussian-tags.md) extends this to arbitrary scales, state tags, and sign streams preserving the specified all-pairs valuation certificate (with constant offset); AI-reviewed, not human-certified. Neither is a global lower bound. |
+| Subsampling the existing walk cannot beat six with eventual gaps at most 16 | [Return-block report and independent checkers](explorations/return-blocks.md): exhaustive finite obstruction plus substitution recurrence; all 1,048,575 phase/transition selectors are also excluded. Computer-assisted and parent-rechecked; arbitrary larger gap bounds remain open. |
+| Any specified finite subsampling menu has a finite YES/NO decision certificate; an automatic selector suffices if any selector exists | [Focused descent synthesis](explorations/descent.md), [automata proof](explorations/descent-automata.md). State complexity depends on menu heights; no uniform five-menu exclusion. Parent-reviewed AI argument, not human certification. A separate independent checker excludes one specified five-menu with gaps up to 27, not the whole gap-27 class. |
 | Fixed transition recoding cannot give 4D/5D | [Certificates](../../results/unit-step-dimension-probe.json), [independent validator](../../design/check_unit_step_dimension_results.py): all 1,701 onto four-label codings fail within 44 steps; all 1,050 five-label codings fail within 85 steps. Does not exclude context-dependent coding. |
 | Shallit's five-letter candidate survives a finite prefix | [Result](../../results/shallit-five-prefix.json): 38,416 steps, 38,417 vertices, 737,913,736 exact chord checks. **Not an infinite 5D proof.** |
 | Naive substitution descent is incomplete | [Exact diagnostic](../../results/shallit-substitution-algebra.json), [derivation](../../design/UNIT-STEP-4D-5D-INVESTIGATION.md#exact-descent-available-so-far): 170 nonzero integral boundary corrections already for equal adjacent lengths. These are not 170 actual counterexamples. |
@@ -128,7 +130,30 @@ lengths**, not a larger prefix scan. The candidate might still fail later.
 
 ## 5. Next proof-oriented work
 
-For concurrent sessions, use the [four bounded track handoffs](PARALLEL-TASKS.md).
+The subsequent [six-direction exploration](explorations/README.md) is complete:
+all six independent agent reports received a parent proof review and fresh
+checker runs. The requested [focused descent follow-up](explorations/descent.md)
+also finished: three agents, four agent checkers and an independent fixed-menu
+verifier. Naive menu-preserving coarsening is false even after choosing among
+all four rounding offsets; finite witnesses do not refute an infinite-only
+implication. Fixed-phase and height-gcd descents remain valid. The strongest
+new theorem decides any specified finite menu and reduces arbitrary selectors
+to 4-automatic selectors, without bounding their state count by menu size.
+
+No numerical minimum bound changed. The next descent target is an
+**infinite-extendability invariant** for the 16-height-residue correction
+system, connected to the exact matrix certificates—not another blind gap or
+prefix scan. A uniform zero-certificate theorem for all five-vector menus, or
+one positive five-menu cycle, would settle the construction-specific target.
+Other directions remain simultaneous two-marker constraints for five letters
+and constructions outside the classified valuation/raw-iid methods. The reports
+also give an odd-prime certificate obstruction and a spectral filter for
+rational 3D projections. These are AI-assisted research results, not collaborator
+approval. Shallit's candidate is not refuted; the now-archived fixed-ratio
+progress is indexed in the exploration's prior-work ledger. Do not simply repeat the original four
+handoffs without accounting for these results.
+
+For concurrent sessions, use the [bounded handoff operating rules](PARALLEL-TASKS.md).
 Start each in a separate worktree from current `origin/main`; the four-core
 resource limit is host-wide across sessions, not a per-session allowance.
 

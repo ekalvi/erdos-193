@@ -55,7 +55,11 @@ const docs = ['README.md', 'paper/followups/README.md',
   'research/unit-step/JOINT-MINIMUM.md', 'research/unit-step/PARALLEL-TASKS.md',
   'research/unit-step/tracks/HIGHER-SIGN-TOPOLOGIES.md',
   'research/unit-step/tracks/D-SHALLIT-PROJECTION.md',
-  'design/WEAK-ABELIAN-CUBE-DRAFT-REVIEW.md', 'design/unit-step-explainer/README.md'];
+  'design/WEAK-ABELIAN-CUBE-DRAFT-REVIEW.md', 'design/unit-step-explainer/README.md',
+  ...['README', 'gaussian-tags', 'return-blocks', 'universal-five',
+    'new-arithmetic', 'new-words', 'three-d-geometry', 'descent',
+    'descent-algebra', 'descent-automata', 'descent-adversary']
+    .map(name => `research/unit-step/explorations/${name}.md`)];
 let links = 0;
 for (const doc of docs) {
   const markdown = (await read(doc)).toString();
@@ -73,10 +77,11 @@ const dockerignore = (await read('.dockerignore')).toString().split('\n');
 for (const name of excludedEvidence) {
   assert(dockerignore.lastIndexOf(name) > dockerignore.lastIndexOf('!results/**'), `research data exposed: ${name}`);
 }
-const researchVisualizations = ['viz/unit-step-track-d.html'];
+const researchVisualizations = ['viz/unit-step-track-d.html', 'viz/unit-step-research.html'];
 for (const name of researchVisualizations) {
   assert(dockerignore.lastIndexOf(name) > dockerignore.lastIndexOf('!viz/**'), `unreviewed research visualization exposed: ${name}`);
   const html = (await read(name)).toString();
+  assert(html.includes('<meta name="robots" content="noindex,nofollow">'), `${name}: missing noindex directive`);
   assert(html.includes('independent mathematical review pending'), `${name}: missing review caveat`);
   assert(html.includes('excluded from the production website'), `${name}: missing visibility caveat`);
   for (const match of html.matchAll(/(?:href|src)="([^"#]+)"/g)) {
