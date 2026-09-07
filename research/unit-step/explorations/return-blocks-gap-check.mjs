@@ -5,7 +5,7 @@
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {readFileSync,writeFileSync,renameSync,existsSync,mkdirSync} from 'node:fs';
-if(process.argv.includes('--help')) {console.log('Usage: node return-blocks-gap-check.mjs GAP [PREFIX=128]\nExact DFS of all five-displacement paths with gaps <= GAP through a source prefix.\nCheckpoints under .checkpoint-return-blocks validate code/config and resume completed starting positions.\nAn interrupted starting position restarts. Use one process and native thread limits 1.');process.exit(0);}
+if(process.argv.includes('--help')) {console.log('Usage: node return-blocks-gap-check.mjs GAP [PREFIX=128]\nExact DFS of all five-displacement paths with gaps <= GAP through a source prefix.\nCheckpoints under .checkpoint-return-blocks validate code/config and resume completed starting positions.\nAn interrupted starting position restarts. Use one process and native thread limits 1.\nExit status: 0=no path, 2=counterexample, 1=error; resumed results use the same status.');process.exit(0);}
 const B=Number(process.argv[2]??2), N=Number(process.argv[3]??128);
 if(!Number.isSafeInteger(B)||!Number.isSafeInteger(N)||B<1||N<=B)throw Error('usage: node return-blocks-gap-check.mjs GAP [PREFIX=128]');
 const start=Date.now();
@@ -17,7 +17,7 @@ let state={sha256,B,N,starts:[],found:null};
 if(existsSync(path)){state=JSON.parse(readFileSync(path));assert.equal(state.sha256,sha256);assert.equal(state.B,B);assert.equal(state.N,N);assert.ok(Array.isArray(state.starts));assert.ok(state.starts.length<=B);for(let j=0;j<state.starts.length;j++){assert.equal(state.starts[j].first,j);assert.ok(Number.isSafeInteger(state.starts[j].nodes));}}
 const save=()=>{writeFileSync(path+'.tmp',JSON.stringify(state)+'\n');renameSync(path+'.tmp',path);};
 log('start',{sha256,threads:1,checkpoint:path,resume:'validated completed starting positions',completed:state.starts.length,total:B});
-if(state.starts.length===B||state.found){log('resume-complete',state);process.exit(0);}
+if(state.starts.length===B||state.found){log('resume-complete',state);process.exit(state.found?2:0);}
 const delta=[0,1,3,0],c=[[0,0],[-1,0],[-1,1],[0,-1]],u=[[1,0],[0,1],[-1,0],[0,-1]];
 const q=new Uint8Array(N+B+1),P=[];
 for(let n=1;n<q.length;n++)q[n]=(q[Math.floor(n/4)]+delta[n%4])%4;
@@ -60,3 +60,4 @@ for(let first=state.starts.length;first<B;first++){
  if(found)break;
 }
 log('result',{...state,nodes:state.starts.reduce((a,r)=>a+r.nodes,0),maxReach:Math.max(...state.starts.map(r=>r.maxReach)),elapsed_s:(Date.now()-start)/1000});
+process.exitCode=state.found?2:0;

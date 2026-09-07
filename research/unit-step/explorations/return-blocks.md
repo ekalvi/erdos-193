@@ -264,6 +264,12 @@ identity; interruption restarts only the unfinished starting position.
 Progress logs and checkpoints stay outside proof artifacts in the ignored
 `.checkpoint-return-blocks/` directory.
 
+Both gap checkers exit **0 for a completed no-path result, 2 for a found
+counterexample, and 1 for an error**. Resuming a saved JavaScript counterexample
+also exits 2; it must never be interpreted by a shell/CI runner as a passing
+obstruction. The bounded CLI regression checks fresh and resumed positive and
+negative outcomes in isolated temporary checkpoint directories.
+
 ```sh
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 export MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
@@ -271,6 +277,9 @@ mkdir -p .checkpoint-return-blocks
 
 node research/unit-step/explorations/return-blocks-check.mjs \
   > .checkpoint-return-blocks/selectors.jsonl
+
+node --test --test-concurrency=1 \
+  research/unit-step/explorations/return-blocks-gap-check.test.mjs
 
 node --max-old-space-size=256 \
   research/unit-step/explorations/return-blocks-gap-check.mjs 16 512 \
@@ -340,6 +349,8 @@ All are new files:
   phase/transition selector checks and complete state-union return menus.
 - `research/unit-step/explorations/return-blocks-gap-check.mjs` — exact,
   resumable bounded-gap DFS.
+- `research/unit-step/explorations/return-blocks-gap-check.test.mjs` — bounded
+  CLI exit-status and checkpoint-resume regressions added during PR review.
 - `research/unit-step/explorations/return-blocks-gap-verify.cpp` — independent
   exact, resumable validator with binary states and no memoization.
 

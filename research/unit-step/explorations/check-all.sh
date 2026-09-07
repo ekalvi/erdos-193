@@ -9,7 +9,7 @@ track=research/unit-step/explorations
 run=".checkpoint-s-star-validation/$(date -u +%Y%m%dT%H%M%SZ)-$$"
 mkdir -p "$run" .checkpoint-return-blocks
 completed=0
-total=13
+total=14
 log() { printf '%s %s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$*" | tee -a "$run/progress.log"; }
 trap 'log "interrupted completed=$completed/$total; rerun this script to resume validated calculation checkpoints"; exit 130' INT TERM
 trap 'rc=$?; if ((rc != 0)); then log "error exit=$rc completed=$completed/$total logs=$run"; fi' EXIT
@@ -26,6 +26,7 @@ check() {
 node_one() { node --single-threaded --v8-pool-size=1 "$@"; }
 check gaussian node_one "$track/gaussian-tags-check.mjs"
 check selectors node_one "$track/return-blocks-check.mjs"
+check gap-js-exit-regressions node_one --test --test-concurrency=1 "$track/return-blocks-gap-check.test.mjs"
 check gap-js node_one --max-old-space-size=256 "$track/return-blocks-gap-check.mjs" 16 512
 src="$track/return-blocks-gap-verify.cpp"
 log 'compiling independent C++ validator (one compiler job)'

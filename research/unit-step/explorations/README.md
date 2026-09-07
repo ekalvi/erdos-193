@@ -69,7 +69,9 @@ Both are now complete; no unbounded research loop is running.
 All six first-round written arguments were read. The parent independently reran
 all eight first-round executable checkers, including both bounded-gap
 implementations, from fresh local checkpoints. Five further bounded checks
-cover the [focused follow-up](descent.md), for thirteen in the combined suite.
+cover the [focused follow-up](descent.md), for thirteen research checkers.
+PR review added a bounded CLI regression suite for fresh/resumed gap-checker
+exit statuses, making fourteen validation stages in the combined runner.
 One wording correction distinguishes **tag-height** cycle increments (sum zero)
 from actual step heights (sum `4L`) in the Gaussian proof.
 An independent fraction-free partition diagnostic also confirms that merely
@@ -99,7 +101,9 @@ Commands and resume semantics are in each report. For the whole bounded suite
 bash research/unit-step/explorations/check-all.sh
 ```
 
-The research-checkpoint CI workflow runs the same bounded suite. Local archive,
+The research-checkpoint CI workflow runs the same bounded suite. Found
+counterexamples cause the gap checker to exit nonzero on both fresh and resumed
+runs; the runner must not count them as successful obstruction certificates. Local archive,
 production-separation, joint-projection, and explainer checks also pass. The
 GitHub workflow supplies the current remote CI status; passing checks are not
 independent mathematical approval.
