@@ -5,6 +5,25 @@
   "text_extractor": "pypdf==6.17.0",
   "pdfs": [
     {
+      "id": "joint-minimum-problem",
+      "title": "No-three-collinear lattice walks: the joint minimum problem",
+      "attribution": "AI-assisted standalone formulation requested by Erik Kalviainen; original theorem by Cambie and Kalviainen, basis/word formulation and encoding by Shallit. No new joint authorship claimed.",
+      "status": "Open follow-up problem statement; no new mathematical result. Six-step upper bound explicitly pending independent review.",
+      "path": "research/unit-step/joint-minimum-problem.pdf",
+      "sha256": "f33504b79f5cde66a1e0ed61defacefa2980efa4e5f57feae646457cb3d5a37e",
+      "source": {
+        "kind": "repository_problem_statement",
+        "note": "Compiled from standalone LaTeX with Tectonic 0.17.0; distilled from research/unit-step/JOINT-MINIMUM.md."
+      },
+      "editable_sources": [
+        "research/unit-step/joint-minimum-problem.tex"
+      ],
+      "text_path": "research/unit-step/text/joint-minimum-problem.txt",
+      "pdf_bytes": 49048,
+      "pdf_pages": 1,
+      "text_sha256": "4d0f690a511fc036fa6aa6010596894b7bfe3c81312ac9e681d65f76b9226487"
+    },
+    {
       "id": "cambie-kalviainen-original",
       "title": "An infinite small-step Z^3-walk with no collinear triple",
       "attribution": "Named authors: Stijn Cambie and Erik Kalviainen.",
