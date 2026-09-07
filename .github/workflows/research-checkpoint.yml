@@ -80,3 +80,13 @@ jobs:
             -DSOURCE_SHA=\"$(sha256sum "$src" | cut -d' ' -f1)\" \
             "$src" -o /tmp/verify_unit_step_prefix
           python3 design/check_unit_step_dimension_results.py --binary /tmp/verify_unit_step_prefix
+      - name: Check signed-family selector reductions and overlap exclusions
+        run: |
+          node --test --test-concurrency=1 research/unit-step/tracks/*.test.mjs
+          node research/unit-step/tracks/check_signed_phase_selector.mjs
+          node research/unit-step/tracks/signed_phase_overlap.mjs --q 3 --seconds 60 \
+            --output research/unit-step/checks/signed-phase-overlap-8.json
+          node research/unit-step/tracks/check_signed_phase_overlap.mjs --q 3 --write
+          git diff --exit-code -- \
+            research/unit-step/checks/signed-phase-overlap-8.json \
+            research/unit-step/checks/signed-phase-reference-8.json

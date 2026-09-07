@@ -86,6 +86,16 @@ and 170 at period 8; indices 21845 and 43690 at period 16). The
 six-dimensional PDF proves existence; **it does not contain the separate
 no-5D-within-scheme argument**. Keep that earlier scope correction explicit.
 
+A separate [higher-sign topology investigation](tracks/HIGHER-SIGN-TOPOLOGIES.md)
+reduces state-only selectors over all infinite sign streams to 1,080 exact
+cases. With fixed Cambie tags, completed computations also exclude at most
+five vectors for nonempty, tail-state-dependent selections in blocks of
+length 2, 4, 8, and 16. A second implementation confirms the 8-position case;
+the 16-position case has not had a second full-size implementation check or
+external review. These are restricted selector exclusions, **not** improved
+global bounds or an all-block-size impossibility theorem. The note preserves
+reproduction commands, tests, scoped results, and the superseded solver timeouts.
+
 ## 4. Construction data needed to resume
 
 For $g_{85}$, use $\sigma(n)=\sum_j(-1)^j b_j(n)\pmod4$ and
