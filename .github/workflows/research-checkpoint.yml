@@ -63,6 +63,8 @@ jobs:
         env:
           UV_THREADPOOL_SIZE: '1'
         run: node research/unit-step/tracks/check_four_letter_returns.mjs
+      - name: Check track D projection-obstruction arithmetic
+        run: node research/unit-step/tracks/check_d_shallit_projection.mjs
       - name: Check the offline explainer build and finite models
         run: |
           node design/unit-step-explainer/build.mjs

@@ -91,6 +91,33 @@ test('six-vector search witness agrees with a direct digit-sum subsequence',()=>
   assert.deepEqual([...seen].sort(),menu.map(v=>v.join(',')).sort());
 });
 
+test('public timeline matches selector evidence without promoting its scope',()=>{
+  const html=fs.readFileSync('viz/progress.html','utf8');
+  const section=html.match(/<aside\b[^>]*\bid="signed-selector-research"[^>]*>[\s\S]*?<\/aside>/)?.[0];
+  assert(section,'missing signed-selector research status');
+  assert.match(section,/data-status="computational"/);
+  assert.match(section,/Cambie’s fixed tags/);
+  assert.match(section,/nonempty position selections in every dyadic block, determined only by its tail state/);
+  assert.match(section,/No four- or five-vector construction was found; the global minima remain open/);
+  assert.match(section,/not a global lower bound or an all-block-size theorem/);
+  assert.match(section,/The original Erdős 193 theorem is unchanged/);
+  assert.match(section,/href="https:\/\/github\.com\/ekalvi\/erdos-193\/blob\/main\/research\/unit-step\/tracks\/HIGHER-SIGN-TOPOLOGIES\.md"/);
+  for(const L of [8,16]) {
+    const result=JSON.parse(fs.readFileSync(`research/unit-step/checks/signed-phase-overlap-${L}.json`,'utf8'));
+    const row=section.match(new RegExp(`<li\\b[^>]*data-block-size="${L}"[^>]*>[\\s\\S]*?<\\/li>`))?.[0];
+    assert(row,`missing ${L}-position result`);
+    assert.equal(result.status,'unsat');assert.equal(result.completed,result.total);
+    assert(row.includes(`data-completed-units="${result.completed}"`));
+    assert(row.includes(`all ${result.completed.toLocaleString('en-US')} endpoint units complete`));
+    assert(row.includes(`data-independent-reference="${L===8}"`));
+    if(L===8)assert.match(row,/a second implementation independently confirms the exclusion/);
+    else assert.match(row,/No second full-size implementation check or external review yet/);
+  }
+  const note=fs.readFileSync('research/unit-step/tracks/HIGHER-SIGN-TOPOLOGIES.md','utf8');
+  assert(note.includes('../../../viz/progress.html#signed-selector-research'));
+  assert(!note.includes('Public visualization is unchanged'));
+});
+
 test('saved 8/16 exclusions have complete endpoint coverage and matching code identity',()=>{
   const sourceSha256=hash(fs.readFileSync('research/unit-step/tracks/signed_phase_overlap.mjs'));
   const tablesSha256=hash(fs.readFileSync('research/unit-step/tracks/check_signed_phase_selector.mjs'));

@@ -222,9 +222,15 @@ Do not infer an all-block-size theorem from these four completed sizes, or
 present a smaller family restriction as a lower bound on $s_*$. The new search
 branches on forced overlaps rather than multiplying all possible selectors.
 
-Public visualization is unchanged: there is no threshold improvement and no
-new public proof claim. The follow-up remains hidden pending review. These
-research-only artifacts must not be promoted to a global impossibility result.
+The [public research timeline](../../../viz/progress.html#signed-selector-research)
+summarizes these results as **computational evidence**, with the fixed-tag,
+nonempty-block selector restriction and the outstanding second full-size
+implementation check and external review for the 16-position case. It states
+that the global minima remain open and points back to these artifacts. This
+status entry does not publish a new threshold theorem or change the original
+Erdős 193 proof; these exclusions must not be promoted to a global impossibility
+result. Regression tests keep its counts and review caveats synchronized with
+the saved search results.
 
 ## 5. Reproduction and retained evidence
 
