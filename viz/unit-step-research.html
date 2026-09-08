@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Step-minimum exploration — research-only status</title>
+  <link rel="icon" href="favicon.svg">
+  <link rel="stylesheet" href="site.css?v=gaussian11">
+  <style>
+    .research-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap:1rem; }
+    .research-card { border:1px solid #87939d; border-radius:.7rem; padding:1rem; }
+    .research-card h3 { margin-top:.35rem; }
+    .scope { font-weight:600; }
+    .research-path { overflow-wrap:anywhere; }
+  </style>
+</head>
+<body>
+<div class="wrap wide">
+  <main class="lesson-page section">
+    <span class="eyebrow">Local research snapshot · September 6, 2026</span>
+    <h1>The exact step minimum is still open.</h1>
+    <p class="artefact-boundary"><strong>Research-only; not a public result announcement.</strong>
+      Six initial AI investigations and a three-agent descent follow-up are complete,
+      with separate parent review and fresh bounded checks.
+      These are restricted analytic arguments and computational obstructions, with
+      independent mathematical review pending—not human approval or Lean certification.
+      This page is excluded from the production website through the Docker context
+      and is not linked into public navigation. Nothing was deployed.</p>
+    <section class="lesson-step" aria-labelledby="target">
+      <h2 id="target">Two minima, unchanged bounds</h2>
+      <p><strong>s<sub>*</sub></strong> counts one fixed integer step menu for an infinite
+        no-three-collinear walk in three dimensions. <strong>d<sub>*</sub></strong> is
+        the positive-basis dimension minimum. Equality is not assumed.</p>
+      <p class="math-block">Established: 4 ≤ d<sub>*</sub> ≤ s<sub>*</sub>.<br>
+        Existing proposed ceiling: s<sub>*</sub> ≤ 6, with collaborator review pending.<br>
+        <strong>No result in either round determines either minimum.</strong></p>
+      <p>The original Erdős Problem 193 theorem of Cambie and Kalviainen is separate and
+        unchanged. The six-step follow-up uses Kalviainen’s alternating source,
+        Cambie’s offsets, and Shallit’s basis encoding. Shallit’s five-letter candidate
+        is not refuted; partial fixed-ratio certificates are not an all-ratios proof.</p>
+    </section>
+    <section class="lesson-step" aria-labelledby="results">
+      <h2 id="results">What the competing tracks actually established</h2>
+      <div class="research-grid">
+        <article class="research-card"><span class="scope">Analytic · restricted family</span>
+          <h3>Gaussian tags: six remains optimal</h3>
+          <p>Arbitrary scales, integer state tags, and infinite sign streams cannot beat
+            six while preserving the stated all-pairs valuation certificate. The report
+            classifies admissible tags and proves the collision obstruction.</p>
+          <p><strong>Not:</strong> a universal six-step lower bound.</p>
+          <p class="research-path"><code>gaussian-tags.md</code></p></article>
+        <article class="research-card"><span class="scope">Computer-assisted · recurring finite obstruction</span>
+          <h3>Deleting vertices: gaps ≤16 do not help</h3>
+          <p>Every subsequence of the established walk with eventual gaps at most 16
+            requires six displacements. Independent JavaScript and C++ searches agree.
+            All 1,048,575 phase/transition selectors also fail to beat six.</p>
+          <p><strong>Open:</strong> larger-gap, richer-memory selectors.</p>
+          <p class="research-path"><code>return-blocks.md</code></p></article>
+        <article class="research-card"><span class="scope">Analytic · exact reformulation</span>
+          <h3>Five letters: two-marker returns</h3>
+          <p>An exact 236-return-word formulation retains every partial endpoint and
+            unequal ratio. Return-vector compression gives further necessary conditions.</p>
+          <p><strong>Missing:</strong> a universal simultaneous marker/gap contradiction.</p>
+          <p class="research-path"><code>universal-five.md</code></p></article>
+        <article class="research-card"><span class="scope">Analytic · certificate obstruction</span>
+          <h3>Alternate norms: several routes excluded</h3>
+          <p>A ramified odd-prime norm with a fixed sum-free leading-unit certificate
+            forces zero-density heights, incompatible with bounded positive height steps.
+            One economical alternative source was just a coordinate change of the old one.</p>
+          <p><strong>Not:</strong> exclusion of all odd-prime constructions.</p>
+          <p class="research-path"><code>new-arithmetic.md</code></p></article>
+        <article class="research-card"><span class="scope">Analytic · probability-method obstruction</span>
+          <h3>Raw iid local-lemma proofs cannot suffice</h3>
+          <p>The all-ratios probability sum has a sharp threshold. Independently, the
+            interval-overlap graph and event marginals alone cannot certify infinite
+            avoidance, even for iid bounded macroblocks.</p>
+          <p><strong>Open:</strong> conditioned and multiscale constructions.</p>
+          <p class="research-path"><code>new-words.md</code></p></article>
+        <article class="research-card"><span class="scope">Analytic · restricted menus and projection filters</span>
+          <h3>3D geometry: a sharp small-family bound</h3>
+          <p>Menus {a₁u,a₂u,a₃u,v,−v} have a sharp 15-step maximum. Sub-square-root
+            deviation growth also excludes every rational 3D projection of a class
+            of primitive uniform substitutions.</p>
+          <p><strong>Open:</strong> general full-rank five-step menus.</p>
+          <p class="research-path"><code>three-d-geometry.md</code></p></article>
+      </div>
+    </section>
+    <section class="lesson-step" aria-labelledby="descent">
+      <h2 id="descent">Focused follow-up: test infinite compatibility, not just local descent</h2>
+      <div class="research-grid">
+        <article class="research-card"><span class="scope">Analytic · specified Gaussian source</span>
+          <h3>Each fixed menu is decidable</h3>
+          <p>A finite return-language automaton and substitution matrix cycle give exact
+            infinite YES/NO certificates. If any finite-menu subsequence exists,
+            a 4-automatic selector exists with the same menu.</p>
+          <p><strong>Not:</strong> a bound on selector complexity from menu size, or a
+            uniform decision for all five-vector menus at once.</p>
+          <p class="research-path"><code>descent-automata.md</code></p></article>
+        <article class="research-card"><span class="scope">Exact obstructions · no changed minimum</span>
+          <h3>Naive coarsening fails; its bad menus need not survive</h3>
+          <p>A finite five-menu path gains a sixth vector under every fixed base-4
+            rounding offset. Yet a short, independently checked automaton certificate
+            excludes that particular menu at infinity, even with gaps up to 27.</p>
+          <p><strong>Not:</strong> an impossibility theorem for every gap-27 selector.
+            A descent theorem restricted to infinitely extendable menus remains open.</p>
+          <p class="research-path"><code>descent.md</code></p></article>
+      </div>
+    </section>
+    <section class="lesson-step" aria-labelledby="next">
+      <h2 id="next">Best next proof obligations</h2>
+      <ol>
+        <li>Connect the exact finite-menu certificates to the 16-height-residue
+          correction system: prove an infinite-compatible, menu-preserving descent,
+          or produce a positive five-menu certificate. Local label preservation is false.</li>
+        <li>Exploit consistency across all ten marker pairs in a hypothetical five-letter word.</li>
+        <li>Construct outside the classified valuation and raw-iid families, with one
+          fixed integer 3D realization and a proof covering every interval ratio.</li>
+      </ol>
+      <p>A restricted obstruction, a finite surviving prefix, and a universal theorem
+        are different evidence levels. None may be substituted for another.</p>
+      <p class="research-path">Source reports and reproduction:
+        <code>research/unit-step/explorations/README.md</code> in the repository.
+        They have not been published by this run.</p>
+    </section>
+  </main>
+</div>
+</body>
+</html>

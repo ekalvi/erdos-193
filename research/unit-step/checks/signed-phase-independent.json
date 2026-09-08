@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "codeSha256": "815819aaf788bdb2b723b15af34bdf94de695a01f598a59589abe82f0277e443",
+  "solverSourceSha256": "4e632cd026c75fab1a98ab6bdfc9e3275c84487d90ae5eedbb52b516c4edc1ed",
+  "results": [
+    {
+      "q": 1,
+      "blockSize": 2,
+      "lowSignCases": 2,
+      "minimalTailGraphs": 4,
+      "selectorAssignments": 648,
+      "atMostFiveVectorAssignments": 0,
+      "status": "exhaustively-excluded-in-stated-class"
+    },
+    {
+      "q": 2,
+      "blockSize": 4,
+      "lowSignCases": 4,
+      "minimalTailGraphs": 4,
+      "selectorAssignments": 810000,
+      "atMostFiveVectorAssignments": 0,
+      "status": "exhaustively-excluded-in-stated-class"
+    }
+  ],
+  "sixVectorControl": {
+    "lowSigns": [
+      1
+    ],
+    "tailChanges": [
+      2,
+      3
+    ],
+    "positionsByTailState": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        1
+      ]
+    ],
+    "menu": [
+      [
+        -1,
+        -2,
+        5
+      ],
+      [
+        -1,
+        -1,
+        2
+      ],
+      [
+        0,
+        -1,
+        1
+      ],
+      [
+        0,
+        3,
+        5
+      ],
+      [
+        1,
+        0,
+        5
+      ],
+      [
+        1,
+        1,
+        6
+      ]
+    ]
+  }
+}

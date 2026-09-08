@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'research/unit-step/**'
+      - 'viz/progress.html'
       - 'paper/**'
       - 'design/**'
       - 'results/*unit-step*'
@@ -11,11 +12,13 @@ on:
       - 'q5m.yaml'
       - '.dockerignore'
       - 'README.md'
+      - 'viz/unit-step-research.html'
       - '.github/workflows/research-checkpoint.yml'
   push:
     branches: [main]
     paths:
       - 'research/unit-step/**'
+      - 'viz/progress.html'
       - 'paper/**'
       - 'design/**'
       - 'results/*unit-step*'
@@ -23,6 +26,7 @@ on:
       - 'q5m.yaml'
       - '.dockerignore'
       - 'README.md'
+      - 'viz/unit-step-research.html'
       - '.github/workflows/research-checkpoint.yml'
   workflow_dispatch:
 
@@ -39,6 +43,7 @@ jobs:
       OPENBLAS_NUM_THREADS: '1'
       MKL_NUM_THREADS: '1'
       NUMEXPR_NUM_THREADS: '1'
+      UV_THREADPOOL_SIZE: '1'
     steps:
       - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
@@ -50,6 +55,20 @@ jobs:
         run: node research/unit-step/check.mjs
       - name: Check joint-minimum finite projection examples
         run: node research/unit-step/joint_minimum_examples.mjs
+      - name: Check Track A six-step audit diagnostics (finite only)
+        run: node research/unit-step/tracks/check_six_step_audit.mjs --recompute
+      - name: Verify Shallit fixed-ratio ancestor certificates and resume behavior
+        run: |
+          node research/unit-step/tracks/shallit-five/check.mjs
+          node research/unit-step/tracks/shallit-five/test.mjs
+      - name: Check four-letter return reduction and local obstruction certificate
+        env:
+          UV_THREADPOOL_SIZE: '1'
+        run: node research/unit-step/tracks/check_four_letter_returns.mjs
+      - name: Check track D projection-obstruction arithmetic
+        run: node research/unit-step/tracks/check_d_shallit_projection.mjs
+      - name: Validate bounded exploratory certificates (not exact-minimum proofs)
+        run: bash research/unit-step/explorations/check-all.sh
       - name: Check the offline explainer build and finite models
         run: |
           node design/unit-step-explainer/build.mjs
@@ -65,3 +84,13 @@ jobs:
             -DSOURCE_SHA=\"$(sha256sum "$src" | cut -d' ' -f1)\" \
             "$src" -o /tmp/verify_unit_step_prefix
           python3 design/check_unit_step_dimension_results.py --binary /tmp/verify_unit_step_prefix
+      - name: Check signed-family selector reductions and overlap exclusions
+        run: |
+          node --test --test-concurrency=1 research/unit-step/tracks/*.test.mjs
+          node research/unit-step/tracks/check_signed_phase_selector.mjs
+          node research/unit-step/tracks/signed_phase_overlap.mjs --q 3 --seconds 60 \
+            --output research/unit-step/checks/signed-phase-overlap-8.json
+          node research/unit-step/tracks/check_signed_phase_overlap.mjs --q 3 --write
+          git diff --exit-code -- \
+            research/unit-step/checks/signed-phase-overlap-8.json \
+            research/unit-step/checks/signed-phase-reference-8.json
