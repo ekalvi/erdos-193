@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { mkdtemp, cp, mkdir, readFile, writeFile, rm, readdir } from 'node:fs/promises';
+import { mkdtemp, cp, mkdir, readFile, writeFile, rm, readdir, rename } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -60,6 +60,41 @@ test('build detects drift, propagates shared edits, is idempotent, and rejects u
     assert.match(run(dir).stderr, /unknown partial missing/);
     await writeFile(page, '{{ include invalid/path }}');
     assert.match(run(dir).stderr, /unresolved template directive/);
+  } finally {
+    await rm(dir, { recursive: true, force: true });
+  }
+});
+
+test('deleted and renamed templates remove only owned outputs, even when every template is deleted', async () => {
+  const dir = await mkdtemp(path.join(tmpdir(), 'erdos-site-orphans-'));
+  try {
+    await cp(here, path.join(dir, 'site'), { recursive: true });
+    await mkdir(path.join(dir, 'viz'));
+    assert.equal(run(dir).status, 0);
+    const unmanaged = '<!doctype html><title>Hand-authored page</title>';
+    await writeFile(path.join(dir, 'viz/manual.html'), unmanaged);
+    await rm(path.join(dir, 'site/pages/demo.html'));
+    await rename(path.join(dir, 'site/pages/learn.html'), path.join(dir, 'site/pages/guide.html'));
+    const before = await readFile(path.join(dir, 'viz/demo.html'), 'utf8');
+    const check = run(dir, '--check');
+    assert.equal(check.status, 1);
+    assert.match(check.stderr, /Orphaned generated pages: demo.html, learn.html/);
+    assert.equal(await readFile(path.join(dir, 'viz/demo.html'), 'utf8'), before, '--check must not delete');
+    assert.match(run(dir).stdout, /2 removed/);
+    const outputs = await readdir(path.join(dir, 'viz'));
+    assert(!outputs.includes('demo.html'));
+    assert(!outputs.includes('learn.html'));
+    assert(outputs.includes('guide.html'));
+    assert.equal(await readFile(path.join(dir, 'viz/manual.html'), 'utf8'), unmanaged);
+    assert.equal(run(dir, '--check').status, 0);
+    assert.match(run(dir).stdout, /0 changed, 0 removed/);
+    for (const page of await readdir(path.join(dir, 'site/pages'))) {
+      await rm(path.join(dir, 'site/pages', page));
+    }
+    assert.equal(run(dir, '--check').status, 1);
+    assert.match(run(dir).stdout, /7 removed/);
+    assert.deepEqual(await readdir(path.join(dir, 'viz')), ['manual.html']);
+    assert.equal(run(dir, '--check').status, 0);
   } finally {
     await rm(dir, { recursive: true, force: true });
   }

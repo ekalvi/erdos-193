@@ -17,6 +17,6 @@ node site/build.mjs --check  # fail if generated pages are stale
 node --test site/build.test.mjs
 ```
 
-Commit templates and generated HTML together. Outputs remain tracked because research checks and chronology tooling read `viz/*.html` directly. Builds are deterministic, only replace changed files, and use atomic writes; rerunning completes an interrupted build. CI checks freshness before deployment. Nginx still serves plain HTML, with no runtime includes, JavaScript header loading, or URL changes. Templates are outside `viz/` and are not shipped in the image.
+Commit templates and generated HTML together. Outputs remain tracked because research checks and chronology tooling read `viz/*.html` directly. Builds are deterministic, only replace changed files, and use atomic writes; rerunning completes an interrupted build. Each output carries a stable generated-file ownership comment. If a template is deleted or renamed, `--check` rejects the orphaned output and a normal build deletes it after rendering the remaining templates. Unmarked, hand-authored HTML is never removed by this cleanup; preserve the ownership comment in generated files. CI checks freshness before deployment. Nginx still serves plain HTML, with no runtime includes, JavaScript header loading, or URL changes. Templates are outside `viz/` and are not shipped in the image.
 
 The root `favicon.svg` is separately used by Paseo's project-icon discovery; keep its artwork synchronized with `viz/favicon.svg` when changing branding.
