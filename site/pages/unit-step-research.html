@@ -1,15 +1,11 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  {{ include head }}
   <meta name="robots" content="noindex,nofollow">
   <title>Step-minimum exploration — research-only status</title>
-  <link rel="icon" href="favicon.ico" sizes="16x16 32x32 48x48">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
-  <link rel="icon" type="image/svg+xml" sizes="any" href="favicon.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="stylesheet" href="site.css?v=gaussian11">
+  {{ include icons }}
+  {{ include stylesheet }}
   <style>
     .research-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr)); gap:1rem; }
     .research-card { border:1px solid #87939d; border-radius:.7rem; padding:1rem; }
