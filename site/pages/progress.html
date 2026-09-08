@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{ include head }}
+  {{ include icons }}
+  <title>Timeline — Erdős Problem 193</title>
+  <meta name="description" content="The dated lesson sequence, Hilbert discovery route, Gaussian simplification, formal proof, and verification milestones behind the resolution of Erdős Problem 193.">
+  <link rel="canonical" href="https://erdos-193.q5m.ai/progress.html">
+  {{ include fonts }}
+  {{ include stylesheet }}
+  {{ include mathjax }}
+</head>
+<body>
+<div class="wrap wide">
+  {{ include header }}
+
+  <main class="progress-page">
+    <section class="artefact-hero">
+      <span class="eyebrow">Timeline</span>
+      <h1>How the proof became understandable.</h1>
+      <p class="sub">A concentrated publication and refinement phase kept the same two-adic obstruction while removing machinery: first a bounded-gap Hilbert selector, then an all-index tagged Hilbert lift, and finally the Gaussian digit-sum walk.</p>
+      <p class="artefact-boundary"><b>Source-of-truth boundary.</b> These are personal working notes and discovery artifacts, not proof certificates. The current <a href="proof.html">Gaussian proof</a> and <a href="erdos-193-gaussian-proof.pdf">joint Cambie–Kalviainen paper</a> contain the authoritative argument; the Hilbert material below records the route that exposed the tag geometry.</p>
+      <p class="artefact-boundary"><b>Separate unit-step follow-up · September 6.</b> A <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/A-SIX-STEP-AUDIT.md">line-by-line AI-assisted audit</a> found no core gap in Kalviainen’s six-step/6D draft, using Cambie’s offsets and Shallit’s encoding. Human collaborator review and Lean certification remain pending. The exact minima remain open; six-vector optimality was checked only within the stated fixed-tag construction scheme.</p>
+      <nav class="artefact-index" aria-label="Artefact chronology">
+        <a href="#lessons-aug-20"><time datetime="2026-08-20">Aug 20–26</time><b>Build the lessons</b></a>
+        <a href="#board-aug-23"><time datetime="2026-08-23">Aug 23</time><b>See the contradiction</b></a>
+        <a href="#board-aug-26"><time datetime="2026-08-26">Aug 26</time><b>Open the pair law</b></a>
+        <a href="#board-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Follow the bits</b></a>
+        <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
+        <a href="#workstation-aug-28"><time datetime="2026-08-28">Aug 28</time><b>See the workspace</b></a>
+        <a href="#publish-aug-28"><time datetime="2026-08-28">Aug 28–Sep 1</time><b>Publish and simplify</b></a>
+      </nav>
+    </section>
+
+    <aside class="artefact-boundary" id="unit-step-research" aria-label="Unit-step follow-up research status">
+      <p><b>Separate research follow-up · September 6, 2026.</b> For Shallit’s five-letter candidate, exact closed-state certificates exclude adjacent-block length ratios <b>1:1, 1:2, and 2:1</b> at every scale. Full weak abelian-square avoidance remains open: this is not a five-dimensional construction theorem or an improved dimension bound. The all-ratios boundary lemma and the unbounded-state limitation of this method are recorded in the <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/shallit-five/README.md">Track B proof and certificate notes</a>. The original Erdős 193 theorem is unchanged.</p>
+    </aside>
+
+    <aside class="artefact-boundary" id="signed-selector-research" aria-label="Signed-family selector computational research status" data-status="computational">
+      <p><b>Computational evidence · signed-family selectors · September 6, 2026.</b> With Cambie’s fixed tags, completed searches exclude menus of <b>five or fewer vectors</b> for nonempty position selections in every dyadic block, determined only by its tail state. The tested block lengths are <b>2, 4, 8, and 16</b>, across arbitrary infinite ± sign streams.</p>
+      <ul>
+        <li data-block-size="8" data-completed-units="1152" data-independent-reference="true"><b>8-position blocks:</b> all 1,152 endpoint units complete; a second implementation independently confirms the exclusion.</li>
+        <li data-block-size="16" data-completed-units="8704" data-independent-reference="false"><b>16-position blocks:</b> all 8,704 endpoint units complete. <b>No second full-size implementation check or external review yet.</b></li>
+      </ul>
+      <p><b>No four- or five-vector construction was found; the global minima remain open.</b> These are restricted computational exclusions, not a global lower bound or an all-block-size theorem. Further positive work needs to go beyond the tested selectors or change the lift; larger blocks, skipped blocks, and richer context remain unexcluded. The <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/HIGHER-SIGN-TOPOLOGIES.md">scoped derivation, results, and reproducible checks</a> record the limits. The original Erdős 193 theorem is unchanged.</p>
+    </aside>
+
+    <section class="artefact-timeline" aria-label="Chronological working artefacts">
+      <article class="artefact-entry" id="lessons-aug-20">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>01</span><time datetime="2026-08-20">August 20–26, 2026</time></div>
+          <div><span class="eyebrow">Build a course, not a summary</span><h2>Understanding came from teaching the proof back.</h2><p>The formal argument existed, but compact exposition was not enough. A synced Obsidian vault turned each point of confusion into its own linked lesson, then used from-memory prompts to decide what had to be explained next.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <div class="lesson-vault-artefact" aria-label="Obsidian course chronology from August 20 through August 26">
+            <div class="lesson-vault-topbar"><b>Erdos-193-Study</b><small>Obsidian vault · Aug 20–26</small></div>
+            <div class="lesson-vault-summary"><strong>13 linked lessons</strong><span>2 synthesis references</span></div>
+            <ol>
+              <li><time datetime="2026-08-20">Aug 20</time><span><b>Begin in plain English</b><small>Define the problem, then answer calibration questions from memory.</small></span></li>
+              <li><time datetime="2026-08-21">Aug 21</time><span><b>Split the hidden prerequisites</b><small>Final digits, notation direction, and Hilbert orientation.</small></span></li>
+              <li><time datetime="2026-08-22">Aug 22</time><span><b>Give each mechanism one lesson</b><small>State encoding, powers of two, and the lifted-point contradiction.</small></span></li>
+              <li><time datetime="2026-08-23">Aug 23–25</time><span><b>Open the pair-law black box</b><small>Terminal state, planar scales, and finally one shared mismatch.</small></span></li>
+              <li><time datetime="2026-08-26">Aug 26</time><span><b>Compress only after understanding</b><small>A formula cheat sheet and proof skeleton became usable references.</small></span></li>
+            </ol>
+          </div>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The vault was not after-the-fact documentation. It was the method that made the proof personally reconstructible. “Trace. Encode. Lift.” supplied the global map; separate lessons then isolated terminal state, coordinate encoding, the two-adic fingerprint, and the endpoint parity contradiction.</p>
+            <p>Each lesson ended with a recall skeleton or calibration questions. An unclear answer was evidence that another prerequisite was missing—not a cue to repeat the same compressed explanation.</p>
+            <h3>The seven-day learning sequence</h3>
+            <ul><li>August 20: establish plain-language meaning and test recall.</li><li>August 21–22: separate the decoder, state encoding, valuation, and collinearity jobs.</li><li>August 23–25: rebuild the pair law until both sides became the same first-mismatch odometer.</li><li>August 26: consolidate the now-understood proof into a notation sheet and proof skeleton.</li></ul>
+            <p class="artefact-link"><a href="learn.html">Follow the guided lessons →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-23">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>02</span><time datetime="2026-08-23">August 23, 2026</time></div>
+          <div><span class="eyebrow">The endgame first</span><h2>The contradiction became a shape.</h2><p>Start by pretending that three lifted points lie on one line. The board turns that geometric picture into adjacent height gaps, planar chords, and finally a parity impossibility.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-23-collinearity.jpg"><img src="artifacts/whiteboard-2026-08-23-collinearity.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard with a sketch of three collinear lifted points and equations reducing collinearity to a two-adic parity contradiction."></a>
+            <figcaption>Collinearity on the left; the gcd reduction in the middle; three pair-law applications and the odd-versus-even contradiction on the right. Select the photograph to open it at full size.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The no-collinearity theorem stopped looking global. It was enough to understand three gaps and three chords. With</p>
+            <p class="artefact-formula">\(A=gr,\quad B=gs,\)<br>\(X=rW,\quad Y=sW.\)</p>
+            <p>the first two pair-law equations force the coprime numbers \(r,s\) to be odd. The third pair sees \(r+s\), which cannot also be odd. The final proof keeps this skeleton and makes every divisibility step explicit.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>“Assume collinear” and the three-point diagram.</li><li>\(BX=AY\), the common-vector reduction, and the labels \(A=gr\), \(B=gs\).</li><li>The circled reminder that \(r,s\) cannot both be even.</li><li>The final clash: the third pair wants \(r+s\) odd, while odd plus odd is even.</li></ul>
+            <p class="artefact-link"><a href="proof.html#pair-law">Read the polished argument →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-26">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>03</span><time datetime="2026-08-26">August 26, 2026</time></div>
+          <div><span class="eyebrow">Open the black box</span><h2>The pair law stopped looking like magic.</h2><p>The contradiction was clear, but its engine still needed a mental model. This board pulls apart the Hilbert decoder: base-4 digits, emitted coordinate bits, and the four terminal transformations.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-26-pair-law.jpg"><img src="artifacts/whiteboard-2026-08-26-pair-law.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard centred on the Hilbert pair law, with base-4 index examples, a first-mismatch sketch, and the four decoder states I, S, T, and C."></a>
+            <figcaption>The pair law dominates the top edge. Concrete Hilbert indices occupy the centre; the four state transformations and their bit actions are collected on the right.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The identity</p>
+            <p class="artefact-formula">\(V(H(m)-H(n))=\nu_2(m-n)\)</p>
+            <p>became a decoder statement rather than a mysterious metric fact. A first unequal base-4 digit determines the two-adic scale. Equal terminal states let the later common suffix be unwound, so it cannot erase that first mismatch.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>The large pair-law identity across the top.</li><li>Examples such as \(H(149)\), \(H(6)\), and \(H(13)\), used to test the decoder by hand.</li><li>The square showing the Gray-code child order.</li><li>The state actions \(I,S,T,C\) on a bit pair and the Klein-four composition notes.</li></ul>
+            <p class="artefact-link"><a href="learn.html#geometry">See how the Hilbert route survives as discovery geometry →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="board-aug-27">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>04</span><time datetime="2026-08-27">August 27, 2026</time></div>
+          <div><span class="eyebrow">Make it mechanical</span><h2>The mismatch was followed bit by bit.</h2><p>The last board replaces the broad state diagram with a concrete trace. Base-4 words are read from one end while their emitted coordinate bits land at binary places counted from the other.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/whiteboard-2026-08-27-bit-mismatch.jpg"><img src="artifacts/whiteboard-2026-08-27-bit-mismatch.jpg" width="3200" height="1800" decoding="async" alt="Whiteboard tracing base-4 digits through Hilbert decoder states into binary coordinate bits and checking a first-mismatch valuation example."></a>
+            <figcaption>Candidate indices and base-4 words on the left; state updates and emitted bit pairs through the centre; the first-mismatch valuation check on the right.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The proof’s opposite directions became visible: the decoder reads high base-4 digits first, but a digit \(q_j\) writes coordinate bits at binary place \(j\). Tracing the states backward from a common terminal state recovers the state entering the first mismatch.</p>
+            <p>At the worked scale \(j=1\), the board records \(\nu_2(B-A)=2j=2\) and compares it with the planar chord invariant. This is the local calculation formalized by the first-mismatch lemma.</p>
+            <h3>Marks worth reading</h3>
+            <ul><li>The unit-step reminder \(\lVert H(n+1)-H(n)\rVert_1=1\).</li><li>Several candidate indices rewritten as base-4 words.</li><li>Blue emitted bits and red accumulated-state notes.</li><li>The circled mismatch digit and the calculation \(\nu_2(B-A)=2j\).</li></ul>
+            <p class="artefact-link"><a href="proof.html#pair-law">Read the formal first-mismatch argument →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="handcode-aug-27">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>05</span><time datetime="2026-08-27">August 27, 2026</time></div>
+          <div><span class="eyebrow">Make it executable</span><h2>The argument became one tiny runnable function.</h2><p>The original replay decoded the Hilbert path and made every state convention explicit. The live editor now runs the formula-matched Gaussian generator directly.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <a class="handcode-artefact" href="demo.html">
+            <span class="handcode-topbar"><b>gaussian_walk.py</b><small>thirteen construction lines</small></span>
+            <span class="handcode-flow"><code>s₂</code><i>→</i><code>u,c</code><i>→</i><code>W,H</code><i>→</i><code>P</code></span>
+            <strong>Edit and run the construction in your browser.</strong>
+            <em>Open the handcoded replay →</em>
+          </a>
+          <div class="artefact-reading">
+            <h3>What changed in understanding</h3>
+            <p>The replacement makes the simplification visible: binary digit sum chooses one complex direction, the closed corner formula supplies the tag, and \(W,H\) are appended directly.</p>
+            <p>The constructor accepts any prefix length \(n\); the browser selects a manageable \(n\) and then runs the exact identity, step-menu, and collinearity checks.</p>
+            <h3>Variables worth reading</h3>
+            <ul><li><code>s2</code> is the binary digit sum.</li><li><code>u</code> is the current Gaussian unit.</li><li><code>c</code> is its cyclic corner tag.</li><li><code>W</code> and <code>H</code> are the planar and height coordinates.</li></ul>
+            <p class="artefact-link"><a href="demo.html">Open the editor →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="workstation-aug-28">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>06</span><time datetime="2026-08-28">August 28, 2026</time></div>
+          <div><span class="eyebrow">The physical workspace</span><h2>The proof lived off-screen too.</h2><p>Behind the formal files and polished diagrams was a working desk: a well-used laptop, a larger display, adapters, network hardware, and the ordinary clutter of sustained study.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <a href="artifacts/mac-workstation.webp"><img src="artifacts/mac-workstation.webp" width="1568" height="882" decoding="async" alt="A well-used MacBook connected to an iMac, network equipment, and power adapters on a glass desk."></a>
+            <figcaption>The workstation behind the lessons, whiteboards, code, and proof artifacts. Select the photograph to open it at full size.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+            <h3>Why include the desk</h3>
+            <p>The finished argument can look inevitable when presented as a clean sequence of definitions and lemmas. The workspace records the less tidy human process around it: reading, drawing, testing, revising, and returning to the same hard idea.</p>
+            <h3>From workspace to proof</h3>
+            <ul><li>The laptop and display held the notes, code, and formal development side by side.</li><li>The nearby whiteboards made the pair law and parity contradiction spatial before they became concise prose.</li><li>The final authority remains the written proof and Lean project, not the photograph or working notes.</li></ul>
+            <p class="artefact-link"><a href="proof.html">Read the finished proof →</a></p>
+          </div>
+        </div>
+      </article>
+
+      <article class="artefact-entry" id="publish-aug-28">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>07</span><time datetime="2026-08-28">August 28–September 1, 2026</time></div>
+          <div><span class="eyebrow">Publish, refine, simplify</span><h2>One iteration phase reduced the proof to thirteen lines of Python.</h2><p>Preparing the unconditional result for publication prompted a concentrated exchange: expose the first proof, remove its selector, then isolate the Gaussian common core. Each revision preserved the same two-adic obstruction while making the construction smaller.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <ol class="proof-iterations" aria-label="Three proof iterations">
+            <li><span>01 · Publish</span><h3>Bounded-gap Hilbert selector</h3><p>Kalviainen's first unconditional construction selected one matching orientation from each aligned block and was formalized in Lean.</p></li>
+            <li><span>02 · Refine</span><h3>All-index tagged Hilbert lift</h3><p>Cambie's cyclic planar and height tags extended the pair law to every Hilbert index, removing the selector.</p></li>
+            <li><span>03 · Simplify</span><h3>Binary digit sums replace Hilbert</h3><p>Cambie isolated \(u_n=i^{s_2(n)}\); Kalviainen checked and formalized the joint Gaussian proof and built its exact generator and visualizations.</p></li>
+          </ol>
+          <div class="artefact-reading">
+            <h3>What changed</h3>
+            <p>This was one publication-driven refinement phase, not three disconnected research episodes. The witness moved from selected Hilbert indices, through all-index tags, to a Gaussian digit-sum recurrence without changing the valuation argument at its core.</p>
+            <h3>Where it landed</h3>
+            <ul><li>A joint unconditional paper.</li><li>A kernel-checked Lean theorem.</li><li>A 16-step walk generated by 13 lines of Python.</li></ul>
+            <p class="artefact-link"><a href="proof.html">Read the simplified proof →</a></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="progress-log">
+    <span class="eyebrow">Research and understanding log</span>
+      <h2 class="progress-log-title">How the robot idea became a proof I could explain</h2>
+    <p class="sub">The first Hilbert staircase failed almost immediately. Later, even after the formal argument existed, teaching it exposed places where compact language hid essential distinctions. This timeline keeps both kinds of progress visible.</p>
+
+    <div class="timeline">
+      <article class="milestone"><time>Initial geometric route</time><h3>Lift a Hilbert path into 3D</h3><p>Kalviainen explored using the Hilbert index as height. The plain lift failed, but its four terminal orientations exposed a useful two-adic state.</p></article>
+      <article class="milestone"><time>Approach 1 · bounded-gap selector</time><h3>Keep only one terminal orientation</h3><p>Kalviainen proved the same-state pair law and used a two-digit suffix rule to choose one representative per block. This produced the project's first unconditional infinite walk and first Lean theorem.</p></article>
+      <article class="milestone"><time>Aug 28–Sep 1 · publish, refine, simplify</time><h3>One iteration phase strips away the machinery</h3><p>Kalviainen published and formalized the bounded-gap Hilbert proof; Cambie removed the selector with all-index tags, then isolated the Gaussian digit-sum core. Kalviainen checked and formalized the joint simplification and rebuilt the exact generator and visualizations around its 16 steps.</p></article>
+      <article class="milestone"><time datetime="2026-09-02">September 2 · public preprint</time><h3>The joint paper appears on arXiv</h3><p>arXiv assigned the permanent identifier <a href="https://arxiv.org/abs/2609.01766">2609.01766</a> to the Cambie–Kalviainen paper in math.CO.</p></article>
+      <article class="milestone"><time>Original theorem status</time><h3>Unconditional theorem and public preprint; outside review pending</h3><p>The paper proof and Lean theorem are complete and publicly available. External mathematical review and community acceptance remain pending. The finite computations illustrate and independently check the construction; they are not premises.</p></article>
+      <article class="milestone" id="basis-ratio-certificates"><time datetime="2026-09-06">September 6 · separate positive-basis follow-up</time><h3>Three length ratios certified; the minimum dimension remains open</h3><p>A written descent argument and separately checked finite-state certificates exclude collinear triples with successive interval-length ratios 1:1, 1:2, and 2:1 in Jeffrey Shallit’s five-letter candidate, at every length and position. These are computer-assisted fixed-ratio results, not a prefix extrapolation or a complete five-dimensional construction. Arbitrary ratios remain unresolved.</p><p><a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/SHALLIT-RATIO-DESCENT.md">Research argument, certificate files, and reproduction instructions</a>. The argument awaits outside mathematical review and is not Lean-formalized. Positive-basis dimensions four and five remain open; this does not alter the original Erdős 193 theorem.</p></article>
+      <article class="milestone" id="basis-uniform-neighborhood"><time datetime="2026-09-07">September 7 · uniform-ratio research checkpoint</time><h3>A narrow interval certified uniformly</h3><p>An exact affine-state certificate now excludes every adjacent-length ratio in [2557199/2557201, 2557201/2557199] in Shallit’s five-letter candidate, at every position and scale. This is a very narrow interval around equal gaps, not the full 1:2-to-2:1 range and not a complete five-dimensional construction.</p><p>A separately implemented checker verifies the finite certificate; the written perturbation argument awaits outside mathematical review and is not Lean-formalized. <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/SHALLIT-UNIFORM-NEIGHBORHOOD.md">Uniform-neighborhood argument, exact endpoints, and reproduction instructions</a>. The minimum dimension remains open.</p></article>
+      <article class="milestone" id="basis-wider-interval"><time datetime="2026-09-07">September 7 · wider uniform-ratio certificate</time><h3>Every gap ratio from 49:51 through 51:49</h3><p>The interval certificate has expanded substantially: it now excludes every adjacent-length ratio from 49:51 through 51:49 in Shallit’s candidate, at every starting position and scale. A separately implemented exact checker verified 21,694 affine states and all 37,528,109 clock/order-admissible digit transitions.</p><p>This is an interval theorem, not sampled-ratio evidence, but it still does not cover the full 1:2-to-2:1 range or establish a complete five-dimensional construction. The larger-range search remains inconclusive; the minimum dimension remains open. The written reduction awaits outside mathematical review and is not Lean-formalized. <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/SHALLIT-INTERVAL-EXTENSION.md">Argument, certificate, independent validation, and remaining gap</a>.</p></article>
+      <article class="milestone" id="basis-direction-reduction"><time datetime="2026-09-07">September 7 · all-ratio direction reduction</time><h3>Two direction classes excluded at every ratio</h3><p>A new 3,691-state centered-return certificate excludes collinear triples parallel to (1,1,1,1,1) in Shallit’s candidate at every position, length, and gap ratio. A separate finite-language cover excludes directions missing a letter. Both checks pass independently of the producer’s transition implementation.</p><p>Any remaining counterexample must therefore use all five letters with a common nonuniform frequency vector. This does not establish full 5D avoidance, rule out 4D, or change either joint-minimum bound. No fixed five-step integer 3D construction was obtained. Outside mathematical review remains pending; the new lemmas are not Lean-formalized. <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/SHALLIT-DIRECTION-REDUCTION.md">Direction-reduction argument, exact certificates, and limitations of the available shortcuts</a>. <a href="https://github.com/ekalvi/erdos-193/blob/main/research/unit-step/tracks/JOINT-CHECKPOINT.md">Joint-goal checkpoint and stopping points</a>.</p></article>
+    </div>
+
+    </section>
+  </main>
+
+  <dialog id="artefactLightbox" class="artefact-lightbox" aria-label="Expanded timeline photograph">
+    <div class="artefact-lightbox-frame">
+      <button id="artefactLightboxClose" type="button">Close <kbd>Esc</kbd></button>
+      <img id="artefactLightboxImage" alt="">
+      <p id="artefactLightboxCaption"></p>
+    </div>
+  </dialog>
+
+  <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
+</div>
+<script>
+(() => {
+  const dialog = document.getElementById('artefactLightbox');
+  if (!dialog?.showModal) return;
+
+  const frame = dialog.querySelector('.artefact-lightbox-frame');
+  const image = document.getElementById('artefactLightboxImage');
+  const caption = document.getElementById('artefactLightboxCaption');
+  const closeButton = document.getElementById('artefactLightboxClose');
+  let opener = null;
+
+  document.querySelectorAll('.artefact-figure > a').forEach(link => {
+    link.addEventListener('click', event => {
+      event.preventDefault();
+      opener = link;
+      const thumbnail = link.querySelector('img');
+      image.src = link.href;
+      image.alt = thumbnail?.alt || '';
+      caption.textContent =
+        link.closest('figure')?.querySelector('figcaption')?.textContent || '';
+      dialog.showModal();
+      closeButton.focus();
+    });
+  });
+
+  const restorePage = () => {
+    image.removeAttribute('src');
+    image.alt = '';
+    const returnTarget = opener;
+    opener = null;
+    returnTarget?.focus();
+  };
+  const closeLightbox = () => {
+    if (dialog.open) dialog.close();
+    restorePage();
+  };
+
+  closeButton.addEventListener('click', closeLightbox);
+  dialog.addEventListener('click', event => {
+    if (event.target === dialog || event.target === frame) closeLightbox();
+  });
+  dialog.addEventListener('cancel', event => {
+    event.preventDefault();
+    closeLightbox();
+  });
+  dialog.addEventListener('close', restorePage);
+})();
+</script>
+</body>
+</html>

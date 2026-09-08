@@ -1,0 +1,46 @@
+Extracted text for search/AI. The source PDF is authoritative.
+Source: research/unit-step/joint-minimum-problem.pdf
+
+=== Page 1 ===
+No-three-collinear lattice walks: the joint minimum problem
+A sharp-threshold follow-up to Erdős Problem 193
+Deﬁnitions. A ﬁnite or inﬁnite lattice walk (Xn) is admissible if X0 = 0, its vertices are pairwise distinct, and
+rankQ[Xj −Xi Xk −Xj ] = 2 for every 0 ≤i<j <k
+within its index range. Thus no three vertices lie on an aﬃne line. For d,s ≥ 1, deﬁne
+B(d) ⇐ ⇒ ∃ an inﬁnite admissible (Pn) ⊂ Zd : Pn+1 −Pn ∈ {e1,...,e d} (n ≥ 0),
+E(3,s ) ⇐ ⇒ ∃S ⊂ Z3 \ {0}, |S| ≤ s, ∃ an inﬁnite admissible (Qn) ⊂ Z3 : Qn+1 −Qn ∈S (n ≥ 0),
+d∗ = min{d ≥ 1 : B(d)}, s ∗ = min{s ≥ 1 : E(3,s )}.
+Hereer is the rth positive standard basis vector. In E(3,s ),S is chosen once for the entire inﬁnite walk ; its vectors
+are arbitrary nonzero integer vectors, with no prescribed coordinate bound. Both minima are ﬁnite by the original
+ﬁnite-step construction and basis encoding.
+Problem. Determine the exact ordered pair (d∗,s ∗): prove unconditional inﬁnite existence at each claimed mini-
+mum and impossibility for every walk with a smaller dimension or step budget, respectively. In particular, determine
+whether the compression gap s∗ −d∗ is zero. Equality alone would not determine the common value.
+Basic reduction and bounds. Label the vectors of a successful step set by 1,...,t , t ≤s, and replace each step
+of type r by er. The resulting count walk projects linearly onto the original walk, so is itself admissible. Thus
+E(3,s ) ⇒ B (s). The existing g85 six-step construction gives the working bounds
+4 ≤d∗ ≤s∗ ≤ 6 subject to independent veriﬁcation of the g85 proof.
+Its written inﬁnite argument is intended to be unconditional; the caveat concerns pending independent review, not
+an additional mathematical hypothesis. The established fallback ceiling is s∗ ≤ 16, from the original sixteen-step
+3D construction. The lower bound follows because every ternary word of length eight contains an abelian square.
+The converse implication B(s) ⇒ E (3,s ) is not assumed . Equivalently, d∗ is the minimum number of step types
+when the ambient lattice dimension is unrestricted. Subject to veriﬁcation of the six-step proof, the candidate pairs
+are (4, 4), (4, 5), (4, 6), (5, 5), (5, 6), (6, 6); none is asserted as the answer.
+Equivalent word and projection formulations. Let Wd consist of inﬁnite words on {1,...,d } having no
+adjacent nonempty blocks x,y with ψ(x)/|x| =ψ(y)/|y|, where ψ is the Parikh (letter-count) vector. The lengths
+|x|, |y| may diﬀer: avoiding ordinary abelian squares alone is insuﬃcient. If Pn(w) counts the ﬁrst n letters, then
+B(d) ⇐ ⇒ Wd ̸= ∅, E(3,d ) ⇐ ⇒ ∃w ∈ W d ∃A ∈ Z3×d ∀i<j <k : rank Q[A(Pj −Pi) A(Pk −Pj) ] = 2.
+Thus s∗ = d∗ requires a ﬁxed integer projection for one optimal-alphabet witness, not for every valid word. For
+basis walks only, ∑
+r(Pn)r = n makes noncollinearity equivalent to (k −j)(Pj −Pi) ̸= (j −i)(Pk −Pj). This
+time-weighted test is not suﬃcient for arbitrary 3D step sets.
+Equivalent quantiﬁer distinction. Let FN (S) mean that an admissible N -step walk in Z3 uses steps from S.
+In the following formulas, menus are ﬁnite subsets of Z3 \ {0}:
+B(s) ⇐ ⇒ ∀N ≥ 1 ∃SN, |SN | ≤ s : FN (SN ),
+E(3,s ) ⇐ ⇒ ∃S, |S| ≤ s ∀N ≥ 1 : FN (S).
+These follow from integer projection of ﬁnite basis preﬁxes, basis encoding, and König’s lemma. A uniform bound
+on all menu coordinates in the ﬁrst line suﬃces to obtain the second; unbounded preﬁx-dependent projections do
+not. Finite positive evidence and lower bounds conﬁned to one construction family do not settle either minimum.
+Provenance and status (6 September 2026). Original ﬁnite-step theorem: Stijn Cambie and Erik Kalviainen; positive-basis/word
+formulation and encoding: Jeﬀrey Shallit; proposed six-step improvement: Kalviainen, using Cambie’s oﬀsets and Shallit’s encoding.
+This is a research problem statement, not a new joint authorship claim or a resolution of these follow-up minima.

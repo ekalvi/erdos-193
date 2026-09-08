@@ -1,0 +1,115 @@
+% Build: tectonic joint-minimum-problem.tex
+\documentclass[10pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb}
+\usepackage[a4paper,margin=17mm]{geometry}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\B}{\mathcal B}
+\newcommand{\E}{\mathcal E}
+\newcommand{\F}{\mathcal F}
+\begin{document}
+\begin{center}
+{\Large\bfseries No-three-collinear lattice walks: the joint minimum problem}\\[3pt]
+{\small A sharp-threshold follow-up to Erd\H{o}s Problem 193}
+\end{center}
+
+\textbf{Definitions.}
+A finite or infinite lattice walk $(X_n)$ is \emph{admissible} if $X_0=0$,
+its vertices are pairwise distinct, and
+\[
+ \operatorname{rank}_{\Q}[\,X_j-X_i\quad X_k-X_j\,]=2
+ \qquad\text{for every }0\le i<j<k
+\]
+within its index range. Thus no three vertices lie on an affine line.
+For $d,s\ge1$, define
+\begin{align*}
+ \B(d)&\iff \exists\text{ an infinite admissible }(P_n)\subset\Z^d:
+       \quad P_{n+1}-P_n\in\{e_1,\ldots,e_d\}\quad(n\ge0),\\
+ \E(3,s)&\iff \exists S\subset\Z^3\setminus\{0\},\ |S|\le s,\
+       \exists\text{ an infinite admissible }(Q_n)\subset\Z^3:\quad
+       Q_{n+1}-Q_n\in S\quad(n\ge0),\\[-2pt]
+ d_*&=\min\{d\ge1:\B(d)\},\qquad
+ s_*=\min\{s\ge1:\E(3,s)\}.
+\end{align*}
+Here $e_r$ is the $r$th positive standard basis vector. In $\E(3,s)$,
+$S$ is chosen \emph{once for the entire infinite walk}; its vectors are
+arbitrary nonzero integer vectors, with no prescribed coordinate bound.
+Both minima are finite by the original finite-step construction and basis encoding.
+
+\textbf{Problem.}
+Determine the exact ordered pair $(d_*,s_*)$: prove unconditional infinite
+existence at each claimed minimum and impossibility for \emph{every} walk
+with a smaller dimension or step budget, respectively.
+In particular, determine whether the compression gap $s_*-d_*$ is zero.
+Equality alone would not determine the common value.
+
+\textbf{Basic reduction and bounds.}
+Label the vectors of a successful step set by $1,\ldots,t$, $t\le s$,
+and replace each step of type $r$ by $e_r$. The resulting count walk
+projects linearly onto the original walk, so is itself admissible. Thus
+$\E(3,s)\Rightarrow\B(s)$. The existing $g_{85}$ six-step construction gives
+the \emph{working bounds}
+\[
+ \boxed{4\le d_*\le s_*\le6}
+ \qquad\text{subject to independent verification of the $g_{85}$ proof.}
+\]
+Its written infinite argument is intended to be unconditional; the caveat
+concerns pending independent review, not an additional mathematical hypothesis.
+The established fallback ceiling is $s_*\le16$, from the original
+sixteen-step 3D construction. The lower bound follows because every ternary
+word of length eight contains an abelian square.
+The converse implication $\B(s)\Rightarrow\E(3,s)$ is \emph{not assumed}.
+Equivalently, $d_*$ is the minimum number of step types when the ambient
+lattice dimension is unrestricted. Subject to verification of the six-step
+proof, the candidate pairs are $(4,4),(4,5),(4,6),(5,5),(5,6),(6,6)$;
+none is asserted as the answer.
+
+\textbf{Equivalent word and projection formulations.}
+Let $\mathcal W_d$ consist of infinite words on $\{1,\ldots,d\}$ having no
+adjacent nonempty blocks $x,y$ with
+$\psi(x)/|x|=\psi(y)/|y|$, where $\psi$ is the Parikh (letter-count) vector.
+The lengths $|x|,|y|$ may differ: avoiding ordinary abelian squares alone
+is insufficient. If $P_n(w)$ counts the first $n$ letters, then
+\[
+ \B(d)\iff\mathcal W_d\ne\varnothing,\qquad
+ \E(3,d)\iff
+ \exists w\in\mathcal W_d\ \exists A\in\Z^{3\times d}\ \forall i<j<k:
+ \operatorname{rank}_{\Q}
+ [\,A(P_j-P_i)\quad A(P_k-P_j)\,]=2.
+\]
+Thus $s_*=d_*$ requires a fixed integer projection for \emph{one}
+optimal-alphabet witness, not for every valid word.
+For basis walks only, $\sum_r(P_n)_r=n$ makes noncollinearity equivalent to
+$(k-j)(P_j-P_i)\ne(j-i)(P_k-P_j)$.
+This time-weighted test is not sufficient for arbitrary 3D step sets.
+
+\textbf{Equivalent quantifier distinction.}
+Let $\F_N(S)$ mean that an admissible $N$-step walk in $\Z^3$ uses steps
+from $S$. In the following formulas, menus are finite subsets of
+$\Z^3\setminus\{0\}$:
+\[
+ \boxed{\begin{aligned}
+ \B(s)&\iff \forall N\ge1\ \exists S_N,\ |S_N|\le s:\ \F_N(S_N),\\
+ \E(3,s)&\iff \exists S,\ |S|\le s\ \forall N\ge1:\ \F_N(S).
+ \end{aligned}}
+\]
+These follow from integer projection of finite basis prefixes, basis
+encoding, and K\"onig's lemma. A uniform bound on all menu coordinates in
+the first line suffices to obtain the second; unbounded prefix-dependent
+projections do not. Finite positive evidence and lower bounds confined to
+one construction family do not settle either minimum.
+
+\vfill
+{\footnotesize\textit{Provenance and status (6 September 2026).}
+Original finite-step theorem: Stijn Cambie and Erik Kalviainen;
+positive-basis/word formulation and encoding: Jeffrey Shallit;
+proposed six-step improvement: Kalviainen, using Cambie's offsets and
+Shallit's encoding. This is a research problem statement, not a new joint
+authorship claim or a resolution of these follow-up minima.}
+\end{document}

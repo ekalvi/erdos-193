@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{ include head }}
+  {{ include icons }}
+  <title>Run the Gaussian lattice walk — Erdős Problem 193</title>
+  <meta name="description" content="Edit and run the compact formula-matched Python generator for the Gaussian-lattice fractal walk.">
+  {{ include fonts }}
+  {{ include stylesheet }}
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/ace.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/mode-python.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/theme-tomorrow_night.js"></script>
+</head>
+<body>
+<div class="wrap wide demo-wrap">
+  {{ include header }}
+
+  <main class="demo-page">
+    <section class="demo-runner demo-runner-standalone" aria-labelledby="runner-title">
+      <header class="demo-runner-head">
+        <h1 id="runner-title">Run the constructor and its exact finite checks.</h1>
+      </header>
+      <div class="demo-workbench">
+        <section class="demo-source-panel" aria-labelledby="demoSourceFilename">
+          <header class="demo-source-head">
+            <strong id="demoSourceFilename">gaussian_walk_demo.py</strong>
+            <div class="demo-source-buttons">
+              <button id="demoFullscreen" class="button" type="button" aria-pressed="false">Full screen</button>
+              <button id="demoReset" class="button" type="button" disabled>Reset</button>
+              <a class="button" href="https://github.com/ekalvi/erdos-193/blob/main/viz/gaussian_walk_demo.py">GitHub</a>
+            </div>
+          </header>
+          <div id="demoSource" class="demo-source" aria-label="Editable gaussian_walk_demo.py source">Loading source…</div>
+        </section>
+        <section class="demo-output-panel" aria-labelledby="demoOutputLabel">
+          <header class="demo-output-head"><strong id="demoOutputLabel">Output</strong></header>
+          <pre id="demoOutput" class="demo-output" aria-live="polite">Ready.</pre>
+        </section>
+        <form id="demoForm" class="demo-controls">
+          <label for="demoLength">Initial points to inspect</label>
+          <input id="demoLength" name="length" type="number" min="1" max="1000" value="60" inputmode="numeric">
+          <button id="demoRun" class="button primary" type="submit" disabled><span aria-hidden="true">▶</span> Run code</button>
+          <button id="demoStop" class="button" type="button" disabled>Stop</button>
+        </form>
+      </div>
+      <p id="demoStatus" class="demo-status" role="status">Loading gaussian_walk_demo.py…</p>
+      <p class="demo-safety"><b>Contained run:</b> disposable browser worker · 12-second cutoff · 1,000-point maximum. No page or file access. Edited code can make network requests; do not paste secrets or untrusted code.</p>
+    </section>
+  </main>
+
+  <footer class="sitefoot"><span>Made in Canada 🇨🇦 by <a href="https://github.com/ekalvi">ekalvi</a> and Belgium 🇧🇪 by <a href="https://arxiv.org/search/?query=Stijn+Cambie&amp;searchtype=author">Stijn</a></span><span class="right"><a href="https://www.q5m.ai"><i class="footer-icon q5m-icon" aria-hidden="true"></i><em>q5m</em></a><a href="https://github.com/ekalvi/erdos-193"><i class="footer-icon github-icon" aria-hidden="true"></i><em>GitHub</em></a></span></footer>
+</div>
+<script>
+(() => {
+  const RUN_TIMEOUT_MS = 12_000;
+  const form = document.getElementById('demoForm');
+  const lengthInput = document.getElementById('demoLength');
+  const runButton = document.getElementById('demoRun');
+  const stopButton = document.getElementById('demoStop');
+  const resetButton = document.getElementById('demoReset');
+  const sourcePanel = document.querySelector('.demo-source-panel');
+  const fullscreenButton = document.getElementById('demoFullscreen');
+  const status = document.getElementById('demoStatus');
+  const output = document.getElementById('demoOutput');
+
+  ace.config.set('basePath', 'https://cdn.jsdelivr.net/npm/ace-builds@1.44.0/src-min-noconflict/');
+  const sourceEditor = ace.edit('demoSource');
+  sourceEditor.setTheme('ace/theme/tomorrow_night');
+  sourceEditor.session.setMode('ace/mode/python');
+  sourceEditor.session.setUseWorker(false);
+  sourceEditor.session.setFoldStyle('markbeginend');
+  sourceEditor.setOptions({
+    fontSize: '12px',
+    showPrintMargin: false,
+    showFoldWidgets: true,
+    fadeFoldWidgets: false,
+    readOnly: true,
+    tabSize: 4,
+    useSoftTabs: true
+  });
+  sourceEditor.textInput.getElement().setAttribute(
+    'aria-label',
+    'Editable standalone Python source'
+  );
+  sourceEditor.container.setAttribute('aria-describedby', 'sourceHelp');
+
+  let worker;
+  let workerReady = false;
+  let sourceReady = false;
+  let running = false;
+  let runTimer;
+  let currentLength = 0;
+  let originalSource;
+
+  const updateControls = () => {
+    runButton.disabled = running || !sourceReady || !workerReady;
+    stopButton.disabled = !running;
+    resetButton.disabled = running || !sourceReady;
+    lengthInput.disabled = running || !sourceReady;
+    sourceEditor.setReadOnly(running || !sourceReady);
+  };
+
+  const redrawSource = () => {
+    sourceEditor.resize(true);
+    sourceEditor.renderer.updateFull(true);
+  };
+
+  const appendOutput = line => {
+    output.textContent += `${output.textContent ? '\n' : ''}${line}`;
+  };
+
+  const startWorker = readyStatus => {
+    worker?.terminate();
+    workerReady = false;
+    worker = new Worker('demo-worker.js?v=3');
+    updateControls();
+
+    worker.addEventListener('message', event => {
+      const message = event.data;
+      if (message?.type === 'ready') {
+        workerReady = true;
+        updateControls();
+        if (readyStatus && !running) status.textContent = readyStatus;
+      } else if (message?.type === 'running') {
+        status.textContent = 'Running the edited file in an isolated browser worker…';
+      } else if (message?.type === 'line') {
+        appendOutput(message.line);
+      } else if (message?.type === 'done') {
+        status.textContent = `Finished the ${currentLength}-point run.`;
+        finishRun();
+      } else if (message?.type === 'run-error') {
+        appendOutput(message.error);
+        status.textContent = 'The edited Python run failed. Check the output and source.';
+        finishRun();
+      } else if (message?.type === 'boot-error') {
+        appendOutput(message.error);
+        status.textContent = 'The isolated Python worker could not start.';
+        workerReady = false;
+        updateControls();
+      }
+    });
+
+    worker.addEventListener('error', event => {
+      appendOutput(event.message || 'The isolated Python worker failed.');
+      status.textContent = 'The isolated Python worker failed.';
+      if (running) finishRun('Fresh worker ready after the failure.');
+    });
+  };
+
+  const finishRun = readyStatus => {
+    clearTimeout(runTimer);
+    running = false;
+    worker?.terminate();
+    worker = undefined;
+    workerReady = false;
+    updateControls();
+    startWorker(readyStatus);
+  };
+
+  const stopRun = (message, readyStatus) => {
+    if (!running) return;
+    appendOutput(message);
+    status.textContent = message;
+    finishRun(readyStatus);
+  };
+
+  fetch('gaussian_walk_demo.py', {cache: 'no-store'})
+    .then(response => {
+      if (!response.ok) throw new Error(`source request failed: ${response.status}`);
+      return response.text();
+    })
+    .then(source => {
+      originalSource = source;
+      sourceReady = true;
+      sourceEditor.setValue(source, -1);
+      redrawSource();
+      updateControls();
+      if (!workerReady) status.textContent = 'Source loaded; isolated Python worker is loading…';
+    })
+    .catch(error => {
+      output.textContent = String(error);
+      status.textContent = 'The standalone source could not be loaded.';
+    });
+
+  resetButton.addEventListener('click', () => {
+    sourceEditor.setValue(originalSource, -1);
+    redrawSource();
+    output.textContent = 'Ready.';
+    status.textContent = 'Source reset to the repository version.';
+  });
+
+  const setSourceFullscreen = active => {
+    sourcePanel.classList.toggle('is-fullscreen', active);
+    document.body.classList.toggle('source-fullscreen', active);
+    fullscreenButton.textContent = active ? 'Exit full screen' : 'Full screen';
+    fullscreenButton.setAttribute('aria-pressed', String(active));
+    requestAnimationFrame(() => sourceEditor.resize(true));
+  };
+  fullscreenButton.addEventListener('click', () => {
+    setSourceFullscreen(!sourcePanel.classList.contains('is-fullscreen'));
+  });
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape' && sourcePanel.classList.contains('is-fullscreen')) {
+      setSourceFullscreen(false);
+    }
+  });
+
+  form.addEventListener('submit', event => {
+    event.preventDefault();
+    const length = Number(lengthInput.value);
+    if (!Number.isInteger(length) || length < 1 || length > 1000) {
+      status.textContent = 'Choose an integer from 1 through 1,000.';
+      return;
+    }
+    if (!workerReady || running) return;
+
+    currentLength = length;
+    running = true;
+    output.textContent = '';
+    status.textContent = 'Starting the isolated Python run…';
+    updateControls();
+    worker.postMessage({type: 'run', source: sourceEditor.getValue(), length});
+    runTimer = setTimeout(() => {
+      stopRun(
+        'Execution stopped after the 12-second safety limit.',
+        'Timed-out worker replaced; ready to edit or run.'
+      );
+    }, RUN_TIMEOUT_MS);
+  });
+
+  stopButton.addEventListener('click', () => {
+    stopRun('Execution stopped by the user.', 'Stopped worker replaced; ready to edit or run.');
+  });
+
+  updateControls();
+  startWorker('Ready to edit or run in an isolated worker.');
+})();
+</script>
+</body>
+</html>

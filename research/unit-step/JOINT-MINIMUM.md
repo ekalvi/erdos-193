@@ -7,6 +7,11 @@ The reductions here are elementary mathematical arguments, not a Lean
 formalization or a resolution of either minimum. Independent review of the
 six-step draft remains pending.
 
+A succinct standalone technical statement is available as a
+[one-page PDF](joint-minimum-problem.pdf), with editable
+[LaTeX source](joint-minimum-problem.tex). Rebuild with
+`tectonic research/unit-step/joint-minimum-problem.tex` from the repository root.
+
 ## 1. Two models and the logic matrix
 
 For positive integers $r,s$, let $\mathcal E(r,s)$ mean that there exist a

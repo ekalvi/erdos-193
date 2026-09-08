@@ -1,0 +1,110 @@
+{
+  "schema": 1,
+  "producerIdentity": {
+    "schema": 1,
+    "codeSha256": "fe514f6645c7a74a12d5c4144db5a31fad289977d2898e79813de5e0ac13c15c",
+    "dependencies": [
+      {
+        "file": "shallit_ratio_automaton.mjs",
+        "sha256": "b11a0aabf178700df23e6fe274a5a59666e0cefde31fd83735b38b8d101ea726"
+      },
+      {
+        "file": "shallit_interval_automaton.mjs",
+        "sha256": "e3f758d44100a69548752d8c296471a51e9fbab77db127df59b170b6fcb73108"
+      }
+    ],
+    "interval": [
+      4,
+      12,
+      8,
+      12
+    ],
+    "closedNormRadius": [
+      39,
+      20
+    ],
+    "closedClockRadius": 1
+  },
+  "node": 74772,
+  "sourceStates": 80878,
+  "state": [
+    3,
+    2,
+    4,
+    -2454636937,
+    -2454709252,
+    -2455385339,
+    -2454393922,
+    -2455395802,
+    3743904201,
+    3744014499,
+    3745045690,
+    3743533543,
+    3745061651
+  ],
+  "span": 18721559584,
+  "digits": [
+    [
+      0,
+      0,
+      1
+    ],
+    [
+      2,
+      10,
+      0
+    ],
+    [
+      3,
+      7,
+      12
+    ],
+    [
+      3,
+      9,
+      11
+    ],
+    [
+      1,
+      4,
+      7
+    ],
+    [
+      13,
+      6,
+      10
+    ],
+    [
+      1,
+      13,
+      9
+    ],
+    [
+      13,
+      13,
+      10
+    ],
+    [
+      7,
+      13,
+      9
+    ],
+    [
+      8,
+      8,
+      8
+    ]
+  ],
+  "indices": [
+    "3291449862",
+    "15565971114",
+    "22013009446"
+  ],
+  "theta": [
+    "45959637482631570743",
+    "70099360612532224152"
+  ],
+  "squaredErrorNumerator": "16398020228610974396117411449864069605480",
+  "errorDenominator": "70099360612532224152",
+  "scope": "One actual ordered triple with a nonzero error inside the descent guard. Finite frontier evidence only; neither a collinear triple nor a proof of an infinite affine graph."
+}
