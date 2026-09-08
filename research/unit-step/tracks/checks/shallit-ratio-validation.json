@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "codeSha256": "1b70a5caf9f8e1dd02c5b809b476804e77231ff8e8ab8e572ec66c64a66c0663",
+  "certificates": [
+    {
+      "left": 1,
+      "right": 1,
+      "sha256": "c5fbecfebf3d77eefd7e0f97077bdc3c0c68cc55ade3e7861109731b1372e78a"
+    },
+    {
+      "left": 1,
+      "right": 2,
+      "sha256": "58a405d57fe56359efb360b19045db57a0cebb020434deffa0a3b0b011bd86df"
+    },
+    {
+      "left": 2,
+      "right": 1,
+      "sha256": "92464891b721b74dcf53e1923fbd85aa45615c037f8d29808327c763eb1b761a"
+    }
+  ],
+  "status": "pass",
+  "algebra": {
+    "inversePrefixDiameterSquaredNumerator": 73769304,
+    "inversePrefixDenominator": 5894,
+    "maximizingPair": [
+      [
+        0,
+        13
+      ],
+      [
+        1,
+        13
+      ]
+    ],
+    "prefixesChecked": 2745,
+    "recurrencesChecked": 17952
+  },
+  "certificatesVerified": [
+    {
+      "left": 1,
+      "right": 1,
+      "states": 3794,
+      "candidateTransitions": 731038,
+      "retainedTransitions": 4548
+    },
+    {
+      "left": 1,
+      "right": 2,
+      "states": 11186,
+      "candidateTransitions": 2224352,
+      "retainedTransitions": 11478
+    },
+    {
+      "left": 2,
+      "right": 1,
+      "states": 12617,
+      "candidateTransitions": 2507982,
+      "retainedTransitions": 12994
+    }
+  ],
+  "rejectedMutations": [
+    "missing-root",
+    "duplicate-state",
+    "accepting-state",
+    "missing-successor"
+  ],
+  "scope": "Independent fixed-ratio invariant certificates plus exact descent identities; not all-ratios avoidance."
+}

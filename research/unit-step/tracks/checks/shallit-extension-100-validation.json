@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "codeSha256": "b84e3d7f1945f6a70994b71ebbb13e9af6acf474b8ce4b19e24053a098ee1a58",
+  "certificateSha256": "93558d443b7da41de97e1444e7f8a9746a4c5684ddaea3e603423f2a86044db8",
+  "status": "pass",
+  "interval": [
+    98,
+    200,
+    102,
+    200
+  ],
+  "states": 21694,
+  "candidateTransitions": 37528109,
+  "retainedTransitions": 21768,
+  "maxSpan": 9190,
+  "gapRatioInterval": [
+    [
+      98,
+      102
+    ],
+    [
+      102,
+      98
+    ]
+  ],
+  "rejectedMutations": [
+    "missing-successor",
+    "duplicate-state",
+    "missing-root",
+    "accepting-state"
+  ],
+  "scope": "Exact finite affine invariant for the entire displayed parameter interval, at all positions and lengths; not an all-ratios 5D proof."
+}
