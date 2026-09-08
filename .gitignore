@@ -15,3 +15,4 @@ logs/valuation-walk-fractals-*.log
 logs/signed-gaussian-unit-step-period-*.log
 logs/signed-gaussian-unit-step-period-*.checkpoint.json
 .site-challenge-key
+/build/q5m-site*/

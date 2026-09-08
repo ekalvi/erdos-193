@@ -1,7 +1,11 @@
-# Managed LAN development preview only. No production hostname is declared.
-# This dedicated root excludes research sources and the production website.
-version: 1
-name: erdos-193-unit-step-explainer
-kind: static
-root: design/unit-step-explainer/public
-health: /index.html
+# Existing production remains independently owned by the reviewed q5m-app/Compose
+# release and Cloudflare Tunnel at erdos-193.q5m.ai. This declaration does not
+# repoint production to a development server.
+version: 2
+name: erdos-193
+development:
+  command: [python3, q5m/serve_site.py]
+  health: /index.html
+build:
+  command: [python3, q5m/build_site.py]
+  output: build/q5m-site
