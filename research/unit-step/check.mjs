@@ -95,8 +95,12 @@ for (const name of researchVisualizations) {
 const dockerfile = (await read('q5m/Dockerfile')).toString();
 assert(!/^COPY[^\n]*(?:paper\/|research\/|design\/)/m.test(dockerfile));
 const manifest = (await read('q5m.yaml')).toString();
-assert(!/^production:/m.test(manifest), 'preview must not declare production');
-assert(manifest.includes('root: design/unit-step-explainer/public'));
+// The root manifest now owns the existing production image via a protected
+// binding. Publication separation is enforced by the Docker exclusions above,
+// not by forbidding a production declaration for the whole repository.
+assert(/^production:\n  binding: erdos-193\s*$/m.test(manifest), 'unexpected production binding');
+assert(/^  health: \/\.q5m-release\s*$/m.test(manifest), 'production must verify the exact release marker');
+assert(!manifest.includes('root: design/unit-step-explainer/public'), 'research explainer must not be the production root');
 assert.deepEqual(await read('design/unit-step-explainer/standalone.html'),
   await read('design/unit-step-explainer/public/index.html'));
 const prefix = JSON.parse(await read('results/shallit-five-prefix.json'));

@@ -1,6 +1,6 @@
-# Trusted main merges consume this declaration through deploy-production.yml.
-# The existing q5m-app/Compose owner and erdos-193.q5m.ai tunnel stay unchanged;
-# do not use project deploy to create a second production instance.
+# Merge only after homelab rollout/live acceptance and explicit binding adoption.
+# YAML production owns releases; the existing Nginx/Compose image, port 8193,
+# and erdos-193.q5m.ai tunnel remain. Dev/build are separate entry points.
 version: 2
 name: erdos-193
 development:
@@ -13,7 +13,6 @@ release:
   adapter: compose
   compose: q5m/compose.yaml
   contract: q5m/app.env
-  health: /healthz
-environments:
-  production:
-    default_node: q5m-n03
+  health: /.q5m-release
+production:
+  binding: erdos-193

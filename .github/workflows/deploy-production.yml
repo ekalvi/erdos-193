@@ -24,6 +24,13 @@ jobs:
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           persist-credentials: false
+      - name: Check YAML production ownership contract offline
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m venv "$RUNNER_TEMP/production-contract"
+          "$RUNNER_TEMP/production-contract/bin/pip" install PyYAML==6.0.3
+          "$RUNNER_TEMP/production-contract/bin/python" q5m/test_production_contract.py
       - name: Build and probe the hardened image
         shell: bash
         run: |
@@ -75,31 +82,15 @@ jobs:
           test "$GITHUB_REF" = "refs/heads/main"
           test "$GITHUB_EVENT_NAME" = "push" -o "$GITHUB_EVENT_NAME" = "workflow_dispatch"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      - name: Deploy declared production through the existing owner
+      # Hold this workflow merge until platform rollout/live acceptance and the
+      # explicitly approved binding adoption. CI must never perform adoption.
+      - name: Plan YAML-owned production release
         shell: bash
-        run: |
-          set -euo pipefail
-          # Validate the supported project schema without provisioning a new instance.
-          declaration=$(q5m-lab project validate --directory "$GITHUB_WORKSPACE" --json)
-          # Fail closed: this workflow only owns the existing Erdős production app.
-          # A placement/adapter change requires a separately reviewed migration.
-          jq -e '
-            .ok == true and
-            .project.manifest.name == "erdos-193" and
-            .project.manifest.release == {
-              "adapter": "compose",
-              "compose": "q5m/compose.yaml",
-              "contract": "q5m/app.env",
-              "health": "/healthz",
-              "data": []
-            } and
-            .project.manifest.environments.production.default_node == "q5m-n03"
-          ' <<< "$declaration" >/dev/null
-          app=$(jq -er '.project.manifest.name' <<< "$declaration")
-          node=$(jq -er '.project.manifest.environments.production.default_node' <<< "$declaration")
-          test "$(hostname -s)" = "$node"
-          q5m-app deploy-checkout "$app" "$GITHUB_WORKSPACE" "$GITHUB_SHA"
+        run: q5m-lab project production plan --revision "$GITHUB_SHA" --json
+      - name: Deploy and health-gate YAML-owned production release
+        shell: bash
+        run: q5m-lab project production deploy --revision "$GITHUB_SHA" --json
       - name: Report exact active release
         if: always()
         shell: bash
-        run: q5m-app status erdos-193
+        run: q5m-lab project production status --binding erdos-193 --json
