@@ -74,4 +74,8 @@ Finite computation is supporting evidence, not a premise of the infinite theorem
 
 The current paper is jointly authored by [Stijn Cambie](https://arxiv.org/search/?query=Stijn+Cambie&searchtype=author) and [Erik Kalviainen](https://github.com/ekalvi). Cambie proposed the all-index and Gaussian-lattice simplifications; Kalviainen developed the original Hilbert construction and migrated the final proof into Lean, executable checks, and this site. Both authors have checked the proof and state the result as an unconditional theorem. Both development streams were AI-assisted; S.C. is supported by FWO grant 1225224N.
 
+### Editing the website
+
+Edit page templates in `site/pages/` and shared headers in `site/partials/`, then run `node site/build.mjs`. Commit the regenerated `viz/*.html` files alongside the templates. See [`site/README.md`](site/README.md) for the build and validation commands.
+
 The earlier Hilbert construction and finite artifacts are retained as provenance but are not premises of the current Gaussian proof. Citation metadata is in [`CITATION.cff`](CITATION.cff), and the chronological development record is on the [timeline](https://erdos-193.q5m.ai/progress.html).
