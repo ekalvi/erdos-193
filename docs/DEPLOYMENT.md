@@ -8,6 +8,14 @@ activation/rollback, reboot recovery, and Docker ingress enforcement.
 
 ## Placement and routes
 
+**Current release placement (checked September 8, 2026):** `q5m-n03`, using
+repository runner `erdos-193-n03` with label `erdos-193-deploy`. The latest
+successful main release, Actions run `34145901306`, deployed on that runner;
+`erdos-193-n01` is registered but offline. `q5m.yaml` now declares n03 and the
+trusted release workflow refuses a mismatched host. The existing `q5m-app`
+owner and canonical `erdos-193.q5m.ai` route are retained, not reprovisioned.
+The cutover details below are historical evidence, not current placement.
+
 Retired origin (verified 2026-08-21):
 
 - host: `q5m-dev`;
@@ -16,7 +24,7 @@ Retired origin (verified 2026-08-21):
 - retirement result: process deleted, saved PM2 startup state updated, and the
   old port stopped after explicit approval. The checkout and logs were retained.
 
-Current placement (verified 2026-08-21):
+Historical placement (verified 2026-08-21):
 
 - node: `q5m-n02.localdomain` (current NPM-reachable address `10.1.1.31`);
 - app: `erdos-193`;
@@ -82,8 +90,13 @@ repository permissions, production concurrency, a protected Environment hook,
 and a repository/branch/event guard. Pull-request code never reaches the
 self-hosted runner.
 
-The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials
-and runs:
+The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials.
+Before activation it runs `q5m-lab project validate` on that checkout and consumes
+`q5m.yaml`: the app name, Compose adapter, `q5m/compose.yaml`, `q5m/app.env`,
+`/healthz`, empty data menu, and production node must match the reviewed owner.
+The runner needs the supported v2 `q5m-lab` validator and `jq` (both checked on
+n03). Missing tooling or a mismatched declaration/host fails before deployment.
+It then runs the existing commands, using the validated app name:
 
 ```sh
 q5m-app deploy-checkout erdos-193 "$GITHUB_WORKSPACE" "$GITHUB_SHA"
@@ -95,8 +108,18 @@ The node archives that exact commit, validates `q5m/app.env` and
 health, and changes boot state only after success. The previous healthy release
 is retained for local rollback.
 
-The image serves only committed `viz/` files. `/.q5m-release` reports the exact
-full commit built into the image; `/healthz` is the container health endpoint.
+The image serves committed `viz/` and `results/` assets (the latter at `/family/`),
+subject to `.dockerignore`. The optional `build/q5m-site` review output and LAN
+server are not production inputs. Merging the hosting-only PR therefore does
+not include locally uncommitted six-vector pages or scripts.
+
+`q5m.yaml` declares production; it does not transfer ownership to
+`q5m-lab project deploy`. That command would create a separate managed instance
+and is not the migration path for this existing service. Trusted `main` pushes
+remain the activation trigger, after the container gate. No new DNS, tunnel,
+port, volume, or rollback state is provisioned by this change.
+
+`/.q5m-release` reports the exact full commit built into the image; `/healthz` is the container health endpoint.
 There are no application secrets or mutable volumes. The required empty
 machine-local root is still created with standard metadata:
 

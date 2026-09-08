@@ -1,6 +1,6 @@
-# Existing production remains independently owned by the reviewed q5m-app/Compose
-# release and Cloudflare Tunnel at erdos-193.q5m.ai. This declaration does not
-# repoint production to a development server.
+# Trusted main merges consume this declaration through deploy-production.yml.
+# The existing q5m-app/Compose owner and erdos-193.q5m.ai tunnel stay unchanged;
+# do not use project deploy to create a second production instance.
 version: 2
 name: erdos-193
 development:
@@ -9,3 +9,11 @@ development:
 build:
   command: [python3, q5m/build_site.py]
   output: build/q5m-site
+release:
+  adapter: compose
+  compose: q5m/compose.yaml
+  contract: q5m/app.env
+  health: /healthz
+environments:
+  production:
+    default_node: q5m-n03
