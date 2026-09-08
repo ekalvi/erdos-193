@@ -4,17 +4,23 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
+import {parseArgs} from 'node:util';
 import {directTriple} from './contradiction_probe.mjs';
 
-if(process.argv.includes('--help')) {
-  console.log('node research/unit-step/tracks/four_return_blocks.mjs [--write]\n'
+const {values}=parseArgs({options:{
+  'state-dir':{type:'string',default:'.checkpoint-four-return-blocks'},
+  write:{type:'boolean'},help:{type:'boolean',short:'h'},
+}});
+if(values.help) {
+  console.log('node research/unit-step/tracks/four_return_blocks.mjs [--state-dir DIR] [--write]\n'
     +'Enumerates 117 possible short return words and all ordered pairs, one JS worker.\n'
-    +'Automatically resumes identity/checksum-validated rows from .checkpoint-four-return-blocks.\n'
+    +'Automatically resumes identity/checksum-validated rows from DIR (default .checkpoint-four-return-blocks).\n'
     +'SIGINT/SIGTERM checkpoint at row boundaries; logs/checkpoints are separate from final evidence.\n'
+    +'Use separate state directories for independent runs; incompatible sources require a fresh directory.\n'
     +'--write updates the deterministic research JSON; otherwise validates it.');
   process.exit(0);
 }
-assert(process.argv.slice(2).every(x=>x==='--write'),'unknown argument');
+assert(values['state-dir'].length>0,'--state-dir must not be empty');
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const identity={schema:1,codeSha256:hash(fs.readFileSync(new URL(import.meta.url))),
   checkerSha256:hash(fs.readFileSync(new URL('contradiction_probe.mjs',import.meta.url)))};
@@ -33,7 +39,7 @@ const types=new Map();for(const word of words) {
   assert.equal(directTriple([...word,3],4),null);
 }
 assert.equal(types.size,41);
-const directory='.checkpoint-four-return-blocks',checkpoint=path.join(directory,'state.json'),log=path.join(directory,'run.jsonl');
+const directory=path.resolve(values['state-dir']),checkpoint=path.join(directory,'state.json'),log=path.join(directory,'run.jsonl');
 function durable(file,text,append=false) {
   fs.mkdirSync(path.dirname(file),{recursive:true});const target=append?file:`${file}.tmp-${process.pid}`;
   const fd=fs.openSync(target,append?'a':'w');try{fs.writeFileSync(fd,text);fs.fsyncSync(fd);}finally{fs.closeSync(fd);}
@@ -88,7 +94,7 @@ try {
       threeReturnLocalCountermodel:{period,returnBlocks:blocks,firstTriple:[0,6,12]},
       scope:'Necessary 4D return-block description and failed local shortcuts; not a dimension lower bound.'};
     const output=new URL('checks/four-return-blocks.json',import.meta.url);
-    if(process.argv.includes('--write'))durable(output.pathname,JSON.stringify(result,null,2)+'\n');
+    if(values.write)durable(output.pathname,JSON.stringify(result,null,2)+'\n');
     else assert.deepEqual(JSON.parse(fs.readFileSync(output,'utf8')),result);
     event('complete',{...report(),returnWordCount:117,parikhTypeCount:41});
   }

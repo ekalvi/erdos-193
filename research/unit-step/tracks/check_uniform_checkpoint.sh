@@ -25,6 +25,7 @@ state=$(cd "$state" && pwd)
 log=$state/run.log
 track=research/unit-step/tracks
 step=0
+total=21
 child=''
 started=$SECONDS
 event() { printf '%s %s\n' "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" "$*" | tee -a "$log"; }
@@ -34,21 +35,21 @@ stop() {
     kill -TERM -- "-$child" 2>/dev/null || true
     wait "$child" 2>/dev/null || true
   fi
-  event "INTERRUPTED step=$step/20 elapsed=$((SECONDS-started))s state=$state"
+  event "INTERRUPTED step=$step/$total elapsed=$((SECONDS-started))s state=$state"
   exit 130
 }
 trap stop INT TERM
 run() {
   step=$((step+1))
-  event "START step=$step/20 elapsed=$((SECONDS-started))s command=$*"
+  event "START step=$step/$total elapsed=$((SECONDS-started))s command=$*"
   setsid "$@" >> "$log" 2>&1 & child=$!
   if wait "$child"; then
     child=''
-    event "PASS step=$step/20 elapsed=$((SECONDS-started))s"
+    event "PASS step=$step/$total elapsed=$((SECONDS-started))s"
   else
     status=$?
     child=''
-    event "FAIL step=$step/20 exit=$status elapsed=$((SECONDS-started))s log=$log"
+    event "FAIL step=$step/$total exit=$status elapsed=$((SECONDS-started))s log=$log"
     exit "$status"
   fi
 }
@@ -66,11 +67,12 @@ run node "$track/test_shallit_ratio_cli.mjs"
 run node "$track/test_shallit_interval_cli.mjs"
 run node "$track/test_shallit_extension.mjs"
 run node "$track/test_shallit_centered.mjs"
-run node "$track/four_return_blocks.mjs"
+run node "$track/four_return_blocks.mjs" --state-dir "$state/four-return"
+run node "$track/test_four_return_blocks_cli.mjs"
 run node "$track/check_contradiction_obstructions.mjs"
 run node research/unit-step/explorations/descent-algebra-check.mjs
 run node research/unit-step/check.mjs
 run node research/unit-step/joint_minimum_examples.mjs
 run node design/unit-step-explainer/test.mjs
 run git diff --check
-event "COMPLETE steps=$step/20 elapsed=$((SECONDS-started))s; no new minimum bound"
+event "COMPLETE steps=$step/$total elapsed=$((SECONDS-started))s; no new minimum bound"

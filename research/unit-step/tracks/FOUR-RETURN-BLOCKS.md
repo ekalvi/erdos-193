@@ -92,12 +92,18 @@ assuming finite local compatibility settles infinity.
 ```sh
 export OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 MKL_NUM_THREADS=1 NUMEXPR_NUM_THREADS=1
 export UV_THREADPOOL_SIZE=1
-node research/unit-step/tracks/four_return_blocks.mjs
+node research/unit-step/tracks/four_return_blocks.mjs --state-dir .checkpoint-four-return-audit
+node research/unit-step/tracks/test_four_return_blocks_cli.mjs
 ```
 
 Use `--write` to regenerate the deterministic evidence. The program checkpoints
-completed pair rows atomically under `.checkpoint-four-return-blocks/`, with
-source/dependency identity, checksum validation, timestamped logs, and
-SIGINT/SIGTERM handling at row boundaries. Repeating a compatible command
-resumes or reuses completed work. Logs/checkpoints are not proof artifacts.
+completed pair rows atomically under `--state-dir DIR` (default
+`.checkpoint-four-return-blocks/`), with source/dependency identity, checksum
+validation, timestamped logs, and SIGINT/SIGTERM handling at row boundaries.
+Repeating a compatible command resumes or reuses completed work. Choose a fresh
+directory after a source change; independent concurrent runs need distinct
+directories. The aggregate runner passes its own `STATE_DIR/four-return`, so a
+stale standalone checkpoint is neither read nor modified. The CLI regression
+checks this isolation, concurrent custom directories, and deterministic resumes.
+Logs/checkpoints are not proof artifacts.
 This small complete audit supplies no new minimum-dimension bound.
