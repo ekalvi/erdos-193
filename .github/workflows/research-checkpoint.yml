@@ -94,3 +94,20 @@ jobs:
           git diff --exit-code -- \
             research/unit-step/checks/signed-phase-overlap-8.json \
             research/unit-step/checks/signed-phase-reference-8.json
+
+  uniform_certificates:
+    name: Uniform Shallit certificates and checkpoint regressions
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '22'
+      - name: Independently check uniform certificates, scope, and safe resumes
+        run: bash research/unit-step/tracks/check_uniform_checkpoint.sh
+      - name: Show bounded diagnostics on failure
+        if: failure()
+        run: tail -n 100 .checkpoint-uniform-certificate-validation/run.log

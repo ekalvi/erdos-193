@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "codeSha256": "012cae82e1cbb2b285a1be39e9e59e138909e5381063f5deb55480857cb3f4f0",
+  "certificateSha256": "0fc0895dbfe575d74e6b56bd3acc0b52cb0c8c83a12eb40dc5ebb5e60ac28f77",
+  "status": "pass",
+  "uniformDirection": {
+    "states": 3691,
+    "latticeVectors": 161,
+    "candidateTransitions": 5009,
+    "retainedTransitions": 4061
+  },
+  "properSupport": {
+    "templates": 20,
+    "maximumMissingLetterFactorLength": 26,
+    "triplesConsidered": 2437500,
+    "properSupportTriplesChecked": 463550
+  },
+  "strongerProjectionCounterexample": {
+    "indices": [
+      0,
+      67,
+      78
+    ],
+    "counts": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        9,
+        15,
+        17,
+        13,
+        13
+      ],
+      [
+        9,
+        18,
+        21,
+        15,
+        15
+      ]
+    ],
+    "centeredNumerators": [
+      2,
+      3
+    ],
+    "collinearInOriginalWalk": false
+  },
+  "rejectedMutations": [
+    "missing-successor",
+    "duplicate-state",
+    "missing-root",
+    "accepting-state"
+  ],
+  "scope": "At all ratios and positions, excludes uniform directions and directions missing a letter. Positive nonuniform directions remain open; not full 5D avoidance."
+}

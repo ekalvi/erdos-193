@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "codeSha256": "468a74c6f0c179e0d7337c50349eb34d764e94830dbc8fea897073ea4c46454d",
+  "certificateSha256": "042730facd34d61f0232fb0f0b7fc4df5d455622b309e2937fb686d6a9839a10",
+  "status": "pass",
+  "states": 10786,
+  "candidateTransitions": 2200277,
+  "retainedTransitions": 10859,
+  "maxSpan": 9131,
+  "derivativeBound": 127860,
+  "thetaRadius": [
+    1,
+    5114400
+  ],
+  "thetaInterval": [
+    [
+      2557199,
+      5114400
+    ],
+    [
+      2557201,
+      5114400
+    ]
+  ],
+  "gapRatioInterval": [
+    [
+      2557199,
+      2557201
+    ],
+    [
+      2557201,
+      2557199
+    ]
+  ],
+  "exactInverseDiameterNumerator": 73769304,
+  "closedRadius": [
+    39,
+    20
+  ],
+  "perturbationAllowance": [
+    1,
+    40
+  ],
+  "rejectedMutations": [
+    "missing-successor",
+    "duplicate-state",
+    "accepting-state",
+    "missing-root",
+    "unsafe-coefficient-range"
+  ],
+  "scope": "Uniform all-length neighborhood of equal gaps via a finite affine invariant and exact margins; not the whole central interval or full 5D avoidance."
+}

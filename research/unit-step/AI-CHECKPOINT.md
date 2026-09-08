@@ -1,6 +1,6 @@
 # AI resume checkpoint: sharp basis dimension and 3D step count
 
-**Snapshot: September 6, 2026. Status: research WIP, not a finished joint paper.**
+**Snapshot: September 8, 2026. Status: research WIP, not a finished joint paper.**
 Start here, then read only the linked material needed for the next task.
 
 ## 1. The target and the boundary
@@ -129,6 +129,16 @@ step is a proof covering partial blocks and **arbitrary unequal adjacent
 lengths**, not a larger prefix scan. The candidate might still fail later.
 
 ## 5. Next proof-oriented work
+
+The [September 8 uniform-certificate checkpoint](tracks/JOINT-CHECKPOINT.md)
+preserves the full interval from gap ratio 49:51 through 51:49 and the
+all-ratio uniform/missing-letter direction exclusions for Shallit's candidate.
+These independently code-checked, outside-review-pending reductions are not a
+complete basis construction or a fixed five-step 3D realization. The final
+joint-goal subsampling audit stopped at the missing infinite-compatible menu
+reduction. Neither minimum's bound changed and no ordered pair was eliminated.
+The checkpoint indexes incomplete searches, known failed shortcuts, and the
+separate CI validation/resume entry point; it does not schedule more research.
 
 The subsequent [six-direction exploration](explorations/README.md) is complete:
 all six independent agent reports received a parent proof review and fresh
