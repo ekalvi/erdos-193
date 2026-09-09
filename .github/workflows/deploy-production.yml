@@ -93,15 +93,33 @@ jobs:
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
           test "$(git rev-parse --is-shallow-repository)" = "false"
           test "$(hostname -s)" = "q5m-n03"
+      - name: Prepare canonical production source
+        shell: bash
+        run: |
+          set -euo pipefail
+          source=/home/q5m/code/erdos-193
+          test "$(stat -c %U "$source")" = "q5m"
+          test "$(git -C "$source" remote get-url origin)" = "https://github.com/ekalvi/erdos-193"
+          test -z "$(git -C "$source" status --porcelain)"
+          git -C "$source" fetch --force --prune origin '+refs/heads/main:refs/remotes/origin/main'
+          test "$(git -C "$source" rev-parse refs/remotes/origin/main)" = "$GITHUB_SHA"
+          git -C "$source" checkout --detach --force "$GITHUB_SHA"
+          git -C "$source" clean -ffdx
+          test "$(git -C "$source" rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git -C "$source" rev-parse --is-shallow-repository)" = "false"
+          test -z "$(git -C "$source" status --porcelain)"
       # Merge only in the coordinated handoff window after legacy jobs drain.
       # The first deploy atomically adopts the matching existing owner.
       - name: Plan YAML-owned production release
+        working-directory: /home/q5m/code/erdos-193
         shell: bash
         run: q5m-lab project production plan --revision "$GITHUB_SHA" --json
       - name: Deploy and health-gate YAML-owned production release
+        working-directory: /home/q5m/code/erdos-193
         shell: bash
         run: q5m-lab project production deploy --revision "$GITHUB_SHA" --adopt-existing --json
       - name: Report exact active release
         if: always()
+        working-directory: /home/q5m/code/erdos-193
         shell: bash
         run: q5m-lab project production status --service erdos-193 --json
