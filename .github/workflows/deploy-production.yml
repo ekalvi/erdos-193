@@ -81,6 +81,8 @@ jobs:
         uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
         with:
           persist-credentials: false
+          # Production source validation requires complete reachable Git history.
+          fetch-depth: 0
       - name: Verify trusted workflow context
         shell: bash
         run: |
@@ -89,6 +91,7 @@ jobs:
           test "$GITHUB_REF" = "refs/heads/main"
           test "$GITHUB_EVENT_NAME" = "push" -o "$GITHUB_EVENT_NAME" = "workflow_dispatch"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
+          test "$(git rev-parse --is-shallow-repository)" = "false"
           test "$(hostname -s)" = "q5m-n03"
       # Merge only in the coordinated handoff window after legacy jobs drain.
       # The first deploy atomically adopts the matching existing owner.
