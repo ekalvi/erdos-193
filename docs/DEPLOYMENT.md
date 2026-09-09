@@ -118,9 +118,10 @@ repository permissions, production concurrency, a protected Environment hook,
 and a repository/branch/event guard. Pull-request code never reaches the
 self-hosted runner.
 
-The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials.
-On the existing authorized runner, with a clean exact checkout and canonical
-HTTPS Git remote, it uses the YAML production entry point (not a validation shim
+The workflow checks out exact `GITHUB_SHA` with full reachable history and
+without retaining GitHub credentials. The production source policy rejects a
+shallow checkout. On the existing authorized runner, with a clean exact checkout
+and canonical HTTPS Git remote, it uses the YAML production entry point (not a validation shim
 followed by an independent legacy deployment):
 
 ```sh

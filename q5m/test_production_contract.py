@@ -75,7 +75,9 @@ class ProductionContract(unittest.TestCase):
                          "github.event_name == 'push'", "github.event_name == 'workflow_dispatch'"]:
             self.assertIn(required, guard)
         self.assertEqual(self.steps[0]['with']['persist-credentials'], 'false')
+        self.assertEqual(self.steps[0]['with']['fetch-depth'], '0')
         self.assertIn('test "$(git rev-parse HEAD)" = "$GITHUB_SHA"', self.commands[0])
+        self.assertIn('test "$(git rev-parse --is-shallow-repository)" = "false"', self.commands[0])
         self.assertIn('test "$(hostname -s)" = "q5m-n03"', self.commands[0])
 
     def test_only_yaml_lifecycle_and_first_deploy_adoption(self):
