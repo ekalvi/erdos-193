@@ -120,8 +120,12 @@ self-hosted runner.
 
 The workflow checks out exact `GITHUB_SHA` with full reachable history and
 without retaining GitHub credentials. The production source policy rejects a
-shallow checkout. On the existing authorized runner, with a clean exact checkout
-and canonical HTTPS Git remote, it uses the YAML production entry point (not a validation shim
+shallow checkout or a source outside `/home/q5m`. Because this legacy runner's
+Actions workspace is under `/opt/q5m`, the workflow first requires the existing
+q5m-owned `/home/q5m/code/erdos-193` checkout to be clean, refreshes only its
+canonical HTTPS `main` ref, and detaches it at the exact SHA. Any dirty checkout,
+remote mismatch, or SHA mismatch fails before plan. From that canonical source
+it uses the YAML production entry point (not a validation shim
 followed by an independent legacy deployment):
 
 ```sh

@@ -79,6 +79,13 @@ class ProductionContract(unittest.TestCase):
         self.assertIn('test "$(git rev-parse HEAD)" = "$GITHUB_SHA"', self.commands[0])
         self.assertIn('test "$(git rev-parse --is-shallow-repository)" = "false"', self.commands[0])
         self.assertIn('test "$(hostname -s)" = "q5m-n03"', self.commands[0])
+        prepare = self.steps[2]['run']
+        self.assertIn('source=/home/q5m/code/erdos-193', prepare)
+        self.assertIn('test -z "$(git -C "$source" status --porcelain)"', prepare)
+        self.assertIn("'+refs/heads/main:refs/remotes/origin/main'", prepare)
+        self.assertIn('rev-parse refs/remotes/origin/main', prepare)
+        for step in self.steps[3:]:
+            self.assertEqual(step['working-directory'], '/home/q5m/code/erdos-193')
 
     def test_only_yaml_lifecycle_and_first_deploy_adoption(self):
         expected = [
@@ -86,10 +93,10 @@ class ProductionContract(unittest.TestCase):
             'q5m-lab project production deploy --revision "$GITHUB_SHA" --adopt-existing --json',
             'q5m-lab project production status --service erdos-193 --json',
         ]
-        self.assertEqual(self.commands[1:], expected)
+        self.assertEqual(self.commands[2:], expected)
         for step in self.steps:
             self.assertNotIn('continue-on-error', step)
-        for step in self.steps[2:4]:
+        for step in self.steps[3:5]:
             self.assertNotIn('if', step)  # Normal Actions success dependency; no failed-plan bypass.
         self.assertEqual(self.steps[-1]['if'], 'always()')
         self.assertNotIn('q5m-app', '\n'.join(self.commands))
@@ -113,7 +120,7 @@ class ProductionContract(unittest.TestCase):
                 env = {'PATH': directory + os.pathsep + os.defpath, 'GITHUB_SHA': 'a' * 40,
                        'CALL_LOG': str(log), 'PLAN_EXIT': str(plan_exit)}
                 result = subprocess.run(['/bin/bash', '--noprofile', '--norc', '-eo', 'pipefail', '-c',
-                                         '\n'.join(self.commands[1:3])], env=env,
+                                         '\n'.join(self.commands[2:4])], env=env,
                                         capture_output=True, text=True, timeout=10)
                 self.assertEqual(result.returncode, plan_exit, result.stderr)
                 calls = [json.loads(line) for line in log.read_text().splitlines()]
