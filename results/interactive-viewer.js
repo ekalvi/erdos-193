@@ -5,9 +5,9 @@
   const MAX_RULE_BITS = 4096;
   const MAX_RULE_DIGITS = 1234;
   const DIRECTIONS = [[1, 0], [0, 1], [-1, 0], [0, -1]];
-  const CORNERS = [[0, 0], [0, 1], [-1, 1], [-1, 0]];
+  const CORNERS = [[0, 0], [-1, 0], [-1, 1], [0, -1]]; // Cambie's six-step-compatible offsets
   const COLORS = ['#56b4e9', '#e69f00', '#009e73', '#cc79a7'];
-  const TAGS = ['00', '01', '11', '10'];
+  const TAGS = ['00', '10', '11', '01'];
   const canvas = document.querySelector('#curveCanvas');
   const ctx = canvas.getContext('2d', {alpha: false});
   const stage = document.querySelector('#curveStage');

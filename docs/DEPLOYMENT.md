@@ -6,7 +6,42 @@ This repository owns the image, Compose metadata, health check, and trusted
 release workflow. The homelab repository owns runner installation, node policy,
 activation/rollback, reboot recovery, and Docker ingress enforcement.
 
+## YAML ownership cutover: prepared, not activated
+
+This change follows homelab's current
+[production-adoption contract](https://github.com/q5m-ai/homelab/blob/main/node/PRODUCTION-ADOPTION.md).
+The operator confirmed q5m-lab 1.6.2 and generic production capability installed
+on all four nodes, with disposable adoption, healthy deploy, failure, rollback
+and recovery acceptance complete. Erdős needs no separate registration or
+hand-written binding: its committed project declaration owns the intent.
+
+**Before merging:** confirm the production runner is still online and idle, let
+any active legacy deployment finish, and make no further legacy dispatch. Then
+merge in one coordinated window with the existing workflow enabled. The first
+trusted `main` job runs `plan`, then `deploy --adopt-existing`; adoption and the
+new release occur under one guarded lifecycle lock. Matching repeated adoption
+is harmless, while conflicting ownership fails closed.
+
+The first deploy preserves service `erdos-193`, n03 placement, the Nginx/Compose
+runtime, fixed port `8193`, `erdos-193.q5m.ai` tunnel, active/rollback history and
+boot recovery. It neither migrates hosts nor creates a route. Before merging,
+report the verified target and checks and obtain explicit go-ahead. After merge,
+verify the public release marker equals the deployed commit and test the complete
+site. A failed public check may follow successful local activation: retain and
+inspect the exact operation receipt before retrying or requesting rollback.
+
 ## Placement and routes
+
+**Verified September 8, 2026 before editing:** `q5m-n03`, service `erdos-193`,
+active release `61d8c9fc7b2b9006cf0fc7995eb19fb0c69e18e6`, rollback release
+`92374aa7aec22af88f55e7d1becffc00b946e61f`, and Nginx listening on fixed port
+`8193`. Repository runner `erdos-193-n03` was online and idle with label
+`erdos-193-deploy`; the old n01 runner was offline. Public
+`https://erdos-193.q5m.ai/.q5m-release` returned the same active SHA through
+Cloudflare and the root returned HTTP 200. The production plan must recheck these
+facts and preserved tunnel ownership under lock before any mutation.
+
+The cutover details below are historical evidence, not current placement.
 
 Retired origin (verified 2026-08-21):
 
@@ -16,7 +51,7 @@ Retired origin (verified 2026-08-21):
 - retirement result: process deleted, saved PM2 startup state updated, and the
   old port stopped after explicit approval. The checkout and logs were retained.
 
-Current placement (verified 2026-08-21):
+Historical placement (verified 2026-08-21):
 
 - node: `q5m-n02.localdomain` (current NPM-reachable address `10.1.1.31`);
 - app: `erdos-193`;
@@ -68,9 +103,10 @@ Additional checks completed 2026-08-21:
   public exact release and all documented paths continued to pass.
 
 Every later trusted `main` push deploys and reports its own exact merge commit,
-so use `q5m-app status erdos-193` and the public `/.q5m-release` response for
+so use the current owner's status and the public `/.q5m-release` response for
 current identity rather than treating the initial cutover SHA as a floating
-version.
+version. After adoption, status is `q5m-lab project production status --service erdos-193
+--json`; do not invoke legacy mutating status.
 
 ## Release path
 
@@ -82,21 +118,44 @@ repository permissions, production concurrency, a protected Environment hook,
 and a repository/branch/event guard. Pull-request code never reaches the
 self-hosted runner.
 
-The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials
-and runs:
+The workflow checks out exact `GITHUB_SHA` without retaining GitHub credentials.
+On the existing authorized runner, with a clean exact checkout and canonical
+HTTPS Git remote, it uses the YAML production entry point (not a validation shim
+followed by an independent legacy deployment):
 
 ```sh
-q5m-app deploy-checkout erdos-193 "$GITHUB_WORKSPACE" "$GITHUB_SHA"
-q5m-app status erdos-193
+q5m-lab project production plan --revision "$GITHUB_SHA" --json
+q5m-lab project production deploy --revision "$GITHUB_SHA" --adopt-existing --json
+q5m-lab project production status --service erdos-193 --json
 ```
+
+Plan failure prevents deploy. The project declaration selects and enforces the
+exact source, n03 host, existing hostname/tunnel, release-marker health and
+rollback contract. `--adopt-existing` explicitly transfers the matching legacy
+owner during this first deploy; it cannot overwrite a conflicting owner. No node
+override, missing-tool fallback, or direct `q5m-app` writer is permitted. Status is read-only and runs even after failure;
+it is not recovery. Local activation can succeed before public verification
+fails, so a failed job must not be described as automatic rollback.
 
 The node archives that exact commit, validates `q5m/app.env` and
 `q5m/compose.yaml`, builds `q5m/erdos-193:<full-commit>`, waits for container
 health, and changes boot state only after success. The previous healthy release
 is retained for local rollback.
 
-The image serves only committed `viz/` files. `/.q5m-release` reports the exact
-full commit built into the image; `/healthz` is the container health endpoint.
+The image serves committed `viz/` and `results/` assets (the latter at `/family/`),
+subject to `.dockerignore`. The optional `build/q5m-site` review output and LAN
+server are not production inputs. The deployment serves the complete committed site: `viz/` at `/` and `results/`
+at `/family/`.
+
+`q5m.yaml` declares n03 and `erdos-193.q5m.ai` as project-owned production intent,
+and uses the Compose release's health path `/.q5m-release`. Its `development` and `build` sections remain
+separate; production never starts `q5m/serve_site.py` or serves the review build.
+The old isolated `project deploy --environment production` is not this interface
+and must not be used to create another owner. The first authorized merge-triggered deploy adopts matching existing ownership;
+subsequent trusted `main` pushes activate releases after the container gate. The
+application workflow creates no DNS, tunnel, port or volume.
+
+`/.q5m-release` reports the exact full commit built into the image; `/healthz` is the container health endpoint.
 There are no application secrets or mutable volumes. The required empty
 machine-local root is still created with standard metadata:
 
@@ -104,7 +163,35 @@ machine-local root is still created with standard metadata:
 sudo install -d -o root -g q5m -m 0750 /etc/q5m/apps/erdos-193
 ```
 
-## Bootstrap and normal operations
+## Release rollback after YAML adoption
+
+Release rollback uses the same protected binding and preserved release history:
+
+```sh
+q5m-lab project production rollback --service erdos-193 --json
+q5m-lab project production status --service erdos-193 --json
+```
+
+This selects an application release, not a previous infrastructure owner. A lost
+client or public-health failure is not permission to resubmit: record the returned
+operation unit and inspect that exact unit/journal and app state first. Recovery,
+when explicitly approved, uses `q5m-lab project production recover --binding
+erdos-193 --json`. Never bypass the writer fence with an old binary or Docker.
+
+Undoing adoption is a separate operator-approved handoff: freeze the YAML writer,
+review the binding installer's `plan-release`, and use `release-owner` with its
+exact approved plan. Only afterward may legacy CI be re-enabled. This does not
+choose a release, downgrade tools or delete the route. There is no generic
+production down/purge operation in this contract.
+
+## Historical operations (pre-adoption only)
+
+The remaining commands record the earlier legacy lifecycle and migrations.
+**Do not execute them against an adopted binding.** Current adoption, rollback,
+recovery and ownership reversal follow the contract and sections above. Host
+moves, reboot tests and retirement require their own explicit authorization.
+
+### Bootstrap and normal operations
 
 Follow `node/HOSTING.md` in the homelab repository to install `q5m-app`, the
 firewall watcher, and a repository-scoped runner. Bootstrap the first release

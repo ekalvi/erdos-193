@@ -1,7 +1,19 @@
-# Managed LAN development preview only. No production hostname is declared.
-# This dedicated root excludes research sources and the production website.
-version: 1
-name: erdos-193-unit-step-explainer
-kind: static
-root: design/unit-step-explainer/public
-health: /index.html
+# The first authorized main deployment adopts the existing n03 production owner.
+# It preserves the Nginx/Compose image, port 8193, erdos-193.q5m.ai tunnel and
+# rollback history. Development/build remain separate entry points.
+version: 2
+name: erdos-193
+development:
+  command: [python3, q5m/serve_site.py]
+  health: /index.html
+build:
+  command: [python3, q5m/build_site.py]
+  output: build/q5m-site
+release:
+  adapter: compose
+  compose: q5m/compose.yaml
+  contract: q5m/app.env
+  health: /.q5m-release
+production:
+  node: q5m-n03
+  hostname: erdos-193.q5m.ai

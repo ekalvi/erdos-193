@@ -26,7 +26,7 @@ for (const page of pages) {
   const source = await readFile(path.join(here, 'pages', page), 'utf8');
   const rendered = ownershipMarker + source.replace(/\{\{ include ([a-z-]+) \}\}/g, (_, name) => {
     if (!partials.has(name)) throw new Error(`${page}: unknown partial ${name}`);
-    return partials.get(name).replace(/\{\{ current ([a-z0-9]+) \}\}/g, (_, key) =>
+    return partials.get(name).replace(/\{\{ current ([a-z0-9-]+) \}\}/g, (_, key) =>
       page === `${key}.html` ? ' class="cur" aria-current="page"' : '');
   });
   if (/\{\{ (?:include|current)\b/.test(rendered)) throw new Error(`${page}: unresolved template directive`);

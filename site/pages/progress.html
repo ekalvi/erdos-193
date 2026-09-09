@@ -29,6 +29,7 @@
         <a href="#handcode-aug-27"><time datetime="2026-08-27">Aug 27</time><b>Hand-code the replay</b></a>
         <a href="#workstation-aug-28"><time datetime="2026-08-28">Aug 28</time><b>See the workspace</b></a>
         <a href="#publish-aug-28"><time datetime="2026-08-28">Aug 28–Sep 1</time><b>Publish and simplify</b></a>
+        <a href="#six-vector-family"><time datetime="2026-09-05">Sep 5–6</time><b>Six-vector family minimum</b></a>
       </nav>
     </section>
 
@@ -204,6 +205,30 @@
       </article>
     </section>
 
+    <section class="artefact-timeline" aria-label="Six-vector follow-up">
+      <article class="artefact-entry" id="six-vector-family" data-status="draft">
+        <header class="artefact-entry-head">
+          <div class="artefact-sequence"><span>08</span><time datetime="2026-09-05">September 5–6, 2026</time></div>
+          <div><span class="eyebrow">Exact menus · draft infinite construction</span><h2>The alternating rules need only six vectors.</h2><p>The complete period-eight audit finds 226 rules with 14 spatial step types, 28 with 10, and just two with six: <a href="family/?rule=85#vector-menu">g85</a> and <a href="family/?rule=170#vector-menu">g170</a>. Their complete menus are now visible in the family explorer, independently of preview length.</p></div>
+        </header>
+        <div class="artefact-layout">
+          <figure class="artefact-figure">
+            <div class="g85-snapshot-grid">
+              <a class="g85-snapshot-card" href="family/?rule=85#vector-menu" aria-label="Open G85: planar source walk and exact vector menu"><canvas id="g85PlanarSnapshot" width="760" height="520" aria-hidden="true"></canvas><span class="art-chip">g85 · 2D source</span><span class="art-label">1,024 vertices</span></a>
+              <a class="g85-snapshot-card" href="family/?rule=85#vector-menu" aria-label="Open G85: tagged 3D lift and exact vector menu"><canvas id="g85LiftSnapshot" width="760" height="520" aria-hidden="true"></canvas><span class="art-chip">g85 · tagged 3D lift</span><span class="art-label">oblique view</span></a>
+            </div>
+            <figcaption><b>One rule, two site-rendered views.</b> Left: the planar G85 source walk. Right: its tagged 3D lift, projected and height-compressed for legibility. Both open G85’s exact vector menu. These finite 1,024-vertex previews illustrate the draft; they do not prove its infinite claim.</figcaption>
+          </figure>
+          <div class="artefact-reading">
+          <p>Kalviainen’s alternating signed-Gaussian draft builds on the original Cambie–Kalviainen theorem, <b>Cambie’s offsets</b>, and <b>Shallit’s positive-basis encoding</b> (16D, then Cambie’s 14D simplification). Eight transitions collapse to six distinct 3D vectors; encoding these as six basis directions gives the proposed 6D construction.</p>
+          <p>This proposes reducing the 14-vector upper bound in <a href="https://www.erdosproblems.com/forum/thread/193#post-8847">Adenwalla’s September 6 forum comment</a> to six, by changing the source rule rather than recounting his subsequence. A separate analytic argument gives a minimum of six within the stated four-state tagging scheme. Neither that restricted minimum nor the exact finite audit settles the global minimum: four and five remain unresolved.</p>
+          <p><b>Review boundary:</b> the infinite six-step argument has an AI-assisted audit, but independent human review and Lean certification remain pending. The original Erdős 193 proof is unchanged.</p>
+          <p class="artefact-link"><a href="unit-step.html#six-step">Explore the joint-minimum hub, construction and attribution →</a> · <a href="https://raw.githubusercontent.com/ekalvi/erdos-193/main/paper/unit_step_walk_N6_short.pdf">Six-step/6D draft PDF · review pending</a></p>
+          </div>
+        </div>
+      </article>
+    </section>
+
     <section class="progress-log">
     <span class="eyebrow">Research and understanding log</span>
       <h2 class="progress-log-title">How the robot idea became a proof I could explain</h2>
@@ -282,5 +307,6 @@
   dialog.addEventListener('close', restorePage);
 })();
 </script>
+<script src="g85-snapshots.js?v=1"></script>
 </body>
 </html>

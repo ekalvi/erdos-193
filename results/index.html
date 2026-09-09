@@ -4,7 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Interactive explorer for extended signed Gaussian valuation walks, with a complete atlas of the 256 period-eight rules.">
-  <link rel="icon" href="../favicon.svg">
+  <link rel="icon" href="../favicon.ico" sizes="16x16 32x32 48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon.png">
+  <link rel="icon" type="image/svg+xml" sizes="any" href="../favicon.svg">
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
   <title>Signed Gaussian valuation-walk family — Erdős Problem 193</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -91,6 +94,27 @@
     #inspector dt { color: var(--muted); }
     #inspector dd { margin: 0; color: var(--ink); overflow-wrap: anywhere; }
     .atlas { margin-top: 28px; }
+    .vector-panel { margin-top: 28px; padding: 20px; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); scroll-margin-top: 20px; }
+    .vector-panel p + p, .vector-panel details, .vector-panel nav { margin-top: 12px; }
+    .vector-panel summary { cursor: pointer; }
+    .vector-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; margin: 16px 0 10px; }
+    .vector-stat { padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; }
+    .vector-stat b { display: block; color: var(--ink); font-size: 19px; }
+    .vector-stat span { color: var(--muted); font-size: 11px; }
+    .vector-stage { position: relative; height: 390px; overflow: hidden; border: 1px solid #263750; border-radius: 10px; background: #04060d; touch-action: none; cursor: grab; }
+    .vector-stage.dragging { cursor: grabbing; }
+    .vector-stage canvas { display: block; width: 100%; height: 100%; }
+    .vector-stage-note { position: absolute; right: 12px; bottom: 12px; padding: 5px 9px; border-radius: 8px; background: #04060db8; color: #aab9d0; font-size: 11px; pointer-events: none; }
+    .vector-menu-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; margin-top: 10px; }
+    .vector-menu-item { display: flex; justify-content: space-between; gap: 10px; padding: 6px 8px; border-radius: 6px; background: hsl(var(--accent)); font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .vector-menu-item span { color: var(--muted); text-align: right; }
+    .vector-menu-item b { white-space: nowrap; }
+    @media (max-width: 600px) { .vector-stage { height: 330px; } .vector-menu-list { grid-template-columns: 1fr; } .vector-stage-note { display: none; } }
+    .vector-panel code { overflow-wrap: anywhere; }
+    .followup-callout { margin-top: 28px; padding: 20px; border: 1px solid hsl(var(--link)/.55); border-radius: 14px; background: linear-gradient(125deg, hsl(var(--link)/.12), hsl(var(--accent))); }
+    .followup-callout h2 { margin: 4px 0 8px; }
+    .followup-callout p { max-width: 920px; }
+    .followup-callout .actions { margin-top: 14px; }
     .family-footnote { margin-top: 14px; color: var(--muted); font-size: 11px; }
     .atlas .button, .sheet-nav button { padding: 7px 10px; font-size: 13px; }
     .atlas-head { margin-bottom: 12px; }
@@ -114,7 +138,7 @@
 <div class="family-shell">
   <header class="site">
     <div class="brand"><a href="../">erdos-193<span>.q5m.ai</span></a></div>
-    <nav class="site" aria-label="Main navigation"><a href="../">Home</a><a href="../proof.html">Proof</a><a href="../progress.html">Timeline<span class="dot"></span></a><a class="cur" href="../walk3d.html">Visualize</a><a href="../demo.html">Code</a></nav>
+    <nav class="site" aria-label="Main navigation"><a href="../">Home</a><a href="../proof.html">Proof</a><a href="../progress.html">Timeline<span class="dot"></span></a><a class="cur" aria-current="page" href="../walk3d.html">Visualize</a><a href="../unit-step.html">Follow-up</a><a href="../demo.html">Code</a></nav>
   </header>
   <main>
     <section class="explorer" aria-label="Interactive signed Gaussian rule explorer">
@@ -160,9 +184,9 @@
             <span class="control-label">Visible state tags</span>
             <div class="tags">
               <button type="button" class="tag" data-tag="0" aria-pressed="false"><span class="dot" style="background:#56b4e9"></span>0·00</button>
-              <button type="button" class="tag" data-tag="1" aria-pressed="false"><span class="dot" style="background:#e69f00"></span>1·01</button>
+              <button type="button" class="tag" data-tag="1" aria-pressed="false"><span class="dot" style="background:#e69f00"></span>1·10</button>
               <button type="button" class="tag" data-tag="2" aria-pressed="false"><span class="dot" style="background:#009e73"></span>2·11</button>
-              <button type="button" class="tag" data-tag="3" aria-pressed="false"><span class="dot" style="background:#cc79a7"></span>3·10</button>
+              <button type="button" class="tag" data-tag="3" aria-pressed="false"><span class="dot" style="background:#cc79a7"></span>3·01</button>
             </div>
             <label class="toggle"><input id="traceToggle" type="checkbox" checked> monochrome trace</label>
             <div class="actions"><button id="resetView" type="button">Reset view</button></div>
@@ -173,6 +197,29 @@
       <div class="formula-panel" aria-label="Rule formulas"><span class="control-label">Formula</span><p id="formula" class="formula">σ(n)=Σ ε[j mod 8]bⱼ(n) mod 4 · z(n+1)=z(n)+i^σ(n)</p></div>
     </section>
     <p class="family-footnote"><sup>*</sup> Signed-family 3D lifts are dynamically generated finite previews and have not been independently verified.</p>
+
+    <section class="vector-panel" id="vector-menu" aria-labelledby="vectorMenuTitle">
+      <span class="control-label">Complete menu · integer coordinates (x, y, h)</span>
+      <h2 id="vectorMenuTitle">3D step vectors for the selected rule</h2>
+      <p>These are the steps of the <b>tagged 3D lift</b>, not the four unit directions of the planar drawing. The menu is exact for the whole periodic rule, independent of recursion detail or the displayed prefix.</p>
+      <nav class="actions" aria-label="Vector-menu links"><a id="vectorPermalink" class="button" href="?rule=0#vector-menu">Link to this rule’s menu</a><a class="button" href="?rule=85#vector-menu">g85 · six vectors</a><a class="button" href="?rule=170#vector-menu">g170 · six vectors</a><a class="button" href="../unit-step.html#six-step">Why six?</a></nav>
+      <p id="alternatingNotice" hidden><b>This alternating rule attains the family’s six-vector minimum.</b> Its companion has a different six-vector menu. <a href="../unit-step.html">Explore the separate d<sub>*</sub>/s<sub>*</sub> follow-up problem and review status.</a></p>
+      <div class="vector-stats" aria-label="Vector-menu summary"><div class="vector-stat"><b id="vectorMenuCount">—</b><span>exact step vectors</span></div><div class="vector-stat"><b id="vectorMenuMin">—</b><span>shortest length</span></div><div class="vector-stat"><b id="vectorMenuMax">—</b><span>longest length</span></div></div>
+      <div id="vectorMenuStage" class="vector-stage" aria-label="Rotating 3D diagram of the selected rule’s exact vector menu"><canvas id="vectorMenuCanvas" aria-hidden="true"></canvas><div class="vector-stage-note">white origin · colored vector lines · bright endpoints · drag to rotate</div></div>
+      <div id="vectorMenuRows" class="vector-menu-list" aria-label="Exact vectors and state transitions"></div>
+      <noscript><p>Enable JavaScript for the selected rule’s complete menu. The g85 menu is also listed below.</p></noscript>
+      <details><summary>Formula and why this is a complete menu</summary>
+        <p>Use σ(n) = Σ εⱼ bⱼ(n) mod 4, z₀ = 0, zₙ₊₁ = zₙ + i<sup>σ(n)</sup>, and Cambie’s offsets <code>(c₀,c₁,c₂,c₃) = (0,−1,−1+i,−i)</code>. Then <code>Qₙ = (Re(2zₙ+cσ(n)), Im(2zₙ+cσ(n)), 4n+σ(n))</code>. Translate Q₀ to zero if desired (here it already is zero).</p>
+        <p>A transition r → s gives <code>(Re(2iʳ+cₛ−cᵣ), Im(2iʳ+cₛ−cᵣ), 4+s−r)</code>. With k trailing ones, the state change is εₖ − Σⱼ&lt;ₖ εⱼ mod 4. For a period-p sign word, four periods exhaust this change orbit; bits above the carry suffix realize every starting state. Equal vectors are merged in the list. This exact finite calculation counts step types; it is not itself a proof of infinite triple avoidance.</p>
+      </details>
+    </section>
+
+    <aside class="followup-callout" aria-labelledby="followupCalloutTitle">
+      <span class="control-label">Separate open problem · new research hub</span>
+      <h2 id="followupCalloutTitle">What is the minimum number of step vectors?</h2>
+      <p>An infinite 3D walk with no collinear triple needs at least four different step vectors. The G85 construction uses exactly six, improving the proposed upper bound from 14 to 6 if its draft proof passes independent review. The true minimum—four, five, or six—remains open, together with the related minimum positive-basis dimension.</p>
+      <div class="actions"><a class="button primary" href="?rule=85#vector-menu">Open G85 · 6 vectors</a><a class="button" href="../unit-step.html">Explore the 4–6 follow-up hub</a><a class="button" href="../unit-step.html#joint-problem">Read the joint formulation</a><a class="button" href="../unit-step.html#six-step">Review the 6D draft</a></div>
+    </aside>
 
     <section class="atlas" aria-labelledby="atlasTitle">
       <div class="atlas-head"><h2 id="atlasTitle">Complete static atlas</h2></div>
@@ -207,7 +254,8 @@
     const requestedSheet = Math.min(4, Math.max(1, Number(new URLSearchParams(location.search).get('sheet')) || 1));
     if (requestedSheet !== 1) selectSheet(requestedSheet - 1, false);
   </script>
-  <script src="interactive-viewer.js?v=13"></script>
-  <script src="dynamic-lift3d.js?v=8"></script>
+  <script src="interactive-viewer.js?v=14"></script>
+  <script src="dynamic-lift3d.js?v=9"></script>
+  <script src="vector-menu.js?v=2"></script>
 </body>
 </html>
