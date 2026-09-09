@@ -6,7 +6,7 @@ from pathlib import Path, PurePosixPath
 
 ROOT=Path(__file__).resolve().parent.parent
 OUTPUT=ROOT/'build/q5m-site'
-ALLOWED={'.html','.js','.css','.svg','.jpg','.png','.webp','.pdf','.txt','.xml','.json'}
+ALLOWED={'.html','.js','.css','.svg','.ico','.jpg','.png','.webp','.pdf','.txt','.xml','.json'}
 SOURCE_FETCH="""fetch('gaussian_walk_demo.py', {cache: 'no-store'})
     .then(response => {
       if (!response.ok) throw new Error(`source request failed: ${response.status}`);

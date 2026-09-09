@@ -3,7 +3,7 @@
 
   const STEPS = 500000;
   const DIRECTIONS = [[1, 0], [0, 1], [-1, 0], [0, -1]];
-  const CORNERS = [[0, 0], [0, 1], [-1, 1], [-1, 0]];
+  const CORNERS = [[0, 0], [-1, 0], [-1, 1], [0, -1]]; // Cambie's six-step-compatible offsets
   const canvas = document.querySelector('#liftCanvas');
   const flatCanvas = document.querySelector('#curveCanvas');
   const button = document.querySelector('#lift3d');

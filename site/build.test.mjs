@@ -14,7 +14,7 @@ test('generated pages are current, have shared metadata, and retain page-specifi
   const result = run(root, '--check');
   assert.equal(result.status, 0, result.stderr);
   const pages = (await readdir(path.join(here, 'pages'))).filter(name => name.endsWith('.html'));
-  assert.equal(pages.length, 8);
+  assert.equal(pages.length, 9);
   for (const page of pages) {
     const html = await readFile(path.join(root, 'viz', page), 'utf8');
     assert.equal((html.match(/<meta charset=/g) || []).length, 1, page);
@@ -88,11 +88,10 @@ test('deleted and renamed templates remove only owned outputs, even when every t
     assert.equal(await readFile(path.join(dir, 'viz/manual.html'), 'utf8'), unmanaged);
     assert.equal(run(dir, '--check').status, 0);
     assert.match(run(dir).stdout, /0 changed, 0 removed/);
-    for (const page of await readdir(path.join(dir, 'site/pages'))) {
-      await rm(path.join(dir, 'site/pages', page));
-    }
+    const remainingPages = await readdir(path.join(dir, 'site/pages'));
+    for (const page of remainingPages) await rm(path.join(dir, 'site/pages', page));
     assert.equal(run(dir, '--check').status, 1);
-    assert.match(run(dir).stdout, /7 removed/);
+    assert.match(run(dir).stdout, new RegExp(`${remainingPages.length} removed`));
     assert.deepEqual(await readdir(path.join(dir, 'viz')), ['manual.html']);
     assert.equal(run(dir, '--check').status, 0);
   } finally {

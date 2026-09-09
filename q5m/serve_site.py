@@ -7,7 +7,7 @@ from urllib.parse import unquote,urlsplit
 import mimetypes,os,stat
 
 ROOT=Path(__file__).resolve().parent.parent
-ALLOWED={'.html','.js','.css','.svg','.jpg','.png','.webp','.pdf','.txt','.xml','.json'}
+ALLOWED={'.html','.js','.css','.svg','.ico','.jpg','.png','.webp','.pdf','.txt','.xml','.json'}
 class Handler(SimpleHTTPRequestHandler):
  def translate_path(self,path):
   parts=[p for p in unquote(urlsplit(path).path).split('/') if p]
