@@ -34,11 +34,12 @@ class ProductionContract(unittest.TestCase):
     def test_binding_and_unchanged_runtime(self):
         self.assertEqual(self.manifest['version'], 2)
         self.assertEqual(self.manifest['name'], 'erdos-193')
-        self.assertEqual(self.manifest['production'], {'binding': 'erdos-193'})
+        self.assertEqual(self.manifest['production'], {
+            'node': 'q5m-n03', 'hostname': 'erdos-193.q5m.ai'})
         self.assertEqual(self.manifest['release'], {
             'adapter': 'compose', 'compose': 'q5m/compose.yaml',
             'contract': 'q5m/app.env', 'health': '/.q5m-release'})
-        self.assertNotIn('environments', self.manifest)  # Placement belongs to protected policy.
+        self.assertNotIn('environments', self.manifest)
         self.assertEqual(read('q5m/app.env').splitlines(),
                          ['Q5M_APP=erdos-193', 'Q5M_INGRESS_PORTS=8193/tcp'])
         site = yaml.safe_load(read('q5m/compose.yaml'))['services']['site']
@@ -48,6 +49,9 @@ class ProductionContract(unittest.TestCase):
         self.assertTrue(site['image'].startswith('q5m/erdos-193:${Q5M_RELEASE:'))
         self.assertIn('FROM nginxinc/nginx-unprivileged:', read('q5m/Dockerfile'))
         self.assertIn('/.q5m-release', read('q5m/nginx.conf'))
+        dockerfile = read('q5m/Dockerfile')
+        self.assertIn('COPY viz/ /usr/share/nginx/html/', dockerfile)
+        self.assertIn('COPY results/ /usr/share/nginx/html/family/', dockerfile)
 
     def test_dev_build_stay_separate(self):
         self.assertEqual(self.manifest['development'], {
@@ -72,12 +76,13 @@ class ProductionContract(unittest.TestCase):
             self.assertIn(required, guard)
         self.assertEqual(self.steps[0]['with']['persist-credentials'], 'false')
         self.assertIn('test "$(git rev-parse HEAD)" = "$GITHUB_SHA"', self.commands[0])
+        self.assertIn('test "$(hostname -s)" = "q5m-n03"', self.commands[0])
 
-    def test_only_yaml_lifecycle_and_no_adoption(self):
+    def test_only_yaml_lifecycle_and_first_deploy_adoption(self):
         expected = [
             'q5m-lab project production plan --revision "$GITHUB_SHA" --json',
-            'q5m-lab project production deploy --revision "$GITHUB_SHA" --json',
-            'q5m-lab project production status --binding erdos-193 --json',
+            'q5m-lab project production deploy --revision "$GITHUB_SHA" --adopt-existing --json',
+            'q5m-lab project production status --service erdos-193 --json',
         ]
         self.assertEqual(self.commands[1:], expected)
         for step in self.steps:
@@ -87,8 +92,8 @@ class ProductionContract(unittest.TestCase):
         self.assertEqual(self.steps[-1]['if'], 'always()')
         self.assertNotIn('q5m-app', '\n'.join(self.commands))
         self.assertNotIn('--environment production', '\n'.join(self.commands))
-        self.assertIn('q5m-lab project production rollback --binding erdos-193 --json', read('docs/DEPLOYMENT.md'))
-        self.assertIn('Do not\nmerge this workflow', read('docs/DEPLOYMENT.md'))
+        self.assertIn('q5m-lab project production rollback --service erdos-193 --json', read('docs/DEPLOYMENT.md'))
+        self.assertIn('Before merging', read('docs/DEPLOYMENT.md'))
 
     def test_mock_plan_then_deploy_and_failed_plan(self):
         # Execute the actual workflow command text with a fake CLI only.
@@ -112,7 +117,8 @@ class ProductionContract(unittest.TestCase):
                 calls = [json.loads(line) for line in log.read_text().splitlines()]
                 expected = [['project', 'production', 'plan', '--revision', 'a' * 40, '--json']]
                 if not plan_exit:
-                    expected.append(['project', 'production', 'deploy', '--revision', 'a' * 40, '--json'])
+                    expected.append(['project', 'production', 'deploy', '--revision', 'a' * 40,
+                                     '--adopt-existing', '--json'])
                 self.assertEqual(calls, expected)
 
 

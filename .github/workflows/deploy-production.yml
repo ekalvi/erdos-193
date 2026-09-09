@@ -89,15 +89,16 @@ jobs:
           test "$GITHUB_REF" = "refs/heads/main"
           test "$GITHUB_EVENT_NAME" = "push" -o "$GITHUB_EVENT_NAME" = "workflow_dispatch"
           test "$(git rev-parse HEAD)" = "$GITHUB_SHA"
-      # Hold this workflow merge until platform rollout/live acceptance and the
-      # explicitly approved binding adoption. CI must never perform adoption.
+          test "$(hostname -s)" = "q5m-n03"
+      # Merge only in the coordinated handoff window after legacy jobs drain.
+      # The first deploy atomically adopts the matching existing owner.
       - name: Plan YAML-owned production release
         shell: bash
         run: q5m-lab project production plan --revision "$GITHUB_SHA" --json
       - name: Deploy and health-gate YAML-owned production release
         shell: bash
-        run: q5m-lab project production deploy --revision "$GITHUB_SHA" --json
+        run: q5m-lab project production deploy --revision "$GITHUB_SHA" --adopt-existing --json
       - name: Report exact active release
         if: always()
         shell: bash
-        run: q5m-lab project production status --binding erdos-193 --json
+        run: q5m-lab project production status --service erdos-193 --json

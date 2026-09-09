@@ -98,7 +98,7 @@ const manifest = (await read('q5m.yaml')).toString();
 // The root manifest now owns the existing production image via a protected
 // binding. Publication separation is enforced by the Docker exclusions above,
 // not by forbidding a production declaration for the whole repository.
-assert(/^production:\n  binding: erdos-193\s*$/m.test(manifest), 'unexpected production binding');
+assert(/^production:\n  node: q5m-n03\n  hostname: erdos-193\.q5m\.ai\s*$/m.test(manifest), 'unexpected production target');
 assert(/^  health: \/\.q5m-release\s*$/m.test(manifest), 'production must verify the exact release marker');
 assert(!manifest.includes('root: design/unit-step-explainer/public'), 'research explainer must not be the production root');
 assert.deepEqual(await read('design/unit-step-explainer/standalone.html'),

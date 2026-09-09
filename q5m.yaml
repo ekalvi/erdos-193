@@ -1,6 +1,6 @@
-# Merge only after homelab rollout/live acceptance and explicit binding adoption.
-# YAML production owns releases; the existing Nginx/Compose image, port 8193,
-# and erdos-193.q5m.ai tunnel remain. Dev/build are separate entry points.
+# The first authorized main deployment adopts the existing n03 production owner.
+# It preserves the Nginx/Compose image, port 8193, erdos-193.q5m.ai tunnel and
+# rollback history. Development/build remain separate entry points.
 version: 2
 name: erdos-193
 development:
@@ -15,4 +15,5 @@ release:
   contract: q5m/app.env
   health: /.q5m-release
 production:
-  binding: erdos-193
+  node: q5m-n03
+  hostname: erdos-193.q5m.ai
