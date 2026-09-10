@@ -131,6 +131,14 @@ lengths**, not a larger prefix scan. The candidate might still fail later.
 
 ## 5. Next proof-oriented work
 
+**Public status note (September 10, 2026):** a new proof-oriented research
+direction is under investigation. Its technical details and intermediate
+artifacts are intentionally not included in this public repository. No new
+theorem, improved bound, or resolution of either minimum is claimed. Any
+future public account remains subject to verification and collaborator
+agreement. The archived investigations below are historical references, not
+a technical description of this new direction.
+
 The [September 8 uniform-certificate checkpoint](tracks/JOINT-CHECKPOINT.md)
 preserves the full interval from gap ratio 49:51 through 51:49 and the
 all-ratio uniform/missing-letter direction exclusions for Shallit's candidate.
