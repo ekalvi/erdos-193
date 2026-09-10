@@ -67,6 +67,16 @@ jobs:
         run: node research/unit-step/tracks/check_four_letter_returns.mjs
       - name: Check track D projection-obstruction arithmetic
         run: node research/unit-step/tracks/check_d_shallit_projection.mjs
+      - name: Verify five-marker compatibility examples and safe resumes
+        shell: bash
+        run: |
+          set -euo pipefail
+          base=research/unit-step/tracks/five-marker-compatibility
+          node --single-threaded --v8-pool-size=1 "$base/verify.mjs" \
+            .checkpoint-five-marker-verify-ci
+          node --single-threaded --v8-pool-size=1 "$base/test.mjs" \
+            .checkpoint-five-marker-tests-ci
+          cmp .checkpoint-five-marker-verify-ci/result.json "$base/checks.json"
       - name: Validate bounded exploratory certificates (not exact-minimum proofs)
         run: bash research/unit-step/explorations/check-all.sh
       - name: Check the offline explainer build and finite models
