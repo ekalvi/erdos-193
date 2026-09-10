@@ -1,6 +1,6 @@
 # AI resume checkpoint: sharp basis dimension and 3D step count
 
-**Snapshot: September 8, 2026. Status: research WIP, not a finished joint paper.**
+**Snapshot: September 10, 2026. Status: research WIP, not a finished joint paper.**
 Start here, then read only the linked material needed for the next task.
 
 ## 1. The target and the boundary
@@ -77,6 +77,7 @@ the original paper's Cambie–Kalviainen citation.
 | Any specified finite subsampling menu has a finite YES/NO decision certificate; an automatic selector suffices if any selector exists | [Focused descent synthesis](explorations/descent.md), [automata proof](explorations/descent-automata.md). State complexity depends on menu heights; no uniform five-menu exclusion. Parent-reviewed AI argument, not human certification. A separate independent checker excludes one specified five-menu with gaps up to 27, not the whole gap-27 class. |
 | Fixed transition recoding cannot give 4D/5D | [Certificates](../../results/unit-step-dimension-probe.json), [independent validator](../../design/check_unit_step_dimension_results.py): all 1,701 onto four-label codings fail within 44 steps; all 1,050 five-label codings fail within 85 steps. Does not exclude context-dependent coding. |
 | Shallit's five-letter candidate survives a finite prefix | [Result](../../results/shallit-five-prefix.json): 38,416 steps, 38,417 vertices, 737,913,736 exact chord checks. **Not an infinite 5D proof.** |
+| Five-marker witnesses synchronize only at a common fraction | [Compatibility checkpoint](tracks/five-marker-compatibility/README.md): interval-Helly equivalence, bounded adjacent-swap/ternary defects, and the exact avoiding word `010213432340124`, whose ten pair-return fraction sets have empty intersection. Written AI-assisted arguments and independently coded finite checks; no universal forcing theorem, infinite avoiding extension, or changed minimum. |
 | Naive substitution descent is incomplete | [Exact diagnostic](../../results/shallit-substitution-algebra.json), [derivation](../../design/UNIT-STEP-4D-5D-INVESTIGATION.md#exact-descent-available-so-far): 170 nonzero integral boundary corrections already for equal adjacent lengths. These are not 170 actual counterexamples. |
 | Four-letter cube draft | [Review notes](../../design/WEAK-ABELIAN-CUBE-DRAFT-REVIEW.md), [bounded checker](../../design/check_weak_abelian_cube_draft.mjs), [result](checks/weak-abelian-cube.json): five substitution identities and displacement rows checked; 66,248 equal-state pairs tested. Preliminary audit, not full independent certification or a novelty claim. |
 
@@ -162,6 +163,30 @@ rational 3D projections. These are AI-assisted research results, not collaborato
 approval. Shallit's candidate is not refuted; the now-archived fixed-ratio
 progress is indexed in the exploration's prior-work ledger. Do not simply repeat the original four
 handoffs without accounting for these results.
+
+**Five-marker compatibility checkpoint (September 10, AI-assisted):** the
+[archived word investigation](tracks/five-marker-compatibility/README.md)
+sharpens the simultaneous-marker obligation: pair witnesses with common outer
+cuts synchronize if and only if their attainable fractions have a common
+value. Common outer cuts alone are insufficient, as the exactly checked
+15-letter avoiding counterexample shows. At one fraction, nine successful
+pairs can still leave one adjacent swap; eight leave a ternary bridge of at
+most seven letters. These are structural lemmas, not a proof that dense
+intersection graphs or a common fraction must occur in every infinite word.
+The remaining target is common-fraction forcing across actual factors, with
+all unequal lengths retained. Shallit's candidate and all minimum bounds are
+unchanged. The report preserves proof scope, exact examples, resumable search
+and verification, and CLI regressions; CI reruns the checks. Do not repeat the
+refuted shortcut of combining separate pair returns at different fractions.
+
+**Retired attempt (September 10, AI-assisted):** five-uniform square-Koch
+compass recursions (`E -> E N E S E`, with rotated or reflected images) plus
+a fifth vertical insertion step produced no infinite construction or new
+global bound. The restricted negative findings did not justify further work.
+Do not resume marker, height, or prefix scans without a genuinely new all-scale
+triple-avoidance mechanism. Detailed reports, checkers, and run artifacts were
+discarded at the user's request. This is a do-not-repeat checkpoint, not an
+archived proof or a global impossibility claim.
 
 For concurrent sessions, use the [bounded handoff operating rules](PARALLEL-TASKS.md).
 Start each in a separate worktree from current `origin/main`; the four-core

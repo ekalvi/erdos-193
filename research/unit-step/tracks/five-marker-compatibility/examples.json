@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "status": "Exact finite witnesses only; no infinite five-letter avoiding word is asserted.",
+  "provenance": "AI-assisted bounded investigation, September 10, 2026; not independent human certification.",
+  "outerEndpointCounterexample": {
+    "word": "010213432340124",
+    "outerCuts": [0, 15],
+    "totalCounts": [3, 3, 3, 3, 3],
+    "levelsByPair": {
+      "01": ["1/3", "2/3"],
+      "02": ["2/3"],
+      "03": ["2/3"],
+      "04": ["2/3"],
+      "12": ["1/3", "2/3"],
+      "13": ["2/3"],
+      "14": ["2/3"],
+      "23": ["1/3", "2/3"],
+      "24": ["1/3", "2/3"],
+      "34": ["1/3"]
+    },
+    "extensionStatus": "Infinite avoidance extension is not established or refuted. Periodic repetition preserves the two-marker ternary-gap grammar but has a square at cuts 0,15,30."
+  },
+  "ninePairsOneLevel": {
+    "word": "0234012341",
+    "outerCuts": [0, 10],
+    "totalCounts": [2, 2, 2, 2, 2],
+    "level": "1/2",
+    "missingPairs": ["01"],
+    "bridgeCuts": [4, 6],
+    "bridgeWord": "01"
+  },
+  "sameCutCounterexamples": [
+    {
+      "word": "01234041423",
+      "cuts": [0, 5, 11],
+      "leftCounts": [1, 1, 1, 1, 1],
+      "rightCounts": [1, 1, 1, 1, 2],
+      "zeroMinorPairs": ["01", "02", "03", "12", "13", "23"],
+      "point": "Six simultaneous marker equations do not suffice, even with every letter in both blocks."
+    },
+    {
+      "word": "012303132",
+      "cuts": [0, 4, 9],
+      "leftCounts": [1, 1, 1, 1, 0],
+      "rightCounts": [1, 1, 1, 2, 0],
+      "zeroMinorPairs": ["01", "02", "04", "12", "14", "24", "34"],
+      "point": "Seven simultaneous equations and a connected graph do not suffice when a common absent letter is retained."
+    },
+    {
+      "word": "0134034314",
+      "cuts": [0, 4, 10],
+      "leftCounts": [1, 1, 0, 1, 1],
+      "rightCounts": [1, 1, 0, 2, 2],
+      "zeroMinorPairs": ["01", "02", "12", "23", "24", "34"],
+      "point": "The four path equations 01,12,23,34 do not suffice; their common absent articulation vertex is 2."
+    }
+  ]
+}

@@ -12,6 +12,17 @@ An independent verifier also excludes a specified five-vector menu with gaps
 up to 27 at every scale. No minimum bound changes; the unrestricted
 subsequence theorem remains open.
 
+**September 10 word follow-up:** the
+[five-marker compatibility checkpoint](../tracks/five-marker-compatibility/README.md)
+proves a common-fraction synchronization criterion and short defect-bridge
+lemmas. The finite avoiding word `010213432340124` refutes synchronization from
+common outer cuts alone. A universal common-fraction forcing theorem remains
+missing; no infinite avoiding extension or new minimum bound is established.
+Its separate exact verifier and CLI resume regressions run in research CI.
+The square-Koch insertion attempt was retired and its detailed artifacts
+removed at the user's request; only the
+[do-not-repeat note](../AI-CHECKPOINT.md#5-next-proof-oriented-work) is retained.
+
 The target is `s_*`: the minimum cardinality of **one fixed integer step menu**
 supporting an infinite distinct-vertex, no-three-collinear walk in `Z³`.
 The positive-basis minimum `d_*` is distinct. The established relation remains
@@ -47,9 +58,12 @@ lower bound.
    A single nonzero cycle would instead supply a construction. No uniform
    menu-height or automatic-state bound has been proved.
 2. **Simultaneous marker-pair constraints.** All ten two-marker decompositions
-   of a hypothetical five-letter word must come from the same word. Force a
-   compatible marker-color and ternary-gap equality, rather than treating the
-   individual finite return alphabets as a contradiction.
+   of a hypothetical five-letter word must come from the same word. The
+   September 10 checkpoint shows that common outer cuts alone do not suffice:
+   force one common fraction, or prove a new compatibility law across factors
+   that eliminates the occurrence-window defects. Nine pair matches at one
+   fraction can still leave an actual adjacent-swap obstruction. Do not treat
+   separate finite return alphabets or fractions as a contradiction.
 3. **Genuinely different construction certificates.** Leave the classified
    four-state valuation family. Screen new primitive uniform substitutions
    against the sub-square-root projection obstruction before attempting a
